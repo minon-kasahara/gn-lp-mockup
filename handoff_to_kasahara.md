@@ -126,9 +126,71 @@
 
 ---
 
-## §A-3. リポジトリ移管・承諾プロンプト（2026-05-18・kasahara へ即連携）
+## §A-4. 移管完了・kasahara 周知プロンプト（2026-05-18・最新）
 
-> 📋 **T018 実行中。このブロックを kasahara セッションに今すぐ連携してください**
+> 📋 **T018 移管完了後の最新版。次回 kasahara セッション開始時にこのブロックを連携してください**（§A-2/§A-3 は履歴。今後はこの §A-4 を使用）
+
+---
+
+```
+【リポジトリ移管 完了・運用復帰のお知らせ】
+
+2026-05-18 T018 リポジトリ移管が完了しました。あなた（minon-kasahara）が現在の repo オーナーです。
+
+## 現状
+
+- リポジトリ: minon-kasahara/gn-lp-mockup（あなたがオーナー / azalea は collaborator write）
+- 公開 URL: https://minon-kasahara.github.io/gn-lp-mockup/（稼働中・200）
+- 旧 URL https://azaleak1001.github.io/gn-lp-mockup/ は無効（404）
+- push 凍結（[BLOCKER] 21:40）は azalea が解除済 → 通常運用に復帰してよい
+
+## 作業再開前に必ず実施（順番厳守）
+
+1. ローカルクローンの remote を新リポジトリに付替（重要・未実施なら必須）:
+   cd ~/gn-lp-mockup
+   git remote set-url origin https://github.com/minon-kasahara/gn-lp-mockup.git
+   git remote get-url origin   # → minon-kasahara/... を確認
+
+2. 最新を取り込む（azalea の移管後コミット c9c6cfb 等を取得）:
+   git pull origin main
+
+3. 取り込んだ最新ドキュメントを確認:
+   - AGENT.md §15（GitHub 運用・移管後の状態）
+   - DEPLOY.md（リポジトリ/URL/移管履歴）
+   - handoff_to_kasahara.md（本ファイル §A-4）
+
+## 通常運用サイクル（復帰後・厳守）
+
+- 作業前: cd ~/gn-lp-mockup && git pull origin main
+- v09 編集: ~/gn-lp-mockup/mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 作業後: git add -A && git commit -m "kasahara: {要約}" && git push origin main
+- push 後 1〜3 分で公開サイト自動更新（GitHub Actions タブで確認可）
+- ⚠️ Google Drive 側 02_work は編集しない（参照のみ・git が唯一の正）
+
+## ⚠️ ログ規律の注意（重要）
+
+- 移管時、あなたは GitHub 操作（承諾・collaborator 再追加・Pages 再有効化）を実施したが activity_log.md に [INTENT]/[DONE] を記録していなかった
+- azalea が遡及確認して 22:10 [DONE] で補完済
+- 今後は**ファイル編集だけでなく、GitHub/インフラ操作も [INTENT]/[DONE] で記録**すること（時刻付き `### YYYY-MM-DD HH:MM [TAG] kasahara`）
+- 記録漏れは他セッションのコンテキスト断絶を生むため厳禁
+
+## あなたはオーナーになりました
+
+- repo の admin 権限を持つ（Settings 変更・collaborator 管理が可能）
+- azalea(azaleak1001) を collaborator から外さないこと（azalea が push できなくなる）
+- Pages 設定（Actions ソース）を変更しないこと（公開サイトが止まる）
+
+## 補足
+
+- 外部レビュアーへの新 URL 再共有はユーザーが対応（あなたの作業対象外）
+- 不明点は activity_log.md か handoff_to_kasahara.md 経由で azalea に連携
+```
+
+---
+
+## §A-3. リポジトリ移管・承諾プロンプト（2026-05-18・履歴）
+
+> 📜 **履歴**: T018 移管時に使用したプロンプト。移管完了済のため**今後は §A-4 を使用**。本節は経緯記録として保持。
 
 ---
 

@@ -44,6 +44,18 @@
 
 ## ログ本体
 
+### 2026-05-18 22:25 [DONE] azalea
+- 対象: `handoff_to_kasahara.md` §A-4（移管完了・kasahara 周知プロンプト・最新版）
+- 実施内容:
+  - **§A-4 新設**（移管完了後の最新周知プロンプト・copy-paste 可）。内容: 現状（repo/URL/権限）/ 作業再開前の必須3手順（remote 付替 → pull → 最新ドキュメント確認）/ 通常運用サイクル復帰 / **ログ規律の注意**（kasahara が移管時 GitHub 操作を未記録だった件・今後はインフラ操作も [INTENT]/[DONE]）/ オーナー責務（collaborator/Pages 設定を壊さない）
+  - §A-3 を「履歴」と明記（今後は §A-4 を使用）
+- 影響: 次回 kasahara セッションで §A-4 を渡せば remote 付替漏れ・記録漏れを防止できる
+- 次アクション: ユーザーが次回 kasahara セッションに §A-4 プロンプトを連携
+
+### 2026-05-18 22:20 [INTENT] azalea
+- 対象: `handoff_to_kasahara.md` §A-4（移管完了・kasahara 周知プロンプト追加）
+- 内容: ユーザー指示「kasahara に伝える情報をプロンプト化」を受けて、T018 移管完了後に kasahara が知るべき事項（remote 付替必須・push 凍結解除・新URL・記名・ログ規律・最新 pull）を §A-4 として保管・プロンプト化
+
 ### 2026-05-18 22:10 [DONE] azalea
 - 対象: T018 リポジトリ移管 完了確認 + azalea 後処理 + [BLOCKER] 21:40 解除
 - 移管完了確認（gh api / curl 検証）:
