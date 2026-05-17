@@ -44,6 +44,20 @@
 
 ## ログ本体
 
+### 2026-05-18 20:50 [INTENT] azalea
+- 対象: GitHub `azaleak1001/gn-lp-mockup` collaborator 追加（`minon-kasahara`）, `handoff_to_kasahara.md` §A-2 プロンプト確定版更新, git 同期 push
+- 内容: ユーザーから kasahara の GitHub ユーザー名 `minon-kasahara`（https://github.com/minon-kasahara）を受領。案 A（collaborator 追加）を実行し、§A-2 プロンプトを push 権限解決済の確定版に更新する
+
+### 2026-05-18 20:40 [DONE] azalea
+- 対象: `handoff_to_kasahara.md`（§A-2 git 切替・緊急周知プロンプト追加）, git 同期 push
+- 実施内容:
+  - handoff_to_kasahara.md に **§A-2 git 切替・緊急周知プロンプト**を新設（kasahara 即実行用: clone / git config / 作業前 pull・作業後 push の規律 / Drive 編集中止）
+  - kasahara の push 権限 3 案（A: collaborator 追加[推奨] / B: azaleak1001 認証共用 / C: 編集のみ）を整理しユーザー判断事項として明記
+  - Drive→git 再同期・commit・push 完了（c1ef64a）
+  - noindex 維持（直リンク共有運用で確定・ユーザー承認済）
+  - 公開 URL https://azaleak1001.github.io/gn-lp-mockup/ ユーザー確認 OK
+- 次アクション: ユーザーが kasahara に §A-2 プロンプト連携 + kasahara の GitHub ユーザー名を azalea に共有（collaborator 追加のため）
+
 ### 2026-05-18 20:35 [INTENT] azalea
 - 対象: `handoff_to_kasahara.md`（git 切替・緊急周知プロンプト追加）
 - 内容: ユーザー指示「kasahara にすぐ git 切替を周知 / 直リンク共有OK / 公開URL OK」を受けて:

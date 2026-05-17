@@ -142,25 +142,32 @@
 - 公開 URL（外部レビュー用・直リンク共有）: https://azaleak1001.github.io/gn-lp-mockup/
 - Google Drive 側での v09 編集は中止。git クローン側で編集する
 - push すると GitHub Actions が自動で公開サイトを更新
+- あなた（GitHub: minon-kasahara）は write 権限の collaborator 招待を受領済（要承諾）
 
 ## あなたが今やること
 
 1. これまでの Google Drive での編集作業をいったん区切る（中途半端な編集があれば内容をメモ）
-2. git クローンを取得（未取得の場合）:
+2. GitHub アカウント minon-kasahara で gh CLI 認証されているか確認:
+   gh auth status
+   （未認証なら `gh auth login` で minon-kasahara を認証）
+3. collaborator 招待を承諾（write 権限付与のため必須）:
+   gh api -X PATCH /user/repository_invitations/319082737
+   （または https://github.com/azaleak1001/gn-lp-mockup/invitations をブラウザで開いて Accept）
+4. git クローンを取得:
    gh repo clone azaleak1001/gn-lp-mockup ~/gn-lp-mockup
-   ※ push にはこのリポジトリへの write 権限が必要。権限が無い/不明な場合は azalea セッション（ユーザー）に「kasahara の GitHub アカウント名」を伝えて collaborator 追加を依頼するか、azaleak1001 認証を使う（ユーザー判断）
-3. クローン後に記名設定:
+5. クローン後に記名設定:
    cd ~/gn-lp-mockup
    git config user.name kasahara
    git config user.email kasahara@mimitas.net
-4. DEPLOY.md と AGENT.md §15 を読む（git 運用ルール）
-5. activity_log.md に SESSION-START を記録（時刻付き・git 移行を認知した旨）
+6. DEPLOY.md と AGENT.md §15 を読む（git 運用ルール）
+7. activity_log.md に SESSION-START を記録（時刻付き・git 移行を認知した旨）
 
 ## 今後の作業サイクル（厳守）
 
 - 作業前: cd ~/gn-lp-mockup && git pull origin main
 - v09 編集は ~/gn-lp-mockup/mockup/drafts/v09_20260424_full_castme-hubblecolor.html（git クローン側）
 - 作業後: git add -A && git commit -m "kasahara: {要約}" && git push origin main
+- push 後 1〜3 分で公開サイト自動更新（GitHub Actions タブで状況確認可）
 - activity_log.md の [INTENT]/[DONE] は git 運用でも継続（git クローン側の activity_log.md に記録）
 - ⚠️ Google Drive 側の 02_work はもう編集しない（参照のみ）
 
@@ -168,22 +175,20 @@
 
 - 直近 azalea が Drive→git 同期して push 済（あなたの 20:20 CTA lead 編集まで反映済）
 - もし手元 Drive にそれ以降の未同期編集があれば、git クローン側で再現してから commit すること
+- push が拒否されたら: 招待未承諾の可能性 → 手順3を実施。それでも不可なら `git pull --rebase origin main` 後に再 push
 - 不明点は activity_log.md か handoff_to_kasahara.md 経由で azalea に連携
 ```
 
 ---
 
-### ⚠️ ユーザー判断が必要: kasahara の push 権限
+### ✅ kasahara の push 権限（解決済 2026-05-18）
 
-`azaleak1001/gn-lp-mockup` への push には write 権限が必要です。kasahara が push するには以下のいずれか:
-
-| 案 | 内容 | 必要なこと |
-| --- | --- | --- |
-| **A**: kasahara の GitHub アカウントを collaborator 追加 | 各自のアカウントで push（履歴が明確）| kasahara の GitHub ユーザー名をユーザーが azalea に伝える → azalea が `gh api -X PUT repos/azaleak1001/gn-lp-mockup/collaborators/{username}` |
-| **B**: kasahara 環境で azaleak1001 認証を共用 | 同一アカウントで push（記名は git config で区別）| kasahara 環境で azaleak1001 の gh auth（ユーザーがトークン共有 or 認証）|
-| **C**: kasahara は編集のみ・push は azalea | 移行の意味が薄れる（非推奨）| — |
-
-→ **推奨は A**。kasahara の GitHub ユーザー名を教えてください（azalea が collaborator 追加します）。
+- kasahara GitHub アカウント: **`minon-kasahara`**（https://github.com/minon-kasahara）
+- azalea が **write 権限の collaborator 招待を発行済**（invitation id: `319082737`）
+- kasahara 側で**招待承諾が必要**（上記プロンプト手順3）:
+  - CLI: `gh api -X PATCH /user/repository_invitations/319082737`
+  - or ブラウザ: https://github.com/azaleak1001/gn-lp-mockup/invitations で Accept
+- 承諾後、minon-kasahara アカウントで push 可能
 
 ---
 
