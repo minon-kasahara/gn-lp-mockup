@@ -341,7 +341,7 @@ section{position:relative;overflow:hidden}
 .prob-illust{grid-area:illust;width:100%;max-width:180px;height:140px;object-fit:contain;object-position:center top;align-self:start;justify-self:end;position:relative;z-index:1;pointer-events:none}
 
 /* ============ APPROACH SECTION ============ */
-.approach{background:transparent}
+.approach{background:linear-gradient(180deg,transparent 0%,transparent 50%,var(--blue-soft) 100%)}
 .appr-flow{max-width:1180px;margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:22px;position:relative}
 .appr-card{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:32px;position:relative;overflow:hidden;transition:transform .2s;display:grid;grid-template-columns:1fr 180px;grid-template-areas:"num illust" "title illust" "desc desc";column-gap:24px;row-gap:14px;align-content:start}
 .appr-card:hover{transform:translateY(-4px)}
@@ -362,7 +362,7 @@ section{position:relative;overflow:hidden}
 .bridge-bracket{display:inline-block;color:var(--blue);font-weight:900;font-size:1.15em;margin:0;transform:translateY(-2px);letter-spacing:0}
 
 /* ============ SERVICE SECTION ============ */
-.services{background:linear-gradient(180deg,var(--bg) 0%,var(--blue-soft) 45%,#fff 100%);padding-bottom:48px}
+.services{background:linear-gradient(180deg,var(--blue-soft) 0%,#fff 100%);padding-bottom:48px}
 .svc-grid{max-width:1180px;margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .svc-card{background:#fff;border-radius:20px;padding:36px 32px;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(15,26,51,.05)}
 .svc-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:5px}
@@ -381,7 +381,7 @@ section{position:relative;overflow:hidden}
 .svc-card p{font-size:13.5px;line-height:1.9;color:var(--sub);font-weight:400}
 
 .perk-banner{max-width:1180px;margin:40px auto 0;padding:0 var(--gutter)}
-.perk-inner{background:linear-gradient(135deg,var(--ink),var(--navy-lt));color:#fff;padding:48px 52px;border-radius:28px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;position:relative;overflow:hidden;box-shadow:0 30px 60px rgba(15,26,51,.25)}
+.perk-inner{background:linear-gradient(135deg,var(--ink),var(--navy-lt));color:#fff;padding:48px 52px;border-radius:28px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;position:relative;overflow:hidden;box-shadow:none}
 .perk-inner::before{content:'';position:absolute;top:-80px;right:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(255,209,102,.32),transparent 65%);border-radius:50%;filter:blur(10px)}
 .perk-inner::after{content:'';position:absolute;bottom:-60px;left:30%;width:200px;height:200px;background:radial-gradient(circle,rgba(74,125,232,.3),transparent 65%);border-radius:50%;filter:blur(8px)}
 .perk-left{position:relative;z-index:1}
@@ -1225,7 +1225,7 @@ img{max-width:100%;height:auto}
         <span class="chunk">まずは、</span><br class="br-tablet">
         <span class="chunk"><em>1時間の無料相談</em>から。</span>
       </h2>
-      <p class="lead">VC・顧問・営業パートナーからご紹介でもOK。補助金のプロが、貴社のステージと事業計画をうかがった上で、最適な制度の組み合わせをその場で提案します。</p>
+      <p class="lead">具体的な申請予定がなくても、まずはご相談ください。<br>補助金のプロが、貴社のステージと事業計画をうかがった上で、最適な制度の組み合わせをその場で提案します。</p>
       <div class="cta-tags">
         <span>1時間で提案</span>
         <span>VC紹介 着手金0円</span>

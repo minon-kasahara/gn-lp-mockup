@@ -657,3 +657,42 @@ spec.md および指示書では以下の凡例を使う:
 - 古い情報・廃止された機能が指示書に残っていないか
 
 矛盾を発見したら spec.md を正として指示書を修正する。
+
+---
+
+## §15 GitHub ソース管理・公開ワークフロー（2026-05-18 確定）
+
+### 15.1 重大な方針変更: ソース管理の git 移行
+
+- **モックアップソースの正は GitHub リポジトリ** `azaleak1001/gn-lp-mockup`（Public）
+- **Google Drive 側でのソースコード管理は中止**（Drive はアーカイブ/参照のみ）
+- ローカルクローン: `~/gn-lp-mockup/`（Google Drive 外）
+- azalea / kasahara 両セッションが本リポジトリを clone し編集 → commit → push
+- push で GitHub Actions が自動ビルド・Pages デプロイ
+
+### 15.2 公開 URL
+
+- **https://azaleak1001.github.io/gn-lp-mockup/**（外部デザインレビュー用）
+- noindex + robots.txt 付与済（未公開クライアント LP のため検索非掲載・直リンク共有のみ）
+- privacy.html も同梱公開
+
+### 15.3 GitHub アカウント
+
+- gh CLI 認証: **azaleak1001**（azalea.k1001@gmail.com・Active）
+- コミット記名: ローカル config で `azalea <azalea.k1001@gmail.com>`
+- 旧 AzaleaK2/gn-lp-mockup は PRIVATE 化して放置（誤用防止）
+
+### 15.4 2セッション git 運用（必須ルール）
+
+- **作業開始時**: `cd ~/gn-lp-mockup && git pull origin main`
+- **作業終了時**: `git add -A && git commit -m "{識別子}: {要約}" && git push origin main`
+- `activity_log.md` の `[INTENT]`/`[DONE]` は git 運用でも**継続**（git log と二重で履歴担保）
+- コンフリクト回避: 作業前 pull 必須・細かく commit/push・同一ファイル同時編集は activity_log で調整
+- 詳細は `~/gn-lp-mockup/DEPLOY.md` 参照
+
+### 15.5 デプロイ対象
+
+- `.github/workflows/deploy.yml` が `main` push 時に実行
+- `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` → `index.html`（`../assets/`→`assets/` 書換 + noindex 注入）
+- `mockup/assets/`（`generated/` 除く）を配信
+- 反映まで 1〜3 分。状況は GitHub Actions タブで確認

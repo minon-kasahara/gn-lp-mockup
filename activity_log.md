@@ -44,6 +44,114 @@
 
 ## ログ本体
 
+### 2026-05-18 20:25 [BLOCKER] azalea
+- 対象: ソース管理移行の過渡期コンフリクト
+- 状況: azalea が GitHub git 移行（`azaleak1001/gn-lp-mockup`）を構築・公開した直後、**kasahara が Google Drive 側の v09 を継続編集中**（20:18〜20:20 CTA lead 差替）。kasahara はまだ git 移行を認知していない（handoff プロンプト未連携）
+- リスク: git クローンは構築時点のスナップショット。kasahara の Drive 編集が git に反映されないと公開サイトと乖離。逆に古い git を push すると kasahara 編集を上書きするリスク
+- 暫定対応（azalea 実施）: push 前に Drive 02_work → git クローンを再 rsync し、kasahara の最新 v09 を取り込んでから commit/push する（Drive→git の一方向同期で当面運用）
+- 恒久対応（要ユーザー対応）: kasahara セッションに handoff プロンプトを連携し、**kasahara も git クローン側で作業**するよう切替。それまでは「Drive で編集 → azalea が git へ同期・push」のハイブリッド運用
+- 誰待ち: ユーザーが kasahara セッションへ git 移行を周知するまで
+
+### 2026-05-18 20:22 [DONE] azalea
+- 対象: `~/gn-lp-mockup/`（新規 git リポ）, GitHub `azaleak1001/gn-lp-mockup`（Public）, `AGENT.md §15`, `handoff_to_kasahara.md`
+- 実施内容:
+  - ローカル git リポ構築（02_work 全体コピー・generated/ 等除外 約2.6MB）
+  - `.github/workflows/deploy.yml`（v09→index.html / `../assets/`→`assets/` 書換 / noindex・robots.txt 注入 / assets 配信 / Pages 自動デプロイ）
+  - `.gitignore` / `DEPLOY.md`（2セッション git 運用ガイド）作成
+  - GitHub: 当初 AzaleaK2 → ユーザー指示で **azaleak1001（azalea.k1001@gmail.com）** に変更。旧 AzaleaK2/gn-lp-mockup は PRIVATE 化放置
+  - コミット記名 `azalea <azalea.k1001@gmail.com>`、azaleak1001/gn-lp-mockup（Public）作成・push・main 化・Pages を Actions ソース有効化
+  - 初回デプロイ失敗（Pages 未有効化）→ Pages 設定後 workflow_dispatch 再実行で **成功**
+  - 公開検証: https://azaleak1001.github.io/gn-lp-mockup/ HTTP 200 / title 正常 / `../assets/` 残存0 / noindex有 / 全アセット 200
+  - AGENT.md §15 追加（GitHub ソース管理・公開ワークフロー）/ handoff 冒頭に git 移行を最重要事項として追記
+- 影響: 外部レビュー用公開 URL 取得・ソース管理 git 移行
+- 次アクション: 下記 [BLOCKER] の通り、kasahara 最新編集を取り込んで git へ同期・push
+
+### 2026-05-18 20:20 [DONE] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` CTA 左 lead L1033
+- 実施内容: ユーザー指示の新コピーに差替（2 行構成・`<br>` で改行）
+- 効果: 紹介経路への言及を削除し「申請予定なくても OK」というハードル下げメッセージに変更
+- /tmp/gn-preview に rsync 同期済
+
+### 2026-05-18 20:18 [INTENT] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` CTA 左 lead L1033
+- 内容: ユーザー指示でリード文を差し替え
+  - 旧: `VC・顧問・営業パートナーからご紹介でもOK。補助金のプロが、貴社のステージと事業計画をうかがった上で、最適な制度の組み合わせをその場で提案します。`
+  - 新: `具体的な申請予定がなくても、まずはご相談ください。<br>補助金のプロが、貴社のステージと事業計画をうかがった上で、最適な制度の組み合わせをその場で提案します。`
+
+### 2026-05-18 20:13 [DONE] kasahara
+- 対象: 同上 2 箇所
+- 実施内容:
+  - L365 `.services`: `linear-gradient(180deg, var(--blue-soft) 0%, #fff 100%)` 復元（Approach 末 blue-soft と接続）
+  - L384 `.perk-inner` box-shadow: `none`（card 下のラインを完全除去）
+- 効果: Approach→Service は blue-soft 連続、Service→Record は #fff 連続、perk-banner card は影なしでクリーンな矩形配置
+- /tmp/gn-preview に rsync 同期済
+
+### 2026-05-18 20:10 [INTENT] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` 複数
+- 内容: ユーザー診断結果を踏まえた根本対応
+  1. `.services` L365: `#fff` → `linear-gradient(180deg, var(--blue-soft) 0%, #fff 100%)`（Approach 末 blue-soft と接続するため線形フェード復元）
+  2. `.perk-inner` L384 box-shadow: `0 40px 80px rgba(15,26,51,.14)` → **`none`**（card 下のシャドウラインを完全除去）
+- 仮説: 真っ白でも線が残った原因 = perk-banner card の box-shadow（拡散していても card 下に視覚的な境界線を作っていた）。box-shadow を None にすることで card は浮いた感じはなくなるが、Service-Record の境目はクリーンになる
+
+### 2026-05-18 20:02 [DONE] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` `.services` L365
+- 実施内容: `linear-gradient(180deg, var(--blue-soft) 0%, #fff 85%, #fff 100%)` → `#fff`（一時診断）
+- 効果: Service 全体が純白に。これで「線」が消えれば原因はグラデーション、残れば perk-banner card のシャドウ等別要因と判別可
+- /tmp/gn-preview に rsync 同期済
+
+### 2026-05-18 20:00 [INTENT] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` `.services` L365
+- 内容: ユーザー指示で診断目的に Service セクション背景を一時的に `#fff` に変更。残る「線」の原因を特定するため
+- 注: 一時的措置。確認後に確定方針へ戻す
+
+### 2026-05-18 19:52 [DONE] kasahara
+- 対象:
+  1. `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` `.services` L365
+  2. 同ファイル `.perk-inner` L384 box-shadow
+- 実施内容:
+  - L365 `.services`: `linear-gradient(180deg, var(--blue-soft) 0%, #fff 100%)` → `linear-gradient(180deg, var(--blue-soft) 0%, #fff 85%, #fff 100%)`（85%で完全に白に到達、下 15% を確実に白く）
+  - L384 `.perk-inner` box-shadow: `0 30px 60px rgba(15,26,51,.25)` → `0 40px 80px rgba(15,26,51,.14)`（拡散範囲を大きく、濃度を 44%減）
+- 効果: perk-banner 下端のカード輪郭線が柔らかい光暈に置換、Service の下端も pure white で Record と段差ゼロ
+- /tmp/gn-preview に rsync 同期済
+
+### 2026-05-18 19:48 [INTENT] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` `.services` L365 / `.perk-inner` L384
+- 内容: perk-banner card の下端→Record 上端に残る「線」を解消
+  - `.services`: 線形 → `linear-gradient(180deg, var(--blue-soft) 0%, #fff 85%, #fff 100%)` で下 15% を確実に純白にして Record と接続
+  - `.perk-inner`: `box-shadow: 0 30px 60px rgba(15,26,51,.25)` → `0 40px 80px rgba(15,26,51,.14)`（より広く・薄い拡散シャドウで card の輪郭ラインを緩和）
+- 仮説: 残っていた線は perk-banner card の暗いシャドウ＋bg 微妙な色差の組み合わせ
+
+### 2026-05-18 19:38 [DONE] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` `.services` L365
+- 実施内容: `linear-gradient(180deg, var(--blue-soft) 0%, var(--blue-soft) 35%, #fff 100%)` → `linear-gradient(180deg, var(--blue-soft) 0%, #fff 100%)`
+- 効果: Service セクション全体が blue-soft → #fff の純粋な線形フェード。perk-banner 下〜Record の白に至るまで色の停滞点が消え、連続的に滑らかな勾配に
+- /tmp/gn-preview に rsync 同期済
+
+### 2026-05-18 19:35 [INTENT] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` `.services` L365
+- 内容: ユーザー指摘「perk-banner→Record の境界がまだ線になっている」を解消
+  - `linear-gradient(180deg, --blue-soft 0%, --blue-soft 35%, #fff 100%)` の中間ストップを削除
+  - 新値: `linear-gradient(180deg, var(--blue-soft) 0%, #fff 100%)`（純粋な線形フェード）
+- 効果: Service セクション全体に渡って blue-soft → #fff が連続的に変化。中間ストップによる「色の停滞」が消え、視覚的インフレクション点が消失するはず
+
+### 2026-05-18 19:20 [DONE] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` `.approach` L344 / `.services` L365
+- 実施内容:
+  - L344 `.approach`: `transparent` → `linear-gradient(180deg, transparent 0%, transparent 50%, var(--blue-soft) 100%)`
+  - L365 `.services`: `linear-gradient(180deg, var(--bg) 0%, var(--blue-soft) 45%, #fff 100%)` → `linear-gradient(180deg, var(--blue-soft) 0%, var(--blue-soft) 35%, #fff 100%)`
+- 効果: Approach 下半分 → Service 上半分が連続した `--blue-soft` 帯になり、ハードな境界線が消失。Service 中央〜下端で `#fff` フェードして Record に直結
+- /tmp/gn-preview に rsync 同期済
+
+### 2026-05-18 19:15 [INTENT] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` `.approach` L344 / `.services` L365
+- 内容: ユーザー指摘「Approach 末→Service 始の境界が連続していない」を解消
+  - `.approach`: `transparent` → `linear-gradient(180deg, transparent 0%, transparent 50%, var(--blue-soft) 100%)`（下半分を blue-soft フェード）
+  - `.services`: 上端を `--bg` → `--blue-soft` に変更し Approach 末と直結
+    - 新値: `linear-gradient(180deg, var(--blue-soft) 0%, var(--blue-soft) 35%, #fff 100%)`
+- 設計意図: Approach 下半分が `--blue-soft` 帯 → Service 上半分も `--blue-soft` 帯 → Service 下半分で `#fff` フェード → Record の `#fff` と直結
+- 副作用: Service の最上部（pill「サービス」周辺）が薄ブルー背景になる（perk-banner と統一感）
+- ⚠️ azalea が並行で GitHub 公開準備中。本編集は Google Drive 上の v09 ファイルに対するもの。git 同期が後でかかる想定
+
 ### 2026-05-18 [INTENT] azalea
 - 対象: 新規 git リポジトリ `~/gn-lp-mockup/` 構築 + GitHub `AzaleaK2/gn-lp-mockup`（Public）作成 + GitHub Actions Pages デプロイ + 02_work 内ドキュメント更新（AGENT.md / handoff_to_kasahara.md / README.md に新ワークフロー追記）
 - 内容: ユーザー決定:

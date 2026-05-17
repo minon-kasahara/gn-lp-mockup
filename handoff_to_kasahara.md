@@ -29,7 +29,19 @@
 ---
 
 ```
-こんにちは。本セッションは kasahara@mimitas.net ユーザー（あなた）の作業セッションです。前回（2026-05-11〜12）から継続です。
+こんにちは。本セッションは kasahara@mimitas.net ユーザー（あなた）の作業セッションです。前回から継続です。
+
+## 🚨 最重要: ソース管理が GitHub に移行（2026-05-18）
+
+- **モックアップソースの正は GitHub リポジトリ** `azaleak1001/gn-lp-mockup`（Public）
+- **Google Drive 側でのソースコード管理は中止**
+- ローカルクローン: `~/gn-lp-mockup/`（無ければ `gh repo clone azaleak1001/gn-lp-mockup ~/gn-lp-mockup` で取得）
+- **作業前に必ず** `cd ~/gn-lp-mockup && git pull origin main`
+- **作業後に必ず** `git add -A && git commit -m "kasahara: {要約}" && git push origin main`
+- push すると GitHub Actions が自動で公開サイトを更新（https://azaleak1001.github.io/gn-lp-mockup/）
+- git config 記名: クローン後 `git config user.name kasahara && git config user.email kasahara@mimitas.net` を設定
+- 詳細は `~/gn-lp-mockup/DEPLOY.md` と `AGENT.md §15` を必読
+- ⚠️ v09 mockup の編集は **git クローン側**（`~/gn-lp-mockup/mockup/drafts/...`）で行う。Google Drive 側は触らない
 
 ## セッション識別子
 
