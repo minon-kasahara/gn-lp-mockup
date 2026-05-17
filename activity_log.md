@@ -44,6 +44,35 @@
 
 ## ログ本体
 
+### 2026-05-18 21:30 [DONE] azalea
+- 対象: activity_log 乖離の解消 + azalea の git クローン運用への移行完了
+- 状況確認:
+  - kasahara が `commit 0953569`（kasahara <kasahara@mimitas.net>）で **push 成功**・自動デプロイ成功
+  - collaborator: `minon-kasahara : write`（招待 319082737 承諾済・招待中ゼロ）
+  - → **T018 トリガー条件のうち技術 3 項目（招待承諾 / clone・config / push 成功）達成**。残り「デザイン安定」「移管ウィンドウ調整」はユーザー判断
+- 乖離解消:
+  - git clone と Drive の activity_log 差分は最上部 2 件のみ（git=kasahara 21:10 SESSION-START / Drive=azalea 21:15 DONE）
+  - **git を正**とし、Drive のみに存在した azalea 21:15 [DONE]（T018 計画文書化）を本 git clone activity_log に統合（直下に復元）
+- 🚨 **azalea も git クローン運用へ移行**:
+  - 本エントリ以降、azalea も `~/gn-lp-mockup/`（git クローン）で作業。Drive 側 02_work は azalea も編集停止（参照のみ）
+  - 作業前 `git pull origin main` / 作業後 `git add -A && git commit -m "azalea: …" && git push origin main`
+  - これで Drive→git 片方向同期は廃止。2セッションとも git クローンが唯一の作業領域
+- 影響: Drive ソース管理の完全終了。両セッション git 一本化。乖離リスク解消
+- 次アクション: ユーザー指示待ち。T018 移管はデザイン安定後にユーザー合図で runbook（handoff §E）実行
+
+### 2026-05-18 21:15 [DONE] azalea
+- 対象: `handoff_to_kasahara.md` §E（リポジトリ移管 runbook）, `tasks.md` T018（移管タスク起票）, git push（9cb4ef4）
+- 実施内容:
+  - ユーザー判断「kasahara 運用開始後に移管実行」を確定
+  - handoff_to_kasahara.md に **§E. リポジトリ移管計画** を新設:
+    - トリガー条件 5 項目（招待承諾 / clone / minon-kasahara で push 成功 / デザイン安定 / 移管ウィンドウ調整）
+    - 移管 runbook 10 ステップ（transfer 発行 → kasahara 承諾 → azaleak1001 collaborator 再追加 → Pages 再有効化 → remote 付替 → 新URL検証 → ドキュメント一括置換 → 外部再共有）
+    - 移管後の最終形・リスク注意
+  - tasks.md に **T018**（GitHub オーナー移管・kasahara 運用開始後・保留）起票
+  - Drive→git 同期・push 完了
+- 影響: 移管は「保留タスク」として明文化。トリガー条件達成後に runbook 通り実行すれば安全に移管可能
+- 次アクション: kasahara が §A-2 プロンプトで git 運用開始 → トリガー条件確認 → T018 移管実行（本エントリは Drive→git 乖離解消で 21:30 に復元）
+
 ### 2026-05-18 21:10 [SESSION-START] kasahara
 - 自セッション識別子: `kasahara`（cedar 統合済の継続）
 - 認知: 本日 azalea が **Drive→git にソース管理移行完了**。`~/gn-lp-mockup/` クローン取得・git config 設定済（`kasahara <kasahara@mimitas.net>`）。今後の v09 編集は git クローン側で実施し commit→push する運用
