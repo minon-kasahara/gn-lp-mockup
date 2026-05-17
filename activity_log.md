@@ -44,6 +44,13 @@
 
 ## ログ本体
 
+### 2026-05-18 20:35 [INTENT] azalea
+- 対象: `handoff_to_kasahara.md`（git 切替・緊急周知プロンプト追加）
+- 内容: ユーザー指示「kasahara にすぐ git 切替を周知 / 直リンク共有OK / 公開URL OK」を受けて:
+  - handoff_to_kasahara.md に「§A-2 git 切替・緊急周知プロンプト」を新設（kasahara がすぐ実行できる短文・clone / config / 作業規律）
+  - kasahara の push 権限論点（azaleak1001 リポジトリへの write 権限が必要）を明記し、ユーザー判断を仰ぐ
+  - noindex は維持（直リンク共有運用で確定）
+
 ### 2026-05-18 20:25 [BLOCKER] azalea
 - 対象: ソース管理移行の過渡期コンフリクト
 - 状況: azalea が GitHub git 移行（`azaleak1001/gn-lp-mockup`）を構築・公開した直後、**kasahara が Google Drive 側の v09 を継続編集中**（20:18〜20:20 CTA lead 差替）。kasahara はまだ git 移行を認知していない（handoff プロンプト未連携）

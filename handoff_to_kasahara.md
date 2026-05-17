@@ -125,6 +125,68 @@
 
 ---
 
+## §A-2. git 切替・緊急周知プロンプト（2026-05-18・kasahara へ即連携）
+
+> 📋 **このブロックを kasahara セッションに今すぐ連携してください**（ソース管理が GitHub に移行したため）
+
+---
+
+```
+【重要・ソース管理が GitHub に移行しました】
+
+2026-05-18 azalea がモックアップのソース管理を Google Drive から GitHub に移行しました。今後は以下に従ってください。
+
+## 変更点
+
+- モックアップソースの正は GitHub: azaleak1001/gn-lp-mockup（Public）
+- 公開 URL（外部レビュー用・直リンク共有）: https://azaleak1001.github.io/gn-lp-mockup/
+- Google Drive 側での v09 編集は中止。git クローン側で編集する
+- push すると GitHub Actions が自動で公開サイトを更新
+
+## あなたが今やること
+
+1. これまでの Google Drive での編集作業をいったん区切る（中途半端な編集があれば内容をメモ）
+2. git クローンを取得（未取得の場合）:
+   gh repo clone azaleak1001/gn-lp-mockup ~/gn-lp-mockup
+   ※ push にはこのリポジトリへの write 権限が必要。権限が無い/不明な場合は azalea セッション（ユーザー）に「kasahara の GitHub アカウント名」を伝えて collaborator 追加を依頼するか、azaleak1001 認証を使う（ユーザー判断）
+3. クローン後に記名設定:
+   cd ~/gn-lp-mockup
+   git config user.name kasahara
+   git config user.email kasahara@mimitas.net
+4. DEPLOY.md と AGENT.md §15 を読む（git 運用ルール）
+5. activity_log.md に SESSION-START を記録（時刻付き・git 移行を認知した旨）
+
+## 今後の作業サイクル（厳守）
+
+- 作業前: cd ~/gn-lp-mockup && git pull origin main
+- v09 編集は ~/gn-lp-mockup/mockup/drafts/v09_20260424_full_castme-hubblecolor.html（git クローン側）
+- 作業後: git add -A && git commit -m "kasahara: {要約}" && git push origin main
+- activity_log.md の [INTENT]/[DONE] は git 運用でも継続（git クローン側の activity_log.md に記録）
+- ⚠️ Google Drive 側の 02_work はもう編集しない（参照のみ）
+
+## 注意
+
+- 直近 azalea が Drive→git 同期して push 済（あなたの 20:20 CTA lead 編集まで反映済）
+- もし手元 Drive にそれ以降の未同期編集があれば、git クローン側で再現してから commit すること
+- 不明点は activity_log.md か handoff_to_kasahara.md 経由で azalea に連携
+```
+
+---
+
+### ⚠️ ユーザー判断が必要: kasahara の push 権限
+
+`azaleak1001/gn-lp-mockup` への push には write 権限が必要です。kasahara が push するには以下のいずれか:
+
+| 案 | 内容 | 必要なこと |
+| --- | --- | --- |
+| **A**: kasahara の GitHub アカウントを collaborator 追加 | 各自のアカウントで push（履歴が明確）| kasahara の GitHub ユーザー名をユーザーが azalea に伝える → azalea が `gh api -X PUT repos/azaleak1001/gn-lp-mockup/collaborators/{username}` |
+| **B**: kasahara 環境で azaleak1001 認証を共用 | 同一アカウントで push（記名は git config で区別）| kasahara 環境で azaleak1001 の gh auth（ユーザーがトークン共有 or 認証）|
+| **C**: kasahara は編集のみ・push は azalea | 移行の意味が薄れる（非推奨）| — |
+
+→ **推奨は A**。kasahara の GitHub ユーザー名を教えてください（azalea が collaborator 追加します）。
+
+---
+
 ## §B. 未解決質問（kasahara への確認事項）
 
 ### Q1: prob-01〜04.svg の用途
