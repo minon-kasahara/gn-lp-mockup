@@ -664,7 +664,7 @@ spec.md および指示書では以下の凡例を使う:
 
 ### 15.1 重大な方針変更: ソース管理の git 移行
 
-- **モックアップソースの正は GitHub リポジトリ** `azaleak1001/gn-lp-mockup`（Public）
+- **モックアップソースの正は GitHub リポジトリ** `minon-kasahara/gn-lp-mockup`（Public）
 - **Google Drive 側でのソースコード管理は中止**（Drive はアーカイブ/参照のみ）
 - ローカルクローン: `~/gn-lp-mockup/`（Google Drive 外）
 - azalea / kasahara 両セッションが本リポジトリを clone し編集 → commit → push
@@ -672,15 +672,18 @@ spec.md および指示書では以下の凡例を使う:
 
 ### 15.2 公開 URL
 
-- **https://azaleak1001.github.io/gn-lp-mockup/**（外部デザインレビュー用）
+- **https://minon-kasahara.github.io/gn-lp-mockup/**（外部デザインレビュー用）
 - noindex + robots.txt 付与済（未公開クライアント LP のため検索非掲載・直リンク共有のみ）
 - privacy.html も同梱公開
+- ⚠️ 旧 `azaleak1001.github.io/gn-lp-mockup/` は **T018 移管で無効化（404）**。外部共有は新 URL のみ
 
-### 15.3 GitHub アカウント
+### 15.3 GitHub アカウント / オーナー（T018 移管後・2026-05-18）
 
-- gh CLI 認証: **azaleak1001**（azalea.k1001@gmail.com・Active）
-- コミット記名: ローカル config で `azalea <azalea.k1001@gmail.com>`
-- 旧 AzaleaK2/gn-lp-mockup は PRIVATE 化して放置（誤用防止）
+- **リポジトリオーナー: minon-kasahara（kasahara）**
+- azalea(azaleak1001) は collaborator(write)・記名 `azalea <azalea.k1001@gmail.com>`
+- kasahara(minon-kasahara) は owner・記名 `kasahara <kasahara@mimitas.net>`
+- 移管履歴: AzaleaK2（PRIVATE 化放置）→ azaleak1001 → **minon-kasahara（現・正）**
+- 各セッションの git remote: `https://github.com/minon-kasahara/gn-lp-mockup.git`
 
 ### 15.4 2セッション git 運用（必須ルール）
 

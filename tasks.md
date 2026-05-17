@@ -76,7 +76,7 @@
 | T015 | LP公開時の最終法務チェック（採択率・実績数値の表現） | ユーザー（外部法務） | — | design_rules.md §11 法務方針 2 / legal_check_20260506.md | **公開前（目標 5月中・未定）** | クライアント回答待ち（2026-05-12 時点）|
 | ~~T016~~ | ~~Gemini画像生成スキルの動作確認~~ | — | — | — | 完了済み（2026-04-27） | — |
 | T017 | LP用画像コンテンツの生成・組み込み | Agent | 未割当 | AGENT.md §12, assets/INDEX.md | 壁打ち中〜公開前 | T016完了後着手。FV/課題/事例セクション等 |
-| T018 | GitHub リポジトリをオーナー移管（azaleak1001 → minon-kasahara）+ 公開 URL を kasahara アカウント側に変更 | azalea | azalea | handoff_to_kasahara.md §E / AGENT.md §15 | **kasahara git 運用開始後**（保留）| トリガー条件: kasahara が招待承諾・clone・minon-kasahara で push 成功。runbook は handoff §E に記載済（2026-05-18 起票）|
+| ~~T018~~ | ~~GitHub リポジトリをオーナー移管（azaleak1001 → minon-kasahara）+ 公開 URL 変更~~ | azalea | azalea | handoff §E / AGENT.md §15 | **完了 2026-05-18** | ✅ 下記「完了済みタスク」参照 |
 
 ### 🟢 通常
 
@@ -114,6 +114,7 @@
 | T005 | 料金プラン開示範囲の決定（Q5） | 2026-04-27 | 案D（案Aベース・採択後支援3-5%は非掲載）。比較表形式 |
 | T006 | 法務・表記確認の方針整理（Q6） | 2026-04-27 | 競合A社B社匿名／実績数値は最終公開時に確認／認定機関表記は気にしない／「唯一」「100%」回避／VCロゴ13社確定 |
 | T007 | 統計データの扱い決定（Q7） | 2026-04-27 | 平成28年度のまま使用（出典注記）。最新データ調査はT012へ |
+| T018 | GitHub リポジトリをオーナー移管 + 公開 URL 変更 | 2026-05-18 | azaleak1001 → **minon-kasahara/gn-lp-mockup** に移管完了。新 URL https://minon-kasahara.github.io/gn-lp-mockup/（200）。旧 azaleak1001 URL は 404。azalea は collaborator(write)。ドキュメント一括更新済 |
 | T016 | Gemini画像生成スキルの動作確認 | 2026-04-27 | API キー設定（launchctl setenv）→ Billing有効化 → `gemini-2.5-flash-image` で1:1テスト画像生成成功 |
 
 ---

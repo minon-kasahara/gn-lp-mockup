@@ -2,14 +2,18 @@
 
 **目的**: G&N LP モックアップ（v09）を GitHub Pages で外部レビュー用に公開する。
 **作成**: 2026-05-18 azalea
+**最終更新**: 2026-05-18 azalea（T018 リポジトリ移管完了を反映）
 
 ---
 
 ## リポジトリ
 
-- **GitHub**: `AzaleaK2/gn-lp-mockup`（**Public**）
+- **GitHub**: `minon-kasahara/gn-lp-mockup`（**Public**）
+- **オーナー**: minon-kasahara（kasahara）／ azalea(azaleak1001) は collaborator(write)
 - **ローカルクローン推奨パス**: `~/gn-lp-mockup/`（Google Drive 外）
-- **公開 URL**: `https://azaleak2.github.io/gn-lp-mockup/`（Pages 有効化後）
+- **公開 URL**: **https://minon-kasahara.github.io/gn-lp-mockup/**
+
+> 📜 **移管履歴**: 当初 `AzaleaK2/gn-lp-mockup` で作成 → `azaleak1001/gn-lp-mockup` に再作成 → 2026-05-18 **T018 で `minon-kasahara/gn-lp-mockup` にオーナー移管**（公開 URL も minon-kasahara 側に変更）。旧 `azaleak1001.github.io/gn-lp-mockup/` は無効（404）。
 
 ---
 

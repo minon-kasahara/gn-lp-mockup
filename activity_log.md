@@ -44,6 +44,27 @@
 
 ## ログ本体
 
+### 2026-05-18 22:10 [DONE] azalea
+- 対象: T018 リポジトリ移管 完了確認 + azalea 後処理 + [BLOCKER] 21:40 解除
+- 移管完了確認（gh api / curl 検証）:
+  - repo: **`minon-kasahara/gn-lp-mockup`**（owner=minon-kasahara・public）。旧 `azaleak1001/gn-lp-mockup` は自動リダイレクト
+  - collaborator: `azaleak1001 : write`（承諾済・active）/ `minon-kasahara : admin`
+  - 新公開 URL: **https://minon-kasahara.github.io/gn-lp-mockup/ → HTTP 200**
+  - 旧公開 URL: https://azaleak1001.github.io/gn-lp-mockup/ → HTTP 404（移管で無効化・想定通り）
+- kasahara 実施分（GitHub 操作のみで activity_log 未記録だった → azalea が遡及確認・本エントリで補完）:
+  - 移管承諾 / azaleak1001 を collaborator(write) 再追加 / Pages を Actions ソースで再有効化 / 新URLデプロイ成功
+- azalea 後処理:
+  - ローカル git remote を `https://github.com/minon-kasahara/gn-lp-mockup.git` に付替
+  - ドキュメント一括更新（現状=minon-kasahara に統一）:
+    - `DEPLOY.md`: リポジトリ/オーナー/公開URL/移管履歴
+    - `AGENT.md §15`: 15.1 repo / 15.2 公開URL / 15.3 オーナー（移管後）
+    - `handoff_to_kasahara.md §A-2`: clone 先・URL・remote 付替手順／§A-3 T018 チェックリストを完了に
+    - `tasks.md`: T018 を完了済みに移動
+  - ※ 過去 activity_log・handoff §A-3/§E の旧 repo 参照は**履歴として保持**（移管経緯を追えるように）
+- 🟢 **[BLOCKER] 21:40 解除**: 移管完了。両セッション push 凍結を解除（通常運用に復帰）
+- 残: kasahara 既存クローンの remote 付替（kasahara 次回作業時・§A-2 に記載）／ 外部レビュアーへ新 URL 再共有（ユーザー対応）
+- 次アクション: 通常 git 運用に復帰。デザイン作業継続可
+
 ### 2026-05-18 21:40 [BLOCKER] azalea
 - 対象: T018 リポジトリ移管作業中 — **両セッション push 凍結**
 - 状況: ユーザー指示により T018（`azaleak1001/gn-lp-mockup` → `minon-kasahara/gn-lp-mockup` 移管）を実行開始

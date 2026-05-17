@@ -33,12 +33,13 @@
 
 ## 🚨 最重要: ソース管理が GitHub に移行（2026-05-18）
 
-- **モックアップソースの正は GitHub リポジトリ** `azaleak1001/gn-lp-mockup`（Public）
+- **モックアップソースの正は GitHub リポジトリ** `minon-kasahara/gn-lp-mockup`（Public・T018 移管完了 2026-05-18）
 - **Google Drive 側でのソースコード管理は中止**
-- ローカルクローン: `~/gn-lp-mockup/`（無ければ `gh repo clone azaleak1001/gn-lp-mockup ~/gn-lp-mockup` で取得）
+- ローカルクローン: `~/gn-lp-mockup/`（無ければ `gh repo clone minon-kasahara/gn-lp-mockup ~/gn-lp-mockup` で取得）
+- 既存クローンは remote 付替: `git remote set-url origin https://github.com/minon-kasahara/gn-lp-mockup.git`
 - **作業前に必ず** `cd ~/gn-lp-mockup && git pull origin main`
 - **作業後に必ず** `git add -A && git commit -m "kasahara: {要約}" && git push origin main`
-- push すると GitHub Actions が自動で公開サイトを更新（https://azaleak1001.github.io/gn-lp-mockup/）
+- push すると GitHub Actions が自動で公開サイトを更新（https://minon-kasahara.github.io/gn-lp-mockup/）
 - git config 記名: クローン後 `git config user.name kasahara && git config user.email kasahara@mimitas.net` を設定
 - 詳細は `~/gn-lp-mockup/DEPLOY.md` と `AGENT.md §15` を必読
 - ⚠️ v09 mockup の編集は **git クローン側**（`~/gn-lp-mockup/mockup/drafts/...`）で行う。Google Drive 側は触らない
@@ -182,13 +183,15 @@ azalea が azaleak1001/gn-lp-mockup → minon-kasahara/gn-lp-mockup への移管
 
 - [x] azalea: 凍結通知 push（commit 492771b）
 - [x] azalea: `gh api transfer` 発行（new_owner=minon-kasahara・承諾待ち）
-- [ ] kasahara: 移管承諾
-- [ ] kasahara: azaleak1001 を collaborator(write) 再追加
-- [ ] kasahara: Pages 再有効化 + 新URL検証
-- [ ] kasahara: 両 remote 付替
-- [ ] azalea: collaborator invitation 承諾 + remote 付替
-- [ ] azalea: ドキュメント一括更新（azaleak1001→minon-kasahara）+ [BLOCKER] 解除
-- [ ] 外部レビュアーへ新 URL 再共有
+- [x] kasahara: 移管承諾（repo = minon-kasahara/gn-lp-mockup・確認済）
+- [x] kasahara: azaleak1001 を collaborator(write) 再追加（承諾済・active）
+- [x] kasahara: Pages 再有効化 + 新URL検証（https://minon-kasahara.github.io/gn-lp-mockup/ → 200）
+- [x] azalea: remote 付替（origin → minon-kasahara）
+- [x] azalea: ドキュメント一括更新（DEPLOY.md / AGENT.md §15 / handoff §A-2）+ [BLOCKER] 解除
+- [ ] kasahara: 既存クローンの remote 付替（kasahara 側で `git remote set-url`・次回作業時）
+- [ ] 外部レビュアーへ新 URL 再共有（ユーザー対応）
+
+✅ **T018 移管完了（2026-05-18）**。新 URL: https://minon-kasahara.github.io/gn-lp-mockup/ ／ 旧 azaleak1001 URL は 404。
 
 ---
 
