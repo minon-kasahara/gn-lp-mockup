@@ -192,6 +192,74 @@
 
 ---
 
+## §E. リポジトリ移管計画（azaleak1001 → minon-kasahara）
+
+🎯 **ユーザー最終目標**（2026-05-18 確定）: git リポジトリのオーナーを kasahara（minon-kasahara）に移管し、公開 URL を kasahara アカウント側に変更する。
+⏳ **実行タイミング**: **kasahara 運用開始後**（ユーザー判断 2026-05-18）。下記トリガー条件を満たしてから azalea が実行。
+
+### トリガー条件（すべて満たしたら移管実行可）
+
+- [ ] kasahara が collaborator 招待（invitation 319082737）を承諾
+- [ ] kasahara が `~/gn-lp-mockup` を clone・git config 設定済
+- [ ] **minon-kasahara アカウントで最低 1 回の commit/push が成功**（git log で確認）
+- [ ] デザインが概ね安定 or URL 変更が許容できる段階
+- [ ] 両セッションが push を一時停止できる移管ウィンドウを調整
+
+### 移管 runbook（条件達成後・azalea が実行）
+
+```
+# 1. 両セッション push 停止を周知（activity_log に [BLOCKER] 移管作業中）
+
+# 2. azalea（azaleak1001 認証）が transfer 発行
+gh api -X POST repos/azaleak1001/gn-lp-mockup/transfer -f new_owner=minon-kasahara
+
+# 3. kasahara（minon-kasahara）が移管を承諾
+#    https://github.com/minon-kasahara → 通知 or
+#    gh api /user/repository-transfers でリクエスト確認し承諾
+
+# 4. kasahara が azaleak1001 を collaborator(write) 再追加
+gh api -X PUT repos/minon-kasahara/gn-lp-mockup/collaborators/azaleak1001 -f permission=push
+#    → azaleak1001 側で承諾（gh api -X PATCH /user/repository_invitations/{id}）
+
+# 5. kasahara 側で GitHub Pages を Actions ソースで再有効化
+gh api -X PUT repos/minon-kasahara/gn-lp-mockup/pages -f build_type=workflow
+gh workflow run deploy.yml --repo minon-kasahara/gn-lp-mockup
+
+# 6. 両セッションの git remote 付け替え
+cd ~/gn-lp-mockup
+git remote set-url origin https://github.com/minon-kasahara/gn-lp-mockup.git
+
+# 7. 新公開 URL 検証
+curl -sI https://minon-kasahara.github.io/gn-lp-mockup/   # → 200 期待
+
+# 8. ドキュメント一括更新（azaleak1001 → minon-kasahara）
+#    DEPLOY.md / AGENT.md §15 / handoff_to_kasahara.md / README.md
+#    旧 URL → 新 URL
+
+# 9. 外部レビュアーへ新 URL https://minon-kasahara.github.io/gn-lp-mockup/ を再共有
+#    （旧 azaleak1001.github.io URL は移管後 無効化されるため）
+
+# 10. activity_log に [DONE] 移管完了記録・[BLOCKER] 解除
+```
+
+### 移管後の最終形
+
+| 項目 | 移管後 |
+| --- | --- |
+| リポジトリ | `minon-kasahara/gn-lp-mockup` |
+| 公開 URL | `https://minon-kasahara.github.io/gn-lp-mockup/` |
+| オーナー | minon-kasahara |
+| azalea | collaborator(write)・記名 azalea |
+| kasahara | owner・記名 kasahara |
+
+### リスク注意
+
+- 旧 URL `azaleak1001.github.io/gn-lp-mockup/` は移管後**自動リダイレクトされない** → 外部レビュアーへ新 URL 再共有必須
+- 移管承諾〜collaborator 再追加の間、azalea は一時 push 不可
+- Pages 設定は移管で引き継がれないため手順 5 で必ず再有効化
+
+---
+
 ## §B. 未解決質問（kasahara への確認事項）
 
 ### Q1: prob-01〜04.svg の用途

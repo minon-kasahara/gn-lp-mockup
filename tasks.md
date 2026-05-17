@@ -76,6 +76,7 @@
 | T015 | LP公開時の最終法務チェック（採択率・実績数値の表現） | ユーザー（外部法務） | — | design_rules.md §11 法務方針 2 / legal_check_20260506.md | **公開前（目標 5月中・未定）** | クライアント回答待ち（2026-05-12 時点）|
 | ~~T016~~ | ~~Gemini画像生成スキルの動作確認~~ | — | — | — | 完了済み（2026-04-27） | — |
 | T017 | LP用画像コンテンツの生成・組み込み | Agent | 未割当 | AGENT.md §12, assets/INDEX.md | 壁打ち中〜公開前 | T016完了後着手。FV/課題/事例セクション等 |
+| T018 | GitHub リポジトリをオーナー移管（azaleak1001 → minon-kasahara）+ 公開 URL を kasahara アカウント側に変更 | azalea | azalea | handoff_to_kasahara.md §E / AGENT.md §15 | **kasahara git 運用開始後**（保留）| トリガー条件: kasahara が招待承諾・clone・minon-kasahara で push 成功。runbook は handoff §E に記載済（2026-05-18 起票）|
 
 ### 🟢 通常
 

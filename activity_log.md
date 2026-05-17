@@ -44,6 +44,19 @@
 
 ## ログ本体
 
+### 2026-05-18 21:05 [INTENT] azalea
+- 対象: `handoff_to_kasahara.md`（リポジトリ移管計画の追記）, `tasks.md`（移管タスク起票）
+- 内容: ユーザー最終目標「git リポジトリのオーナーを kasahara(minon-kasahara) に移管し、公開 URL を kasahara アカウントのものに変更」を受けて、移管手順・前提・リスクを計画として文書化。実行タイミング（即時 or kasahara 運用開始後）はユーザー判断を仰ぐ
+
+### 2026-05-18 20:55 [DONE] azalea
+- 対象: GitHub collaborator 追加, `handoff_to_kasahara.md` §A-2 確定版, git push（c163e46）
+- 実施内容:
+  - `minon-kasahara` を `azaleak1001/gn-lp-mockup` の collaborator に **write 権限で招待**（invitation id `319082737`・要承諾）
+  - §A-2 プロンプトを確定版に更新: 招待承諾手順（`gh api -X PATCH /user/repository_invitations/319082737` or ブラウザ Accept）/ gh auth 確認 / clone / git config / 作業サイクルを 7 ステップ化
+  - push 権限論点を「✅ 解決済」に更新（minon-kasahara・招待発行済・承諾待ち）
+  - Drive→git 同期・commit・push 完了
+- 次アクション: ユーザーが kasahara セッションに §A-2 確定プロンプトを連携 → kasahara が招待承諾・clone・git 運用開始
+
 ### 2026-05-18 20:50 [INTENT] azalea
 - 対象: GitHub `azaleak1001/gn-lp-mockup` collaborator 追加（`minon-kasahara`）, `handoff_to_kasahara.md` §A-2 プロンプト確定版更新, git 同期 push
 - 内容: ユーザーから kasahara の GitHub ユーザー名 `minon-kasahara`（https://github.com/minon-kasahara）を受領。案 A（collaborator 追加）を実行し、§A-2 プロンプトを push 権限解決済の確定版に更新する
