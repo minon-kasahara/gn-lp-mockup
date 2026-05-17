@@ -1,0 +1,73 @@
+name: Deploy Mockup to GitHub Pages
+
+# v09 モックアップを GitHub Pages 用にビルドして公開する。
+# - mockup/drafts/v09_20260424_full_castme-hubblecolor.html を index.html 化
+# - HTML 内の `../assets/` を `assets/` にパス書換
+# - mockup/assets/ を配信（generated/ は除外）
+# - 未公開クライアント LP のため noindex を付与（外部レビューは直リンクで実施）
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build _site
+        run: |
+          set -eux
+          SRC="mockup/drafts/v09_20260424_full_castme-hubblecolor.html"
+          mkdir -p _site
+
+          # 1. v09 -> index.html（../assets/ -> assets/ にパス書換 + noindex 注入）
+          sed -e 's|\.\./assets/|assets/|g' \
+              -e 's|<head>|<head><meta name="robots" content="noindex,nofollow">|' \
+              "$SRC" > _site/index.html
+
+          # 2. privacy.html（同階層参照・自己完結）
+          if [ -f mockup/drafts/privacy.html ]; then
+            sed -e 's|\.\./assets/|assets/|g' \
+                -e 's|<head>|<head><meta name="robots" content="noindex,nofollow">|' \
+                mockup/drafts/privacy.html > _site/privacy.html
+          fi
+
+          # 3. assets（generated/ は除外）
+          mkdir -p _site/assets
+          rsync -a --exclude='generated/' mockup/assets/ _site/assets/
+
+          # 4. robots.txt（全クローラ拒否）
+          printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
+
+          # 5. 確認
+          echo "---- _site tree ----"
+          find _site -maxdepth 2 -type f | sort
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

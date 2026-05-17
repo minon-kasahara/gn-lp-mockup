@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>FVキャッチコピー タイポ提案 10案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B2A4A;
+  --blue:#4A7DE8;
+  --blue-lt:#7FA5F0;
+  --yellow:#FFD166;
+  --ink:#0F1A33;
+  --gray:#F5F6FA;
+  --line:#E5E8F0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:#FAFBFC;color:var(--ink);padding:60px 40px;line-height:1.5}
+.page-title{font-size:13px;letter-spacing:.2em;color:var(--blue);font-weight:700;margin-bottom:8px;text-transform:uppercase;font-family:'Inter',sans-serif}
+.page-h1{font-size:28px;font-weight:900;margin-bottom:8px}
+.page-sub{font-size:14px;color:#6b7080;margin-bottom:48px}
+.list{display:flex;flex-direction:column;gap:32px;max-width:1280px;margin:0 auto}
+.item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:48px 56px;box-shadow:0 4px 16px rgba(15,26,51,.04)}
+.label{display:flex;align-items:baseline;gap:14px;margin-bottom:30px;flex-wrap:wrap}
+.num{font-family:'Inter',sans-serif;font-size:13px;font-weight:900;color:#fff;background:var(--ink);padding:4px 10px;border-radius:6px}
+.name{font-size:18px;font-weight:800}
+.desc{font-size:13px;color:#6b7080;line-height:1.7}
+
+/* Common typography for h1 */
+.copy{font-size:54px;font-weight:900;line-height:1.35;letter-spacing:.01em;color:var(--ink)}
+.copy em{font-style:normal}
+
+/* ============ 1. ブルー＋イエロー単純 ============ */
+.v1 .b{color:var(--blue)}
+.v1 .y{color:var(--yellow)}
+
+/* ============ 2. イエロー1点強調 ============ */
+.v2 .y{color:var(--yellow)}
+
+/* ============ 3. グラデーション文字 ============ */
+.v3 .grad{background:linear-gradient(135deg,var(--blue),var(--navy));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* ============ 4. 手書き風アンダーライン ============ */
+.v4 em{position:relative;display:inline-block}
+.v4 em::after{content:'';position:absolute;left:-4%;right:-4%;bottom:-2px;height:10px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'><path d='M0 6 Q 25 0 50 6 T 100 6' stroke='%234A7DE8' stroke-width='3' fill='none'/></svg>") repeat-x;background-size:100px 10px}
+.v4 em.y::after{background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'><path d='M0 6 Q 25 0 50 6 T 100 6' stroke='%23FFD166' stroke-width='3' fill='none'/></svg>") repeat-x;background-size:100px 10px}
+
+/* ============ 5. イエローマーカー ============ */
+.v5 em{background:linear-gradient(transparent 62%,rgba(255,209,102,.7) 62%);padding:0 4px}
+
+/* ============ 6. ブルー実線アンダーバー ============ */
+.v6 em{position:relative;display:inline-block}
+.v6 em::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:3px;background:var(--blue);border-radius:2px}
+
+/* ============ 7. 囲みボックス（ピル） ============ */
+.v7{font-size:46px}
+.v7 .pill-n{display:inline-block;background:var(--navy);color:#fff;padding:4px 22px;border-radius:100px;font-size:.85em;vertical-align:.05em;margin:0 4px}
+.v7 .pill-y{display:inline-block;background:var(--yellow);color:var(--ink);padding:4px 22px;border-radius:100px;font-size:.85em;vertical-align:.05em;margin:0 4px}
+
+/* ============ 8. 大文字＋アイコン ============ */
+.v8 em{font-size:1.18em;letter-spacing:.04em}
+.v8 .icon{display:inline-block;vertical-align:.4em;margin-left:4px;width:.5em;height:.5em}
+
+/* ============ 9. タイポ・コントラスト（モノトーン） ============ */
+.v9{font-weight:500;letter-spacing:.02em}
+.v9 em{font-weight:900;letter-spacing:.06em;margin:0 .04em}
+
+/* ============ 10. アニメーション・リビール ============ */
+.v10 em{position:relative;display:inline-block}
+.v10 em::after{content:'';position:absolute;left:0;bottom:-4px;height:6px;background:var(--blue);border-radius:3px;width:100%;transform-origin:left;animation:reveal 1.4s ease-out forwards}
+.v10 em.y::after{background:var(--yellow);animation-delay:.6s}
+.v10 em.b::after{animation-delay:.1s}
+@keyframes reveal{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+@media(max-width:880px){
+  .copy{font-size:34px}
+  .v7{font-size:30px}
+  .item{padding:32px 24px}
+  body{padding:40px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="page-title">v09 / FV Headline Typography</div>
+<h1 class="page-h1">FVメインコピー タイポ提案 10案</h1>
+<p class="page-sub">「挑戦するスタートアップに、補助金という追い風を。」のカラー／装飾パターンをHTML実描画で比較</p>
+
+<div class="list">
+
+  <!-- 1 -->
+  <div class="item v1">
+    <div class="label">
+      <span class="num">01</span>
+      <span class="name">ブルー＋イエロー 単純2色</span>
+      <span class="desc">キーワード2語をブランドカラーで対比。シンプルで強い印象。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><em class="b">補助金</em>という<em class="y">追い風</em>を。</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="item v2">
+    <div class="label">
+      <span class="num">02</span>
+      <span class="name">イエロー1点強調</span>
+      <span class="desc">「追い風」だけを黄色に。視線が結論にすっと落ちる構成。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br>補助金という<em class="y">追い風</em>を。</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="item v3">
+    <div class="label">
+      <span class="num">03</span>
+      <span class="name">グラデーション文字</span>
+      <span class="desc">2語をブルー→ネイビーのグラデで塗る。リッチで知的な質感。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><em class="grad">補助金</em>という<em class="grad">追い風</em>を。</div>
+  </div>
+
+  <!-- 4 -->
+  <div class="item v4">
+    <div class="label">
+      <span class="num">04</span>
+      <span class="name">手書き風アンダーライン</span>
+      <span class="desc">SVG波線。文字色は黒で読みやすく、装飾だけで彩りを足す。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><em>補助金</em>という<em class="y">追い風</em>を。</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="item v5">
+    <div class="label">
+      <span class="num">05</span>
+      <span class="name">イエローマーカー（蛍光ペン風）</span>
+      <span class="desc">手書きハイライト調で、紙のメモのような親しみ・温度感。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><em>補助金</em>という<em>追い風</em>を。</div>
+  </div>
+
+  <!-- 6 -->
+  <div class="item v6">
+    <div class="label">
+      <span class="num">06</span>
+      <span class="name">ブルー実線アンダーバー</span>
+      <span class="desc">スマートで企業的。ジャンプ率を抑えた知的・信頼トーン。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><em>補助金</em>という<em>追い風</em>を。</div>
+  </div>
+
+  <!-- 7 -->
+  <div class="item v7">
+    <div class="label">
+      <span class="num">07</span>
+      <span class="name">囲みボックス（ピル）</span>
+      <span class="desc">2語をネイビー＆イエローのピルで囲む。ポップで強いインパクト。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><span class="pill-n">補助金</span>という<span class="pill-y">追い風</span>を。</div>
+  </div>
+
+  <!-- 8 -->
+  <div class="item v8">
+    <div class="label">
+      <span class="num">08</span>
+      <span class="name">大文字＋装飾</span>
+      <span class="desc">2語のサイズと字間を強調。色を使わずタイポで誘導。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><em>補助金</em>という<em>追い風</em>を。</div>
+  </div>
+
+  <!-- 9 -->
+  <div class="item v9">
+    <div class="label">
+      <span class="num">09</span>
+      <span class="name">タイポ・コントラスト（モノトーン）</span>
+      <span class="desc">通常500／強調900。ウェイトと余白だけで誘導する高級路線。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><em>補助金</em>という<em>追い風</em>を。</div>
+  </div>
+
+  <!-- 10 -->
+  <div class="item v10">
+    <div class="label">
+      <span class="num">10</span>
+      <span class="name">アニメーション・リビール</span>
+      <span class="desc">下線がスライドして表れる動的演出。ロード時に視線を誘導。</span>
+    </div>
+    <div class="copy">挑戦するスタートアップに、<br><em class="b">補助金</em>という<em class="y">追い風</em>を。</div>
+  </div>
+
+</div>
+
+</body>
+</html>

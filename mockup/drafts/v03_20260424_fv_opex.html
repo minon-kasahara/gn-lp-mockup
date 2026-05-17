@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&N FV — www.opexpark.co.jp 準拠｜ライトグレー×英字バック×3Dブロック</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:    #EDEEF2;
+      --bg2:   #E4E6ED;
+      --navy:  #0F1420;
+      --blue:  #3060E8;
+      --blue2: #5B8CF8;
+      --sub:   #6A7488;
+      --white: #FFFFFF;
+      --max-w: 1160px;
+      --font-ja:'Noto Sans JP', sans-serif;
+      --font-en:'Inter', sans-serif;
+    }
+    body { font-family: var(--font-ja); color: var(--navy); background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+    /* HEADER — opex: 極めてシンプル・透明感 */
+    .hd { position: fixed; inset: 0 0 auto; z-index: 100; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(237,238,242,.85); backdrop-filter: blur(12px); }
+    .hd-logo { display: flex; align-items: center; gap: 8px; }
+    .hd-logo-icon { width: 24px; height: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .hd-logo-icon span { display: block; border-radius: 2px; }
+    .hd-logo-icon span:nth-child(1) { background: var(--blue); }
+    .hd-logo-icon span:nth-child(2) { background: var(--blue2); opacity: .6; }
+    .hd-logo-icon span:nth-child(3) { background: var(--blue2); opacity: .6; }
+    .hd-logo-icon span:nth-child(4) { background: var(--blue); opacity: .4; }
+    .hd-logo-text { font-family: var(--font-en); font-size: 17px; font-weight: 700; color: var(--navy); letter-spacing: .02em; }
+    .hd-nav { display: flex; align-items: center; gap: 28px; }
+    .hd-nav a { font-size: 13px; color: var(--sub); text-decoration: none; font-weight: 500; letter-spacing: .02em; }
+    .hd-lang { font-size: 12px; color: var(--sub); font-family: var(--font-en); }
+    .btn-signup { font-size: 13px; font-weight: 700; background: var(--navy); color: var(--white); padding: 8px 20px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: opacity .2s; }
+    .btn-signup:hover { opacity: .85; }
+    .btn-signup::after { content: '→'; }
+
+    /* HERO */
+    .hero { min-height: 100vh; padding-top: 60px; background: var(--bg); position: relative; overflow: hidden; display: flex; align-items: center; }
+
+    /* 大きな英字バックテキスト（opex 再現） */
+    .bg-word {
+      position: absolute;
+      font-family: var(--font-en);
+      font-weight: 900;
+      color: rgba(15,20,32,.05);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .bg-word-1 { font-size: 220px; top: 50px; left: -20px; }
+    .bg-word-2 { font-size: 160px; bottom: 20px; right: -10px; color: rgba(15,20,32,.04); }
+
+    /* 3Dグラデーションブロック（opex の青い3Dオブジェクト） */
+    .float-blocks { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); pointer-events: none; }
+    .fb { border-radius: 16px; position: absolute; }
+    .fb-1 {
+      width: 180px; height: 220px;
+      background: linear-gradient(145deg, #6090FF 0%, #3060E8 40%, #1040C0 100%);
+      box-shadow: 0 24px 60px rgba(48,96,232,.35), inset 0 1px 0 rgba(255,255,255,.3);
+      top: -110px; right: 60px;
+      transform: rotate(-8deg);
+    }
+    .fb-2 {
+      width: 140px; height: 170px;
+      background: linear-gradient(145deg, #90B0FF 0%, #5B8CF8 50%, #3060E8 100%);
+      box-shadow: 0 18px 48px rgba(91,140,248,.3), inset 0 1px 0 rgba(255,255,255,.25);
+      top: 0; right: 0;
+      transform: rotate(4deg);
+      opacity: .75;
+    }
+    .fb-3 {
+      width: 100px; height: 120px;
+      background: linear-gradient(145deg, #B0C8FF 0%, #7BA0F8 50%, #5B8CF8 100%);
+      box-shadow: 0 12px 32px rgba(123,160,248,.25);
+      top: 80px; right: 120px;
+      transform: rotate(-2deg);
+      opacity: .6;
+    }
+
+    /* フロートするドット */
+    .dot { position: absolute; border-radius: 50%; pointer-events: none; }
+    .dot-1 { width: 8px; height: 8px; background: var(--blue); top: 25%; left: 42%; opacity: .4; }
+    .dot-2 { width: 5px; height: 5px; background: var(--blue2); top: 70%; left: 38%; opacity: .3; }
+    .dot-3 { width: 10px; height: 10px; background: var(--blue); bottom: 30%; right: 42%; opacity: .25; }
+
+    .inner { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 60px 48px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+    /* LEFT — opex: 小さいコピー・左下配置感 */
+    /* 英語サブタイトル（opex スタイル） */
+    .en-sub { font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: .16em; color: var(--sub); margin-bottom: 20px; text-transform: uppercase; }
+
+    h1 { font-size: 44px; font-weight: 900; line-height: 1.28; letter-spacing: -.02em; color: var(--navy); margin-bottom: 16px; }
+
+    /* "英語大見出し" 風アクセント（opex の "Visualization" ≒ G&Nの "Subsidy"） */
+    .hero-en-accent { font-family: var(--font-en); font-size: 18px; font-weight: 700; color: var(--blue); letter-spacing: .02em; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .hero-en-accent::before { content: ''; display: block; width: 20px; height: 2px; background: var(--blue); }
+
+    .sub { font-size: 14.5px; line-height: 1.88; color: var(--sub); margin-bottom: 36px; max-width: 420px; font-weight: 300; }
+
+    .btn-main { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--white); font-size: 14px; font-weight: 700; padding: 13px 26px; border-radius: 6px; text-decoration: none; letter-spacing: .03em; transition: opacity .2s; }
+    .btn-main:hover { opacity: .85; }
+    .btn-main::after { content: '→'; font-size: 16px; }
+
+    .cert { margin-top: 18px; font-size: 11px; color: var(--sub); font-weight: 400; letter-spacing: .03em; }
+
+    /* RIGHT — 実績（opex はニュースリスト的） */
+    .right { display: flex; flex-direction: column; gap: 1px; background: rgba(15,20,32,.08); border-radius: 12px; overflow: hidden; border: 1px solid rgba(15,20,32,.08); }
+
+    .r-header { background: var(--navy); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .r-header-title { font-family: var(--font-en); font-size: 11px; font-weight: 700; letter-spacing: .12em; color: rgba(255,255,255,.6); }
+    .r-header-num { font-family: var(--font-en); font-size: 13px; font-weight: 700; color: var(--blue2); }
+
+    .r-row { background: rgba(237,238,242,.95); padding: 18px 20px; display: grid; grid-template-columns: 110px 1fr; gap: 12px; align-items: center; border-bottom: 1px solid rgba(15,20,32,.06); transition: background .2s; }
+    .r-row:hover { background: rgba(255,255,255,.8); }
+    .r-row:last-child { border-bottom: none; }
+    .r-label { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: .08em; color: var(--blue); }
+    .r-val { font-family: var(--font-en); font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1; letter-spacing: -.03em; }
+    .r-val sup { font-size: 13px; font-weight: 700; }
+    .r-desc { font-size: 12px; color: var(--sub); margin-top: 2px; }
+
+    .r-vc { background: linear-gradient(135deg, rgba(48,96,232,.06), rgba(91,140,248,.06)); padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+    .r-vc-n { font-family: var(--font-en); font-size: 32px; font-weight: 800; color: var(--blue); letter-spacing: -.04em; }
+    .r-vc-t .vt1 { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .r-vc-t .vt2 { font-size: 11px; color: var(--sub); margin-top: 2px; }
+
+    /* ニュースライン（opex 下部） */
+    .news-bar { margin-top: 32px; background: rgba(15,20,32,.04); border: 1px solid rgba(15,20,32,.08); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--sub); }
+    .news-tag { background: var(--blue); color: var(--white); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 3px; font-family: var(--font-en); white-space: nowrap; }
+
+    .label { position: fixed; bottom: 14px; right: 14px; background: var(--navy); color: #fff; font-family: var(--font-en); font-size: 10.5px; padding: 6px 12px; border-radius: 6px; opacity: .65; z-index: 999; }
+  </style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo">
+    <div class="hd-logo-icon">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hd-logo-text">G&amp;N</div>
+  </div>
+  <nav class="hd-nav">
+    <a href="#">Company</a><a href="#">Service</a><a href="#">News</a><a href="#">Contact</a>
+    <span class="hd-lang">JP / EN</span>
+  </nav>
+  <a href="#" class="btn-signup">無料相談する</a>
+</header>
+
+<section class="hero">
+  <div class="bg-word bg-word-1">SUBSIDY</div>
+  <div class="bg-word bg-word-2">STARTUP</div>
+
+  <div class="float-blocks">
+    <div class="fb fb-1"></div>
+    <div class="fb fb-2"></div>
+    <div class="fb fb-3"></div>
+  </div>
+  <div class="dot dot-1"></div>
+  <div class="dot dot-2"></div>
+  <div class="dot dot-3"></div>
+
+  <div class="inner">
+    <div>
+      <div class="en-sub">Startup × Subsidy Support</div>
+      <div class="hero-en-accent">補助金を、成長の武器に。</div>
+      <h1>挑戦するスタートアップに、<br>補助金という追い風を。</h1>
+      <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。G&amp;Nは補助金のプロとして、投資を受けたスタートアップの次のステージを共に切り開きます。</p>
+      <a href="#" class="btn-main">まずは無料相談する</a>
+      <div class="cert">認定経営革新等支援機関（関東認支2639号）／ 1時間で最適な制度を提案</div>
+      <div class="news-bar">
+        <span class="news-tag">NEW</span>
+        <span>提携VC 50社以上と連携中 ／ VC紹介先スタートアップは着手金無料でご支援</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="r-header">
+        <span class="r-header-title">TRACK RECORD</span>
+        <span class="r-header-num">2026.04 時点</span>
+      </div>
+      <div class="r-row">
+        <div><div class="r-label">SUBSIDY</div><div class="r-val">1,200<sup>社</sup></div><div class="r-desc">補助金 支援実績</div></div>
+        <div><div class="r-label">ADOPTION</div><div class="r-val">800<sup>件</sup></div><div class="r-desc">採択件数</div></div>
+      </div>
+      <div class="r-row">
+        <div><div class="r-label">TOTAL</div><div class="r-val">200<sup>億円</sup></div><div class="r-desc">総調達額</div></div>
+        <div><div class="r-label">MONODUKURI</div><div class="r-val">279<sup>件</sup></div><div class="r-desc">ものづくり補助金採択</div></div>
+      </div>
+      <div class="r-vc">
+        <div class="r-vc-n">50+</div>
+        <div class="r-vc-t">
+          <div class="vt1">提携VC 50社以上</div>
+          <div class="vt2">VC紹介先は着手金無料でご支援</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="label">準拠: www.opexpark.co.jp — ライトグレー×英字バック×3Dブロック</div>
+</body>
+</html>

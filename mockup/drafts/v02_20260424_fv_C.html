@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&N FV — パターンC｜ミントグリーン系</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:  #1DB886;
+      --green2: #17A376;
+      --teal:   #0CC8B0;
+      --navy:   #0F2535;
+      --navy2:  #1A3A52;
+      --sub:    #4A7068;
+      --bg:     #F2FCF8;
+      --white:  #FFFFFF;
+      --border: #B8EDD9;
+      --max-w:  1160px;
+      --font-ja:'Noto Sans JP', sans-serif;
+      --font-en:'Inter', sans-serif;
+    }
+    body { font-family: var(--font-ja); color: var(--navy); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* HEADER */
+    .hd { position: fixed; inset: 0 0 auto; z-index: 100; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .hd-logo { font-family: var(--font-en); font-size: 22px; font-weight: 800; color: var(--navy); letter-spacing: -.02em; }
+    .hd-logo span { color: var(--green); }
+    .hd-nav { display: flex; align-items: center; gap: 28px; }
+    .hd-nav a { font-size: 13px; font-weight: 500; color: var(--sub); text-decoration: none; }
+    .hd-nav a:hover { color: var(--green); }
+    .hd-btn { background: var(--green); color: #fff; font-size: 13px; font-weight: 700; padding: 9px 22px; border-radius: 100px; text-decoration: none; transition: opacity .2s; }
+    .hd-btn:hover { opacity: .85; }
+
+    /* HERO */
+    .hero { min-height: 100vh; padding-top: 64px; position: relative; overflow: hidden; display: flex; align-items: center; }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(150deg, #FFFFFF 0%, #EDFAF4 30%, #D8F5EA 60%, #E8FBFB 100%);
+    }
+
+    /* 波形装飾 */
+    .wave { position: absolute; bottom: 0; left: 0; right: 0; pointer-events: none; }
+
+    /* ブロブ */
+    .blob { position: absolute; border-radius: 50%; pointer-events: none; }
+    .blob-1 { width: 650px; height: 650px; background: radial-gradient(circle, rgba(29,184,134,.15) 0%, transparent 65%); top: -180px; right: -120px; filter: blur(30px); }
+    .blob-2 { width: 420px; height: 420px; background: radial-gradient(circle, rgba(12,200,176,.12) 0%, transparent 65%); bottom: -80px; left: -60px; filter: blur(30px); }
+
+    .inner { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 70px 48px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; }
+
+    /* LEFT */
+    .eyebrow { font-family: var(--font-en); font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: linear-gradient(90deg, var(--green), var(--teal)); border-radius: 1px; }
+
+    h1 { font-size: 48px; font-weight: 900; line-height: 1.32; letter-spacing: -.02em; margin-bottom: 24px; }
+    h1 em { font-style: normal; background: linear-gradient(135deg, var(--green), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .sub { font-size: 15.5px; line-height: 1.9; color: var(--sub); margin-bottom: 40px; }
+
+    .cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .btn-main { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--green), var(--teal)); color: #fff; font-size: 15px; font-weight: 700; padding: 15px 32px; border-radius: 100px; text-decoration: none; box-shadow: 0 10px 28px rgba(29,184,134,.38); transition: transform .2s, box-shadow .2s; }
+    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(29,184,134,.48); }
+    .btn-sub { font-size: 13.5px; color: var(--sub); text-decoration: none; font-weight: 600; }
+    .btn-sub:hover { color: var(--green); }
+
+    .badges { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.75); border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px; font-size: 11.5px; color: var(--sub); font-weight: 500; }
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+
+    /* RIGHT */
+    .right { display: flex; flex-direction: column; gap: 14px; }
+
+    .card { background: rgba(255,255,255,.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.95); border-radius: 22px; padding: 26px 28px; box-shadow: 0 10px 36px rgba(15,37,53,.08); }
+
+    .card-lbl { font-family: var(--font-en); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; color: var(--green); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    .card-lbl::before { content: ''; display: block; width: 16px; height: 2px; background: linear-gradient(90deg, var(--green), var(--teal)); border-radius: 1px; }
+
+    .grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+    .num { font-family: var(--font-en); font-size: 34px; font-weight: 800; line-height: 1; letter-spacing: -.03em; color: var(--navy); }
+    .num sup { font-size: 15px; font-weight: 700; }
+    .nl { font-size: 11.5px; color: var(--sub); margin-top: 3px; font-weight: 500; }
+
+    .card-sm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card-sm { background: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.9); border-radius: 16px; padding: 16px 18px; box-shadow: 0 4px 16px rgba(15,37,53,.05); }
+    .card-sm .num { font-size: 26px; }
+
+    .vc-bar { display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(29,184,134,.08), rgba(12,200,176,.08)); border: 1.5px solid rgba(29,184,134,.22); border-radius: 100px; padding: 13px 24px; }
+    .vc-bar .vl { font-size: 13px; color: var(--sub); font-weight: 600; }
+    .vc-bar .vn { font-family: var(--font-en); font-size: 20px; font-weight: 800; color: var(--green); }
+    .vc-bar .vs { font-size: 12px; color: var(--sub); }
+
+    .label { position: fixed; bottom: 14px; right: 14px; background: var(--navy); color: #fff; font-family: var(--font-en); font-size: 10.5px; padding: 6px 12px; border-radius: 8px; opacity: .65; z-index: 999; }
+  </style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo">G<span>&amp;</span>N</div>
+  <nav class="hd-nav">
+    <a href="#">サービス</a><a href="#">実績</a><a href="#">提携VC</a><a href="#">会社概要</a>
+    <a href="#" class="hd-btn">無料相談する</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="blob blob-1"></div><div class="blob blob-2"></div>
+
+  <div class="inner">
+    <div>
+      <div class="eyebrow">STARTUP × SUBSIDY SUPPORT</div>
+      <h1>挑戦する<em>スタートアップ</em>に、<br>補助金という<em>追い風</em>を。</h1>
+      <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。<br>G&amp;Nは補助金のプロとして、投資を受けたスタートアップの<br>次のステージを共に切り開きます。</p>
+      <div class="cta-row">
+        <a href="#" class="btn-main">まずは無料相談（1時間）</a>
+        <a href="#" class="btn-sub">サービスを見る →</a>
+      </div>
+      <div class="badges">
+        <div class="badge"><span class="badge-dot"></span>認定経営革新等支援機関</div>
+        <div class="badge"><span class="badge-dot"></span>提携VC 50社以上</div>
+        <div class="badge"><span class="badge-dot"></span>VC紹介先 着手金無料</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="card">
+        <div class="card-lbl">TRACK RECORD</div>
+        <div class="grid4">
+          <div><div class="num">1,200<sup>社</sup></div><div class="nl">補助金 支援実績</div></div>
+          <div><div class="num">800<sup>件</sup></div><div class="nl">採択件数</div></div>
+          <div><div class="num">200<sup>億円</sup></div><div class="nl">総調達額</div></div>
+          <div><div class="num">279<sup>件</sup></div><div class="nl">ものづくり採択</div></div>
+        </div>
+      </div>
+      <div class="card-sm-row">
+        <div class="card-sm"><div class="card-lbl">助成金</div><div class="num">80<sup>社</sup></div><div class="nl">顧問先</div></div>
+        <div class="card-sm"><div class="card-lbl">融資</div><div class="num">20<sup>億円</sup></div><div class="nl">総調達額</div></div>
+      </div>
+      <div class="vc-bar">
+        <span class="vl">提携VC</span>
+        <span class="vn">50社以上</span>
+        <span class="vs">｜VC紹介先は着手金無料</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="label">Pattern C — ミントグリーン系</div>
+</body>
+</html>

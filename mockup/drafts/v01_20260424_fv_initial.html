@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&N LP — FV モックアップ v01</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-main:    #3AADDF;   /* ライトブルー（メイン） */
+      --color-mint:    #2EC4A8;   /* ミント（サブアクセント） */
+      --color-navy:    #1A2B4A;   /* 濃紺（テキスト） */
+      --color-navy-lt: #2E4070;   /* 濃紺ライト */
+      --color-bg:      #FFFFFF;
+      --color-bg-alt:  #F0F8FD;   /* 淡ブルー背景 */
+      --color-text:    #1A2B4A;
+      --color-sub:     #4A607A;
+      --color-border:  #D6E8F5;
+      --font-ja: 'Noto Sans JP', sans-serif;
+      --font-en: 'Inter', sans-serif;
+      --max-w: 1160px;
+    }
+
+    body {
+      font-family: var(--font-ja);
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 40px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--color-navy);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { width: 20px; height: 20px; fill: white; }
+    .logo-text {
+      font-family: var(--font-en);
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--color-navy);
+      letter-spacing: 0.02em;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .header-nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-sub);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--color-main); }
+
+    .header-cta {
+      background: var(--color-main);
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .header-cta:hover {
+      background: #2A9DC8 !important;
+      transform: translateY(-1px);
+      color: white !important;
+    }
+
+    /* ===== HERO (FV) ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding-top: 68px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* グラデーション背景 */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        145deg,
+        #FFFFFF 0%,
+        #EBF7FD 40%,
+        #DFF2F7 70%,
+        #E8F9F4 100%
+      );
+    }
+
+    /* ブロブ装飾（muroom参考） */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, #A8DFF5 0%, #C5EEFA 60%, transparent 100%);
+      top: -120px; right: -60px;
+    }
+    .blob-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #8FEDD8 0%, #B8F4E5 60%, transparent 100%);
+      bottom: 60px; left: -80px;
+    }
+    .blob-3 {
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, #B8E0F7 0%, transparent 100%);
+      top: 50%; right: 25%;
+      transform: translateY(-50%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px 40px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    /* 左カラム：テキスト */
+    .hero-left {}
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(58,173,223,0.12);
+      border: 1px solid rgba(58,173,223,0.3);
+      color: var(--color-main);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-main);
+    }
+
+    .hero-catch {
+      font-size: 46px;
+      font-weight: 900;
+      line-height: 1.35;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+    .hero-catch .accent {
+      color: var(--color-main);
+      position: relative;
+    }
+    .hero-catch .accent::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--color-main), var(--color-mint));
+      border-radius: 2px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.85;
+      color: var(--color-sub);
+      margin-bottom: 40px;
+      max-width: 460px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--color-main) 0%, #29B5C8 100%);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(58,173,223,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(58,173,223,0.45);
+    }
+    .btn-primary svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+
+    .btn-text {
+      font-size: 14px;
+      color: var(--color-sub);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex; align-items: center; gap: 4px;
+      transition: color 0.2s;
+    }
+    .btn-text:hover { color: var(--color-main); }
+    .btn-text::after { content: '→'; }
+
+    /* 信頼バッジ */
+    .trust-badge {
+      margin-top: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 12px;
+      color: var(--color-sub);
+      font-weight: 500;
+    }
+    .trust-badge .dot {
+      width: 8px; height: 8px;
+      background: var(--color-mint);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* 右カラム：ビジュアル */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* 実績カード群 */
+    .stats-stack {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 24px 28px;
+      box-shadow: 0 8px 32px rgba(26,43,74,0.08), 0 2px 8px rgba(58,173,223,0.1);
+    }
+
+    .stat-card-main {
+      width: 100%;
+    }
+
+    .stat-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--color-main);
+      text-transform: uppercase;
+      font-family: var(--font-en);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .stat-card-label::before {
+      content: '';
+      display: block;
+      width: 16px; height: 2px;
+      background: var(--color-main);
+      border-radius: 1px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-en);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-navy);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-num .unit {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-navy-lt);
+      margin-left: 2px;
+    }
+    .stat-desc {
+      font-size: 12px;
+      color: var(--color-sub);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* サブカード */
+    .stat-sub-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .stat-card-sub {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 16px;
+      padding: 16px 18px;
+      box-shadow: 0 4px 16px rgba(26,43,74,0.06);
+    }
+    .stat-card-sub .stat-num { font-size: 24px; }
+
+    /* 提携VCバッジ */
+    .vc-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, rgba(58,173,223,0.08), rgba(46,196,168,0.08));
+      border: 1px solid rgba(58,173,223,0.25);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-navy);
+      width: 100%;
+      max-width: 420px;
+      justify-content: center;
+    }
+    .vc-badge .num {
+      color: var(--color-main);
+      font-family: var(--font-en);
+      font-size: 18px;
+    }
+
+    /* ===== スクロール誘導 ===== */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.5;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      font-family: var(--font-en);
+      color: var(--color-sub);
+      z-index: 1;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--color-main));
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ===== 注釈 ===== */
+    .mockup-note {
+      position: fixed;
+      bottom: 16px; right: 16px;
+      background: #1A2B4A;
+      color: white;
+      font-size: 11px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      opacity: 0.7;
+      font-family: var(--font-en);
+      z-index: 999;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 60px 24px 40px;
+      }
+      .hero-catch { font-size: 32px; }
+      .hero-sub { max-width: 100%; }
+      .hero-cta-group { justify-content: center; }
+      .trust-badge { margin: 24px auto 0; }
+      .hero-right { margin-top: 16px; }
+      .header { padding: 0 20px; }
+      .header-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header">
+  <a href="#" class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="logo-text">G&amp;N</span>
+  </a>
+  <nav class="header-nav">
+    <a href="#">サービス</a>
+    <a href="#">実績</a>
+    <a href="#">提携VC</a>
+    <a href="#">会社概要</a>
+    <a href="#" class="header-cta">無料相談する</a>
+  </nav>
+</header>
+
+<!-- FV ヒーローセクション -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-inner">
+    <!-- 左：テキスト -->
+    <div class="hero-left">
+      <div class="hero-badge">スタートアップ向け 補助金・助成金支援</div>
+
+      <h1 class="hero-catch">
+        挑戦する<span class="accent">スタートアップ</span>に、<br>
+        補助金という<span class="accent">追い風</span>を。
+      </h1>
+
+      <p class="hero-sub">
+        投資家が認めたビジネスには、国も応援する制度がある。<br>
+        G&amp;Nは補助金のプロとして、投資を受けたスタートアップの<br>
+        次のステージを共に切り開きます。
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#" class="btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M8 12h8m-4-4v8M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          まずは無料相談
+        </a>
+        <a href="#" class="btn-text">サービス詳細を見る</a>
+      </div>
+
+      <div class="trust-badge">
+        <span class="dot"></span>
+        認定経営革新等支援機関（関東認支2639号）
+      </div>
+    </div>
+
+    <!-- 右：実績カード -->
+    <div class="hero-right">
+      <div class="stat-card stat-card-main">
+        <div class="stat-card-label">TRACK RECORD</div>
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-num">1,200<span class="unit">社</span></div>
+            <div class="stat-desc">補助金 支援実績</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">800<span class="unit">件</span></div>
+            <div class="stat-desc">採択件数</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">200<span class="unit">億円</span></div>
+            <div class="stat-desc">総調達額</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">279<span class="unit">件</span></div>
+            <div class="stat-desc">ものづくり補助金採択</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-sub-row">
+        <div class="stat-card stat-card-sub">
+          <div class="stat-card-label">助成金</div>
+          <div class="stat-num">80<span class="unit">社</span></div>
+          <div class="stat-desc">顧問先</div>
+        </div>
+        <div class="stat-card stat-card-sub">
+          <div class="stat-card-label">融資</div>
+          <div class="stat-num">20<span class="unit">億円</span></div>
+          <div class="stat-desc">総調達額</div>
+        </div>
+      </div>
+
+      <div class="vc-badge">
+        <span>提携VC</span>
+        <span class="num">50社以上</span>
+        <span>— VC紹介先は着手金無料</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="mockup-note">v01 FV mockup — kasahara 2026-04-24</div>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G&N LP — Responsive Preview (PC / Tablet / Mobile)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    background: #1B2A4A;
+    color: #fff;
+    min-height: 100vh;
+    padding: 24px;
+    overflow-x: auto;
+  }
+  header {
+    max-width: 1800px;
+    margin: 0 auto 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  h1 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  h1 small {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,.65);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+  .controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+  .controls label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,.08);
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+  .controls input[type=number] {
+    width: 70px;
+    padding: 4px 6px;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(0,0,0,.2);
+    color: #fff;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+  .controls button {
+    background: #4A7DE8;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .controls button:hover { background: #2F5FC7; }
+  .stage {
+    display: grid;
+    grid-template-columns: 1440px 768px 375px;
+    gap: 24px;
+    padding-bottom: 40px;
+    align-items: start;
+  }
+  @media (max-width: 1700px) {
+    .stage { grid-template-columns: 1200px 768px 375px; }
+  }
+  .frame {
+    background: #fff;
+    color: #0F1A33;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,.4);
+  }
+  .frame-head {
+    background: #FCFDFF;
+    padding: 8px 14px;
+    border-bottom: 1px solid rgba(15,26,51,.08);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #0F1A33;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .frame-head .dots { display: flex; gap: 4px; }
+  .frame-head .dots span {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .frame-head .dots span:nth-child(1) { background: #ff5f57; }
+  .frame-head .dots span:nth-child(2) { background: #febc2e; }
+  .frame-head .dots span:nth-child(3) { background: #28c840; }
+  .frame-head .label {
+    flex: 1;
+    text-align: center;
+  }
+  .frame-head .label strong {
+    color: #4A7DE8;
+    font-family: monospace;
+    margin-left: 6px;
+  }
+  .frame iframe {
+    border: 0;
+    display: block;
+    background: #FCFDFF;
+  }
+  .frame-pc iframe   { width: 1440px; height: 900px; }
+  .frame-tab iframe  { width: 768px;  height: 900px; }
+  .frame-mob iframe  { width: 375px;  height: 812px; }
+
+  /* Scaling for narrower hosts: keep iframe internal width; container clipped */
+  .frame-wrap {
+    overflow: hidden;
+  }
+  .legend {
+    max-width: 1800px;
+    margin: 16px auto 0;
+    color: rgba(255,255,255,.7);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .legend strong { color: #FFD166; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>
+    G&N LP — Responsive Preview
+    <small>mockup/final/lp_full_final.html を 3サイズで同時表示。PC=1440 / Tablet=768 / Mobile=375。各 iframe をスクロールして確認。</small>
+  </h1>
+  <div class="controls">
+    <label>高さ <input id="h-input" type="number" value="900" min="400" max="3000" step="50"> px</label>
+    <button id="apply">適用</button>
+    <button id="reload">全 iframe リロード</button>
+  </div>
+</header>
+
+<div class="stage">
+  <div class="frame frame-pc">
+    <div class="frame-head">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="label">PC <strong>1440 × 900</strong></div>
+    </div>
+    <div class="frame-wrap">
+      <iframe id="if-pc" src="final/lp_full_final.html" title="PC view"></iframe>
+    </div>
+  </div>
+
+  <div class="frame frame-tab">
+    <div class="frame-head">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="label">Tablet <strong>768 × 900</strong></div>
+    </div>
+    <div class="frame-wrap">
+      <iframe id="if-tab" src="final/lp_full_final.html" title="Tablet view"></iframe>
+    </div>
+  </div>
+
+  <div class="frame frame-mob">
+    <div class="frame-head">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="label">Mobile <strong>375 × 812</strong> (iPhone)</div>
+    </div>
+    <div class="frame-wrap">
+      <iframe id="if-mob" src="final/lp_full_final.html" title="Mobile view"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <p>
+    <strong>確認ポイント:</strong>
+    ① Header ナビ（6項目）が Mobile で収まっているか／②Hero h1 が Mobile で折り返しているか（white-space: nowrap が有効だと崩れる）／
+    ③ VC Perk Card が Hero 下にスタックしているか／④ vp-compare（通常 vs 特典）の比較表が縦に潰れていないか／
+    ⑤ Problem 4枚カード／Service 4枚／Approach 3枚／Cases 3枚／Record 4枚 が Mobile で 1〜2 カラムに切り替わっているか／
+    ⑥ VC ロゴグリッドが 3 カラム → 2 カラムに切り替わっているか／⑦ Footer の 2カラム → 1カラム化／
+    ⑧ CTA フォームの幅が Mobile に収まっているか
+  </p>
+  <p>
+    <strong>iframe 内のスクロール:</strong> 各フレームを個別にスクロールできます。マウスホバーすると VC ロゴマーキーが停止します。
+  </p>
+</div>
+
+<script>
+(() => {
+  const hInput = document.getElementById('h-input');
+  const applyBtn = document.getElementById('apply');
+  const reloadBtn = document.getElementById('reload');
+  const ids = ['if-pc', 'if-tab', 'if-mob'];
+
+  applyBtn.addEventListener('click', () => {
+    const h = parseInt(hInput.value, 10);
+    if (Number.isNaN(h) || h < 200) return;
+    ids.forEach(id => {
+      document.getElementById(id).style.height = h + 'px';
+    });
+  });
+
+  reloadBtn.addEventListener('click', () => {
+    ids.forEach(id => {
+      const f = document.getElementById(id);
+      const src = f.src;
+      f.src = '';
+      setTimeout(() => f.src = src, 30);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

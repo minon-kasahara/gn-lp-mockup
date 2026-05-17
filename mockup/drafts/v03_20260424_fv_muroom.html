@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&N FV — muroom.chicabi.jp 準拠｜白×大余白×淡ブロブ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #1A2030;
+      --navy2:  #2C3550;
+      --blue:   #5B9BD6;
+      --pink:   #E8A0C0;
+      --sub:    #6A7A90;
+      --white:  #FFFFFF;
+      --max-w:  1100px;
+      --font-ja:'Noto Sans JP', sans-serif;
+      --font-en:'Inter', sans-serif;
+    }
+    body { font-family: var(--font-ja); color: var(--navy); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* HEADER — muroom: シンプル・細め */
+    .hd { position: fixed; inset: 0 0 auto; z-index: 100; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: var(--white); }
+    .hd-logo { font-family: var(--font-en); font-size: 17px; font-weight: 600; color: var(--navy); letter-spacing: .02em; }
+    .hd-logo em { font-style: normal; font-weight: 300; color: var(--sub); }
+    .hd-nav { display: flex; align-items: center; gap: 32px; }
+    .hd-nav a { font-size: 13px; font-weight: 400; color: var(--sub); text-decoration: none; letter-spacing: .02em; }
+    .btn-consult { font-size: 13px; font-weight: 600; color: var(--navy); border: 1px solid var(--navy); padding: 8px 20px; border-radius: 100px; text-decoration: none; transition: background .2s, color .2s; }
+    .btn-consult:hover { background: var(--navy); color: var(--white); }
+    .btn-corp { font-size: 13px; font-weight: 600; background: var(--navy); color: var(--white); padding: 8px 20px; border-radius: 100px; text-decoration: none; transition: opacity .2s; }
+    .btn-corp:hover { opacity: .8; }
+
+    /* HERO — muroom: 大余白・全白・blobs */
+    .hero { min-height: 100vh; padding-top: 64px; background: var(--white); position: relative; overflow: hidden; display: flex; align-items: center; }
+
+    /* blobs（muroom再現：ピンク×ブルーのゆるい形） */
+    .blob { position: absolute; pointer-events: none; }
+    .blob-pink {
+      width: 320px; height: 260px;
+      background: radial-gradient(ellipse at 40% 50%, rgba(232,160,192,.55) 0%, rgba(220,140,180,.3) 40%, transparent 70%);
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      top: 15%; right: 8%;
+      filter: blur(2px);
+    }
+    .blob-blue {
+      width: 260px; height: 200px;
+      background: radial-gradient(ellipse at 55% 45%, rgba(91,155,214,.45) 0%, rgba(120,175,230,.25) 40%, transparent 70%);
+      border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%;
+      bottom: 20%; right: 14%;
+      filter: blur(2px);
+    }
+    .blob-pink2 {
+      width: 180px; height: 150px;
+      background: radial-gradient(ellipse, rgba(232,160,192,.35) 0%, transparent 70%);
+      border-radius: 50% 50% 40% 60% / 45% 55% 45% 55%;
+      bottom: 28%; right: 5%;
+      filter: blur(3px);
+    }
+
+    /* 背景テキスト（muroom の "Ride" 的なウォーターマーク） */
+    .bg-text {
+      position: absolute;
+      bottom: -20px; left: -10px;
+      font-family: var(--font-en);
+      font-size: 200px;
+      font-weight: 700;
+      color: rgba(26,32,48,.04);
+      letter-spacing: -.05em;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .inner { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 80px 48px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    /* LEFT — muroom: 短く大きなキャッチ・大余白 */
+    .eyebrow { font-family: var(--font-en); font-size: 11px; font-weight: 500; letter-spacing: .14em; color: var(--sub); margin-bottom: 28px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--sub); }
+
+    h1 { font-size: 56px; font-weight: 900; line-height: 1.22; letter-spacing: -.03em; color: var(--navy); margin-bottom: 32px; }
+
+    .sub { font-size: 14.5px; line-height: 1.95; color: var(--sub); font-weight: 300; margin-bottom: 44px; max-width: 380px; }
+
+    /* CTA — muroom: アウトラインのみ・薄い（控えめ） */
+    .btn-cta { display: inline-flex; align-items: center; gap: 10px; color: var(--navy); border: 1px solid var(--navy); font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 100px; text-decoration: none; letter-spacing: .03em; transition: background .2s, color .2s; }
+    .btn-cta:hover { background: var(--navy); color: var(--white); }
+    .btn-cta-arrow { font-size: 18px; transition: transform .2s; }
+    .btn-cta:hover .btn-cta-arrow { transform: translateX(4px); }
+
+    /* 認定 */
+    .cert { margin-top: 28px; font-size: 11px; color: var(--sub); font-weight: 400; letter-spacing: .02em; }
+
+    /* RIGHT — 実績（muroom右エリアのコンテンツ的に） */
+    .right { display: flex; flex-direction: column; gap: 20px; }
+
+    /* 実績数字（muroom はシンプルにリスト的） */
+    .stat-list { display: flex; flex-direction: column; gap: 1px; }
+    .stat-row { display: flex; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(26,32,48,.08); }
+    .stat-row:first-child { border-top: 1px solid rgba(26,32,48,.08); }
+    .s-num { font-family: var(--font-en); font-size: 40px; font-weight: 700; line-height: 1; color: var(--navy); letter-spacing: -.04em; min-width: 160px; }
+    .s-num sup { font-size: 16px; font-weight: 600; }
+    .s-desc { font-size: 13px; color: var(--sub); font-weight: 400; }
+
+    /* VC */
+    .vc-block { padding: 20px 0; border-top: 1px solid rgba(26,32,48,.08); display: flex; align-items: flex-start; gap: 16px; }
+    .vc-num { font-family: var(--font-en); font-size: 48px; font-weight: 700; line-height: 1; color: var(--navy); letter-spacing: -.04em; }
+    .vc-info .vt1 { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .vc-info .vt2 { font-size: 12px; color: var(--sub); margin-top: 4px; font-weight: 300; }
+
+    .label { position: fixed; bottom: 14px; right: 14px; background: var(--navy); color: #fff; font-family: var(--font-en); font-size: 10.5px; padding: 6px 12px; border-radius: 6px; opacity: .65; z-index: 999; }
+  </style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo">G&amp;N <em>Subsidy</em></div>
+  <nav class="hd-nav">
+    <a href="#">サービス</a><a href="#">実績</a><a href="#">提携VC</a><a href="#">会社概要</a>
+    <a href="#" class="btn-consult">体験を予約する</a>
+    <a href="#" class="btn-corp">法人のご担当者様へ</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="blob blob-pink"></div>
+  <div class="blob blob-blue"></div>
+  <div class="blob blob-pink2"></div>
+  <div class="bg-text">SUBSIDY</div>
+
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Startup × Subsidy</div>
+      <h1>挑戦するスタートアップに、<br>補助金という追い風を。</h1>
+      <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。G&amp;Nは補助金のプロとして、投資を受けたスタートアップの次のステージを共に切り開きます。</p>
+      <a href="#" class="btn-cta">まずは無料相談する <span class="btn-cta-arrow">→</span></a>
+      <div class="cert">認定経営革新等支援機関（関東認支2639号）</div>
+    </div>
+
+    <div class="right">
+      <div class="stat-list">
+        <div class="stat-row"><div class="s-num">1,200<sup>社</sup></div><div class="s-desc">補助金 支援実績</div></div>
+        <div class="stat-row"><div class="s-num">800<sup>件</sup></div><div class="s-desc">採択件数</div></div>
+        <div class="stat-row"><div class="s-num">200<sup>億円</sup></div><div class="s-desc">総調達額</div></div>
+        <div class="stat-row"><div class="s-num">279<sup>件</sup></div><div class="s-desc">ものづくり補助金採択</div></div>
+      </div>
+      <div class="vc-block">
+        <div class="vc-num">50+</div>
+        <div class="vc-info">
+          <div class="vt1">提携VC 50社以上</div>
+          <div class="vt2">VC紹介先スタートアップは<br>着手金無料でご支援します</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="label">準拠: muroom.chicabi.jp — 白×大余白×淡ブロブ</div>
+</body>
+</html>

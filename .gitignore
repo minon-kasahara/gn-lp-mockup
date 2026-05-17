@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+**/.DS_Store
+
+# Backups
+*.bak
+*.bak.*
+
+# 重量・LP未使用（Gemini 生成テスト画像など）
+mockup/assets/generated/
+
+# ビルド成果物
+_site/
+
+# エディタ
+.vscode/
+.idea/

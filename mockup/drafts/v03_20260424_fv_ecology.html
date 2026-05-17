@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&N FV — ecology-net.com 準拠｜グリーン×数字大×Problemラベル</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:   #2AAE6C;
+      --green2:  #1E9058;
+      --green-lt:#E8F8EF;
+      --navy:    #1A2030;
+      --sub:     #5A6A78;
+      --white:   #FFFFFF;
+      --bg:      #F8FAFB;
+      --border:  #D0DDE8;
+      --max-w:   1140px;
+      --font-ja: 'Noto Sans JP', sans-serif;
+      --font-en: 'Inter', sans-serif;
+    }
+    body { font-family: var(--font-ja); color: var(--navy); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* HEADER — ecology: シンプル・機能的 */
+    .hd { position: fixed; inset: 0 0 auto; z-index: 100; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; background: var(--white); border-bottom: 1px solid var(--border); }
+    .hd-logo { display: flex; align-items: center; gap: 8px; }
+    .hd-logo-mark { width: 32px; height: 32px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .hd-logo-mark span { color: white; font-weight: 800; font-size: 13px; font-family: var(--font-en); }
+    .hd-logo-text { font-size: 18px; font-weight: 700; color: var(--navy); }
+    .hd-nav { display: flex; align-items: center; gap: 24px; }
+    .hd-nav a { font-size: 13px; color: var(--sub); text-decoration: none; font-weight: 500; }
+    .hd-tel { font-size: 13px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 4px; }
+    .btn-dl { display: flex; align-items: center; gap: 6px; background: var(--green); color: var(--white); font-size: 13px; font-weight: 700; padding: 8px 18px; border-radius: 4px; text-decoration: none; transition: background .2s; }
+    .btn-dl:hover { background: var(--green2); }
+
+    /* HERO */
+    .hero { min-height: 100vh; padding-top: 60px; background: var(--white); display: flex; flex-direction: column; }
+
+    /* 実績バナー（ecology のトップ数字訴求） */
+    .record-banner { background: var(--bg); border-bottom: 1px solid var(--border); padding: 24px 40px; text-align: center; }
+    .record-inner { max-width: var(--max-w); margin: 0 auto; }
+    .rb-label { font-size: 13px; color: var(--sub); margin-bottom: 8px; font-weight: 500; }
+    .rb-nums { display: flex; align-items: baseline; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .rb-n { font-family: var(--font-en); font-size: 48px; font-weight: 900; color: var(--green); line-height: 1; letter-spacing: -.04em; }
+    .rb-unit { font-size: 22px; font-weight: 700; color: var(--green); }
+    .rb-sep { font-size: 28px; color: var(--border); margin: 0 8px; }
+    .rb-note { font-size: 11px; color: var(--sub); margin-top: 4px; }
+
+    /* メインヒーロー */
+    .hero-main { flex: 1; display: flex; align-items: center; padding: 48px 40px; }
+    .inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; width: 100%; }
+
+    /* LEFT */
+    /* セクションラベル（ecology の "Problem" スタイル） */
+    .sec-label { font-family: var(--font-en); font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 12px; letter-spacing: .04em; }
+
+    h1 { font-size: 44px; font-weight: 900; line-height: 1.28; letter-spacing: -.02em; color: var(--navy); margin-bottom: 20px; }
+
+    .sub { font-size: 15px; line-height: 1.88; color: var(--sub); margin-bottom: 32px; }
+
+    .btn-main { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--white); font-size: 15px; font-weight: 700; padding: 14px 28px; border-radius: 4px; text-decoration: none; box-shadow: 0 6px 18px rgba(42,174,108,.3); transition: background .2s; }
+    .btn-main:hover { background: var(--green2); }
+
+    .cert { margin-top: 20px; display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--sub); }
+    .cert-mark { color: var(--green); font-weight: 700; }
+
+    /* RIGHT — 3カラムアイソメ（ecology の課題3点に相当、ここではサービス訴求） */
+    .iso-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+    .iso-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px 16px; text-align: center; transition: border-color .2s, box-shadow .2s; }
+    .iso-card:hover { border-color: var(--green); box-shadow: 0 4px 16px rgba(42,174,108,.12); }
+    /* アイコン枠（アイソメ代替） */
+    .iso-icon { width: 52px; height: 52px; background: var(--green-lt); border-radius: 12px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; }
+    .iso-icon span { font-size: 24px; }
+    .iso-title { font-size: 12.5px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.4; }
+    .iso-desc { font-size: 11px; color: var(--sub); line-height: 1.6; }
+
+    /* 実績サマリ */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .s { background: var(--white); padding: 14px 10px; text-align: center; }
+    .s-n { font-family: var(--font-en); font-size: 22px; font-weight: 800; color: var(--navy); line-height: 1; letter-spacing: -.02em; }
+    .s-n sup { font-size: 11px; }
+    .s-l { font-size: 10.5px; color: var(--sub); margin-top: 3px; }
+
+    /* VC帯 */
+    .vc-band { margin-top: 12px; background: var(--green-lt); border: 1px solid rgba(42,174,108,.2); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+    .vc-n { font-family: var(--font-en); font-size: 22px; font-weight: 800; color: var(--green); }
+    .vc-t .vt1 { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .vc-t .vt2 { font-size: 11px; color: var(--sub); }
+
+    .label { position: fixed; bottom: 14px; right: 14px; background: var(--navy); color: #fff; font-family: var(--font-en); font-size: 10.5px; padding: 6px 12px; border-radius: 6px; opacity: .65; z-index: 999; }
+  </style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo">
+    <div class="hd-logo-mark"><span>GN</span></div>
+    <div class="hd-logo-text">G&amp;N</div>
+  </div>
+  <nav class="hd-nav">
+    <a href="#">機能</a><a href="#">料金</a><a href="#">導入事例</a><a href="#">お問い合わせ</a>
+  </nav>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <div class="hd-tel">📞 無料相談はこちら</div>
+    <a href="#" class="btn-dl">▶ 資料ダウンロード</a>
+  </div>
+</header>
+
+<section class="hero">
+  <!-- 上段：実績バナー（ecology トップ数字スタイル） -->
+  <div class="record-banner">
+    <div class="record-inner">
+      <div class="rb-label">補助金・助成金支援実績</div>
+      <div class="rb-nums">
+        <span class="rb-n">1,200</span><span class="rb-unit">社</span>
+        <span class="rb-sep">/</span>
+        <span class="rb-n">800</span><span class="rb-unit">件採択</span>
+        <span class="rb-sep">/</span>
+        <span class="rb-n">200</span><span class="rb-unit">億円調達</span>
+      </div>
+      <div class="rb-note">※2026年4月時点</div>
+    </div>
+  </div>
+
+  <!-- メイン -->
+  <div class="hero-main">
+    <div class="inner">
+      <div>
+        <div class="sec-label">Startup × Subsidy Support</div>
+        <h1>挑戦するスタートアップに、<br>補助金という追い風を。</h1>
+        <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。G&amp;Nは補助金のプロとして、投資を受けたスタートアップの次のステージを共に切り開きます。</p>
+        <a href="#" class="btn-main">まずは無料相談（1時間）</a>
+        <div class="cert"><span class="cert-mark">✓</span>認定経営革新等支援機関（関東認支2639号）</div>
+      </div>
+
+      <div>
+        <!-- 3カラムサービス訴求 -->
+        <div class="iso-grid">
+          <div class="iso-card">
+            <div class="iso-icon"><span>📋</span></div>
+            <div class="iso-title">申請から<br>一気通貫対応</div>
+            <div class="iso-desc">情報収集〜採択後5年まで丸ごと対応</div>
+          </div>
+          <div class="iso-card">
+            <div class="iso-icon"><span>💰</span></div>
+            <div class="iso-title">VC紹介先は<br>着手金無料</div>
+            <div class="iso-desc">提携VC50社以上。紹介先は完全成功報酬</div>
+          </div>
+          <div class="iso-card">
+            <div class="iso-icon"><span>🔄</span></div>
+            <div class="iso-title">ワンストップ<br>支援体制</div>
+            <div class="iso-desc">補助金・助成金・融資・法認定を一括支援</div>
+          </div>
+        </div>
+        <!-- 実績 -->
+        <div class="stats-row">
+          <div class="s"><div class="s-n">1,200<sup>社</sup></div><div class="s-l">補助金支援</div></div>
+          <div class="s"><div class="s-n">800<sup>件</sup></div><div class="s-l">採択件数</div></div>
+          <div class="s"><div class="s-n">200<sup>億円</sup></div><div class="s-l">総調達額</div></div>
+          <div class="s"><div class="s-n">279<sup>件</sup></div><div class="s-l">ものづくり</div></div>
+        </div>
+        <div class="vc-band">
+          <div class="vc-n">50+</div>
+          <div class="vc-t">
+            <div class="vt1">提携VC 50社以上と連携</div>
+            <div class="vt2">VC紹介先スタートアップは着手金無料</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="label">準拠: ecology-net.com — グリーン×数字大×Problemラベル</div>
+</body>
+</html>

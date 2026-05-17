@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G&N FV v04 — opex準拠｜英語主題型エディトリアル+オレンジCTA</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;500;700;800;900&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2F5C; --navy-dk:#0F1E42;
+  --orange:#F6703A; --orange-dk:#DE5A25;
+  --cream:#FCFAF5; --white:#fff;
+  --sub:#58688A; --line:rgba(27,47,92,.1);
+  --max-w:1280px;
+  --ja:'Noto Sans JP',sans-serif; --en:'Inter',sans-serif; --ser:'Playfair Display',serif;
+}
+body{font-family:var(--ja);color:var(--navy);background:var(--white);-webkit-font-smoothing:antialiased}
+
+/* トップバー（日付・出版号数風） */
+.issue-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 40px;background:var(--navy);color:#fff;font-family:var(--en);font-size:11px;letter-spacing:.1em}
+.issue-bar span strong{color:var(--orange)}
+
+.hd{display:flex;align-items:center;justify-content:space-between;padding:22px 40px;background:var(--white);border-bottom:1px solid var(--line)}
+.hd-logo{display:flex;align-items:center;gap:12px;color:var(--navy)}
+.hd-logo .logo-svg{height:32px;width:auto;display:block}
+.hd-logo-orn{width:24px;height:1px;background:var(--orange)}
+.hd-logo-sub{font-family:var(--ser);font-style:italic;font-size:14px;color:var(--sub);font-weight:700}
+.hd-nav{display:flex;gap:26px}
+.hd-nav a{font-family:var(--en);font-size:13px;color:var(--navy);text-decoration:none;font-weight:600;letter-spacing:.02em}
+.hd-cta{display:flex;gap:10px}
+.btn-out{font-family:var(--en);font-size:12.5px;font-weight:700;color:var(--navy);border:1.5px solid var(--navy);padding:8px 18px;border-radius:2px;text-decoration:none;letter-spacing:.04em}
+.btn-orn{font-family:var(--en);font-size:12.5px;font-weight:800;background:var(--orange);color:#fff;padding:9px 20px;border-radius:2px;text-decoration:none;letter-spacing:.04em}
+
+/* HERO：上下2段・上は英語主題、下は日本語 */
+.hero{background:var(--white);padding:0 40px}
+.inner{max-width:var(--max-w);margin:0 auto;padding:70px 0 40px}
+
+/* 英語主題 */
+.en-title-block{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--navy)}
+
+.en-label{font-family:var(--en);font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--orange);margin-bottom:14px;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.en-label::before{content:'';width:40px;height:2px;background:var(--orange)}
+
+.en-title{font-family:var(--ser);font-weight:900;font-style:italic;font-size:92px;line-height:.95;color:var(--navy);letter-spacing:-.03em}
+.en-title em{font-style:italic;color:var(--orange)}
+
+.en-meta{font-family:var(--en);font-size:11px;color:var(--sub);letter-spacing:.1em;text-align:right;line-height:1.8}
+.en-meta strong{color:var(--navy);font-size:13px;display:block;font-weight:800}
+
+/* 日本語見出し＋サブ */
+.ja-block{padding-top:44px;display:grid;grid-template-columns:1.3fr 1fr;gap:60px}
+
+h1{font-size:44px;font-weight:900;line-height:1.3;letter-spacing:-.025em;color:var(--navy);margin-bottom:24px}
+h1 em{font-style:normal;color:var(--orange)}
+
+.sub{font-size:15px;line-height:1.95;color:var(--sub);margin-bottom:36px;max-width:560px}
+
+.cta-row{display:flex;gap:14px;align-items:center}
+.cta-pri{display:inline-flex;align-items:center;gap:12px;background:var(--orange);color:#fff;font-size:15px;font-weight:800;padding:16px 32px;border-radius:2px;text-decoration:none;letter-spacing:.02em;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(246,112,58,.3)}
+.cta-pri::after{content:'→';font-family:var(--en);font-size:20px;font-weight:900}
+.cta-sec{display:inline-flex;align-items:center;gap:8px;color:var(--navy);font-size:14px;font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--navy);padding-bottom:2px}
+
+/* 右側：4枚の番号カード（opex再現） */
+.num-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.nc{background:var(--cream);border:1.5px solid var(--line);border-radius:2px;padding:22px 18px;position:relative;transition:border-color .2s}
+.nc:hover{border-color:var(--orange)}
+.nc.hl{background:var(--navy);color:#fff;border-color:var(--navy)}
+.nc-no{font-family:var(--en);font-size:12px;font-weight:800;color:var(--orange);letter-spacing:.1em;margin-bottom:10px}
+.nc.hl .nc-no{color:var(--orange)}
+.nc-big{font-family:var(--en);font-size:34px;font-weight:900;line-height:1;letter-spacing:-.03em;color:var(--navy);margin-bottom:6px}
+.nc-big sup{font-size:14px}
+.nc.hl .nc-big{color:#fff}
+.nc-desc{font-size:11.5px;color:var(--sub);line-height:1.55;font-weight:500}
+.nc.hl .nc-desc{color:rgba(255,255,255,.8)}
+
+/* 下部：認定・VC ribbon */
+.ribbon{margin-top:40px;padding:20px 28px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;border-radius:2px}
+.rib-left{display:flex;align-items:center;gap:18px;font-size:13px;line-height:1.5}
+.rib-left strong{font-family:var(--en);font-size:16px;color:var(--orange);font-weight:900}
+.rib-div{width:1px;height:28px;background:rgba(255,255,255,.2)}
+.rib-cert{font-size:11px;color:rgba(255,255,255,.7)}
+
+.label{position:fixed;bottom:14px;right:14px;background:var(--navy);color:#fff;font-family:var(--en);font-size:10.5px;padding:6px 12px;border-radius:2px;opacity:.75;z-index:999;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="issue-bar"><span><strong>ISSUE No.001</strong> — FOR GROWTH-STAGE STARTUPS</span><span>Apr 2026 / Tokyo, JAPAN</span></div>
+
+<header class="hd">
+  <div class="hd-logo">
+    <svg class="logo-svg" viewBox="0 0 181.61 60" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="G&amp;N"><circle cx="30" cy="30" r="30"/><path d="M108.78,17.47l-5.38,5.32c-3.41-3.6-7.38-5.41-11.91-5.41c-3.95,0-7.27,1.31-9.93,3.93s-4,5.81-4,9.56c0,3.88,1.38,7.16,4.15,9.86c2.77,2.69,6.19,4.04,10.25,4.04c2.64,0,4.87-0.56,6.68-1.67c1.81-1.11,3.27-2.85,4.39-5.22H91.39v-7.18h20.21l0.06,1.69c0,3.51-0.91,6.84-2.73,9.99c-1.82,3.15-4.18,5.55-7.07,7.21c-2.9,1.66-6.29,2.48-10.19,2.48c-4.17,0-7.89-0.9-11.15-2.72c-3.27-1.81-5.85-4.39-7.75-7.74c-1.9-3.35-2.85-6.96-2.85-10.84c0-5.32,1.76-9.94,5.27-13.87c4.17-4.68,9.59-7.02,16.27-7.02c3.49,0,6.76,0.65,9.8,1.94C103.81,12.94,106.33,14.82,108.78,17.47z"/><path d="M138.14,36.13l3.68,4.22l-1.67,1.52l-1.65,1.5l5.21,5.52h-7.49l-2.14-2.21c-3.41,2.02-6.59,3.02-9.51,3.02c-2.49,0-4.5-0.73-6.04-2.18c-1.54-1.46-2.31-3.33-2.31-5.61c0-1.72,0.44-3.35,1.31-4.88c0.87-1.53,2.36-3.11,4.47-4.75c-2.09-2.81-3.13-5.3-3.13-7.46c0-1.6,0.69-3.19,2.07-4.75c1.38-1.56,3.33-2.34,5.85-2.34c2.55,0,4.5,0.77,5.86,2.32c1.36,1.55,2.04,3.11,2.04,4.68c0,1.24-0.31,2.42-0.94,3.55c-0.62,1.13-2.06,2.81-4.31,5.03c2.63,3.11,4.34,5.04,5.1,5.81C135.02,38.78,136.22,37.78,138.14,36.13z M130.08,42.39c-1.14-1.12-2.74-2.97-4.8-5.55c-2.18,1.81-3.27,3.39-3.27,4.75c0,0.63,0.3,1.21,0.89,1.74c0.59,0.53,1.35,0.79,2.26,0.79C126.47,44.12,128.11,43.54,130.08,42.39z M126.4,28.98c1.63-1.4,2.45-2.63,2.45-3.71c0-0.56-0.18-1.02-0.55-1.37c-0.37-0.35-0.85-0.53-1.46-0.53c-0.56,0-1.03,0.2-1.42,0.6c-0.39,0.4-0.58,0.86-0.58,1.39C124.83,26.42,125.35,27.63,126.4,28.98z"/><path d="M149.44,10.92h7.33l17.19,26.43V10.92h7.65v40.17h-7.35l-17.17-26.35v26.35h-7.65V10.92z"/><path fill="#fff" d="M29.98,25.56l-7.13,6.63h13.33l-6.47,5.93l-8.4-3.62l-3.61-6.97l5.44-7.91L45.4,8.22l-2.44-0.03L29.71,7.8l-7.45,10.83L3.43,28.21l16.94,7.3l9.41,18.17L49.6,21.93L29.98,25.56z M30.38,9.11L40.4,9.4L24.67,17.4L30.38,9.11z M16.59,26.87l-8.63,0.48l12.77-6.5L16.59,26.87z M7.71,28.65l8.85-0.49l2.87,5.54L7.71,28.65z M37.8,30.74l-5.92-4.22l14.09-2.61L37.8,30.74z M30.33,26.99l5.49,3.92h-9.7L30.33,26.99z M38.25,32.04l7.35-6.14L30.48,50.13V39.16L38.25,32.04z M29.19,39.3v10.43l-6.95-13.43L29.19,39.3z"/></svg>
+    <span class="hd-logo-orn"></span>
+    <span class="hd-logo-sub">Subsidy Partner</span>
+  </div>
+  <nav class="hd-nav"><a href="#">SERVICE</a><a href="#">WHY G&N</a><a href="#">CASES</a><a href="#">PROCESS</a><a href="#">FAQ</a></nav>
+  <div class="hd-cta"><a href="#" class="btn-out">DOWNLOAD</a><a href="#" class="btn-orn">FREE CONSULT →</a></div>
+</header>
+
+<section class="hero">
+  <div class="inner">
+    <div class="en-title-block">
+      <div>
+        <div class="en-label">Issue 001 · Cover Story</div>
+        <div class="en-title">Fueling the<br>Next <em>Startup</em> Move.</div>
+      </div>
+      <div class="en-meta">
+        <strong>By G&amp;N Inc.</strong>
+        Tokyo, Japan<br>
+        Since 2018
+      </div>
+    </div>
+
+    <div class="ja-block">
+      <div>
+        <h1>挑戦するスタートアップに、<br><em>補助金</em>という<em>追い風</em>を。</h1>
+        <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。G&amp;Nは補助金のプロとして、投資を受けたスタートアップの次のステージを共に切り開きます。</p>
+        <div class="cta-row">
+          <a href="#" class="cta-pri">START 1-HOUR CONSULT</a>
+          <a href="#" class="cta-sec">サービス資料</a>
+        </div>
+      </div>
+
+      <div class="num-cards">
+        <div class="nc"><div class="nc-no">01</div><div class="nc-big">1,200<sup>社</sup></div><div class="nc-desc">Companies supported</div></div>
+        <div class="nc hl"><div class="nc-no">02</div><div class="nc-big">800<sup>件</sup></div><div class="nc-desc">Subsidies approved</div></div>
+        <div class="nc"><div class="nc-no">03</div><div class="nc-big">200<sup>億</sup></div><div class="nc-desc">Total funding raised</div></div>
+        <div class="nc"><div class="nc-no">04</div><div class="nc-big">50<sup>+</sup></div><div class="nc-desc">VC partners · 紹介先 0円</div></div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="rib-left">
+        <span><strong>#01</strong> VC紹介先は着手金0円</span>
+        <div class="rib-div"></div>
+        <span><strong>#02</strong> 受給後5年フルサポート</span>
+        <div class="rib-div"></div>
+        <span><strong>#03</strong> ものづくり補助金279件実績</span>
+      </div>
+      <div class="rib-cert">認定経営革新等支援機関（関東認支2639号）</div>
+    </div>
+  </div>
+</section>
+
+<div class="label">v04 / azalea — opex準拠（英語主題型エディトリアル）</div>
+</body>
+</html>

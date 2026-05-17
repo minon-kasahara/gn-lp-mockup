@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&N FV — castme.jp 準拠｜マルチグラデ×白×ロゴ多段×安心訴求</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --g1: #4B7BF5; --g2: #A855F7; --g3: #EC4899; --g4: #F97316;
+      --navy:  #1A1A2E;
+      --sub:   #5A6A80;
+      --white: #FFFFFF;
+      --bg:    #F8F9FC;
+      --border:#E0E8F0;
+      --max-w: 1140px;
+      --font-ja:'Noto Sans JP', sans-serif;
+      --font-en:'Inter', sans-serif;
+    }
+    body { font-family: var(--font-ja); color: var(--navy); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* HEADER */
+    .hd { position: fixed; inset: 0 0 auto; z-index: 100; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; background: var(--white); border-bottom: 1px solid var(--border); }
+    /* マルチカラーグラデーションロゴ（castme 再現） */
+    .hd-logo { font-family: var(--font-en); font-size: 22px; font-weight: 800; background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -.01em; }
+    .hd-nav { display: flex; align-items: center; gap: 24px; }
+    .hd-nav a { font-size: 13px; color: var(--sub); text-decoration: none; font-weight: 500; }
+    .btn-contact { font-size: 13px; font-weight: 700; background: linear-gradient(135deg, var(--g1), var(--g2)); color: var(--white); padding: 8px 20px; border-radius: 6px; text-decoration: none; transition: opacity .2s; }
+    .btn-contact:hover { opacity: .88; }
+
+    /* HERO */
+    .hero { min-height: 100vh; padding-top: 60px; background: var(--white); display: flex; flex-direction: column; }
+
+    /* メインコンテンツ */
+    .hero-main { flex: 1; display: flex; align-items: center; padding: 48px 40px; }
+    .inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; width: 100%; }
+
+    /* LEFT */
+    /* マルチカラータグ */
+    .tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+    .tag-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .tag-text { font-size: 12px; font-weight: 700; letter-spacing: .06em; color: var(--sub); }
+
+    h1 { font-size: 46px; font-weight: 900; line-height: 1.28; letter-spacing: -.02em; margin-bottom: 20px; }
+    /* グラデーションアクセント */
+    h1 em { font-style: normal; background: linear-gradient(135deg, var(--g1), var(--g2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .sub { font-size: 15px; line-height: 1.88; color: var(--sub); margin-bottom: 32px; }
+
+    .btn-main { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--g1), var(--g2)); color: var(--white); font-size: 15px; font-weight: 700; padding: 14px 30px; border-radius: 8px; text-decoration: none; box-shadow: 0 8px 24px rgba(75,123,245,.32); transition: opacity .2s, transform .2s; }
+    .btn-main:hover { opacity: .9; transform: translateY(-1px); }
+
+    .cert { margin-top: 20px; display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--sub); }
+    .cert-mark { background: linear-gradient(135deg, var(--g1), var(--g2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+
+    /* 安心ボックス（castme「お気軽にご質問・ご相談ください」） */
+    .easy-box { margin-top: 24px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .easy-icon { font-size: 28px; flex-shrink: 0; }
+    .easy-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .easy-list { list-style: none; }
+    .easy-list li { font-size: 12px; color: var(--sub); padding: 2px 0; display: flex; align-items: center; gap: 6px; }
+    .easy-list li::before { content: '・'; color: var(--g1); font-weight: 700; }
+
+    /* RIGHT */
+    .right { display: flex; flex-direction: column; gap: 16px; }
+
+    /* 実績 */
+    .stats-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; box-shadow: 0 4px 16px rgba(26,26,46,.07); }
+    .sc-head { font-size: 12px; font-weight: 700; color: var(--sub); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .sc-head::before { content: ''; display: block; width: 16px; height: 2px; background: linear-gradient(90deg, var(--g1), var(--g2)); border-radius: 1px; }
+    .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+    .sc-n { font-family: var(--font-en); font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1; letter-spacing: -.03em; }
+    .sc-n sup { font-size: 14px; }
+    .sc-l { font-size: 11.5px; color: var(--sub); margin-top: 3px; }
+
+    /* VCロゴ多段（castme の導入社ロゴ多段に相当） */
+    .vc-section { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+    .vc-head { font-size: 12px; font-weight: 700; color: var(--sub); margin-bottom: 12px; text-align: center; }
+    .vc-logos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .vc-logo { background: var(--white); border: 1px solid var(--border); border-radius: 6px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--sub); transition: border-color .2s; }
+    .vc-logo:hover { border-color: var(--g1); }
+    .vc-more { text-align: center; font-size: 12px; color: var(--sub); margin-top: 8px; }
+    .vc-more strong { color: var(--g1); font-family: var(--font-en); font-weight: 700; }
+
+    .label { position: fixed; bottom: 14px; right: 14px; background: var(--navy); color: #fff; font-family: var(--font-en); font-size: 10.5px; padding: 6px 12px; border-radius: 6px; opacity: .65; z-index: 999; }
+  </style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo">G&amp;N!</div>
+  <nav class="hd-nav">
+    <a href="#">サービス</a><a href="#">実績</a><a href="#">提携VC</a><a href="#">よくある質問</a>
+  </nav>
+  <a href="#" class="btn-contact">無料相談する</a>
+</header>
+
+<section class="hero">
+  <div class="hero-main">
+    <div class="inner">
+      <div>
+        <div class="tag">
+          <span class="tag-dot" style="background:var(--g1)"></span>
+          <span class="tag-dot" style="background:var(--g2)"></span>
+          <span class="tag-dot" style="background:var(--g3)"></span>
+          <span class="tag-text">スタートアップ向け 補助金・助成金支援</span>
+        </div>
+        <h1>挑戦する<em>スタートアップ</em>に、<br>補助金という<em>追い風</em>を。</h1>
+        <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。G&amp;Nは補助金のプロとして、投資を受けたスタートアップの次のステージを共に切り開きます。</p>
+        <a href="#" class="btn-main">まずは無料相談（1時間）</a>
+        <div class="cert"><span class="cert-mark">✓</span>認定経営革新等支援機関（関東認支2639号）</div>
+        <div class="easy-box">
+          <div class="easy-icon">💬</div>
+          <div>
+            <div class="easy-title">こんなときはお気軽にご相談ください</div>
+            <ul class="easy-list">
+              <li>どの補助金が使えるか知りたい</li>
+              <li>申請の手間を減らしたい</li>
+              <li>VC紹介先として着手金無料で使いたい</li>
+              <li>採択後のサポートが心配</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="stats-card">
+          <div class="sc-head">支援実績</div>
+          <div class="sc-grid">
+            <div><div class="sc-n">1,200<sup>社</sup></div><div class="sc-l">補助金 支援実績</div></div>
+            <div><div class="sc-n">800<sup>件</sup></div><div class="sc-l">採択件数</div></div>
+            <div><div class="sc-n">200<sup>億円</sup></div><div class="sc-l">総調達額</div></div>
+            <div><div class="sc-n">279<sup>件</sup></div><div class="sc-l">ものづくり採択</div></div>
+          </div>
+        </div>
+        <div class="vc-section">
+          <div class="vc-head">提携VC 50社以上 ／ VC紹介先は着手金無料</div>
+          <div class="vc-logos">
+            <div class="vc-logo">VC A</div><div class="vc-logo">VC B</div><div class="vc-logo">VC C</div>
+            <div class="vc-logo">VC D</div><div class="vc-logo">VC E</div>
+            <div class="vc-logo">VC F</div><div class="vc-logo">VC G</div><div class="vc-logo">VC H</div>
+            <div class="vc-logo">VC I</div><div class="vc-logo">VC J</div>
+          </div>
+          <div class="vc-more">掲載許諾済み <strong>10社</strong>（目標50社以上）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="label">準拠: castme.jp — マルチグラデ×白×ロゴ多段×安心訴求</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&N FV — newgrads.hubble-docs.com 準拠｜濃紺×ブルー波線×カード</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #1A2340;
+      --navy2:  #253060;
+      --blue:   #4B7BF5;
+      --blue-lt:#EEF3FF;
+      --sky:    #7BA8F8;
+      --sub:    #6B7A9A;
+      --white:  #FFFFFF;
+      --bg:     #F5F7FF;
+      --max-w:  1140px;
+      --font-ja:'Noto Sans JP', sans-serif;
+      --font-en:'Inter', sans-serif;
+    }
+    body { font-family: var(--font-ja); color: var(--navy); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* HEADER */
+    .hd { position: fixed; inset: 0 0 auto; z-index: 100; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; background: var(--navy); }
+    .hd-logo { font-family: var(--font-en); font-size: 20px; font-weight: 800; color: var(--white); display: flex; align-items: center; gap: 8px; }
+    .hd-logo-mark { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 3px rgba(75,123,245,.3); }
+    .hd-cta { display: flex; align-items: center; gap: 10px; }
+    .hd-jobs { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.7); text-decoration: none; }
+    .hd-entry { font-size: 13px; font-weight: 700; background: var(--blue); color: var(--white); padding: 8px 20px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .hd-entry::after { content: '→'; }
+
+    /* HERO */
+    .hero { min-height: 100vh; padding-top: 60px; background: var(--white); position: relative; overflow: hidden; display: flex; align-items: center; }
+
+    /* 波線背景（hubble 再現） */
+    .wave-bg {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .wave-bg svg { position: absolute; width: 100%; opacity: .12; }
+    .wave-bg .w1 { top: 10%; }
+    .wave-bg .w2 { top: 35%; }
+    .wave-bg .w3 { top: 60%; }
+    .wave-bg .w4 { top: 82%; }
+
+    /* 右半分の色ブロック */
+    .color-block { position: absolute; top: 0; right: 0; width: 48%; height: 100%; background: var(--bg); clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%); pointer-events: none; }
+
+    .inner { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 64px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; width: 100%; }
+
+    /* LEFT */
+    .tag { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-lt); color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .05em; padding: 5px 14px; border-radius: 100px; margin-bottom: 24px; border: 1px solid rgba(75,123,245,.2); }
+
+    h1 { font-size: 46px; font-weight: 900; line-height: 1.28; letter-spacing: -.02em; margin-bottom: 20px; }
+    h1 em { font-style: normal; color: var(--blue); }
+
+    .sub { font-size: 15px; line-height: 1.88; color: var(--sub); margin-bottom: 36px; }
+
+    .btn-main { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: var(--white); font-size: 15px; font-weight: 700; padding: 14px 28px; border-radius: 8px; text-decoration: none; box-shadow: 0 8px 24px rgba(75,123,245,.38); transition: transform .2s, box-shadow .2s; }
+    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(75,123,245,.48); }
+
+    .cert { margin-top: 20px; font-size: 11.5px; color: var(--sub); display: flex; align-items: center; gap: 6px; }
+    .cert-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+
+    /* RIGHT — hubble カード風レイアウト */
+    .cards { display: flex; flex-direction: column; gap: 12px; }
+
+    /* hubble の人物カードを「実績カード」に置き換え */
+    .card { background: var(--white); border: 1px solid rgba(75,123,245,.12); border-radius: 12px; padding: 20px 22px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; box-shadow: 0 4px 16px rgba(26,35,64,.07); transition: box-shadow .2s, transform .2s; }
+    .card:hover { box-shadow: 0 8px 24px rgba(75,123,245,.15); transform: translateY(-2px); }
+
+    /* 左アイコン枠（hubble の円形写真に相当） */
+    .card-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--blue-lt); border: 2px solid rgba(75,123,245,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .card-icon span { font-size: 22px; }
+
+    .card-meta { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--blue); margin-bottom: 4px; }
+    .card-title { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+    .card-sub { font-size: 11.5px; color: var(--sub); margin-top: 3px; }
+
+    /* 実績まとめカード */
+    .stats-card { background: var(--navy); border-radius: 12px; padding: 20px 22px; }
+    .sc-label { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--sky); margin-bottom: 14px; }
+    .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+    .sc-n { font-family: var(--font-en); font-size: 28px; font-weight: 800; color: var(--white); line-height: 1; letter-spacing: -.03em; }
+    .sc-n sup { font-size: 13px; }
+    .sc-l { font-size: 11px; color: var(--sky); margin-top: 3px; }
+
+    .label { position: fixed; bottom: 14px; right: 14px; background: var(--navy); color: #fff; font-family: var(--font-en); font-size: 10.5px; padding: 6px 12px; border-radius: 6px; opacity: .65; z-index: 999; }
+  </style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo"><span class="hd-logo-mark"></span>G&amp;N</div>
+  <div class="hd-cta">
+    <a href="#" class="hd-jobs">サービス詳細 ・ 実績 ・ 提携VC</a>
+    <a href="#" class="hd-entry">無料相談する</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wave-bg">
+    <svg class="w1" viewBox="0 0 1440 60" fill="none"><path d="M0 30 Q360 0 720 30 Q1080 60 1440 30" stroke="#4B7BF5" stroke-width="2"/></svg>
+    <svg class="w2" viewBox="0 0 1440 60" fill="none"><path d="M0 30 Q360 60 720 30 Q1080 0 1440 30" stroke="#4B7BF5" stroke-width="2"/></svg>
+    <svg class="w3" viewBox="0 0 1440 60" fill="none"><path d="M0 30 Q360 0 720 30 Q1080 60 1440 30" stroke="#4B7BF5" stroke-width="1.5"/></svg>
+    <svg class="w4" viewBox="0 0 1440 60" fill="none"><path d="M0 30 Q360 60 720 30 Q1080 0 1440 30" stroke="#4B7BF5" stroke-width="1.5"/></svg>
+  </div>
+  <div class="color-block"></div>
+
+  <div class="inner">
+    <div>
+      <div class="tag">スタートアップ向け 補助金・助成金支援</div>
+      <h1>挑戦する<em>スタートアップ</em>に、<br>補助金という<em>追い風</em>を。</h1>
+      <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。G&amp;Nは補助金のプロとして、投資を受けたスタートアップの次のステージを共に切り開きます。</p>
+      <a href="#" class="btn-main">まずは無料相談する</a>
+      <div class="cert"><span class="cert-dot"></span>認定経営革新等支援機関（関東認支2639号）</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon"><span>🚀</span></div>
+        <div>
+          <div class="card-meta">SUBSIDY SUPPORT</div>
+          <div class="card-title">補助金・助成金をフルサポート</div>
+          <div class="card-sub">申請〜採択後5年まで一気通貫で対応</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><span>🤝</span></div>
+        <div>
+          <div class="card-meta">VC PARTNERSHIP</div>
+          <div class="card-title">提携VC 50社以上と連携</div>
+          <div class="card-sub">VC紹介先スタートアップは着手金無料</div>
+        </div>
+      </div>
+      <div class="stats-card">
+        <div class="sc-label">TRACK RECORD</div>
+        <div class="sc-grid">
+          <div><div class="sc-n">1,200<sup>社</sup></div><div class="sc-l">補助金支援実績</div></div>
+          <div><div class="sc-n">800<sup>件</sup></div><div class="sc-l">採択件数</div></div>
+          <div><div class="sc-n">200<sup>億円</sup></div><div class="sc-l">総調達額</div></div>
+          <div><div class="sc-n">279<sup>件</sup></div><div class="sc-l">ものづくり採択</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="label">準拠: newgrads.hubble-docs.com — 濃紺×ブルー波線×カード</div>
+</body>
+</html>

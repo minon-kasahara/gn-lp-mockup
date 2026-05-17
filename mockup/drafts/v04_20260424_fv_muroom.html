@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G&N FV v04 — muroom準拠｜超ミニマル・full-screen</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#181D2A; --sub:#7A879B;
+  --blob-a:rgba(226,165,195,.35); --blob-b:rgba(132,178,222,.32);
+  --line:rgba(24,29,42,.08);
+  --white:#fff;
+  --ja:'Noto Sans JP',sans-serif; --en:'Inter',sans-serif;
+}
+body{font-family:var(--ja);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+.hd{position:fixed;inset:0 0 auto;z-index:100;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:transparent}
+.hd-logo{display:flex;align-items:center;gap:14px;color:var(--ink);font-family:var(--en);font-size:12px;font-weight:400;letter-spacing:.06em}
+.hd-logo .logo-svg{height:26px;width:auto;display:block}
+.hd-logo span{color:var(--sub);font-weight:300}
+.hd-nav{display:flex;gap:40px}
+.hd-nav a{font-size:12.5px;font-weight:400;color:var(--sub);text-decoration:none;letter-spacing:.08em}
+.hd-contact{font-size:12.5px;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:.08em;border-bottom:1px solid var(--ink);padding-bottom:2px}
+
+/* HERO：白一色・余白最大限 */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:100px 40px 40px}
+
+/* 単独の大ブロブ */
+.mega-blob{position:absolute;pointer-events:none;z-index:0}
+.mb-1{width:640px;height:520px;background:radial-gradient(ellipse,var(--blob-a) 0%,transparent 65%);border-radius:58% 42% 60% 40%/52% 48% 52% 48%;top:-6%;right:-10%;filter:blur(3px)}
+.mb-2{width:520px;height:440px;background:radial-gradient(ellipse,var(--blob-b) 0%,transparent 65%);border-radius:42% 58% 48% 52%/55% 45% 55% 45%;bottom:-10%;left:-8%;filter:blur(4px)}
+
+.center{position:relative;z-index:1;max-width:820px;text-align:left}
+.eyebrow{font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.22em;color:var(--sub);margin-bottom:44px;text-transform:uppercase;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--sub)}
+
+h1{font-size:68px;font-weight:900;line-height:1.18;letter-spacing:-.035em;color:var(--ink);margin-bottom:44px}
+
+.sub{font-size:15px;line-height:2.1;color:var(--sub);font-weight:300;max-width:500px;margin-bottom:64px}
+
+/* 超控えめCTA（テキストリンク風・大きい） */
+.cta-link{display:inline-flex;align-items:center;gap:16px;color:var(--ink);font-size:15px;font-weight:500;text-decoration:none;padding:4px 0;border-bottom:1px solid var(--ink);letter-spacing:.04em}
+.cta-link span{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px;margin-left:8px;transition:transform .3s}
+.cta-link:hover span{transform:translateX(4px)}
+
+/* 下部ミニ情報ストライプ */
+.footer-strip{position:absolute;bottom:0;left:0;right:0;padding:28px 56px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--sub);font-weight:300;letter-spacing:.06em;background:rgba(255,255,255,.6);backdrop-filter:blur(6px)}
+.fs-stats{display:flex;gap:32px}
+.fs-stats span strong{font-family:var(--en);font-weight:700;color:var(--ink);font-size:13px;margin-right:4px}
+
+.label{position:fixed;bottom:14px;right:14px;background:var(--ink);color:#fff;font-family:var(--en);font-size:10.5px;padding:6px 12px;border-radius:4px;opacity:.7;z-index:999;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo"><svg class="logo-svg" viewBox="0 0 181.61 60" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="G&amp;N"><circle cx="30" cy="30" r="30"/><path d="M108.78,17.47l-5.38,5.32c-3.41-3.6-7.38-5.41-11.91-5.41c-3.95,0-7.27,1.31-9.93,3.93s-4,5.81-4,9.56c0,3.88,1.38,7.16,4.15,9.86c2.77,2.69,6.19,4.04,10.25,4.04c2.64,0,4.87-0.56,6.68-1.67c1.81-1.11,3.27-2.85,4.39-5.22H91.39v-7.18h20.21l0.06,1.69c0,3.51-0.91,6.84-2.73,9.99c-1.82,3.15-4.18,5.55-7.07,7.21c-2.9,1.66-6.29,2.48-10.19,2.48c-4.17,0-7.89-0.9-11.15-2.72c-3.27-1.81-5.85-4.39-7.75-7.74c-1.9-3.35-2.85-6.96-2.85-10.84c0-5.32,1.76-9.94,5.27-13.87c4.17-4.68,9.59-7.02,16.27-7.02c3.49,0,6.76,0.65,9.8,1.94C103.81,12.94,106.33,14.82,108.78,17.47z"/><path d="M138.14,36.13l3.68,4.22l-1.67,1.52l-1.65,1.5l5.21,5.52h-7.49l-2.14-2.21c-3.41,2.02-6.59,3.02-9.51,3.02c-2.49,0-4.5-0.73-6.04-2.18c-1.54-1.46-2.31-3.33-2.31-5.61c0-1.72,0.44-3.35,1.31-4.88c0.87-1.53,2.36-3.11,4.47-4.75c-2.09-2.81-3.13-5.3-3.13-7.46c0-1.6,0.69-3.19,2.07-4.75c1.38-1.56,3.33-2.34,5.85-2.34c2.55,0,4.5,0.77,5.86,2.32c1.36,1.55,2.04,3.11,2.04,4.68c0,1.24-0.31,2.42-0.94,3.55c-0.62,1.13-2.06,2.81-4.31,5.03c2.63,3.11,4.34,5.04,5.1,5.81C135.02,38.78,136.22,37.78,138.14,36.13z M130.08,42.39c-1.14-1.12-2.74-2.97-4.8-5.55c-2.18,1.81-3.27,3.39-3.27,4.75c0,0.63,0.3,1.21,0.89,1.74c0.59,0.53,1.35,0.79,2.26,0.79C126.47,44.12,128.11,43.54,130.08,42.39z M126.4,28.98c1.63-1.4,2.45-2.63,2.45-3.71c0-0.56-0.18-1.02-0.55-1.37c-0.37-0.35-0.85-0.53-1.46-0.53c-0.56,0-1.03,0.2-1.42,0.6c-0.39,0.4-0.58,0.86-0.58,1.39C124.83,26.42,125.35,27.63,126.4,28.98z"/><path d="M149.44,10.92h7.33l17.19,26.43V10.92h7.65v40.17h-7.35l-17.17-26.35v26.35h-7.65V10.92z"/><path fill="#fff" d="M29.98,25.56l-7.13,6.63h13.33l-6.47,5.93l-8.4-3.62l-3.61-6.97l5.44-7.91L45.4,8.22l-2.44-0.03L29.71,7.8l-7.45,10.83L3.43,28.21l16.94,7.3l9.41,18.17L49.6,21.93L29.98,25.56z M30.38,9.11L40.4,9.4L24.67,17.4L30.38,9.11z M16.59,26.87l-8.63,0.48l12.77-6.5L16.59,26.87z M7.71,28.65l8.85-0.49l2.87,5.54L7.71,28.65z M37.8,30.74l-5.92-4.22l14.09-2.61L37.8,30.74z M30.33,26.99l5.49,3.92h-9.7L30.33,26.99z M38.25,32.04l7.35-6.14L30.48,50.13V39.16L38.25,32.04z M29.19,39.3v10.43l-6.95-13.43L29.19,39.3z"/></svg><span>— Subsidy Partner</span></div>
+  <nav class="hd-nav"><a href="#">SERVICE</a><a href="#">WORKS</a><a href="#">VCs</a><a href="#">ABOUT</a></nav>
+  <a href="#" class="hd-contact">CONTACT</a>
+</header>
+
+<section class="hero">
+  <div class="mega-blob mb-1"></div>
+  <div class="mega-blob mb-2"></div>
+
+  <div class="center">
+    <div class="eyebrow">Startup × Public Funding</div>
+    <h1>挑戦する<br>スタートアップに、<br>補助金という<br>追い風を。</h1>
+    <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。<br>G&amp;Nは補助金のプロとして、投資を受けたスタートアップの<br>次のステージを共に切り開きます。</p>
+    <a href="#" class="cta-link">まずは無料相談する<span>→</span></a>
+  </div>
+
+  <div class="footer-strip">
+    <div class="fs-stats">
+      <span><strong>1,200社</strong>支援実績</span>
+      <span><strong>800件</strong>採択</span>
+      <span><strong>200億円</strong>調達</span>
+      <span><strong>VC50社+</strong>提携</span>
+    </div>
+    <div>認定経営革新等支援機関（関東認支2639号）</div>
+  </div>
+</section>
+
+<div class="label">v04 / azalea — muroom準拠（超ミニマル）</div>
+</body>
+</html>

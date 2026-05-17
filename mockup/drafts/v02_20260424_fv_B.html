@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&N FV — パターンB｜ネイビー×白 2トーン</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #162440;
+      --navy2: #1E3256;
+      --blue:  #3AADDF;
+      --mint:  #2EC4A8;
+      --white: #FFFFFF;
+      --sub:   #8BA4C0;
+      --max-w: 1160px;
+      --font-ja:'Noto Sans JP', sans-serif;
+      --font-en:'Inter', sans-serif;
+    }
+    body { font-family: var(--font-ja); -webkit-font-smoothing: antialiased; background: var(--white); }
+
+    /* HEADER */
+    .hd { position: fixed; inset: 0 0 auto; z-index: 100; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: var(--navy); }
+    .hd-logo { font-family: var(--font-en); font-size: 22px; font-weight: 800; color: var(--white); letter-spacing: -.02em; }
+    .hd-logo span { color: var(--blue); }
+    .hd-nav { display: flex; align-items: center; gap: 28px; }
+    .hd-nav a { font-size: 13px; font-weight: 500; color: var(--sub); text-decoration: none; transition: color .2s; }
+    .hd-nav a:hover { color: var(--white); }
+    .hd-btn { background: var(--blue); color: #fff; font-size: 13px; font-weight: 700; padding: 9px 22px; border-radius: 100px; text-decoration: none; transition: opacity .2s; }
+    .hd-btn:hover { opacity: .85; }
+
+    /* HERO — 上半分ネイビー */
+    .hero { min-height: 100vh; padding-top: 64px; display: flex; flex-direction: column; }
+
+    .hero-top {
+      background: var(--navy);
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      min-height: calc(70vh - 64px);
+    }
+
+    /* ネイビー内装飾 */
+    .nd { position: absolute; border-radius: 50%; pointer-events: none; }
+    .nd-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(58,173,223,.14) 0%, transparent 70%); top: -200px; right: -100px; }
+    .nd-2 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(46,196,168,.10) 0%, transparent 70%); bottom: -80px; left: 10%; }
+
+    /* グリッド線装飾 */
+    .grid-lines {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .inner-top { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 60px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; width: 100%; }
+
+    /* コピー（左） */
+    .tag { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(58,173,223,.4); color: var(--blue); font-size: 11.5px; font-weight: 700; letter-spacing: .06em; padding: 5px 16px; border-radius: 100px; margin-bottom: 28px; }
+    .tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+    h1 { font-size: 48px; font-weight: 900; line-height: 1.32; letter-spacing: -.02em; color: var(--white); margin-bottom: 22px; }
+    h1 em { font-style: normal; color: var(--blue); }
+
+    .sub { font-size: 15px; line-height: 1.9; color: var(--sub); margin-bottom: 36px; }
+
+    .cta-row { display: flex; align-items: center; gap: 20px; }
+    .btn-main { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--blue), var(--mint)); color: #fff; font-size: 15px; font-weight: 700; padding: 14px 32px; border-radius: 100px; text-decoration: none; box-shadow: 0 8px 24px rgba(58,173,223,.4); transition: transform .2s, box-shadow .2s; }
+    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(58,173,223,.5); }
+    .btn-sub { font-size: 13px; color: var(--sub); text-decoration: none; font-weight: 600; transition: color .2s; }
+    .btn-sub:hover { color: var(--white); }
+
+    /* 右：実績数字（ネイビー内） */
+    .stats-box { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; overflow: hidden; }
+    .s-item { background: rgba(255,255,255,.04); padding: 24px 22px; transition: background .2s; }
+    .s-item:hover { background: rgba(58,173,223,.08); }
+    .s-label { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--blue); margin-bottom: 8px; }
+    .s-num { font-family: var(--font-en); font-size: 38px; font-weight: 800; line-height: 1; letter-spacing: -.03em; color: var(--white); }
+    .s-num sup { font-size: 16px; font-weight: 700; }
+    .s-desc { font-size: 11.5px; color: var(--sub); margin-top: 4px; }
+
+    /* 下半分：白 — VC・認定 */
+    .hero-bottom { background: var(--white); padding: 32px 48px; }
+    .bottom-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+
+    .vc-pill { display: flex; align-items: center; gap: 12px; background: linear-gradient(135deg, rgba(58,173,223,.07), rgba(46,196,168,.07)); border: 1.5px solid rgba(58,173,223,.2); border-radius: 100px; padding: 12px 28px; }
+    .vc-pill .vl { font-size: 13px; color: #4A607A; font-weight: 600; }
+    .vc-pill .vn { font-family: var(--font-en); font-size: 22px; font-weight: 800; color: var(--blue); }
+    .vc-pill .vs { font-size: 12px; color: #4A607A; font-weight: 500; }
+
+    .cert { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #4A607A; }
+    .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); flex-shrink: 0; }
+
+    .label { position: fixed; bottom: 14px; right: 14px; background: var(--navy); color: #fff; font-family: var(--font-en); font-size: 10.5px; padding: 6px 12px; border-radius: 8px; opacity: .65; z-index: 999; }
+  </style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo">G<span>&amp;</span>N</div>
+  <nav class="hd-nav">
+    <a href="#">サービス</a><a href="#">実績</a><a href="#">提携VC</a><a href="#">会社概要</a>
+    <a href="#" class="hd-btn">無料相談する</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="grid-lines"></div>
+    <div class="nd nd-1"></div><div class="nd nd-2"></div>
+    <div class="inner-top">
+      <div>
+        <div class="tag"><span class="tag-dot"></span>スタートアップ向け 補助金・助成金支援</div>
+        <h1>挑戦する<em>スタートアップ</em>に、<br>補助金という<em>追い風</em>を。</h1>
+        <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。<br>G&amp;Nは補助金のプロとして、投資を受けたスタートアップの<br>次のステージを共に切り開きます。</p>
+        <div class="cta-row">
+          <a href="#" class="btn-main">まずは無料相談（1時間）</a>
+          <a href="#" class="btn-sub">サービス詳細 →</a>
+        </div>
+      </div>
+      <div class="stats-box">
+        <div class="s-item"><div class="s-label">SUBSIDY</div><div class="s-num">1,200<sup>社</sup></div><div class="s-desc">補助金 支援実績</div></div>
+        <div class="s-item"><div class="s-label">ADOPTION</div><div class="s-num">800<sup>件</sup></div><div class="s-desc">採択件数</div></div>
+        <div class="s-item"><div class="s-label">TOTAL</div><div class="s-num">200<sup>億円</sup></div><div class="s-desc">総調達額</div></div>
+        <div class="s-item"><div class="s-label">MONODUKURI</div><div class="s-num">279<sup>件</sup></div><div class="s-desc">ものづくり補助金採択</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="bottom-inner">
+      <div class="vc-pill">
+        <span class="vl">提携VC</span>
+        <span class="vn">50社以上</span>
+        <span class="vs">｜VC紹介先は着手金無料</span>
+      </div>
+      <div class="cert"><span class="cert-dot"></span>認定経営革新等支援機関（関東認支2639号）</div>
+    </div>
+  </div>
+</section>
+<div class="label">Pattern B — ネイビー×白 2トーン</div>
+</body>
+</html>

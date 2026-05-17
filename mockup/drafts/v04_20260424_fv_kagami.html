@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G&N FV v04 — kagami準拠｜縦型シングル+フローティングカード</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#3B7CE4; --blue-lt:#8BB5F2; --blue-bg:#E6F0FF;
+  --navy:#15275A; --sub:#5A6A90;
+  --white:#fff;
+  --max-w:1240px;
+  --ja:'Noto Sans JP',sans-serif; --en:'Inter',sans-serif;
+}
+body{font-family:var(--ja);color:var(--navy);background:var(--white);-webkit-font-smoothing:antialiased}
+
+.hd{position:fixed;inset:0 0 auto;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px)}
+.hd-logo{display:flex;align-items:center;color:var(--navy)}
+.hd-logo .logo-svg{height:28px;width:auto;display:block}
+.hd-right{display:flex;gap:14px;align-items:center}
+.hd-nav{display:flex;gap:22px;margin-right:10px}
+.hd-nav a{font-size:13px;color:var(--sub);text-decoration:none;font-weight:500}
+.btn-dl{font-size:13px;font-weight:700;color:var(--blue);border:1.5px solid var(--blue);padding:7px 16px;border-radius:6px;text-decoration:none}
+.btn-ct{font-size:13px;font-weight:700;background:var(--blue);color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none}
+
+/* HERO：縦型・中央集中 */
+.hero{min-height:100vh;background:linear-gradient(180deg,#fff 0%,#EAF3FF 48%,#D7E7FF 100%);position:relative;overflow:hidden;padding:100px 0 40px}
+
+/* 背景装飾：複数の円 */
+.cir{position:absolute;border-radius:50%;pointer-events:none}
+.cir1{width:620px;height:620px;background:radial-gradient(circle,rgba(59,124,228,.08),transparent 70%);top:-180px;left:-180px}
+.cir2{width:480px;height:480px;background:radial-gradient(circle,rgba(59,124,228,.06),transparent 70%);bottom:-140px;right:-120px}
+
+.center{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:40px 40px 60px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--en);font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--blue);background:rgba(59,124,228,.1);padding:8px 16px;border-radius:100px;margin-bottom:32px}
+.eyebrow span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+h1{font-size:64px;font-weight:900;line-height:1.22;letter-spacing:-.03em;color:var(--navy);margin-bottom:28px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--blue),var(--blue-lt));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.sub{font-size:16px;line-height:1.95;color:var(--sub);max-width:680px;margin:0 auto 44px}
+
+.cta-inline{display:inline-flex;gap:14px;margin-bottom:28px}
+.btn-pri{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;font-size:15px;font-weight:700;padding:16px 32px;border-radius:100px;text-decoration:none;box-shadow:0 10px 30px rgba(21,39,90,.25)}
+.btn-sec{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.8);color:var(--navy);font-size:15px;font-weight:700;padding:16px 32px;border-radius:100px;text-decoration:none;border:1.5px solid var(--navy)}
+
+.cert-inline{font-size:12px;color:var(--sub);display:inline-flex;align-items:center;gap:6px}
+.cert-inline::before{content:'✓';color:var(--blue);font-weight:700}
+
+/* 浮遊カード列（下部） */
+.cards-float{position:relative;z-index:1;max-width:var(--max-w);margin:40px auto 0;padding:0 40px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.card{background:#fff;border:1px solid rgba(59,124,228,.15);border-radius:14px;padding:24px 20px;box-shadow:0 10px 30px rgba(21,39,90,.08);position:relative}
+.card:nth-child(1){transform:translateY(0)}
+.card:nth-child(2){transform:translateY(18px)}
+.card:nth-child(3){transform:translateY(0)}
+.card:nth-child(4){transform:translateY(22px)}
+.card:nth-child(5){transform:translateY(6px)}
+.card.vc{background:linear-gradient(135deg,var(--blue),var(--navy));color:#fff;border:none}
+.c-lbl{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.15em;color:var(--blue);margin-bottom:10px;text-transform:uppercase}
+.card.vc .c-lbl{color:rgba(255,255,255,.7)}
+.c-num{font-family:var(--en);font-size:36px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--navy);margin-bottom:6px}
+.c-num sup{font-size:14px;font-weight:700}
+.card.vc .c-num{color:#fff}
+.c-desc{font-size:12px;color:var(--sub);line-height:1.6}
+.card.vc .c-desc{color:rgba(255,255,255,.82)}
+
+.label{position:fixed;bottom:14px;right:14px;background:var(--navy);color:#fff;font-family:var(--en);font-size:10.5px;padding:6px 12px;border-radius:6px;opacity:.7;z-index:999}
+</style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-logo"><svg class="logo-svg" viewBox="0 0 181.61 60" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="G&amp;N"><circle cx="30" cy="30" r="30"/><path d="M108.78,17.47l-5.38,5.32c-3.41-3.6-7.38-5.41-11.91-5.41c-3.95,0-7.27,1.31-9.93,3.93s-4,5.81-4,9.56c0,3.88,1.38,7.16,4.15,9.86c2.77,2.69,6.19,4.04,10.25,4.04c2.64,0,4.87-0.56,6.68-1.67c1.81-1.11,3.27-2.85,4.39-5.22H91.39v-7.18h20.21l0.06,1.69c0,3.51-0.91,6.84-2.73,9.99c-1.82,3.15-4.18,5.55-7.07,7.21c-2.9,1.66-6.29,2.48-10.19,2.48c-4.17,0-7.89-0.9-11.15-2.72c-3.27-1.81-5.85-4.39-7.75-7.74c-1.9-3.35-2.85-6.96-2.85-10.84c0-5.32,1.76-9.94,5.27-13.87c4.17-4.68,9.59-7.02,16.27-7.02c3.49,0,6.76,0.65,9.8,1.94C103.81,12.94,106.33,14.82,108.78,17.47z"/><path d="M138.14,36.13l3.68,4.22l-1.67,1.52l-1.65,1.5l5.21,5.52h-7.49l-2.14-2.21c-3.41,2.02-6.59,3.02-9.51,3.02c-2.49,0-4.5-0.73-6.04-2.18c-1.54-1.46-2.31-3.33-2.31-5.61c0-1.72,0.44-3.35,1.31-4.88c0.87-1.53,2.36-3.11,4.47-4.75c-2.09-2.81-3.13-5.3-3.13-7.46c0-1.6,0.69-3.19,2.07-4.75c1.38-1.56,3.33-2.34,5.85-2.34c2.55,0,4.5,0.77,5.86,2.32c1.36,1.55,2.04,3.11,2.04,4.68c0,1.24-0.31,2.42-0.94,3.55c-0.62,1.13-2.06,2.81-4.31,5.03c2.63,3.11,4.34,5.04,5.1,5.81C135.02,38.78,136.22,37.78,138.14,36.13z M130.08,42.39c-1.14-1.12-2.74-2.97-4.8-5.55c-2.18,1.81-3.27,3.39-3.27,4.75c0,0.63,0.3,1.21,0.89,1.74c0.59,0.53,1.35,0.79,2.26,0.79C126.47,44.12,128.11,43.54,130.08,42.39z M126.4,28.98c1.63-1.4,2.45-2.63,2.45-3.71c0-0.56-0.18-1.02-0.55-1.37c-0.37-0.35-0.85-0.53-1.46-0.53c-0.56,0-1.03,0.2-1.42,0.6c-0.39,0.4-0.58,0.86-0.58,1.39C124.83,26.42,125.35,27.63,126.4,28.98z"/><path d="M149.44,10.92h7.33l17.19,26.43V10.92h7.65v40.17h-7.35l-17.17-26.35v26.35h-7.65V10.92z"/><path fill="#fff" d="M29.98,25.56l-7.13,6.63h13.33l-6.47,5.93l-8.4-3.62l-3.61-6.97l5.44-7.91L45.4,8.22l-2.44-0.03L29.71,7.8l-7.45,10.83L3.43,28.21l16.94,7.3l9.41,18.17L49.6,21.93L29.98,25.56z M30.38,9.11L40.4,9.4L24.67,17.4L30.38,9.11z M16.59,26.87l-8.63,0.48l12.77-6.5L16.59,26.87z M7.71,28.65l8.85-0.49l2.87,5.54L7.71,28.65z M37.8,30.74l-5.92-4.22l14.09-2.61L37.8,30.74z M30.33,26.99l5.49,3.92h-9.7L30.33,26.99z M38.25,32.04l7.35-6.14L30.48,50.13V39.16L38.25,32.04z M29.19,39.3v10.43l-6.95-13.43L29.19,39.3z"/></svg></div>
+  <div class="hd-right">
+    <nav class="hd-nav"><a href="#">サービス</a><a href="#">実績</a><a href="#">提携VC</a><a href="#">FAQ</a></nav>
+    <a href="#" class="btn-dl">資料DL</a>
+    <a href="#" class="btn-ct">無料相談</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="cir cir1"></div>
+  <div class="cir cir2"></div>
+
+  <div class="center">
+    <div class="eyebrow"><span></span>FOR SEED to SERIES A STARTUPS</div>
+    <h1>挑戦するスタートアップに、<br><em>補助金</em>という<em>追い風</em>を。</h1>
+    <p class="sub">投資家が認めたビジネスには、国も応援する制度がある。G&amp;Nは補助金のプロとして、投資を受けたスタートアップの次のステージを共に切り開きます。</p>
+    <div class="cta-inline">
+      <a href="#" class="btn-pri">1時間で最適な制度を提案 →</a>
+      <a href="#" class="btn-sec">資料ダウンロード</a>
+    </div>
+    <div class="cert-inline">認定経営革新等支援機関（関東認支2639号）</div>
+  </div>
+
+  <div class="cards-float">
+    <div class="card"><div class="c-lbl">Support</div><div class="c-num">1,200<sup>社</sup></div><div class="c-desc">補助金 支援実績</div></div>
+    <div class="card"><div class="c-lbl">Approved</div><div class="c-num">800<sup>件</sup></div><div class="c-desc">採択件数</div></div>
+    <div class="card"><div class="c-lbl">Funded</div><div class="c-num">200<sup>億円</sup></div><div class="c-desc">総調達額</div></div>
+    <div class="card"><div class="c-lbl">Mono. Subsidy</div><div class="c-num">279<sup>件</sup></div><div class="c-desc">ものづくり採択</div></div>
+    <div class="card vc"><div class="c-lbl">VC Partners</div><div class="c-num">50<sup>+</sup></div><div class="c-desc">提携VC紹介先は着手金無料</div></div>
+  </div>
+</section>
+
+<div class="label">v04 / azalea — kagami準拠（縦型+フローティングカード）</div>
+</body>
+</html>
