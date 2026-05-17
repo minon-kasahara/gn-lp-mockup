@@ -52,6 +52,19 @@
 - kasahara 実行分（移管リクエスト受領後）: ①移管承諾 ②azaleak1001 を collaborator(write) 再追加 ③Pages 再有効化 ④remote 付替 — 詳細プロンプトは別途連携
 - 解除条件: 移管完了・Pages 再有効化・新URL検証・両 remote 付替が完了したら本 BLOCKER 解除
 
+### 2026-05-18 21:45 [DONE] azalea
+- 対象: GitHub transfer 発行 + `handoff_to_kasahara.md` §A-3（移管承諾プロンプト）
+- 実施内容:
+  - 凍結通知を push（commit 492771b・両セッション push 凍結周知）
+  - `gh api -X POST repos/azaleak1001/gn-lp-mockup/transfer -f new_owner=minon-kasahara` 発行
+  - 現状: repo は azaleak1001 所有のまま（user→user 移管は**受領側 minon-kasahara の承諾が必要**・正常な pending 状態）
+  - handoff_to_kasahara.md に **§A-3 リポジトリ移管・承諾プロンプト**を新設（kasahara が実施する 7 手順: 承諾 → 所有確認 → azaleak1001 collaborator 再追加 → Pages 再有効化 → 新URL検証 → remote 付替 → activity_log 記録）
+  - T018 進捗トラッキング・チェックリストを §A-3 末尾に設置
+- azalea 完了分: runbook 手順 1〜2（凍結通知 + transfer 発行）
+- kasahara 待ち: 移管承諾以降（手順 3〜）。承諾までは repo 所有 azaleak1001 のまま・公開URLも現状維持
+- ⚠️ BLOCKER 継続: 移管完了まで両セッション push 凍結。kasahara が承諾・再設定 → azalea が collaborator 承諾・doc 更新 → BLOCKER 解除
+- 次アクション: ユーザーが kasahara に §A-3 プロンプト連携 → kasahara 承諾・再設定 → azalea が後処理
+
 ### 2026-05-18 21:38 [INTENT] azalea
 - 対象: GitHub `azaleak1001/gn-lp-mockup` の transfer 発行（new_owner=minon-kasahara）
 - 内容: handoff §E runbook 手順 1〜2 を azalea が実行。手順 3 以降（承諾・collaborator 再追加・Pages 再有効化・remote 付替）は kasahara 操作のため引き継ぎプロンプトを作成

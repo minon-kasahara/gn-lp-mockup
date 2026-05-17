@@ -125,6 +125,73 @@
 
 ---
 
+## §A-3. リポジトリ移管・承諾プロンプト（2026-05-18・kasahara へ即連携）
+
+> 📋 **T018 実行中。このブロックを kasahara セッションに今すぐ連携してください**
+
+---
+
+```
+【リポジトリ移管・あなたの操作が必要です】
+
+azalea が azaleak1001/gn-lp-mockup → minon-kasahara/gn-lp-mockup への移管リクエストを発行しました（2026-05-18）。完了にはあなた（minon-kasahara）の操作が必要です。
+
+## ⚠️ 重要
+
+- 移管完了まで push しないこと（activity_log の [BLOCKER] 21:40 参照）
+- 以下を順番に実施してください
+
+## あなたが実施する手順
+
+1. 移管リクエストを承諾
+   - ブラウザ: https://github.com/minon-kasahara → 通知、または受信メール「azaleak1001 invited you to accept ... gn-lp-mockup」のリンクから Accept
+   - 承諾すると repo は minon-kasahara/gn-lp-mockup になる
+
+2. 承諾後、repo 所有を確認
+   gh api repos/minon-kasahara/gn-lp-mockup --jq '.full_name'
+   → "minon-kasahara/gn-lp-mockup" が返れば移管成功
+
+3. azaleak1001 を collaborator(write) に再追加（azalea が push 継続できるように）
+   gh api -X PUT repos/minon-kasahara/gn-lp-mockup/collaborators/azaleak1001 -f permission=push
+   → invitation が発行される（azalea 側で承諾する。kasahara は invitation 発行までで OK）
+
+4. GitHub Pages を Actions ソースで再有効化（移管で設定が外れるため必須）
+   gh api -X PUT repos/minon-kasahara/gn-lp-mockup/pages -f build_type=workflow
+   gh workflow run deploy.yml --repo minon-kasahara/gn-lp-mockup
+
+5. デプロイ確認（1〜3分後）
+   gh run list --repo minon-kasahara/gn-lp-mockup --limit 1
+   curl -sI https://minon-kasahara.github.io/gn-lp-mockup/   → HTTP 200 期待
+
+6. ローカルクローンの remote 付替
+   cd ~/gn-lp-mockup
+   git remote set-url origin https://github.com/minon-kasahara/gn-lp-mockup.git
+   git pull origin main -q
+
+7. activity_log.md に [DONE] kasahara で移管完了を記録（承諾・Pages再有効化・新URL検証の結果）し commit/push
+
+## 完了したら azalea に連携
+
+- 「移管承諾・Pages再有効化・新URL(https://minon-kasahara.github.io/gn-lp-mockup/) 検証 OK」を報告
+- azalea 側で azaleak1001 collaborator invitation を承諾し、remote 付替・ドキュメント一括更新・[BLOCKER] 解除を実施
+```
+
+---
+
+### T018 進捗トラッキング（azalea 記入）
+
+- [x] azalea: 凍結通知 push（commit 492771b）
+- [x] azalea: `gh api transfer` 発行（new_owner=minon-kasahara・承諾待ち）
+- [ ] kasahara: 移管承諾
+- [ ] kasahara: azaleak1001 を collaborator(write) 再追加
+- [ ] kasahara: Pages 再有効化 + 新URL検証
+- [ ] kasahara: 両 remote 付替
+- [ ] azalea: collaborator invitation 承諾 + remote 付替
+- [ ] azalea: ドキュメント一括更新（azaleak1001→minon-kasahara）+ [BLOCKER] 解除
+- [ ] 外部レビュアーへ新 URL 再共有
+
+---
+
 ## §A-2. git 切替・緊急周知プロンプト（2026-05-18・kasahara へ即連携）
 
 > 📋 **このブロックを kasahara セッションに今すぐ連携してください**（ソース管理が GitHub に移行したため）
