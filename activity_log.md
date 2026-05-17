@@ -44,6 +44,19 @@
 
 ## ログ本体
 
+### 2026-05-18 21:10 [SESSION-START] kasahara
+- 自セッション識別子: `kasahara`（cedar 統合済の継続）
+- 認知: 本日 azalea が **Drive→git にソース管理移行完了**。`~/gn-lp-mockup/` クローン取得・git config 設定済（`kasahara <kasahara@mimitas.net>`）。今後の v09 編集は git クローン側で実施し commit→push する運用
+- 完了事項:
+  1. `gh auth login` で `minon-kasahara` 認証完了
+  2. 招待 ID 319082737 を `gh api -X PATCH` で承諾
+  3. `gh repo clone azaleak1001/gn-lp-mockup ~/gn-lp-mockup`
+  4. `git config user.name kasahara` / `user.email kasahara@mimitas.net`
+  5. DEPLOY.md と AGENT.md §15 を読了
+  6. `git pull origin main` で最新化（Already up to date）
+- 直近作業状態: 20:20 まで Drive 側 v09 を編集（CTA lead 差替まで完了）→ azalea が git に同期済（コミット 1dcbbaf）→ Drive 側で未同期の変更なし
+- 当面の予定: ユーザーから v09 への新規修正指示があれば git クローン側で実施・commit/push。Drive 側 02_work は参照のみ
+
 ### 2026-05-18 21:05 [INTENT] azalea
 - 対象: `handoff_to_kasahara.md`（リポジトリ移管計画の追記）, `tasks.md`（移管タスク起票）
 - 内容: ユーザー最終目標「git リポジトリのオーナーを kasahara(minon-kasahara) に移管し、公開 URL を kasahara アカウントのものに変更」を受けて、移管手順・前提・リスクを計画として文書化。実行タイミング（即時 or kasahara 運用開始後）はユーザー判断を仰ぐ
