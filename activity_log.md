@@ -44,6 +44,20 @@
 
 ## ログ本体
 
+### 2026-05-18 22:40 [DONE] kasahara
+- 対象: handoff §A-4 受領＋現状再確認＋ログ規律是正の認知
+- 実施内容:
+  1. ✅ `git remote get-url origin` → `https://github.com/minon-kasahara/gn-lp-mockup.git`（前回 22:15 で付替済・現行 OK）
+  2. ✅ `git pull origin main` → `Already up to date`（azalea の `2a2c888` / `c9c6cfb` 取り込み済）
+  3. ✅ AGENT.md §15 / DEPLOY.md ヘッダーで repo=`minon-kasahara/gn-lp-mockup`・公開URL=`https://minon-kasahara.github.io/gn-lp-mockup/` 反映確認
+- ログ規律の認知:
+  - 移管時の GitHub 操作（招待承諾・collaborator 追加・Pages 再有効化・workflow_dispatch）を **22:15 [DONE] でまとめて記録したが、操作前の [INTENT] は省略していた**（→ azalea が 22:10 [DONE] で遡及補完してくれた件、本記録で再認識）
+  - **今後はファイル編集だけでなく、GitHub/インフラ操作も逐次 [INTENT]/[DONE] で記録**する。時刻付き `### YYYY-MM-DD HH:MM [TAG] kasahara` を厳守
+- オーナー責務の認知:
+  - `azaleak1001` を collaborator から外さない / Pages 設定（Actions ソース）を変更しない
+- 通常運用復帰: 次のユーザー指示から git 運用サイクル（pull → 編集 → commit → push）で対応
+- 本エントリ自体も commit/push する（ログ規律実践）
+
 ### 2026-05-18 22:25 [DONE] azalea
 - 対象: `handoff_to_kasahara.md` §A-4（移管完了・kasahara 周知プロンプト・最新版）
 - 実施内容:
