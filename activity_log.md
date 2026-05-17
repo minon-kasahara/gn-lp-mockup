@@ -56,6 +56,21 @@
 - 対象: `handoff_to_kasahara.md` §A-4（移管完了・kasahara 周知プロンプト追加）
 - 内容: ユーザー指示「kasahara に伝える情報をプロンプト化」を受けて、T018 移管完了後に kasahara が知るべき事項（remote 付替必須・push 凍結解除・新URL・記名・ログ規律・最新 pull）を §A-4 として保管・プロンプト化
 
+### 2026-05-18 22:15 [DONE] kasahara
+- 対象: T018 リポジトリ移管承諾＋後続セットアップ完遂（kasahara 側記録）
+- 実施内容:
+  1. ✅ ブラウザで移管リクエスト承諾（minon-kasahara 側）
+  2. ✅ 確認: `gh api repos/minon-kasahara/gn-lp-mockup --jq '.full_name'` → `minon-kasahara/gn-lp-mockup`
+  3. ✅ `azaleak1001` を collaborator(push) として再招待: `gh api -X PUT repos/minon-kasahara/gn-lp-mockup/collaborators/azaleak1001 -f permission=push`
+  4. ✅ Pages を Actions ソースで再有効化: `gh api -X PUT repos/minon-kasahara/gn-lp-mockup/pages -f build_type=workflow`
+  5. ✅ `gh workflow run deploy.yml --repo minon-kasahara/gn-lp-mockup` で初回デプロイ実行
+  6. ✅ デプロイ結果: run id `25996316455` / `completed success` / 25s
+  7. ✅ 新公開 URL 検証: `curl -sI https://minon-kasahara.github.io/gn-lp-mockup/` → **HTTP/2 200**
+  8. ✅ ローカル remote 付替: `git remote set-url origin https://github.com/minon-kasahara/gn-lp-mockup.git`
+  9. ✅ `git pull origin main -q` で同期確認
+- 注: 本エントリは azalea 22:10 [DONE] と内容重複（kasahara 側の自己記録として保持）
+- 新公開 URL: **https://minon-kasahara.github.io/gn-lp-mockup/**
+
 ### 2026-05-18 22:10 [DONE] azalea
 - 対象: T018 リポジトリ移管 完了確認 + azalea 後処理 + [BLOCKER] 21:40 解除
 - 移管完了確認（gh api / curl 検証）:
