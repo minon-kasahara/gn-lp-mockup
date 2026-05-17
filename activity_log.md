@@ -44,6 +44,18 @@
 
 ## ログ本体
 
+### 2026-05-18 21:40 [BLOCKER] azalea
+- 対象: T018 リポジトリ移管作業中 — **両セッション push 凍結**
+- 状況: ユーザー指示により T018（`azaleak1001/gn-lp-mockup` → `minon-kasahara/gn-lp-mockup` 移管）を実行開始
+- 🚫 **kasahara への依頼: 移管完了まで push しないこと**（コンフリクト/ロスト防止）
+- azalea 実行分: 凍結通知 push → `gh api transfer` 発行
+- kasahara 実行分（移管リクエスト受領後）: ①移管承諾 ②azaleak1001 を collaborator(write) 再追加 ③Pages 再有効化 ④remote 付替 — 詳細プロンプトは別途連携
+- 解除条件: 移管完了・Pages 再有効化・新URL検証・両 remote 付替が完了したら本 BLOCKER 解除
+
+### 2026-05-18 21:38 [INTENT] azalea
+- 対象: GitHub `azaleak1001/gn-lp-mockup` の transfer 発行（new_owner=minon-kasahara）
+- 内容: handoff §E runbook 手順 1〜2 を azalea が実行。手順 3 以降（承諾・collaborator 再追加・Pages 再有効化・remote 付替）は kasahara 操作のため引き継ぎプロンプトを作成
+
 ### 2026-05-18 21:30 [DONE] azalea
 - 対象: activity_log 乖離の解消 + azalea の git クローン運用への移行完了
 - 状況確認:
