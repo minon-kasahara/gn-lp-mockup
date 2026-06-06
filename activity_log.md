@@ -44,6 +44,18 @@
 
 ## ログ本体
 
+### 2026-06-06 15:20 [DONE] kasahara
+- 対象: `mockup/drafts/archives/v09_20260606_old.html`（新規・旧版凍結スナップショット）
+- 実施内容:
+  - **バージョン管理方式 A（アーカイブフォルダ方式）開始**
+  - `mockup/drafts/archives/` 新規作成
+  - 現状の `v09_20260424_full_castme-hubblecolor.html`（前回 commit `62a8a19` の状態）を `v09_20260606_old.html` として archives/ にコピー（凍結）
+- バージョン管理ルール:
+  - **live ファイル**: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（編集を続ける唯一のファイル・GitHub Actions が deploy 対象）
+  - **アーカイブ**: `archives/v10_noX_YYYYMMDD.html` 形式で各更新後にスナップショット保存
+  - 次の更新（課題管理表 No.27「記述品質」削除取りこぼし + No.20「フッター住所 1 行化」）は **v10 no.1** として進める
+- 旧版（`v09_20260606_old.html`）の内容: 課題管理表 No.3/5/6/7/11/21/22/23/25/26/28 まで対応済（前回 commit `62a8a19`）
+
 ### 2026-05-18 23:10 [DONE] kasahara
 - 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html` 8 箇所
 - 実施内容:
