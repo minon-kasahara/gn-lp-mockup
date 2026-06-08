@@ -44,7 +44,30 @@
 
 ## ログ本体
 
-### 2026-06-08 [DONE] kasahara
+### 2026-06-08 [DONE] kasahara — v10 no.3
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・CSS全置換+HTML差替）
+  - `mockup/drafts/archives/v10_no3_20260608.html`（新規スナップショット）
+- 実施内容:
+  - CSS `.float-perk` 系を全面書き換え（dark navy 単色カード → **白カード型 + 暗背景ビジュアル部 + テキスト部の 2 ブロック構造**）
+  - HTML 構造を 2 セクション化: `<div class="float-perk-visual">`（暗背景・0円表記）+ `<div class="float-perk-body">`（白背景・タイトル/説明文/CTA）
+  - サイズ 280px → **340px** に拡大
+  - × ボタンは右上維持・ホバーで 90deg 回転
+  - SP（≤767px）: bottom/right/left:12px で下部全幅カードに変形・各サイズ縮小
+- 効果: anyflow.jp の参考デザインに近い「白基調・縦長カード型」フローティング CTA に変更。情報量増加（タイトル + 説明文）でクリック前の認知性向上
+
+### 2026-06-08 [INTENT] kasahara（v10 no.3）
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no3_20260608.html` 予定
+- 内容: 課題管理表 **No.10** リデザイン（v10 no.3）— ユーザー提示の anyflow.jp スクショに合わせて、ダークバッジ型 → **白カード型大きめ**に変更
+- 設計変更:
+  - 背景: dark navy → **白**
+  - サイズ: 280px → **340px** 幅・縦長カード
+  - 構成: 画像/ビジュアル部 + タイトル太字 + 説明文 + 青 CTA ボタン
+  - 影: 更に深く（影を強くしてカードが浮く感じ）
+  - 黄色アクセント（0円の数字）は維持
+  - × ボタン位置はそのまま右上
+
+### 2026-06-08 [DONE] kasahara（前 v10 no.2）
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・3 箇所追加）
   - `mockup/drafts/archives/v10_no2_20260608.html`（新規スナップショット）
