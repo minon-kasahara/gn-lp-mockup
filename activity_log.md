@@ -44,6 +44,39 @@
 
 ## ログ本体
 
+### 2026-06-08 [DONE] kasahara
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・3 箇所追加）
+  - `mockup/drafts/archives/v10_no2_20260608.html`（新規スナップショット）
+- 実施内容（v10 no.2 — 課題管理表 No.10 対応）:
+  1. ✅ CSS `</style>` 直前に `.float-perk` 系定義（約 110 行）追加
+     - 固定位置: bottom:24px / right:24px / z-index:90
+     - サイズ: 280px 幅・navy グラデ背景・黄色アクセント
+     - 構成: 閉じる × / VC投資先特典タグ / 「提携VC紹介で 0円」見出し / 無料相談 CTA
+     - SP（≤767px）: bottom/left/right:12px で下部固定バーに変形
+  2. ✅ `</body>` 直前に `<aside class="float-perk" id="floatPerk">` 要素追加
+  3. ✅ 表示制御 JS（IIFE）追加:
+     - scrollY > 600px で `is-visible` クラス付与（fadeIn）
+     - `#cta` セクションが画面 60% に入ったら自動非表示
+     - × ボタンクリックで dismiss（セッション内永続）
+     - scroll/resize リスナー（passive）
+- 効果: Hero を過ぎたあたりから右下に「着手金0円」フローティング CTA が常時追従。最終 CTA エリアでは自然に消える設計
+- 課題管理表 対応状況: **14/27 完了**（No.10 追加）
+- 残: 13 件（うち No.17 情報のみ）
+
+### 2026-06-08 [INTENT] kasahara
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+- 内容: 課題管理表 **No.10** 対応 — 着手金0円バナーの右下フローティング版を新規追加（v10 no.2）
+- 設計:
+  - 右下固定 fixed（bottom:24px / right:24px / z-index:90）
+  - 約 280px 幅のコンパクトカード
+  - navy グラデ背景 + 黄色アクセント（in-section perk-banner と統一感）
+  - コンテンツ: 「VC投資先特典」ラベル / 「着手金 0円」見出し / 「無料相談 →」CTA / × ボタン
+  - 表示制御 JS: スクロール 600px 以上で fadeIn、× で hide、`#cta` 表示時に非表示
+  - SP（≤767px）: 下部固定バーに変形
+- 編集後: `archives/v10_no2_20260608.html` にスナップショット保存
+- 参考: ユーザー指定 https://anyflow.jp/ （SaaS 系 LP のフローティング CTA パターン）
+
 ### 2026-06-06 15:35 [DONE] kasahara
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・2 箇所編集）
