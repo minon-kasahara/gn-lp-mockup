@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.50
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no50_20260610.html
+- 内容: 右パネル見出しの強調「着手金0円」(.vp-headline em) を、FVの「1,200」(hero-eyebrow strong = var(--blue)) と同色に統一。青→紺グラデを単色 var(--blue) に変更。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.49
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no49_20260610.html
 - 内容: 対応制度カード(.svc-card)のボックスデザインを、上のサービス特徴カード(.appr-card)に統一。border:2px solid var(--ink) を付与、box-shadow と上部5pxアクセントバー(::before)を撤去、hover translateY(-4px) を追加。番号バッジ(svc-icon)等の中身は維持。
