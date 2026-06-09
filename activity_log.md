@@ -44,6 +44,23 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.39
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no39_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指摘「ヘッダー全然ダメ。装飾が上端に張り付き、スラッシュも違和感」）:
+  1. `.hd-cta` の壊れたレイアウト整理:
+     - `height:100%`, `padding:14px 0`, `justify-content:flex-end` 全部撤去
+     - シンプルに `flex-direction:column; align-items:flex-end; gap:5px` のみ
+  2. `.hd-cta-deco` も lw-label と同じ**構造ベース**の修正:
+     - 内側 `<span>` 廃止 → 装飾はテキスト要素にダイレクトに `padding:0 16px`
+     - スラッシュを `top:50%` ではなく `bottom:0` + `transform-origin: right/left bottom` で**文字下端**揃え
+     - line-height:1 で箱を文字ぴったりに
+  3. ヘッダー高さ 78px は維持（自然な余白）
+  4. `margin-bottom:-3px` 廃止 → flex gap で制御
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.38
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
