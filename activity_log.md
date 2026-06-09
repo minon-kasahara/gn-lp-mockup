@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.52
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no52_20260610.html
+- 内容: 全CTAボタンの青→紺グラデを単色 var(--blue) に統一。対象: .btn-gra(ヘッダー)/.cta-pri/.vp-cta-btn(FVフォーム)/.form button(下部フォーム)/.float-perk-cta(フローティング)。hover(黄色等)は維持。装飾用グラデ(数字/バッジ/アイコン等)は対象外。
+- 検証: preview で確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.51
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no51_20260610.html
 - 内容: 対応制度セクションのリード文(.lead)を文言修正。「弊社は資金調達×公的制度活用を内製化して専門的に行う、スタートアップ向けの支援ファームです。制度を組み合わせて、キャッシュポジションを最大化できるようご提案いたします。」に変更。
