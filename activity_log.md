@@ -44,6 +44,16 @@
 
 ## ログ本体
 
+### 2026-06-09 [INTENT] kasahara — v10 no.11
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no11_20260609.html` 予定
+- 内容: 課題管理表 **No.17** 対応 — Cases セクションを Chatwork（go.chatwork.com/ja/）参考の 導入事例風カードに刷新
+- 設計:
+  - 各カード上部に 企業アバター + 匿名社名（株式会社 A / B / C）+ 業種・ステージ・規模メタ情報
+  - クォート部にクォートマーク装飾 + 発言者役職（CFO / CEO 等）
+  - フッターに 採択額（既存）+ 活用制度 タグを表示
+  - リード文に「※社名は匿名化、採択額は実績値」明示（No.16 関連）
+- 注: 仮の匿名社名・役職。バイネーム実例化（No.17）はクライアント情報受領後に差し替え
+
 ### 2026-06-09 [DONE] kasahara — v10 no.10
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
