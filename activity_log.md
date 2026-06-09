@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.59
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 各セクション見出し上のピル型バッジ(.pill 計7個: 本サービスの特徴/サービス/実績/提携VC/事例/よくあるご質問/お問い合わせ)を全廃止。HTML要素ごと削除。CSS(.pill ルール)は未使用化のため残置(無害)。
+- 検証: grep で .pill 残数0を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.58
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no58_20260610.html
 - 内容: セクション間の余白が広すぎる(CW比)ため上下paddingを圧縮。.sec 120→76、.sec-head mb 72→44、.vc-sec 140→84、.cta-section 120→84、.sec-bridge 80/40→52/28、.record pt 80→52。タブレット(≤1024)の .sec/.vc-sec/.cta-section 96→64。SP(64)は据え置き。
