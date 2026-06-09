@@ -44,6 +44,22 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.15
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no15_20260610.html`（新規スナップショット）
+- 実施内容（Chatwork URBIC 事例カードに準拠）:
+  1. ✅ カバー写真高さ 140px → 170px に拡大、overflow:hidden 削除（タグオーバーフロー許可）
+  2. ✅ 業種タグ位置: 写真右下角丸 → **写真左下・bottom:-12px で下に飛び出す**（白角丸スクエア・ボーダー + 影）
+  3. ✅ ボディ padding-top 24px（タグオーバーフロー分のクリアランス）
+  4. ✅ **横長ロゴ（180-200px幅）SVG**を新規追加 — `.c-logo-wide` クラス
+     - A 社: 青グラデ角丸 + 白「A」字パス + 「Alpha / TECHNOLOGIES」テキスト
+     - B 社: 濃紺サークル + 黄色「B」+ 「B-Studio / CONSUMER BRAND」テキスト
+     - C 社: ライト青角丸 + 濃紺「C」字パス + 「Cflow / FINTECH PLATFORM」テキスト
+  5. ✅ `.c-head` 削除、`.c-company` + `.c-industry` を独立した段落に
+  6. ✅ SP メディアクエリも縦間隔・ロゴ高さ調整
+- 効果: Chatwork の事例カードと同じ「写真 → タグ → 横長ロゴ → 社名 → 規模 → タイトル → クォート → 結果」の縦フロー
+
 ### 2026-06-10 [INTENT] kasahara — v10 no.15
 - 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no15_20260610.html` 予定
 - 内容: ユーザー指示でカード構造を Chatwork URBIC 事例カード通りに再配置
