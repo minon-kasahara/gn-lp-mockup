@@ -44,6 +44,16 @@
 
 ## ログ本体
 
+### 2026-06-09 [INTENT] kasahara — v10 no.12
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no12_20260609.html` 予定
+- 内容: 課題管理表 No.17 対応の続き — 導入事例カードに会社/担当者の写真（仮置き）を追加
+- 仕様:
+  - 各カード上部に **カバー画像**（140px tall）追加 — `https://picsum.photos/seed/XXX/640/280`（seed で固定）
+  - カバー右下に業種タグ（オーバーレイ）
+  - 担当者アバター（colored letter）→ **person photo**（`https://i.pravatar.cc/120?img=XX`）に変更
+  - アバターがカバーに少しオーバーラップ（白枠 + 影で浮き上がり感）
+- 画像は実数据受領後にローカル assets/cases/ に差し替え予定
+
 ### 2026-06-09 [DONE] kasahara — v10 no.11
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・Cases CSS+HTML 全面リライト）
