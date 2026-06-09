@@ -44,6 +44,20 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.21
+- 対象:
+  - `mockup/assets/cases/logo_a.png` 1536×1024 → **631×553** に余白トリム
+  - `mockup/assets/cases/logo_b.png` 1536×512 → **840×179** に余白トリム
+  - `mockup/assets/cases/logo_c.png` 1536×512 → **1408×315** に余白トリム
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no21_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「ロゴまだ小さい・切り抜いて大きく」）:
+  1. ✅ PIL ImageChops で白背景を自動検出してトリミング（pad 8px）
+  2. ✅ CSS `max-height:110px` / `max-width:88%`（縦/横どちらかに当たるまで拡大）
+  3. ✅ min-height:120px に拡大、上下マージン 20/24px
+  4. ✅ SP: max-height:88px / max-width:85% / min-height:96px
+- 効果: 画像内の余白が削減され、ロゴが実質 2 倍程度のサイズで表示
+
 ### 2026-06-10 [DONE] kasahara — v10 no.20
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
