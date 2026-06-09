@@ -44,6 +44,15 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.23
+- 対象:
+  - `mockup/assets/cases/case_c_cover.jpg`（新規・216 KB / 1200×919 / FINTECH 文字＋人物写真）
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no23_20260610.html`（新規スナップショット）
+- 実施内容:
+  - ユーザー添付の ChatGPT 生成画像（FINTECH 看板＋人物）を 1200w JPG（quality 85）で配置
+  - C 社カバーを picsum → `case_c_cover.jpg` に差替
+
 ### 2026-06-10 [DONE] kasahara — v10 no.22
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
