@@ -44,6 +44,20 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.41
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no41_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指摘2件）:
+  1. **ヘッダー装飾 中央揃え**: `.hd-cta` を `align-items:flex-end` → `align-items:center`（装飾が無料相談ボタンに対し左ずれしていたのを中央に）
+  2. **提携VCラベル「50」の浮き解消＋間隔調整**（CW「導入社数 98万社」参考）:
+     - `.lw-text` を `align-items:flex-end` → **`align-items:baseline`**（数字 50 を社以上と同じベースラインに乗せる。flex-end だと digit にディセンダーが無く上に浮いて見えた）
+     - `letter-spacing` .02em → .08em、`gap` 2px → 7px で文字間隔を広げる
+     - スラッシュ `bottom:0` → `bottom:2px`（ベースライン揃えに伴う箱下端のズレ分を微調整）
+     - SP も padding/bottom を比例調整
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.40
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
