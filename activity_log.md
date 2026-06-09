@@ -44,6 +44,17 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.20
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no20_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「ロゴまだ小さい・タグを CW のように黒枠に」）:
+  1. ✅ ロゴ img height: 64px → **88px**（SP: 54px → 72px）、max-width:90%、min-height:96px
+  2. ✅ 上下マージン拡大（16px/20px）
+  3. ✅ `.c-cover-tag` を **白背景 + 黒（#0F1A33）1.5px ボーダー + 黒文字**に変更（CW のアービック等の業種タグと同じスタイル）
+  4. ✅ タグ font-weight 900→700、letter-spacing 維持、padding 拡大
+- 効果: CW の事例カードと同じくロゴが大きく中央に・業種タグが黒枠で視認性向上
+
 ### 2026-06-10 [DONE] kasahara — v10 no.19
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
