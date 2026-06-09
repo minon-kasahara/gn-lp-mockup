@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.51
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no51_20260610.html
+- 内容: 対応制度セクションのリード文(.lead)を文言修正。「弊社は資金調達×公的制度活用を内製化して専門的に行う、スタートアップ向けの支援ファームです。制度を組み合わせて、キャッシュポジションを最大化できるようご提案いたします。」に変更。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.50
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no50_20260610.html
 - 内容: 右パネル見出しの強調「着手金0円」(.vp-headline em) を、FVの「1,200」(hero-eyebrow strong = var(--blue)) と同色に統一。青→紺グラデを単色 var(--blue) に変更。
