@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.53
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no53_20260610.html
+- 内容: (1) FV見出しのスイープアニメ終端を青一色に。.hero h1 em/.sweep のグラデ stops を blue 0-50%/navy 56%/ink 62-100% に変更（size220%・終端position0%で可視窓0-45%が全て青）。(2) 対応制度リード文を2行に。長文化で3行になっていたため当該<p>のみ inline max-width:700px(>半幅648px)で2行化（他の.leadに影響させない）。
+- 検証: preview で確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.52
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no52_20260610.html
 - 内容: 全CTAボタンの青→紺グラデを単色 var(--blue) に統一。対象: .btn-gra(ヘッダー)/.cta-pri/.vp-cta-btn(FVフォーム)/.form button(下部フォーム)/.float-perk-cta(フローティング)。hover(黄色等)は維持。装飾用グラデ(数字/バッジ/アイコン等)は対象外。
