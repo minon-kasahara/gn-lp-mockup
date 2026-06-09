@@ -44,6 +44,24 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.38
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/assets/cta_illust_woman.svg`（新規・電話＋PCの女性イラスト）
+  - `mockup/drafts/archives/v10_no38_20260610.html`（新規スナップショット）
+- 実施内容（**長年未解決だったスラッシュ浮き問題を構造から修正**＋イラスト差替）:
+  1. **`.lw-label` 完全リファクタ**:
+     - HTML を `<div class="lw-label"><span class="lw-text">提携VC<strong>50</strong>社以上</span></div>` に変更（内側 span 追加）
+     - `.lw-text` を `inline-flex; align-items:flex-end` にして 22px 文字と 30px strong の**視覚下端を一致**
+     - `.lw-label` の `line-height:1` で箱を文字ピッタリに（旧 `line-height:1.2` の余白を撲滅）
+     - `strong` の `position:relative;top:2px` ハック撤去
+     - スラッシュ `::before/::after` を `bottom:0` で **箱下端＝文字下端**に揃え
+     - `transform-origin` を `right bottom` / `left bottom` にして**スラッシュの先端（bottom tip）が文字下端と完全に一致**
+  2. **イラスト差替**: 自作の簡易 SVG → ユーザー提供の `19415_color.svg`（電話＋ノートPCの女性）を `<img>` で読み込み
+- これでスラッシュ＝文字下端が構造的に揃う（数値オフセットに依存しない）
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.37
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
