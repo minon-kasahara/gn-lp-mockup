@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.66
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 細部4点修正。①FVフォーム(vp-form)のラベル「お名前」→「担当者名」 ②下部CTAフォーム(.form)のサブ文「たった3項目で送信完了。」をトルツメ削除 ③「※は必須項目です」(.form .vp-req-note)を上下マージン18pxで余白中央へ再配置(左揃え維持、.form input:last-of-type の margin-bottom を0に) ④事例カード採択額の「万円」(.c-result-row.is-big .val sup)を vertical-align:7px→baseline に変更し数字と下揃え。
+- 検証: /tmp/gn-preview 再同期(../assets→assets書換)後reload。担当者名反映・sub消去・note上下gap各18px・万円の下端差8px→1px(下揃え) を preview_eval で確認。
+- 補足: 直前ユーザー報告「吹き出しが壊れてる」はローカル/デプロイ両方を768〜1280pxで検証し再現せず(全幅で正常・SVG 200)。デプロイ前/キャッシュ版の可能性が高くハードリロードを依頼済み。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.65
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: CTAイラスト吹き出しb1の文言を「どの補助金が使える？」→「この補助金はうちでも使える？」に変更。

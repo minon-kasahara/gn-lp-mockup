@@ -679,7 +679,7 @@ section{position:relative;overflow:hidden}
 .c-result-row .lbl{font-family:var(--ja);font-size:11px;font-weight:700;color:var(--sub);letter-spacing:.04em;flex-shrink:0}
 .c-result-row .val{font-family:var(--ja);font-size:12.5px;font-weight:800;color:var(--ink);text-align:right}
 .c-result-row.is-big .val{font-family:var(--en);font-size:24px;font-weight:900;color:var(--blue);letter-spacing:-.02em;line-height:1}
-.c-result-row.is-big .val sup{font-size:12px;font-weight:700;vertical-align:7px;margin-left:4px;color:var(--blue)}
+.c-result-row.is-big .val sup{font-size:12px;font-weight:700;vertical-align:baseline;margin-left:4px;color:var(--blue)}
 
 /* ============ FAQ SECTION ============ */
 .faq{background:linear-gradient(180deg,#fff 0%,var(--blue-bg) 18%,var(--blue-bg) 100%)}
@@ -745,6 +745,8 @@ section{position:relative;overflow:hidden}
 .form label em{font-style:normal;color:#E85252;font-size:10px;font-weight:900;margin-left:2px;vertical-align:1px}
 .form input{width:100%;padding:12px 0;border:none;border-bottom:1.5px solid var(--line-2);font-size:14.5px;color:var(--ink);font-family:var(--ja);background:transparent;margin-bottom:24px;outline:none;transition:border-color .2s}
 .form input:focus{border-bottom-color:var(--blue)}
+.form input:last-of-type{margin-bottom:0}
+.form .vp-req-note{margin:18px 0}
 .form button{position:relative;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--blue);color:#fff;font-size:15px;font-weight:800;padding:18px 64px 18px 36px;border:none;cursor:pointer;font-family:var(--ja);border-radius:100px;letter-spacing:.02em;transition:transform .2s;box-shadow:0 12px 28px rgba(74,125,232,.3)}
 .form button::after{content:'＞';position:absolute;right:14px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:1.5px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;padding-left:1px;font-weight:600}
 .form button:hover{background:var(--yellow);color:var(--ink);transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,209,102,.5)}
@@ -1323,7 +1325,7 @@ img{max-width:100%;height:auto}
           <input type="text" placeholder="例）株式会社G&amp;N" required>
         </label>
         <label class="vp-field">
-          <span class="vp-field-lbl">お名前 <em>※</em></span>
+          <span class="vp-field-lbl">担当者名 <em>※</em></span>
           <input type="text" placeholder="例）山田 太郎" required>
         </label>
         <label class="vp-field">
@@ -1694,7 +1696,6 @@ img{max-width:100%;height:auto}
     <form class="form" onsubmit="event.preventDefault()">
       <div class="form-inner">
         <h3>お問い合わせフォーム</h3>
-        <div class="sub">たった3項目で送信完了。</div>
         <label>会社名 <em>※</em></label>
         <input type="text" placeholder="株式会社〇〇" required>
         <label>担当者名 <em>※</em></label>
