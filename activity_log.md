@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.55
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 対応制度カードの番号ボックス(01〜04)の svc-icon を、c1〜c4 個別のグラデーション(青/ネイビー系)から全て var(--ink)(黒一色)に統一。白抜き文字はそのまま。
+- 検証: preview で確認予定。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.54
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no54_20260610.html
 - 内容: FVフォームCTA(.vp-cta-btn)のホバーを他CTAと同じ黄色に統一。hover を background:var(--yellow)/color:var(--ink)/translateY(-2px)/box-shadow rgba(255,209,102,.5) に変更（従来は青系brightness）。
