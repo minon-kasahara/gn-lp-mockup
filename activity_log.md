@@ -44,6 +44,27 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.8
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・3 ブロック化）
+  - `mockup/drafts/archives/v10_no8_20260609.html`（新規スナップショット）
+- 実施内容（ユーザー指示の構造化）:
+  1. ✅ サブテキストを上下 2 つに分割（`.float-perk-sub-top` 新規追加）
+  2. ✅ 構成順序を変更: 上テキスト「通常着手金 ~30〜50万円~ のところ」→ 着手金 0 円（大）→ 下テキスト「完全成功報酬にて対応」
+  3. ✅ 打ち消し線スタイルは上テキスト側へ移動
+- レイアウト:
+  ```
+  通常着手金 ~30〜50万円~ のところ
+       着手金 0 円
+  完全成功報酬にて対応
+  ```
+
+### 2026-06-09 [INTENT] kasahara — v10 no.8
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no8_20260609.html` 予定
+- 内容: ユーザー指示の構造に変更
+  - 「通常着手金30〜50万円のところ」 ↓ 「着手金 0 円」（大） ↓ 「完全成功報酬にて対応」
+  - 現在まとめて下にあるサブテキストを、0円 を挟む上下 2 行構成に分割
+
 ### 2026-06-09 [DONE] kasahara — v10 no.7
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
