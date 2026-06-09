@@ -44,6 +44,16 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.19
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no19_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「CW のロゴをもっと大きく」反映）:
+  1. ✅ `.c-logo-wide` flex 中央寄せ・min-height:72px に変更
+  2. ✅ ロゴ img height: 40px → **64px**（SP: 34px → 54px）、max-width:80%
+  3. ✅ 上下マージン 8px / 12px に拡大しロゴブロックを写真直下で目立たせる
+- 効果: Chatwork 事例カード（ひたち農園 / グランド印刷 / アービック）と同等のロゴ存在感
+
 ### 2026-06-10 [DONE] kasahara — v10 no.18
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
