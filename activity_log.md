@@ -44,6 +44,15 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.22
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no22_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー赤入れ「SaaS タグをもっと上に・写真内に収める」）:
+  - `.c-cover-tag` `bottom:-14px` → **`bottom:14px`**（写真下に飛び出す → 写真内下部）
+  - SP も `bottom:-12px` → `bottom:12px` に同期
+- 効果: CW 同様に業種タグが写真内に収まる
+
 ### 2026-06-10 [DONE] kasahara — v10 no.21
 - 対象:
   - `mockup/assets/cases/logo_a.png` 1536×1024 → **631×553** に余白トリム
