@@ -44,6 +44,16 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.16
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no16_20260610.html`（新規スナップショット）
+- 実施内容（写真切れ解消）:
+  1. ✅ `.c-cover` の `height:170px` 固定 → **`aspect-ratio: 3/2`** に変更（画像 1536×1024 の自然な比率に追従）
+  2. ✅ `object-position: center 35%`（中央やや上）で人物の頭付近を優先表示
+  3. ✅ SP メディアクエリの `.c-cover{height:160px}` 削除（aspect-ratio で統一）
+- 効果: カード幅に応じて高さが自動調整され、写真が見切れない
+
 ### 2026-06-10 [DONE] kasahara — v10 no.15
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
