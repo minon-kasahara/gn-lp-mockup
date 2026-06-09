@@ -44,6 +44,16 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.26
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no26_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「CW のように ＼提携VC50社以上／ 中央寄せに」）:
+  - `.lw-label-row` 左寄せ + 横線 → `justify-content:center` で**中央寄せ**
+  - `.lw-label` に ::before / ::after で **\\…/ 斜め飾り**（黒・rotate 64°）
+  - 横線 `::after{flex:1;height:1px}` 削除
+- 効果: CW の「導入社数 98 万社」風の中央寄せキャプション
+
 ### 2026-06-10 [DONE] kasahara — v10 no.25
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
