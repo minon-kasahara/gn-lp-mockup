@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.49
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no49_20260610.html
+- 内容: 対応制度カード(.svc-card)のボックスデザインを、上のサービス特徴カード(.appr-card)に統一。border:2px solid var(--ink) を付与、box-shadow と上部5pxアクセントバー(::before)を撤去、hover translateY(-4px) を追加。番号バッジ(svc-icon)等の中身は維持。
+- 検証: preview で確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.48
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no48_20260610.html
 - 内容: FV右パネルの「提携VC紹介先 限定特典」を、CW「資料3点セット」風にカード上部全幅のネイビーベタ塗り＋白抜き大きめ見出しに変更。.vp-badge を inline pill → block 全幅バー化（margin負値でカード端までブリード、border-radius上のみ、navyグラデ、font 11→18px、白文字）。SP override も margin/padding/radius/font(15px)を追従。
