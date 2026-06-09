@@ -44,6 +44,14 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.9
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no9_20260609.html`（新規スナップショット）
+- 実施内容: フロート CTA バッジ文言変更
+  - 「VC投資先特典」→ **「提携VC紹介先 限定特典」**
+- 背景: より具体的な訴求（誰が対象か明確に）
+
 ### 2026-06-09 [DONE] kasahara — v10 no.8
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・3 ブロック化）
