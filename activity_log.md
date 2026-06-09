@@ -44,6 +44,19 @@
 
 ## ログ本体
 
+### 2026-06-10 [INTENT] kasahara — v10 no.18
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/assets/cases/logo_a.png`（新規・Alpha Technologies ロゴ）
+  - `mockup/assets/cases/logo_b.png`（新規・B-Studio ロゴ）
+  - `mockup/assets/cases/logo_c.png`（新規・Cflow ロゴ）
+  - `mockup/drafts/archives/v10_no18_20260610.html`（予定）
+- 内容:
+  - ユーザー提供の ChatGPT 生成ロゴ画像（PNG）を 3 社分用意
+  - B-Studio / Cflow は同一ファイルから上下半分にクロップ
+  - 各カードの `.c-logo-wide` 内 SVG → `<img src="../assets/cases/logo_*.png">` に差替
+  - CSS `.c-logo-wide svg` → `.c-logo-wide img` に対応変更
+
 ### 2026-06-10 [DONE] kasahara — v10 no.17
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
