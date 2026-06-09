@@ -44,6 +44,21 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.24
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no24_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「1 ページに収まる縦幅に・余白詰めて」）:
+  - `.c-cover` aspect-ratio 3/2 → **16/10**（縦やや短縮）
+  - `.c-logo-wide` min-height 120→64px, max-height 110→60px, margin 20/24→4/8（大幅短縮）
+  - `.c-body` padding 30/26→18/22, gap 14→10
+  - `.c-quote-wrap` padding 18/16→14/14, line-height 1.85→1.75
+  - `.c-result` gap 10→8, padding-top 14→12
+  - `.case-card` h3 font-size 17→15.5px, big val 28→24px
+  - 下padding 26→20px
+  - SP 同期（min-height 96→72, max-height 88→68 等）
+- 効果: カード 1 枚あたり推定 80〜100px 縦詰め、3 枚ファーストビュー収まりやすい
+
 ### 2026-06-10 [DONE] kasahara — v10 no.23
 - 対象:
   - `mockup/assets/cases/case_c_cover.jpg`（新規・216 KB / 1200×919 / FINTECH 文字＋人物写真）
