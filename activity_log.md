@@ -44,6 +44,26 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.7
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no7_20260609.html`（新規スナップショット）
+- 実施内容（リボン被り問題の根本解消）:
+  1. ✅ 斜めリボン（rotate -32deg / left:-30px / absolute）→ **ピル型バッジ**（position:relative / inline-flex / コンテナ内収納）
+  2. ✅ `★` 装飾アイコンを前置（小さな星マーク）でお得さアピール維持
+  3. ✅ DOM 上もリボンを `aside` 直下から `.float-perk-visual` の先頭子要素へ移動（headline の上に通常フロー配置）
+  4. ✅ visual の top padding 58px → 20px（バッジが通常フロー内に入ったため余分な余白不要）
+  5. ✅ SP も同様にバッジサイズ調整
+- 効果: バッジは見出しの上に **静的な要素として配置** されるため、ジオメトリ計算による衝突が物理的に発生しない。視覚的にもクリーン
+
+### 2026-06-09 [INTENT] kasahara — v10 no.7
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no7_20260609.html` 予定
+- 内容: ユーザー指摘「リボンが下の文字と被る」を根本解消
+  - リボン（-32deg 斜め配置）→ **コンテナ内に収まるピル型バッジ**に変更
+  - 視覚的に位置取りが明確になり物理的衝突を回避
+  - top padding は通常値（24px）に戻す
+  - サブテキストの「通常着手金 ~30〜50万円~ のところ／完全成功報酬にて対応」は維持
+
 ### 2026-06-09 [DONE] kasahara — v10 no.6
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
