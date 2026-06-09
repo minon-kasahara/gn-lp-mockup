@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.63
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: CTAイラスト周り修正3点。①.cta-tags(1時間で提案/VC紹介着手金0円/オンライン対応/1営業日以内返信)をHTML・CSSごとトルツメ削除 ②吹き出しb1〜b4のしっぽを全て中央の女性に向くよう回転(b1右下+17°/b2左下-17°/b3右上-18°/b4左上+18°、内側エッジに配置) ③女性イラストを translateY(-26px) で上げ、頭中心を吹き出しクラスタ縦中央(≈y80)へ。
+- 検証: preview reload 後、tagsExist=false / img top y 78→52 / 各::before transform=指定角度・border色 を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.62
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 事例カードの声(.c-quote-wrap)の左上に出ていた装飾引用符(::before の " マーク)を削除。
