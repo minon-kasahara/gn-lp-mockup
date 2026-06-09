@@ -44,6 +44,18 @@
 
 ## ログ本体
 
+### 2026-06-09 [INTENT] kasahara — v10 no.13
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no13_20260609.html` 予定
+- 内容:
+  1. Cases リード文の「※社名・担当者名は匿名化…」削除（先方匿名化しない方針）
+  2. 課題管理表 No.17 + ユーザー指摘「会社ロゴ必須・CW 参考に」対応 — 担当者写真（pravatar）→ **会社ロゴ（仮置き inline SVG）**に置換
+- ロゴ仕様:
+  - A 社（SaaS）: 青グラデ角丸スクエア + 白「A」
+  - B 社（D2C）: 濃紺サークル + 黄色「B」
+  - C 社（FinTech）: ライト青角丸 + 濃紺「C」
+- 各社の業種カラーで差別化、白枠 + 影でカバーにオーバーラップ
+- 実ロゴ受領後にこの SVG を差し替え予定
+
 ### 2026-06-09 [DONE] kasahara — v10 no.12
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・Cases CSS + HTML 大幅追記）
