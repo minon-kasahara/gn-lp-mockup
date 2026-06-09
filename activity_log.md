@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.64
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 下部CTAフォーム(.form)をTOPフォーム(vp-form)に表記統一。①ラベルの英語prefix(Company/Name/Email —)削除→会社名/担当者名/メールアドレス ②各ラベルに必須※(em赤)付与 ③「※は必須項目です」(vp-req-note)をemail下に追加 ④.form label をjaフォント/11.5px/ink/normal caseに変更＋.form label em(赤※)追加。
+- 検証: preview reload 後、ラベル3つともNoto Sans JP/11.5px/ink/uppercase無・英語非含有・※赤・note赤 を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.63
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: CTAイラスト周り修正3点。①.cta-tags(1時間で提案/VC紹介着手金0円/オンライン対応/1営業日以内返信)をHTML・CSSごとトルツメ削除 ②吹き出しb1〜b4のしっぽを全て中央の女性に向くよう回転(b1右下+17°/b2左下-17°/b3右上-18°/b4左上+18°、内側エッジに配置) ③女性イラストを translateY(-26px) で上げ、頭中心を吹き出しクラスタ縦中央(≈y80)へ。
