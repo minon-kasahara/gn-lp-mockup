@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.56
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no56_20260610.html
+- 内容: 対応制度カード(01〜04)を3px dotted青の点線でつなぐワンストップ循環ループを追加。c1::after=01-02上横/c3::after=03-04下横/c1::before=01-03左縦/c2::before=02-04右縦で4辺を囲む。.svc-card overflow を hidden→visible に変更。SPは点線非表示。
+- 検証: preview reload 後、4辺とも 3px dotted・20pxギャップに架橋・overflow:visible を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.55
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 対応制度カードの番号ボックス(01〜04)の svc-icon を、c1〜c4 個別のグラデーション(青/ネイビー系)から全て var(--ink)(黒一色)に統一。白抜き文字はそのまま。
