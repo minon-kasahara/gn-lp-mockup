@@ -44,6 +44,14 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.44
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no44_20260610.html`（新規スナップショット）
+- 実施内容: FV 右パネル入力フォームの送信ボタン上にあった赤字装飾「＼1時間で最適な制度をご提案／」（`.vp-cta-deco`）を HTML から削除（CSS は残置・未使用）
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.43
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
