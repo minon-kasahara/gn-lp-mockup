@@ -44,6 +44,14 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.43
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no43_20260610.html`（新規スナップショット）
+- 実施内容: ヘッダー CTA ボタン文言「無料相談」→「無料相談はこちら」に変更
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.42
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
