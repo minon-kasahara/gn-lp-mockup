@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.60
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 提携VCセクションの「特典」バッジ(.vc-perk-inner .tag)の背景を青→ネイビーのグラデーションから青一色(var(--blue))に変更。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.59
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 各セクション見出し上のピル型バッジ(.pill 計7個: 本サービスの特徴/サービス/実績/提携VC/事例/よくあるご質問/お問い合わせ)を全廃止。HTML要素ごと削除。CSS(.pill ルール)は未使用化のため残置(無害)。
