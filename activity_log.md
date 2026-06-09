@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.62
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 事例カードの声(.c-quote-wrap)の左上に出ていた装飾引用符(::before の " マーク)を削除。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.61
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: FAQ→CTAセクションの繋ぎを自然に。.cta-section 背景を単色#EBF1FA→linear-gradient(180deg,var(--blue-bg) 0%,#EBF1FA 20%,100%)に変更し、FAQ末尾の--blue-bg(#D8E7FC)から連続。併せて .cta-section::before のドットパターン(radial-gradient)を削除。
