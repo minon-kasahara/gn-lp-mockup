@@ -44,6 +44,24 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.6
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no6_20260609.html`（新規スナップショット）
+- 実施内容（ユーザー赤字指摘 3 点修正）:
+  1. ✅ `.float-perk-visual` top padding 36px → **58px**（リボン下のクリアランス確保）
+  2. ✅ `.float-perk-headline` margin-bottom 10px → **16px**（見出しと 0円 の間にゆとり）
+  3. ✅ 価格比較バッジ削除 → サブテキスト「通常着手金 ~~30〜50万円~~ のところ／完全成功報酬にて対応」に整理（2 行）
+  4. SP も同様に top padding 30px → 50px に調整
+- 効果: リボンが下のテキストに被らなくなり、中央の重複表現も整理。「通常→0円」「完全成功報酬」の情報は補足テキストとして 1 ブロックに集約
+
+### 2026-06-09 [INTENT] kasahara — v10 no.6
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no6_20260609.html` 予定
+- 内容: ユーザー指摘のレイアウト問題を解消
+  1. リボン「VC投資先特典」が下の見出しに被っている → top padding 大幅増（36px → 54px）
+  2. 「着手金 0円」と「通常→0円」が重複・窮屈 → 価格比較バッジを削除し、サブテキスト「通常30〜50万円のところ／完全成功報酬」に整理
+  3. 各要素間の margin を増やしてゆとり
+
 ### 2026-06-09 [DONE] kasahara — v10 no.5
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・CSS/HTML 改修）
