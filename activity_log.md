@@ -44,6 +44,21 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.30
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no30_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「バランス違う・50 だけ大きく・スラッシュ下がりすぎ」）:
+  1. ✅ `<strong>50社以上</strong>` → `<strong>50</strong>社以上`（**強調を「50」だけに**）
+  2. ✅ strong 英字フォント・40px（CW で「98」だけ大きいのに合わせ）
+  3. ✅ `.lw-label` align-items baseline → **center**（スラッシュ下がる解消）
+  4. ✅ line-height 1.2 → 1、padding 64→70px、スラッシュ 42→46px
+  5. ✅ SP: 18→17px / strong 28px / 線 32px に同期
+
+### 2026-06-10 [DONE] kasahara — v10 no.29
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`、`archives/v10_no29_20260610.html`
+- 実施内容: FV フォームラベル「社名 ※」→「会社名 ※」に変更
+
 ### 2026-06-10 [DONE] kasahara — v10 no.28
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
