@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.45
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no45_20260610.html
+- 内容: (1) 左上ヘッダーロゴ拡大（.hd-logo .logo-svg 30→42px、SP 24→32px）。(2) CW同様にFVを1画面内に収めた。hero-inner padding 24/16→12/8、hero-eyebrow margin-bottom 40→20、h1 20→14、hero-sub 24→16+line-height 1.85→1.75、marquee-band padding-bottom 28→18、lw-label-row margin-bottom 34→20、右パネル sp-header mb 20→14・vc-perk-card padding 24→20・vp-badge mb 12→10・vp-headline mb 14→12。
+- 検証: preview 1280x800 で見出し+フォーム+提携VC50社以上+ロゴマーキーが全て1画面内に収まることを確認。
+- 次: push→GitHub Actions 自動デプロイ。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.44
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
