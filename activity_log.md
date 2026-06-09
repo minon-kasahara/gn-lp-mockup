@@ -44,6 +44,19 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.35
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no35_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指摘「上部 CTA の `＼1時間で最適な制度をご提案／` が上につまりすぎ」→ CW 風にバランス調整）:
+  - `.hd` ヘッダー高さ 68px → **78px**（上下に呼吸スペース確保）
+  - `.hero` `padding-top` 68px → 78px（同期）
+  - `.hd-cta` `gap` 10px → 7px（deco とボタンの間隔最適化）
+  - `.hd-cta-deco` `font-size` 11px → **12px**、`margin-bottom:-2px` → **0**（負マージン除去）
+  - `.hd-cta-deco span` `padding` 0 14px → **0 16px**、スラッシュ幅 9 → **11px**（CW の比率に近づける）
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.31
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
