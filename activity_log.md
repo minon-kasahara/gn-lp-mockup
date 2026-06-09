@@ -44,6 +44,17 @@
 
 ## ログ本体
 
+### 2026-06-09 [INTENT] kasahara — v10 no.14
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/assets/cases/case_a_cover.png`（新規・ユーザー添付）
+  - `archives/v10_no14_20260609.html`（予定）
+- 内容:
+  1. ユーザー指示「プロフィールアイコンはいらない」→ 全 3 カードから `c-logo` ブロック削除
+  2. 株式会社 A のカバー写真をユーザー添付の `case_a_cover.png`（オフィスでの 2 名）に差替
+  3. B / C は引き続き picsum 仮置き
+- CSS 整理: `.c-logo` 関連削除、`.c-meta` の padding-top も不要に
+
 ### 2026-06-09 [DONE] kasahara — v10 no.13
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
