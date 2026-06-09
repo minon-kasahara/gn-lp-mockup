@@ -44,6 +44,24 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.12
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・Cases CSS + HTML 大幅追記）
+  - `mockup/drafts/archives/v10_no12_20260609.html`（新規スナップショット）
+- 実施内容:
+  1. ✅ 各カード上部に `<div class="c-cover">` 追加（140px tall・picsum.photos の seed で固定）
+  2. ✅ カバー右下に業種タグ `c-cover-tag`（白半透明バッジ）
+  3. ✅ カバー下部にダークグラデオーバーレイ（タグ視認性向上）
+  4. ✅ `c-avatar` を colored letter から **person photo**（pravatar.cc）に変更・白枠 + 影でカバーにオーバーラップ
+  5. ✅ カード padding を 0 にして cover を全幅化、内側コンテンツは `.c-body` ラッパーで padding:0 26px に再構成
+  6. ✅ `c-meta` 側に padding-top:24px を入れアバターと文字のベースラインを揃える
+  7. ✅ ::before のグラデバー削除（写真が視覚アクセントを担うため）
+  8. ✅ SP メディアクエリも cover/body padding を調整
+- 画像ソース:
+  - カバー: `https://picsum.photos/seed/gnlpCaseA|B|C/640/280`（seed 固定で同じ画像）
+  - アバター: `https://i.pravatar.cc/120?img=12 / 33 / 51`
+- 注: 仮置き画像。実画像受領後に `mockup/assets/cases/` 等のローカルパスに差し替え予定
+
 ### 2026-06-09 [INTENT] kasahara — v10 no.12
 - 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no12_20260609.html` 予定
 - 内容: 課題管理表 No.17 対応の続き — 導入事例カードに会社/担当者の写真（仮置き）を追加
