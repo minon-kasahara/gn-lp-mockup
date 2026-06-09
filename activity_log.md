@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.57
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: cta-pri ボタン文言を「1時間で最適な制度を提案」→「1時間で最適な制度をご提案」に修正(丁寧表現)。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.56
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no56_20260610.html
 - 内容: 対応制度カード(01〜04)を3px dotted青の点線でつなぐワンストップ循環ループを追加。c1::after=01-02上横/c3::after=03-04下横/c1::before=01-03左縦/c2::before=02-04右縦で4辺を囲む。.svc-card overflow を hidden→visible に変更。SPは点線非表示。
