@@ -44,6 +44,20 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.14
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/assets/cases/case_a_cover.png`（新規・2 MB / 1536×1024 / オフィスでの 2 名写真）
+  - `mockup/drafts/archives/v10_no14_20260609.html`（新規スナップショット）
+- 実施内容:
+  1. ✅ `~/Downloads/20818400-...png` → `mockup/assets/cases/case_a_cover.png` にコピー（実画像配置）
+  2. ✅ 全 3 カードの `.c-logo` ブロック削除（プロフィールアイコン不要の指示反映）
+  3. ✅ CSS `.c-logo` 関連・`.c-meta` の padding-top 削除、`.c-head` の margin-top:-26px → 16px に変更（ロゴオーバーラップが不要なため）
+  4. ✅ 株式会社 A のカバー src を picsum → `../assets/cases/case_a_cover.png` に差替
+  5. ✅ B / C は引き続き picsum 仮置き
+- 効果: シンプルな「写真 + 業種タグ + 社名 + 規模」の構造に。実写真の臨場感が出る
+- 注: GitHub Actions の deploy が `mockup/assets/` を `_site/assets/` に rsync する設定なので、cases/ サブフォルダも自動配信される
+
 ### 2026-06-09 [INTENT] kasahara — v10 no.14
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
