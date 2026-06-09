@@ -44,6 +44,20 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.25
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no25_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「FV 右パネルを入力フォーム CTA に・Chatwork 風」）:
+  1. ✅ `.vp-compare`（通常 vs 投資先特典の比較ブロック）と `.vp-note` を削除
+  2. ✅ 入力フォーム `.vp-form` 追加: 社名 / お名前 / メールアドレス（3 フィールド・必須）
+  3. ✅ 「1 時間で最適な制度をご提案」斜めバー装飾（`.vp-cta-deco` `\\…//` 風）
+  4. ✅ プライマリ CTA ボタン `.vp-cta-btn` 「無料で相談してみる →」 青ナビゲラデ・円形アロー
+  5. ✅ 送信注記「送信後、担当より1営業日以内にご連絡します」
+  6. ✅ ヒーロー右パネル `.vp-headline` font-size 22→20px / margin-bottom 18→14px（フォーム分の縦余裕）
+- 効果: Chatwork のヒーロー右資料請求フォームと同じ位置・役割で、FV からダイレクト CV 動線
+- 注: モックなので submit は `event.preventDefault() + alert()` の placeholder 挙動
+
 ### 2026-06-10 [DONE] kasahara — v10 no.24
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
