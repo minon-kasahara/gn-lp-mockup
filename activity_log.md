@@ -44,6 +44,21 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.40
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no40_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指摘「CTA暗すぎ・イラストデカすぎて収まらない・吹き出しめちゃくちゃ」→ CW の明るいCTAを参考に全面リデザイン）:
+  1. **背景を明るく**: 暗紺グラデ → `#EBF1FA` 明るい青グレー + `::before` ドットパターン（CW 風）
+  2. **テキスト色**: h2 白→ink(濃紺)、em 黄→blue、lead 白→sub グレー
+  3. **タグ/pill**: 半透明白 → 白地/薄グレー地＋枠線＋濃紺文字（明背景用）
+  4. **背景ブロブ**: 暗背景用の濃い blur 円を薄く調整、cta-bg3 は非表示
+  5. **フォーム影**: `rgba(0,0,0,.3)` → `rgba(15,26,51,.14)` に軽量化
+  6. **イラスト**: person 240→188px に縮小、container 340→300px で収まり改善
+  7. **吹き出し**: 黄→ブランドブルー＋白文字（CW 風）、4つを女性中心に上2・横2で整列、しっぽの向きを各位置に合わせて修正
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.39
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
