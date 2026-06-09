@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.47
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no47_20260610.html
+- 内容: FV左カラムが詰まりすぎとの指摘。左カラム374px / 右パネル516pxで約140pxのスラックがあるため、左の縦余白を回復。hero-eyebrow mb 20→30、h1 mb 14→28、hero-sub mb 16→28・line-height 1.75→1.85。grid align-items:center のため行高は右パネル基準で不変、1画面内フィットは維持。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.46
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no46_20260610.html
 - 内容: (1) FVフォームのメールアドレス欄下に赤字「※は必須項目です」注記(.vp-req-note)を追加。(2) 右パネル vp-badge を中央揃え(block+margin auto)・vp-headline を text-align:center＋20→22px。(3) CTAイラスト吹き出し: b2「VCを紹介してほしい」→「具体的な活用方法を知りたい」、b4「採択率を知りたい」→「事業計画を見てほしい」。丸はてなアイコン(.ic span)を全削除。b1/b2 top:8・b3/b4 top:122 で左右対称にバランス調整。
