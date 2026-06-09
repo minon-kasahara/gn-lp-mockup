@@ -44,6 +44,13 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.17
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/assets/cases/case_b_cover.jpg`（新規・329 KB / 1200×700 / 物流現場の人物）
+  - `mockup/drafts/archives/v10_no17_20260610.html`（新規スナップショット）
+- 実施内容: B 社カバーを picsum → ユーザー添付の物流現場写真に差替
+
 ### 2026-06-10 [DONE] kasahara — v10 no.16
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
