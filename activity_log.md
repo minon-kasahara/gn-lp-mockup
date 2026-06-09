@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.65
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: CTAイラスト吹き出しb1の文言を「どの補助金が使える？」→「この補助金はうちでも使える？」に変更。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.64
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 下部CTAフォーム(.form)をTOPフォーム(vp-form)に表記統一。①ラベルの英語prefix(Company/Name/Email —)削除→会社名/担当者名/メールアドレス ②各ラベルに必須※(em赤)付与 ③「※は必須項目です」(vp-req-note)をemail下に追加 ④.form label をjaフォント/11.5px/ink/normal caseに変更＋.form label em(赤※)追加。
