@@ -44,6 +44,17 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.36
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no36_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー再指摘: CW は装飾とボタンが密着し、装飾の上に余白がある。G&N は逆になっていた）:
+  - `.hd-cta` `align-items:center` → `align-items:flex-end`、`gap:7px` → **0**、`justify-content:flex-end` で下寄せ
+  - `.hd-cta-deco` に `margin-bottom:-3px` 復活（装飾の下端を無料相談ボタンの上端に密着）
+  - 結果: 装飾の上に余白、装飾→ボタン間ゼロ密着（CW と同じリズム）
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.35
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
