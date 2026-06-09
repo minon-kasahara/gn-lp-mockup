@@ -44,6 +44,15 @@
 
 ## ログ本体
 
+### 2026-06-10 [INTENT] kasahara — v10 no.15
+- 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no15_20260610.html` 予定
+- 内容: ユーザー指示でカード構造を Chatwork URBIC 事例カード通りに再配置
+  1. 業種タグを写真左下 + わずかにオーバーフローする位置に（白角丸タグ風）
+  2. **横長ロゴ**を写真の直下に大きく配置（180×40 程度の SVG・ブランドマーク + テキスト）
+  3. 社名を独立した見出しとして大きく表示
+  4. 規模情報は社名直下に小さく
+  5. タイトル / クォート / 結果は維持
+
 ### 2026-06-09 [DONE] kasahara — v10 no.14
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
