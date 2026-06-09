@@ -44,6 +44,19 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.18
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/assets/cases/logo_a.png`（新規・1536×1024 Alpha Technologies）
+  - `mockup/assets/cases/logo_b.png`（新規・1536×512 B-Studio Logistics Solutions）
+  - `mockup/assets/cases/logo_c.png`（新規・1536×512 Cflow Financial Technology）
+  - `mockup/drafts/archives/v10_no18_20260610.html`（新規スナップショット）
+- 実施内容:
+  1. ✅ ChatGPT 生成ロゴ PNG を assets/cases/ に配置（B+C は上下クロップで分割）
+  2. ✅ 各カード `.c-logo-wide` SVG → `<img>` タグ（height:40px / SP:34px）に差替
+  3. ✅ CSS `.c-logo-wide svg` → `.c-logo-wide img` に対応
+  4. ✅ git push → GitHub Actions でデプロイ中
+
 ### 2026-06-10 [INTENT] kasahara — v10 no.18
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
