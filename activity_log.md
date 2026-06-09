@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.46
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no46_20260610.html
+- 内容: (1) FVフォームのメールアドレス欄下に赤字「※は必須項目です」注記(.vp-req-note)を追加。(2) 右パネル vp-badge を中央揃え(block+margin auto)・vp-headline を text-align:center＋20→22px。(3) CTAイラスト吹き出し: b2「VCを紹介してほしい」→「具体的な活用方法を知りたい」、b4「採択率を知りたい」→「事業計画を見てほしい」。丸はてなアイコン(.ic span)を全削除。b1/b2 top:8・b3/b4 top:122 で左右対称にバランス調整。
+- 検証: preview で見出し中央揃え・注記表示・吹き出し対称配置(person 256-444 とほぼ重ならず)を確認。
+- 次: push→自動デプロイ。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.45
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no45_20260610.html
 - 内容: (1) 左上ヘッダーロゴ拡大（.hd-logo .logo-svg 30→42px、SP 24→32px）。(2) CW同様にFVを1画面内に収めた。hero-inner padding 24/16→12/8、hero-eyebrow margin-bottom 40→20、h1 20→14、hero-sub 24→16+line-height 1.85→1.75、marquee-band padding-bottom 28→18、lw-label-row margin-bottom 34→20、右パネル sp-header mb 20→14・vc-perk-card padding 24→20・vp-badge mb 12→10・vp-headline mb 14→12。
