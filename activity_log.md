@@ -44,6 +44,17 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.31
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no31_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「CW のような『国内利用者数 No.1』風アイブロウを h1 上に」）:
+  - `.hero-eyebrow` 新規追加: 「支援実績**1,200**社以上※1」（h1 上配置）
+  - スタイル: inline-block + 下線 2.5px solid ink、22px / 数字 30px 英字 青
+  - `1,200` だけ大きい英字（CW の No.1 と同じリズム）、※1 を小さな上付きで
+  - SP: 17px / 数字 22px、order:0 で h1 より上に配置
+- 効果: CW 風の信頼数字アイブロウが h1 の上に出現
+
 ### 2026-06-10 [DONE] kasahara — v10 no.30
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
