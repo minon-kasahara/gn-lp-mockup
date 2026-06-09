@@ -44,6 +44,21 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.37
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no37_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「CTAエリア左下に CW 風の『女性＋吹き出し』イラストを入れたい」）:
+  - `.cta-left` の `.cta-tags` 下に `.cta-illust` ブロックを新設
+  - SVG で簡易な女性＋ノートPCのシルエット（モックアップ用プレースホルダ）
+  - 4 つの吹き出し（補助金/VC コンサル文脈に合わせた質問）:
+    「どの補助金が使える？」「VCを紹介してほしい」「申請書類のサポートは？」「採択率を知りたい」
+  - 配色: 吹き出しはイエロー × インクテキスト（CTA セクション暗背景に映える）
+  - SP では非表示（縦が長くなりすぎるため）
+  - 注: 本番素材差し替え前提のプレースホルダ
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.36
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
