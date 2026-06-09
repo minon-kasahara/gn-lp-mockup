@@ -44,6 +44,19 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.28
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no28_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「黄ドット削除・CW のサイズバランスを再現」）:
+  - `.lw-label strong::before`（黄色 6×6 円ドット）**削除**
+  - 数字色 青 → **ink（CW 同様）**、weight 維持
+  - 文字 18px → **26px**、strong 26px → **34px**（CW 同程度）
+  - 装飾線 22→42px・rotate 64→62°（長め、CW っぽく）
+  - padding 38→64px（テキストとスラッシュの間隔広げ）
+  - SP: 12→18px / 14→24px / 線 30px に同期
+- 効果: CW「導入社数 98 万社」と同等サイズ・色・バランス
+
 ### 2026-06-10 [DONE] kasahara — v10 no.27
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
