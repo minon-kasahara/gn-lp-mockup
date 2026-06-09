@@ -44,6 +44,21 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.13
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no13_20260609.html`（新規スナップショット）
+- 実施内容:
+  1. ✅ Cases リード文の「※社名・担当者名は匿名化…」削除（先方匿名化しない方針）
+  2. ✅ 担当者写真（pravatar img）→ **会社ロゴ inline SVG**に置換（3 社それぞれ異なるデザイン）
+     - A 社（SaaS）: 青グラデ角丸スクエア + 白「A」字パス
+     - B 社（D2C）: 濃紺サークル + 黄色「B」テキスト
+     - C 社（FinTech）: ライト青角丸 + 濃紺「C」字パス
+  3. ✅ `c-avatar` → `c-logo` クラス改名（CSS のセレクタも変更）
+  4. ✅ 各社カードのロゴ角丸を個別調整（角丸スクエア / 完全円 / 丸角スクエア）でブランド差別化
+  5. ✅ SP メディアクエリも `.c-logo` に追従
+- 効果: Chatwork 風の会社ロゴ + 社名表示が実現。実ロゴ受領後は SVG を差し替えるだけ
+
 ### 2026-06-09 [INTENT] kasahara — v10 no.13
 - 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no13_20260609.html` 予定
 - 内容:
