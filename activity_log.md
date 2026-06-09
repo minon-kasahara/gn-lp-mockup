@@ -44,6 +44,18 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.27
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no27_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指示「No.01 ではなく point 01.・添付の点線円形デザイン」）:
+  - `.appr-step` 4 枚すべて `No.<strong>01</strong>` → `<span class="appr-step-lbl">point</span><strong>01.</strong>`
+  - CSS: 横並びテキスト → **118×118px の点線円形バッジ**（border:2.5px dotted ink、point ラベル + 大数字を縦積み）
+  - 数字色: 青グラデ → **ink 単色**（添付デザインに合わせ）
+  - 数字 font-size 48→38px、weight 900→800、末尾「.」を含む
+  - SP: 96×96px / 30px に縮小
+- 効果: ユーザー添付イメージ通りの点線円形「point 01.」デザイン
+
 ### 2026-06-10 [DONE] kasahara — v10 no.26
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
