@@ -44,6 +44,17 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.11
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live・Cases CSS+HTML 全面リライト）
+  - `mockup/drafts/archives/v10_no11_20260609.html`（新規スナップショット）
+- 実施内容（課題管理表 No.17 + No.16 対応の素地）:
+  - **カードヘッダー追加**: 角丸グラデアバター（A/B/C のイニシャル）+ 社名 + 業種・ステージ・規模メタ
+  - **クォート部リッチ化**: blue-soft 背景 + 大型クォートマーク `"` + 発言者役職（CFO H 様 / 代表取締役 K 様 / CFO N 様）
+  - **リザルト部 2 行化**: 採択額（大）+ 活用制度（タグ）の縦並び
+  - リード文の注釈を「※社名・担当者名は匿名化していますが、採択額は実績値です。」に修正（No.16 関連）
+- 仮置きデータ: 株式会社 A/B/C（SaaS/D2C/FinTech）+ 代表的なクォート。バイネーム化は実情報受領後
+
 ### 2026-06-09 [INTENT] kasahara — v10 no.11
 - 対象: `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）+ `archives/v10_no11_20260609.html` 予定
 - 内容: 課題管理表 **No.17** 対応 — Cases セクションを Chatwork（go.chatwork.com/ja/）参考の 導入事例風カードに刷新
