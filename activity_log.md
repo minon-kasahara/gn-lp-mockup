@@ -44,6 +44,17 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.42
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no42_20260610.html`（新規スナップショット）
+- 実施内容（ユーザー指摘「50 をもっと大きく、CW くらい」）:
+  - `.lw-label strong` font-size 30px → **40px**（CW「98万社」の比率に合わせ拡大）
+  - ベースライン揃えで数字拡大に伴い箱下端が下がるため、スラッシュ `bottom:2px → 5px` で文字下端に再追従
+  - SP: strong 22px → 29px、bottom 1.5px → 3.5px に比例調整
+
+---
+
 ### 2026-06-10 [DONE] kasahara — v10 no.41
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
