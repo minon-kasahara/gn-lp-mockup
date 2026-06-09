@@ -44,6 +44,15 @@
 
 ## ログ本体
 
+### 2026-06-09 [DONE] kasahara — v10 no.10
+- 対象:
+  - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
+  - `mockup/drafts/archives/v10_no10_20260609.html`（新規スナップショット）
+- 実施内容（ユーザー指摘 2 点）:
+  1. ✅ 黄色グラデ → **白半透明 + 白ボーダー + backdrop-filter blur**（落ち着いた色味）
+  2. ✅ `::before` の `★` 装飾を削除
+- 効果: バッジが card 全体のトーンに馴染み、子供っぽさを排除した洗練デザインに
+
 ### 2026-06-09 [DONE] kasahara — v10 no.9
 - 対象:
   - `mockup/drafts/v09_20260424_full_castme-hubblecolor.html`（live）
