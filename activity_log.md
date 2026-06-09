@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.48
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no48_20260610.html
+- 内容: FV右パネルの「提携VC紹介先 限定特典」を、CW「資料3点セット」風にカード上部全幅のネイビーベタ塗り＋白抜き大きめ見出しに変更。.vp-badge を inline pill → block 全幅バー化（margin負値でカード端までブリード、border-radius上のみ、navyグラデ、font 11→18px、白文字）。SP override も margin/padding/radius/font(15px)を追従。
+- 検証: preview で確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.47
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no47_20260610.html
 - 内容: FV左カラムが詰まりすぎとの指摘。左カラム374px / 右パネル516pxで約140pxのスラックがあるため、左の縦余白を回復。hero-eyebrow mb 20→30、h1 mb 14→28、hero-sub mb 16→28・line-height 1.75→1.85。grid align-items:center のため行高は右パネル基準で不変、1画面内フィットは維持。
