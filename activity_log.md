@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.58
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html / archives/v10_no58_20260610.html
+- 内容: セクション間の余白が広すぎる(CW比)ため上下paddingを圧縮。.sec 120→76、.sec-head mb 72→44、.vc-sec 140→84、.cta-section 120→84、.sec-bridge 80/40→52/28、.record pt 80→52。タブレット(≤1024)の .sec/.vc-sec/.cta-section 96→64。SP(64)は据え置き。
+- 検証: preview で確認予定。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.57
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: cta-pri ボタン文言を「1時間で最適な制度を提案」→「1時間で最適な制度をご提案」に修正(丁寧表現)。
