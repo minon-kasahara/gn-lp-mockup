@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.81
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 採択率セクションのリード文を3行→2行に。1文目後に<br>を挿入し2文目を1行化。ただし.lead既定max-width:620pxで2文目が折返し3行のままだったため、当該リードにstyle="max-width:760px"を付与して2行に収めた(width=740px時lines=2を確認)。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.80
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 採択率セクション見出し「限られた採択枠を勝ち取るには、戦略的な申請設計が必要です」の読点「、」を削除(no.76で採用していた読点を、見出し句読点なし方針に合わせて除去)。
