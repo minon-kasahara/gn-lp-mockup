@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.67
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: CTA吹き出しの尻尾が本体から分離して見える不具合を修正(no.63のtransform:rotate中心回転＋border-radius:16pxの短い吹き出しで側辺に直線部が無く尻尾が浮いていた)。b1〜b4の::before尻尾を「本体への食い込みを深く(right/left:-11px→-6px、base約6px内側)」かつ「回転の支点を接着辺(base)に変更(b1/b3 transform-origin:0 50%、b2/b4 transform-origin:100% 50%)」。回転角(±17/±18deg・女性方向)と色は維持。
+- 検証: /tmp/gn-preview再同期後、900px幅で .cta-illust を scale(2.4) 拡大スクショ確認。4吹き出しとも尻尾が本体に密着・女性方向を向き、隙間なしを目視確認。
+- 経緯: ユーザー指摘「吹き出しの先が分離してるでしょ」(赤丸で尻尾の隙間を指示)。先のno.66時点では幅検証で再現できていなかったが、拡大により尻尾分離を特定。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.66
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 細部4点修正。①FVフォーム(vp-form)のラベル「お名前」→「担当者名」 ②下部CTAフォーム(.form)のサブ文「たった3項目で送信完了。」をトルツメ削除 ③「※は必須項目です」(.form .vp-req-note)を上下マージン18pxで余白中央へ再配置(左揃え維持、.form input:last-of-type の margin-bottom を0に) ④事例カード採択額の「万円」(.c-result-row.is-big .val sup)を vertical-align:7px→baseline に変更し数字と下揃え。
