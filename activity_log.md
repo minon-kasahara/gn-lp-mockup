@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.83
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 「G&Nの対策」グラフ(右カード)は棒の高さ比率が実データでなくイメージのため、参考(弥生「対策実施と採択率のイメージ」)に倣いキャプション「↗ 対策実施と採択率のイメージ」(.mkt-chart-cap、↗は青/テキストはnavy-lt太字)をカード見出し直下・グラフ上に追加。左カード(市場動向=80–90%/40%等の数値あり)には付けない。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.82
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 採択率「G&Nの対策」グラフの「加点対策あり」ラベル(.mkt-bar-yr)に yr-boxed クラスを追加し、参考画像(弥生の「対策実施」ボックス)風に=青字(var(--blue))＋黄色の囲み線(2px solid var(--yellow))＋白背景＋角丸(9px)・padding6/14。
