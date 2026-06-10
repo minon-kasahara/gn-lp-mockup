@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.84
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 「G&Nの対策」グラフの棒の下端が左右でズレていた問題を修正。原因はyr-boxed(囲みラベル)のpadding+borderでラベルが背高になり、flex-end積みのため右棒が押し上げられていた。.mkt-bar-yr基底に border:2px solid transparent;padding:6px 14px;box-sizing:border-box を付与しプレーンラベルも同寸法化→全yrラベル高さ均一で棒下端が揃う(diff=0px確認)。yr-boxedはborder-colorのみ指定に簡素化。市場動向グラフのラベルも同寸法だが両方プレーンで影響なし。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.83
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 「G&Nの対策」グラフ(右カード)は棒の高さ比率が実データでなくイメージのため、参考(弥生「対策実施と採択率のイメージ」)に倣いキャプション「↗ 対策実施と採択率のイメージ」(.mkt-chart-cap、↗は青/テキストはnavy-lt太字)をカード見出し直下・グラフ上に追加。左カード(市場動向=80–90%/40%等の数値あり)には付けない。
