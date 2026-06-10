@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.96
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 右下フローティング特典カードの「着手金 0 円」を拡大。.float-perk-big .n 54px→66px、.unit 18px→22px、.lbl-pre 12px→13px。
+- 検証: preview reload後 nSize=66px, unitSize=22px, .float-perk-big overflow=false(232=232)を確認。カード単独スクショで拡大を目視確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.95
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 右下フローティング特典カードの3点修正。(1)見出しが中央揃えに見えない問題→原因は word-break:keep-all で1行目「パートナーVCの出資先スタートアップは」が幅232pxを8pxはみ出し(scrollW240)右に押し出されていた。font-size 13px→12.5px・letter-spacing .01em→-.01em で収め、両行が正しくセンタリング。(2).float-perk-sub-top の color var(--sub)→var(--ink)で「通常着手金」「のところ」を黒字に。(3).float-perk-sub の「完全成功報酬」を em で囲み青字(.float-perk-sub em color var(--blue))、base color を var(--ink)にして「にて対応いたします」を黒字に。
