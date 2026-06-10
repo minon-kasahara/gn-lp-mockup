@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.80
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 採択率セクション見出し「限られた採択枠を勝ち取るには、戦略的な申請設計が必要です」の読点「、」を削除(no.76で採用していた読点を、見出し句読点なし方針に合わせて除去)。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.79
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 採択率セクション左カードのタグ「市場動向」を、右カードのピル「G&Nの対策」(.tag-good=青背景/白文字)と同じ見た目に統一。HTMLのクラスを tag-warn→tag-good に変更し、未使用化した .tag-warn CSS を削除。
