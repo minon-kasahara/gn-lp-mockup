@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.70
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 提携VCセクション。①VCロゴグリッド末尾の「+ more」(.vc-card.note)を削除。②特典ピル(.vc-perk-banner)を div→a[href="#cta"]に変更し押下で下部お問い合わせ(#cta)へ遷移。文言を2行に統合「提携VCのポートフォリオ企業は着手金無料で並走支援。／上記以外にも対象VCがございますので、お気軽にお問い合わせください。」。③.vc-perk-inner にanchorリセット(text-decoration:none/cursor:pointer)＋hover(blue-soft背景+リフト)、.tag に flex-shrink:0、.vc-perk-text(左寄せ/line-height1.7)追加。
+- 検証: 1000px幅でVCセクション分離スクショ。+more消去・ピル2行表示・tag=特典・A要素href=#cta(target #cta存在)・pill 597x84 を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.69
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: ①サービスセクション末尾の暗背景バナー(.perk-banner「VC投資先特典／提携VCの出資先スタートアップは着手金0円で並走支援／0円 完全成功報酬にて対応」)をHTMLごと削除。②VCセクション説明文の「国内VC・独立系VP・CVC」を「独立系VP」→「独立系VC」に修正(VPの誤り訂正)。

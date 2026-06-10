@@ -592,8 +592,10 @@ section{position:relative;overflow:hidden}
 }
 
 .vc-perk-banner{max-width:var(--max-w);margin:40px auto 0;padding:0 var(--gutter);text-align:center}
-.vc-perk-inner{display:inline-flex;align-items:center;gap:16px;background:#fff;border:2px solid var(--ink);padding:16px 32px;border-radius:100px;font-size:14px;color:var(--ink);font-weight:700}
-.vc-perk-inner .tag{font-family:var(--en);font-size:10.5px;letter-spacing:.15em;padding:4px 12px;border-radius:100px;background:var(--blue);color:#fff;font-weight:800}
+.vc-perk-inner{display:inline-flex;align-items:center;gap:16px;background:#fff;border:2px solid var(--ink);padding:16px 32px;border-radius:100px;font-size:14px;color:var(--ink);font-weight:700;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.vc-perk-inner:hover{background:var(--blue-soft);transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,26,51,.16)}
+.vc-perk-inner .tag{font-family:var(--en);font-size:10.5px;letter-spacing:.15em;padding:4px 12px;border-radius:100px;background:var(--blue);color:#fff;font-weight:800;flex-shrink:0}
+.vc-perk-text{text-align:left;line-height:1.7}
 
 /* ============ CASES SECTION ============ */
 .cases{background:linear-gradient(180deg,var(--blue-soft) 0%,#fff 18%,#fff 100%)}
@@ -1531,14 +1533,13 @@ img{max-width:100%;height:auto}
     <div class="vc-card"><img src="../assets/vc_logos/OpenNetworkLab.jpg" alt="Open Network Lab"></div>
     <div class="vc-card"><img src="../assets/vc_logos/01BoosterCapital.jpg" alt="01Booster Capital"></div>
     <div class="vc-card"><img src="../assets/vc_logos/AllAbout.jpg" alt="All About"></div>
-    <div class="vc-card note">+ more</div>
   </div>
 
   <div class="vc-perk-banner">
-    <div class="vc-perk-inner">
+    <a href="#cta" class="vc-perk-inner">
       <span class="tag">特典</span>
-      <span>提携VCのポートフォリオ企業は<em style="color:var(--blue);font-style:normal;font-weight:900">着手金無料</em>で並走支援。</span>
-    </div>
+      <span class="vc-perk-text">提携VCのポートフォリオ企業は<em style="color:var(--blue);font-style:normal;font-weight:900">着手金無料</em>で並走支援。<br>上記以外にも対象VCがございますので、お気軽にお問い合わせください。</span>
+    </a>
   </div>
 </section>
 
