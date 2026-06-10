@@ -44,6 +44,16 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.91
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 右下フローティング特典カードのサブテキストを「完全成功報酬にて対応」→「完全成功報酬にて対応いたします」に修正(丁寧表現)。
+- 検証: preview reload後 .float-perk-sub textContent=「完全成功報酬にて対応いたします」を確認。
+
+### 2026-06-10 [DONE] kasahara — v10 no.90
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: servicesセクション見出し「補助金・助成金・法認定・融資 ワンストップで支援」の「ワンストップ」を青字に。em class を n(navy)→b(blue)に変更。
+- 検証: preview reload後 #service .section-title em class=b, color=rgb(74,125,232)(blue)を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.89
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: ヒーロー見出しのハイライト統一。「挑戦するスタートアップ」(.sweep)はハイライトが文字の裏なのに「補助金」「追い風」(em.b/em.n)はハイライトが文字に上がかかって見える問題。原因は .hero h1 em に isolation:isolate が付いていて新しいstacking contextを作りmix-blend-mode:multiplyの::afterの見え方が変わっていた(.sweepにはisolationなし)。.hero h1 em の isolation:isolate を削除し .sweep と挙動を統一。
