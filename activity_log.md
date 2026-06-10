@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.92
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: recordセクション見出しを「9年の実績が／信頼の根拠になる」→「選ばれてきた理由は／9年分の支援実績にあります」に修正。青字emは「9年分の支援実績」に付与。
+- 検証: preview reload後 #record .section-title text=「選ばれてきた理由は 9年分の支援実績にあります」, em=「9年分の支援実績」color=rgb(74,125,232)を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.91
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 右下フローティング特典カードのサブテキストを「完全成功報酬にて対応」→「完全成功報酬にて対応いたします」に修正(丁寧表現)。
