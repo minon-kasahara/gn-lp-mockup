@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.94
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: VC特典バナー(.vc-perk-inner、提携VCのポートフォリオ企業は着手金無料…)のhoverを他CTAと統一。background var(--blue-soft)→var(--yellow)、color var(--ink)追加、box-shadow を黄色系(rgba(255,209,102,.5))に変更。他CTA(.btn-gra/.cta-pri/.vp-cta-btn/.form button)のhoverと同じ挙動に。
+- 検証: preview reload後 .vc-perk-inner:hover ルール=background:var(--yellow);color:var(--ink);box-shadow黄色 を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.93
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 先方指摘#19(画像4 フッターロゴ「白ロゴは非公式。背景白ロゴ使用か背景を白に／公式ロゴ使用or背景色変更」)対応。フッターを濃紺背景+白ロゴ(非公式)から、明るい背景+公式ロゴ(濃色)に再設計。footer背景 var(--ink)→var(--blue-soft)・color #fff→var(--ink)・border-top追加、.ft-inner下線を白系→var(--line)、ロゴSVGをヘッダーと同じ公式版マークアップ(円=currentColor濃紺/G&Nテキスト=currentColor/エンブレム=#fff白)に差し替え、.ft-logo svg color=var(--ink)、本文 var(--sub)、リンク var(--blue)太字、.ft-bottom色 var(--sub)・リンク青を追加。
