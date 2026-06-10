@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.101
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 導入事例セクションの3つのお客様の声(.c-quote)はセリフのため、いずれも鉤括弧「」で囲んだ。
+- 検証: preview reload後 .c-quote 3件すべて「…」で囲まれていることを確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.100
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: marketセクション右カード(.mkt-up「G&Nの対策／加点対策で採択率は大きく向上」)の薄い青グラデ背景を除去し、左カードと同じ白背景に。.mkt-up background linear-gradient(180deg,var(--blue-soft) 0%,#fff 55%)→#fff。
