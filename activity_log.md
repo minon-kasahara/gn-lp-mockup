@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.69
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: ①サービスセクション末尾の暗背景バナー(.perk-banner「VC投資先特典／提携VCの出資先スタートアップは着手金0円で並走支援／0円 完全成功報酬にて対応」)をHTMLごと削除。②VCセクション説明文の「国内VC・独立系VP・CVC」を「独立系VP」→「独立系VC」に修正(VPの誤り訂正)。
+- 検証: preview再同期+reload。.perk-banner要素=0(消去)、.sec.services の最終子が.svc-gridでpadding-bottom 24px(実績セクションのpadding-topと合わせ標準seam)、説明文「国内VC・独立系VC・CVC」を確認。.perk-* CSSはデッドだが無害で残置。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.68
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 課題管理表 No.12 対応。提携VCセクション(.vc-head-box)冒頭の大きな「50+」(.vc-big)をトルツメ削除。見出し「提携VC50社以上」と重複のため。説明文(p)は維持。.vc-big のCSS(529-532)はデッドだが無害のため残置。
