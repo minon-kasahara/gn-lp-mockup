@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.100
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: marketセクション右カード(.mkt-up「G&Nの対策／加点対策で採択率は大きく向上」)の薄い青グラデ背景を除去し、左カードと同じ白背景に。.mkt-up background linear-gradient(180deg,var(--blue-soft) 0%,#fff 55%)→#fff。
+- 検証: preview reload後 .mkt-up backgroundImage=none, backgroundColor=rgb(255,255,255)を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.99
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: お問い合わせフォーム(.form)の装飾円(::before黄/::after青)が「ぱきっと」した単色円だったのを、追従CTA(.float-perk-visual)と同じふわっと淡いradial-gradientグローに統一。::before background var(--yellow)opacity.4→radial-gradient(circle,rgba(255,209,102,.55),transparent 62%)、サイズ140→190px・位置調整。::after background var(--blue)opacity.25→radial-gradient(circle,rgba(74,125,232,.28),transparent 62%)、サイズ160→210px・位置調整。pointer-events:none追加。
