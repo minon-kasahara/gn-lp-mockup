@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.74
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: approachセクション直後に新セクション「採択率が下がるいまこそ／戦略的な対策が採否を分けます」(.sec.market #market)を追加。参考(弥生/Chatwork IT補助金LP)の「市場の採択率低下→対策で採択率向上」構成をG&Nトンマナで再構築(弥生オレンジ/コピーは非流用、navy/blueのCSS棒グラフ・既存.section-title/.lead/.pill流用)。構成=①市場動向カード:平均採択率の低下を棒グラフ対比(〜2024年度80–90%→2025年度40%前後/「半減以下」、↘矢印・muted灰バー)、②G&Nの対策カード:加点対策で採択率「大幅UP」を棒グラフ対比(標準→加点対策ありをblue→navyグラデ、↗青矢印)、③代表的な加点・対策項目カード4枚(✓:賃上げ目標の表明/セキュリティ・体制整備/事業計画の精緻化/制度の戦略的な組み合わせ)。CSSは.appr-illust直後に新規ブロック追加(.market〜.mkt-mz-d＋レスポンシブ)。
+- 検証: 1280px幅で分離スクショ→navy/blue基調・棒グラフ/カード正常。375px(mobile)で初回クリッピング発覚(グローバルword-break:keep-allで日本語タイトル/noteが折返さず右溢れ＋mz-grid2列が窮屈)→.mkt-card-title/.mkt-note/.mkt-mz-tにword-break:normal;line-break:auto、.mkt-card min-width:0、@media max-560でmz-grid1列を追加。再スクショでupScrollW≤upW(溢れ解消)・全要素折返し正常を確認。
+- 残: ヘッダーnavへの#marketリンク追加は未対応(指示なし)。グラフ数値は参考LP水準のイメージ値、確定値はユーザー確認推奨。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.73
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: ①提携VCロゴグリッド(.vc-grid)を5列→4列(grid-template-columns:repeat(5→4,1fr))。ロゴ12個で4×3=12がぴったり3行に収まる。②見出し句読点削除(no.71の方針継続)…実績「9年の実績が、信頼の根拠になる。」→読点・句点削除／事例「スタートアップの成長を支えた、補助金活用の実例。」→削除／CTA「まずは、1時間の無料相談から。」→削除。

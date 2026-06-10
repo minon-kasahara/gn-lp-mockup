@@ -471,6 +471,44 @@ section{position:relative;overflow:hidden}
 .appr-card p{grid-area:desc;position:relative;z-index:2;font-size:13.5px;line-height:1.9;color:var(--sub);font-weight:400;word-break:normal;line-break:auto}
 .appr-illust{grid-area:illust;width:100%;max-width:180px;height:140px;object-fit:contain;object-position:center top;align-self:start;justify-self:end;position:relative;z-index:1;pointer-events:none}
 
+/* ============ MARKET / 採択率 SECTION ============ */
+.market{background:linear-gradient(180deg,#fff 0%,var(--blue-soft) 100%)}
+.mkt-grid{max-width:1180px;margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.mkt-card{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:32px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.mkt-up{background:linear-gradient(180deg,var(--blue-soft) 0%,#fff 55%)}
+.mkt-card-head{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.mkt-tag{align-self:flex-start;display:inline-flex;align-items:center;font-size:12px;font-weight:800;letter-spacing:.04em;padding:5px 14px;border-radius:100px;line-height:1}
+.tag-warn{background:#EEF1F7;color:var(--navy-lt);border:1.5px solid #D4DBE8}
+.tag-good{background:var(--blue);color:#fff}
+.mkt-card-title{font-size:21px;font-weight:900;line-height:1.5;color:var(--ink);margin:0;word-break:normal;line-break:auto}
+.mkt-card-title em{font-style:normal;color:var(--blue)}
+.mkt-down .mkt-card-title em{color:var(--navy)}
+.mkt-chart{display:flex;align-items:flex-end;justify-content:center;gap:24px;height:210px;margin:0 0 22px}
+.mkt-bar-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:10px}
+.mkt-bar-val{font-size:15px;font-weight:900;color:var(--ink);line-height:1;white-space:nowrap}
+.mkt-up-val{color:var(--blue)}
+.mkt-bar{width:96px;border-radius:12px 12px 0 0;box-shadow:0 10px 22px rgba(15,26,51,.12)}
+.mkt-bar-yr{font-size:12.5px;font-weight:700;color:var(--sub);line-height:1.3;white-space:nowrap;text-align:center}
+.b-prev{background:linear-gradient(180deg,var(--navy-lt),var(--navy))}
+.b-now{background:linear-gradient(180deg,#CDD5E5,#AEB9D0)}
+.b-low{background:linear-gradient(180deg,#CDD5E5,#AEB9D0)}
+.b-high{background:linear-gradient(180deg,var(--blue),var(--navy))}
+.mkt-arrow{align-self:center;font-size:26px;font-weight:900;line-height:1;color:#AEB9D0}
+.mkt-arrow.up{color:var(--blue)}
+.mkt-note{font-size:13px;line-height:1.85;color:var(--sub);margin:0;padding-top:18px;border-top:1px dashed var(--line);word-break:normal;line-break:auto}
+.mkt-measures{max-width:1180px;margin:40px auto 0;padding:0 var(--gutter)}
+.mkt-measures-lead{text-align:center;font-size:16px;font-weight:800;color:var(--ink);margin:0 0 22px}
+.mkt-measures-lead em{font-style:normal;color:var(--blue)}
+.mkt-mz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mkt-mz{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;gap:12px;transition:transform .2s}
+.mkt-mz:hover{transform:translateY(-3px)}
+.mkt-mz-ico{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;line-height:1}
+.mkt-mz-t{font-size:14.5px;font-weight:800;color:var(--ink);line-height:1.45;word-break:normal;line-break:auto}
+.mkt-mz-d{font-size:12.5px;line-height:1.8;color:var(--sub);margin:0}
+@media (max-width:900px){.mkt-mz-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:767px){.mkt-grid{grid-template-columns:1fr;gap:14px}.mkt-card{padding:24px 20px;min-width:0}.mkt-chart{gap:16px;height:190px}.mkt-bar{width:74px}.mkt-measures{margin-top:28px}}
+@media (max-width:560px){.mkt-mz-grid{grid-template-columns:1fr;gap:12px}}
+
 /* ============ SECTION BRIDGE (Problem → Approach) ============ */
 .sec-bridge{display:flex;flex-direction:column;align-items:center;gap:32px;max-width:820px;margin:0 auto;padding:52px var(--gutter) 28px;text-align:center}
 .sec-bridge .bridge-msg{font-size:28px;font-weight:900;color:var(--ink);line-height:1.6;margin:0}
@@ -1417,6 +1455,89 @@ img{max-width:100%;height:auto}
   </div>
 </section>
 </div><!-- /.prob-app-wrap -->
+
+<!-- ============ MARKET / 採択率 SECTION ============ -->
+<section class="sec market" id="market">
+  <div class="sec-head">    <h2 class="section-title">
+      <span class="chunk">採択率が下がるいまこそ</span><br class="br-tablet">
+      <span class="chunk"><em class="b">戦略的な対策</em>が採否を分けます</span>
+    </h2>
+    <p class="lead">補助金は「申請すれば通る」時代から「備えた企業が通る」時代へ。市場全体の採択率が低下するなか、加点要件を押さえた事前準備が、採択の可否を大きく左右します。</p>
+  </div>
+
+  <div class="mkt-grid">
+    <!-- 市況: 採択率の低下 -->
+    <div class="mkt-card mkt-down">
+      <div class="mkt-card-head">
+        <span class="mkt-tag tag-warn">市場動向</span>
+        <h3 class="mkt-card-title">平均採択率は<em>半減以下</em>に</h3>
+      </div>
+      <div class="mkt-chart">
+        <div class="mkt-bar-col">
+          <div class="mkt-bar-val">80–90%</div>
+          <div class="mkt-bar b-prev" style="height:150px"></div>
+          <div class="mkt-bar-yr">〜2024年度</div>
+        </div>
+        <div class="mkt-arrow">↘</div>
+        <div class="mkt-bar-col">
+          <div class="mkt-bar-val">40%前後</div>
+          <div class="mkt-bar b-now" style="height:70px"></div>
+          <div class="mkt-bar-yr">2025年度</div>
+        </div>
+      </div>
+      <p class="mkt-note">申請件数の増加と審査の厳格化により、近年は採択の「狭き門」化が進んでいます。「とりあえず出す」だけでは通らない時代になりました。</p>
+    </div>
+
+    <!-- G&Nの対策: 採択率の向上 -->
+    <div class="mkt-card mkt-up">
+      <div class="mkt-card-head">
+        <span class="mkt-tag tag-good">G&amp;Nの対策</span>
+        <h3 class="mkt-card-title">加点対策で採択率は<em>大きく向上</em></h3>
+      </div>
+      <div class="mkt-chart">
+        <div class="mkt-bar-col">
+          <div class="mkt-bar-val">標準</div>
+          <div class="mkt-bar b-low" style="height:66px"></div>
+          <div class="mkt-bar-yr">加点対策なし</div>
+        </div>
+        <div class="mkt-arrow up">↗</div>
+        <div class="mkt-bar-col">
+          <div class="mkt-bar-val mkt-up-val">大幅UP</div>
+          <div class="mkt-bar b-high" style="height:152px"></div>
+          <div class="mkt-bar-yr">加点対策あり</div>
+        </div>
+      </div>
+      <p class="mkt-note">審査の評価軸に沿って加点項目を満たし、事業計画を磨き上げることで、限られた採択枠での通過可能性を最大化します。</p>
+    </div>
+  </div>
+
+  <!-- 代表的な加点・対策項目 -->
+  <div class="mkt-measures">
+    <div class="mkt-measures-lead">G&amp;Nが押さえる<em>代表的な加点・対策項目</em></div>
+    <div class="mkt-mz-grid">
+      <div class="mkt-mz">
+        <div class="mkt-mz-ico">✓</div>
+        <div class="mkt-mz-t">賃上げ目標の表明</div>
+        <p class="mkt-mz-d">給与支給総額・事業場内最低賃金の引き上げ計画を整え、加点要件を確実に満たします。</p>
+      </div>
+      <div class="mkt-mz">
+        <div class="mkt-mz-ico">✓</div>
+        <div class="mkt-mz-t">セキュリティ・体制整備</div>
+        <p class="mkt-mz-d">SECURITY ACTION 宣言などの体制要件を整理し、評価項目の取りこぼしを防ぎます。</p>
+      </div>
+      <div class="mkt-mz">
+        <div class="mkt-mz-ico">✓</div>
+        <div class="mkt-mz-t">事業計画の精緻化</div>
+        <p class="mkt-mz-d">審査基準に沿って課題・効果・数値根拠を作り込み、計画書の説得力を高めます。</p>
+      </div>
+      <div class="mkt-mz">
+        <div class="mkt-mz-ico">✓</div>
+        <div class="mkt-mz-t">制度の戦略的な組み合わせ</div>
+        <p class="mkt-mz-d">補助金・助成金・融資を重ねて設計し、採択確度とキャッシュの最大化を狙います。</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ SERVICE SECTION ============ -->
 <section class="sec services" id="service">
