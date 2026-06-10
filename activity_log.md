@@ -44,6 +44,14 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.79
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 採択率セクション左カードのタグ「市場動向」を、右カードのピル「G&Nの対策」(.tag-good=青背景/白文字)と同じ見た目に統一。HTMLのクラスを tag-warn→tag-good に変更し、未使用化した .tag-warn CSS を削除。
+
+### 2026-06-10 [DONE] kasahara — v10 no.78
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 採択率セクション「G&Nの対策」グラフの「加点対策あり」棒(.b-high)をblue→navyグラデ→黄色グラデ(var(--yellow)→var(--yellow-dk))に変更。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.77
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 提携VCセクション見出し「提携VC50社以上」の「50社以上」を黄色ハイライト下線(em.y)→青字(em.b)に変更。黄色のアンダーライン消去・青文字化。
