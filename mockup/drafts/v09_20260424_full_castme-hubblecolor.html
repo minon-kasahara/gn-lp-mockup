@@ -154,7 +154,7 @@ section{position:relative;overflow:hidden}
 .hero h1 em.b{animation-delay:1.25s}
 .hero h1 em.n{animation-delay:1.85s}
 @keyframes sweepGrad{from{background-position:100% 0}to{background-position:0% 0}}
-.hero h1 em{font-style:normal;position:relative;display:inline-block;isolation:isolate}
+.hero h1 em{font-style:normal;position:relative;display:inline-block}
 .hero h1 em::after,
 .hero h1 .sweep::after{
   content:'';
@@ -472,7 +472,7 @@ section{position:relative;overflow:hidden}
 .appr-illust{grid-area:illust;width:100%;max-width:180px;height:140px;object-fit:contain;object-position:center top;align-self:start;justify-self:end;position:relative;z-index:1;pointer-events:none}
 
 /* ============ MARKET / 採択率 SECTION ============ */
-.market{background:linear-gradient(180deg,var(--blue-bg) 0%,#fff 10%,#fff 42%,var(--blue-soft) 100%)}
+.market{background:linear-gradient(180deg,var(--blue-soft) 0%,#fff 16%,#fff 42%,var(--blue-soft) 100%)}
 .mkt-grid{max-width:1180px;margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .mkt-card{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:32px;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .mkt-up{background:linear-gradient(180deg,var(--blue-soft) 0%,#fff 55%)}
@@ -1769,11 +1769,11 @@ img{max-width:100%;height:auto}
       <div class="form-inner">
         <h3>お問い合わせフォーム</h3>
         <label>会社名 <em>※</em></label>
-        <input type="text" placeholder="株式会社〇〇" required>
+        <input type="text" placeholder="例）株式会社G&amp;N" required>
         <label>担当者名 <em>※</em></label>
-        <input type="text" placeholder="山田 太郎" required>
+        <input type="text" placeholder="例）山田 太郎" required>
         <label>メールアドレス <em>※</em></label>
-        <input type="email" placeholder="you@company.com" required>
+        <input type="email" placeholder="例）taro@example.com" required>
         <p class="vp-req-note"><em>※</em>は必須項目です</p>
         <button type="submit">無料相談を申し込む</button>
         <div class="consent">送信をもって<a href="privacy.html" target="_blank" rel="noopener">個人情報の取り扱い</a>に同意いただいたものとします。</div>

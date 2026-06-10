@@ -44,6 +44,21 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.89
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: ヒーロー見出しのハイライト統一。「挑戦するスタートアップ」(.sweep)はハイライトが文字の裏なのに「補助金」「追い風」(em.b/em.n)はハイライトが文字に上がかかって見える問題。原因は .hero h1 em に isolation:isolate が付いていて新しいstacking contextを作りmix-blend-mode:multiplyの::afterの見え方が変わっていた(.sweepにはisolationなし)。.hero h1 em の isolation:isolate を削除し .sweep と挙動を統一。
+- 検証: preview computed-styleで emIsolation=auto, sweepIsolation=auto, em::after z-index=-1(文字の裏)を確認。
+
+### 2026-06-10 [DONE] kasahara — v10 no.88
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: フォームのサンプルテキスト(placeholder)統一。CTAセクションのお問い合わせフォーム(.form)が汎用的な「株式会社〇〇/山田 太郎/you@company.com」だったのを、ヒーローのフォーム(line1355)と同じブランド付き「例）株式会社G&N/例）山田 太郎/例）taro@example.com」に統一。
+- 検証: preview computed で .form input placeholder = 例）3種を確認。
+
+### 2026-06-10 [DONE] kasahara — v10 no.87
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: approachセクションとmarketセクションのつなぎ目に線が目立つ問題を修正。market直上に表示されるのは prob-app-wrap の最終子=approachセクションで、その下端背景は blue-soft(rgb239,245,254)。一方 market上端は no.85 で blue-bg(rgb216,231,252)に設定していたため、より濃い上端が線として見えていた。market背景グラデの開始色を blue-bg→blue-soft に変更し、approach下端と連続させた(linear-gradient(180deg,var(--blue-soft) 0%,#fff 16%,#fff 42%,var(--blue-soft) 100%))。
+- 検証: preview computed で marketTop=rgb(239,245,254)=approach下端と一致を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.86
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 右下フローティング特典カード(.float-perk)のトンマナが暗い(紺グラデ背景/白文字)ため、明るくポップに変更。.float-perk-visual背景を紺グラデ→明るいblue-soft/yellow-softグラデ、リボンを半透明→ベタ青ピル、閉じる×を白→濃色、見出し白→ink・emを青、大きい0円を明るい背景でも視認できる濃いめアンバー(yellow-dk/drop-shadow)に、.lbl-pre/.unitを白→ink、サブテキスト(.float-perk-sub-top/.float-perk-sub)を白半透明→var(--sub)・weight600→700に。ブランドblue/yellowは維持。
