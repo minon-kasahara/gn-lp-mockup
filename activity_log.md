@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.68
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 課題管理表 No.12 対応。提携VCセクション(.vc-head-box)冒頭の大きな「50+」(.vc-big)をトルツメ削除。見出し「提携VC50社以上」と重複のため。説明文(p)は維持。.vc-big のCSS(529-532)はデッドだが無害のため残置。
+- 検証: 900px幅でVCセクション分離スクショ確認。大数字消去・見出し→説明文→ロゴ一覧→特典の流れがクリーンに繋がることを確認(.vc-big要素なし)。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.67
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: CTA吹き出しの尻尾が本体から分離して見える不具合を修正(no.63のtransform:rotate中心回転＋border-radius:16pxの短い吹き出しで側辺に直線部が無く尻尾が浮いていた)。b1〜b4の::before尻尾を「本体への食い込みを深く(right/left:-11px→-6px、base約6px内側)」かつ「回転の支点を接着辺(base)に変更(b1/b3 transform-origin:0 50%、b2/b4 transform-origin:100% 50%)」。回転角(±17/±18deg・女性方向)と色は維持。
