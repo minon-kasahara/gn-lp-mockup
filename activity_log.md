@@ -44,6 +44,14 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.77
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 提携VCセクション見出し「提携VC50社以上」の「50社以上」を黄色ハイライト下線(em.y)→青字(em.b)に変更。黄色のアンダーライン消去・青文字化。
+
+### 2026-06-10 [DONE] kasahara — v10 no.76
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: no.74の採択率セクション(#market)を修正。①「代表的な加点・対策項目」カード4枚ブロック(.mkt-measures)をHTMLごと削除＋未使用CSS(.mkt-measures〜.mkt-mz-d及び@media max-900/max-560)も削除。②見出しを「採択率が下がるいまこそ／戦略的な対策が採否を分けます」→「限られた採択枠を勝ち取るには、／戦略的な申請設計が必要です」に変更(em.bは「戦略的な申請設計」)。ユーザー入力の読点「、」はそのまま採用。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.75
 - 対象: mockup/assets/vc_logos/DeepCore.jpg
 - 内容: no.72で生成した白背景版が四隅に紺枠が残り、カード上で四角い枠に見える問題を修正。ユーザー提供の公式ロゴ ~/Downloads/DEEPCORE.png(512x512 RGBA 透過/紺文字、Driveの/viewリンクはGoogleログイン要でcurl不可→Downloads内の同梱DLを使用)を採用。透過のままJPG化すると黒く出るため、(a)アルファbbox(88,219,424,297)で余白トリム→ロゴ実寸336x78、(b)横長比4.31を維持しつつ白キャンバスに左右6%/上下30%マージンで再配置(376x124)→他社ロゴと視覚サイズ均一化、(c)白背景にcomposite。同名上書きで参照3箇所(FVマーキー×2・提携VCグリッド)自動反映。/tmp/gn-preview/assetsにもcp。
