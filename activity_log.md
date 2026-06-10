@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.71
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: approachセクション見出し「申請から受給後5年まで、まるごと伴走します。」の句読点(読点「、」と句点「。」)を削除→「申請から受給後5年まで／まるごと伴走します」。他見出しの句読点削除方針に合わせる。
+- 検証: preview同期後、テキスト「…まで」「まるごと伴走します」(句読点なし)を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.70
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 提携VCセクション。①VCロゴグリッド末尾の「+ more」(.vc-card.note)を削除。②特典ピル(.vc-perk-banner)を div→a[href="#cta"]に変更し押下で下部お問い合わせ(#cta)へ遷移。文言を2行に統合「提携VCのポートフォリオ企業は着手金無料で並走支援。／上記以外にも対象VCがございますので、お気軽にお問い合わせください。」。③.vc-perk-inner にanchorリセット(text-decoration:none/cursor:pointer)＋hover(blue-soft背景+リフト)、.tag に flex-shrink:0、.vc-perk-text(左寄せ/line-height1.7)追加。
