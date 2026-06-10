@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.85
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 採択率セクション(.market)上部のつなぎ目が直線で目立つ問題を修正。上セクション(prob-app-wrap)の下端が blue-bg(#D8E7FC)なのに market上端が#fffで始まり色が急変していた。market背景を linear-gradient(180deg,#fff,blue-soft) → linear-gradient(180deg,var(--blue-bg) 0%,#fff 10%,#fff 42%,var(--blue-soft) 100%) に変更。上端を上セクションと同じblue-bgから始めて白へグラデ。下端blue-softは後続servicesのblue-soft開始と一致で従来通りシームレス。
+- 検証: prevBg下端=marketBg上端=rgb(216,231,252)の一致を確認(色の不連続なし)。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.84
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 「G&Nの対策」グラフの棒の下端が左右でズレていた問題を修正。原因はyr-boxed(囲みラベル)のpadding+borderでラベルが背高になり、flex-end積みのため右棒が押し上げられていた。.mkt-bar-yr基底に border:2px solid transparent;padding:6px 14px;box-sizing:border-box を付与しプレーンラベルも同寸法化→全yrラベル高さ均一で棒下端が揃う(diff=0px確認)。yr-boxedはborder-colorのみ指定に簡素化。市場動向グラフのラベルも同寸法だが両方プレーンで影響なし。
