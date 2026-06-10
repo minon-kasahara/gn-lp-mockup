@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.98
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: マーキー下の「提携VC 50 社以上」ラベル(.lw-label)の「50」(strong)を青字に。.lw-label strong color var(--ink)→var(--blue)。
+- 検証: preview reload後 .lw-label strong text=50, color=rgb(74,125,232)を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.97
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: marketセクションの2カード(.mkt-card 市場動向/G&Nの対策)にホバーの浮き上がり効果を追加。他の.prob-card/.appr-card/.svc-cardと同じ transition:transform .2s + :hover{transform:translateY(-4px)} を付与。
