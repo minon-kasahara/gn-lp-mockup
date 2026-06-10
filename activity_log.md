@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.93
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 先方指摘#19(画像4 フッターロゴ「白ロゴは非公式。背景白ロゴ使用か背景を白に／公式ロゴ使用or背景色変更」)対応。フッターを濃紺背景+白ロゴ(非公式)から、明るい背景+公式ロゴ(濃色)に再設計。footer背景 var(--ink)→var(--blue-soft)・color #fff→var(--ink)・border-top追加、.ft-inner下線を白系→var(--line)、ロゴSVGをヘッダーと同じ公式版マークアップ(円=currentColor濃紺/G&Nテキスト=currentColor/エンブレム=#fff白)に差し替え、.ft-logo svg color=var(--ink)、本文 var(--sub)、リンク var(--blue)太字、.ft-bottom色 var(--sub)・リンク青を追加。
+- 検証: preview reload後 footerBg=rgb(239,245,254), circleFill=rgb(15,26,51)(濃紺), emblemFill=白, textPathFill=濃紺, pColor=sub を確認。footer単独スクショで公式ロゴ+明るい背景の描画を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.92
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: recordセクション見出しを「9年の実績が／信頼の根拠になる」→「選ばれてきた理由は／9年分の支援実績にあります」に修正。青字emは「9年分の支援実績」に付与。
