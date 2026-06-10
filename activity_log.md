@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.99
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: お問い合わせフォーム(.form)の装飾円(::before黄/::after青)が「ぱきっと」した単色円だったのを、追従CTA(.float-perk-visual)と同じふわっと淡いradial-gradientグローに統一。::before background var(--yellow)opacity.4→radial-gradient(circle,rgba(255,209,102,.55),transparent 62%)、サイズ140→190px・位置調整。::after background var(--blue)opacity.25→radial-gradient(circle,rgba(74,125,232,.28),transparent 62%)、サイズ160→210px・位置調整。pointer-events:none追加。
+- 検証: preview reload後 .form::before/::after backgroundImage=radial-gradient(各色→transparent 62%)を確認。フォーム単独スクショで淡いグロー化を目視確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.98
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: マーキー下の「提携VC 50 社以上」ラベル(.lw-label)の「50」(strong)を青字に。.lw-label strong color var(--ink)→var(--blue)。
