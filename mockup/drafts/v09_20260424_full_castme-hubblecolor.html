@@ -474,7 +474,8 @@ section{position:relative;overflow:hidden}
 /* ============ MARKET / 採択率 SECTION ============ */
 .market{background:linear-gradient(180deg,var(--blue-soft) 0%,#fff 16%,#fff 42%,var(--blue-soft) 100%)}
 .mkt-grid{max-width:1180px;margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.mkt-card{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:32px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.mkt-card{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:32px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s}
+.mkt-card:hover{transform:translateY(-4px)}
 .mkt-up{background:linear-gradient(180deg,var(--blue-soft) 0%,#fff 55%)}
 .mkt-card-head{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
 .mkt-tag{align-self:flex-start;display:inline-flex;align-items:center;font-size:12px;font-weight:800;letter-spacing:.04em;padding:5px 14px;border-radius:100px;line-height:1}

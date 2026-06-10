@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.97
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: marketセクションの2カード(.mkt-card 市場動向/G&Nの対策)にホバーの浮き上がり効果を追加。他の.prob-card/.appr-card/.svc-cardと同じ transition:transform .2s + :hover{transform:translateY(-4px)} を付与。
+- 検証: preview reload後 .mkt-card baseTransition=transform 0.2s, :hover rule=translateY(-4px), 対象カード2枚を確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.96
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 右下フローティング特典カードの「着手金 0 円」を拡大。.float-perk-big .n 54px→66px、.unit 18px→22px、.lbl-pre 12px→13px。
