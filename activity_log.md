@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-10 [DONE] kasahara — v10 no.86
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: 右下フローティング特典カード(.float-perk)のトンマナが暗い(紺グラデ背景/白文字)ため、明るくポップに変更。.float-perk-visual背景を紺グラデ→明るいblue-soft/yellow-softグラデ、リボンを半透明→ベタ青ピル、閉じる×を白→濃色、見出し白→ink・emを青、大きい0円を明るい背景でも視認できる濃いめアンバー(yellow-dk/drop-shadow)に、.lbl-pre/.unitを白→ink、サブテキスト(.float-perk-sub-top/.float-perk-sub)を白半透明→var(--sub)・weight600→700に。ブランドblue/yellowは維持。
+- 検証: preview computed-styleで visualBg=blue-softグラデ, headlineColor=rgb(15,26,51), sub/subTopColor=rgb(98,115,160) weight700, ribbonBg=rgb(74,125,232)/白文字, closeBg=濃色, lblPre=ink を確認。カードは270x314で正常描画。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.85
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 採択率セクション(.market)上部のつなぎ目が直線で目立つ問題を修正。上セクション(prob-app-wrap)の下端が blue-bg(#D8E7FC)なのに market上端が#fffで始まり色が急変していた。market背景を linear-gradient(180deg,#fff,blue-soft) → linear-gradient(180deg,var(--blue-bg) 0%,#fff 10%,#fff 42%,var(--blue-soft) 100%) に変更。上端を上セクションと同じblue-bgから始めて白へグラデ。下端blue-softは後続servicesのblue-soft開始と一致で従来通りシームレス。
