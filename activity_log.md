@@ -44,6 +44,10 @@
 
 ## ログ本体
 
+### 2026-06-11 [DONE] kasahara — v10 no.104
+- 対象: mockup/drafts/privacy.html
+- 内容: ヘッダーのロゴ／「← トップへ戻る」リンクの href を v09_...html → index.html に修正。デプロイ時に LP は index.html にリネームされるため、旧ドラフトファイル名のままだと公開サイトで 404（リンク切れ）になっていた不具合を解消。
+
 ### 2026-06-11 [DONE] kasahara — v10 no.103
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: ヘッダーナビ(.hd-nav)を整理。(1)セクション削除済みで死にリンクだった「よくある悩み」(#problem)を削除。(2)追加された market セクション(#market 採択率低下→加点対策)へのナビ「市場動向」を #approach と #service の間に追加（ページのセクション順に一致）。
