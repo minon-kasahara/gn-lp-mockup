@@ -44,6 +44,11 @@
 
 ## ログ本体
 
+### 2026-06-11 [DONE] kasahara — v10 no.102
+- 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
+- 内容: ヘッダーナビ(.hd-nav)の #case リンクラベルを「事例」→「導入事例」に言い換え。
+- 検証: preview reload後 .hd-nav リンク列に「導入事例」が表示されることを確認。
+
 ### 2026-06-10 [DONE] kasahara — v10 no.101
 - 対象: mockup/drafts/v09_20260424_full_castme-hubblecolor.html
 - 内容: 導入事例セクションの3つのお客様の声(.c-quote)はセリフのため、いずれも鉤括弧「」で囲んだ。
