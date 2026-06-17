@@ -50,7 +50,8 @@
   - **手順書 v02**: 全23章（§0レスポンシブ前提〜§11落とし穴＋5-1..5-12）。Problem削除／採択率・FAQ・フローティングCTA新設を反映。Free/Mini両対応、疑似要素67の代替（Free=追加Box/Embed・Mini=Custom Code）併記、番号付き＋完了チェックでトレース可能化。実値（HEX/px/トークン名/実コピー）は現物CSSから抽出。
   - **Studio最新仕様リファレンス（2026-06検証版）**: 公式ドキュメント再調査で11観点を検証・訂正（左ナビ8パネル/プラン価格・Mini=2ページ制約/Scroll Effect/カスタムフォント可否等）。studio_spec.md に参照バナー追加。
 - 手段: 多エージェントワークフロー2本（初回wgrg5oxd7=解析26+統合+23章ドラフト/検証/修正、回復wop3goo70=throttle失敗12章の再生成）。初回はサーバー側レート制限で12章失敗→回復WFで全23章完遂。前置き混入はstripで除去。
-- 未了: git commit/push はユーザー指示待ち。プラン（Free/Mini）最終決定はユーザー判断（手順書は両対応済）。
+- commit/push: ✅ 2026-06-18 commit `37fad17` → push 済（GitHub Actions で公開サイトは影響なし＝studio_guide はビルド対象外）。
+- プラン方針: ユーザーが「最終的に Mini」確定（2026-06-18）。手順書は両対応済。🔴 要確認: Mini=2ページ制約。LP本体＋PP＋サンクスで3ページなら Personal 必要（進捗トラッカー §前提プラン に明記）。
 - 備考: studio_guide は azalea 領域。mockup 本体・kasahara 作業領域は不変更。
 
 ### 2026-06-18 00:34 [INTENT] azalea
