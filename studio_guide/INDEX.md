@@ -3,7 +3,7 @@
 Studio上で手動実装するための詳細指示書の管理ファイル。
 デザイン壁打ち（モックアップ）確定後に Agent が作成し、ユーザーがこれを参照して Studio 上に実装する。
 
-最終更新: 2026-05-06（v01 全体版ドラフト作成 + レスポンシブ前提強化）
+最終更新: 2026-06-18（**v02 全体版を生成**＝現物 v10 no.104 同期・Studio最新仕様再調査）
 
 ---
 
@@ -11,16 +11,17 @@ Studio上で手動実装するための詳細指示書の管理ファイル。
 
 ```
 02_work/studio_guide/
-├── INDEX.md                   ← 本ファイル。版履歴・作成状況
-├── studio_spec.md             ★ Studio 仕様書（一次資料・指示書の根拠）
-├── implementation_progress.md   実装進捗トラッカー
-├── drafts/                    指示書のドラフト版（複数世代を保持）
-└── final/                     最終確定版の指示書
+├── INDEX.md                          ← 本ファイル。版履歴・作成状況
+├── studio_spec.md                    ★ Studio 仕様書（一次資料・2026-05-07版）
+├── studio_spec_2026-06_reference.md  ★★ Studio最新仕様リファレンス（2026-06検証版・齟齬時はこちらが正）
+├── implementation_progress.md          実装進捗トラッカー（v02同期）
+├── drafts/                           指示書のドラフト版（複数世代を保持）
+└── final/                            最終確定版の指示書
 ```
 
-### studio_spec.md の役割
+### 仕様書の役割
 
-📚 [`studio_spec.md`](studio_spec.md) は Studio.design の仕様（UI 配置・機能・制約・プラン制限・要素挙動）を整理した**一次資料**。指示書（drafts / final）は本ファイルを参照して作成・修正する。詳細運用ルールは [`../AGENT.md` §14](../AGENT.md) 参照。
+📚 [`studio_spec.md`](studio_spec.md) は Studio.design の仕様を整理した一次資料（2026-05-07版）。📚 [`studio_spec_2026-06_reference.md`](studio_spec_2026-06_reference.md) は 2026-06 に公式ドキュメントで再検証・訂正した最新版で、**両者に齟齬がある場合は 2026-06検証版が正**。指示書（drafts / final）は両ファイルを参照して作成・修正する。詳細運用ルールは [`../AGENT.md` §14](../AGENT.md) 参照。
 
 ---
 
@@ -75,28 +76,32 @@ Studio上で手動実装するための詳細指示書の管理ファイル。
 
 | 版 | 日付 | 保存先 | 対象 | 概要 | 作成セッション | ステータス |
 | --- | --- | --- | --- | --- | --- | --- |
-| v01-full | 2026-05-06 | drafts/v01_20260506_guide_full.md | **全体** | v09（lp_full_final.html）を Studio 実装するための初版指示書。Project setup / Design tokens / 全10セクション実装手順 / Animation / Responsive / Asset / QA を網羅。**§0レスポンシブ前提・§7セクション別Mobile実装・§11落とし穴・§10QA Mobile拡張**でレスポンシブ第一の前提を組込み | azalea | ドラフト |
+| **v02-full** | **2026-06-18** | **drafts/v02_20260618_guide_full.md** | **全体** | **現物 v10 no.104 同期版（7,533行）。多エージェント解析＋Studio最新仕様の公式再調査で生成・検証。Problem削除／採択率・FAQ・フローティングCTA新設を反映。全23章（§0-§11＋5-1..5-12）。Free/Mini両対応・疑似要素67の代替・トレース可能な番号付き手順** | azalea | **最新ドラフト** |
+| v01-full | 2026-05-06 | drafts/v01_20260506_guide_full.md | 全体 | v09（lp_full_final.html）を Studio 実装するための初版指示書（10セクション）。**v02 で置き換え（v09前提のため陳腐化）** | azalea | 旧版（参照のみ） |
 
 ---
 
 ## 作成状況
 
-| セクション | 対応モックアップ | ドラフト | 確定版 | 備考 |
-| --- | --- | --- | --- | --- |
-| ヘッダー | mockup/final/lp_full_final.html | ✅ v01-full §5-1 | — | — |
-| FV | mockup/final/lp_full_final.html | ✅ v01-full §5-2 | — | グラデ文字・マーカー・マーキーは Embed 必要 |
-| 課題提示 | mockup/final/lp_full_final.html | ✅ v01-full §5-3 | — | — |
-| アプローチ | mockup/final/lp_full_final.html | ✅ v01-full §5-4 | — | — |
-| サービス詳細 | mockup/final/lp_full_final.html | ✅ v01-full §5-5 | — | — |
-| 実績 | mockup/final/lp_full_final.html | ✅ v01-full §5-6 | — | 「100%・ゼロ」表記は法務確認後修正 |
-| VC提携 | mockup/final/lp_full_final.html | ✅ v01-full §5-7 | — | ロゴ許諾エビデンス確認待ち |
-| 事例 | mockup/final/lp_full_final.html | ✅ v01-full §5-8 | — | 採択額根拠・顧客同意確認待ち |
-| CTA | mockup/final/lp_full_final.html | ✅ v01-full §5-9 | — | フォーム同意文の修正待ち |
-| フッター | mockup/final/lp_full_final.html | ✅ v01-full §5-10 | — | プライバシー遷移先 URL 確認待ち |
-| FAQ | — | ⏳ v09 では未配置 | — | Q10 の回答次第で追加検討 |
-| 会社概要 | — | フッターに統合済 | — | 単独セクションとしては不要 |
+対応モックアップは全て現物 `mockup/drafts/v09_..._castme-hubblecolor.html`（= v10 no.104）。
 
-※ FAQ・VC投資先特典は v09 確定版でフッターまたは Hero/Service の特典バナーに統合済み
+| セクション | v02 ドラフト | 確定版 | 備考 |
+| --- | --- | --- | --- |
+| ヘッダー | ✅ v02-full §5-1 | — | position:fixed・Mobile ハンバーガー |
+| FV（Hero） | ✅ v02-full §5-2 | — | フォームCTA化・h1スイープ・ロゴマーキー（Embed系） |
+| アプローチ | ✅ v02-full §5-3 | — | point 01. 点線円バッジ |
+| 採択率/市場動向 **(NEW)** | ✅ v02-full §5-4 | — | 棒グラフ・グラデ背景（Box fillグラデ可否=要実機確認） |
+| サービス | ✅ v02-full §5-5 | — | 対応制度カード・特典カード |
+| 実績（Record） | ✅ v02-full §5-6 | — | 「100%・ゼロ」表記は法務確認後 |
+| VC提携 | ✅ v02-full §5-7 | — | 5列14枚・ロゴ許諾確認待ち |
+| 導入事例（Cases） | ✅ v02-full §5-8 | — | 写真+ロゴ+業種タグ・採択額根拠/同意確認待ち |
+| FAQ **(NEW)** | ✅ v02-full §5-9 | — | Toggle アコーディオン |
+| CTA | ✅ v02-full §5-10 | — | 女性+吹き出しSVG・フォーム同意文修正待ち |
+| フッター | ✅ v02-full §5-11 | — | 公式ロゴ+明背景・PP遷移先URL確認待ち |
+| フローティング特典CTA **(NEW)** | ✅ v02-full §5-12 | — | 右下追従・着手金0円 |
+| ~~Problem（課題提示）~~ | — | — | **v10 で削除済み（CSS残骸のみ）** |
+
+※ v01（10セクション・Problem有）→ v02（12セクション・Problem削除＋採択率/FAQ/フローティングCTA新設）。
 
 ---
 

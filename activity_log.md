@@ -44,6 +44,21 @@
 
 ## ログ本体
 
+### 2026-06-18 02:12 [DONE] azalea
+- 対象: `studio_guide/drafts/v02_20260618_guide_full.md`（新規・7,533行/752KB）, `studio_guide/studio_spec_2026-06_reference.md`（新規・539行）, `studio_guide/studio_spec.md`（参照バナー追加・v1.1）, `studio_guide/implementation_progress.md`（v02刷新）, `studio_guide/INDEX.md`（v02反映）
+- 内容: Studio 実装手順書を現物 v10 no.104 へ全面同期完了。
+  - **手順書 v02**: 全23章（§0レスポンシブ前提〜§11落とし穴＋5-1..5-12）。Problem削除／採択率・FAQ・フローティングCTA新設を反映。Free/Mini両対応、疑似要素67の代替（Free=追加Box/Embed・Mini=Custom Code）併記、番号付き＋完了チェックでトレース可能化。実値（HEX/px/トークン名/実コピー）は現物CSSから抽出。
+  - **Studio最新仕様リファレンス（2026-06検証版）**: 公式ドキュメント再調査で11観点を検証・訂正（左ナビ8パネル/プラン価格・Mini=2ページ制約/Scroll Effect/カスタムフォント可否等）。studio_spec.md に参照バナー追加。
+- 手段: 多エージェントワークフロー2本（初回wgrg5oxd7=解析26+統合+23章ドラフト/検証/修正、回復wop3goo70=throttle失敗12章の再生成）。初回はサーバー側レート制限で12章失敗→回復WFで全23章完遂。前置き混入はstripで除去。
+- 未了: git commit/push はユーザー指示待ち。プラン（Free/Mini）最終決定はユーザー判断（手順書は両対応済）。
+- 備考: studio_guide は azalea 領域。mockup 本体・kasahara 作業領域は不変更。
+
+### 2026-06-18 00:34 [INTENT] azalea
+- 対象: `studio_guide/drafts/v02_20260618_guide_full.md`（新規）, `studio_guide/studio_spec.md`（更新）, `studio_guide/implementation_progress.md`（v02 化）
+- 内容: Studio 実装手順書を現物 v10 no.104（`v09_...html`）へ全面同期。多エージェントワークフローで (1) Studio 最新仕様を公式ドキュメントで再調査・検証 (2) v10 no.104 を全セクション解析（Problem 削除・採択率/FAQ/フローティングCTA 反映） (3) トレース可能な詳細手順書 v02 を生成。
+- 背景: 指示書 v01（2026-05-06・v09 前提）が現物と乖離。Figma/AI 代替ルートはユーザーと検討の上「直接 Studio 構築」で決定。プラン（Free/Mini）は未確定のため手順書は両対応＋推奨を明記する方針。
+- 備考: studio_guide は azalea 領域。kasahara 直近活動は 6-11 で競合なし。
+
 ### 2026-06-11 [DONE] kasahara — v10 no.104
 - 対象: mockup/drafts/privacy.html
 - 内容: ヘッダーのロゴ／「← トップへ戻る」リンクの href を v09_...html → index.html に修正。デプロイ時に LP は index.html にリネームされるため、旧ドラフトファイル名のままだと公開サイトで 404（リンク切れ）になっていた不具合を解消。
