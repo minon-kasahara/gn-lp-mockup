@@ -222,6 +222,16 @@ ul.checklist>li{padding-right:118px}
 .ca.cak:hover{background:#eaf1ff;border-color:#c7daff;color:var(--blue-dk)}
 .ca.cam:hover{background:#ffeaf3;border-color:#ffc9e0;color:#c2316f}
 .ca.cau:hover{background:var(--bg3)}
+/* 章別ボタン: 割当状態の色分け（on=全件その担当 / part=一部） */
+.ca.cak.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.ca.cam.on{background:#c2316f;border-color:#c2316f;color:#fff}
+.ca.cau.on{background:#e8edf5;border-color:#cfd8e6;color:#54627a}
+.ca.cak.on:hover{background:var(--blue-dk);color:#fff}
+.ca.cam.on:hover{background:#a82a5f;color:#fff}
+.ca.cau.on:hover{background:#dde4ee}
+.ca.cak.part{background:#eaf1ff;border-color:#bcd3ff;color:var(--blue-dk)}
+.ca.cam.part{background:#ffeaf3;border-color:#ffc2dc;color:#c2316f}
+.ca.cau.part{background:#f1f4f9;border-color:var(--line);color:var(--sub)}
 /* サイドバー 章別進捗バッジ */
 nav.side a .navprog{float:right;font-size:10px;font-weight:800;color:#90a3c4;background:#16294a;border-radius:999px;padding:1px 7px;margin-left:6px}
 nav.side a .navprog.done{background:#15422f;color:#86e3b4}
@@ -14031,7 +14041,7 @@ sec-footer
       if(w==='k')t.k++;else if(w==='m')t.m++;else t.u++;
       if(s.done){t.done++;if(w==='k')t.kd++;else if(w==='m')t.md++;}
       var dd=t.diff[df]||t.diff.normal;dd.t++;if(s.done)dd.d++;if(!w)dd.u++;
-      var c=t.byCh[x.ch]||(t.byCh[x.ch]={total:0,done:0});c.total++;if(s.done)c.done++;});
+      var c=t.byCh[x.ch]||(t.byCh[x.ch]={total:0,done:0,k:0,m:0,u:0});c.total++;if(s.done)c.done++;if(w==='k')c.k++;else if(w==='m')c.m++;else c.u++;});
     return t;
   }
   function refresh(){
@@ -14053,7 +14063,8 @@ sec-footer
     var rows='';
     document.querySelectorAll('main section.chapter').forEach(function(ch){
       var c=t.byCh[ch.id];if(!c)return;var h2=ch.querySelector('h2');var title=h2?h2.textContent:ch.id;var cp=c.total?Math.round(c.done/c.total*100):0;
-      rows+='<tr><td><a href="#'+ch.id+'" data-go="1">'+esc(title)+'</a></td><td style="white-space:nowrap">'+c.done+' / '+c.total+'</td><td style="width:26%"><div class="cbar"><i style="width:'+cp+'%"></i></div></td><td style="white-space:nowrap"><span class="ca-set"><button class="ca cak" data-ch="'+ch.id+'" data-w="k" title="この章を皐大に一括割当">皐</button><button class="ca cam" data-ch="'+ch.id+'" data-w="m" title="この章を海音に一括割当">海</button><button class="ca cau" data-ch="'+ch.id+'" data-w="" title="この章の担当を解除">未</button></span></td></tr>';
+      var kc=(c.k===c.total&&c.total)?' on':(c.k>0?' part':''),mc=(c.m===c.total&&c.total)?' on':(c.m>0?' part':''),uc=(c.u===c.total&&c.total)?' on':(c.u>0&&c.u<c.total?' part':'');
+      rows+='<tr><td><a href="#'+ch.id+'" data-go="1">'+esc(title)+'</a></td><td style="white-space:nowrap">'+c.done+' / '+c.total+'</td><td style="width:26%"><div class="cbar"><i style="width:'+cp+'%"></i></div></td><td style="white-space:nowrap"><span class="ca-set"><button class="ca cak'+kc+'" data-ch="'+ch.id+'" data-w="k" title="この章を皐大に一括割当">皐</button><button class="ca cam'+mc+'" data-ch="'+ch.id+'" data-w="m" title="この章を海音に一括割当">海</button><button class="ca cau'+uc+'" data-ch="'+ch.id+'" data-w="" title="この章の担当を解除">未</button></span></td></tr>';
     });
     var R=60,C=2*Math.PI*R,off=C*(1-pct/100);
     document.getElementById('dashBody').innerHTML=

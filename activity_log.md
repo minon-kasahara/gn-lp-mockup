@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-18 13:37 [DONE] azalea
+- 対象: `studio_guide/v02_guide.html`（章別一括割当ボタンの状態色付け）
+- 内容: ダッシュボード章別表の [皐][海][未] ボタンを割当状態で色付け。stats() に章別の担当人数(k/m/u)を追加し、各ボタンに on（その担当が章の全タスク＝濃色: 皐青/海桃/未淡灰）/ part（一部＝薄色）クラスを付与。クリック一括割当→refresh で即時反映。
+- 検証(eval): 初期=未on / 皐一括→皐on / 海一括→海on / 一部別担当→海part+未part。コンソールエラー0。
+- 公開: 次push で Pages の guide.html も自動更新。
+
 ### 2026-06-18 13:12 [DONE] azalea
 - 対象: `.github/workflows/deploy.yml`（手順書配信ステップ追加）, `DEPLOY.md`（URL追記）, `vercel.json`/`middleware.js`/`VERCEL_SETUP.md`（削除）
 - 内容: 公開方針を Vercel → **GitHub Pages** に変更（ユーザー判断）。既存 Pages ワークフローに「studio_guide/v02_guide.html を guide.html として配信（src の ../mockup/assets/→assets/ 書換）」ステップを追加。手順書は **https://minon-kasahara.github.io/gn-lp-mockup/guide.html** で公開（noindex・直リンク）。Vercel 用ファイル一式は削除。
