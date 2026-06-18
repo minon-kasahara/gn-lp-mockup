@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-18 14:34 [DONE] azalea
+- 対象: `studio_guide/v02_guide.html`（window.GN_FIREBASE にユーザー提供の構成を設定）
+- 内容: Firebase 同期を**有効化**。プロジェクト gn-lp-guide（asia-southeast1）。プレビューで実接続検証完了: 🟢同期表示・タスク書込→localStorage全消去&リロードでFirebaseから復元（=別端末で開いたのと同等）成功・往復同期OK・コンソールエラー0。テストデータは消去済。
+- 注意: Firebase Web構成(apiKey等)は公開前提の識別子のため public repo 掲載OK。セキュリティは Realtime DB ルール(gnGuide限定read/write)で担保。テストモードのままなら30日で失効するため、恒久ルールへの差替えをユーザーに案内。
+- 公開: push で Pages guide.html も同期有効に。皐大・海音が同URLを開けばリアルタイム共有。
+
 ### 2026-06-18 13:53 [DONE] azalea
 - 対象: `studio_guide/v02_guide.html`（Firebase同期コード組込）, `FIREBASE_SETUP.md`（新規）
 - 内容: 進捗・担当を全端末でリアルタイム自動共有するため Firebase Realtime Database 連携を実装。Firebase SDK(compat) を CDN 読込＋ `window.GN_FIREBASE` 設定枠を追加。タスク単位の差分同期（save()→fbPush で変更タスクのみ update、2人同時編集でも上書きせずマージ）、`.on('value')` でリアルタイム受信、reset/import は remote 全置換/全消去。topbar に同期状態バッジ（🟢同期/⚪ローカル/🔴エラー）、ダッシュボードのnoteを同期状態で動的化。**設定が空のうちは無効＝localStorage のみで従来どおり動作**。
