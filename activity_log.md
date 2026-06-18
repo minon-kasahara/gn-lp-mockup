@@ -44,6 +44,13 @@
 
 ## ログ本体
 
+### 2026-06-18 13:53 [DONE] azalea
+- 対象: `studio_guide/v02_guide.html`（Firebase同期コード組込）, `FIREBASE_SETUP.md`（新規）
+- 内容: 進捗・担当を全端末でリアルタイム自動共有するため Firebase Realtime Database 連携を実装。Firebase SDK(compat) を CDN 読込＋ `window.GN_FIREBASE` 設定枠を追加。タスク単位の差分同期（save()→fbPush で変更タスクのみ update、2人同時編集でも上書きせずマージ）、`.on('value')` でリアルタイム受信、reset/import は remote 全置換/全消去。topbar に同期状態バッジ（🟢同期/⚪ローカル/🔴エラー）、ダッシュボードのnoteを同期状態で動的化。**設定が空のうちは無効＝localStorage のみで従来どおり動作**。
+- 検証(eval): 設定空→「⚪ ローカル」・チェック/localStorage保存/警告文すべて正常・Firebase SDK読込OK・コンソールエラー0。実同期はユーザーの Firebase 設定後に検証。
+- 残: ユーザーが Firebase プロジェクト作成→Web構成を提供→`window.GN_FIREBASE` に反映して push で有効化（FIREBASE_SETUP.md 参照）。
+- セキュリティ: ルールは gnGuide 限定 read/write 可（タスクのチェック/担当のみ・機微情報なし）。
+
 ### 2026-06-18 13:37 [DONE] azalea
 - 対象: `studio_guide/v02_guide.html`（章別一括割当ボタンの状態色付け）
 - 内容: ダッシュボード章別表の [皐][海][未] ボタンを割当状態で色付け。stats() に章別の担当人数(k/m/u)を追加し、各ボタンに on（その担当が章の全タスク＝濃色: 皐青/海桃/未淡灰）/ part（一部＝薄色）クラスを付与。クリック一括割当→refresh で即時反映。
