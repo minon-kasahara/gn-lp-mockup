@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-19 00:00 [DONE] azalea
+- 対象: `studio_guide/drafts/v02_20260618_guide_full.md` §0.2/§0.3, `studio_guide/v02_guide.html` §0.2/§0.3, `studio_guide/studio_spec_2026-06_reference.md` §8.1
+- 内容: **ブレークポイント定義の誤りを訂正**。Studio のタブレットは可動上限 990px（実機確認「タブレット設定サイズ 691〜990px」）で **1024px を設定できない**。旧 §0.2「Tablet を 1024 に上げる」は実行不能だった。ユーザー選択（A）に従い、**1024 構造リフローは Small（スモール 約991〜1279px）で行い、Tablet は 840 据置**に修正。BP定義を Default/Small/Tablet/Mobile の4段に。`Tablet(1024)`→`Small(1024)` を md/HTML 両方で全置換、§0.3 の 768行→Tablet(840)・原則・補足を訂正、全章共通の「読み替えルール」を追加。仕様 §8.1 にタブレット 691〜990 レンジと実機確認注記を追記。
+- 検証: 残存 `Tablet(1024)`/旧文言=0、ch-g0 チェックリスト=29 維持（タスクID/難易度/Firebaseキーずれなし）、preview で訂正描画・同期 connected・コンソールエラー0。
+- 背景: 元々 §0.2(Tablet1024) と §7/各章(Tablet840) で BPモデルが混在していた。今回 Tablet840+Small1024 に統一。各章の「3段」「1024→Tablet」表記は §0.3 の読み替えルールで吸収。
+
 ### 2026-06-18 14:34 [DONE] azalea
 - 対象: `studio_guide/v02_guide.html`（window.GN_FIREBASE にユーザー提供の構成を設定）
 - 内容: Firebase 同期を**有効化**。プロジェクト gn-lp-guide（asia-southeast1）。プレビューで実接続検証完了: 🟢同期表示・タスク書込→localStorage全消去&リロードでFirebaseから復元（=別端末で開いたのと同等）成功・往復同期OK・コンソールエラー0。テストデータは消去済。

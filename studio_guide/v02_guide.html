@@ -684,50 +684,56 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
     <li>768–1024px 帯で発火する制御は原物 <code>L818</code>（1024）の1ブロックのみだと把握した</li>
   </ul>
 
-  <h3 id="g0-2">0.2 Studio 3ブレークポイントの定義（正本）</h3>
-
-  <p>仕様 §8.1 に基づき、本プロジェクトは Studio デフォルトの <strong>初期有効3段</strong> を採用する。Small(1140) / Mini(320) は<strong>追加しない</strong>（原物の分岐が3段で吸収可能なため。詳細は <a href="#g0-3">§0.3</a> の写像表）。</p>
+  <h3 id="g0-2">0.2 Studio ブレークポイントの定義（正本）</h3>
 
   <div class="callout warn">
-    <p><strong>【重要】Tablet 基準幅は 840px ではなく 1024px に引き上げる。</strong></p>
-    <p>原物 <code>L818</code> の <code>@media (max-width:1024px)</code> ブロックは段組み調整ではなく <strong>Hero / CTA / Footer / Perk の1カラム化という構造リフロー</strong>を行う（<a href="#g0-3">§0.3</a> で詳述）。Studio Tablet を初期値の 840px のままにすると、<strong>841〜1024px の帯でこれらが2カラムのまま残り、タブレット〜小型ノートで明確にレイアウトが破綻する</strong>。この破綻を避けるため、本手順では Tablet 基準幅を <code>1024px</code> に設定する。下表はこの設定を正とする。</p>
+    <p><strong>🔧 訂正（2026-06-18）</strong>: Studio の<strong>タブレットは可変レンジ上限が 990px</strong>（実機確認「タブレット設定サイズ 691〜990px」）で <strong>1024px を設定できない</strong>。よって 1024px の構造リフローは <strong>スモール（Small）</strong>で行う。旧版の「タブレットを 1024 に上げる」は誤り。本節はスモール採用版に訂正済み。</p>
+  </div>
+
+  <p>仕様 §8.1 に基づき、本プロジェクトは <strong>Default / Small / Tablet / Mobile の4段</strong>を採用する。Mini(320) は追加しない。</p>
+
+  <div class="callout warn">
+    <p><strong>【重要】1024px の構造リフローは「タブレット」ではなく「スモール」に置く。</strong></p>
+    <p>原物 <code>L818</code> の <code>@media (max-width:1024px)</code> ブロックは段組み調整ではなく <strong>Hero / CTA / Footer / Perk の1カラム化という構造リフロー</strong>を行う（<a href="#g0-3">§0.3</a> で詳述）。<strong>タブレットは上限 990px のため 1024 を設定できない</strong>ので、これを ≤1024px の全帯に効かせるには <strong>スモール（範囲 約991〜1279px）を有効化し基準幅を 1024px</strong> に置く。スモールに置いた1カラム化は下位（Tablet / Mobile）へ自動継承される。下表をこの設定の正とする。</p>
   </div>
 
   <table>
     <thead>
-      <tr><th>Studio 名称</th><th>基準幅</th><th>役割</th><th>レンジ（仕様の可動例）</th><th>削除</th></tr>
+      <tr><th>Studio 名称</th><th>基準幅</th><th>役割</th><th>レンジ（可動範囲）</th><th>削除</th></tr>
     </thead>
     <tbody>
-      <tr><td><strong>Default（PC）</strong></td><td><code>1280px</code></td><td>基底。全プロパティの起点。下方カスケード元</td><td><code>1025px〜</code> で適用</td><td>不可（仕様 §8.1）</td></tr>
-      <tr><td><strong>Tablet</strong></td><td><code>1024px</code><br>（初期値 840 から変更）</td><td>中間。原物 1024 ブロックの構造リフロー（Hero/CTA/Footer/Perk 1カラム化）を吸収</td><td><code>〜1024px</code> で適用</td><td>可（本手順では残す）</td></tr>
-      <tr><td><strong>Mobile</strong></td><td><code>540px</code></td><td>最優先。原物 767 帯のモバイル再構成（全幅 CTA・縦積み）</td><td><code>〜540px</code> で適用</td><td>可（本手順では残す）</td></tr>
+      <tr><td><strong>Default（PC）</strong></td><td><code>1280px</code></td><td>基底。全プロパティの起点。下方カスケード元</td><td><code>1280px</code>（固定）</td><td>不可（仕様 §8.1）</td></tr>
+      <tr><td><strong>Small（スモール）</strong></td><td><code>1024px</code><br>（有効化して設定。1024 不可なら既定 1140 でも可）</td><td>原物 1024 ブロックの構造リフロー（Hero/CTA/Footer/Perk 1カラム化）を吸収</td><td><code>約991〜1279px</code></td><td>可（本手順では使う）</td></tr>
+      <tr><td><strong>Tablet（タブレット）</strong></td><td><code>840px</code><br>（初期値のまま・変更しない）</td><td>768/marquee 等の中間調整。<strong>上限 990px のため 1024 不可</strong></td><td><code>691〜990px</code></td><td>可（本手順では残す）</td></tr>
+      <tr><td><strong>Mobile（モバイル）</strong></td><td><code>540px</code></td><td>最優先。原物 767 帯のモバイル再構成（全幅 CTA・縦積み）</td><td><code>361〜690px</code></td><td>可（本手順では残す）</td></tr>
     </tbody>
   </table>
 
   <ul>
     <li>ブレークポイントは <strong>ツールバーの数値入力</strong>、またはエディタ画面外の縦線（ブレークポイントバー）のドラッグで変更できる。<strong>設定はプロジェクト全体に適用され、ページ別には持てない</strong>（仕様 §8.1）。本 LP は単一ページ主体のため影響は限定的。</li>
-    <li><strong>条件スタイルは Default を基底に下方カスケードする</strong>。Default に置いた値は Tablet / Mobile に自動継承され、各 BP で上書きしたプロパティだけが分岐する（仕様 §8.2）。</li>
+    <li><strong>条件スタイルは Default を基底に下方カスケードする</strong>。Default に置いた値は Small → Tablet → Mobile へ自動継承され、各 BP で上書きしたプロパティだけが分岐する（仕様 §8.2）。</li>
   </ul>
 
   <div class="callout tip">
     <p><strong>【操作】ブレークポイント有効状態の設定（実装着手前に1回）</strong></p>
   </div>
   <ol class="steps">
-    <li>エディタ下部ツールバー → デバイス幅切替で <strong>Default / Tablet / Mobile の3つが表示されている</strong>ことを確認する。</li>
-    <li><strong>Tablet を選択 → ツールバーの数値入力欄に <code>1024</code> を入力</strong>し、初期値 840px から 1024px へ変更する（または画面外のブレークポイントバーを 1024px までドラッグ）。</li>
-    <li><strong>Mobile を選択 → 数値入力欄が <code>540</code> になっているか確認</strong>する。初期値どおりなら変更不要。</li>
-    <li>Small / Mini が表示されている場合も<strong>追加・編集しない</strong>（本手順は3段前提）。</li>
+    <li>エディタ下部ツールバー → デバイス幅切替で <strong>Default / Tablet / Mobile</strong> が表示されていることを確認する。</li>
+    <li><strong>スモールを有効化</strong>（ツールバーの「＋」または「スモール」を選択）→ <strong>数値入力欄に <code>1024</code> を入力</strong>（範囲 約991〜1279px。1024 が入らない環境では既定 1140 のままでも可）。<a href="#g0-3">§0.3</a> の 1024 構造リフローはここに実装する。</li>
+    <li><strong>Tablet は初期値 840 のまま</strong>にする（上限 990px のため 1024 は設定不可）。768/marquee 等の中間調整のみここで行う。</li>
+    <li><strong>Mobile を選択 → 数値入力欄が <code>540</code> か確認</strong>する。初期値どおりなら変更不要。</li>
+    <li>Mini は<strong>追加・編集しない</strong>。</li>
   </ol>
 
   <ul class="checklist">
-    <li>Studio の有効 BP が Default(1280) / Tablet(<strong>1024</strong>) / Mobile(540) の3段である</li>
-    <li>Tablet 基準幅を初期値 840 から 1024 に変更した</li>
-    <li>Small / Mini は追加していない</li>
+    <li>Studio の有効 BP が Default(1280) / <strong>Small(1024)</strong> / Tablet(840) / Mobile(540) の4段である</li>
+    <li><strong>スモールを有効化し基準幅 1024</strong>（不可なら既定 1140）に設定し、そこに1カラム化リフローを置く方針を理解した</li>
+    <li>タブレットは 840 のまま（上限 990 のため 1024 不可）にすることを把握した</li>
   </ul>
 
-  <h3 id="g0-3">0.3 原物 <code>@media</code> 値 → Studio 3BP 写像方針</h3>
+  <h3 id="g0-3">0.3 原物 <code>@media</code> 値 → Studio BP 写像方針</h3>
 
-  <p>原物は単一の基準値を持たず、改行制御・コンポーネント別に<strong>不揃いな <code>@media</code> 値</strong>（<code>min-width:1280</code> / <code>min-width:768</code> / <code>max-width:767</code> / <code>max-width:768</code> / <code>max-width:1024</code> / <code>max-width:640</code> / <code>max-width:480</code> / <code>max-width:380</code>）を併用している。これらを Studio の3段へ次のとおり<strong>写像（マッピング）</strong>する。Studio では BP を増やさず、<strong>同一 BP 内で各要素の上書き値として吸収する</strong>のが原則。</p>
+  <p>原物は単一の基準値を持たず、改行制御・コンポーネント別に<strong>不揃いな <code>@media</code> 値</strong>（<code>min-width:1280</code> / <code>min-width:768</code> / <code>max-width:767</code> / <code>max-width:768</code> / <code>max-width:1024</code> / <code>max-width:640</code> / <code>max-width:480</code> / <code>max-width:380</code>）を併用している。これらを Studio の <strong>Default / Small / Tablet / Mobile</strong> へ次のとおり<strong>写像（マッピング）</strong>する。BP は最小限（4段）に留め、<strong>同一 BP 内で各要素の上書き値として吸収する</strong>のが原則。</p>
 
   <figure class="fig">
     <svg viewBox="0 0 760 300" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -786,8 +792,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
     <tbody>
       <tr><td><code>min-width:1280</code>（L46）</td><td>min</td><td>改行クラス <code>.br-tablet</code> 非表示（PC1行化）</td><td><strong>Default(1280)</strong></td><td>Default の値として直接実装。FV見出し <code>.hero h1</code> は PC で <code>nowrap</code></td></tr>
       <tr><td><code>min-width:768</code>（L51）</td><td>min</td><td><code>.br-mobile</code> 非表示（タブレット改行）</td><td><strong>Default〜Tablet</strong></td><td>Default に内包。768〜1024 の差はカスケードで吸収</td></tr>
-      <tr><td><code>max-width:1024</code>（L818）</td><td>max</td><td><strong>構造リフロー</strong>: <code>.hero-inner</code> 1カラム化（L819）・<code>.hero h1</code> を <code>white-space:normal</code>＋<code>clamp(32px,5.4vw,52px)</code>（L820）・<code>.cta-inner</code> 1カラム化（L822）・<code>.perk-inner</code> 1カラム化（L825）・<code>.ft-inner</code> 1カラム化（L827）・<code>.case-grid</code> 2カラム化（L824）・各セクション padding 64px（L829-831）</td><td><strong>Tablet(1024)</strong></td><td><strong>Tablet の上書きの中核。</strong> Tablet 基準を 1024 に置いたため（<a href="#g0-2">§0.2</a>）、この帯の1カラム化を Tablet で正確に吸収できる</td></tr>
-      <tr><td><code>max-width:768</code>（L304/611/612 等）</td><td>max</td><td>marquee 余白・特典バナー縮小</td><td><strong>Tablet(1024)</strong></td><td>Tablet の上書きへ集約</td></tr>
+      <tr><td><code>max-width:1024</code>（L818）</td><td>max</td><td><strong>構造リフロー</strong>: <code>.hero-inner</code> 1カラム化（L819）・<code>.hero h1</code> を <code>white-space:normal</code>＋<code>clamp(32px,5.4vw,52px)</code>（L820）・<code>.cta-inner</code> 1カラム化（L822）・<code>.perk-inner</code> 1カラム化（L825）・<code>.ft-inner</code> 1カラム化（L827）・<code>.case-grid</code> 2カラム化（L824）・各セクション padding 64px（L829-831）</td><td><strong>Small(1024)</strong></td><td><strong>Small の上書きの中核。</strong> スモールを 1024 に置いたため（<a href="#g0-2">§0.2</a>。タブレットは上限990で1024不可）、この帯の1カラム化を Small で吸収し Tablet/Mobile へ自動継承させる</td></tr>
+      <tr><td><code>max-width:768</code>（L304/611/612 等）</td><td>max</td><td>marquee 余白・特典バナー縮小</td><td><strong>Tablet(840)</strong></td><td>Tablet（840）の上書きへ集約</td></tr>
       <tr><td><code>max-width:767</code>（実箇所は <code>L834</code> が主）</td><td>max</td><td><strong>主要モバイル再構成</strong>（ヘッダー縮小・FV細部・CTA全幅・stat-panel 余白）は <code>L834</code> ブロックに集約。L56＝改行クラス <code>.br-pc{display:inline}</code> のみ／L1275＝<code>.float-perk</code> のモバイル全幅化（別ブロック）</td><td><strong>Mobile(540)</strong></td><td><strong>Mobile の上書きの中核。</strong> 原物 L834〜の指定を Mobile 値として実装。L56/L1275 は役割が別（下注記参照）</td></tr>
       <tr><td><code>max-width:640</code>（L732）</td><td>max</td><td>FAQ・一部グリッド調整</td><td><strong>Mobile(540)</strong></td><td>Mobile に集約</td></tr>
       <tr><td><code>max-width:480</code>（L614）</td><td>max</td><td>細部余白・フォント微調整</td><td><strong>Mobile(540)</strong></td><td>Mobile に集約（480と540の差は実害小）</td></tr>
@@ -808,12 +814,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <ol class="steps">
     <li><strong><code>min-width</code> 系（1280 / 768）は Default に畳み込む</strong>。Studio は Default を最上位とする下方カスケードのため、原物の「上限で1行化」ロジックは Default に正しい改行・<code>nowrap</code> を組めば再現できる。</li>
     <li><strong><code>max-width</code> 系のうち 767（実箇所 L834）を Mobile(540) の中核とし、640 / 480 / 380 はすべて Mobile に集約</strong>する。BP を増やすと管理コストとカスケードの追跡性が悪化するため、近接した分岐は同一 BP 内の上書きへ統合する。</li>
-    <li><strong>1024（L818）は構造リフローを含むため Tablet(1024) で正確に吸収する</strong>。Tablet 基準を初期値 840 ではなく 1024 に引き上げた（<a href="#g0-2">§0.2</a>）ことで、原物が 1024px 以下で Hero/CTA/Footer/Perk を縦1カラムにする挙動を、Studio Tablet の上書きとして 1〜1024px の全帯に一致させられる。<strong>768（marquee 等の余白調整）も Tablet に集約</strong>する。</li>
+    <li><strong>1024（L818）は構造リフローを含むため Small(1024) で正確に吸収する</strong>。タブレットは上限 990px で 1024 を設定できないため、<strong>スモールを有効化して 1024 に置く</strong>（<a href="#g0-2">§0.2</a>）。これにより原物が 1024px 以下で Hero/CTA/Footer/Perk を縦1カラムにする挙動を Small の上書きとして 1〜1024px の全帯へ一致させ、Tablet(840)/Mobile(540) へ自動継承させる。<strong>768（marquee 等の余白調整）は Tablet(840) に集約</strong>する。</li>
   </ol>
 
   <div class="callout note">
-    <p><strong>【補足】Tablet を 840 のままにする場合のトレードオフ（非推奨・記録のため）</strong></p>
-    <p>仮に Tablet を初期値 840px のまま運用する場合は、原物 1024 ブロックの1カラム化（Hero/CTA/Footer/Perk）を <strong>Tablet(840) と Mobile(540) の両方に上書き</strong>として明示的に置く必要がある。この場合 <strong>841〜1024px の帯ではこれらが2カラムのまま残り破綻する</strong>ため許容しない。本手順は <a href="#g0-2">§0.2</a> のとおり <strong>Tablet=1024 を正</strong>とし、840 運用は採らない。</p>
+    <p><strong>【全章共通の読み替えルール（重要）】</strong> 本書の各章レスポンシブ節に「Studio 3段」「3BP」とある箇所は、本節の <strong>Default / Small / Tablet / Mobile の4段</strong>に読み替える。特に <strong>原物 <code>max-width:1024</code> 由来の構造変化（Hero/CTA/Footer/Perk の1カラム化、Cases 2カラム化など）は Small(1024) に置く</strong>（旧記述で「1024→Tablet」とあっても Small へ）。<code>max-width:768</code> 以下は Tablet(840)、<code>max-width:767</code> 以下は Mobile(540) に集約する点は変わらない。タブレットは上限 990px のため 1024 を設定できない。</p>
+    <p><strong>【補足】スモールを使わず3段（Tablet=990）で済ませる簡易案（許容だが非推奨）</strong>: スモールを増やしたくない場合は Tablet を<strong>上限の 990px</strong> に設定し、1024 の1カラム化を Tablet(990)/Mobile(540) に置く方法もある。ただし <strong>991〜1024px（iPad 横など）は2カラムのまま残る</strong>軽微な乖離が生じる。忠実性を優先する本手順は <a href="#g0-2">§0.2</a> のとおり <strong>Small(1024) を正</strong>とする。</p>
   </div>
 
   <div class="callout warn">
@@ -826,9 +832,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   </div>
 
   <ul class="checklist">
-    <li>不揃いな8種の <code>@media</code> 値を Default / Tablet(1024) / Mobile(540) の3段へ写像する方針を理解した</li>
+    <li>不揃いな8種の <code>@media</code> 値を Default / Small(1024) / Tablet(840) / Mobile(540) の4段へ写像する方針を理解した</li>
     <li>1024（L818）は段組み調整ではなく Hero/CTA/Footer/Perk の1カラム化＝構造リフローだと正しく把握した</li>
-    <li>640 / 480 / 380 は Mobile に、1024 / 768 は Tablet(1024) に集約すると決めた</li>
+    <li>640 / 480 / 380 は Mobile に、1024 は Small(1024)、768 は Tablet(840) に集約すると決めた</li>
     <li><code>max-width:767</code> は L834（再構成本体）/ L56（改行クラス）/ L1275（float-perk）の別ブロックだと区別した</li>
     <li>改行の BP 別出し分けは「ボックス幅＋keep-all」優先、必要時のみ要素2重化で対応する方針を理解した</li>
   </ul>
@@ -875,13 +881,13 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <h4>実装中（BP 別上書き）</h4>
   <ol class="steps">
     <li><strong>Default(PC)</strong> で原物 PC 値（例: <code>.sec</code> padding <code>76px 0</code>、<code>.cta-section</code> padding <code>84px 0</code>〔原物 L740〕、<code>.prob-grid</code> <code>grid-template-columns:1fr 1fr; gap:22px</code>、<code>--gutter:40px</code>）を組む。</li>
-    <li>ツールバーで <strong>Tablet(1024)</strong> に切替 → 原物 L818（1024）の構造リフローを上書きする。具体的には: <code>.hero-inner</code> を1カラム（<code>grid-template-columns:1fr</code>、gap 32px）、<code>.hero h1</code> を <code>white-space:normal</code>＋<code>clamp(32px,5.4vw,52px)</code>、<code>.cta-inner</code> を1カラム（gap 48px）、<code>.perk-inner</code> を1カラム、<code>.ft-inner</code> を1カラム（gap 32px）、<code>.case-grid</code> を2カラム、<code>.sec</code>/<code>.cta-section</code>/<code>.vc-sec</code> padding を <code>64px 0</code>。上書き中のプロパティ枠は <strong>黄緑（yellow-green）</strong> で色分け表示される（仕様 §8.2）。</li>
+    <li>ツールバーで <strong>Small(1024)</strong> に切替 → 原物 L818（1024）の構造リフローを上書きする。具体的には: <code>.hero-inner</code> を1カラム（<code>grid-template-columns:1fr</code>、gap 32px）、<code>.hero h1</code> を <code>white-space:normal</code>＋<code>clamp(32px,5.4vw,52px)</code>、<code>.cta-inner</code> を1カラム（gap 48px）、<code>.perk-inner</code> を1カラム、<code>.ft-inner</code> を1カラム（gap 32px）、<code>.case-grid</code> を2カラム、<code>.sec</code>/<code>.cta-section</code>/<code>.vc-sec</code> padding を <code>64px 0</code>。上書き中のプロパティ枠は <strong>黄緑（yellow-green）</strong> で色分け表示される（仕様 §8.2）。</li>
     <li>ツールバーで <strong>Mobile(540)</strong> に切替 → 原物 L834（767）帯＋640/480/380 帯の値を上書き（例: <code>--gutter</code> 相当の左右パディングを <code>16px</code>、Hero グリッドを <code>order</code> 制御で縦1カラム、CTA・フォームを全幅、ヘッダー高さ縮小）。上書き枠は <strong>オレンジ（orange）</strong> で色分け表示される。</li>
     <li>誤って下位 BP で不要な上書きをした場合は、プロパティ横の <strong>「Reset override（上書きリセット）」矢印</strong>で個別解除し Default 値へ戻す（仕様 §8.2）。</li>
   </ol>
   <ul class="checklist">
     <li>Default→Tablet→Mobile の順で、必要なプロパティだけを上書きした</li>
-    <li>Tablet(1024) に原物 1024 ブロックの1カラム化（Hero/CTA/Footer/Perk）を漏れなく置いた</li>
+    <li>Small(1024) に原物 1024 ブロックの1カラム化（Hero/CTA/Footer/Perk）を漏れなく置いた</li>
     <li>黄緑(Tablet)/オレンジ(Mobile)の色分けで上書き範囲を確認した</li>
   </ul>
 
@@ -957,7 +963,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 │   ├─ Header/Logo
 │   ├─ Header/Nav        ← Mobile(540) で 表示OFF（原物 .hd-nav{display:none}@767）
 │   └─ Header/CTA
-├─ Section/Hero         ← position:relative の通常フロー（fixed ではない／Base直下要件なし）。Default=2カラムgrid(1.5fr/.85fr)→Tablet(1024)で縦1カラム→Mobile=order制御で縦積み
+├─ Section/Hero         ← position:relative の通常フロー（fixed ではない／Base直下要件なし）。Default=2カラムgrid(1.5fr/.85fr)→Small(1024)で縦1カラム→Mobile=order制御で縦積み
 │   ├─ Hero/Left         ← eyebrow→h1→sub→（Mobileではstat/CTAをここへ縦積み）
 │   └─ Hero/StatPanel    ← VP特典フォーム（vp-badge/vp-form）を内包
 ├─ Section/Approach
@@ -965,10 +971,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 ├─ Section/Services
 ├─ Section/Record
 ├─ Section/VC
-├─ Section/Cases        ← Default=3カラム→Tablet(1024)=2カラム(.case-grid L824)→Mobile=1カラム
+├─ Section/Cases        ← Default=3カラム→Small(1024)=2カラム(.case-grid L824)→Mobile=1カラム
 ├─ Section/FAQ
-├─ Section/CTA          ← padding Default 84px(原物 L740)→Tablet(1024)以下 64px。Default=2カラムgrid(1.1fr/1fr)→Tablet(1024)で縦1カラム(.cta-inner L822)
-├─ Footer               ← Default=2カラムgrid(1.3fr/2fr)→Tablet(1024)で縦1カラム(.ft-inner L827)
+├─ Section/CTA          ← padding Default 84px(原物 L740)→Small(1024)以下 64px。Default=2カラムgrid(1.1fr/1fr)→Small(1024)で縦1カラム(.cta-inner L822)
+├─ Footer               ← Default=2カラムgrid(1.3fr/2fr)→Small(1024)で縦1カラム(.ft-inner L827)
 └─ Floating Perk        ← position:fixed, z-index:90, bottom/right:20px(原物 L1017)。fixed のため Base 直下必須。Mobile(540)で left/right:12px・width:auto に全幅化(原物 L1275)</pre>
 
   <figure class="fig">
@@ -1057,7 +1063,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <h4>セクション上下 padding（2系統あるので混同しない）</h4>
   <table>
     <thead>
-      <tr><th>系統 / クラス</th><th>Default 値</th><th>Tablet(1024)以下</th><th>原物箇所</th></tr>
+      <tr><th>系統 / クラス</th><th>Default 値</th><th>Small(1024)以下</th><th>原物箇所</th></tr>
     </thead>
     <tbody>
       <tr><td>通常セクション <code>.sec</code></td><td><code>76px 0</code></td><td><code>64px 0</code></td><td>L831</td></tr>
