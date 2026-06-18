@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-18 13:12 [DONE] azalea
+- 対象: `.github/workflows/deploy.yml`（手順書配信ステップ追加）, `DEPLOY.md`（URL追記）, `vercel.json`/`middleware.js`/`VERCEL_SETUP.md`（削除）
+- 内容: 公開方針を Vercel → **GitHub Pages** に変更（ユーザー判断）。既存 Pages ワークフローに「studio_guide/v02_guide.html を guide.html として配信（src の ../mockup/assets/→assets/ 書換）」ステップを追加。手順書は **https://minon-kasahara.github.io/gn-lp-mockup/guide.html** で公開（noindex・直リンク）。Vercel 用ファイル一式は削除。
+- 注意: Pages はパスワード保護不可＝公開URL（repo は元々 Public のため新規の機密露出なし）。進捗/担当は端末ローカル保存のまま。
+- 確認予定: push 後 Actions 完了 → guide.html の 200 と画像読込を確認。
+
 ### 2026-06-18 13:02 [DONE] azalea
 - 対象: `vercel.json`（新規）, `middleware.js`（新規）, `VERCEL_SETUP.md`（新規）
 - 内容: 手順書HTMLを Vercel でパスワード保護つきWeb公開するための設定一式を追加。`vercel.json`=ルート `/` を `studio_guide/v02_guide.html` に rewrite。`middleware.js`=Edge Middleware で全ルートをベーシック認証保護（パスワードは repo に置かず Vercel 環境変数 `SITE_USER`/`SITE_PASS` で管理。未設定時は素通し）。Vercel公式のPassword ProtectionはPro有料のため無料Hobbyで動く方式を採用。手順は VERCEL_SETUP.md。

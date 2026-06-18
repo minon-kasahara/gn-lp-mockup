@@ -4,6 +4,7 @@ name: Deploy Mockup to GitHub Pages
 # - mockup/drafts/v09_20260424_full_castme-hubblecolor.html を index.html 化
 # - HTML 内の `../assets/` を `assets/` にパス書換
 # - mockup/assets/ を配信（generated/ は除外）
+# - 実装手順書 studio_guide/v02_guide.html を guide.html として配信（社内向け・直リンク共有）
 # - 未公開クライアント LP のため noindex を付与（外部レビューは直リンクで実施）
 
 on:
@@ -52,7 +53,13 @@ jobs:
           # 4. robots.txt（全クローラ拒否）
           printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
 
-          # 5. 確認
+          # 5. 実装手順書 HTML を guide.html として配信
+          #    src の ../mockup/assets/ を assets/ に書換（guide 自体に noindex メタ済）
+          if [ -f studio_guide/v02_guide.html ]; then
+            sed 's|src="\.\./mockup/assets/|src="assets/|g' studio_guide/v02_guide.html > _site/guide.html
+          fi
+
+          # 6. 確認
           echo "---- _site tree ----"
           find _site -maxdepth 2 -type f | sort
 

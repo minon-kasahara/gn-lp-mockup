@@ -11,7 +11,8 @@
 - **GitHub**: `minon-kasahara/gn-lp-mockup`（**Public**）
 - **オーナー**: minon-kasahara（kasahara）／ azalea(azaleak1001) は collaborator(write)
 - **ローカルクローン推奨パス**: `~/gn-lp-mockup/`（Google Drive 外）
-- **公開 URL**: **https://minon-kasahara.github.io/gn-lp-mockup/**
+- **公開 URL（LP モックアップ）**: **https://minon-kasahara.github.io/gn-lp-mockup/**
+- **実装手順書（社内向け・HTML版）**: **https://minon-kasahara.github.io/gn-lp-mockup/guide.html**（`studio_guide/v02_guide.html` を配信。noindex・直リンク共有）
 
 > 📜 **移管履歴**: 当初 `AzaleaK2/gn-lp-mockup` で作成 → `azaleak1001/gn-lp-mockup` に再作成 → 2026-05-18 **T018 で `minon-kasahara/gn-lp-mockup` にオーナー移管**（公開 URL も minon-kasahara 側に変更）。旧 `azaleak1001.github.io/gn-lp-mockup/` は無効（404）。
 
