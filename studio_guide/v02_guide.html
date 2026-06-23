@@ -733,6 +733,17 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <h3 id="g0-3">0.3 原物 <code>@media</code> 値 → Studio BP 写像方針</h3>
 
+  <div class="callout tip">
+    <p><strong>結論：この節で「今」やる操作はありません。</strong> ここは各セクション（§5-1〜5-12）を作るときに開く<strong>早見表</strong>です（ブレークポイントの設定自体は <a href="#g0-2">§0.2</a> で完了）。各セクションのレスポンシブ調整で迷ったら、原物CSSの <code>@media</code> 値を見て「その変化をどの Studio BP に置くか」だけを次で決めます。</p>
+    <ul>
+      <li><code>max-width:1024</code>（Hero/CTA/Footer/特典/Cases の<strong>1カラム化</strong>などの構造変化）→ <strong>Small</strong></li>
+      <li><code>max-width:768</code>（marquee/バナー等の微調整）→ <strong>Tablet(840)</strong></li>
+      <li><code>max-width:767 / 640 / 480 / 380</code>（モバイル再構成：全幅CTA・縦積み等）→ <strong>Mobile(540)</strong></li>
+      <li><code>min-width:1280 / 768</code>（PCで改行しない 等）→ <strong>Default(PC)</strong> に組み込む</li>
+    </ul>
+    <p>原物の近い値（767・640・480・380 など）は<strong>同じ BP にまとめて寄せ</strong>、BP は増やしません。その帯で「具体的に何が変わるか」は各 <strong>§5-x</strong> セクション手順に書いてあります。下の表・図はこの対応の<strong>根拠（リファレンス）</strong>です。</p>
+  </div>
+
   <p>原物は単一の基準値を持たず、改行制御・コンポーネント別に<strong>不揃いな <code>@media</code> 値</strong>（<code>min-width:1280</code> / <code>min-width:768</code> / <code>max-width:767</code> / <code>max-width:768</code> / <code>max-width:1024</code> / <code>max-width:640</code> / <code>max-width:480</code> / <code>max-width:380</code>）を併用している。これらを Studio の <strong>Default / Small / Tablet / Mobile</strong> へ次のとおり<strong>写像（マッピング）</strong>する。BP は最小限（4段）に留め、<strong>同一 BP 内で各要素の上書き値として吸収する</strong>のが原則。</p>
 
   <figure class="fig">
