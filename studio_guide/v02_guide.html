@@ -722,7 +722,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   </div>
   <ol class="steps">
     <li>エディタ下部ツールバー → デバイス幅切替で <strong>Default / Tablet / Mobile</strong> が表示されていることを確認する。</li>
-    <li><strong>スモールを有効化</strong>（ツールバーの「＋」または「スモール」を選択）→ <strong>数値入力欄に <code>1024</code> を入力</strong>（範囲 約991〜1279px。1024 が入らない環境では既定 1140 のままでも可）。<a href="#g0-3">§0.3</a> の 1024 構造リフローはここに実装する。</li>
+    <li><strong>スモールを有効化する</strong>：何も選択していない状態で、画面<strong>下部のデバイス幅バー → 「Edit mode（編集モード）」</strong>をクリック → 一覧の <strong>Small（スモール）をクリックして有効化</strong> → その<strong>幅の数値欄に <code>1024</code> を入力</strong>（またはガイド線を 1024px までドラッグ）。範囲 約991〜1279px。1024 が弾かれて戻る環境のみ既定 <code>1140</code> のままでも可（その場合も各章の Small 指定値はそのまま使う）。<a href="#g0-3">§0.3</a> の 1024 構造リフローはこの Small に実装する。<br>※ 一部の旧UIでは「上部 Responsive メニュー → Customize Breakpoints → ＋」の場合あり。</li>
     <li><strong>Tablet は初期値 840 のまま</strong>にする（上限 990px のため 1024 は設定不可）。768/marquee 等の中間調整のみここで行う。</li>
     <li><strong>Mobile を選択 → 数値入力欄が <code>540</code> か確認</strong>する。初期値どおりなら変更不要。</li>
     <li>Mini は<strong>追加・編集しない</strong>。</li>
@@ -780,21 +780,21 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
       <line x1="240" y1="145" x2="500" y2="160" stroke="var(--sub)" stroke-width="1.5" marker-end="url(#arrowMap)"/>
       <line x1="240" y1="235" x2="500" y2="240" stroke="var(--sub)" stroke-width="1.5" marker-end="url(#arrowMap)"/>
 
-      <!-- right column: Studio 3 BP -->
-      <text x="630" y="24" text-anchor="middle" fill="var(--ink)" font-family="inherit" font-size="13" font-weight="700">Studio 3段 BP</text>
+      <!-- right column: Studio BP -->
+      <text x="630" y="24" text-anchor="middle" fill="var(--ink)" font-family="inherit" font-size="13" font-weight="700">Studio BP（4段）</text>
       <rect x="500" y="56" width="240" height="48" rx="6" fill="var(--yellow)" opacity="0.85"/>
       <text x="620" y="76" text-anchor="middle" fill="var(--ink)" font-family="inherit" font-size="13" font-weight="700">Default（1280）</text>
       <text x="620" y="94" text-anchor="middle" fill="var(--ink)" font-family="inherit" font-size="11">min系を畳み込み（改行・nowrap）</text>
 
       <rect x="500" y="136" width="240" height="48" rx="6" fill="var(--navy)" opacity="0.8"/>
-      <text x="620" y="156" text-anchor="middle" fill="var(--white)" font-family="inherit" font-size="13" font-weight="700">Tablet（1024）</text>
-      <text x="620" y="174" text-anchor="middle" fill="var(--white)" font-family="inherit" font-size="11">1024 構造リフロー＋768 余白</text>
+      <text x="620" y="156" text-anchor="middle" fill="var(--white)" font-family="inherit" font-size="13" font-weight="700">Small（1024）＋Tablet（840）</text>
+      <text x="620" y="174" text-anchor="middle" fill="var(--white)" font-family="inherit" font-size="11">1024 構造リフロー→Small／768 余白→Tablet</text>
 
       <rect x="500" y="216" width="240" height="48" rx="6" fill="var(--blue)" opacity="0.85"/>
       <text x="620" y="236" text-anchor="middle" fill="var(--white)" font-family="inherit" font-size="13" font-weight="700">Mobile（540）</text>
       <text x="620" y="254" text-anchor="middle" fill="var(--white)" font-family="inherit" font-size="11">767(L834)＋640/480/380 集約</text>
     </svg>
-    <figcaption>★ = その BP の上書きの中核。<code>min-width</code> 系は Default に畳み込み、<code>1024</code> は構造リフローのため Tablet に、近接した <code>767/640/480/380</code> は Mobile に集約する。</figcaption>
+    <figcaption>★ = その BP の上書きの中核。<code>min-width</code> 系は Default に畳み込み、<code>1024</code> は <strong>Small(1024)</strong> に、<code>768</code> は <strong>Tablet(840)</strong> に、近接した <code>767/640/480/380</code> は Mobile に集約する。</figcaption>
   </figure>
 
   <table>
@@ -878,10 +878,34 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
         <tr><td><code>white-space:nowrap</code>（折返し禁止）</td><td>テキスト選択 → <strong>テキストタブ → 折り返し</strong>（PC で nowrap、下位 BP で解除）</td></tr>
         <tr><td><code>position:fixed/absolute/sticky</code> / <code>z-index</code></td><td><strong>ボックスタブ → ポジション</strong> ＋ <strong>重ね順</strong></td></tr>
         <tr><td><code>::before</code> / <code>::after</code>（装飾）</td><td>ネイティブ不可 → <strong>子 Box を足して再現</strong>（Free）/ <strong>Custom Code</strong>（Mini）。§0.5・§9</td></tr>
-        <tr><td>グラデ背景 / SVG フィルタ / <code>@keyframes</code></td><td>ネイティブ不可 → <strong>Embed(sandbox) / Loop Box / Image 化</strong>（Free）/ <strong>Custom Code</strong>（Mini）</td></tr>
+        <tr><td>グラデ背景 / SVG フィルタ / <code>@keyframes</code></td><td>ネイティブ不可 → <strong>Embed(sandbox) / Loop Box / Image 化</strong>（Free）/ <strong>Custom Code</strong>（Mini）。下の「応用操作」も参照</td></tr>
+        <tr><td><code>text-transform:uppercase</code>（大文字化）</td><td>⚠️ Studio に大文字化の専用UIは確認できず → <strong>テキストを最初から大文字で入力</strong>する</td></tr>
+        <tr><td><code>order</code>（子の並べ替え）</td><td><strong>レイヤーパネルで子要素を上下ドラッグ</strong>して順序を入替（BP別に変えたい場合はそのBPを選んでから）</td></tr>
+        <tr><td><code>align-self</code>（その子だけ寄せ）</td><td>その子を選び <strong>ボックスタブ → 配置 → 自身の配置（Self）</strong>（親の配置とは別に個別指定）</td></tr>
+        <tr><td>2列以上の折返し（<code>flex-wrap</code> / 2×2）</td><td><strong>親 Box の 方向 → 折り返し（Wrap）を有効</strong>＋子の幅を <code>%</code>（例 2列＝各48%）に</td></tr>
+        <tr><td>列比率（<code>grid-template-columns:1.1fr 1fr</code> 等）</td><td>Studio に grid 列の直接指定UIは無い → <strong>親＝横並び＋各子のサイズ幅＝<a class="term" href="#term-fill">flex</a> に比率数値</strong>（例 1.1 / 1）で再現</td></tr>
+        <tr><td>可変フォント（<code>clamp()</code> / <code>vw</code>）</td><td>テキストタブのサイズは <strong>固定 px を入力</strong>（当面）。サイズ差は <strong>BP 別に固定px を上書き</strong>（§0.4 実装中・例 PC60→Mobile 36px）</td></tr>
       </tbody>
     </table>
     <p>※ Studio はレイアウトを「方向(横/縦)」で組むため、原物が grid でも flex でも、<strong>1カラム/2カラムの切替は親 Box の「方向」</strong>で行います。</p>
+  </div>
+
+  <div class="callout tip">
+    <p><strong>【よく詰まる Studio 機能の"出し方"（公式ヘルプで確認・初心者向け）】</strong> 各章で下記が出てきたら、ここの経路で操作します。</p>
+    <dl class="glossary">
+      <dt>グラデーション塗り（背景）</dt>
+      <dd>Box 選択 → 右パネル <strong>ボックスタブ → 外観（Appearance） → 背景色のスウォッチ</strong>をクリック → パレット中央で<strong>「単色／グラデーション」を切替</strong> → <strong>グラデーションのバー上をクリックすると停止点が増える</strong>（ドラッグで位置調整・ホバーの×で削除）→ バー<strong>右の矢印アイコンで角度</strong>を指定 → 各停止点の色はパレットで設定（<strong>不透明度は色を RGBA にして A（アルファ）で指定</strong>）。<br>⚠️ 線形⇔放射の切替・停止点の%数値入力・停止点ごとの不透明度スライダーは公式未確認＝<strong>実機で要確認</strong>。確実にしたい時は <strong>Mini の Custom Code</strong> に原物の <code>linear/radial-gradient(...)</code> をそのまま注入（§9）。</dd>
+      <dt>フィルター（ぼかし）／背面フィルター（背景ぼかし＝backdrop-filter）</dt>
+      <dd>Box 選択 → <strong>ボックスタブ → 外観 → Filter 欄</strong>をクリック → タブ <strong>ブレンド／フィルター／背面フィルター</strong> から選び <strong>Blur（ぼかし）</strong>を指定。背景ぼかしは<strong>そのBoxの塗りを透明</strong>にすると背面に効く。<br>⚠️ ぼかし量の入力UIは公式未確認・<strong>Firefox は backdrop-filter 非対応</strong>なので不透明寄りの背景色をフォールバックに。</dd>
+      <dt>Hover（ホバー）／条件スタイル</dt>
+      <dd>要素を選択 → <strong>右パネル右上の「条件スタイル（Conditional Style）」</strong>をクリック → ドロップダウンで <strong>Hover</strong>（他に Focus / Pressed / On Appear / Toggle Closed / Scroll 等）を選ぶ → そのまま色・サイズ・変形などを通常どおり設定（条件中に変えた項目は<strong>別色で表示</strong>）。<strong>BP 別×状態別</strong>は「下部バーで対象BPを選択」→「右上で状態を選択」の組合せ。</dd>
+      <dt>コンポーネント化（1つ作って使い回す）</dt>
+      <dd>要素を選択 → <strong>右クリック「コンポーネントに変換」 または ⌘+J</strong>（Win: Ctrl+J）→ 名前を付ける。再配置は<strong>左ナビの「コンポーネント」パネル</strong>から<strong>ドラッグ</strong>。コンポーネントを編集すると<strong>全インスタンスに自動反映</strong>。通常Boxに戻すのは ⌘+Shift+J。</dd>
+      <dt>画像のフィット（cover/contain）と位置</dt>
+      <dd>画像ボックス選択 → 右パネル <strong>Image（イメージ）タブ → 背景サイズ</strong>で <strong>Cover</strong>（領域を覆う）/ <strong>Contain</strong>（収める）/ px / % を選択 → <strong>背景位置</strong>で 中央/上/下/左/右 を選択。自由な位置にしたい時は<strong>子を Absolute＋親を overflow Hidden</strong> にしてドラッグ。</dd>
+      <dt>ブレークポイントの追加（スモール等を有効化）</dt>
+      <dd>何も選択していない状態で、<strong>画面下部のデバイス幅バー → 「Edit mode（編集モード）」</strong>をクリック → 追加したい <strong>Small / Mini をクリックして有効化</strong> → そのBPの<strong>幅の数値を入力</strong>（またはガイド線をドラッグ）。設定はプロジェクト全体共通。<br>※ 一部の旧UIでは「上部 Responsive メニュー → Customize Breakpoints → ＋」の場合あり。</dd>
+    </dl>
   </div>
 
   <figure class="fig">
