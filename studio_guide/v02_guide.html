@@ -904,7 +904,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
       <dt>フィルター（ぼかし）／背面フィルター（背景ぼかし＝backdrop-filter）</dt>
       <dd>Box 選択 → <strong>ボックスタブ → 外観 → Filter 欄</strong>をクリック → タブ <strong>ブレンド／フィルター／背面フィルター</strong> から選び <strong>Blur（ぼかし）</strong>を指定。背景ぼかしは<strong>そのBoxの塗りを透明</strong>にすると背面に効く。<br>⚠️ ぼかし量の入力UIは公式未確認・<strong>Firefox は backdrop-filter 非対応</strong>なので不透明寄りの背景色をフォールバックに。</dd>
       <dt>Hover（ホバー）／条件スタイル</dt>
-      <dd>要素を選択 → <strong>右パネル右上の「条件スタイル（Conditional Style）」</strong>をクリック → ドロップダウンで <strong>Hover</strong>（他に Focus / Pressed / On Appear / Toggle Closed / Scroll 等）を選ぶ → そのまま色・サイズ・変形などを通常どおり設定（条件中に変えた項目は<strong>別色で表示</strong>）。<strong>BP 別×状態別</strong>は「下部バーで対象BPを選択」→「右上で状態を選択」の組合せ。</dd>
+      <dd>要素を選択 → <strong>右パネル右上の「条件スタイル（Conditional Style）」</strong>をクリック → ドロップダウンで <strong>Hover</strong>（他に Focus / Pressed / On Appear / Toggle Closed / Scroll 等）を選ぶ → そのまま色・サイズ・変形などを通常どおり設定（条件中に変えた項目は<strong>別色で表示</strong>）。<strong>BP 別×状態別</strong>は「下部バーで対象BPを選択」→「右上で状態を選択」の組合せ。<br><strong>親Hover時に子の色を変える（in Hover）</strong>＝親を選び Hover 条件を出した<strong>まま、子レイヤーをクリックして子のプロパティを変更</strong>する（親ホバー中だけ子が変わる＝CTA の文字色/矢印色の反転に使う）。<strong>入力欄の Focus</strong> も同じドロップダウンの Focus を選べば設定できる。</dd>
       <dt>コンポーネント化（1つ作って使い回す）</dt>
       <dd>要素を選択 → <strong>右クリック「コンポーネントに変換」 または ⌘+J</strong>（Win: Ctrl+J）→ 名前を付ける。再配置は<strong>左ナビの「コンポーネント」パネル</strong>から<strong>ドラッグ</strong>。コンポーネントを編集すると<strong>全インスタンスに自動反映</strong>。通常Boxに戻すのは ⌘+Shift+J。</dd>
       <dt>画像のフィット（cover/contain）と位置</dt>
@@ -912,7 +912,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
       <dt>ブレークポイントの追加（スモール等を有効化）</dt>
       <dd>何も選択していない状態で、<strong>画面下部のデバイス幅バー → 「Edit mode（編集モード）」</strong>をクリック → 追加したい <strong>Small / Mini をクリックして有効化</strong> → そのBPの<strong>幅の数値を入力</strong>（またはガイド線をドラッグ）。設定はプロジェクト全体共通。<br>※ 一部の旧UIでは「上部 Responsive メニュー → Customize Breakpoints → ＋」の場合あり。</dd>
       <dt>主軸方向に伸ばす（CSS <code>flex:1</code> 相当・余白を埋める）</dt>
-      <dd>伸ばしたい子Boxを選択 → 右パネル <strong>ボックスタブ → レイアウト → 幅 / 高さ</strong>の入力欄で、<strong>主軸が縦並びなら「高さ」、横並びなら「幅」の単位プルダウンを <code>flex</code></strong> にして <code>1</code> を入力（＝flex:1 で残りを全部埋める）。横並びの兄弟どうしを <strong>1.3 : 2</strong> の比にしたい時は各子の幅を <code>1.3 flex</code> / <code>2 flex</code>。<br>⚠️ <strong>Studio に「Fill」という単位は無く</strong>、伸長・比率配分はすべて <code>flex</code> 単位。うまく伸びない時は親の<strong>整列＝Stretch ＋ 子サイズ＝auto</strong>でも可。</dd>
+      <dd>伸ばしたい子Boxを選択 → 右パネル <strong>ボックスタブ → レイアウト → 幅 / 高さ</strong>の入力欄で、<strong>主軸が縦並びなら「高さ」、横並びなら「幅」の単位プルダウンを <code>flex</code></strong> にして <code>1</code> を入力（＝flex:1 で残りを全部埋める）。横並びの兄弟どうしを <strong>1.3 : 2</strong> の比にしたい時は各子の幅を <code>1.3 flex</code> / <code>2 flex</code>。<br>⚠️ Studio の単位ドロップダウンは <code>px / % / auto / flex / vw / vh / dvh</code>。<strong>本手順書で「Fill（親いっぱい）」と書くのは、この <code>flex</code> 単位（主軸の伸長・比率）または 幅/高さ <code>100%</code> を指す省略語</strong>です（Studio に literal な「Fill」ラベルは無いが概念はこれ）。うまく伸びない時は親の<strong>整列＝Stretch ＋ 子サイズ＝auto</strong>でも可。</dd>
       <dt>2カラムを分数比（例 <code>1.3fr / 2fr</code>）で並べる ＝ Grid の代用</dt>
       <dd><strong>Studio に CSS Grid（grid-template-columns・fr）は無い</strong>。横並びBoxで代用する: 親Boxを <strong>レイアウト → 方向＝横並び</strong> → 子Boxを2つ入れ、<strong>子1の幅＝<code>1.3 flex</code>・子2の幅＝<code>2 flex</code></strong>（flex比＝fr比と同じ）→ 列間は親の <strong>間隔(Gap)</strong>。等分N列やカード折返しは <strong>方向＝横並び(Wrap)</strong>＋各子を固定px/%/flex幅に。</dd>
       <dt>交差軸の揃え（align-items）／baseline が無い時</dt>
@@ -933,6 +933,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
       <dd><strong>Uploads パネルに「URLをコピー」は無い</strong>。取得手順: ①その画像を一度ページに配置（Img もしくは Box 背景）→ ②<strong>プレビュー／公開ページをブラウザで開く</strong> → ③<strong>右クリック→検証(Inspect)</strong> で <code>&lt;img src="…"&gt;</code> または <code>background:url(…)</code> の URL をコピー → ④Custom Code の <code>url()</code> に貼る。確実にしたい時は画像を外部CDN（Cloudinary等）に置いて固定URLを使う。</dd>
       <dt>公開ページの確認（ソース表示・generator検索・Lighthouse）＝ブラウザ操作</dt>
       <dd>Studioではなく<strong>ブラウザ</strong>の操作。<br>・<strong>HTMLソース＋文字列検索</strong>（Chrome/Mac）: 公開URLで <strong>Cmd+Option+U</strong>（view-source: が開く）→ <strong>Cmd+F で <code>generator</code></strong> を検索。右クリック「ページのソースを表示」でも可。<br>・<strong>Lighthouse（モバイル性能）</strong>: <strong>Cmd+Option+I</strong> で DevTools → 上部タブ <strong>「Lighthouse」</strong>（無ければ ≫ から）→ <strong>Device＝Mobile</strong> → <strong>Analyze page load</strong>。シークレットウィンドウ（Cmd+Shift+N）推奨。</dd>
+      <dt>3列・4列など多列グリッドを作る</dt>
+      <dd>2列と同じく <strong>Grid は無いので横並びBoxで作る</strong>。<strong>方向＝横並び（折返し可なら Wrap）</strong>にし、子を必要数入れて <strong>各子の幅を等分</strong>に: 3列＝各子 <code>1 flex</code>（または幅 <code>33.3%</code>）／4列＝各子 <code>1 flex</code>（または <code>25%</code>）、列間は親の <strong>間隔(Gap)</strong>。レスポンシブで列数を減らすには各BPで <strong>方向＝縦並び</strong>か、Wrap時は子幅を <code>50%</code>→<code>100%</code> に条件スタイルで上書きする。</dd>
     </dl>
   </div>
 
@@ -6043,8 +6045,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
     <span class="badge">Free代替</span> <strong>（推奨・画像を作らず Box 2枚で十字を組む）</strong>
     <ol class="steps">
       <li><code>svc-grid</code>（カード2×2の親）の子として、カード群の後に <strong>横線Box</strong> と <strong>縦線Box</strong> を1つずつ追加する（画像の用意は不要）。両方とも右パネル → ボックスタブ → <a class="term" href="#term-position">ポジション</a>＝<strong>絶対（absolute）</strong>（基準＝親 <code>svc-grid</code>）にする。</li>
-      <li><strong>横線Box</strong>（レイヤー名 <code>svc-conn-h</code>）: <strong>高さ 0 / 幅は中央の左右ギャップをまたぐ長さ</strong>（目安＝列間 gap＋8px）。<strong>枠線＝上(Top)のみ・3px・点線(Dotted)・色 <code>#4A7DE8</code></strong>。整列でグリッドの<strong>上下中央＋左右中央</strong>に置く（距離で微調整）。</li>
-      <li><strong>縦線Box</strong>（レイヤー名 <code>svc-conn-v</code>）: <strong>幅 0 / 高さは上下ギャップをまたぐ長さ</strong>。<strong>枠線＝左(Left)のみ・3px・点線・色 <code>#4A7DE8</code></strong>。同じくグリッド中央に重ねる。</li>
+      <li><strong>横線Box</strong>（レイヤー名 <code>svc-conn-h</code>）: <strong>高さ 0 / 幅 <code>32px</code></strong>（左右カードのすき間を渡せる長さ。すき間が広ければ伸ばす）。<strong>枠線＝上(Top)のみ・3px・点線(Dotted)・色 <code>#4A7DE8</code></strong>。整列で <strong>水平中央＋垂直中央</strong>（カード2×2の交点）に置く。</li>
+      <li><strong>縦線Box</strong>（レイヤー名 <code>svc-conn-v</code>）: <strong>幅 0 / 高さ <code>32px</code></strong>（上下カードのすき間ぶん）。<strong>枠線＝左(Left)のみ・3px・点線・色 <code>#4A7DE8</code></strong>。同じく <strong>水平中央＋垂直中央</strong>に重ねる。</li>
       <li>両Boxの <strong><a class="term" href="#term-zindex">重ね順 / z-index</a> をカードより前面</strong>（カード=0なら 2 程度）。原物の <code>z-index:2</code> に相当。</li>
       <li><strong>Mobileで非表示</strong>: <a class="term" href="#term-conditional">条件スタイル</a>で Mobile 時に両Boxの<strong>表示/非表示（レイヤーパネルの目アイコン）をオフ</strong>に。</li>
     </ol>
@@ -8754,7 +8756,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
         <text x="30" y="40" font-size="11" font-weight="700" fill="var(--sub)">sec-footer [Section] 背景 #EFF5FE / 上border 1px / padding 72/40/32 / 縦並び</text>
         <!-- ft-inner grid -->
         <rect x="54" y="56" width="592" height="120" rx="10" fill="var(--bg)" stroke="var(--line)" stroke-width="1.2"></rect>
-        <text x="66" y="74" font-size="9.5" fill="var(--sub)">ft-inner [Grid 2列 1.3fr/2fr gap60] max-w1320・中央・下border・pb40</text>
+        <text x="66" y="74" font-size="9.5" fill="var(--sub)">ft-inner [横並び2子 flex1.3:2 gap60] max-w1320・中央・下border・pb40</text>
         <!-- left cell ft-info -->
         <rect x="68" y="84" width="240" height="80" rx="8" fill="var(--bg2)" stroke="var(--blue)" stroke-width="1.2" stroke-dasharray="4 4"></rect>
         <text x="80" y="100" font-size="9" fill="var(--sub)">ft-info（縦積み）</text>
@@ -8777,13 +8779,13 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
         <text x="624" y="246" text-anchor="end" font-size="10" fill="var(--sub)">Powered by Studio</text>
       </g>
     </svg>
-    <figcaption>フッターは <code>sec-footer</code>（縦並び）の中に、上段 <code>ft-inner</code>（Grid 2列・左に情報カラム）と下段 <code>ft-bottom</code>（Flex 両端揃え）を縦に積む構成。中央寄せ最大幅は <code>1320px</code>。</figcaption>
+    <figcaption>フッターは <code>sec-footer</code>（縦並び）の中に、上段 <code>ft-inner</code>（横並び2子・左に情報カラム）と下段 <code>ft-bottom</code>（Flex 両端揃え）を縦に積む構成。中央寄せ最大幅は <code>1320px</code>。</figcaption>
   </figure>
 
   <h3 id="s11-tree">レイヤー構成（このセクションの完成ツリー）</h3>
   <p>レイヤー名は下記で統一します。<a class="term" href="#term-box">Box</a> / <a class="term" href="#term-section">Section</a> の種別を併記します。</p>
   <pre class="tree">sec-footer                         [Section]  背景 #EFF5FE / 上border / padding 72/40/32
-├── ft-inner                       [Box: Grid 2列]  max-w 1320 / 中央 / 下border / pb 40
+├── ft-inner                       [Box: 横並び2子]  max-w 1320 / 中央 / 下border / pb 40
 │   └── ft-info                    [Box: 縦積み]
 │       ├── ft-logo                [Box: Flex横]  align center / gap 10 / mb 22
 │       │   └── ft-logo-img        [Image]  公式G&amp;NロゴSVG/PNG / height 32
@@ -8844,7 +8846,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <figure class="fig">
     <svg viewBox="0 0 660 150" role="img" xmlns="http://www.w3.org/2000/svg">
-      <title>ft-inner の Grid 2列（1.3fr/2fr・gap60）と左カラム実幅の関係</title>
+      <title>ft-inner の横並び2子（flex 1.3:2・gap60）と左カラム実幅の関係</title>
       <g font-family="inherit">
         <text x="10" y="20" font-size="11" font-weight="700" fill="var(--ink)">ft-inner（max-w 1320 / gap 60）</text>
         <!-- left col -->
@@ -8869,14 +8871,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
     <li>右パネル → ボックスタブ → <a class="term" href="#term-position">ポジション</a>/配置: 水平方向の中央寄せ（margin auto 相当）。親が縦並びなので交差軸（水平）配置を<strong>中央</strong>に。</li>
     <li>右パネル → ボックスタブ → レイアウト → 方向:
       <ul>
-        <li><strong>(A) Grid 2 列</strong>（列 = <code>1.3fr</code> / <code>2fr</code>、gap = <code>60</code>px）。左セルに <code>ft-info</code>、右セルに空の Box（プレースホルダ余白）。</li>
+        <li><strong>(A) 横並び（方向＝横）</strong>。<strong>左子＝<code>ft-info</code>（幅 <code>1.3 flex</code>）</strong>、<strong>右子＝空 Box（幅 <code>2 flex</code>・プレースホルダ余白）</strong>、間隔(Gap) = <code>60</code>px。flex 比＝原物の <code>1.3fr:2fr</code> と同じ。</li>
         <li><strong>(B)</strong> 横並び（Horizontal）、配置: 水平 = 左、垂直 = 上。<code>ft-info</code> の最大幅を約 <code>500</code>px に制限し、右余白を自然に作る。</li>
       </ul>
     </li>
     <li>右パネル → ボックスタブ → 余白（padding）: 下（padding-bottom）のみ <code>40</code>px。</li>
     <li>右パネル → ボックスタブ → 外観 → 枠線: スタイル <code>Solid</code>、<strong>下辺のみ</strong> <code>1</code>px、色 = <code>line</code>（<code>rgba(15,26,51,.08)</code>）。区切り線。</li>
   </ol>
-  <ul class="checklist"><li>ft-inner を作成し max-width 1320・中央寄せ・(A)Grid2列(1.3fr/2fr,gap60) または (B)横並びにした</li><li>padding-bottom 40・下border 1px line を設定した</li></ul>
+  <ul class="checklist"><li>ft-inner を作成し max-width 1320・中央寄せ・(A)横並び2子(幅1.3flex/2flex,gap60) または (B)横並び簡易にした</li><li>padding-bottom 40・下border 1px line を設定した</li></ul>
 
   <h3 id="s11-3">3. 情報カラム（ft-info）</h3>
   <ol class="steps">
@@ -9005,7 +9007,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <h4>Tablet（840px 以下 ／ 原物 1024px の写像）</h4>
   <ul>
-    <li><code>ft-inner</code>: (A) Grid 2列 / (B) 横並び → <strong>縦並び（Vertical）/ 1列</strong>に変更。間隔（gap）= <code>32</code>px、padding-bottom = <code>32</code>px。
+    <li><code>ft-inner</code>: (A)(B) いずれの横並びも → <strong>縦並び（Vertical）/ 1列</strong>に変更。間隔（gap）= <code>32</code>px、padding-bottom = <code>32</code>px。
       <ul>
         <li>(A) なら列指定を 1 列にし、右セルの空 Box は縦積み末尾に来る（必要なら非表示）。(B) なら <code>ft-info</code> の最大幅指定を解除（または <code>100%</code>）して 1 カラム化。</li>
       </ul>
@@ -11696,6 +11698,28 @@ sec-footer
 <div class="codebox" id="t9-codeset">
   <p class="cb-h">📋 コピペ用コード集（現物から抜粋・初心者はここからコピーして貼る）</p>
   <p class="cb-note">Embed/Custom Code に貼る実コードを集約。各セクションからここを参照します。Embed=左ナビ→追加→基本→埋め込み→Blank を置きコード欄に貼る（sandbox自動判定）。Custom Code=Mini プランで「画面外のグレー余白をクリック→右パネルがページ設定→[ページ]タブ→&lt;body&gt;内末尾→+ New」。Free では Custom Code 不可。</p>
+  <div class="callout note">
+    <p><strong>【Embed に「丸ごと」貼る時の HTML マークアップ入手元】</strong> 見出し（§5-2）やフローティング特典（§5-12）を Embed sandbox で完全再現する推奨ルートでは、<strong>下の HTML を貼り、その中に下記②/③の <code>&lt;style&gt;</code>・SVGフィルタ・JS を同梱</strong>します（クラス名が②③のCSS/JSと一致済み）。原物は <code>v09_20260424_full_castme-hubblecolor.html</code> の該当ブロック（FV見出し L1337–1340 ／ float-perk L1807–1819）。</p>
+    <p class="cb-note" style="margin:.4em 0 0"><strong>FV 見出し <code>&lt;h1&gt;</code>（強調語の delay は §5-2 の .15/1.25/1.85s を②のCSSで付与）</strong></p>
+    <pre class="code"><code>&lt;h1&gt;
+  &lt;span class="chunk"&gt;&lt;span class="sweep"&gt;挑戦するスタートアップ&lt;/span&gt;に、&lt;/span&gt;&lt;br&gt;
+  &lt;span class="chunk"&gt;&lt;em class="b"&gt;補助金&lt;/em&gt;という&lt;em class="n"&gt;追い風&lt;/em&gt;を。&lt;/span&gt;
+&lt;/h1&gt;</code></pre>
+    <p class="cb-note" style="margin:.4em 0 0"><strong>フローティング特典 <code>&lt;aside&gt;</code>（③の出現/退避JSが <code>#floatPerk</code>/<code>#floatPerkClose</code> を制御）</strong></p>
+    <pre class="code"><code>&lt;aside class="float-perk" id="floatPerk" aria-hidden="true"&gt;
+  &lt;button class="float-perk-close" id="floatPerkClose" aria-label="閉じる"&gt;×&lt;/button&gt;
+  &lt;div class="float-perk-visual"&gt;
+    &lt;span class="float-perk-ribbon"&gt;提携VC紹介先 限定特典&lt;/span&gt;
+    &lt;p class="float-perk-headline"&gt;パートナーVCの出資先スタートアップは&lt;br&gt;&lt;em&gt;着手金0円&lt;/em&gt;で並走支援。&lt;/p&gt;
+    &lt;p class="float-perk-sub-top"&gt;通常着手金&lt;span class="strike"&gt;30〜50万円&lt;/span&gt;のところ&lt;/p&gt;
+    &lt;div class="float-perk-big"&gt;&lt;span class="lbl-pre"&gt;着手金&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="unit"&gt;円&lt;/span&gt;&lt;/div&gt;
+    &lt;p class="float-perk-sub"&gt;&lt;em&gt;完全成功報酬&lt;/em&gt;にて対応いたします&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="float-perk-body"&gt;
+    &lt;a href="#cta" class="float-perk-cta"&gt;無料相談はこちら&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</code></pre>
+  </div>
   <h4>① G&amp;N ロゴ SVG（§5-1 ヘッダー／§5-11 フッター用・Embed に貼る）</h4>
   <p class="cb-note">Embed(Blank)を置き、下記を貼る。色は親要素で <code>color</code> を指定（SVGは currentColor 追従）。フッターは白指定。</p>
   <pre class="code"><code>&lt;svg class="logo-svg" viewBox="0 0 181.61 60" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="G&amp;amp;N"&gt;&lt;circle cx="30" cy="30" r="30"/&gt;&lt;path d="M108.78,17.47l-5.38,5.32c-3.41-3.6-7.38-5.41-11.91-5.41c-3.95,0-7.27,1.31-9.93,3.93s-4,5.81-4,9.56c0,3.88,1.38,7.16,4.15,9.86c2.77,2.69,6.19,4.04,10.25,4.04c2.64,0,4.87-0.56,6.68-1.67c1.81-1.11,3.27-2.85,4.39-5.22H91.39v-7.18h20.21l0.06,1.69c0,3.51-0.91,6.84-2.73,9.99c-1.82,3.15-4.18,5.55-7.07,7.21c-2.9,1.66-6.29,2.48-10.19,2.48c-4.17,0-7.89-0.9-11.15-2.72c-3.27-1.81-5.85-4.39-7.75-7.74c-1.9-3.35-2.85-6.96-2.85-10.84c0-5.32,1.76-9.94,5.27-13.87c4.17-4.68,9.59-7.02,16.27-7.02c3.49,0,6.76,0.65,9.8,1.94C103.81,12.94,106.33,14.82,108.78,17.47z"/&gt;&lt;path d="M138.14,36.13l3.68,4.22l-1.67,1.52l-1.65,1.5l5.21,5.52h-7.49l-2.14-2.21c-3.41,2.02-6.59,3.02-9.51,3.02c-2.49,0-4.5-0.73-6.04-2.18c-1.54-1.46-2.31-3.33-2.31-5.61c0-1.72,0.44-3.35,1.31-4.88c0.87-1.53,2.36-3.11,4.47-4.75c-2.09-2.81-3.13-5.3-3.13-7.46c0-1.6,0.69-3.19,2.07-4.75c1.38-1.56,3.33-2.34,5.85-2.34c2.55,0,4.5,0.77,5.86,2.32c1.36,1.55,2.04,3.11,2.04,4.68c0,1.24-0.31,2.42-0.94,3.55c-0.62,1.13-2.06,2.81-4.31,5.03c2.63,3.11,4.34,5.04,5.1,5.81C135.02,38.78,136.22,37.78,138.14,36.13z M130.08,42.39c-1.14-1.12-2.74-2.97-4.8-5.55c-2.18,1.81-3.27,3.39-3.27,4.75c0,0.63,0.3,1.21,0.89,1.74c0.59,0.53,1.35,0.79,2.26,0.79C126.47,44.12,128.11,43.54,130.08,42.39z M126.4,28.98c1.63-1.4,2.45-2.63,2.45-3.71c0-0.56-0.18-1.02-0.55-1.37c-0.37-0.35-0.85-0.53-1.46-0.53c-0.56,0-1.03,0.2-1.42,0.6c-0.39,0.4-0.58,0.86-0.58,1.39C124.83,26.42,125.35,27.63,126.4,28.98z"/&gt;&lt;path d="M149.44,10.92h7.33l17.19,26.43V10.92h7.65v40.17h-7.35l-17.17-26.35v26.35h-7.65V10.92z"/&gt;&lt;path fill="#fff" d="M29.98,25.56l-7.13,6.63h13.33l-6.47,5.93l-8.4-3.62l-3.61-6.97l5.44-7.91L45.4,8.22l-2.44-0.03L29.71,7.8l-7.45,10.83L3.43,28.21l16.94,7.3l9.41,18.17L49.6,21.93L29.98,25.56z M30.38,9.11L40.4,9.4L24.67,17.4L30.38,9.11z M16.59,26.87l-8.63,0.48l12.77-6.5L16.59,26.87z M7.71,28.65l8.85-0.49l2.87,5.54L7.71,28.65z M37.8,30.74l-5.92-4.22l14.09-2.61L37.8,30.74z M30.33,26.99l5.49,3.92h-9.7L30.33,26.99z M38.25,32.04l7.35-6.14L30.48,50.13V39.16L38.25,32.04z M29.19,39.3v10.43l-6.95-13.43L29.19,39.3z"/&gt;&lt;/svg&gt;</code></pre>
