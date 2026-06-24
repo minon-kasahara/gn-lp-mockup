@@ -1453,7 +1453,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>フローティング特典CTA（Float Perk）も fixed なので Base 直下に置く</strong>。原物 <code>&lt;aside class="float-perk" id="floatPerk"&gt;</code>（line1807・<code>&lt;/footer&gt;</code> の後＝<strong>body直下</strong>）が実在し、CSS は <code>position:fixed;bottom:20px;right:20px;width:270px;z-index:90</code>（line1017–1035・コメント「FLOATING PERK CTA 右下追従・v10 no.5」line1015）。<code>_sectionExists.json</code> も <code>key:"floating" / "5-12 フローティング特典CTA (v10 NEW)" / exists:true</code> と12番目として明記している。Header と<strong>同じ fixed 制約</strong>（§9.2 line304）が掛かるため、「Float Perk CTA」Box も<strong>必ず Base 直下（非ネスト）</strong>に置く。
 <ul>
 <li><strong>z-index の実値（重要）</strong>：原物の積み順は <strong>label=999（line803）&gt; Header=100（line87）&gt; Float Perk=90（line1027）</strong>。Float Perk は Header より<strong>下</strong>に重なる（右下配置のため実害なし）。z-index は <strong>90</strong> をそのまま設定する（<code>_studio_ref.md</code> §17 の値域 -9999〜9999 内）。</li>
-<li><strong>初期状態</strong>：原物は <code>opacity:0;visibility:hidden;transform:translateY(16px)</code>（line1033–1035）で<strong>初期非表示</strong>、<code>.float-perk.is-visible</code>（line1036）でスクロール出現、閉じるボタン <code>#floatPerkClose</code>（原物 line1808）あり。<strong>この表示制御（On Appear / Scroll Effect / JS、閉じる挙動）は別章送り</strong>（→ フローティングCTA章 / インタラクション章）。本章では「Base直下 fixed・初期hidden・右下追従の枠を Base 骨格に確保する」ところまでを確定する。</li>
+<li><strong>初期状態</strong>：原物は <code>opacity:0;visibility:hidden;transform:translateY(16px)</code>（line1033–1035）で<strong>初期非表示</strong>、<code>.float-perk.is-visible</code>（line1036）でスクロール出現、閉じるボタン <code>#floatPerkClose</code>（原物 line1808）あり。<strong>この表示制御（スクロール出現・閉じる）のJSは <a href="#t9-codeset">§9 コード集③</a> をコピー。詳細は別章送り</strong>（→ フローティングCTA章 / インタラクション章）。本章では「Base直下 fixed・初期hidden・右下追従の枠を Base 骨格に確保する」ところまでを確定する。</li>
 </ul>
 </li>
 <li><strong>Base には条件スタイル（<a class="term" href="#term-hover">Hover</a> / On Appear 等）を適用しない</strong>（<code>_studio_ref.md</code> §10.4：条件スタイルは Base レイヤーに適用不可）。スクロール出現・ホバー等は Base 直下以下の各 Box（Float Perk 含む）に付ける。</li>
@@ -3480,7 +3480,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <p>レイヤー命名：<strong>Header / Logo-Link</strong>（中に <strong>Logo-SVG</strong>）。現物 <code>.hd-logo</code>（87→89行）＋ <code>.logo-svg</code>（90行）。</p>
 
   <div class="callout note">
-    <p>ロゴは G&amp;N の SVG（円＋「G&amp;N」字形＋装飾）。Studio ネイティブの図形では再現困難なため <a class="term" href="#term-embed">Embed（埋め込み）</a>（<a class="term" href="#term-sandbox">sandbox</a> 自動判定・全プラン可。<code>_studio_ref.md</code> §6）で配置する。<strong>このロゴ SVG は mockup の assets 外にあるため、現物 HTML 1310行のコードを直接コードエディタに貼り付ける。</strong></p>
+    <p>ロゴは G&amp;N の SVG（円＋「G&amp;N」字形＋装飾）。Studio ネイティブの図形では再現困難なため <a class="term" href="#term-embed">Embed（埋め込み）</a>（<a class="term" href="#term-sandbox">sandbox</a> 自動判定・全プラン可。<code>_studio_ref.md</code> §6）で配置する。<strong>このロゴ SVG は mockup の assets 外にあるため、コードを直接コードエディタに貼り付ける（→ 整形済みコードは <a href="#t9-codeset">§9「コピペ用コード集」①</a> をコピー。出典: 現物 HTML 1310行）。</strong></p>
   </div>
 
   <ol class="steps">
@@ -4198,7 +4198,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p>現物（行1337-1340）の構造:</p>
 <pre class="tree">挑戦するスタートアップ（.sweep）に、
 補助金（em.b）という追い風（em.n）を。</pre>
-<p>3つの強調ターゲット（<code>.sweep</code> / <code>em.b</code> / <code>em.n</code>）それぞれに (1) <strong>横スイープのグラデ着色アニメ</strong>（<code>sweepGrad</code>、background-position 100%→0、各 delay .15s/1.25s/1.85s・行152-156）と (2) <strong>手書き風オレンジ下線が左から伸びるアニメ</strong>（<code>fvUnderline</code>、scaleX 0→1 skewX -2deg、<code>::after</code>＋SVG filter <code>#hl-rough</code>・行158-185）が乗る。</p>
+<p>3つの強調ターゲット（<code>.sweep</code> / <code>em.b</code> / <code>em.n</code>）それぞれに (1) <strong>横スイープのグラデ着色アニメ</strong>（<code>sweepGrad</code>、background-position 100%→0、各 delay .15s/1.25s/1.85s・行152-156）と (2) <strong>手書き風オレンジ下線が左から伸びるアニメ</strong>（<code>fvUnderline</code>、scaleX 0→1 skewX -2deg、<code>::after</code>＋SVG filter <code>#hl-rough</code>・行158-185）が乗る。<strong>これらの貼付コード（@keyframes・SVGフィルタ）は <a href="#t9-codeset">§9「コピペ用コード集」②</a> に整形済み。</strong></p>
 
 <h4>⚠️ font-size の現物適用値（重要・写像の根拠）</h4>
 
@@ -4244,7 +4244,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 &lt;feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5"/&gt;</pre>
 </div>
 
-<ul class="checklist"><li>H1 テキストを配置・改行・keep-all 設定、PC60px/900/lh1.18/letter-spacing-.04em/下28px を設定した</li><li>強調3語に部分着色（blue/blue/navy）を適用した</li><li>下線マーカーを【Free代替バー】または【Mini Embed】で実装した（推奨: Mini Embed）</li></ul>
+<ul class="checklist"><li>H1 テキストを配置・改行・keep-all 設定、PC60px/900/lh1.18/letter-spacing-.04em/下28px を設定した</li><li>強調3語に部分着色（blue/blue/navy）を適用した</li><li>下線マーカーを実装した（コードは <a href="#t9-codeset">§9 コード集②</a>。推奨: Mini）</li></ul>
   <p class="rv-label">理解の確認（作業カウント対象外）</p>
   <ul class="review"><li>H1 のフォントサイズが「行62-66の!important clampが全BP支配、行820/867は不適用」である事実を理解し、52/36px を“現物の特定media値の移植ではなく視覚近似”として採用した</li></ul>
 
