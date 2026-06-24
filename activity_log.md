@@ -44,6 +44,15 @@
 
 ## ログ本体
 
+### 2026-06-25 02:10 [DONE] azalea
+- 対象: `studio_guide/v02_guide.html`（初心者再現性 段階E）, `studio_guide/reverify_20260625.md` / `reverify_final_20260625.md`（再検証記録）
+- 経緯: 是正後の再検証で **blocker 48→0**（完走可能を達成）。残 major25 の約半数が §0.4 未収載の同一操作群に集約と判明 → 全面是正 段階E を実施。
+- 段階E-1(commit f9fbab7): 現行Studio UIをWeb裏取り(6クラスタ)し §0.4 に11操作追記（主軸flex伸長/Grid無し横並び/baseline無し→下端/aspect-ratio無し→Imgモード・スペーサー画像/変形タブ/余白auto無し/ページルート/テキストスタイル登録/アンカーID/アセットURL/ソース表示・Lighthouse）。事実誤り是正: s11 Grid→flex, t6 .pill→自己完結クラス, t8 viewBox具体値, s12 baseline→下端, s5十字コネクタBox2枚化＋§9④にSVG。
+- 段階E-2(commit dd96376): §0.4で解決する10箇所にポインタ。t7 padding%ハック→不可訂正, s8 Cover循環依存解消。章別レシピ具体化: g4 2段Flex入れ子(矛盾解消), em.y Hug包みBox, s2フェード相対ラッパー, s7 vc-title3分割, t11 FV確定レシピ(複製不要), t11 float-perk役割分担。
+- 段階E-3(commit 0b5564a): 最終再検証で判明した実害のみ是正。§0.4 Fill自己矛盾を解消(「Fillは無い」→本手順書の省略語と定義)。s11 Grid→flex積み残し7箇所統一(Grid表記0)。s5寸法を確定値32px。§0.4に3列/4列グリッド・in-Hover(親hover→子)追記。§9にEmbed用HTMLマークアップ(h1/float-perk実HTML)同梱。
+- 最終再検証(3回目): **blocker=0 を3回連続で維持**(完走可能は堅牢)。major27/minor55(major25→27は回帰でなく非決定レビューの別サンプル＝新規深掘り+レビュー誤検知(自章のみ閲覧で§0.4ポインタ空振り判定)+一部実害)。再現可8章。残majorはStudio固有のLivePreview限定機能/レビュー成果物起因が中心。
+- 全検証: 同期connected・作業907維持・索引不変・タグ収支0・コンソール0。Markdown版ソースは未同期(HTMLが正)。
+
 ### 2026-06-25 00:35 [DONE] azalea
 - 対象: `studio_guide/v02_guide.html`（初心者再現性の是正・段階1〜D）, `studio_guide/beginner_review_20260625.md`（新規・190findings）
 - 経緯: 多エージェントで「Studio初心者が再現できるか」を全23章レビュー→全章「一部詰まる」blocker48/major63/minor79 と判明（操作語はあるがUIの探し方欠落・実コード未同梱・CSS未翻訳・§0.3図矛盾等）。ユーザー指示で全面是正（段階実施）。
