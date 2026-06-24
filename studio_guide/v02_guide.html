@@ -911,6 +911,28 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
       <dd>画像ボックス選択 → 右パネル <strong>Image（イメージ）タブ → 背景サイズ</strong>で <strong>Cover</strong>（領域を覆う）/ <strong>Contain</strong>（収める）/ px / % を選択 → <strong>背景位置</strong>で 中央/上/下/左/右 を選択。自由な位置にしたい時は<strong>子を Absolute＋親を overflow Hidden</strong> にしてドラッグ。</dd>
       <dt>ブレークポイントの追加（スモール等を有効化）</dt>
       <dd>何も選択していない状態で、<strong>画面下部のデバイス幅バー → 「Edit mode（編集モード）」</strong>をクリック → 追加したい <strong>Small / Mini をクリックして有効化</strong> → そのBPの<strong>幅の数値を入力</strong>（またはガイド線をドラッグ）。設定はプロジェクト全体共通。<br>※ 一部の旧UIでは「上部 Responsive メニュー → Customize Breakpoints → ＋」の場合あり。</dd>
+      <dt>主軸方向に伸ばす（CSS <code>flex:1</code> 相当・余白を埋める）</dt>
+      <dd>伸ばしたい子Boxを選択 → 右パネル <strong>ボックスタブ → レイアウト → 幅 / 高さ</strong>の入力欄で、<strong>主軸が縦並びなら「高さ」、横並びなら「幅」の単位プルダウンを <code>flex</code></strong> にして <code>1</code> を入力（＝flex:1 で残りを全部埋める）。横並びの兄弟どうしを <strong>1.3 : 2</strong> の比にしたい時は各子の幅を <code>1.3 flex</code> / <code>2 flex</code>。<br>⚠️ <strong>Studio に「Fill」という単位は無く</strong>、伸長・比率配分はすべて <code>flex</code> 単位。うまく伸びない時は親の<strong>整列＝Stretch ＋ 子サイズ＝auto</strong>でも可。</dd>
+      <dt>2カラムを分数比（例 <code>1.3fr / 2fr</code>）で並べる ＝ Grid の代用</dt>
+      <dd><strong>Studio に CSS Grid（grid-template-columns・fr）は無い</strong>。横並びBoxで代用する: 親Boxを <strong>レイアウト → 方向＝横並び</strong> → 子Boxを2つ入れ、<strong>子1の幅＝<code>1.3 flex</code>・子2の幅＝<code>2 flex</code></strong>（flex比＝fr比と同じ）→ 列間は親の <strong>間隔(Gap)</strong>。等分N列やカード折返しは <strong>方向＝横並び(Wrap)</strong>＋各子を固定px/%/flex幅に。</dd>
+      <dt>交差軸の揃え（align-items）／baseline が無い時</dt>
+      <dd>親Boxを選択 → <strong>レイアウト → 整列</strong>の9マスピッカーで、縦並びなら左/中央/右、横並びなら上/中央/下、交差軸いっぱいは <strong>Stretch</strong>。<br>⚠️ <strong>「baseline（ベースライン揃え）」は無い</strong>。数字＋単位の下端揃え等が要る時は<strong>下端(Bottom)で代用</strong>（フォントサイズ/行高を揃えれば見た目はほぼ一致）。</dd>
+      <dt>アスペクト比を固定する（16:10・5:2 など可変幅で比率維持）</dt>
+      <dd><strong>Studio に <code>aspect-ratio</code> は無い・padding は px のみ（%ハック不可）</strong>。用途別に:<br>・<strong>素材本来の比率</strong>でよい → 画像を <strong>Imgモード</strong>（画像右上トグル）にし <strong>幅＝%・高さ＝auto</strong>（幅が変わっても歪まない）。<br>・<strong>任意比率（16:10等）を厳密に</strong> → ①目的比率のダミー画像（例 1600×1000の透明/同色）を Imgモードで親に入れ幅100%・高さ auto ＝親の高さが比率で確定 → ②中身を別Boxで重ね <strong>Absolute・上下左右0・幅高さ100%</strong>。または <strong>Embedボックスに <code>aspect-ratio:16/10</code> を直接CSS記述</strong>。</dd>
+      <dt>回転・移動（transform）／Hover でふわっと浮かせる</dt>
+      <dd>要素を選択 → 右パネル <strong>「変形(Transform)」タブ</strong>（環境により「モーション」表記）に <strong>移動(Move) X・Y / 回転(Rotate) / 拡大縮小(Scale) / 傾き(Skew) / 原点(Origin)</strong> がまとまっている。回転は度数を直接入力（<code>-5</code>＝反時計、<code>62</code>＝時計）、移動は Y に <code>-2</code> 等。<br><strong>Hover時だけ Y −2px</strong> にするには <strong>右上「条件スタイル」→ Hover を選択 → 変形タブの移動 Y に <code>-2</code></strong>。</dd>
+      <dt>片側マージンを auto にして端へ押しやる（margin-left:auto 相当）</dt>
+      <dd><strong>Studio の余白(margin/padding/gap)は px のみで auto は選べない</strong>。横並びの中で1要素だけ反対端へ寄せるには:<br>・要素が2つなら親の <strong>整列＝両端揃え(Space Between)</strong>。<br>・3つ以上で「間の要素」を伸ばして押し出すなら、<strong>間の要素の幅＝<code>flex</code></strong>（1）にする（余白を食って隣を端へ追いやる）。<br>・どうしても隙間だけ要る時は空の<strong>スペーサーBox（幅＝flex）</strong>を挟む。</dd>
+      <dt>ページ最上位（ページルート＝body相当）を選択する</dt>
+      <dd>左ナビの <strong>レイヤー</strong>を開き、<strong>ツリー最上部の「ページ名」をクリック</strong>（これが最外コンテナ＝背景色/既定文字色/フォントの設定対象）。または任意要素を選んで <strong>Esc（＝親要素を選択）を繰り返す</strong>と最上位まで遡れる。<br>※ Studio に Webflow のような独立「Body」要素は無く、最外＝ページそのもの。</dd>
+      <dt>テキストスタイル（タイポグラフィ）を新規作成する</dt>
+      <dd>基準にしたいテキストを選択 → 右パネル <strong>テキストタブ → タイポグラフィ → 「テキストスタイル」欄</strong>をクリック → <strong>「テキストスタイルを登録（Register Text Style）」</strong>。選択中のフォント/サイズ/行高/字間が引き継がれる。以後は同じ欄から適用でき、編集すると使用中の全テキストへ自動反映。</dd>
+      <dt>アンカーID を付けてページ内リンクで飛ばす（#approach 等）</dt>
+      <dd><strong>ID付与</strong>: 対象Boxを選択 → 右パネル <strong>設定(Settings)タブ → ID 欄</strong>に <code>approach</code> 等を入力（<strong># は付けない・半角英数/ハイフン/_のみ</strong>）。<br><strong>リンク側</strong>: ナビのリンク要素を選択 → <strong>設定タブのリンク → [+] → 同ページの ID 要素をプルダウンで選ぶ</strong>（# の手入力不要）。選択肢に出ない時はURL欄に <code>#approach</code> を直接入力。固定ヘッダー分のズレは対象に <code>scroll-margin-top</code> を指定して補正。</dd>
+      <dt>アップロードした画像の URL を取得する（Custom Code の <code>url()</code> 用）</dt>
+      <dd><strong>Uploads パネルに「URLをコピー」は無い</strong>。取得手順: ①その画像を一度ページに配置（Img もしくは Box 背景）→ ②<strong>プレビュー／公開ページをブラウザで開く</strong> → ③<strong>右クリック→検証(Inspect)</strong> で <code>&lt;img src="…"&gt;</code> または <code>background:url(…)</code> の URL をコピー → ④Custom Code の <code>url()</code> に貼る。確実にしたい時は画像を外部CDN（Cloudinary等）に置いて固定URLを使う。</dd>
+      <dt>公開ページの確認（ソース表示・generator検索・Lighthouse）＝ブラウザ操作</dt>
+      <dd>Studioではなく<strong>ブラウザ</strong>の操作。<br>・<strong>HTMLソース＋文字列検索</strong>（Chrome/Mac）: 公開URLで <strong>Cmd+Option+U</strong>（view-source: が開く）→ <strong>Cmd+F で <code>generator</code></strong> を検索。右クリック「ページのソースを表示」でも可。<br>・<strong>Lighthouse（モバイル性能）</strong>: <strong>Cmd+Option+I</strong> で DevTools → 上部タブ <strong>「Lighthouse」</strong>（無ければ ≫ から）→ <strong>Device＝Mobile</strong> → <strong>Analyze page load</strong>。シークレットウィンドウ（Cmd+Shift+N）推奨。</dd>
     </dl>
   </div>
 
@@ -6018,15 +6040,15 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
     <figcaption>十字点線コネクタは <code>svc-grid</code> に絶対配置し、カード2×2の交差点（中央）に重ねる。<a class="term" href="#term-zindex">重ね順 / z-index</a> はカードより前面（2程度）。Mobileでは非表示。</figcaption>
   </figure>
   <div class="plan free recommended">
-    <span class="badge">Free代替</span> <strong>（推奨・SVG/PNGの十字コネクタを1枚作って <code>svc-grid</code> 中央に重ねる）</strong>
+    <span class="badge">Free代替</span> <strong>（推奨・画像を作らず Box 2枚で十字を組む）</strong>
     <ol class="steps">
-      <li>別途、青（<code>#4A7DE8</code>）の点線で「＋（十字）」形を描いた <strong>透過SVG または透過PNG</strong> を用意する（横線・縦線とも線幅3px・dotted相当）。</li>
-      <li>左ナビ → <strong>アップロード（Uploads）</strong> からその画像をアップロード。</li>
-      <li><code>svc-grid</code> の子（カード群の後）に 左ナビ → 追加 → 基本タブ → <strong>Image</strong> を配置。レイヤー名 <strong><code>svc-connector</code></strong>。アップロード画像を割り当て。</li>
-      <li>右パネル → ボックスタブ → <a class="term" href="#term-position">ポジション</a>: <strong>絶対（absolute）</strong>（基準＝親 <code>svc-grid</code>）。距離（top/right/bottom/left）でグリッド中央（カード2×2の交差点）に合わせる。</li>
-      <li><strong><a class="term" href="#term-zindex">重ね順 / z-index</a></strong>: カードより前面に出す（カード未指定=0なら <code>svc-connector</code> を 2 程度）。原物の <code>z-index:2</code> に相当。</li>
-      <li><strong>Mobileで非表示</strong>: 後述の<a class="term" href="#term-conditional">条件スタイル</a>で Mobile 時に <strong>表示/非表示（レイヤーパネルの目アイコン）をオフ</strong>にする。</li>
+      <li><code>svc-grid</code>（カード2×2の親）の子として、カード群の後に <strong>横線Box</strong> と <strong>縦線Box</strong> を1つずつ追加する（画像の用意は不要）。両方とも右パネル → ボックスタブ → <a class="term" href="#term-position">ポジション</a>＝<strong>絶対（absolute）</strong>（基準＝親 <code>svc-grid</code>）にする。</li>
+      <li><strong>横線Box</strong>（レイヤー名 <code>svc-conn-h</code>）: <strong>高さ 0 / 幅は中央の左右ギャップをまたぐ長さ</strong>（目安＝列間 gap＋8px）。<strong>枠線＝上(Top)のみ・3px・点線(Dotted)・色 <code>#4A7DE8</code></strong>。整列でグリッドの<strong>上下中央＋左右中央</strong>に置く（距離で微調整）。</li>
+      <li><strong>縦線Box</strong>（レイヤー名 <code>svc-conn-v</code>）: <strong>幅 0 / 高さは上下ギャップをまたぐ長さ</strong>。<strong>枠線＝左(Left)のみ・3px・点線・色 <code>#4A7DE8</code></strong>。同じくグリッド中央に重ねる。</li>
+      <li>両Boxの <strong><a class="term" href="#term-zindex">重ね順 / z-index</a> をカードより前面</strong>（カード=0なら 2 程度）。原物の <code>z-index:2</code> に相当。</li>
+      <li><strong>Mobileで非表示</strong>: <a class="term" href="#term-conditional">条件スタイル</a>で Mobile 時に両Boxの<strong>表示/非表示（レイヤーパネルの目アイコン）をオフ</strong>に。</li>
     </ol>
+    <p style="margin:.5em 0 0">※ どうしても1枚画像で扱いたい場合は <a href="#t9-codeset">§9 コード集④「十字点線コネクタSVG」</a> をアップロードし、<code>svc-grid</code> 中央に Image 配置（absolute・中央・z2・Mobile非表示）。</p>
   </div>
   <div class="plan free">
     <span class="badge">Free代替</span> <strong>（簡略・装飾自体を省略）</strong> コネクタは情報伝達上は装飾的なので、省略しても内容は伝わります。工数優先ならこちら。
@@ -8808,10 +8830,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <ul class="checklist"><li>sec-footer を作成し footer タグ・幅100%・padding 72/40/32 を設定した</li><li>背景 blue-soft・上border 1px line・縦並びを設定した</li></ul>
 
   <h3 id="s11-2">2. 上段グリッド（ft-inner）</h3>
-  <p>原物は <code>grid-template-columns: 1.3fr 2fr</code>（gap <code>60</code>px）で<strong>左 1.3 / 右 2</strong> の 2 列。ただし子は <code>ft-info</code> 1つだけで、右の <code>2fr</code> は空き余白です。Studio での再現方針は 2 通り。<strong>推奨は (A) 厳密 Grid 再現</strong> です（後述の左カラム幅計算が gap を含めて自動で正しくなり、原物の右余白幅もそのまま再現できるため）。</p>
+  <p>原物は <code>grid-template-columns: 1.3fr 2fr</code>（gap <code>60</code>px）で<strong>左 1.3 / 右 2</strong> の 2 列。ただし子は <code>ft-info</code> 1つだけで、右の <code>2fr</code> は空き余白です。Studio での再現方針は 2 通り（<strong>Studio に CSS Grid は無いため、横並びBox＋子幅 <code>flex</code> で再現します</strong>。→ <a href="#g0-4">§0.4「2カラムを分数比で並べる」</a>）。<strong>推奨は (A) 横並び flex 再現</strong>です（flex 比＝fr 比で、原物の 1.3:2 と右余白がそのまま出るため）。</p>
 
   <div class="plan free recommended">
-    <span class="badge">Free代替</span> <strong>(A) 厳密再現【推奨】</strong>: Grid 2 列（<code>1.3fr</code> / <code>2fr</code>、gap <code>60</code>）にして右セルに空 Box を置く。左カラム実幅も右余白も原物どおりになる。
+    <span class="badge">Free代替</span> <strong>(A) 厳密再現【推奨】</strong>: <code>ft-inner</code> を<strong>方向＝横並び</strong>にし、<strong>左子（<code>ft-info</code>）の幅＝<code>1.3 flex</code>・右子＝空Boxで幅＝<code>2 flex</code></strong>、<strong>間隔(Gap)＝60</strong>。flex 比＝原物の <code>1.3fr:2fr</code> と同じで、左カラム実幅も右余白も原物どおりになる。
   </div>
   <div class="plan free">
     <span class="badge">Free代替</span> <strong>(B) 簡易再現</strong>: 横並び Box にし、<code>ft-info</code> を左寄せ＋幅を最大幅で左カラム相当に制限する。原物は <code>grid-template-columns:1.3fr 2fr</code> かつ gap <code>60</code>px なので、左カラム実幅は <code>(1320−60)×1.3/3.3 ≒ 496px</code>。よって最大幅は<strong>約 500px</strong>を目安にする。
@@ -9514,7 +9536,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <ol class="steps">
 <li>SubTop の後に <strong>追加→基本→Box</strong>、名 <code>FloatPerk__Big</code>。</li>
-<li>Box→<strong>レイアウト</strong>: 方向 <strong>横並び（Horizontal）</strong>、垂直配置=<strong>ベースライン（baseline）</strong>（数字と単位の下端揃え）、水平配置=<strong>中央</strong>、gap <code>2px</code>。
+<li>Box→<strong>レイアウト</strong>: 方向 <strong>横並び（Horizontal）</strong>、垂直配置=<strong>ベースライン（baseline）</strong>（数字と単位の下端揃え。<strong>Studio に baseline 選択肢は無いので下端(Bottom)で代用</strong>＝下端が揃い見た目ほぼ一致。<a href="#g0-4">§0.4</a>）、水平配置=<strong>中央</strong>、gap <code>2px</code>。
 <ul class="checklist"><li>横並び / baseline / 中央 / gap2px</li></ul></li>
 <li>Box→重ね順 <code>1</code>。drop-shadow（<code>filter:drop-shadow(0 4px 12px rgba(232,154,28,.35))</code>）は <strong>Studio Filter（Blur/Brightness等6種のみ）に drop-shadow なし</strong> → 下記対応:</li>
 </ol>
@@ -10169,9 +10191,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <div class="plan free"><span class="badge">Free代替</span> ① 点滅を諦め<strong>静的ドット</strong>にする（視認性影響は小さく、ピル文言で受付中は伝わる）。② どうしても点滅させるなら <strong>Embed sandbox</strong> にドット要素＋<code>&lt;style&gt;</code>を内包。</div>
 
-<div class="plan mini"><span class="badge">Mini</span> サイト全体の Custom Code（Body末尾）に下記1ブロックを注入し、Studio側のドットBoxに <code>class="dot"</code>（設定タブ → タグ設定 等で付与）を当てる。
+<div class="plan mini"><span class="badge">Mini</span> サイト全体の Custom Code（Body末尾）に下記1ブロックを注入し、Studio側の<strong>点滅させたいドットBoxの class 欄</strong>（設定タブ）に <code>gn-blink-dot</code> を付与する（<strong>親に <code>pill</code> クラスは不要</strong>＝この単一クラスだけで点滅する）。
 <pre class="tree">@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.pill .dot{animation:blink 1.6s infinite}</pre></div>
+.gn-blink-dot{animation:blink 1.6s infinite}</pre></div>
 
 <div class="callout tip">
 <p><strong>推奨</strong>: <strong>Free段階＝静的ドット</strong>、<strong>Mini切替後＝Custom Code で点滅</strong>。軽量（<code>&lt;style&gt;</code>1行）なので Mini では Custom Code が最適です。</p>
@@ -11316,7 +11338,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p>下が原物の月桂冠 SVG（左右両半分を内包した 1 枚）です。これを左右にクロップして 2 ファイルにします。</p>
 <figure class="fig">
 <img class="asset" style="max-width:320px" src="../mockup/assets/laurel.svg" alt="月桂冠（左右両半分を内包した装飾SVG）" loading="lazy">
-<figcaption>原物 <code>laurel.svg</code>（viewBox 0 0 800 493.352・金色 <code>#B69333</code>）。左 0–400 / 右 400–800 で 2 分割する。</figcaption>
+<figcaption>原物 <code>laurel.svg</code>（viewBox 0 0 800 493.352・金色 <code>#B69333</code>）。左＝<code>viewBox="0 0 400 493.352"</code> / 右＝<code>viewBox="400 0 400 493.352"</code> の2ファイルに分割する。</figcaption>
 </figure>
 
 <p>Studio には「1 画像に <code>background-position</code> を当てて半分だけ見せる」UI が標準にありません。下の 2 案のいずれかで実装します。</p>
@@ -11353,7 +11375,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <div class="plan free recommended">
 <span class="badge">Free代替</span><strong>A 案 / 全プラン可（推奨）</strong>
 <ol class="steps">
-<li>ローカルで <code>laurel.svg</code> を<strong>左半分 <code>laurel_l.svg</code> / 右半分 <code>laurel_r.svg</code></strong> に分割書き出し（viewBox を左 0–400 / 右 400–800 でクロップ）。金色 <code>#B69333</code> はそのまま維持。</li>
+<li>ローカルで <code>laurel.svg</code> を<strong>左半分 <code>laurel_l.svg</code> / 右半分 <code>laurel_r.svg</code></strong> に分割（テキストエディタで <code>viewBox</code> を <strong>左＝<code>"0 0 400 493.352"</code> / 右＝<code>"400 0 400 493.352"</code></strong> に書き換え＝x オフセットと幅の2数値を変更）。金色 <code>#B69333</code> はそのまま維持。</li>
 <li>Uploads に 2 ファイルを追加。</li>
 <li>Record の各統計 <a class="term" href="#term-box">Box</a>（後述レイヤー <code>rec-stat-1</code>〜<code>-4</code>）の左に <code>laurel_l</code>、右に <code>laurel_r</code> を Image として配置。右パネル → <strong>画像タブ</strong> → フィット: <a class="term" href="#term-fill">contain</a>（object-fit 相当）。右パネル → <strong>ボックスタブ</strong> → サイズ → 幅 <code>34px</code> / 高さ <code>auto</code>。</li>
 <li>各 Image の<strong>設定タブ</strong>で代替テキストを空（装飾）に。</li>
@@ -11730,6 +11752,12 @@ sec-footer
   window.addEventListener('resize', update);
   update();
 })();</code></pre>
+  <h4>④ 十字点線コネクタ SVG（§5-5 サービスのカード間装飾・Image としてアップロードする用）</h4>
+  <p class="cb-note">青の点線「＋」十字。背景は透過。テキストエディタに貼り <code>connector_cross.svg</code> 等で保存 → 左ナビ「アップロード」→ Image 配置（absolute・グリッド中央・z2・Mobile非表示）。色は <code>#4A7DE8</code>、線幅3px・dotted相当。<strong>※ 画像を作らず Box 2枚で組む方法（推奨）は §5-5-6 を参照。</strong></p>
+  <pre class="code"><code>&lt;svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"&gt;
+  &lt;line x1="100" y1="0" x2="100" y2="200" stroke="#4A7DE8" stroke-width="3" stroke-dasharray="3 7" stroke-linecap="round"/&gt;
+  &lt;line x1="0" y1="100" x2="200" y2="100" stroke="#4A7DE8" stroke-width="3" stroke-dasharray="3 7" stroke-linecap="round"/&gt;
+&lt;/svg&gt;</code></pre>
 </div>
 
 
