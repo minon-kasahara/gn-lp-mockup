@@ -1447,7 +1447,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><code>_studio_ref.md</code> §9.2・§10.4 より、<a class="term" href="#term-box">Base</a> は本LPの構造上の基点になる。ここで全体の器を定義し、以降の各セクション章はこの Base 直下に <a class="term" href="#term-section">Section</a>（および Base直下の固定要素）を積む。</p>
 
 <ol class="steps">
-<li><strong>ページ最上位＝Base レイヤー</strong>を確認する。Base はページのルートコンテナで、原物の <code>body</code>（line 38：<code>font-family:var(--ja)</code> ＝ Noto Sans JP、<code>color:var(--ink)</code> ＝ <code>#0F1A33</code>、<code>background:var(--bg)</code> ＝ <code>#FCFDFF</code>、<code>line-height:1.7</code>、<code>word-break:keep-all</code>、<code>overflow-x:hidden</code>）に相当する。
+<li><strong>ページ最上位＝Base レイヤー</strong>を確認する。Base はページのルートコンテナで、原物の <code>body</code>（line 38：<code>font-family:var(--ja)</code> ＝ Noto Sans JP、<code>color:var(--ink)</code> ＝ <code>#0F1A33</code>、<code>background:var(--bg)</code> ＝ <code>#FCFDFF</code>、<code>line-height:1.7</code>、<code>word-break:keep-all</code>、<code>overflow-x:hidden</code>）に相当する。<strong>Studioでの選択方法</strong>＝左ナビ「レイヤー」最上部のページ名をクリック（→ <a href="#g0-4">§0.4「ページ最上位（ページルート）を選択する」</a>）。
 <ul>
 <li><strong>Base の背景色</strong>を <span class="sw" style="--c:#FCFDFF"></span> <code>#FCFDFF</code>（<a class="term" href="#term-colorstyle">カラースタイル</a> <code>bg</code>）に設定する（<a href="#ch-g2">§2 デザイントークン</a>で <code>bg</code> を登録後に割当。本章では HEX 直接指定でも可）。</li>
 <li><strong>Base の既定文字色</strong>を <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（<code>ink</code>）、<strong>既定フォント</strong>を Noto Sans JP（1.3 の Font List 最上部）にする。</li>
@@ -1958,7 +1958,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>キャンバスにテキスト要素を 1 つ置き、ダミー文言を入力。</li>
 <li>右パネル <strong>テキスト（Text）</strong> タブ → Typography で <strong>Font / Weight / Size / Line height / Letter spacing</strong> を下表の PC 値に設定。</li>
 <li>同タブ内（または右パネルのカラー設定）で <strong>文字色</strong>を §2.1 で登録した該当カラースタイルに設定。</li>
-<li>テキスト要素選択時にスタイルバー上部へ出る <strong>「スタイル」</strong> 項目をクリック → スタイル名を下表の <strong>テキストスタイル名</strong> で登録。</li>
+<li>テキスト要素選択時にスタイルバー上部へ出る <strong>「スタイル」</strong> 項目をクリック → スタイル名を下表の <strong>テキストスタイル名</strong> で登録（具体UI＝テキストタブ→タイポグラフィ→「テキストスタイル」欄→登録。<a href="#g0-4">§0.4「テキストスタイルを新規作成する」</a>）。</li>
 <li>変更は同名スタイルの全インスタンスへ自動伝播することを確認。</li>
 </ol>
 
@@ -2362,7 +2362,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   </figure>
 
   <h4>アンカー id の対応</h4>
-  <p>Header 内ナビと Floating CTA のページ内リンク先になるため、各セクションの id（Studio では右パネル「設定」タブ → リンク用のセクション名／アンカー）を<strong>この綴りで</strong>設定する。</p>
+  <p>Header 内ナビと Floating CTA のページ内リンク先になるため、各セクションの id（Studio では右パネル「設定（Settings）」タブ → <strong>ID 欄</strong>に綴りを入力。<strong># は付けない</strong>）を<strong>この綴りで</strong>設定する。リンク側の張り方も含め <a href="#g0-4">§0.4「アンカーID を付けてページ内リンクで飛ばす」</a>を参照。</p>
   <table>
     <thead><tr><th>セクション</th><th>アンカー id</th><th>原物クラス／行</th></tr></thead>
     <tbody>
@@ -3110,7 +3110,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <div class="callout note">
 <p><strong>Studioへの写像方針:</strong> <code>Comp/Card</code> で外観＋hoverだけ確定し、各セクション章では Card 内部に Box をネストして以下を組む。</p>
 <ul>
-<li><strong>prob/appr:</strong> 外側 Box を <strong>横並び（Horizontal）</strong>にし、左に「num＋title＋desc を縦並びにした Box（幅 flex）」、右に「<strong>180px 固定幅</strong>のイラスト Box（Image）」を置く（column-gap=24px は親 Box の gap、num↔title↔desc の縦間隔は row-gap=14px を内側 Box の gap で表現）。desc を「全幅」にしたい場合は Studio に grid-area が無いため、desc を左 Box の中ではなく<strong>Card 直下の3つ目の子</strong>として横並び親に対し幅 flex（100%）で配置するか、Mobile では単列化で吸収する。</li>
+<li><strong>prob/appr:</strong> Studio に grid-area が無いため <strong>Flex入れ子</strong>で組む。<strong>カード＝縦並びBox</strong>にし、子を2つ置く: ①<strong>上段＝横並びBox</strong>（左＝「num＋title を縦並びにした Box・幅 <code>flex</code>」、右＝「<strong>180px 固定幅</strong>のイラスト Box」、親の間隔 gap <code>24px</code>。num↔title の縦間隔は左Boxの gap <code>14px</code>）／②<strong>下段＝desc（全幅 Text）</strong>。これで原物の「num/title の右に 180px イラストがまたがり、desc だけ全幅」を再現する（上段↔descの間隔は外側縦Boxの gap）。<strong>具体ツリーと手順は <a href="#ch-s3">§5-3（アプローチ）</a>に詳細</strong>。</li>
 <li><strong>svc:</strong> Card 内先頭に <code>svc-head</code>（横並び Box＝アイコン48px＋メタ＋タイトル）、その下に本文 Text を縦並び。</li>
 <li><strong>mkt:</strong> Card を縦並び Box にし、ヘッダ→チャート（§チャート扱いは別章）→note の順。</li>
 </ul>
@@ -3249,7 +3249,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><code>em.b</code>/<code>em.n</code>/<code>em.l</code> = 該当文字だけ選択して色を <code>blue</code>／<code>navy</code>／<code>blue-lt</code> に部分適用（Studio は1テキスト内で部分色指定可）</li>
 <li><code>em.y</code>（黄色マーカー下線）= グラデ背景は文字単位では効かないため、次で代替。</li>
 </ul>
-<div class="plan free recommended"><span class="badge">Free代替</span> 該当語を別Textに切り出し、その背面に黄色Box（高さ=文字の約40%・下寄せ・塗り <code>yellow</code>・z背面）を absolute で重ねる。または 語句をImage化。<strong>推奨=背面黄色Box方式</strong>（テキスト編集を保てる）。</div>
+<div class="plan free recommended"><span class="badge">Free代替</span> 該当語だけを独立 Text にし、<strong>その語Text を「Hug幅の小さなBox」で包む</strong>（見出しの他の語とは横並び・下端揃えで同一行に並べる）。その<strong>包みBox の中に黄色Box</strong>（塗り <code>yellow</code>・高さ＝包みBoxの約40%・下寄せ・<strong>absolute（基準＝包みBox）</strong>・重ね順は語Textより背面）を入れる。包みBoxが語に追従するので、改行やサイズ変化でも黄帯がズレない。<strong>推奨＝この背面黄色Box方式</strong>（テキスト編集を保てる）。完全一致が要る場合は Mini の Custom Code で <code>em.y</code> グラデ下線を移植。</div>
 <div class="plan mini"><span class="badge">Mini</span> Custom Code で <code>background:linear-gradient(180deg,transparent 62%,#FFD166 62%,#FFD166 90%,transparent 90%)</code> を当てる手もあるが、コンポーネント運用には背面Box方式が無難。</div>
 </li>
 </ul>
@@ -4533,7 +4533,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>速度</strong>: Loop タブで <code>px/s</code> 指定。現物は 45s で <code>translateX(-50%)</code>（=1セット幅）移動。px/s に直すには「1セット幅(px) ÷ 45s」。1カード200px＋gap18px×12枚 ≒ <code>(200+18)×12 - 18 = 2598px</code>、<code>2598 ÷ 45 ≒ 58px/s</code>。<strong>速度 <code>58px/s</code></strong>（デフォルト60に近い、_studio_ref §10.1）。微調整は実機プレビューで。</li>
 <li><strong>Pause on hover</strong>: チェックON（現物 行271 <code>:hover{animation-play-state:paused}</code>）。</li>
 <li>overflow は Loop Box が自動 hidden（_studio_ref §10.1、scroll/visible不可）。</li>
-<li><strong>両端フェードマスク</strong>（現物 行261-262 <code>mask-image: linear-gradient(90deg, transparent 0%,#000 4%,#000 96%,transparent 100%)</code>）: Loop Box は overflow自動hiddenでマスク不可（_studio_ref §10.1「両端フェードマスクが必要なら親box側で重ねる」）→ <strong>【Free代替・推奨】</strong>Loop Box の左右に<strong>フェード用 Box</strong> を2枚絶対配置で重ねる。各幅 <code>4%</code>（または約60px）、高さ100%、背景=ページ <code>bg</code>(<span class="sw" style="--c:#FCFDFF"></span>#FCFDFF) から transparent への線形グラデ（左Box: 左→右で不透明→透明、右Box: 右→左で不透明→透明）。z-index を Loop より前面。<strong>【Mini】</strong>Custom Code で <code>.lw-marquee{mask-image:...}</code> を移植。</li>
+<li><strong>両端フェードマスク</strong>（現物 行261-262 <code>mask-image: linear-gradient(90deg, transparent 0%,#000 4%,#000 96%,transparent 100%)</code>）: Loop Box は overflow自動hiddenでマスク不可（_studio_ref §10.1「両端フェードマスクが必要なら親box側で重ねる」）→ <strong>【Free代替・推奨】</strong>まず <strong>Loop Box だけを「相対(relative)位置のラッパーBox」で包む</strong>（上のラベル行は包まない＝フェードがラベル行にかからないようにするため）。その<strong>ラッパーBox の中に</strong>フェード用 Box を左右2枚、<strong>絶対配置（absolute・基準＝ラッパー）</strong>で重ねる。各幅 <code>4%</code>（または約60px）、高さ100%、背景=ページ <code>bg</code>(<span class="sw" style="--c:#FCFDFF"></span>#FCFDFF) から transparent への線形グラデ（左Box: 左→右で不透明→透明、右Box: 右→左で不透明→透明）。z-index を Loop より前面。<strong>【Mini】</strong>Custom Code で <code>.lw-marquee{mask-image:...}</code> を移植。</li>
 </ol>
 
 <h4>D. LW Card ×12（VCロゴ）</h4>
@@ -6473,7 +6473,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   </figure>
 
   <ol class="steps">
-    <li>左ナビ → <strong>アップロード（Uploads）</strong> → <code>laurel.svg</code> をアップロード（SVG可）。アップロード後のURLを控える（Custom Code 主案で使用）。</li>
+    <li>左ナビ → <strong>アップロード（Uploads）</strong> → <code>laurel.svg</code> をアップロード（SVG可）。<strong>URLの取得方法</strong>は <a href="#g0-4">§0.4「アップロードした画像の URL を取得する」</a>（配置→プレビュー→検証でコピー。Custom Code 主案で使用）。</li>
     <li>表示方式は 5-6-4 の月桂樹注記の通り <strong>高さ100%基準であふれさせてクロップ＋左右位置指定</strong>（<code>background-size:auto 100%</code>＋<code>background-position:left/right center</code>）が必須。<strong>contain/Fit（内接）は不可</strong>。
       <div class="plan mini recommended"><span class="badge">Mini</span> <strong>主案・推奨：Custom Code（body）</strong>。<code>_studio_ref.md</code> §6 に従い <code>laurel-l</code>/<code>laurel-r</code> クラスへ 5-6-4 手順5 のCSSを当てる。<code>background-size:auto 100%</code> と <code>background-position</code> を厳密再現でき原物と一致。月桂樹のクロップ表現を確実に再現したいなら本案を推奨。</div>
       <div class="plan free"><span class="badge">Free代替</span> Custom Code 不可時は <code>Laurel L/R</code> Box の<strong>塗り → 画像</strong>でフィット＝あふれ（cover/Crop）＋位置 左中央/右中央。粒度が px で一致しない可能性があり<strong>公開URLで要実機確認</strong>。装飾のみ・色変更不要のため Embed 不要。Box にリンク・Hover を付けない（<code>pointer-events:none</code> 相当）。</div>
@@ -6803,11 +6803,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <div class="plan free recommended">
     <span class="badge">Free代替</span>
-    <p><strong>（推奨）</strong>「50社以上」だけを別Text/インラインで切り出せない場合、Studioのインライン背景指定が無いため、該当語を独立した小さな <a class="term" href="#term-box">Box</a>（<code>vc-title-mark</code>）に分割し、その背景に <strong>180deg の線形グラデ</strong>を設定する：</p>
+    <p><strong>（推奨）1行目を3つの Text に分割して横並びにする。</strong> 原物の1行目「提携VC50社以上。」を、Studio では<strong>横並びBox</strong>の中に Text を3つ置いて再現する: ①<code>提携VC</code>／②<strong><code>50社以上</code>＝マークBox <code>vc-title-mark</code></strong>／③<code>。</code>。②の語Text を小さな <a class="term" href="#term-box">Box</a> で包み、その背景に <strong>180deg の線形グラデ</strong>を設定する：</p>
     <ul>
       <li>角度 <strong>180deg</strong>、ストップ＝<strong>0%〜62% <code>transparent</code> / 62%〜90% <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（yellow） / 90%〜100% <code>transparent</code></strong>（現物 <code>linear-gradient(180deg,transparent 62%,var(--yellow) 62%,var(--yellow) 90%,transparent 90%)</code>）</li>
       <li>左右余白 <code>6</code>px（現物 <code>padding:0 6px</code>）、文字色は <code>#0F1A33</code>（ink）のまま、ウェイト900のまま</li>
-      <li>このマークBoxを見出しテキストと同じ行に並べる（横並び・ベースライン揃え）</li>
+      <li>3つの Text を入れた横並びBoxは <strong>垂直配置＝下端(Bottom)</strong>（Studio に baseline は無いので下端で代用。<a href="#g0-4">§0.4</a>）、gap 0。2行目以降（改行）は別の Text として下に積む。</li>
     </ul>
   </div>
 
@@ -7476,7 +7476,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
     <li>右パネル→ボックス→サイズ → 幅: <code>%</code> <code>100</code>。高さは 16:10 比率を要する（原物 <code>aspect-ratio:16/10</code>）。</li>
   </ol>
   <div class="plan free">
-    <span class="badge">Free代替</span>内側の Image を <code>object-fit:cover</code> 相当で配置し、Cover 高さ=<code>auto</code>、Image 側を 幅100% にして比率を画像実体に委ねる。または Cover 高さを <code>%</code>/固定で 16:10 相当に手動設定。
+    <span class="badge">Free代替</span> <strong>写真を事前に 16:10 にトリミング</strong>して用意し、<code>Cover A</code> 内に <strong>Imgモード</strong>の画像を入れ <strong>幅＝100%・高さ＝auto</strong>（画像自体が 16:10 なので高さが比率どおり決まり、列幅が変わっても歪まない）。トリミングが難しい場合は <a href="#g0-4">§0.4「アスペクト比を固定する」</a>のスペーサー画像法で 16:10 の器を作り、中に写真を Absolute・上下左右0・幅高さ100%・フィット Cover で敷く。
   </div>
   <div class="plan mini">
     <span class="badge">Mini</span>比率厳守が必須なら <a class="term" href="#term-customcode">Custom Code</a> で <code>.c-cover{aspect-ratio:16/10}</code> を当てる。ネイティブの aspect-ratio UI が無い場合のフォールバック。
@@ -8069,7 +8069,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <ol class="steps" start="15">
     <li><code>faq-q-1</code> の末尾子として <span class="path">追加<i>›</i>基本<i>›</i>Icon<i>›</i>chevron-down</span> を配置。レイヤー名 <code>faq-q-arrow-1</code>。</li>
     <li>サイズ → 幅/高さ <code>14px</code>、ストローク色 カラースタイル <code>blue</code>（#4A7DE8）／ 線幅 約 <code>2.5px</code>。</li>
-    <li>右端へ寄せる: <code>faq-q-arrow-1</code> の左に margin-left <code>auto</code>（現物 <code>margin-left:auto</code>）。上位置 margin-top <code>6px</code>。flex-shrink させない（Tablet/Mobile でも縮小しない）。</li>
+    <li>右端へ寄せる: <code>faq-q-arrow-1</code> の左に margin-left <code>auto</code>（現物 <code>margin-left:auto</code>）。<strong>Studioに余白 auto は無い</strong>ので、<strong>間の <code>faq-q-text</code> の幅を <code>flex</code></strong> にして矢印を右端へ押し出す（または親を「両端揃え（Space Between）」。<a href="#g0-4">§0.4「片側マージンを auto にして端へ押しやる」</a>）。上位置 margin-top <code>6px</code>。flex-shrink させない（Tablet/Mobile でも縮小しない）。</li>
     <li>回転アニメ:
       <ul>
         <li>default（open）: <a class="term" href="#term-transform">変形（Transform）タブ</a> → Rotate <code>180deg</code>（上向き相当。現物の open は rotate(-135deg)＝視覚的に上向きシェブロン）。</li>
@@ -10920,7 +10920,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <ol class="steps">
     <li>ツールバー Tablet → <code>sec-vc</code> 余白 上下 <code>64px</code>。</li>
     <li><code>vc-grid</code> を選択 → 列数を <strong>3 列</strong>に（gap <code>12px</code>）。Grid 列指定の UI で 3 等分（または各カードを %/flex で 3 列配分。<strong>親 auto + 子 % は不可</strong>＝親幅は固定/% にすること <a href="#t7-0">§7.0</a>）。</li>
-    <li><code>vc-card</code> の aspect-ratio 5/2 は全 BP 固定（Studio で比率指定不可なら高さ固定 or padding ハック、ただし列数変化で幅が変わるため<strong>比率維持が望ましい</strong>）。</li>
+    <li><code>vc-card</code> の aspect-ratio 5/2 は全 BP 固定（Studio に比率指定UIは無い → <a href="#g0-4">§0.4「アスペクト比を固定する」</a>のスペーサー画像法 or Embed+CSS で維持。<strong>padding%ハックは Studio の padding が px のみのため不可</strong>。列数変化で幅が変わるため比率維持が望ましい）。</li>
   </ol>
   <ul class="checklist"><li>Tablet で 3 列・gap12・padding64</li></ul>
 
@@ -12563,7 +12563,7 @@ sec-footer
 </figure>
 
 <h4>公開基盤（最重要・リファレンス §12.1）</h4>
-<ul class="checklist"><li>公開サイト基盤が <strong>新基盤（MPA / SSR）</strong> になっている（公開 URL の HTML ソースに <code>generator=Studio.Design.HRC</code> が出る。出なければ旧基盤）</li><li>旧基盤だった場合、Project 設定 → 公開サイト基盤の切替 → 新基盤選択 → 保存（約 5 分）を実施し、Embed（G&amp;N ロゴ SVG）/ 外部タグ / Loop Box を切替後に再検証</li><li>独自ドメイン接続時、A レコードを <strong><code>34.111.141.225</code></strong>（新基盤値）に更新済み（旧 <code>35.194.122.208</code> のままでない）</li><li>新基盤はメタ未設定だと空欄出力 → 下記 title / description / OGP / favicon が<strong>必ず明示設定</strong>されている</li></ul>
+<ul class="checklist"><li>公開サイト基盤が <strong>新基盤（MPA / SSR）</strong> になっている（公開 URL の HTML ソースに <code>generator=Studio.Design.HRC</code> が出る。出なければ旧基盤。<strong>ソース表示＋generator検索の手順は <a href="#g0-4">§0.4</a></strong>）</li><li>旧基盤だった場合、Project 設定 → 公開サイト基盤の切替 → 新基盤選択 → 保存（約 5 分）を実施し、Embed（G&amp;N ロゴ SVG）/ 外部タグ / Loop Box を切替後に再検証</li><li>独自ドメイン接続時、A レコードを <strong><code>34.111.141.225</code></strong>（新基盤値）に更新済み（旧 <code>35.194.122.208</code> のままでない）</li><li>新基盤はメタ未設定だと空欄出力 → 下記 title / description / OGP / favicon が<strong>必ず明示設定</strong>されている</li></ul>
 
 <h4>メタ（右パネル サイト / ページタブ・ページ優先・リファレンス §12.3）</h4>
 <ul class="checklist"><li>サイト <code>&lt;title&gt;</code> 設定（例: <code>G&amp;N — 挑戦するスタートアップに、補助金という追い風を。</code>、全角 30 字目安・重要 KW＝補助金 / 申請支援を前方）</li><li>meta description 設定（全角 70〜120 字・先頭に KW）</li><li>OGP 画像を設定（<strong><code>1200×630px</code></strong>・5MB 未満。モーダル画像は不可）。SNS シェアでカード表示されるか確認</li><li>favicon 設定（<code>48×48px</code> 以上、SVG 含む可）。ブラウザタブにアイコン表示</li><li>サンクスページ等の補助ページに <strong>noindex スイッチ ON</strong>（ページ単位）</li><li>ダッシュボード（Home）の <strong>sitemap スイッチ ON</strong> → <code>/sitemap.xml</code> が配信される（noindex / modal ページは自動除外される点を確認）</li><li>Google Search Console に sitemap を登録（クライアント GSC 連携可否を確認）</li></ul>
@@ -12594,7 +12594,7 @@ sec-footer
 
 <!-- ============ 10.10 ============ -->
 <h3 id="t10-10">10.10 パフォーマンス</h3>
-<ul class="checklist"><li>VC ロゴ画像が圧縮済み（各 <code>100KB</code> 以下目安）</li><li>OGP 画像（<code>1200×630</code>）が圧縮済み・5MB 未満</li><li>大きな装飾を不要に Embed / 画像化していない（マーキー＝Loop Box、出現＝On Appear 等ネイティブ優先で重量化を回避）</li><li>Embed sandbox（G&amp;N ロゴ SVG 等）が過剰に多くなく、公開 URL で遅延なく描画</li><li>Lighthouse Performance <code>80+</code> を目標に計測（モバイル基準で確認）</li><li>初回表示で大きなレイアウトシフト（CLS）が起きない（フォント差し替え・画像遅延読込起因のガタつきを確認。新基盤 SSR なら本文 / メタは初期 HTML に含まれる）</li><li>月間 Visitor 上限（Free / Mini＝2,000）に対し、広告流入見込みが超過しないか確認（超過見込みなら Personal 以上を検討）</li></ul>
+<ul class="checklist"><li>VC ロゴ画像が圧縮済み（各 <code>100KB</code> 以下目安）</li><li>OGP 画像（<code>1200×630</code>）が圧縮済み・5MB 未満</li><li>大きな装飾を不要に Embed / 画像化していない（マーキー＝Loop Box、出現＝On Appear 等ネイティブ優先で重量化を回避）</li><li>Embed sandbox（G&amp;N ロゴ SVG 等）が過剰に多くなく、公開 URL で遅延なく描画</li><li>Lighthouse Performance <code>80+</code> を目標に計測（モバイル基準。<strong>計測手順は <a href="#g0-4">§0.4</a></strong>）</li><li>初回表示で大きなレイアウトシフト（CLS）が起きない（フォント差し替え・画像遅延読込起因のガタつきを確認。新基盤 SSR なら本文 / メタは初期 HTML に含まれる）</li><li>月間 Visitor 上限（Free / Mini＝2,000）に対し、広告流入見込みが超過しないか確認（超過見込みなら Personal 以上を検討）</li></ul>
 
 <div class="callout tip">
 <p>このチェックリストは Studio リファレンス（2026-06 検証版）と <code>legal_check_20260506.md</code> に準拠。<strong>フォーム送信先・資料 DL / プライバシーの遷移先 URL・GA / GTM・公開基盤切替・Mini / Personal プラン確定</strong>は「公開直前に再確認」項目。実機確認（スティッキー追従・マーキー・Embed・OGP カード）はエディタ内では完結しないため必ず公開 URL で行う。</p>
@@ -12764,8 +12764,8 @@ sec-footer
 
 <h4>11.2a モバイルの要素並べ替え（order）が display:contents 依存 [致命]</h4>
 <p>現物は Mobile で <code>.hero-left{display:contents}</code> により子を昇格させ、<code>order</code> で <strong>アイブロウ→見出し→サブ→フォームカード→CTA→マーキー</strong> の順に再配置する。<code>order</code> は DOM 構造を変えず視覚順だけ変える手法だが、<strong>Studio の条件スタイルは「要素のグループ化（DOM 階層）を BP 別に変更できない」</strong>。<code>display:contents</code> 相当も Studio に無い。</p>
-<p>対処: <strong>DOM を最初からモバイル順に組む</strong>のが安全。<code>hero-inner</code> を縦 Flex（Mobile）で「eyebrow → h1 → sub → hero-form → cta → marquee」の順にレイヤーを並べ、PC では 2 カラムグリッド（左 1.5fr／右 0.85fr）を条件スタイルで再現する。具体的には <code>hero-left-col</code>（eyebrow/h1/sub/cta）と <code>hero-form</code>（右カラム）を、PC=横並び 2 カラム、Mobile=縦積みだが「フォームを CTA より前」に出す必要がある。PC のグリッド配置で吸収できる範囲か実機検証し、できなければ要素を複製して BP 別 表示/非表示（目アイコン）で出し分ける。</p>
-<ul class="checklist"><li>FV の要素順を「PC 順」「Mobile 順」両方紙に書き、Studio で順序差が条件スタイルだけで吸収できるか検証</li><li>吸収不可なら複製＋表示/非表示方式に切替え、二重管理コピーの同期ルールを明記</li></ul>
+<p>対処（<strong>確定レシピ・複製しない</strong>）: <code>hero-inner</code> を <strong>1つの縦並び Flex</strong> にし、<strong>レイヤーをモバイル順「eyebrow → h1 → sub → hero-form → cta → marquee」で組む</strong>。<strong>PC（Default）でのみ</strong> <code>hero-form</code> を <strong>ポジション＝絶対(absolute)</strong> にして<strong>右上へ逃がし</strong>（基準＝<code>hero-inner</code>、top/right で位置決め・幅は右カラム相当 ≈0.85fr）、左側コンテンツ（eyebrow/h1/sub/cta）には <strong>右パディング</strong>を足してフォームと重ならせない。Tablet/Mobile では条件スタイルで <code>hero-form</code> のポジションを <strong>静的(relative)に戻す</strong>と、自然に「sub の下・cta の前」の縦位置へ並ぶ。これで<strong>要素の複製も order の BP 別入替えも不要</strong>。→ 絶対配置は <a href="#g0-4">§0.4</a>・<a href="#term-position">ポジション</a>参照。</p>
+<ul class="checklist"><li><code>hero-inner</code> を縦Flex・モバイル順（eyebrow→h1→sub→hero-form→cta→marquee）で組み、PC のみ <code>hero-form</code> を絶対配置で右上へ逃がした（複製なし・左側に右パディング）</li><li>Tablet/Mobile で <code>hero-form</code> を静的配置に戻し、sub の下・cta の前に来ることを Live Preview で確認した</li></ul>
 
 <h4>11.2b H1 の white-space:nowrap がモバイルで溢れる [致命]</h4>
 <p>PC の h1 は <code>white-space:nowrap</code>（流体 clamp で最大 60px）。Tablet 以下で <code>white-space:normal</code> に戻さないと<strong>横スクロール／文字切れ</strong>が出る。</p>
@@ -13010,7 +13010,7 @@ sec-footer
 <span class="badge">Mini</span> <strong>推奨。</strong>カード全体を Custom Code/Embed（HTML+CSS+JS）で丸ごと注入が最優先・最確実（元 JS をほぼ流用、レスポンシブも内包メディアクエリで担保）。リンク先 <code>#cta</code> のアンカーを Studio 側に確保。
 </div>
 <div class="plan free">
-<span class="badge">Free 代替</span> fixed＋スクロール制御は Custom Code 不可の Free では完全再現できないため、Free 段階では <strong>floating CTA を一旦オフ</strong>にし、Mini 切替後に有効化する前提で設計。
+<span class="badge">Free 代替</span> <strong>役割で分ける</strong>: <strong>静的な見た目</strong>（バー/カードの形・「0円」表示・配置。11.12b の全幅バー化含む）は Free の <strong>Box＋条件スタイルで作成可</strong>。ただし <strong>出現・#cta接近で退避・×で消す動的挙動は Custom Code（Mini）の JS が必須</strong>（→ <a href="#t9-codeset">§9 コード集③</a> の出現/退避スクリプト）。よって Free 段階は「常時表示の静的バー」か「一旦オフ」のどちらかにし、スクロール連動は Mini 切替後に有効化する前提で設計する。
 </div>
 <ul class="checklist"><li>Mini 切替後に float-perk を Custom Code で実装、Free 制作中は非搭載</li><li>#cta アンカーが最下部 CTA セクションに存在することを確認</li></ul>
 
