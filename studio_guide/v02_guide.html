@@ -204,6 +204,12 @@ body.flt-active ul.checklist>li.flt-hide{opacity:.22}
 ul.review{list-style:none;padding-left:0;margin:.6em 0;border-left:3px solid var(--line-2);padding-left:13px}
 ul.review>li{position:relative;padding-left:22px;margin:.3em 0;color:var(--sub);font-size:13.5px;line-height:1.7}
 ul.review>li::before{content:"✓";position:absolute;left:0;top:0;color:#9fb0cd;font-weight:800}
+pre.code{background:#0f1b30;color:#dbe7fb;border-radius:10px;padding:13px 15px;overflow-x:auto;font-family:var(--mono);font-size:11.5px;line-height:1.6;margin:.5em 0;white-space:pre}
+pre.code code{background:none;border:0;color:inherit;padding:0;font-size:inherit}
+.codebox{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:1.2em 0;background:#fbfdff}
+.codebox .cb-h{font-weight:800;font-size:14px;margin:0 0 6px}
+.codebox .cb-note{font-size:12px;color:var(--sub);margin:4px 0 8px;line-height:1.7}
+.codebox h4{margin:14px 0 4px}
 .rv-label{font-size:11px;font-weight:800;color:#8a97ad;margin:.6em 0 .1em}
 /* 難易度バッジ */
 ul.checklist>li{padding-right:118px}
@@ -11652,6 +11658,67 @@ sec-footer
 
 <section class="chapter" id="ch-t9">
   <h2 id="ch-t9">9. Embed / Loop Box / Custom Code 実装箇所</h2>
+<div class="codebox" id="t9-codeset">
+  <p class="cb-h">📋 コピペ用コード集（現物から抜粋・初心者はここからコピーして貼る）</p>
+  <p class="cb-note">Embed/Custom Code に貼る実コードを集約。各セクションからここを参照します。Embed=左ナビ→追加→基本→埋め込み→Blank を置きコード欄に貼る（sandbox自動判定）。Custom Code=Mini プランで「画面外のグレー余白をクリック→右パネルがページ設定→[ページ]タブ→&lt;body&gt;内末尾→+ New」。Free では Custom Code 不可。</p>
+  <h4>① G&amp;N ロゴ SVG（§5-1 ヘッダー／§5-11 フッター用・Embed に貼る）</h4>
+  <p class="cb-note">Embed(Blank)を置き、下記を貼る。色は親要素で <code>color</code> を指定（SVGは currentColor 追従）。フッターは白指定。</p>
+  <pre class="code"><code>&lt;svg class="logo-svg" viewBox="0 0 181.61 60" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="G&amp;amp;N"&gt;&lt;circle cx="30" cy="30" r="30"/&gt;&lt;path d="M108.78,17.47l-5.38,5.32c-3.41-3.6-7.38-5.41-11.91-5.41c-3.95,0-7.27,1.31-9.93,3.93s-4,5.81-4,9.56c0,3.88,1.38,7.16,4.15,9.86c2.77,2.69,6.19,4.04,10.25,4.04c2.64,0,4.87-0.56,6.68-1.67c1.81-1.11,3.27-2.85,4.39-5.22H91.39v-7.18h20.21l0.06,1.69c0,3.51-0.91,6.84-2.73,9.99c-1.82,3.15-4.18,5.55-7.07,7.21c-2.9,1.66-6.29,2.48-10.19,2.48c-4.17,0-7.89-0.9-11.15-2.72c-3.27-1.81-5.85-4.39-7.75-7.74c-1.9-3.35-2.85-6.96-2.85-10.84c0-5.32,1.76-9.94,5.27-13.87c4.17-4.68,9.59-7.02,16.27-7.02c3.49,0,6.76,0.65,9.8,1.94C103.81,12.94,106.33,14.82,108.78,17.47z"/&gt;&lt;path d="M138.14,36.13l3.68,4.22l-1.67,1.52l-1.65,1.5l5.21,5.52h-7.49l-2.14-2.21c-3.41,2.02-6.59,3.02-9.51,3.02c-2.49,0-4.5-0.73-6.04-2.18c-1.54-1.46-2.31-3.33-2.31-5.61c0-1.72,0.44-3.35,1.31-4.88c0.87-1.53,2.36-3.11,4.47-4.75c-2.09-2.81-3.13-5.3-3.13-7.46c0-1.6,0.69-3.19,2.07-4.75c1.38-1.56,3.33-2.34,5.85-2.34c2.55,0,4.5,0.77,5.86,2.32c1.36,1.55,2.04,3.11,2.04,4.68c0,1.24-0.31,2.42-0.94,3.55c-0.62,1.13-2.06,2.81-4.31,5.03c2.63,3.11,4.34,5.04,5.1,5.81C135.02,38.78,136.22,37.78,138.14,36.13z M130.08,42.39c-1.14-1.12-2.74-2.97-4.8-5.55c-2.18,1.81-3.27,3.39-3.27,4.75c0,0.63,0.3,1.21,0.89,1.74c0.59,0.53,1.35,0.79,2.26,0.79C126.47,44.12,128.11,43.54,130.08,42.39z M126.4,28.98c1.63-1.4,2.45-2.63,2.45-3.71c0-0.56-0.18-1.02-0.55-1.37c-0.37-0.35-0.85-0.53-1.46-0.53c-0.56,0-1.03,0.2-1.42,0.6c-0.39,0.4-0.58,0.86-0.58,1.39C124.83,26.42,125.35,27.63,126.4,28.98z"/&gt;&lt;path d="M149.44,10.92h7.33l17.19,26.43V10.92h7.65v40.17h-7.35l-17.17-26.35v26.35h-7.65V10.92z"/&gt;&lt;path fill="#fff" d="M29.98,25.56l-7.13,6.63h13.33l-6.47,5.93l-8.4-3.62l-3.61-6.97l5.44-7.91L45.4,8.22l-2.44-0.03L29.71,7.8l-7.45,10.83L3.43,28.21l16.94,7.3l9.41,18.17L49.6,21.93L29.98,25.56z M30.38,9.11L40.4,9.4L24.67,17.4L30.38,9.11z M16.59,26.87l-8.63,0.48l12.77-6.5L16.59,26.87z M7.71,28.65l8.85-0.49l2.87,5.54L7.71,28.65z M37.8,30.74l-5.92-4.22l14.09-2.61L37.8,30.74z M30.33,26.99l5.49,3.92h-9.7L30.33,26.99z M38.25,32.04l7.35-6.14L30.48,50.13V39.16L38.25,32.04z M29.19,39.3v10.43l-6.95-13.43L29.19,39.3z"/&gt;&lt;/svg&gt;</code></pre>
+  <h4>② アニメ・グラデ文字・SVGフィルタ 一括（§5-2 FV／§5-7 VC／§5-12 ほか・Mini: Custom Code の &lt;body&gt;内末尾に貼る）</h4>
+  <p class="cb-note">スイープ(sweepGrad)／手書き下線(fvUnderline＋#hl-rough)／ロゴマーキー(lw-scroll)／光沢(perkShine)／点滅(blink)／グラデ文字 をまとめて有効化。グラデ文字にしたい Text の <strong>class 欄</strong>（設定タブ）に <code>gn-grad-text</code>（静的）や <code>gn-sweep</code>（FVスイープ）を入力する。</p>
+  <pre class="code"><code>&lt;!-- これを Mini の Custom Code → &lt;body&gt;内末尾 に貼る（var はHEX解決済みで単独動作） --&gt;
+&lt;style&gt;
+@keyframes sweepGrad{from{background-position:100% 0}to{background-position:0% 0}}
+@keyframes fvUnderline{from{transform:scaleX(0) skewX(-2deg)}to{transform:scaleX(1) skewX(-2deg)}}
+@keyframes lw-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes perkShine{0%,100%{background-position:120% 0}50%{background-position:-20% 0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+/* 静的グラデ文字（§5-7 大きな数字 等）: 対象Textの class に gn-grad-text を付ける */
+.gn-grad-text{background:linear-gradient(135deg,#4A7DE8,#1B2A4A);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+/* FV見出しのスイープ着色（§5-2 H1 強調語）: class に gn-sweep を付ける */
+.gn-sweep{background:linear-gradient(90deg,#4A7DE8 0%,#4A7DE8 50%,#1B2A4A 56%,#0F1A33 62%,#0F1A33 100%);background-size:220% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:sweepGrad 1s cubic-bezier(.6,.05,.3,1) forwards}
+&lt;/style&gt;
+&lt;!-- 手書き風下線マーカー用 SVGフィルタ（下線Boxの style に filter:url(#hl-rough) で使う） --&gt;
+&lt;svg width="0" height="0" style="position:absolute" aria-hidden="true"&gt;&lt;defs&gt;
+  &lt;filter id="hl-rough"&gt;&lt;feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise"/&gt;&lt;feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5"/&gt;&lt;/filter&gt;
+&lt;/defs&gt;&lt;/svg&gt;</code></pre>
+  <h4>③ フローティング特典CTA の出現/退避スクリプト（§5-12・Mini: &lt;body&gt;内末尾に貼る）</h4>
+  <p class="cb-note">Studioで作った特典カードに <code>id=floatPerk</code>・閉じるボタンに <code>id=floatPerkClose</code>・CTAセクションに <code>id=cta</code> を付けておくと、600px超スクロールで出現＆CTA到達で退避＆×で閉じる。スクロール連動はエディタ内では動かず公開URLで確認。</p>
+  <pre class="code"><code>(function(){
+  var el = document.getElementById('floatPerk');
+  var closeBtn = document.getElementById('floatPerkClose');
+  var dismissed = false;
+  var ctaSection = document.getElementById('cta');
+
+  function update(){
+    if(!el || dismissed) return;
+    var scrolled = window.scrollY || document.documentElement.scrollTop;
+    var ctaTop = ctaSection ? ctaSection.getBoundingClientRect().top : Infinity;
+    // Show after scrolling past 600px, hide when CTA section enters viewport
+    var inCtaView = ctaTop &lt; window.innerHeight * 0.6;
+    if(scrolled &gt; 600 &amp;&amp; !inCtaView){
+      el.classList.add('is-visible');
+      el.setAttribute('aria-hidden','false');
+    }else{
+      el.classList.remove('is-visible');
+      el.setAttribute('aria-hidden','true');
+    }
+  }
+
+  if(closeBtn){
+    closeBtn.addEventListener('click', function(){
+      dismissed = true;
+      el.classList.remove('is-visible');
+      el.setAttribute('aria-hidden','true');
+    });
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();</code></pre>
+</div>
+
 
   <p>この章は、原物モックアップ（<code>/mockup/final/lp_full_final.html</code>）のうち <strong>Studio のネイティブ要素では作れない実装</strong> ―― <a class="term" href="#term-pseudo">疑似要素</a> <code>::before</code> / <code>::after</code>、SVG フィルタ、グラデーション文字、無限マーキー、<code>@keyframes</code> アニメ ―― を一覧化し、各々を <strong>【Free 代替】</strong>（追加 <a class="term" href="#term-box">Box</a> / <a class="term" href="#term-embed">Embed</a> <a class="term" href="#term-sandbox">sandbox</a> / <a class="term" href="#term-loopbox">Loop Box</a> / Image 化）と <strong>【Mini 以降】</strong>（<a class="term" href="#term-customcode">Custom Code</a> で当該 CSS / JS を注入）の二系統で対比する。Studio 仕様は<a href="#glossary">リファレンス</a>（2026-06 検証版）を正とする。</p>
 
