@@ -44,6 +44,12 @@
 
 ## ログ本体
 
+### 2026-06-25 00:35 [DONE] azalea
+- 対象: `studio_guide/v02_guide.html`（初心者再現性の是正・段階1〜D）, `studio_guide/beginner_review_20260625.md`（新規・190findings）
+- 経緯: 多エージェントで「Studio初心者が再現できるか」を全23章レビュー→全章「一部詰まる」blocker48/major63/minor79 と判明（操作語はあるがUIの探し方欠落・実コード未同梱・CSS未翻訳・§0.3図矛盾等）。ユーザー指示で全面是正（段階実施）。
+- 是正: 【1/A・C】§0.4 変換表を大幅拡張＋「よく詰まる機能の出し方」を公式裏取りで追加（グラデ編集/ぼかし/Hover・条件スタイル/コンポーネント化/画像フィット/BP追加=Edit mode/text-transform/order/align-self/Wrap/flex比/clamp→固定px）。§0.3 図 Tablet(1024)→Small(1024)+Tablet(840)修正。§0.2 BP手順を実機経路に。【2/B】§9「コピペ用コード集」新設（現物抽出: ロゴSVG/アニメ・グラデ・SVGフィルタ一括/フローティングJS、全escape）＋各章から参照リンク。【D】曖昧値(約70/50%→67/48px)具体化＋§8 にStudio外アセット準備手順(squoosh/テキストエディタ/Boxy SVG)追加。
+- commit: 33657fe / c988c43 / 527ddbd / 本commit。検証: 同期connected・作業907維持・コンソール0。次: 再検証レビューでblocker減を測定。Markdown版は全是正後に一括同期予定（現状HTMLが正）。
+
 ### 2026-06-24 23:42 [DONE] azalea
 - 対象: `studio_guide/v02_guide.html`（チェックボックスを作業ベースに仕分け）
 - 内容: 「チェックは作業ベースで完了をカウントすべき」というユーザー指摘に対応。全23章のチェック項目を判定し、**理解/把握/区別した/決めた等の確認項目（23件）を `ul.review`（カウント対象外）へ分離**、**実作業（907件）は `ul.checklist`（カウント対象）**に。難易度マップ(GN_TASKDIFF)は残った作業項目へ index 再マッピングして AI 分類を保持（907件）。進捗ストレージ KEY を `gnGuideTasks_v3`・Firebase ref を `gnGuide/tasks3` にバンプ（旧データ無視＝クリーンに再スタート）。`ul.review` 用CSS追加。

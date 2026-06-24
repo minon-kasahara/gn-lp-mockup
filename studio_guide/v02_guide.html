@@ -2045,7 +2045,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <tr><td>Lead</td><td><code>15.5px</code> / 1.95</td><td><code>15px</code> / 1.9</td><td><code>14px</code> / 1.9</td></tr>
 <tr><td>Hero Sub</td><td><code>16px</code> / 1.95</td><td><code>15px</code> / 1.9</td><td><code>13.5px</code> / 1.9</td></tr>
 <tr><td>English Label</td><td><code>12px</code></td><td><code>12px</code></td><td><code>11px</code></td></tr>
-<tr><td>English Number L</td><td><code>96px</code>（要素側で個別）/ 1</td><td>約 70% に縮小</td><td>約 50% に縮小（vc-big 180→90px 目安）</td></tr>
+<tr><td>English Number L</td><td><code>96px</code>（要素側で個別）/ 1</td><td>Tablet: <code>67px</code>（96の約70%）</td><td>Mobile: <code>48px</code>（vc-big は <code>180→90px</code>）</td></tr>
 <tr><td>Footnote</td><td><code>11.5px</code> / 1.6</td><td><code>11px</code></td><td><code>10–11px</code></td></tr>
 </tbody>
 </table>
@@ -11220,6 +11220,19 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </svg>
 <figcaption>本章のゴール：正しい 24 ファイル＋書き出しロゴだけを、寸法・alt を守って各セクションへ配置する。</figcaption>
 </figure>
+
+<div class="callout note">
+  <p><strong>【Studio 外でのアセット準備手順（無料ツール・初心者向け）】</strong> Studio 内に画像編集・作図機能は無いので、アップロード前に下記で用意します。</p>
+  <p><strong>① 画像の圧縮・形式変換・リサイズ</strong>（WebP/JPG 化・EXIF 除去・縮小）<br>
+  ブラウザで <strong>squoosh.app</strong>（無料・登録不要）を開く → 画像をドラッグ → 右側で <strong>形式＝WebP（または MozJPEG）／品質 80／Resize で幅を px 指定</strong> → Download。<br>
+  目安: <strong>VC ロゴは長辺 600px 程度</strong>（特に United 1815px 等は要縮小）、<strong>事例カバーは幅 800px・品質 80</strong>。EXIF は再書き出しで自動的に除去される。<br>
+  ※ macOS なら「プレビュー.app」で開く → ツール → サイズを調整 ／ ファイル → 書き出す（形式・品質指定）でも可。</p>
+  <p><strong>② SVG のクロップ・色書換</strong>（<code>viewBox</code> 分割や <code>fill</code> 変更が必要な時）<br>
+  SVG はテキストなので <strong>VS Code 等のテキストエディタ</strong>で <code>.svg</code> を開き、<code>viewBox="0 0 W H"</code> の数値や <code>fill="#..."</code> を直接書き換えて保存。GUI で編集したい場合は無料の <strong>Boxy SVG（boxysvg.com）</strong> や <strong>Inkscape</strong> で開いて編集 → 別名保存。</p>
+  <p><strong>③ 「画像化」して用意するもの</strong>（Studio で再現困難な装飾を画像にする場合）<br>
+  現物に元ファイルがある物（<code>laurel.svg</code> 等）は<strong>そのファイルをそのままアップロード</strong>。新規に必要な物は Figma / Canva / Boxy SVG 等で作成し、<strong>PNG（背景透過）または SVG で書き出し</strong>てアップロードする。</p>
+  <p><strong>④ アップロード</strong>：左ナビ → <strong>アップロード</strong> → ファイルを選択（またはドラッグ）。配置は各要素で「画像を選択」。</p>
+</div>
 
 <h3 id="t8-0">8.0 アップロードする実ファイルの確定リスト（最優先・誤アップロード防止）</h3>
 
