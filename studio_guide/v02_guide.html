@@ -854,6 +854,39 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <p>Studio はエディタがデスクトップ前提であり、<strong>スティッキー・Backdrop filter・vw/dvh・<a class="term" href="#term-embed">Embed</a>(<a class="term" href="#term-sandbox">sandbox</a>) は最終確認を公開URLで行う必要がある</strong>（仕様 §8.2 / §9.2 / §6）。各要素の実装は次の3フェーズで進める。</p>
 
+  <div class="callout note">
+    <p><strong>【全章共通・最初に読む】操作の基本パターン と CSS→Studio 変換表</strong></p>
+    <p>本書の各手順は「変更後の姿」を CSS 用語で書いています。Studio は CSS を直接書かないので、下の4ステップと変換表で<strong>「どの画面のどの項目を触るか」に読み替えて</strong>ください（全セクション共通）。</p>
+    <p><strong>操作の基本パターン（毎回これ）</strong></p>
+    <ol class="steps">
+      <li><strong>対象を選ぶ</strong> — 左の<strong>レイヤーパネル</strong>でレイヤー名（例 <code>hero-inner</code>）をクリック（or キャンバスで直接クリック）。</li>
+      <li><strong>BP を選ぶ</strong>（レスポンシブ時のみ）— 画面<strong>下部ツールバー</strong>で Default / Small / Tablet / Mobile を選択。<strong>選んだ BP 以下にだけ</strong>変更が効く。</li>
+      <li><strong>右パネルのタブで項目を変える</strong> — 下の変換表で「CSS → どのタブのどの項目か」を引く。</li>
+      <li><strong>値を入れる</strong> — 数値 / 色（カラースタイル）/ トークンを入力。BP 上書きは枠が色付き（<strong>Tablet=黄緑 / Mobile=オレンジ</strong>）。間違えたら項目横の <strong>Reset override</strong> で戻す。</li>
+    </ol>
+    <table>
+      <thead><tr><th>原物 CSS（やりたいこと）</th><th>Studio の場所・操作</th></tr></thead>
+      <tbody>
+        <tr><td>横並び（<code>flex</code> / <code>grid-template-columns:1fr 1fr</code>＝2カラム）</td><td>親 Box を選び <strong>ボックスタブ → 方向 = 横</strong></td></tr>
+        <tr><td>2カラム→<strong>1カラム化</strong>（<code>grid-template-columns:1fr</code>）</td><td>親 Box の <strong>方向 = 縦</strong>（子が縦積みになる）</td></tr>
+        <tr><td><code>gap</code>（要素間の間隔）</td><td><strong>ボックスタブ → 間隔(gap)</strong></td></tr>
+        <tr><td><code>padding</code> / <code>margin</code>（余白）</td><td><strong>ボックスタブ → 余白</strong>（上下左右を個別指定）</td></tr>
+        <tr><td><code>width</code> / <code>max-width</code> / 全幅</td><td><strong>ボックスタブ → サイズ → 幅</strong>（数値 / <strong>Fill</strong>=親いっぱい / <strong>Hug</strong>=内容ぴったり）</td></tr>
+        <tr><td><code>justify-content</code> / <code>align-items</code>（寄せ）</td><td><strong>ボックスタブ → 配置</strong></td></tr>
+        <tr><td><code>border</code> / <code>border-radius</code></td><td><strong>ボックスタブ → 枠線 / 角丸</strong></td></tr>
+        <tr><td><code>box-shadow</code></td><td><strong>ボックスタブ → 影</strong></td></tr>
+        <tr><td>背景色</td><td><strong>ボックスタブ → 塗り</strong>（カラースタイルを選択）</td></tr>
+        <tr><td>文字色</td><td>テキスト選択 → <strong>テキストタブ → 色</strong></td></tr>
+        <tr><td><code>font-size</code> / <code>font-weight</code> / <code>line-height</code></td><td><strong>テキストタブ → サイズ / ウェイト / 行間</strong>（or 登録済みテキストスタイルを適用）</td></tr>
+        <tr><td><code>white-space:nowrap</code>（折返し禁止）</td><td>テキスト選択 → <strong>テキストタブ → 折り返し</strong>（PC で nowrap、下位 BP で解除）</td></tr>
+        <tr><td><code>position:fixed/absolute/sticky</code> / <code>z-index</code></td><td><strong>ボックスタブ → ポジション</strong> ＋ <strong>重ね順</strong></td></tr>
+        <tr><td><code>::before</code> / <code>::after</code>（装飾）</td><td>ネイティブ不可 → <strong>子 Box を足して再現</strong>（Free）/ <strong>Custom Code</strong>（Mini）。§0.5・§9</td></tr>
+        <tr><td>グラデ背景 / SVG フィルタ / <code>@keyframes</code></td><td>ネイティブ不可 → <strong>Embed(sandbox) / Loop Box / Image 化</strong>（Free）/ <strong>Custom Code</strong>（Mini）</td></tr>
+      </tbody>
+    </table>
+    <p>※ Studio はレイアウトを「方向(横/縦)」で組むため、原物が grid でも flex でも、<strong>1カラム/2カラムの切替は親 Box の「方向」</strong>で行います。</p>
+  </div>
+
   <figure class="fig">
     <svg viewBox="0 0 760 130" role="img" xmlns="http://www.w3.org/2000/svg">
       <title>実装前・実装中・実装後の3フェーズ確認フロー</title>
@@ -882,7 +915,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <ol class="steps">
     <li>対象セクションの原物 PC 値（幅・gap・padding・色・フォント・<a class="term" href="#term-zindex">z-index</a>）を原物 CSS から確定する。</li>
     <li>当該要素に <code>::before</code> / <code>::after</code> / SVGフィルタ / <code>@keyframes</code> / 複雑グラデが含まれないか確認する。含む場合は <a href="#g0-5">§0.5</a> の Free/Mini 代替方針を適用（各章で【Free代替】【Mini】併記）。</li>
-    <li>Default(PC) で実装し、Tablet → Mobile の順に上書きする計画を立てる。</li>
+    <li>Default(PC) で実装し、Small → Tablet → Mobile の順に上書きする計画を立てる。</li>
   </ol>
   <ul class="checklist">
     <li>原物 PC 実値を確定した</li>
@@ -892,7 +925,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <h4>実装中（BP 別上書き）</h4>
   <ol class="steps">
     <li><strong>Default(PC)</strong> で原物 PC 値（例: <code>.sec</code> padding <code>76px 0</code>、<code>.cta-section</code> padding <code>84px 0</code>〔原物 L740〕、<code>.prob-grid</code> <code>grid-template-columns:1fr 1fr; gap:22px</code>、<code>--gutter:40px</code>）を組む。</li>
-    <li>ツールバーで <strong>Small(1024)</strong> に切替 → 原物 L818（1024）の構造リフローを上書きする。具体的には: <code>.hero-inner</code> を1カラム（<code>grid-template-columns:1fr</code>、gap 32px）、<code>.hero h1</code> を <code>white-space:normal</code>＋<code>clamp(32px,5.4vw,52px)</code>、<code>.cta-inner</code> を1カラム（gap 48px）、<code>.perk-inner</code> を1カラム、<code>.ft-inner</code> を1カラム（gap 32px）、<code>.case-grid</code> を2カラム、<code>.sec</code>/<code>.cta-section</code>/<code>.vc-sec</code> padding を <code>64px 0</code>。上書き中のプロパティ枠は <strong>黄緑（yellow-green）</strong> で色分け表示される（仕様 §8.2）。</li>
+    <li>下部ツールバーで <strong>Small(1024)</strong> に切替 → 原物 L818 の構造リフローを上書き（<strong>各操作は上の変換表で引く</strong>）。具体的には: レイヤーで <code>hero-inner</code> を選び <strong>ボックスタブ → 方向＝縦</strong>（＝1カラム化）＋<strong>間隔(gap)＝32</strong>／<code>hero-title</code> は <strong>テキストタブ</strong>で PC の nowrap を解除しサイズ縮小（clamp 相当）／<code>cta-inner</code>（方向＝縦・gap 48）・<code>perk-inner</code>（方向＝縦）・<code>ft-inner</code>（方向＝縦・gap 32）も同様／<code>case-grid</code> は2カラム（方向＝横で2列）／<code>sec</code>・<code>cta-section</code>・<code>vc-sec</code> は <strong>余白(padding) 上下＝64</strong>。上書きした項目は枠が <strong>黄緑</strong> になる（仕様 §8.2）。</li>
     <li>ツールバーで <strong>Mobile(540)</strong> に切替 → 原物 L834（767）帯＋640/480/380 帯の値を上書き（例: <code>--gutter</code> 相当の左右パディングを <code>16px</code>、Hero グリッドを <code>order</code> 制御で縦1カラム、CTA・フォームを全幅、ヘッダー高さ縮小）。上書き枠は <strong>オレンジ（orange）</strong> で色分け表示される。</li>
     <li>誤って下位 BP で不要な上書きをした場合は、プロパティ横の <strong>「Reset override（上書きリセット）」矢印</strong>で個別解除し Default 値へ戻す（仕様 §8.2）。</li>
   </ol>
@@ -914,7 +947,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
         <li><strong>Embed(sandbox)</strong>（G&NロゴSVG 等）は sandbox で <code>DOMContentLoaded</code> 制約があるため公開URLで最終確認（仕様 §6）。</li>
       </ul>
     </li>
-    <li><strong>841〜1024px 帯の構造確認（重点）</strong>: Tablet を 1024 に置いたことでこの帯は Tablet 値で描画される。Hero / CTA / Footer / Perk が<strong>縦1カラムに正しくリフローしているか</strong>を実機で必ず確認する（840 運用だと2カラムのまま破綻する帯。<a href="#g0-3">§0.3</a> 補足参照）。</li>
+    <li><strong>841〜1024px 帯の構造確認（重点）</strong>: Small を 1024 に置いたことでこの帯は Small 値で描画される。Hero / CTA / Footer / Perk が<strong>縦1カラムに正しくリフローしているか</strong>を実機で必ず確認する（Small 未設定だと 841〜1024px が2カラムのまま破綻する帯。<a href="#g0-3">§0.3</a> 補足参照）。</li>
   </ol>
   <ul class="checklist">
     <li>公開URLで3区分の実機スクロール確認をした</li>
