@@ -34,7 +34,7 @@ h2 code,h3 code{font-size:.8em}
 .plantoggle{display:flex;background:var(--bg3);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
 .plantoggle button{border:0;background:transparent;font:inherit;font-size:12px;font-weight:700;color:var(--sub);padding:4px 12px;border-radius:999px;cursor:pointer}
 .plantoggle button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
-.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
+.menu-btn{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
 
 /* ---------- Layout ---------- */
 .layout{display:grid;grid-template-columns:var(--navw) minmax(0,1fr);gap:0;padding-top:var(--topbar)}
@@ -52,6 +52,27 @@ nav.side a.lv3{padding-left:24px;font-size:12px;color:#9fb0cd}
 nav.side a:hover{background:#172639;color:#fff;text-decoration:none}
 nav.side a.active{background:#16294a;color:#fff;border-left-color:var(--sidebar-active);font-weight:700}
 nav.side a.hidden{display:none}
+/* === ナビ拡張: 章ドリルダウン / 幅調整 / 最小化 === */
+nav.side li.nav-ch{position:relative}
+nav.side li.nav-ch>a{padding-right:30px}
+.nav-ch-tog{position:absolute;top:4px;right:3px;width:23px;height:23px;display:flex;align-items:center;justify-content:center;color:#8093b5;cursor:pointer;border-radius:5px;font-size:10px;user-select:none}
+.nav-ch-tog:hover{background:#172639;color:#fff}
+.nav-ch-tog .cv{transition:transform .18s;display:inline-block;line-height:1}
+nav.side li.nav-ch.collapsed .nav-ch-tog .cv{transform:rotate(-90deg)}
+nav.side li.nav-ch.collapsed>ul.nav-children{display:none}
+nav.side ul.nav-children{margin:1px 0 3px}
+body.nav-searching nav.side li.nav-ch.collapsed>ul.nav-children{display:block}
+/* 幅調整ハンドル（右端境界をドラッグ） */
+.nav-resizer{position:fixed;top:var(--topbar);bottom:0;left:var(--navw);width:9px;transform:translateX(-5px);cursor:col-resize;z-index:195}
+.nav-resizer i{position:absolute;top:0;bottom:0;left:4px;width:2px;background:transparent;transition:background .15s}
+.nav-resizer:hover i,.nav-resizer.dragging i{background:var(--sidebar-active)}
+body.nav-resizing{cursor:col-resize!important;user-select:none}
+body.nav-resizing iframe{pointer-events:none}
+/* 最小化 */
+body.nav-collapsed{--navw:0px}
+body.nav-collapsed nav.side{display:none}
+body.nav-collapsed .nav-resizer{display:none}
+@media (max-width:1000px){.nav-resizer{display:none}}
 
 main{padding:0 30px 120px;min-width:0}
 .wrap{max-width:var(--maxw);margin:0 auto}
@@ -13180,7 +13201,11 @@ sec-footer
   });
   // mobile menu
   var side=document.getElementById('side'), mb=document.getElementById('menuBtn');
-  if(mb)mb.addEventListener('click',function(){side.classList.toggle('open')});
+  if(mb)mb.addEventListener('click',function(){
+    if(window.innerWidth<=1000){ side.classList.toggle('open'); }
+    else { document.body.classList.toggle('nav-collapsed');
+           try{localStorage.setItem('navcol',document.body.classList.contains('nav-collapsed')?'1':'0');}catch(_){} }
+  });
   side.addEventListener('click',function(e){if(e.target.tagName==='A'&&window.innerWidth<=1000)side.classList.remove('open')});
   // search filter
   var sb=document.getElementById('navSearch');
@@ -13451,6 +13476,80 @@ sec-footer
   document.addEventListener('focusin', function(e){ var a=e.target.closest&&e.target.closest('a.term'); if(a) show(a); });
   document.addEventListener('focusout',function(e){ var a=e.target.closest&&e.target.closest('a.term'); if(a) hide(); });
   window.addEventListener('scroll',function(){ if(tip.classList.contains('show')) tip.classList.remove('show'); },{passive:true});
+})();
+</script>
+<script>
+/* ナビ拡張: 章ごとドリルダウン折りたたみ / 右端ドラッグで幅調整 / 最小化の状態復元 */
+(function(){
+  // --- 章ごとの折りたたみ（章見出し配下の lv3 を入れ子 ul にまとめる） ---
+  document.querySelectorAll('nav.side .navgroup>ul').forEach(function(ul){
+    var lis=[].slice.call(ul.children), i=0;
+    while(i<lis.length){
+      var li=lis[i], a=li.querySelector('a');
+      var isCh = a && !a.classList.contains('lv3');
+      if(isCh){
+        var kids=[], j=i+1;
+        while(j<lis.length){
+          var na=lis[j].querySelector('a');
+          if(na && !na.classList.contains('lv3')) break;
+          kids.push(lis[j]); j++;
+        }
+        if(kids.length){
+          li.classList.add('nav-ch');
+          var sub=document.createElement('ul'); sub.className='nav-children';
+          kids.forEach(function(k){sub.appendChild(k);});
+          li.appendChild(sub);
+          var tog=document.createElement('span'); tog.className='nav-ch-tog'; tog.title='この章の項目を開閉';
+          tog.innerHTML='<span class="cv">▾</span>';
+          li.appendChild(tog);
+          var key='navch_'+((a.getAttribute('href')||'').replace('#',''));
+          if(localStorage.getItem(key)==='1') li.classList.add('collapsed');
+          (function(cli,ckey,ctog){
+            ctog.addEventListener('click',function(e){
+              e.preventDefault(); e.stopPropagation();
+              cli.classList.toggle('collapsed');
+              try{localStorage.setItem(ckey, cli.classList.contains('collapsed')?'1':'0');}catch(_){}
+            });
+          })(li,key,tog);
+        }
+        i=j;
+      } else { i++; }
+    }
+  });
+  // 検索中は折りたたみを一時無効化（ヒットが隠れないように）
+  var sb=document.getElementById('navSearch');
+  if(sb) sb.addEventListener('input',function(){ document.body.classList.toggle('nav-searching', !!sb.value.trim()); });
+
+  // --- 右端ドラッグで幅調整 ---
+  var MIN=190, MAX=560, DEF=300;
+  var rz=document.createElement('div'); rz.className='nav-resizer'; rz.id='navResizer';
+  rz.title='ドラッグでナビ幅を調整（ダブルクリックで既定に戻す）'; rz.innerHTML='<i></i>';
+  document.body.appendChild(rz);
+  var savedW=parseInt(localStorage.getItem('navw')||'',10);
+  if(savedW>=MIN && savedW<=MAX) document.documentElement.style.setProperty('--navw', savedW+'px');
+  var dragging=false;
+  rz.addEventListener('mousedown',function(e){
+    if(document.body.classList.contains('nav-collapsed')||window.innerWidth<=1000) return;
+    dragging=true; rz.classList.add('dragging'); document.body.classList.add('nav-resizing'); e.preventDefault();
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!dragging) return;
+    var w=Math.max(MIN,Math.min(MAX,e.clientX));
+    document.documentElement.style.setProperty('--navw', w+'px');
+  });
+  window.addEventListener('mouseup',function(){
+    if(!dragging) return;
+    dragging=false; rz.classList.remove('dragging'); document.body.classList.remove('nav-resizing');
+    var w=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navw'),10);
+    try{localStorage.setItem('navw', w);}catch(_){}
+  });
+  rz.addEventListener('dblclick',function(){
+    document.documentElement.style.setProperty('--navw', DEF+'px');
+    try{localStorage.setItem('navw', DEF);}catch(_){}
+  });
+
+  // --- 最小化状態の復元（デスクトップのみ） ---
+  if(localStorage.getItem('navcol')==='1' && window.innerWidth>1000) document.body.classList.add('nav-collapsed');
 })();
 </script>
 </body>
