@@ -2025,18 +2025,19 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </div>
 
 <h4>標準 9 スタイル</h4>
+<div class="callout note"><p>📍 <strong>Studio の設定パネルに合わせて、行高・間隔は「%」で書いています</strong>（パネルの「行高」「間隔」欄にこの数値をそのまま入力）。例: H1 Hero は 行高 <code>118%</code>・間隔 <code>-4%</code>。文字色は <a href="#g2-1">§2.1</a> のカラースタイル名（<code>text/ink</code> 等）を適用します。</p></div>
 <table>
-<thead><tr><th>#</th><th>テキストスタイル名</th><th>フォント</th><th>ウェイト</th><th>Size(PC)</th><th>行間</th><th>字間</th><th>文字色</th><th>主な用途</th></tr></thead>
+<thead><tr><th>#</th><th>テキストスタイル名</th><th>フォント</th><th>ウェイト</th><th>Size(PC)</th><th>行高(%)</th><th>間隔(%)</th><th>文字色</th><th>主な用途</th></tr></thead>
 <tbody>
-<tr><td>1</td><td><strong>H1 Hero</strong></td><td>Noto Sans JP</td><td>900</td><td><code>60px</code></td><td><code>1.18</code></td><td><code>-0.04em</code></td><td><code>text/ink</code>（em 部はグラデ・注）</td><td><code>.hero h1</code> FV メインキャッチ。PC 既定 nowrap</td></tr>
-<tr><td>2</td><td><strong>H2 Section</strong></td><td>Noto Sans JP</td><td>900</td><td><code>52px</code></td><td><code>1.22</code></td><td><code>-0.03em</code></td><td><code>text/ink</code></td><td><code>.section-title</code> 各セクション見出し</td></tr>
-<tr><td>3</td><td><strong>H3 Card</strong></td><td>Noto Sans JP</td><td>900</td><td><code>22px</code></td><td><code>1.5</code></td><td><code>0</code></td><td><code>text/ink</code></td><td>カード見出し（prob/appr/mkt/svc/vp-headline）。実値 20–22px のばらつきは 22px に統一</td></tr>
-<tr><td>4</td><td><strong>Body</strong></td><td>Noto Sans JP</td><td>400</td><td><code>14px</code></td><td><code>1.9</code></td><td><code>0</code></td><td><code>text/sub</code></td><td>本文・各カード p。word-break は body で keep-all、カード内は normal</td></tr>
-<tr><td>5</td><td><strong>Lead</strong></td><td>Noto Sans JP</td><td>400</td><td><code>15.5px</code></td><td><code>1.95</code></td><td><code>0</code></td><td><code>text/sub</code></td><td><code>.lead</code> セクション説明リード。max-width 620px</td></tr>
-<tr><td>6</td><td><strong>Hero Sub</strong></td><td>Noto Sans JP</td><td>600</td><td><code>16px</code></td><td><code>1.95</code></td><td><code>0</code></td><td><code>text/ink</code></td><td><code>.hero-sub</code> FV サブコピー。max-width 520px</td></tr>
-<tr><td>7</td><td><strong>English Label</strong></td><td>Inter</td><td>800</td><td><code>12px</code></td><td><code>1</code></td><td><code>0.14em</code></td><td><code>text/sub</code>（footer は <code>brand/yellow</code>）</td><td>英字ラベル。<strong>text-transform: uppercase</strong></td></tr>
-<tr><td>8</td><td><strong>English Number L</strong></td><td>Inter</td><td>900</td><td><code>96px</code></td><td><code>1</code></td><td><code>-0.04em</code></td><td><code>brand/blue</code>（多くは blue→navy グラデ・注）</td><td>統計大数字（vc-big180 / perk96 / rec56 / float66 等。要素側で個別 Size 上書き可）</td></tr>
-<tr><td>9</td><td><strong>Footnote</strong></td><td>Noto Sans JP</td><td>400</td><td><code>11.5px</code></td><td><code>1.6</code></td><td><code>0</code></td><td><code>text/sub</code>（最淡は <code>text/sub-lt</code>）</td><td>脚注・注記・同意文（rec-foot / ft-bottom / consent / vp-note）</td></tr>
+<tr><td>1</td><td><strong>H1 Hero</strong></td><td>Noto Sans JP</td><td>900</td><td><code>60px</code></td><td><code>118%</code></td><td><code>-4%</code></td><td><code>text/ink</code>（em 部はグラデ・注）</td><td><code>.hero h1</code> FV メインキャッチ。PC 既定 nowrap</td></tr>
+<tr><td>2</td><td><strong>H2 Section</strong></td><td>Noto Sans JP</td><td>900</td><td><code>52px</code></td><td><code>122%</code></td><td><code>-3%</code></td><td><code>text/ink</code></td><td><code>.section-title</code> 各セクション見出し</td></tr>
+<tr><td>3</td><td><strong>H3 Card</strong></td><td>Noto Sans JP</td><td>900</td><td><code>22px</code></td><td><code>150%</code></td><td><code>0%</code></td><td><code>text/ink</code></td><td>カード見出し（prob/appr/mkt/svc/vp-headline）。実値 20–22px のばらつきは 22px に統一</td></tr>
+<tr><td>4</td><td><strong>Body</strong></td><td>Noto Sans JP</td><td>400</td><td><code>14px</code></td><td><code>190%</code></td><td><code>0%</code></td><td><code>text/sub</code></td><td>本文・各カード p。word-break は body で keep-all、カード内は normal</td></tr>
+<tr><td>5</td><td><strong>Lead</strong></td><td>Noto Sans JP</td><td>400</td><td><code>15.5px</code></td><td><code>195%</code></td><td><code>0%</code></td><td><code>text/sub</code></td><td><code>.lead</code> セクション説明リード。max-width 620px</td></tr>
+<tr><td>6</td><td><strong>Hero Sub</strong></td><td>Noto Sans JP</td><td>600</td><td><code>16px</code></td><td><code>195%</code></td><td><code>0%</code></td><td><code>text/ink</code></td><td><code>.hero-sub</code> FV サブコピー。max-width 520px</td></tr>
+<tr><td>7</td><td><strong>English Label</strong></td><td>Inter</td><td>800</td><td><code>12px</code></td><td><code>100%</code></td><td><code>14%</code></td><td><code>text/sub</code>（footer は <code>brand/yellow</code>）</td><td>英字ラベル。<strong>text-transform: uppercase</strong></td></tr>
+<tr><td>8</td><td><strong>English Number L</strong></td><td>Inter</td><td>900</td><td><code>96px</code></td><td><code>100%</code></td><td><code>-4%</code></td><td><code>brand/blue</code>（多くは blue→navy グラデ・注）</td><td>統計大数字（vc-big180 / perk96 / rec56 / float66 等。要素側で個別 Size 上書き可）</td></tr>
+<tr><td>9</td><td><strong>Footnote</strong></td><td>Noto Sans JP</td><td>400</td><td><code>11.5px</code></td><td><code>160%</code></td><td><code>0%</code></td><td><code>text/sub</code>（最淡は <code>text/sub-lt</code>）</td><td>脚注・注記・同意文（rec-foot / ft-bottom / consent / vp-note）</td></tr>
 </tbody>
 </table>
 
