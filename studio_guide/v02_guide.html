@@ -1527,7 +1527,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <tr><td>12</td><td><code>&lt;aside class="float-perk" id="floatPerk"&gt;</code>（1807・body直下・fixed・z90）</td><td><code>Float Perk CTA</code>（Base直下・fixed・右下追従・初期hidden）</td><td>フローティングCTA章</td></tr>
 </tbody>
 </table>
-<div class="callout note"><p>注： に出る <code>prob-card</code>（カード本体）トークンは旧版（v07以前）由来で、<strong>v09 に <code>prob-card</code> カード本体も <code>id="problem"</code> 単独セクションも存在しない</strong>（grep 未検出。課題提示は Approach に統合）。ただし<strong>ラッパの <code>prob-app-wrap</code>は現用</strong>で、Approach セクションを実際にラップして背景グラデを与えている。<code>prob-card</code>（死蔵）と <code>prob-app-wrap</code>（現用）を混同しないこと。本手順書は上表の<strong>12ブロック</strong>を正とする。</p></div>
+<div class="callout note"><p>注： に出る <code>prob-card</code>（カード本体）トークンは旧版（v07以前）由来で、<strong>このLPに <code>prob-card</code> というカード本体も「課題（Problem）」単独セクションも存在しない</strong>（課題提示は Approach に統合）。ただし<strong>ラッパの <code>prob-app-wrap</code>は現用</strong>で、Approach セクションを実際にラップして背景グラデを与えている。<code>prob-card</code>（死蔵）と <code>prob-app-wrap</code>（現用）を混同しないこと。本手順書は上表の<strong>12ブロック</strong>を正とする。</p></div>
 </li>
 <li><strong>セクション縦 padding の共通値</strong>を各 Section 章へ引き渡す：
 <ul>
@@ -1689,9 +1689,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><strong>関連ファイル（絶対パス）：</strong></p>
 <ul>
 <li>コピー元HTML：</li>
-<li>Studio仕様正本：<code>/tmp/gn_guide_v02/_studio_ref.md</code></li>
-<li>デザイントークン：<code>/tmp/gn_guide_v02/</code></li>
-<li>セクション実在判定：<code>/tmp/gn_guide_v02/</code></li>
+<li>Studio仕様正本：</li>
+<li>デザイントークン定義：本書 <a href="#ch-g2">§2</a> に集約</li>
+<li>セクション構成：本書 <a href="#g0-6">§0.6</a> の全体ツリー参照</li>
 </ul>
 
 <div class="callout warn">
@@ -2910,7 +2910,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </table>
 
 <div class="callout warn">
-<p><strong>注意（<code>line</code> の用途を限定）:</strong> <code>line</code>（.08）は<strong>薄い罫線専用</strong>。<code>.pill</code>・<code>.cta-sec</code>・各カードの枠線はいずれも <code>var(--ink)</code> の実色 border（pill=2px solid ink・L118／cta-sec=1.5px solid ink・L208／カード=2px solid ink）であり <code>--line</code> ではない。pill/CTA/カードの枠には <code>ink</code> を使う。</p>
+<p><strong>注意（<code>line</code> の用途を限定）:</strong> <code>line</code>（.08）は<strong>薄い罫線専用</strong>。<code>.pill</code>・<code>.cta-sec</code>・各カードの枠線はいずれも <code>var(--ink)</code> の実色 border（pill=2px solid ink／cta-sec=1.5px solid ink／カード=2px solid ink）であり <code>--line</code> ではない。pill/CTA/カードの枠には <code>ink</code> を使う。</p>
 <p>影色はカラースタイル化されていない（shadows）。影は各部品の Shadow パラメータに RGBA を直接入力する（後述の各表に実値を記載）。</p>
 </div>
 
@@ -3084,9 +3084,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><code>background:#fff</code>（=<code>white</code>）</li>
 <li><code>border:2px solid var(--ink)</code></li>
 <li><code>border-radius:20px</code></li>
-<li><code>padding:32px</code>（<strong>svc-card のみ <code>36px 32px</code></strong>＝上下36/左右32・L516）</li>
+<li><code>padding:32px</code>（<strong>svc-card のみ <code>36px 32px</code></strong>＝上下36/左右32）</li>
 <li><code>transition:transform .2s</code></li>
-<li>hover: <code>transform:translateY(-4px)</code>（全カード共通・L445/456/478/517）</li>
+<li>hover: <code>transform:translateY(-4px)</code>（全カード共通）</li>
 </ul>
 
 <h4>各カードの内部レイアウト（基底とは別に各章で組む）</h4>
@@ -3133,7 +3133,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul>
 <li><strong>prob-card / appr-card</strong>: 縦並びではなく <code>display:grid; grid-template-columns:1fr 180px; grid-template-areas:"num illust" "title illust" "desc desc"; column-gap:24px; row-gap:14px; align-content:start</code>。<strong>左に num/title/desc、右に 180px のイラスト列</strong>を持つ2カラム構造（desc のみ全幅）。</li>
 <li><strong>mkt-card</strong>: <code>display:flex; flex-direction:column</code>（縦積み）。本章モデルに最も近いが、中にチャート（バー群）を内包する。</li>
-<li><strong>svc-card</strong>: 縦積みだが先頭に <strong><code>svc-head</code>（アイコン48px＋メタ＋タイトルの横並び・L521-525）</strong> を内包し、<code>overflow:visible</code> ＋点線コネクタ <code>::before/::after</code>を持つ。</li>
+<li><strong>svc-card</strong>: 縦積みだが先頭に <strong><code>svc-head</code>（アイコン48px＋メタ＋タイトルの横並び）</strong> を内包し、<code>overflow:visible</code> ＋点線コネクタ <code>::before/::after</code>を持つ。</li>
 </ul>
 
 <div class="callout note">
@@ -3179,10 +3179,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <div class="callout warn">
 <p><strong>カード内の装飾（番号・点線コネクタ等）の代替（prob と appr を分けて記述）</strong></p>
 <ul>
-<li><strong>prob-card の番号 <code>.prob-no strong</code></strong>（L447・48px・weight900・<code>background:linear-gradient(135deg,blue,navy)</code> の <code>-webkit-background-clip:text</code> で<strong>文字グラデclip</strong>・SP36px L909）→ Studio はテキストグラデclip不可。
+<li><strong>prob-card の番号 <code>.prob-no strong</code></strong>（48px・weight900・<code>background:linear-gradient(135deg,blue,navy)</code> の <code>-webkit-background-clip:text</code> で<strong>文字グラデclip</strong>・SP36px L909）→ Studio はテキストグラデclip不可。
 <div class="plan free recommended"><span class="badge">Free代替</span> 番号Textを <code>blue</code> 単色にする（グラデを諦める）、または 数字部分をImage化して貼る。コンポーネント運用と一括色変更のしやすさから <strong>blue単色を推奨</strong>。</div>
 </li>
-<li><strong>appr-card の番号 <code>.appr-step</code></strong>は<strong>グラデではない・別構造</strong>。<code>width/height:118px</code>・<code>border-radius:50%</code>・<code>background:transparent</code>・<code>border:2.5px dotted var(--ink)</code> の<strong>点線正円バッジ</strong>の中に、<code>appr-step-lbl</code>（L467・13px・weight600・<code>text-transform:lowercase</code>・色 ink）と数字 <code>strong</code>（L468・38px・weight800・<code>color:ink</code>・<code>-webkit-text-fill-color:currentColor</code>＝<strong>ink単色</strong>・SP30px相当）を縦並び（gap4）で入れる構造。<strong>グラデclipは使っていないので blue 代替は不要</strong>。Studio では <strong>Box（幅/高さ118px・角丸50%・塗りなし・Border Dotted 2.5px ink・中央/中央・縦並び gap4px）＋ Text2行（lbl 13px/600/ink lowercase ＋ 数字 38px/800/ink）でそのままネイティブ再現</strong>できる。</li>
+<li><strong>appr-card の番号 <code>.appr-step</code></strong>は<strong>グラデではない・別構造</strong>。<code>width/height:118px</code>・<code>border-radius:50%</code>・<code>background:transparent</code>・<code>border:2.5px dotted var(--ink)</code> の<strong>点線正円バッジ</strong>の中に、<code>appr-step-lbl</code>（13px・weight600・<code>text-transform:lowercase</code>・色 ink）と数字 <code>strong</code>（38px・weight800・<code>color:ink</code>・<code>-webkit-text-fill-color:currentColor</code>＝<strong>ink単色</strong>・SP30px相当）を縦並び（gap4）で入れる構造。<strong>グラデclipは使っていないので blue 代替は不要</strong>。Studio では <strong>Box（幅/高さ118px・角丸50%・塗りなし・Border Dotted 2.5px ink・中央/中央・縦並び gap4px）＋ Text2行（lbl 13px/600/ink lowercase ＋ 数字 38px/800/ink）でそのままネイティブ再現</strong>できる。</li>
 </ul>
 <ul class="checklist"><li>prob は番号 blue 単色（or Image化）、appr は dotted円118px＋ink単色数字 で別々に組んだ</li></ul>
 <ul>
@@ -3196,10 +3196,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <p>実値:</p>
 <ul>
-<li><code>.sec-head</code>: <code>max-width:820px</code>／<code>margin:0 auto 44px</code>／<code>text-align:center</code>／<code>padding:0 var(--gutter)</code>（<a class="term" href="#term-gutter">ガター</a>=40px）。SP（767以下・L848）: <code>margin-bottom:36px</code></li>
-<li><code>.section-title</code>（L128＋流体上書き L70-71）: <strong>実効値</strong> <code>font-size:clamp(28px,4vw+8px,52px)</code>／<code>font-weight:900</code>／<strong><code>line-height:1.22</code></strong>／<code>letter-spacing:-.03em</code>（L128・上書きされず）／色 <code>ink</code>／<code>margin-bottom:24px</code>。SP: <code>font-size:clamp(24px,6.2vw,32px)</code>／<code>margin-bottom:18px</code></li>
+<li><code>.sec-head</code>: <code>max-width:820px</code>／<code>margin:0 auto 44px</code>／<code>text-align:center</code>／<code>padding:0 var(--gutter)</code>（<a class="term" href="#term-gutter">ガター</a>=40px）。SP（767以下）: <code>margin-bottom:36px</code></li>
+<li><code>.section-title</code>（流体上書き）: <strong>実効値</strong> <code>font-size:clamp(28px,4vw+8px,52px)</code>／<code>font-weight:900</code>／<strong><code>line-height:1.22</code></strong>／<code>letter-spacing:-.03em</code>（上書きされず）／色 <code>ink</code>／<code>margin-bottom:24px</code>。SP: <code>font-size:clamp(24px,6.2vw,32px)</code>／<code>margin-bottom:18px</code></li>
 <li>強調 <code>em</code>: <code>em.b</code>=blue文字／<code>em.n</code>=navy文字／<code>em.l</code>=blue-lt文字／<code>em.y</code>=ink文字＋黄色マーカー下線（<code>linear-gradient(180deg,transparent 62%,yellow 62%,yellow 90%,transparent 90%)</code>・<code>padding:0 6px</code>）</li>
-<li><code>.lead</code>（L135＋流体上書き L82-84）: <strong>実効値</strong> <code>font-size:clamp(13.5px,0.8vw+8px,15.5px)</code>（上限15.5px・L83）／<code>line-height:1.95</code>／<code>color:sub</code>／<code>max-width:620px</code>。<code>.sec-head .lead</code> は <code>margin:0 auto</code>（中央寄せ）。SP: <code>font-size:14px</code>／<code>lh1.9</code></li>
+<li><code>.lead</code>（流体上書き）: <strong>実効値</strong> <code>font-size:clamp(13.5px,0.8vw+8px,15.5px)</code>（上限15.5px）／<code>line-height:1.95</code>／<code>color:sub</code>／<code>max-width:620px</code>。<code>.sec-head .lead</code> は <code>margin:0 auto</code>（中央寄せ）。SP: <code>font-size:14px</code>／<code>lh1.9</code></li>
 <li>eyebrow に相当する <code>.pill</code>: 白地／<code>border:2px solid var(--ink)</code>／<code>font-size:13px</code>／<code>font-weight:800</code>／<code>color:ink</code>／<code>padding:8px 18px</code>／<code>border-radius:100px</code>／<code>margin-bottom:28px</code>。中に点滅ドット <code>.dot</code>（8px円・yellow・<code>blink</code>アニメ）と <code>.pill-dots</code>（4色の8px円が gap4 で並ぶ）</li>
 </ul>
 
@@ -3257,7 +3257,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>方向: 横並び、配置: 中央／中央、gap: <strong><code>10px</code></strong></li>
 <li>サイズ: 幅 auto / 高さ auto</li>
 <li>padding 個別: 上8 / 右18 / 下8 / 左18</li>
-<li>角丸 <strong><code>100</code></strong>、Border Solid <strong><code>2px</code></strong> 色 <code>ink</code>（<code>line</code> ではなく実色 ink・L118）、塗り <code>white</code></li>
+<li>角丸 <strong><code>100</code></strong>、Border Solid <strong><code>2px</code></strong> 色 <code>ink</code>（<code>line</code> ではなく実色 ink）、塗り <code>white</code></li>
 <li>下マージン: スペーシング→margin 下 <strong><code>28px</code></strong></li>
 </ul>
 <ul class="checklist"><li>pillバッジ（白地/ink枠2px/radius100/padding8-18）を設定した</li></ul></li>
@@ -3935,7 +3935,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </div>
 
  <div class="callout tip">
- <p><strong>参考ファイルパス</strong>：Studio仕様 = <code>/tmp/gn_guide_v02/_studio_ref.md</code>（§8.1 BP・§8.2 カスケード）。トークン = <code>/tmp/gn_guide_v02/</code>。</p>
+ <p><strong>参考参照</strong>：BP・カスケードは <a href="#g0-2">§0.2</a>、デザイントークンは <a href="#ch-g2">§2</a>。</p>
  </div>
 </section>
 <div class="pager"><a class="prev" href="#ch-g4"><small>← 前へ</small><b>4. 共通コンポーネント</b></a><a class="next" href="#ch-s2"><small>次へ →</small><b>5-2. FV（Hero）</b></a></div>
@@ -4041,7 +4041,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="s2-1">5-2-1. 事前準備：トークン登録の確認</h3>
 
-<p>このセクションが使う<a class="term" href="#term-colorstyle">カラースタイル</a>／<a class="term" href="#term-textstyle">テキストスタイル</a>が「スタイル（Styles）」に登録済みであることを前提とする（<a href="#ch-s1">5-1 章</a>で登録済みなら再利用）。未登録なら登録する。カラースタイルはプロジェクト全体に自動伝播するため、一度登録すれば全章で共有される（_studio_ref §7 / 付録B No.10）。トークンの全体像は <a href="#ch-g2">§2 デザイントークン</a> を参照。</p>
+<p>このセクションが使う<a class="term" href="#term-colorstyle">カラースタイル</a>／<a class="term" href="#term-textstyle">テキストスタイル</a>が「スタイル（Styles）」に登録済みであることを前提とする（<a href="#ch-s1">5-1 章</a>で登録済みなら再利用）。未登録なら登録する。カラースタイルはプロジェクト全体に自動伝播するため、一度登録すれば全章で共有される。トークンの全体像は <a href="#ch-g2">§2 デザイントークン</a> を参照。</p>
 
 <p>本章で参照するカラースタイル（命名を踏襲）。スウォッチと HEX を併記する。</p>
 
@@ -4073,7 +4073,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </table>
 
 <div class="callout note">
-<p>カラースタイルは不透明度込みで保存可（_studio_ref §7 / 付録B No.11「hex codes and opacity values で不透明度込み保存可」）。<code>line-2</code> などアルファ付き値はそのまま8桁相当で登録する。<code>danger / accent-red</code>（<code>#E85252</code>）は で「:rootトークン未定義のリテラル・トークン化推奨」とされており、Studio では正式にカラースタイル化する。</p>
+<p>カラースタイルは不透明度込みで保存可（hex codes and opacity values で不透明度込み保存可）。<code>line-2</code> などアルファ付き値はそのまま8桁相当で登録する。<code>danger / accent-red</code>（<code>#E85252</code>）は で「:rootトークン未定義のリテラル・トークン化推奨」とされており、Studio では正式にカラースタイル化する。</p>
 </div>
 
 <p>本章で参照するテキストスタイル（命名）。</p>
@@ -4089,7 +4089,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </table>
 
 <div class="callout note">
-<p>フォント: <code>--ja</code> = <code>Noto Sans JP</code>、<code>--en</code> = <code>Inter</code>。両方を Font List に追加し、Noto Sans JP を最上部（デフォルト）に置く（_studio_ref 付録A）。Noto Sans JP は Black(900) ウェイトを持つことを追加時に確認。Inter は数字強調にのみ使う。</p>
+<p>フォント: <code>--ja</code> = <code>Noto Sans JP</code>、<code>--en</code> = <code>Inter</code>。両方を Font List に追加し、Noto Sans JP を最上部（デフォルト）に置く。Noto Sans JP は Black(900) ウェイトを持つことを追加時に確認。Inter は数字強調にのみ使う。</p>
 </div>
 
 <ul class="checklist"><li>上記カラースタイル／テキストスタイル／フォントが「スタイル」「Font List」に登録済みであることを確認した</li></ul>
@@ -4115,7 +4115,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h4>B. 装飾ブロブ2枚（block-1 / block-2）</h4>
 
-<p>これは有機的な角丸を持つ純装飾。Studio の角丸は%対応だが「楕円表記（横/縦別の8値）」はネイティブUIで指定できない（_studio_ref §3.4 は「全コーナー一括/各コーナー個別」「50%で正円」までで、斜め楕円表記は非対応）。</p>
+<p>これは有機的な角丸を持つ純装飾。Studio の角丸は%対応だが「楕円表記（横/縦別の8値）」はネイティブUIで指定できない（は「全コーナー一括/各コーナー個別」「50%で正円」までで、斜め楕円表記は非対応）。</p>
 
 <div class="plan free recommended"><span class="badge">Free代替</span> 各コーナー個別の角丸（例 40%/50%/38%/48%）で近似 Box を2枚置く。グラデ背景は<strong>2色までの線形グラデ</strong>なら Studio ネイティブで可だが、block-1 は3色グラデ。3色グラデは Box の背景グラデ設定で<strong>色停止点を3つ</strong>指定して再現する。<strong>推奨</strong>: FV の最背面装飾であり、楕円の厳密形状は視認影響が小さいためこの近似 Box でよい。</div>
 <div class="plan mini"><span class="badge">Mini</span> 完全一致させたいなら <a class="term" href="#term-embed">Embed（埋め込み）</a>（<a class="term" href="#term-sandbox">sandbox</a>）で <code>&lt;div&gt;</code> ＋上記 <code>border-radius</code> 楕円表記を貼る。</div>
@@ -4175,11 +4175,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <ol class="steps">
 <li><code>Hero</code> 直下（ブロブの後ろ）に Box を追加→レイヤー名 <code>Hero Inner</code>。</li>
-<li>右パネル<strong>ボックス</strong>タブ→サイズ: 幅 <code>px</code>=<code>1320</code>（= <code>--max-w</code>。px は最大幅挙動なので画面が狭まれば自動縮小、_studio_ref §3.1）。中央寄せ: margin 左右 <strong>auto</strong>。</li>
-<li><strong>高さ: 単位 <a class="term" href="#term-fill">flex</a></strong>（= 親 flex column 内で flex-grow 1 相当。これで Hero の中段＝マーキーを除いた残り全高を Hero Inner が占有する。_studio_ref §3.1「flex=主軸方向の伸長/比率」）。</li>
+<li>右パネル<strong>ボックス</strong>タブ→サイズ: 幅 <code>px</code>=<code>1320</code>（= <code>--max-w</code>。px は最大幅挙動なので画面が狭まれば自動縮小）。中央寄せ: margin 左右 <strong>auto</strong>。</li>
+<li><strong>高さ: 単位 <a class="term" href="#term-fill">flex</a></strong>（= 親 flex column 内で flex-grow 1 相当。これで Hero の中段＝マーキーを除いた残り全高を Hero Inner が占有する。「flex=主軸方向の伸長/比率）。</li>
 <li>padding: 上 <code>12px</code> / 下 <code>8px</code> / 左右 <code>40px</code>（= <code>--gutter</code>、<a class="term" href="#term-gutter">ガター</a>）。</li>
 <li>方向: <strong>横並び（Horizontal）</strong>。主軸は横なので<strong>垂直配置（交差軸）: 中央（center）</strong>。横方向の子の配置は左寄せ（既定）。<br>補足: 横並び1行にする限り、垂直配置中央で上下中央の見えになる。</li>
-<li>左右の子 Box の幅をそれぞれ <strong><code>flex</code></strong> にし、Hero Left=<code>1.5</code> / Hero Form Card=<code>0.85</code> の比率にする（_studio_ref §3.1 flex=横並び兄弟間の比率）。gap: <code>32px</code>。</li>
+<li>左右の子 Box の幅をそれぞれ <strong><code>flex</code></strong> にし、Hero Left=<code>1.5</code> / Hero Form Card=<code>0.85</code> の比率にする（flex=横並び兄弟間の比率）。gap: <code>32px</code>。</li>
 <li>ポジション: <strong>相対（relative）</strong>、設定→重ね順（z-index）: <code>1</code>（ブロブより前面）。</li>
 </ol>
 
@@ -4250,7 +4250,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p>構造:</p>
 <pre class="tree">挑戦するスタートアップ（.sweep）に、
 補助金（em.b）という追い風（em.n）を。</pre>
-<p>3つの強調ターゲット（<code>.sweep</code> / <code>em.b</code> / <code>em.n</code>）それぞれに (1) <strong>横スイープのグラデ着色アニメ</strong>（<code>sweepGrad</code>、background-position 100%→0、各 delay .15s/1.25s/1.85s・行152-156）と (2) <strong>手書き風オレンジ下線が左から伸びるアニメ</strong>（<code>fvUnderline</code>、scaleX 0→1 skewX -2deg、<code>::after</code>＋SVG filter <code>#hl-rough</code>・行158-185）が乗る。<strong>これらの貼付コード（@keyframes・SVGフィルタ）は <a href="#t9-codeset">§9「コピペ用コード集」②</a> に整形済み。</strong></p>
+<p>3つの強調ターゲット（<code>.sweep</code> / <code>em.b</code> / <code>em.n</code>）それぞれに (1) <strong>横スイープのグラデ着色アニメ</strong>（<code>sweepGrad</code>、background-position 100%→0、各 delay .15s/1.25s/1.85s）と (2) <strong>手書き風オレンジ下線が左から伸びるアニメ</strong>（<code>fvUnderline</code>、scaleX 0→1 skewX -2deg、<code>::after</code>＋SVG filter <code>#hl-rough</code>）が乗る。<strong>これらの貼付コード（@keyframes・SVGフィルタ）は <a href="#t9-codeset">§9「コピペ用コード集」②</a> に整形済み。</strong></p>
 
 <h4>⚠️ font-size の適用値（重要）</h4>
 
@@ -4259,17 +4259,17 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <table>
 <thead><tr><th>場所</th><th>値</th><th>実際に効くか</th></tr></thead>
 <tbody>
-<tr><td>行62-66（<code>@media</code> 外・global）</td><td><code>clamp(28px, min(8vh, 4vw + 12px), 60px)</code> <strong><code>!important</code></strong></td><td>✅ <strong>全幅で支配（最終適用値）</strong></td></tr>
-<tr><td>行150（base <code>.hero h1</code>）</td><td><code>clamp(40px, 4.4vw, 64px)</code></td><td>❌ <code>!important</code>に負け不適用</td></tr>
-<tr><td>行820（<code>@media max-width:1024px</code>）</td><td><code>clamp(32px, 5.4vw, 52px)</code></td><td>❌ <code>!important</code>に負け不適用</td></tr>
-<tr><td>行867（<code>@media max-width:767px</code>）</td><td><code>clamp(26px, 7.8vw, 36px)</code></td><td>❌ <code>!important</code>に負け不適用</td></tr>
+<tr><td>（<code>@media</code> 外・global）</td><td><code>clamp(28px, min(8vh, 4vw + 12px), 60px)</code> <strong><code>!important</code></strong></td><td>✅ <strong>全幅で支配（最終適用値）</strong></td></tr>
+<tr><td>（<code>.hero h1</code>）</td><td><code>clamp(40px, 4.4vw, 64px)</code></td><td>❌ <code>!important</code>に負け不適用</td></tr>
+<tr><td>（<code>@media max-width:1024px</code>）</td><td><code>clamp(32px, 5.4vw, 52px)</code></td><td>❌ <code>!important</code>に負け不適用</td></tr>
+<tr><td>（<code>@media max-width:767px</code>）</td><td><code>clamp(26px, 7.8vw, 36px)</code></td><td>❌ <code>!important</code>に負け不適用</td></tr>
 </tbody>
 </table>
 
-<p>つまり <strong>PC/Tablet/Mobile すべての幅で 行62-66 の <code>!important</code> clamp が勝つ</strong>。下限28px・上限60px・流体部 <code>min(8vh, 4vw+12px)</code>。この流体部は <code>min(8vh, …)</code> を含むため『画面の横幅』だけでなく『画面の高さ』が低いと縮むという特性を持つ（=低い画面で h1 が小さくなる）。</p>
+<p>つまり <strong>PC/Tablet/Mobile すべての幅で の <code>!important</code> clamp が勝つ</strong>。下限28px・上限60px・流体部 <code>min(8vh, 4vw+12px)</code>。この流体部は <code>min(8vh, …)</code> を含むため『画面の横幅』だけでなく『画面の高さ』が低いと縮むという特性を持つ（=低い画面で h1 が小さくなる）。</p>
 
 <div class="plan free recommended"><span class="badge">Free代替</span> Studio は <code>min()</code>・<code>vh+vw 混在</code> を clamp UI で表現できない。そこでテキストスタイル <code>H1 Hero</code> に <strong>PC=60px（=clamp上限）／ Tablet=52px ／ Mobile=36px</strong> を固定値で持たせ、<a class="term" href="#term-breakpoint">ブレークポイント</a>別に分ける（後述5-2-8）。これが<strong>推奨</strong>。<br><br><strong>52/36 の意味</strong>: この 52px / 36px は、上記 clamp が各BP幅で取りうるおおよその実効サイズに視覚的に寄せた近似値です（PC=clamp上限60、SP=clamp下限近傍36）。Studio の px は最大幅挙動で自動縮小するため低解像で破綻しにくいです。<br><br><strong>高さ駆動の縮小は Free 再現不可</strong>: <code>min(8vh,…)</code> による「画面が低いと縮む」挙動は Studio ネイティブの px/vw 指定では再現できません。完全再現は Mini で <a class="term" href="#term-customcode">Custom Code</a> 必須（要判断: 5-2-11）。</div>
-<div class="plan mini"><span class="badge">Mini</span> 完全な流体式が必要なら Custom Code で <code>.hero h1{font-size:clamp(28px,min(8vh,4vw+12px),60px)}</code> を head に追加（_studio_ref §7、Mini以上）。</div>
+<div class="plan mini"><span class="badge">Mini</span> 完全な流体式が必要なら Custom Code で <code>.hero h1{font-size:clamp(28px,min(8vh,4vw+12px),60px)}</code> を head に追加（Mini以上）。</div>
 
 <h4>静的スタイル（必須・Free可）</h4>
 <ol class="steps">
@@ -4283,11 +4283,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <h4>スイープ着色（sweepGrad）の扱い</h4>
 <p><code>@keyframes</code> によるグラデ background-position アニメは Studio ネイティブ不可。</p>
 <div class="plan free recommended"><span class="badge">Free代替</span> アニメを諦め、<strong>最終状態の色を固定</strong>する。スイープ停止後の最終見え色は、各強調語ごとにおおむね: <code>挑戦するスタートアップ</code>（sweep）→ <span class="sw" style="--c:#4A7DE8"></span>文字色 <code>blue</code> / <code>補助金</code>（em.b）→ <span class="sw" style="--c:#4A7DE8"></span>文字色 <code>blue</code> / <code>追い風</code>（em.n）→ <span class="sw" style="--c:#1B2A4A"></span>文字色 <code>navy</code>。該当語を範囲選択して<strong>テキスト</strong>タブで色を上書き（部分着色）。<strong>推奨</strong>: 制作中Free段階は静止の部分着色。</div>
-<div class="plan mini"><span class="badge">Mini</span> スイープ動作まで再現するなら Embed（sandbox）または Custom Code で <code>.hero h1 .sweep{...animation:sweepGrad...}</code> をそのまま移植。<code>background-clip:text</code> のグラデ着色＋keyframesはネイティブ非対応のため Custom Code が確実（_studio_ref §10.6 注: Scroll Effect は色のグラデアニメ非対応）。Mini切替後に追加する。</div>
+<div class="plan mini"><span class="badge">Mini</span> スイープ動作まで再現するなら Embed（sandbox）または Custom Code で <code>.hero h1 .sweep{...animation:sweepGrad...}</code> をそのまま移植。<code>background-clip:text</code> のグラデ着色＋keyframesはネイティブ非対応のため Custom Code が確実（注: Scroll Effect は色のグラデアニメ非対応）。Mini切替後に追加する。</div>
 
 <h4>手書き風下線マーカー（fvUnderline + #hl-rough）</h4>
 <p><a class="term" href="#term-pseudo">疑似要素</a> <code>::after</code>＋2層グラデ背景＋<code>filter:url(#hl-rough)</code>（feTurbulence/feDisplacementMap のSVGフィルタ）＋mix-blend-mode:multiply＋scaleX伸びアニメ。Studio ネイティブ完全不可（疑似要素・SVGフィルタ・blend・keyframes すべて）。</p>
-<div class="plan free"><span class="badge">Free代替</span> 各強調語の<strong>背後に独立した Box（下線バー）</strong>を絶対配置で重ねる。Box: 幅=語幅相当（%）、高さ <code>22px</code>、下端 <code>bottom:-10px</code> 相当、角丸 <code>3px</code>、背景=線形グラデ <code>92deg</code> <code>0%</code>=<code>rgba(255,209,102,.92)</code>→<code>55%</code>=<code>rgba(255,179,71,.95)</code>→<code>100%</code>=<code>rgba(255,156,57,.9)</code>、不透明度 <code>85%</code>、Blend mode=<strong>Multiply</strong>（_studio_ref §3.7、直近の親に適用）、重ね順を文字より背面（z-index -1）。ラフ感（SVG filter）と伸びアニメは省略。</div>
+<div class="plan free"><span class="badge">Free代替</span> 各強調語の<strong>背後に独立した Box（下線バー）</strong>を絶対配置で重ねる。Box: 幅=語幅相当（%）、高さ <code>22px</code>、下端 <code>bottom:-10px</code> 相当、角丸 <code>3px</code>、背景=線形グラデ <code>92deg</code> <code>0%</code>=<code>rgba(255,209,102,.92)</code>→<code>55%</code>=<code>rgba(255,179,71,.95)</code>→<code>100%</code>=<code>rgba(255,156,57,.9)</code>、不透明度 <code>85%</code>、Blend mode=<strong>Multiply</strong>（直近の親に適用）、重ね順を文字より背面（z-index -1）。ラフ感（SVG filter）と伸びアニメは省略。</div>
 <div class="plan mini recommended"><span class="badge">Mini</span> Embed（sandbox）で <code>&lt;svg&gt;</code>＋<code>&lt;filter id="hl-rough"&gt;</code>＋該当 <code>&lt;span&gt;</code> を含む H1 マークアップごと貼り、CSS の <code>::after</code>/<code>@keyframes fvUnderline</code>/<code>#hl-rough</code> を再現。1要素で完成イメージに完全一致。<strong>推奨</strong>: 表現の要なので Mini Embed。Free段階は Free代替の単色寄せグラデバー（Multiply）で代替し、Mini切替時に Embed へ差し替える。</div>
 
 <div class="callout note">
@@ -4330,7 +4330,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>内部に Text を入れ、コピー: <code>1時間で最適な制度をご提案</code>。フォント Noto Sans JP / <code>15px</code> / <code>800</code> / 色 <code>white</code>。</li>
 <li>Box スタイル（ボックスタブ→外観）: 背景 <code>blue</code> / 角丸 <code>100px</code>（= r-pill）/ padding 上 <code>16px</code>・下 <code>16px</code>・左 <code>36px</code>・右 <code>64px</code>（右が広いのは矢印円のぶん）/ 影（Shadow / Outset）X<code>0</code> Y<code>10px</code> Blur<code>24px</code> Spread<code>0</code> 色 <code>rgba(74,125,232,.32)</code>。</li>
 <li>矢印円（<code>＞</code> 円バッジ）: ネイティブ疑似要素不可 → <strong>【Free代替・推奨】</strong>CTA Pri 内に小さい円 Box を<strong>絶対配置</strong>（右 <code>12px</code>、上下中央）。サイズ <code>32px</code>×<code>32px</code>、角丸 <code>50%</code>、Border <code>1.5px solid</code> 色 <code>white</code>（currentColor=白文字色）、中に <code>＞</code>（Text 13px / 600 / white）を中央寄せ。<strong>【Mini】</strong>Custom Code で疑似要素の矢印円を移植。</li>
-<li><a class="term" href="#term-hover">Hover State</a>（<strong>ボックス</strong>タブ→<a class="term" href="#term-conditional">条件スタイル</a>→<strong>Hover</strong>、_studio_ref §10.4）: 背景 <code>yellow</code>、文字色 <code>ink</code>、Move Y <code>-2px</code>（<a class="term" href="#term-transform">変形タブ</a>）、影 X<code>0</code> Y<code>16px</code> Blur<code>34px</code> 色 <code>rgba(255,209,102,.5)</code>。transition は変形タブ→アニメーション→時間 <code>0.2s</code>。矢印円の <code>currentColor</code> 連動（ホバーで枠と＞が ink になる）も Hover で Border色・Text色を <code>ink</code> に上書き。</li>
+<li><a class="term" href="#term-hover">Hover State</a>（<strong>ボックス</strong>タブ→<a class="term" href="#term-conditional">条件スタイル</a>→<strong>Hover</strong>）: 背景 <code>yellow</code>、文字色 <code>ink</code>、Move Y <code>-2px</code>（<a class="term" href="#term-transform">変形タブ</a>）、影 X<code>0</code> Y<code>16px</code> Blur<code>34px</code> 色 <code>rgba(255,209,102,.5)</code>。transition は変形タブ→アニメーション→時間 <code>0.2s</code>。矢印円の <code>currentColor</code> 連動（ホバーで枠と＞が ink になる）も Hover で Border色・Text色を <code>ink</code> に上書き。</li>
 </ol>
 
 <figure class="fig">
@@ -4368,14 +4368,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p>白カード＋上端ネイビーバッジ＋見出し＋3項目フォーム＋送信ボタン。<strong>Studio ネイティブの<a class="term" href="#term-form">フォーム</a></strong>で実装する。</p>
 
 <div class="callout warn">
-<p><strong>【プラン注意】</strong>フォームの実送信（メール通知/Google Sheets/reCAPTCHA）は Apps 連携が必要で <strong>Free では不可の可能性</strong>（_studio_ref 付録A）。Free 段階は見た目・バリデーションのみ、<strong>送信先設定と reCAPTCHA は Mini 切替後</strong>に行う。本章では見た目とフィールド定義まで Free で作り、送信系を【Mini前提】とする。</p>
+<p><strong>【プラン注意】</strong>フォームの実送信（メール通知/Google Sheets/reCAPTCHA）は Apps 連携が必要で <strong>Free では不可の可能性</strong>。Free 段階は見た目・バリデーションのみ、<strong>送信先設定と reCAPTCHA は Mini 切替後</strong>に行う。本章では見た目とフィールド定義まで Free で作り、送信系を【Mini前提】とする。</p>
 </div>
 
 <h4>A. フォームカード（Hero Form Card）</h4>
 <ol class="steps">
-<li><code>Hero Inner</code> 直下（Hero Left の右隣）に <span class="path">追加<i>›</i>基本<i>›</i>フォーム</span>から Form テンプレート（Form1 でよい。差はレイアウトのみ、_studio_ref §11.1）をドラッグ。外側ラッパーをレイヤー名 <code>Hero Form Card</code>。</li>
+<li><code>Hero Inner</code> 直下（Hero Left の右隣）に <span class="path">追加<i>›</i>基本<i>›</i>フォーム</span>から Form テンプレート（Form1 でよい。差はレイアウトのみ）をドラッグ。外側ラッパーをレイヤー名 <code>Hero Form Card</code>。</li>
 <li><code>Hero Form Card</code>（ボックスタブ）: 幅 flex <code>0.85</code>（5-2-3 で設定済み）/ 背景 <code>white</code> / 角丸 <code>20px</code>（= r-lg。stat-panel）/ padding 上 <code>20px</code>・下 <code>20px</code>・左 <code>22px</code>・右 <code>22px</code> / 影（Shadow / Outset・主影1層でよい）X<code>0</code> Y<code>24px</code> Blur<code>60px</code> Spread<code>0</code> 色 <code>rgba(15,26,51,.1)</code>（shadow-panel）/ ポジション <strong>相対</strong>。</li>
-<li>装飾円2つ（<code>::before</code>=黄円70px / 行312 <code>::after</code>=blue-lt円90px、カード角からはみ出す）: 疑似要素不可 → <strong>【Free代替・推奨】</strong>カード内に円 Box 2枚を<strong>絶対配置</strong>: <br>・黄円: 上 <code>-12px</code> / 左 <code>-12px</code>、<code>70px</code>×<code>70px</code>、角丸<code>50%</code>、背景<code>yellow</code>、不透明度<code>75%</code>、重ね順<code>-1</code>（カード背面）。レイヤー名 <code>Form Deco Yellow</code>。<br>・blue-lt円: 下 <code>-16px</code> / 右 <code>-14px</code>、<code>90px</code>×<code>90px</code>、角丸<code>50%</code>、背景<code>blue-lt</code>、不透明度<code>70%</code>、重ね順<code>-1</code>。レイヤー名 <code>Form Deco Blue</code>。<br>注: SP（767px以下）では<code>display:none</code>。5-2-8 で両円を非表示にする。</li>
+<li>装飾円2つ（<code>::before</code>=黄円70px / <code>::after</code>=blue-lt円90px、カード角からはみ出す）: 疑似要素不可 → <strong>【Free代替・推奨】</strong>カード内に円 Box 2枚を<strong>絶対配置</strong>: <br>・黄円: 上 <code>-12px</code> / 左 <code>-12px</code>、<code>70px</code>×<code>70px</code>、角丸<code>50%</code>、背景<code>yellow</code>、不透明度<code>75%</code>、重ね順<code>-1</code>（カード背面）。レイヤー名 <code>Form Deco Yellow</code>。<br>・blue-lt円: 下 <code>-16px</code> / 右 <code>-14px</code>、<code>90px</code>×<code>90px</code>、角丸<code>50%</code>、背景<code>blue-lt</code>、不透明度<code>70%</code>、重ね順<code>-1</code>。レイヤー名 <code>Form Deco Blue</code>。<br>注: SP（767px以下）では<code>display:none</code>。5-2-8 で両円を非表示にする。</li>
 </ol>
 <div class="callout warn">
 <p><strong>はみ出し表示と祖先 overflow の関係（5-2-2 と整合）</strong>: 装飾円はカード外へあふれる前提なので <code>Hero Form Card</code> の overflow は <strong>Visible</strong> にする。ただし円は祖先 <code>Hero</code>（overflow:Hidden）配下にあるため、<strong>カードが Section 端に寄ると円の外側が切れうる</strong>。カード自体は Hero Inner 内のため通常は4辺とも見えるが、Tablet/Mobile でカードが全幅化（5-2-8）した際の左右はみ出し円が切れないか <strong>5-2-10 で実機確認</strong>する。</p>
@@ -4409,10 +4409,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><strong>フォーム設定</strong>:</p>
 <ol class="steps">
 <li><code>Hero Form Card</code> 内の Form 要素を選択→レイヤー名 <code>VP Form</code>。<strong>ボックス</strong>タブ→方向 縦並び、gap <code>10px</code>、margin 上 <code>4px</code>。</li>
-<li>右パネル<strong>フォーム（Form）</strong>タブ→フォーム名を <code>hero-vc-form</code> 等に（<code>% # ? /</code> 不可、_studio_ref §11.1）。</li>
+<li>右パネル<strong>フォーム（Form）</strong>タブ→フォーム名を <code>hero-vc-form</code> 等に（<code>% # ? /</code> 不可）。</li>
 </ol>
 
-<p><strong>フィールド3つ</strong>（各 <code>.vp-field</code>・行360 = ラベル＋input の縦並び gap<code>4px</code>。_studio_ref §11.2 フィールド設定）:</p>
+<p><strong>フィールド3つ</strong>（各 <code>.vp-field</code> = ラベル＋input の縦並び gap<code>4px</code>。 フィールド設定）:</p>
 <table>
 <thead><tr><th>レイヤー名</th><th>ラベル文字</th><th>必須印</th><th>タイプ</th><th>必須</th><th>プレースホルダ</th></tr></thead>
 <tbody>
@@ -4425,7 +4425,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <div class="callout warn">
 <p><strong>必須印「※」の確実な再現</strong>: ラベルは<strong>「ラベル文字＋赤い小さな ※」の2要素構成</strong>（※ は <code>#E85252</code> / 10px / 900 / ベースライン微上げ）です。この赤い ※ はバリデーション上の必須記号として視覚的に重要なので、<strong>省略しない</strong>。Studio フォームのフィールドラベルは単一テキストで一部だけの着色（赤10px900）が困難なため、次のいずれかで確実に再現する。</p>
 </div>
-<div class="plan free recommended"><span class="badge">Free代替</span> 各フィールドの<strong>標準ラベルを「非表示」</strong>にし（フォームタブ→フィールドの Label 位置/表示で非表示）、input の<strong>直上に自前の横並び Box（<code>VP Lbl Row</code>）</strong>を置く。中に Text を2つ: (1) ラベル文字 Text 例 <code>会社名</code>、Noto Sans JP / <code>11.5px</code> / <code>800</code> / 色 <code>ink</code> / letter-spacing <code>.02em</code>。(2) ※ Text <code>※</code>、色 <code>danger / accent-red</code>(<span class="sw" style="--c:#E85252"></span>#E85252) / <code>10px</code> / <code>900</code>、左マージン <code>2px</code>、ベースライン <code>vertical-align:1px</code> 相当（行362。ネイティブ不可なら無視可）。横並び Box は垂直配置 ベースライン/下寄せ、gap 0。<strong>推奨</strong>: <code>※</code> を赤で必ず出す（『赤に近い扱いは省略可』という従来方針は撤回）。</div>
+<div class="plan free recommended"><span class="badge">Free代替</span> 各フィールドの<strong>標準ラベルを「非表示」</strong>にし（フォームタブ→フィールドの Label 位置/表示で非表示）、input の<strong>直上に自前の横並び Box（<code>VP Lbl Row</code>）</strong>を置く。中に Text を2つ: (1) ラベル文字 Text 例 <code>会社名</code>、Noto Sans JP / <code>11.5px</code> / <code>800</code> / 色 <code>ink</code> / letter-spacing <code>.02em</code>。(2) ※ Text <code>※</code>、色 <code>danger / accent-red</code>(<span class="sw" style="--c:#E85252"></span>#E85252) / <code>10px</code> / <code>900</code>、左マージン <code>2px</code>、ベースライン <code>vertical-align:1px</code> 相当（ネイティブ不可なら無視可）。横並び Box は垂直配置 ベースライン/下寄せ、gap 0。<strong>推奨</strong>: <code>※</code> を赤で必ず出す（『赤に近い扱いは省略可』という従来方針は撤回）。</div>
 <div class="plan mini"><span class="badge">Mini</span> Custom Code で <code>.vp-field-lbl em</code> をそのまま移植（<code>#E85252/10px/900/vertical-align:1px</code>）。</div>
 
 <p>各フィールド共通スタイル（input・）:</p>
@@ -4435,38 +4435,38 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <tr><td>input padding</td><td>上下 <code>9px</code> / 左右 <code>12px</code></td><td>通常</td></tr>
 <tr><td>フォント</td><td>Noto Sans JP / <code>13px</code> / <code>500</code> / 色 <code>ink</code></td><td>通常</td></tr>
 <tr><td>背景</td><td><span class="sw" style="--c:#F6F8FC"></span><code>input-bg</code>(#F6F8FC)</td><td>通常</td></tr>
-<tr><td>Border</td><td><code>1.5px solid</code> 色 <span class="sw" style="--c:#E0E5EF"></span><code>input-border</code>(#E0E5EF)、角丸 <code>8px</code>（= r-sm・行369）</td><td>通常</td></tr>
+<tr><td>Border</td><td><code>1.5px solid</code> 色 <span class="sw" style="--c:#E0E5EF"></span><code>input-border</code>(#E0E5EF)、角丸 <code>8px</code>（= r-sm）</td><td>通常</td></tr>
 <tr><td>プレースホルダ色</td><td><span class="sw" style="--c:#B0B7C5"></span><code>placeholder</code>(#B0B7C5) / ウェイト 500</td><td>通常</td></tr>
-<tr><td>幅</td><td><code>%100</code>（box-sizing border-box は Studio既定・行365）</td><td>通常</td></tr>
-<tr><td><strong>Hover</strong>（条件スタイル・行374）</td><td>Border色 <span class="sw" style="--c:#C7D0E0"></span><code>input-border-hover</code>(#C7D0E0)、背景 <span class="sw" style="--c:#F0F3F9"></span><code>input-bg-hover</code>(#F0F3F9)</td><td>Hover</td></tr>
-<tr><td><strong>Focus</strong>（条件スタイル Focus・行375）</td><td>Border色 <code>blue</code>、背景 <code>white</code>、影 X<code>0</code> Y<code>0</code> Blur<code>0</code> Spread<code>3px</code> 色 <code>rgba(74,125,232,.18)</code>（focusリング＝3pxリング表現）</td><td>Focus</td></tr>
+<tr><td>幅</td><td><code>%100</code>（box-sizing border-box は Studio既定）</td><td>通常</td></tr>
+<tr><td><strong>Hover</strong>（条件スタイル）</td><td>Border色 <span class="sw" style="--c:#C7D0E0"></span><code>input-border-hover</code>(#C7D0E0)、背景 <span class="sw" style="--c:#F0F3F9"></span><code>input-bg-hover</code>(#F0F3F9)</td><td>Hover</td></tr>
+<tr><td><strong>Focus</strong>（条件スタイル Focus）</td><td>Border色 <code>blue</code>、背景 <code>white</code>、影 X<code>0</code> Y<code>0</code> Blur<code>0</code> Spread<code>3px</code> 色 <code>rgba(74,125,232,.18)</code>（focusリング＝3pxリング表現）</td><td>Focus</td></tr>
 </tbody>
 </table>
 
-<p><strong>VP Req Note</strong>（必須注記・HTML 行1368 / CSS 行413-417）:</p>
+<p><strong>VP Req Note</strong>（必須注記・）:</p>
 <ol class="steps">
-<li>フィールド群の次に Text→レイヤー名 <code>VP Req Note</code>。コピー <code>※は必須項目です</code>（先頭 <code>※</code> を em として <code>900</code>・右マージン1px・行417）。</li>
+<li>フィールド群の次に Text→レイヤー名 <code>VP Req Note</code>。コピー <code>※は必須項目です</code>（先頭 <code>※</code> を em として <code>900</code>・右マージン1px）。</li>
 <li><code>11px</code> / <code>700</code> / 色 <code>danger / accent-red</code>(<span class="sw" style="--c:#E85252"></span>#E85252) / letter-spacing <code>.02em</code> / 行間1.4 / margin 上 <code>-2px</code> 下 <code>2px</code>。</li>
 </ol>
 <div class="callout note">
 <p>赤系の必須表現はラベルの ※と この vp-req-noteの <strong>2箇所</strong>あり、両方とも <code>#E85252</code>。どちらも省略せず再現する。</p>
 </div>
 
-<p><strong>VP CTA Btn</strong>（送信ボタン・HTML 行1369 / CSS 行390-408）:</p>
+<p><strong>VP CTA Btn</strong>（送信ボタン・）:</p>
 <ol class="steps">
-<li>フォームの Submit ボタンを選択→レイヤー名 <code>VP CTA Btn</code>。コピー <code>無料で相談してみる</code>。タイプ: <strong>Submit</strong>（_studio_ref §11.2 フォームパーツ Submit）。</li>
-<li>スタイル: 幅 <code>%100</code>、方向 横並び・中央寄せ・gap <code>10px</code>、padding 上下 <code>15px</code> / 左右 <code>18px</code>。フォント Noto Sans JP / <code>15.5px</code> / <code>900</code> / 色 <code>white</code> / letter-spacing <code>.04em</code>/ 背景 <code>blue</code>、角丸 <code>100px</code>（r-pill・行397-398）/ 影（Outset）X<code>0</code> Y<code>10px</code> Blur<code>24px</code> 色 <code>rgba(74,125,232,.32)</code>。</li>
+<li>フォームの Submit ボタンを選択→レイヤー名 <code>VP CTA Btn</code>。コピー <code>無料で相談してみる</code>。タイプ: <strong>Submit</strong>（フォームパーツ Submit）。</li>
+<li>スタイル: 幅 <code>%100</code>、方向 横並び・中央寄せ・gap <code>10px</code>、padding 上下 <code>15px</code> / 左右 <code>18px</code>。フォント Noto Sans JP / <code>15.5px</code> / <code>900</code> / 色 <code>white</code> / letter-spacing <code>.04em</code>/ 背景 <code>blue</code>、角丸 <code>100px</code>（r-pill）/ 影（Outset）X<code>0</code> Y<code>10px</code> Blur<code>24px</code> 色 <code>rgba(74,125,232,.32)</code>。</li>
 <li>矢印円: ボタン内に円 Box→レイヤー名 <code>VP CTA Arrow</code>。<code>24px</code>×<code>24px</code>、角丸 <code>50%</code>、背景 <code>rgba(255,255,255,.22)</code>、中に <code>→</code>（Text <code>13px</code>/<code>900</code>/white）中央寄せ。</li>
-<li><strong>Hover</strong>（条件スタイル Hover・行402）: 背景 <code>yellow</code>、文字色 <code>ink</code>、Move Y <code>-2px</code>、影 X<code>0</code> Y<code>14px</code> Blur<code>30px</code> 色 <code>rgba(255,209,102,.5)</code>、時間 <code>0.15s</code>。<strong>Pressed</strong>（buttonタグのみ可、_studio_ref §10.4・<code>:active</code>）: Move Y <code>0</code>。</li>
+<li><strong>Hover</strong>（条件スタイル Hover）: 背景 <code>yellow</code>、文字色 <code>ink</code>、Move Y <code>-2px</code>、影 X<code>0</code> Y<code>14px</code> Blur<code>30px</code> 色 <code>rgba(255,209,102,.5)</code>、時間 <code>0.15s</code>。<strong>Pressed</strong>（buttonタグのみ可、・<code>:active</code>）: Move Y <code>0</code>。</li>
 </ol>
 
-<p><strong>VP Form Note</strong>（送信後注記・HTML 行1370 / CSS 行409-412）:</p>
+<p><strong>VP Form Note</strong>（送信後注記・）:</p>
 <ol class="steps">
 <li>ボタンの次に Text→レイヤー名 <code>VP Form Note</code>。コピー <code>送信後、担当より1営業日以内にご連絡します。</code></li>
 <li><code>10.5px</code> / 色 <code>sub</code> / 中央寄せ / 行間 <code>1.55</code> / margin 上 <code>2px</code>。</li>
 </ol>
 
-<div class="plan mini"><span class="badge">Mini</span> <strong>送信系【Mini前提】</strong>（_studio_ref §11.3-11.5）: メール通知先（フォームダッシュボード→設定、最大2宛先）、Google Sheets 連携、reCAPTCHA v3（Apps、プロジェクト単位）を Mini 切替後に設定。送信後遷移は<strong>別ページ（サンクス）を作成して post-submission destination に指定</strong>（リダイレクトURL欄ではない）。自動返信メールはネイティブ非対応＝Sheets+Zapier+Gmail で別途。</div>
+<div class="plan mini"><span class="badge">Mini</span> <strong>送信系【Mini前提】</strong>（-11.5）: メール通知先（フォームダッシュボード→設定、最大2宛先）、Google Sheets 連携、reCAPTCHA v3（Apps、プロジェクト単位）を Mini 切替後に設定。送信後遷移は<strong>別ページ（サンクス）を作成して post-submission destination に指定</strong>（リダイレクトURL欄ではない）。自動返信メールはネイティブ非対応＝Sheets+Zapier+Gmail で別途。</div>
 
 <figure class="fig">
 <svg viewBox="0 0 360 430" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -4509,7 +4509,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="s2-8">5-2-8. ロゴマーキー帯（hero-marquee-band / Loop Box）</h3>
 
-<p>全幅帯。上にラベル「提携VC50社以上」、下に左へ流れる無限マーキー（<code>lw-scroll</code> 45s linear・行268、両端フェードマスク・行261-262、hover一時停止・行271）。<strong>Studio の <a class="term" href="#term-loopbox">Loop Box</a></strong> で実装（_studio_ref §10.1。Free 可）。</p>
+<p>全幅帯。上にラベル「提携VC50社以上」、下に左へ流れる無限マーキー（<code>lw-scroll</code> 45s linear、両端フェードマスク、hover一時停止）。<strong>Studio の <a class="term" href="#term-loopbox">Loop Box</a></strong> で実装（Free 可）。</p>
 
 <figure class="fig">
 <svg viewBox="0 0 720 200" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -4546,31 +4546,31 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ol class="steps">
 <li><code>Hero</code> 直下（Hero Inner の後ろ・Section の下端）に Box→レイヤー名 <code>Hero Marquee Band</code>。</li>
 <li>幅 <code>%100</code>、方向 縦並び、padding 上 <code>0</code> / 下 <code>18px</code> / 左右 <code>0</code>、margin-top <code>0</code>。Section が space-between かつ Hero Inner が高さ flex で中段を占有するため、この帯は自動的に最下部へ寄る。ポジション 相対、z-index <code>1</code>。</li>
-<li>flex-shrink 相当: 親 flex 内で縮まないよう、サイズの高さは <strong>auto</strong>（_studio_ref §3.1 親高さauto推奨）。</li>
+<li>flex-shrink 相当: 親 flex 内で縮まないよう、サイズの高さは <strong>auto</strong>（親高さauto推奨）。</li>
 </ol>
 
 <h4>B. LW Label Row + LW Label</h4>
 <ol class="steps">
 <li><code>Hero Marquee Band</code> 直下に Box→<code>LW Label Row</code>。幅 最大 <code>1320px</code>・左右auto、padding 左右 <code>40px</code>、方向 横並び・水平中央・垂直中央、下マージン <code>20px</code>。</li>
-<li>その中に Text/Box→<code>LW Label</code>。コピー <code>提携VC50社以上</code>、数字 <code>50</code> のみ Inter・<code>blue</code>・<code>40px</code>・<code>900</code> に部分上書き。本文は <code>lw-label / 数字強調</code> テキストスタイル（Noto Sans JP / <code>22px</code> / <code>900</code> / 行間1 / letter-spacing <code>.08em</code> / 色 <code>ink</code>・行229-236）。</li>
-<li>CW風 <code>＼ ／</code> 装飾線（<code>::before</code>/<code>::after</code> の傾いた2px線）: 疑似要素不可 → <strong>【Free代替・推奨】</strong>LW Label 内に細い Box 2枚を絶対配置。各 <code>32px</code>×<code>2px</code>、角丸 <code>2px</code>、背景 <code>ink</code>、左右に置き、<strong>変形タブ→Rotate</strong> で左 <code>62deg</code> / 右 <code>-62deg</code>（transform-origin 右下/左下・行253-254）。padding 左右 <code>66px</code> で線のスペース確保。<strong>【Mini】</strong>Custom Code で <code>.lw-label::before/::after</code> を移植。</li>
+<li>その中に Text/Box→<code>LW Label</code>。コピー <code>提携VC50社以上</code>、数字 <code>50</code> のみ Inter・<code>blue</code>・<code>40px</code>・<code>900</code> に部分上書き。本文は <code>lw-label / 数字強調</code> テキストスタイル（Noto Sans JP / <code>22px</code> / <code>900</code> / 行間1 / letter-spacing <code>.08em</code> / 色 <code>ink</code>）。</li>
+<li>CW風 <code>＼ ／</code> 装飾線（<code>::before</code>/<code>::after</code> の傾いた2px線）: 疑似要素不可 → <strong>【Free代替・推奨】</strong>LW Label 内に細い Box 2枚を絶対配置。各 <code>32px</code>×<code>2px</code>、角丸 <code>2px</code>、背景 <code>ink</code>、左右に置き、<strong>変形タブ→Rotate</strong> で左 <code>62deg</code> / 右 <code>-62deg</code>（transform-origin 右下/左下）。padding 左右 <code>66px</code> で線のスペース確保。<strong>【Mini】</strong>Custom Code で <code>.lw-label::before/::after</code> を移植。</li>
 </ol>
 
 <h4>C. LW Marquee（Loop Box）</h4>
 <ol class="steps">
 <li><code>Hero Marquee Band</code> 直下（ラベル行の次）に <span class="path">追加<i>›</i>基本<i>›</i>インタラクション<i>›</i>Loop Box</span>→レイヤー名 <code>LW Marquee</code>。幅 <code>%100</code>。</li>
-<li>子（<code>LW Card</code>）を<strong>横並び</strong>にする→Loop の流れ方向は子の flexDirection 依存で左右になる（row系、_studio_ref §10.1）。gap <code>18px</code>、上下padding <code>8px</code>。</li>
-<li><strong>速度</strong>: Loop タブで <code>px/s</code> 指定。1セット（12枚）の幅 ≒ <code>(200+18)×12 - 18 = 2598px</code> を約45秒で流す想定なので、<code>2598 ÷ 45 ≒ 58px/s</code>。<strong>速度 <code>58px/s</code></strong>（デフォルト60に近い、_studio_ref §10.1）。微調整は実機プレビューで。</li>
+<li>子（<code>LW Card</code>）を<strong>横並び</strong>にする→Loop の流れ方向は子の flexDirection 依存で左右になる（row系）。gap <code>18px</code>、上下padding <code>8px</code>。</li>
+<li><strong>速度</strong>: Loop タブで <code>px/s</code> 指定。1セット（12枚）の幅 ≒ <code>(200+18)×12 - 18 = 2598px</code> を約45秒で流す想定なので、<code>2598 ÷ 45 ≒ 58px/s</code>。<strong>速度 <code>58px/s</code></strong>（デフォルト60に近い）。微調整は実機プレビューで。</li>
 <li><strong>Pause on hover</strong>: チェックON。</li>
-<li>overflow は Loop Box が自動 hidden（_studio_ref §10.1、scroll/visible不可）。</li>
-<li><strong>両端フェードマスク</strong>: Loop Box は overflow自動hiddenでマスク不可（_studio_ref §10.1「両端フェードマスクが必要なら親box側で重ねる」）→ <strong>【Free代替・推奨】</strong>まず <strong>Loop Box だけを「相対(relative)位置のラッパーBox」で包む</strong>（上のラベル行は包まない＝フェードがラベル行にかからないようにするため）。その<strong>ラッパーBox の中に</strong>フェード用 Box を左右2枚、<strong>絶対配置（absolute・基準＝ラッパー）</strong>で重ねる。各幅 <code>4%</code>（または約60px）、高さ100%、背景=ページ <code>bg</code>(<span class="sw" style="--c:#FCFDFF"></span>#FCFDFF) から transparent への線形グラデ（左Box: 左→右で不透明→透明、右Box: 右→左で不透明→透明）。z-index を Loop より前面。<strong>【Mini】</strong>Custom Code で <code>.lw-marquee{mask-image:...}</code> を移植。</li>
+<li>overflow は Loop Box が自動 hidden（scroll/visible不可）。</li>
+<li><strong>両端フェードマスク</strong>: Loop Box は overflow自動hiddenでマスク不可（両端フェードマスクが必要なら親box側で重ねる）→ <strong>【Free代替・推奨】</strong>まず <strong>Loop Box だけを「相対(relative)位置のラッパーBox」で包む</strong>（上のラベル行は包まない＝フェードがラベル行にかからないようにするため）。その<strong>ラッパーBox の中に</strong>フェード用 Box を左右2枚、<strong>絶対配置（absolute・基準＝ラッパー）</strong>で重ねる。各幅 <code>4%</code>（または約60px）、高さ100%、背景=ページ <code>bg</code>(<span class="sw" style="--c:#FCFDFF"></span>#FCFDFF) から transparent への線形グラデ（左Box: 左→右で不透明→透明、右Box: 右→左で不透明→透明）。z-index を Loop より前面。<strong>【Mini】</strong>Custom Code で <code>.lw-marquee{mask-image:...}</code> を移植。</li>
 </ol>
 
 <h4>D. LW Card ×12（VCロゴ）</h4>
 <ol class="steps">
 <li><code>LW Marquee</code> 内に Box→<code>LW Card</code> を<strong>12枚</strong>配置（Loop Box が複製を自動生成するので2セット目は不要）。</li>
-<li>各 LW Card（CSS 行278-294）: 幅 <code>200px</code>（固定・<code>flex:none</code>＝flexで縮まない・行279-280）、高さ <code>80px</code>、背景 <code>white</code>、Border <code>1px solid</code> 色 <code>line-2</code>、角丸 <code>14px</code>（r-md）、中央寄せ、影 X<code>0</code> Y<code>6px</code> Blur<code>16px</code> 色 <code>rgba(15,26,51,.05)</code>（行293 shadow-card）。</li>
-<li>各 Card 内に Image を1枚。画像は左ナビ<strong>アップロード（Uploads）</strong>から VCロゴ12点（ANRI / ANOBAKA / Incubate Fund / UNITED / DEEPCORE / Garnet Capital / Hyperion / W fund / Waypoint Venture Partners / Open Network Lab / 01Booster Capital / All About）をアップロードして使用。Image: 最大幅 <code>86%</code> / 最大高 <code>90%</code>、object-fit <strong>contain</strong>（_studio_ref §8.2 注: フィット指定UIは要実機確認）、彩度 <code>saturate(.95)</code>は Filter（_studio_ref §3.7 Saturation）で近似（省略可）。alt に各社名を設定。</li>
+<li>各 LW Card（CSS ）: 幅 <code>200px</code>（固定・<code>flex:none</code>＝flexで縮まない）、高さ <code>80px</code>、背景 <code>white</code>、Border <code>1px solid</code> 色 <code>line-2</code>、角丸 <code>14px</code>（r-md）、中央寄せ、影 X<code>0</code> Y<code>6px</code> Blur<code>16px</code> 色 <code>rgba(15,26,51,.05)</code>（shadow-card）。</li>
+<li>各 Card 内に Image を1枚。画像は左ナビ<strong>アップロード（Uploads）</strong>から VCロゴ12点（ANRI / ANOBAKA / Incubate Fund / UNITED / DEEPCORE / Garnet Capital / Hyperion / W fund / Waypoint Venture Partners / Open Network Lab / 01Booster Capital / All About）をアップロードして使用。Image: 最大幅 <code>86%</code> / 最大高 <code>90%</code>、object-fit <strong>contain</strong>（注: フィット指定UIは要実機確認）、彩度 <code>saturate(.95)</code>は Filter（Saturation）で近似（省略可）。alt に各社名を設定。</li>
 </ol>
 
 <div class="callout tip">
@@ -4599,7 +4599,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="s2-9">5-2-9. レスポンシブ（Studio 3ブレークポイントへの写像）</h3>
 
-<p>Studio は Default(PC,>840) / Tablet(540-840) / Mobile(<540) の3<a class="term" href="#term-breakpoint">ブレークポイント</a>（初期有効、_studio_ref §8.1）。完成イメージの不揃いな切替幅（1024/768/767/380）を3BPへ写像する。<strong>条件スタイルは PC を基底に下方カスケード</strong>。手順は PC完成→Tablet→Mobile の順。上書き中プロパティは色分け、誤上書きは「Reset override」で解除。</p>
+<p>Studio は Default(PC,>840) / Tablet(540-840) / Mobile(<540) の3<a class="term" href="#term-breakpoint">ブレークポイント</a>（初期有効）。完成イメージの不揃いな切替幅（1024/768/767/380）を3BPへ写像する。<strong>条件スタイルは PC を基底に下方カスケード</strong>。手順は PC完成→Tablet→Mobile の順。上書き中プロパティは色分け、誤上書きは「Reset override」で解除。</p>
 
 <figure class="fig">
 <svg viewBox="0 0 720 170" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -4628,7 +4628,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <text x="200" y="140" font-family="inherit" font-size="11" fill="var(--blue)" text-anchor="middle">36px</text>
 <text x="400" y="140" font-family="inherit" font-size="11" fill="var(--ink)" text-anchor="middle">52px</text>
 <text x="605" y="140" font-family="inherit" font-size="11" fill="var(--ink)" text-anchor="middle">60px</text>
-<text x="360" y="162" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">※52/36 は行62-66の!important clamp実効サイズへの視覚近似であり、行820/867 media値の移植ではない</text>
+<text x="360" y="162" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">※52/36 は !important clamp の実効サイズへの視覚近似であり、特定の media 値の移植ではない</text>
 </svg>
 <figcaption>不揃いな切替幅を Studio 3BP に集約する写像。1024px の1カラム化は Tablet(840) で行い、768px のマーキー縮小も Tablet に統合、767/~380 は Mobile に集約する。</figcaption>
 </figure>
@@ -4645,7 +4645,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </table>
 
 <div class="callout warn">
-<p>1024px の1カラム化は Studio Tablet(840) より広い境界だが、3BP運用では Tablet で1カラム化を行う（必要なら追加BPで1024相当の前倒しも可。_studio_ref §8.1。本LPは3BPで十分）。<strong>H1 の font-size は全BPで clamp（下限28px・上限60px・流体部 min(8vh,4vw+12px)）が支配する</strong>（5-2-5参照）。下記 Tablet=52 / Mobile=36 は“その clamp の各BP幅での実効サイズに寄せた視覚近似”です。</p>
+<p>1024px の1カラム化は Studio Tablet(840) より広い境界だが、3BP運用では Tablet で1カラム化を行う（必要なら追加BPで1024相当の前倒しも可。本LPは3BPで十分）。<strong>H1 の font-size は全BPで clamp（下限28px・上限60px・流体部 min(8vh,4vw+12px)）が支配する</strong>（5-2-5参照）。下記 Tablet=52 / Mobile=36 は“その clamp の各BP幅での実効サイズに寄せた視覚近似”です。</p>
 </div>
 
 <h4>Tablet(840) 上書き</h4>
@@ -4685,7 +4685,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>（任意）Mini(320) で極小値を上書きした、または Mobile 継承で十分と判断した</li></ul>
 
 <h3 id="s2-10">5-2-10. 動作確認（公開URL）</h3>
-<p>_studio_ref §8.2 / §10.1 に従い、エディタ内で確認できない要素は公開URLで実機確認:</p>
+<p>、エディタ内で確認できない要素は公開URLで実機確認:</p>
 <ol class="steps">
 <li>Loop Box（マーキー）の流速・Pause on hover・両端フェード（Loop タブのエディタプレビューは可、最終は公開URL）。</li>
 <li>フォームの Focus リング・Hover、必須バリデーション、（Mini後）実送信→サンクス遷移→メール/Sheets着信→reCAPTCHA。<strong>必須印 ※ が全フィールドで赤(#E85252)表示されているか</strong>も確認。</li>
@@ -4702,7 +4702,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>H1 のスイープ＆手書き下線アニメ</strong>: Free は静止代替（部分着色＋下線バー）、忠実再現は Mini 切替後 Embed/Custom Code。どこまで簡素化を許容するか要確認。</li>
 <li><strong>Mobile の要素順（CTA とフォームの前後）</strong>: 理想は <code>eyebrow→h1→sub→フォーム→CTA</code>（フォームが先）。Studio の現レイヤー構造では <code>…→CTA→フォーム</code> となり前後が入れ替わる。フォーム（主CV導線）を CTA より下げるとファーストビュー内のCV導線が弱まりうるため、簡素化（案1）を採用する前に CV 観点でユーザー承認を取る。承認が得られない／理想順を維持する場合は【案2】= <code>Hero Form Card</code> を <code>Hero Left</code> 配下へ移設し PC では Hero Left を横2カラム化する設計変更、または Mini で Custom Code の <code>order</code> 指定で対応（いずれもデザイン/実装コスト増）。</li>
 <li><strong>overflow:Hidden の見切れ</strong>: Hero=Hidden を既定とする結果、背景ブロブの画面端は意図的に切れ（正）、フォームカード装飾円も Section 端付近では切れうる。装飾円を4辺すべて見せたい要件があるなら Hero overflow を Visible にする（ブロブ端も見えるトレードオフ）。実機（5-2-10）で確定。</li>
-<li><strong>フォーム送信系</strong>: Free 可否未確定（_studio_ref 付録A）。Mini 切替後にメール通知/Sheets/reCAPTCHA/サンクスページを設定。</li>
+<li><strong>フォーム送信系</strong>: Free 可否未確定。Mini 切替後にメール通知/Sheets/reCAPTCHA/サンクスページを設定。</li>
 <li><strong>VCロゴ画像</strong>: 12点を <code>assets/vc_logos/</code> から Uploads にアップロード要。ロゴ使用許諾の法務確認は別チェック対象。</li>
 <li><strong>3色グラデ・楕円ブロブ・装飾円・矢印円・＼／線・必須※</strong>: いずれも疑似要素/楕円表記/ラベル内部分着色がネイティブ不可のため Box近似または自前 Text で実装。完全一致が要件なら該当箇所を Mini Embed / Custom Code に切替。</li>
 </ul>
@@ -5238,7 +5238,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h2 id="ch-s4">5-4. 採択率 / 市場動向</h2>
  <a class="live" href="https://minon-kasahara.github.io/gn-lp-mockup/#market" target="_blank" rel="noopener">🔗 実物プレビュー（このセクション）</a>
 
-市場セクション（<code>market</code>）を <a class="term" href="#term-section">Section</a> で再現する章。構成は「見出し＋リード文 → 2カラムのカード（左＝市場動向「採択率低下」／右＝G&amp;Nの対策「採択率向上」）」で、各カードに棒グラフ（2本＋矢印）を持つ。</p>
+<p>市場セクション（<code>market</code>）を <a class="term" href="#term-section">Section</a> で再現する章。構成は「見出し＋リード文 → 2カラムのカード（左＝市場動向「採択率低下」／右＝G&amp;Nの対策「採択率向上」）」で、各カードに棒グラフ（2本＋矢印）を持つ。</p>
 
  <figure class="fig">
  <svg viewBox="0 0 720 250" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -7739,7 +7739,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul class="checklist"><li>PC: 3カラム等幅・カバー16:10・タグ左下・採択額が Inter blue 24px で大きく出る・社名14px/業種10.5px（17px/11pxではない）</li><li>PC/Tablet/Mobile すべてで見出しサイズが一定（<code>clamp(28px,4vw+8px,52px)</code>・lh1.22）</li><li>Tablet(840): 2カラム・section padding 64（見出し・リード・head余白は変えない）</li><li>Mobile(540): 1カラム縦積み・gap16・各サイズが上記実値に調整（Company は14→15.5pxで拡大、Industry は10.5pxのまま）</li><li>カバー比率・object-fit/object-position は <a href="#ch-t8">§8</a>.2 の通りエディタでなく <strong>公開URL/Live Preview</strong> で最終確認（fit系UIは未検証）</li><li>sup（万円）の上付き・Inter和字フォールバックを公開URLで確認</li></ul>
 
  <div class="callout tip">
- <p><strong>参照ファイル:</strong> Studio仕様 <code>/tmp/gn_guide_v02/_studio_ref.md</code> ／ トークン <code>/tmp/gn_guide_v02/</code>。</p>
+ <p><strong>参照</strong>：デザイントークンは <a href="#ch-g2">§2</a>。</p>
  </div>
 </section>
 <div class="pager"><a class="prev" href="#ch-s7"><small>← 前へ</small><b>5-7. VC提携（VC Partners）</b></a><a class="next" href="#ch-s9"><small>次へ →</small><b>5-9. FAQ</b></a></div>
@@ -9089,7 +9089,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><strong>この要素の正体</strong>: 画面右下に追従する固定ピル/カード。提携VC紹介先限定の「着手金0円」特典を訴求し、クリックで <code>#cta</code>（問い合わせセクション）へスクロールさせる。スクロール <code>600px</code> 超で出現し、CTAセクション接近で退避、× で閉じる。意味的にはページの補足領域として配置する。</p>
 </div>
 
-<p><strong>Studio仕様の正本</strong>は <code>/tmp/gn_guide_v02/_studio_ref.md</code>、デザイントークン名は <code>/tmp/gn_guide_v02/</code> を踏襲し新造しない。</p>
+<p>デザイントークン名は本書 <a href="#ch-g2">§2</a> を踏襲し、新造しない。</p>
 
 <div class="callout warn">
 <p><strong>プラン前提（重要）</strong>: この要素は「出現/退避ロジック（スクロール連動表示・×閉じ）」「<code>::before/::after</code> グロー円」「<code>@keyframes perkShine</code> シャイン」「テキストグラデclip」を含む。後述の <span class="badge">Free代替</span> は<strong>制作中Freeで成立する範囲</strong>、<span class="badge">Mini</span> は<strong>納品後Mini切替（<a class="term" href="#term-customcode">Custom Code</a> 解禁・¥590/月）後の上位再現</strong>を指す（付録A）。</p>
@@ -9770,7 +9770,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
 <div class="callout note">
 <p><strong>参照ファイル（絶対パス）</strong></p>
-<p>Studio仕様正本: <code>/tmp/gn_guide_v02/_studio_ref.md</code> ／ トークン定義: <code>/tmp/gn_guide_v02/</code></p>
+<p>デザイントークン定義は本書 <a href="#ch-g2">§2</a>。</p>
 </div>
 
 </section>
