@@ -689,7 +689,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </table>
 
  <div class="callout tip">
- <p><strong>設計の確認順と編集の順は逆向き。</strong>設計はモバイルファーストで確認するが、Studio の<strong>編集はデスクトップ完成 →下位 BP へカスケード</strong>する（仕様 §8.2「推奨手順: PC完成→Tablet→Mobile」）。本手順書は <strong>Default(PC) で PC 値を組み、Tablet / Mobile で差分を上書き</strong> する流れを正とする。</p>
+ <p><strong>設計の確認順と編集の順は逆向き。</strong>設計はモバイルファーストで確認するが、Studio の<strong>編集はデスクトップ完成 →下位 BP へカスケード</strong>する。本手順書は <strong>Default(PC) で PC 値を組み、Tablet / Mobile で差分を上書き</strong> する流れを正とする。</p>
  </div>
 
  <p>ページルートには横スクロール抑止と日本語の文節改行（<code>word-break:keep-all</code> 相当）を全 BP 共通の土台として設定する。</p>
@@ -740,7 +740,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p><strong>🔧 訂正（2026-06-18）</strong>: Studio の<strong>タブレットは可変レンジ上限が 990px</strong>（実機確認「タブレット設定サイズ 691〜990px」）で <strong>1024px を設定できない</strong>。よって 1024px の構造リフローは <strong>スモール（Small）</strong>で行う。旧版の「タブレットを 1024 に上げる」は誤り。本節はスモール採用版に訂正済み。</p>
  </div>
 
- <p>仕様 §8.1 に基づき、本プロジェクトは <strong>Default / Small / Tablet / Mobile の4段</strong>を採用する。Mini(320) は追加しない。</p>
+ <p>基づき、本プロジェクトは <strong>Default / Small / Tablet / Mobile の4段</strong>を採用する。Mini(320) は追加しない。</p>
 
  <div class="callout warn">
  <p><strong>【重要】1024px の構造リフローは「タブレット」ではなく「スモール」に置く。</strong></p>
@@ -883,10 +883,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <div class="callout warn">
  <p><strong>改行位置を BP 別に出し分けたいときの扱い（重要）</strong></p>
- <p>完成イメージでは改行位置を BP 別に出し分けている。一方 Studio は <strong>同一テキスト要素内の改行有無を BP 別に変えられない</strong>（仕様 §8.2「テキスト内容は BP 別に変更不可」）。</p>
+ <p>完成イメージでは改行位置を BP 別に出し分けている。一方 Studio は <strong>同一テキスト要素内の改行有無を BP 別に変えられない</strong>。</p>
  <ul>
  <li><strong>【方針】</strong>見出しは各 BP の最終的な見え方（PC=1〜2行 / Tablet / Mobile=3〜4行）を、<strong>改行に依存しないボックス幅＋文節改行（word-break:keep-all 相当）で吸収</strong>する。折返し禁止のフレーズ単位の塊は、<strong>該当語句を1つの Text 要素 or 文節をスペース無しでまとめる</strong>ことで近似する。</li>
- <li>どうしても BP 別に改行位置を変えたい見出し（FV 見出しなど）は、<strong>PC 用 Text と Mobile 用 Text を別レイヤーで2つ用意し、BP 別の表示/非表示（レイヤーパネルの目アイコン）で出し分ける</strong>（仕様 §8.2 の推奨回避策）。多用は避け、FV 見出しなど効果の大きい1–2箇所に限定する。</li>
+ <li>どうしても BP 別に改行位置を変えたい見出し（FV 見出しなど）は、<strong>PC 用 Text と Mobile 用 Text を別レイヤーで2つ用意し、BP 別の表示/非表示（レイヤーパネルの目アイコン）で出し分ける</strong>。多用は避け、FV 見出しなど効果の大きい1–2箇所に限定する。</li>
  </ul>
  </div>
 
@@ -1004,12 +1004,19 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </figure>
 
  <h4>実装前（着手前チェック）</h4>
+ <div class="callout note"><p><strong>先に、ことばの確認</strong>（このページで何度も出てきます）</p>
+ <ul>
+ <li><strong>PC 値</strong>＝パソコン（広い画面）で表示したときの数値（幅・余白・色・文字サイズなど）。<strong>各セクションの章にすべて書いてあります</strong>ので、自分で探したり調べたりする必要はありません。そのとおり入力するだけです。</li>
+ <li><strong>BP（ブレークポイント）</strong>＝画面の幅で表示を切り替える基準。本書では <strong>Default（PC・広い）/ Small / Tablet / Mobile（スマホ・狭い）</strong> の4段に分けます（→ <a class="term" href="#term-breakpoint">ブレークポイント</a>）。</li>
+ <li><strong><a class="term" href="#term-reflow">リフロー</a></strong>＝画面が狭くなったときに<strong>並び方が組み替わる</strong>こと。例：PCで横2カラムだったものが、スマホでは縦1カラムに積み替わる。</li>
+ <li><strong>「擬似要素・SVGフィルタ・キーフレームアニメ・複雑グラデ」</strong>＝Studio で<strong>そのままでは作れない特殊な装飾</strong>のこと。<strong>自分でソースを調べる必要はありません</strong>。これらが必要な箇所は、<strong>各セクションの章に【Free代替】【Mini】と書いてあります</strong>。その表記があったらその手順に従うだけです。</li>
+ </ul></div>
  <ol class="steps">
- <li>対象セクションの PC 値（幅・gap・padding・色・フォント・<a class="term" href="#term-zindex">z-index</a>）を確定する。</li>
- <li>当該要素に擬似要素（::before / ::after）・SVGフィルタ・キーフレームアニメ・複雑グラデが含まれないか確認する。含む場合は <a href="#g0-5">§0.5</a> の Free/Mini 代替方針を適用（各章で【Free代替】【Mini】併記）。</li>
- <li>Default(PC) で実装し、Small → Tablet → Mobile の順に上書きする計画を立てる。</li>
+ <li>これから作るセクションの章を開き、そこに書かれている <strong>PC（Default）の値</strong>（幅・間隔・余白・色・フォント・<a class="term" href="#term-zindex">重ね順</a>）を、上から順にそのまま入れていく。<strong>値は章にすべて載っています</strong>。</li>
+ <li>その章に <strong>【Free代替】や【Mini】の表記</strong>があれば、それが「Studio でそのままは作れない装飾」の箇所です。<strong>書いてある手順どおりに対応</strong>すればOK（プラン別の考え方は <a href="#g0-5">§0.5</a>）。表記が無ければ気にしなくて大丈夫です。</li>
+ <li>まず <strong>Default（PC）</strong>で作り、そのあと <strong>Small → Tablet → Mobile</strong> の順で「画面が狭いときだけ変わる値」を上書きしていく（次の「実装中」で具体的に）。</li>
  </ol>
- <ul class="checklist"><li>PC 実値を確定した</li><li>Studio ネイティブ非対応要素の有無を確認した</li></ul>
+ <ul class="checklist"><li>その章の PC（Default）の値を入れた</li><li>【Free代替】【Mini】の表記がある箇所はその手順で対応した（無ければスキップ）</li></ul>
 
  <h4>実装中（BP 別上書き）</h4>
  <ol class="steps">
@@ -1025,9 +1032,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>エディタ右上の <strong>「公開」</strong>でステージング URL に反映し、<strong>実機（スマホ360–414px / タブレット768–1024px / PC）でスクロール確認</strong>する。エディタ内プレビューだけで判定しない。</li>
  <li><strong>必ず公開URLでしか確認できない項目</strong>:
  <ul>
- <li><strong>固定 / スティッキーヘッダー</strong>の追従挙動（仕様 §9.2「スティッキーはエディタ内プレビュー不可」）。ヘッダーは固定配置（position:fixed）・重ね順 <code>z-index:100</code>。</li>
+ <li><strong>固定 / スティッキーヘッダー</strong>の追従挙動。ヘッダーは固定配置（position:fixed）・重ね順 <code>z-index:100</code>。</li>
  <li><strong>フローティング特典ウィジェット</strong>（固定配置・下 <code>20px</code>・右 <code>20px</code>・重ね順 <code>z-index:90</code>）の右下追従と、Mobile(540) での全幅化。Header と同様にエディタ内プレビュー不可。</li>
- <li><strong>ヘッダー背景ぼかし</strong>＝背面ぼかし <code>8px</code>。仕様 §3.7 より <strong>Filter ではなく Backdrop filter で実装</strong>し、<strong>Firefox 非対応のためフォールバック（不透明寄りの背景色）を併設</strong>して確認する。</li>
+ <li><strong>ヘッダー背景ぼかし</strong>＝背面ぼかし <code>8px</code>。 <strong>Filter ではなく Backdrop filter で実装</strong>し、<strong>Firefox 非対応のためフォールバック（不透明寄りの背景色）を併設</strong>して確認する。</li>
  <li><strong>ビューポート基準の単位（vw/dvh）を含む可変サイズ文字</strong>の実機での折返し。</li>
  <li><strong>Embed(sandbox)</strong>（G&NロゴSVG 等）は sandbox で読み込みタイミングの制約があるため公開URLで最終確認。</li>
  </ul>
@@ -1053,7 +1060,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul>
  <li><code>::before/::after</code> の装飾円・斜め線 → <strong>装飾用の追加 Box を絶対配置（<a class="term" href="#term-position">position: 絶対</a>）</strong> で重ねる、または <strong>画像化して Image 配置</strong>。</li>
  <li>グラデーションテキスト（文字をグラデで塗る表現）→ <strong>該当文字を画像化して Image 配置</strong>、または Embed(sandbox) で局所再現。</li>
- <li>マーキー→ <strong>Loop Box</strong>（Free 可・仕様 §10.1。<code>prefers-reduced-motion</code> 自動尊重 / 複製要素に <code>aria-hidden</code> 自動付与）。</li>
+ <li>マーキー→ <strong>Loop Box</strong>（Free 可・。<code>prefers-reduced-motion</code> 自動尊重 / 複製要素に <code>aria-hidden</code> 自動付与）。</li>
  </ul>
  </div>
 
@@ -1069,8 +1076,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h4>レスポンシブ固有の注意</h4>
  <ul>
  <li><strong>レスポンシブ調整そのものは Free でも条件スタイル（Default/Tablet/Mobile 上書き）で完結</strong>する。BP 別の幅・余白・並び替え・表示非表示は Custom Code 不要。</li>
- <li>ただし <strong>キーフレームアニメや擬似要素（::before/::after）を BP 別に出し分ける表現は、Free 代替（追加 Box の BP 別表示非表示）で組むか、Mini 切替後の Custom Code に寄せる</strong>。可否未確定のネイティブ機能（On Appear / <a class="term" href="#term-hover">Hover</a> / Scroll Effect の Free 可否は仕様 §10.7 で未検証）に依存する設計は避け、<strong>Mini 切替後の有効化前提</strong>として各章に明記する。</li>
- <li><strong>ページ数制約（Mini=2＋404）</strong>（仕様 §1.2 / 付録A）はレイアウト方針に影響する。フォーム送信後のサンクス遷移を別ページにするか同一ページ内表示にするかで必要ページ数が変わるため、レスポンシブ実装と並行して必要ページ数を法務確認で確定する（本手順書のフォーム章で詳述）。</li>
+ <li>ただし <strong>キーフレームアニメや擬似要素（::before/::after）を BP 別に出し分ける表現は、Free 代替（追加 Box の BP 別表示非表示）で組むか、Mini 切替後の Custom Code に寄せる</strong>。可否未確定のネイティブ機能（On Appear / <a class="term" href="#term-hover">Hover</a> / Scroll Effect の Free 可否はで未検証）に依存する設計は避け、<strong>Mini 切替後の有効化前提</strong>として各章に明記する。</li>
+ <li><strong>ページ数制約（Mini=2＋404）</strong>はレイアウト方針に影響する。フォーム送信後のサンクス遷移を別ページにするか同一ページ内表示にするかで必要ページ数が変わるため、レスポンシブ実装と並行して必要ページ数を法務確認で確定する（本手順書のフォーム章で詳述）。</li>
  </ul>
 
  <ul class="checklist"><li>レスポンシブ調整自体は Free の条件スタイルで完結すると確認した</li></ul>
@@ -1079,7 +1086,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h3 id="g0-6">0.6 レイヤー命名と全体ツリー（本手順書の共通規約）</h3>
 
- <p>Studio のレイヤー名は公開サイトに出ない。本手順書は全要素に英語ベースのレイヤー名を付け、各章のツリーはこのトップ階層にぶら下げる。<strong>固定配置（position:fixed）の要素は Header（重ね順 z-index:100）と Floating Perk（重ね順 z-index:90）の2つだけ</strong>であり、仕様 §9.2「固定(fixed)は Base ボックス直下に置く必要がある」に従い、<strong>この2要素のみ Base 直下に配置</strong>する。Hero は通常フロー（position:relative）の要素であり、Base 直下要件はない（並び順の都合でトップ階層に置くだけ）。</p>
+ <p>Studio のレイヤー名は公開サイトに出ない。本手順書は全要素に英語ベースのレイヤー名を付け、各章のツリーはこのトップ階層にぶら下げる。<strong>固定配置（position:fixed）の要素は Header（重ね順 z-index:100）と Floating Perk（重ね順 z-index:90）の2つだけ</strong>であり、従い、<strong>この2要素のみ Base 直下に配置</strong>する。Hero は通常フロー（position:relative）の要素であり、Base 直下要件はない（並び順の都合でトップ階層に置くだけ）。</p>
 
  <pre class="tree">Page: LP (Base)
 ├─ Header ← position:fixed, z-index:100, 背面ぼかし 8px。fixed のため Base 直下必須
@@ -1150,7 +1157,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <p>色・テキストスタイルの命名は新造せず、本書で定めた名称を踏襲する。Studio では <strong><a class="term" href="#term-colorstyle">カラースタイル</a> / <a class="term" href="#term-textstyle">テキストスタイル</a>がグローバルトークン層</strong>として機能し、変更はプロジェクト全体に自動伝播する。詳細トークンは <a href="#ch-g2">§2 デザイントークン</a> 参照。</p>
 
- <h4>カラースタイル登録名（スラッシュ階層は仕様 §4.1 の最大3階層・50字以内に準拠）</h4>
+ <h4>カラースタイル登録名（スラッシュ階層は最大3階層・50字以内に準拠）</h4>
  <table>
  <thead>
  <tr><th>グループ</th><th>登録名</th><th>主な代表値（スウォッチ）</th></tr>
@@ -1165,7 +1172,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </tbody>
  </table>
  <div class="callout note">
- <p><code>danger</code>(<code>#E85252</code>) と <code>strike-red</code>(<code>#FF6B6B</code>) はトークン未定義の色だが、必須マーク等で再利用されるため<strong>カラースタイルとして登録</strong>する（仕様 §4.1 に沿いアルファ込み保存可）。</p>
+ <p><code>danger</code>(<code>#E85252</code>) と <code>strike-red</code>(<code>#FF6B6B</code>) はトークン未定義の色だが、必須マーク等で再利用されるため<strong>カラースタイルとして登録</strong>する。</p>
  </div>
 
  <h4>テキストスタイル登録名</h4>
@@ -1199,7 +1206,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul>
  <li>本文・見出し = Noto Sans JP（<code>--ja</code>、Web Font として Font List 最上部＝デフォルト）。</li>
  <li>英字ラベル・数字 = Inter（<code>--en</code>）。</li>
- <li>和欧混植が必要な箇所は Sub Font 運用（仕様 §5.3 の制約: <strong>日本語アカウント必須・追加後ファミリー全体が同一ウェイト化</strong>、に留意）。</li>
+ <li>和欧混植が必要な箇所は Sub Font 運用（制約: <strong>日本語アカウント必須・追加後ファミリー全体が同一ウェイト化</strong>、に留意）。</li>
  </ul>
 
  <ul class="checklist"><li>カラー/テキストスタイル名を新造せず本表に従うと確認した</li></ul>
@@ -1914,7 +1921,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </table>
 
 <div class="callout note">
-<p>リファレンス §3.5: Studio の Border は色 RGBA/HEX 指定可。半透明罫線は 8 桁 HEX でそのままスタイル化できる。</p>
+<p>: Studio の Border は色 RGBA/HEX 指定可。半透明罫線は 8 桁 HEX でそのままスタイル化できる。</p>
 </div>
 
 <h4>2.1-E 状態色（state 系）</h4>
@@ -8239,7 +8246,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h3 id="s9-7">最終確認</h3>
 
  <ol class="steps">
- <li>Toggle 開閉はエディタ内プレビューでも確認できるが、最終はライブプレビュー／公開 URL で実機確認する（リファレンス §10.2・<a href="#ch-t8">§8</a>.2）。</li>
+ <li>Toggle 開閉はエディタ内プレビューでも確認できるが、最終はライブプレビュー／公開 URL で実機確認する（・<a href="#ch-t8">§8</a>.2）。</li>
  <li><code>faq-item-1</code> が初期 open、他 3 つが初期 closed であること。</li>
  <li>open 時にカードの影・枠色が強調され、矢印が回転すること。</li>
  <li>FAQ セクション末端色 <code>#D8E7FC</code> と次 CTA セクション開始色 <code>#D8E7FC</code> が連続し、境界線が見えないこと（同一カラースタイル <code>blue/bg</code> 参照で担保）。</li>
@@ -8783,7 +8790,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </div>
 
  <div class="callout warn">
- <p><strong>前提（リファレンス §1 / 付録A）</strong>: 本LPは制作中 <strong>Free プラン</strong>。下段の「Powered by Studio」はバナー／クレジットの扱いがプラン依存です。Free ではプラン由来の Studio クレジット／バナーが表示され、<strong>Mini 以上で非表示</strong>にできます（表示位置はリファレンス記載がないため<strong>実機確認事項</strong>）。本セクションのテキストとしての「Powered by Studio」は<strong>手動 <a class="term" href="#term-textstyle">テキストスタイル</a>付き Text</strong> で配置します（自動付与のバナーとは別物）。</p>
+ <p><strong>前提</strong>: 本LPは制作中 <strong>Free プラン</strong>。下段の「Powered by Studio」はバナー／クレジットの扱いがプラン依存です。Free ではプラン由来の Studio クレジット／バナーが表示され、<strong>Mini 以上で非表示</strong>にできます（表示位置はリファレンス記載がないため<strong>実機確認事項</strong>）。本セクションのテキストとしての「Powered by Studio」は<strong>手動 <a class="term" href="#term-textstyle">テキストスタイル</a>付き Text</strong> で配置します（自動付与のバナーとは別物）。</p>
  </div>
 
  <figure class="fig">
@@ -8837,7 +8844,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  └── ft-powered [Text] Powered by Studio</pre>
 
  <h3 id="s11-0">0. 事前準備（カラースタイル / ロゴ素材）</h3>
- <p>以下が未登録なら先に作成しておくと、以降の値入力で<a class="term" href="#term-colorstyle">カラースタイル</a>名を選ぶだけで済みます（リファレンス §4.1 のとおり、カラースタイルはプロジェクト全体に自動伝播します）。</p>
+ <p>以下が未登録なら先に作成しておくと、以降の値入力で<a class="term" href="#term-colorstyle">カラースタイル</a>名を選ぶだけで済みます（とおり、カラースタイルはプロジェクト全体に自動伝播します）。</p>
 
  <h4>カラースタイル（左ナビ → スタイル → カラータブ → ＋追加する）</h4>
  <table>
@@ -8971,7 +8978,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>既定タイポ: サイズ = <code>11.5</code>px、ウェイト = <code>400</code>、色 = <code>sub</code>（<span class="sw" style="--c:#6273A0"></span> <code>#6273A0</code>）。背景は親 <code>sec-footer</code> の <code>blue-soft</code> を継承（指定不要）。</li>
  </ol>
  <div class="callout tip">
- <p><strong>リファレンス §3.2</strong>: Studio に「両端揃え」表記はなく、space-between は配置プルダウンの<strong>「均等」</strong>を選ぶ。親 <code>ft-bottom</code> の幅を <code>100%</code>（固定基準）にしているため「均等」が正しく効く（親 auto + 子% の落とし穴を回避）。</p>
+ <p><strong></strong>: Studio に「両端揃え」表記はなく、space-between は配置プルダウンの<strong>「均等」</strong>を選ぶ。親 <code>ft-bottom</code> の幅を <code>100%</code>（固定基準）にしているため「均等」が正しく効く（親 auto + 子% の落とし穴を回避）。</p>
  </div>
  <ul class="checklist"><li>ft-bottom を作成し max-width 1320・中央・横並び「均等」を設定した</li><li>padding-top 24・文字 11.5px/400/sub を設定した</li></ul>
 
@@ -8996,7 +9003,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル → テキストタブ → タイポグラフィ: サイズ = <code>11.5</code>px、ウェイト = <code>400</code>、色 = <code>sub</code>（<span class="sw" style="--c:#6273A0"></span> <code>#6273A0</code>）。</li>
  </ol>
  <div class="callout note">
- <p><strong>プラン依存の注意（リファレンス §1 / 付録A）</strong>: Free ではプラン由来の Studio クレジット／バナーが別途表示され、Mini 以上で非表示化できる（表示位置はリファレンス記載がないため実機確認事項）。この <code>ft-powered</code> Text はあくまでデザイン上のクレジット表記。Mini 切替後にバナーを消す場合、このテキストを残すか消すかは<strong>クライアント判断</strong>で確定する。</p>
+ <p><strong>プラン依存の注意</strong>: Free ではプラン由来の Studio クレジット／バナーが別途表示され、Mini 以上で非表示化できる（表示位置はリファレンス記載がないため実機確認事項）。この <code>ft-powered</code> Text はあくまでデザイン上のクレジット表記。Mini 切替後にバナーを消す場合、このテキストを残すか消すかは<strong>クライアント判断</strong>で確定する。</p>
  </div>
  <ul class="checklist"><li>ft-powered を入力し 11.5px/400/sub を設定した</li></ul>
 
@@ -9033,7 +9040,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </figure>
 
  <div class="callout warn">
- <p><strong>⚠️ 写像はあくまで近似で、レイアウト切替点がずれる可視帯が生じます。</strong>本来の 1024px での切替（<code>ft-inner</code> 1列化など）は<strong>ビューポート ≤1024px</strong> で効かせたいところですが、Studio Tablet は <strong>≤840px</strong> でしか発火しません。結果、<strong>841〜1024px 幅</strong>（iPad 横・小型ノート）では本来 1 列のところを Studio 再現は 2 列のまま表示されます。同様に 767px ↔ Studio Mobile 540px のため、<strong>541〜767px 帯</strong>でも切替点がずれます。対応は次のいずれかを作業者判断で選ぶこと（リファレンス §8.1: Studio は Small=1140 等の追加 BP を任意で足せる）。</p>
+ <p><strong>⚠️ 写像はあくまで近似で、レイアウト切替点がずれる可視帯が生じます。</strong>本来の 1024px での切替（<code>ft-inner</code> 1列化など）は<strong>ビューポート ≤1024px</strong> で効かせたいところですが、Studio Tablet は <strong>≤840px</strong> でしか発火しません。結果、<strong>841〜1024px 幅</strong>（iPad 横・小型ノート）では本来 1 列のところを Studio 再現は 2 列のまま表示されます。同様に 767px ↔ Studio Mobile 540px のため、<strong>541〜767px 帯</strong>でも切替点がずれます。対応は次のいずれかを作業者判断で選ぶこと（: Studio は Small=1140 等の追加 BP を任意で足せる）。</p>
  <ul>
  <li><strong>(a) フィデリティ優先</strong>: Tablet の基準値を <strong>1024px 付近へ変更</strong>する、または Small(1140) など中間 BP を追加して切替点を 1024 / 767 に寄せる。</li>
  <li><strong>(b) 許容する場合</strong>: 「841〜1024px と 541〜767px でレイアウト切替点がずれる」<strong>既知差分</strong>として明記し、近似 BP（840 / 540）のまま進める。</li>
@@ -9082,7 +9089,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <span class="badge">Mini</span> <a class="term" href="#term-customcode">Custom Code</a>（Body）に SVG を直接注入することも可能だが、フッターロゴ程度では過剰。<strong>Image 化を推奨</strong>。
  </div>
  <div class="callout note">
- <p>別案として <a class="term" href="#term-embed">Embed（埋め込み)</a>（<a class="term" href="#term-sandbox">sandbox</a>）に SVG コードを貼る方法もある（リファレンス §6: SVG 含む HTML は sandbox 自動判定）。ただし色追従・サイズ制御の手間を考えると Image 化が簡単で確実。</p>
+ <p>別案として <a class="term" href="#term-embed">Embed（埋め込み)</a>（<a class="term" href="#term-sandbox">sandbox</a>）に SVG コードを貼る方法もある（: SVG 含む HTML は sandbox 自動判定）。ただし色追従・サイズ制御の手間を考えると Image 化が簡単で確実。</p>
  </div>
  <div class="callout tip">
  <p>このセクションに<a class="term" href="#term-pseudo">疑似要素</a>（::before/::after）・@keyframes・複雑グラデ・SVGフィルタは<strong>無し</strong>。全プロパティ（背景色・border・flex・gap・padding・margin・タイポ・リンク）が Studio ボックスタブ／テキストタブのネイティブ設定で再現可能。<strong>Custom Code は不要</strong>。</p>
@@ -9855,32 +9862,32 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <tr>
 <td><strong><a class="term" href="#term-customcode">Custom Code</a> は Free 不可・Mini 以上で解禁</strong></td>
 <td>Free では既存コードの削除のみ可、編集・有効化は不可。本LPは「Free実装 → 納品後Mini切替」方針のため、Custom Code 依存の演出は <strong>Mini切替後に有効化する前提で指示書に明記</strong>する。</td>
-<td>リファレンス§7</td>
+<td></td>
 </tr>
 <tr>
 <td><strong><a class="term" href="#term-embed">Embed</a>（sandbox/iframe）は全プラン可（Free含む）</strong></td>
 <td>Free段階でも <code>&lt;style&gt;</code>＋<code>@keyframes</code>＋<a class="term" href="#term-pseudo">疑似要素</a>を内包した Embed Box は配置できる。判定は自動（iframeタグのみ＝iframe型／それ以外＝<a class="term" href="#term-sandbox">sandbox</a>型）。</td>
-<td>リファレンス§6</td>
+<td></td>
 </tr>
 <tr>
 <td><strong><a class="term" href="#term-loopbox">Loop Box</a> は Free 可（公式確認済）</strong></td>
 <td>マーキーは Free のまま使える。<code>prefers-reduced-motion</code> を自動尊重し、複製要素に <code>aria-hidden="true"</code> を自動付与する。</td>
-<td>リファレンス§10.1</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>On Appear / Hover / <a class="term" href="#term-toggle">Toggle</a> / Carousel / Scroll Effect の Free 可否は未検証</strong></td>
 <td>公式ヘルプに明示ゲートなし。pricing機能比較表で個別確認が必要。可否未確定の機能に依存する設計は避け、Mini切替後有効化前提で記述する。</td>
-<td>リファレンス§10.7</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>Scroll Effect は新公開インフラ（beta）未対応</strong></td>
 <td>採用する場合は、公開時に現行（安定）インフラでPublishしていることを確認する。</td>
-<td>リファレンス§10.6</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>アクセシビリティ</strong></td>
 <td>動きを減らす設定（<code>prefers-reduced-motion: reduce</code>）のときはマーキーのアニメを停止します。Studioでも Loop Box は自動配慮されますが、Custom Code を使う場合は同等の配慮を必ず同梱します。</td>
-<td>リファレンス§10.1</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -10258,7 +10265,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <ul class="checklist"><li>ヒーロー見出しの Embed 化方針を確定した</li><li>SVGフィルタ #hl-rough を Embed に同梱した</li></ul>
 
 <div class="callout warn">
-<p><strong>Embed の文字数上限は公式未記載</strong>（リファレンス§6。旧specの「30,000文字」は Custom Code 側との混同疑い）。ヒーロー見出しコードは小さいため問題ないが、重い素材は寄せない。</p>
+<p><strong>Embed の文字数上限は公式未記載</strong>（。旧specの「30,000文字」は Custom Code 側との混同疑い）。ヒーロー見出しコードは小さいため問題ないが、重い素材は寄せない。</p>
 </div>
 
 <h4 id="t6-4-3">6.4.3 [K][L] フローティング特典バナー <code>float-perk</code> ＋ 文字光沢 <code>perkShine</code></h4>
@@ -11427,7 +11434,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
 <div class="plan mini">
 <span class="badge">Mini</span><strong>B 案 / Free 代替・要検証：1 ファイルを Box 背景にして position 指定</strong>
-<p>Studio の画像のフィット指定 UI（object-fit / position 相当）の有無は <code>confidence: 未検証</code>（リファレンス §8 残課題・付録C）。<code>background-position: left/right</code> 相当の半分クロップが Box 背景で再現できると実機確認できた場合のみ採用。再現できなければ A 案へ。</p>
+<p>Studio の画像のフィット指定 UI（object-fit / position 相当）の有無は <code>confidence: 未検証</code>。<code>background-position: left/right</code> 相当の半分クロップが Box 背景で再現できると実機確認できた場合のみ採用。再現できなければ A 案へ。</p>
 </div>
 
 <h4>Mobile（&lt;540）/ Tablet（540–840）<a class="term" href="#term-conditional">条件スタイル</a></h4>
@@ -12048,7 +12055,7 @@ sec-footer
  <li>左ナビ → <strong>追加</strong> → 基本タブ → <strong>Box</strong> を親の中へドラッグ。レイヤー名を疑似要素の役割で命名（例 <code>deco-circle-yellow</code>）。</li>
  <li>右パネル → ボックスタブ → ポジション → 絶対（absolute） → 距離（Top/Right/Bottom/Left）を確定済みの値で入力。</li>
  <li>サイズ・角丸・背景（外観タブ）を確定済みの値どおり設定。</li>
- <li>レイヤーパネルで<a class="term" href="#term-zindex">重ね順</a>を調整（装飾は本文の背面へ。z-index または並べ替え。リファレンス §9.3）。</li>
+ <li>レイヤーパネルで<a class="term" href="#term-zindex">重ね順</a>を調整（装飾は本文の背面へ。z-index または並べ替え。）。</li>
  </ol>
  <ul class="checklist"><li>疑似要素の役割を「機能（アイコン/矢印/バッジ）」と「純装飾（円/光/しっぽ）」に分類した</li><li>純装飾は省略可否を design lead に確認した（特に十字点線コネクタ・吹き出ししっぽ）</li><li>モバイルで非表示になる疑似要素（<code>.hd-cta-deco</code> / <code>.cta-illust</code> 系 / <code>.stat-panel</code> 円）は Mobile <a class="term" href="#term-conditional">条件スタイル</a>で非表示にした</li></ul>
 
@@ -12063,7 +12070,7 @@ sec-footer
 
  <div class="plan free recommended">
  <span class="badge">Free代替</span>
- Studio に SVG フィルタ・プリミティブは存在しない（リファレンス §3.7 の Filter/Backdrop filter は brightness/blur 等6種のみで <code>feTurbulence</code> 不可）。<strong>①ラフネスを諦めてクリーンな下線にする</strong>（後述 <a href="#t9-3">9.3</a> の Box 下線で代替）、<strong>②ラフなマーカーストロークを透過 PNG/SVG 画像として焼き込み</strong>、見出し語の背面に Image 配置。下線アニメが不要なら ② で見た目はほぼ再現できる。
+ Studio に SVG フィルタ・プリミティブは存在しない（ Filter/Backdrop filter は brightness/blur 等6種のみで <code>feTurbulence</code> 不可）。<strong>①ラフネスを諦めてクリーンな下線にする</strong>（後述 <a href="#t9-3">9.3</a> の Box 下線で代替）、<strong>②ラフなマーカーストロークを透過 PNG/SVG 画像として焼き込み</strong>、見出し語の背面に Image 配置。下線アニメが不要なら ② で見た目はほぼ再現できる。
  </div>
  <div class="plan mini">
  <span class="badge">Mini</span>
@@ -12109,7 +12116,7 @@ sec-footer
 
  <div class="plan free recommended">
  <span class="badge">Free代替</span>
- <code>background-clip:text</code> のグラデ文字塗りも <code>background-position</code> アニメも Studio <a class="term" href="#term-textstyle">テキストスタイル</a>では不可（リファレンス §4.2 グローバルトークンに変数機能なし、テキストへのグラデ塗り非対応）。<strong>Embed sandbox に見出し <code>&lt;h1&gt;</code> 一式（HTML＋<code>&lt;style&gt;</code>＋<code>#hl-rough</code> 隠し SVG）を丸ごと配置</strong>するのが最も忠実。Embed は Free でも使えるためこれが本命。<br><strong>妥協案</strong>：見出しを通常 Text にし、強調語のみ<a class="term" href="#term-colorstyle">カラースタイル</a> <code>blue</code>(<span class="sw" style="--c:#4A7DE8"></span><code>#4A7DE8</code>) 単色＋背面に静的な黄ハイライト Box（skew なし）。出現は Studio の <strong>On Appear → Fade In from Bottom</strong>（リファレンス <a href="#ch-t10">§10</a>.4、Free 可否は未検証＝Mini 切替後有効化前提）で代替。グラデ・スイープ・ラフ質感は失われる。
+ <code>background-clip:text</code> のグラデ文字塗りも <code>background-position</code> アニメも Studio <a class="term" href="#term-textstyle">テキストスタイル</a>では不可（グローバルトークンに変数機能なし、テキストへのグラデ塗り非対応）。<strong>Embed sandbox に見出し <code>&lt;h1&gt;</code> 一式（HTML＋<code>&lt;style&gt;</code>＋<code>#hl-rough</code> 隠し SVG）を丸ごと配置</strong>するのが最も忠実。Embed は Free でも使えるためこれが本命。<br><strong>妥協案</strong>：見出しを通常 Text にし、強調語のみ<a class="term" href="#term-colorstyle">カラースタイル</a> <code>blue</code>(<span class="sw" style="--c:#4A7DE8"></span><code>#4A7DE8</code>) 単色＋背面に静的な黄ハイライト Box（skew なし）。出現は Studio の <strong>On Appear → Fade In from Bottom</strong>（リファレンス <a href="#ch-t10">§10</a>.4、Free 可否は未検証＝Mini 切替後有効化前提）で代替。グラデ・スイープ・ラフ質感は失われる。
  </div>
  <div class="plan mini">
  <span class="badge">Mini</span>
@@ -12194,7 +12201,7 @@ sec-footer
  <tbody>
  <tr>
  <td><strong>【Free 代替（本命）】</strong></td>
- <td><strong>Studio の Loop Box が直接対応</strong>（リファレンス §10.1、<strong>Free でも利用可</strong>）。左ナビ → 追加 → 基本タブ → インタラクション → <strong>LoopBox</strong> を配置 → 子に12個のロゴ Image。複製は自動生成され継ぎ目なしループ（ロゴを2セット手で複製する必要はなく、12枚を1セット入れるだけ）。速度は <code>px/s</code>（既定60px/s）。<code>40〜60px/s</code> で品よく調整。<strong>Pause on hover</strong> チェックでホバー停止。<code>prefers-reduced-motion</code> 自動尊重・複製に <code>aria-hidden="true"</code> 自動付与のためアクセシビリティ追加実装は不要。<strong>overflow は自動 hidden 固定</strong>。</td>
+ <td><strong>Studio の Loop Box が直接対応</strong>（<strong>Free でも利用可</strong>）。左ナビ → 追加 → 基本タブ → インタラクション → <strong>LoopBox</strong> を配置 → 子に12個のロゴ Image。複製は自動生成され継ぎ目なしループ（ロゴを2セット手で複製する必要はなく、12枚を1セット入れるだけ）。速度は <code>px/s</code>（既定60px/s）。<code>40〜60px/s</code> で品よく調整。<strong>Pause on hover</strong> チェックでホバー停止。<code>prefers-reduced-motion</code> 自動尊重・複製に <code>aria-hidden="true"</code> 自動付与のためアクセシビリティ追加実装は不要。<strong>overflow は自動 hidden 固定</strong>。</td>
  </tr>
  <tr>
  <td>両端フェード</td>
@@ -12256,7 +12263,7 @@ sec-footer
 
  <h3 id="t9-7">9.7 ボタン hover・カード lift・FAQ 開閉（Studio ネイティブ可の補足）</h3>
 
- <p>疑似要素「＞」チップを伴うボタンの <strong>hover での色反転＋矢印 border 追従</strong> は、Studio の <a class="term" href="#term-hover">Hover</a> 状態（変形タブ＋条件スタイル、リファレンス §10.4）でネイティブ再現できる（Custom Code 不要）。Free 可否は未検証のため Mini 切替後有効化前提で記述。</p>
+ <p>疑似要素「＞」チップを伴うボタンの <strong>hover での色反転＋矢印 border 追従</strong> は、Studio の <a class="term" href="#term-hover">Hover</a> 状態（変形タブ＋条件スタイル）でネイティブ再現できる（Custom Code 不要）。Free 可否は未検証のため Mini 切替後有効化前提で記述。</p>
 
  <div class="callout note">
  <p><strong>ボタン hover</strong>（btn-gra / cta-pri / form button 等）：右パネル → レイヤーで <strong>Hover 条件スタイル（ダイヤ型アイコン）</strong>を追加 → 背景を <code>yellow</code>(<span class="sw" style="--c:#FFD166"></span><code>#FFD166</code>)、文字を <code>ink</code>(<span class="sw" style="--c:#0F1A33"></span><code>#0F1A33</code>)、変形タブで Move Y <code>−2px</code>、外観で影 <code>0 12px 26px rgba(255,209,102,.5)</code>、変形タブ → アニメーション → 時間 <code>200ms</code>。<strong>＞チップ Box の border 色も同 Hover で <code>ink</code> に切替</strong>（currentColor 追従を手動で再現）。</p>
@@ -12627,13 +12634,13 @@ sec-footer
 <figcaption>公開基盤の判定フロー。HTML ソースに <code>generator=Studio.Design.HRC</code> が出れば新基盤。出なければ旧基盤なので切替 → 約 5 分待機 → Embed / Loop Box を再検証。独自ドメインは A レコードを新基盤値へ更新する。</figcaption>
 </figure>
 
-<h4>公開基盤（最重要・リファレンス §12.1）</h4>
+<h4>公開基盤（最重要・）</h4>
 <ul class="checklist"><li>公開サイト基盤が <strong>新基盤（MPA / SSR）</strong> になっている（公開 URL の HTML ソースに <code>generator=Studio.Design.HRC</code> が出る。出なければ旧基盤。<strong>ソース表示＋generator検索の手順は <a href="#g0-4">§0.4</a></strong>）</li><li>旧基盤だった場合、Project 設定 → 公開サイト基盤の切替 → 新基盤選択 → 保存（約 5 分）を実施し、Embed（G&amp;N ロゴ SVG）/ 外部タグ / Loop Box を切替後に再検証</li><li>独自ドメイン接続時、A レコードを <strong><code>34.111.141.225</code></strong>（新基盤値）に更新済み（旧 <code>35.194.122.208</code> のままでない）</li><li>新基盤はメタ未設定だと空欄出力 → 下記 title / description / OGP / favicon が<strong>必ず明示設定</strong>されている</li></ul>
 
-<h4>メタ（右パネル サイト / ページタブ・ページ優先・リファレンス §12.3）</h4>
+<h4>メタ（右パネル サイト / ページタブ・ページ優先・）</h4>
 <ul class="checklist"><li>サイト <code>&lt;title&gt;</code> 設定（例: <code>G&amp;N — 挑戦するスタートアップに、補助金という追い風を。</code>、全角 30 字目安・重要 KW＝補助金 / 申請支援を前方）</li><li>meta description 設定（全角 70〜120 字・先頭に KW）</li><li>OGP 画像を設定（<strong><code>1200×630px</code></strong>・5MB 未満。モーダル画像は不可）。SNS シェアでカード表示されるか確認</li><li>favicon 設定（<code>48×48px</code> 以上、SVG 含む可）。ブラウザタブにアイコン表示</li><li>サンクスページ等の補助ページに <strong>noindex スイッチ ON</strong>（ページ単位）</li><li>ダッシュボード（Home）の <strong>sitemap スイッチ ON</strong> → <code>/sitemap.xml</code> が配信される（noindex / modal ページは自動除外される点を確認）</li><li>Google Search Console に sitemap を登録（クライアント GSC 連携可否を確認）</li></ul>
 
-<h4>計測タグ・構造化データ（Mini 以上 / <a class="term" href="#term-customcode">Custom Code</a>・リファレンス §7・付録A）</h4>
+<h4>計測タグ・構造化データ（Mini 以上 / <a class="term" href="#term-customcode">Custom Code</a>・・付録A）</h4>
 <ul class="checklist"><li>GA4 / GTM タグを設置（<strong>Free 不可・Mini 以上</strong>で head / body の Custom Code に投入）。リード計測が重要な補助金 LP は Mini 切替後に必須</li><li>JSON-LD 構造化データを head に <code>&lt;script type="application/ld+json"&gt;</code> で設置（標準 UI なし・Custom Code 経路。Mini 以上）</li></ul>
  <p class="rv-label">理解の確認（作業カウント対象外）</p>
  <ul class="review"><li>noindex は AI クローラーを止めない点を理解（完全非公開ページが必要なら BASIC 認証等を別途。補助金 LP は露出増狙いで通常問題なし）</li></ul>
@@ -13179,6 +13186,8 @@ sec-footer
 <dt id="term-form">フォーム</dt><dd>追加パネルの基本タブ→フォームセクションから配置する既製フォーム（Form1/2/3はフィールド構成・レイアウト差で機能差ではない）。フィールドごとに必須・タイプ（text/email/phone等）・プレースホルダを設定。送信先はメール通知（1フォーム最大2宛先・1日500通・送信元<code>noreply@studio.site</code>固定）とGoogle Sheets連携の2系統。送信後遷移は別ページを作成して指定し、自動返信はネイティブ非対応（外部連携が必要）、スパム対策はreCAPTCHA v3のみ。Apps連携はFree不可の可能性があり要確認。</dd>
 <dt id="term-pseudo">疑似要素</dt><dd>CSSの<code>::before</code>/<code>::after</code>に相当する疑似要素を生成する標準UIは、本仕様リファレンスでは確認できていない。装飾的な要素は通常のボックスを追加し、ポジション（絶対）や重ね順で重ねて表現するのが本LPでの基本方針。CSS疑似要素が必要な場合はCustom Code（Mini以上）の領域となる。</dd>
 <dt id="term-gutter">ガター</dt><dd>一般にレイアウトの列間・要素間の余白を指す用語。Studioではボックス内の子要素間の余白は <code>gap</code>（間隔/ギャップ・px指定）、要素の内外余白は <code>padding</code>/<code>margin</code>（一括または上下左右個別）で表現する。本LPで「ガター」と言うときは、これらgap/paddingによる列間スペースの設計を指す。</dd>
+<dt id="term-reflow">リフロー（構造リフロー）</dt><dd>画面の幅が変わったときに、要素の<strong>並び方・段組みそのものが組み替わる</strong>こと。例：PC（広い画面）で横2カラムに並んでいたカードが、スマホ（狭い画面）では縦1カラムに積み替わる。本書では特に、画面幅 1024px 以下で Hero / CTA / Footer / 特典バナーが縦1カラムに変わる切替を「構造リフロー」と呼び、Studio では Small ブレークポイントに置いて再現する。単なる文字サイズ・余白の微調整とは区別する。</dd>
+<dt id="term-pcvalue">PC 値（Default 値）</dt><dd>パソコン（広い画面＝Default）で表示したときの各プロパティの数値。幅・間隔(gap)・余白(padding/margin)・色・文字サイズ・重ね順など。<strong>本書では各セクションの章にすべて明記</strong>してあるので、作業者が自分で調べる必要はなく、そのまま入力すればよい。まず PC 値で組み、画面が狭いときだけ変わる値を Small / Tablet / Mobile で上書きする。</dd>
 </dl></section>
 <div class="pager"><a class="prev" href="#ch-t11"><small>← 前へ</small><b>11. モバイル実装の落とし穴（v10 ベース監査）</b></a><a class="next" href="#top"><small>↑</small><b>トップへ戻る</b></a></div>
 
