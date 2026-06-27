@@ -2027,17 +2027,17 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h4>標準 9 スタイル</h4>
 <div class="callout note"><p>📍 <strong>行高・間隔は「%」で書いています</strong>（Studio パネルの「行高」「間隔」欄の数値）。</p>
-<p>⚠️ <strong>行高はプリセットから選ぶ方式</strong>です（<code>100 / 120 / 130 / 140 / 150 / 160 / 180 / 200 / 250</code> …）。<strong>118% のような中間値は入力できず、最も近いプリセットを選びます</strong>（例: <code>118% → 120%</code>、<code>122% → 120%</code>、<code>195% → 200%</code>）。<strong>1〜2% の差は見た目に影響しません</strong>ので、表の値に一番近いものを選べばOKです。</p>
+<p>⚠️ <strong>行高はプリセット選択式</strong>（<code>100 / 120 / 130 / 140 / 150 / 160 / 180 / 200 / 250</code> …）で中間値は入れられません。<strong>下表の「行高(%)」はそのまま選べるプリセット値にしてあります</strong>（リストから同じ数値を選ぶだけ）。設計上の厳密値（例 H1 Hero=118%, Body=190%）との<strong>1〜2% の差は見た目に影響しません</strong>。</p>
 <p>一方 <strong>間隔（letter-spacing）は数値をそのまま入力</strong>できます（例 <code>-4%</code>）。<br><strong>文字色はテキストスタイルには入りません</strong>。下表「文字色」列は、そのスタイルを当てた各テキストに <a href="#g2-1">§2.1</a> のカラースタイル（<code>text/ink</code> 等）を<strong>別途適用</strong>する色です。</p></div>
 <table>
 <thead><tr><th>#</th><th>テキストスタイル名</th><th>フォント</th><th>ウェイト</th><th>Size(PC)</th><th>行高(%)</th><th>間隔(%)</th><th>文字色<br><small>(要素に別途適用)</small></th><th>主な用途</th></tr></thead>
 <tbody>
-<tr><td>1</td><td><strong>H1 Hero</strong></td><td>Noto Sans JP</td><td>900</td><td><code>60px</code></td><td><code>118%</code></td><td><code>-4%</code></td><td><code>text/ink</code>（em 部はグラデ・注）</td><td><code>.hero h1</code> FV メインキャッチ。PC 既定 nowrap</td></tr>
-<tr><td>2</td><td><strong>H2 Section</strong></td><td>Noto Sans JP</td><td>900</td><td><code>52px</code></td><td><code>122%</code></td><td><code>-3%</code></td><td><code>text/ink</code></td><td><code>.section-title</code> 各セクション見出し</td></tr>
+<tr><td>1</td><td><strong>H1 Hero</strong></td><td>Noto Sans JP</td><td>900</td><td><code>60px</code></td><td><code>120%</code></td><td><code>-4%</code></td><td><code>text/ink</code>（em 部はグラデ・注）</td><td><code>.hero h1</code> FV メインキャッチ。PC 既定 nowrap</td></tr>
+<tr><td>2</td><td><strong>H2 Section</strong></td><td>Noto Sans JP</td><td>900</td><td><code>52px</code></td><td><code>120%</code></td><td><code>-3%</code></td><td><code>text/ink</code></td><td><code>.section-title</code> 各セクション見出し</td></tr>
 <tr><td>3</td><td><strong>H3 Card</strong></td><td>Noto Sans JP</td><td>900</td><td><code>22px</code></td><td><code>150%</code></td><td><code>0%</code></td><td><code>text/ink</code></td><td>カード見出し（prob/appr/mkt/svc/vp-headline）。実値 20–22px のばらつきは 22px に統一</td></tr>
-<tr><td>4</td><td><strong>Body</strong></td><td>Noto Sans JP</td><td>400</td><td><code>14px</code></td><td><code>190%</code></td><td><code>0%</code></td><td><code>text/sub</code></td><td>本文・各カード p。word-break は body で keep-all、カード内は normal</td></tr>
-<tr><td>5</td><td><strong>Lead</strong></td><td>Noto Sans JP</td><td>400</td><td><code>15.5px</code></td><td><code>195%</code></td><td><code>0%</code></td><td><code>text/sub</code></td><td><code>.lead</code> セクション説明リード。max-width 620px</td></tr>
-<tr><td>6</td><td><strong>Hero Sub</strong></td><td>Noto Sans JP</td><td>600</td><td><code>16px</code></td><td><code>195%</code></td><td><code>0%</code></td><td><code>text/ink</code></td><td><code>.hero-sub</code> FV サブコピー。max-width 520px</td></tr>
+<tr><td>4</td><td><strong>Body</strong></td><td>Noto Sans JP</td><td>400</td><td><code>14px</code></td><td><code>200%</code></td><td><code>0%</code></td><td><code>text/sub</code></td><td>本文・各カード p。word-break は body で keep-all、カード内は normal</td></tr>
+<tr><td>5</td><td><strong>Lead</strong></td><td>Noto Sans JP</td><td>400</td><td><code>15.5px</code></td><td><code>200%</code></td><td><code>0%</code></td><td><code>text/sub</code></td><td><code>.lead</code> セクション説明リード。max-width 620px</td></tr>
+<tr><td>6</td><td><strong>Hero Sub</strong></td><td>Noto Sans JP</td><td>600</td><td><code>16px</code></td><td><code>200%</code></td><td><code>0%</code></td><td><code>text/ink</code></td><td><code>.hero-sub</code> FV サブコピー。max-width 520px</td></tr>
 <tr><td>7</td><td><strong>English Label</strong></td><td>Inter</td><td>800</td><td><code>12px</code></td><td><code>100%</code></td><td><code>14%</code></td><td><code>text/sub</code>（footer は <code>brand/yellow</code>）</td><td>英字ラベル。<strong>text-transform: uppercase</strong></td></tr>
 <tr><td>8</td><td><strong>English Number L</strong></td><td>Inter</td><td>900</td><td><code>96px</code></td><td><code>100%</code></td><td><code>-4%</code></td><td><code>brand/blue</code>（多くは blue→navy グラデ・注）</td><td>統計大数字（vc-big180 / perk96 / rec56 / float66 等。要素側で個別 Size 上書き可）</td></tr>
 <tr><td>9</td><td><strong>Footnote</strong></td><td>Noto Sans JP</td><td>400</td><td><code>11.5px</code></td><td><code>160%</code></td><td><code>0%</code></td><td><code>text/sub</code>（最淡は <code>text/sub-lt</code>）</td><td>脚注・注記・同意文（rec-foot / ft-bottom / consent / vp-note）</td></tr>
@@ -2091,7 +2091,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>標準 9 スタイル（H1 Hero / H2 Section / H3 Card / Body / Lead / Hero Sub / English Label / English Number L / Footnote）を PC 値で登録した</li><li>English Label に text-transform: uppercase を設定した</li><li>各スタイルの文字色が §2.1 のカラースタイル（<code>text/ink</code> <code>text/sub</code> <code>brand/blue</code> 等）に紐づいている</li><li>グラデ文字（H1 em / Number L）はスタイルは基準色、グラデは各章で個別指定する方針を確認した</li><li>補助 2 スタイル（hero-eyebrow / lw-label）はスタイル登録せず各章で組む方針を確認した</li></ul>
 
 <h3 id="g2-3">2.3 レスポンシブ（テキストスタイル内の条件スタイル）</h3>
-<div class="callout note"><p>📍 数値は <strong>サイズ(px) / 行高(%)</strong> の順（Studio パネルと同じ%）。<strong>行高はプリセット選択式</strong>なので最も近い値を選びます（§2.2 の注記参照）。Tablet/Mobile は <a class="term" href="#term-conditional">条件スタイル</a>でこの値に上書きします。</p></div>
+<div class="callout note"><p>📍 数値は <strong>サイズ(px) / 行高(%)</strong> の順（Studio パネルと同じ%）。<strong>行高はプリセット選択式</strong>で、下表の行高はそのまま選べるプリセット値にしてあります（§2.2 の注記参照）。Tablet/Mobile は <a class="term" href="#term-conditional">条件スタイル</a>でこの値に上書きします。</p></div>
 
 <p>テキストスタイルは <strong>1 スタイル定義内に PC/Tablet/Mobile を内包</strong>できます。元データの不揃いな <code>@media</code> は Studio 3 <a class="term" href="#term-breakpoint">ブレークポイント</a>（<strong>PC &gt; 840 / Tablet 540–840 / Mobile &lt; 540</strong>）へ写像します。各スタイル選択中に、下部ツールバーで対象デバイス幅へ切替 → Size / Line height を上書き（上書き中のプロパティ枠は <strong>Tablet=黄緑 / Mobile=オレンジ</strong>で色分け表示。誤上書きは横の <strong>Reset override</strong> で個別解除）。</p>
 
@@ -2123,12 +2123,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <table>
 <thead><tr><th>テキストスタイル</th><th>PC</th><th>Tablet（540–840）</th><th>Mobile（&lt; 540）</th></tr></thead>
 <tbody>
-<tr><td>H1 Hero</td><td><code>60px</code> / 118% / nowrap</td><td><code>44px</code> / 120% / normal</td><td><code>32px</code>（≒clamp 26–36px）/ 120%</td></tr>
-<tr><td>H2 Section</td><td><code>52px</code> / 122%</td><td><code>40px</code> / 125%</td><td><code>30px</code>（≒clamp 24–32px）/ 125%</td></tr>
+<tr><td>H1 Hero</td><td><code>60px</code> / 120% / nowrap</td><td><code>44px</code> / 120% / normal</td><td><code>32px</code>（≒clamp 26–36px）/ 120%</td></tr>
+<tr><td>H2 Section</td><td><code>52px</code> / 120%</td><td><code>40px</code> / 120%</td><td><code>30px</code>（≒clamp 24–32px）/ 120%</td></tr>
 <tr><td>H3 Card</td><td><code>22px</code> / 150%</td><td><code>19px</code> / 150%</td><td><code>17px</code> / 150%</td></tr>
-<tr><td>Body</td><td><code>14px</code> / 190%</td><td><code>14px</code> / 190%</td><td><code>13.5px</code> / 190%</td></tr>
-<tr><td>Lead</td><td><code>15.5px</code> / 195%</td><td><code>15px</code> / 190%</td><td><code>14px</code> / 190%</td></tr>
-<tr><td>Hero Sub</td><td><code>16px</code> / 195%</td><td><code>15px</code> / 190%</td><td><code>13.5px</code> / 190%</td></tr>
+<tr><td>Body</td><td><code>14px</code> / 200%</td><td><code>14px</code> / 200%</td><td><code>13.5px</code> / 200%</td></tr>
+<tr><td>Lead</td><td><code>15.5px</code> / 200%</td><td><code>15px</code> / 200%</td><td><code>14px</code> / 200%</td></tr>
+<tr><td>Hero Sub</td><td><code>16px</code> / 200%</td><td><code>15px</code> / 200%</td><td><code>13.5px</code> / 200%</td></tr>
 <tr><td>English Label</td><td><code>12px</code></td><td><code>12px</code></td><td><code>11px</code></td></tr>
 <tr><td>English Number L</td><td><code>96px</code>（要素側で個別）/ 100%</td><td>Tablet: <code>67px</code>（96の約70%）</td><td>Mobile: <code>48px</code>（vc-big は <code>180→90px</code>）</td></tr>
 <tr><td>Footnote</td><td><code>11.5px</code> / 160%</td><td><code>11px</code></td><td><code>10–11px</code></td></tr>
