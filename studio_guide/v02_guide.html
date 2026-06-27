@@ -926,8 +926,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <tr><td><code>font-size</code> / <code>font-weight</code> / <code>line-height</code></td><td><strong>テキストタブ → サイズ / ウェイト / 行間</strong>（or 登録済みテキストスタイルを適用）</td></tr>
  <tr><td><code>white-space:nowrap</code>（折返し禁止）</td><td>テキスト選択 → <strong>テキストタブ → 折り返し</strong>（PC で nowrap、下位 BP で解除）</td></tr>
  <tr><td><code>position:fixed/absolute/sticky</code> / <code>z-index</code></td><td><strong>ボックスタブ → ポジション</strong> ＋ <strong>重ね順</strong></td></tr>
- <tr><td><code>::before</code> / <code>::after</code>（装飾）</td><td>ネイティブ不可 → <strong>子 Box を足して再現</strong>（Free）/ <strong>Custom Code</strong>（Mini）。§0.5・§9</td></tr>
- <tr><td>グラデ背景 / SVG フィルタ / <code>@keyframes</code></td><td>ネイティブ不可 → <strong>Embed(sandbox) / Loop Box / Image 化</strong>（Free）/ <strong>Custom Code</strong>（Mini）。下の「応用操作」も参照</td></tr>
+ <tr><td><code>::before</code> / <code>::after</code>（装飾）</td><td>ネイティブ不可 → <strong>Mini の Custom Code</strong>（<a href="#t9-codeset">§9 コピペ用コード集</a>）の該当ブロックを貼る</td></tr>
+ <tr><td>グラデ背景 / SVG フィルタ / <code>@keyframes</code></td><td>ネイティブ不可 → <strong>Mini の Custom Code</strong>（<a href="#t9-codeset">§9 コピペ用コード集</a>）の該当ブロックを貼る</td></tr>
  <tr><td><code>text-transform:uppercase</code>（大文字化）</td><td>⚠️ Studio に大文字化の専用UIは確認できず → <strong>テキストを最初から大文字で入力</strong>する</td></tr>
  <tr><td><code>order</code>（子の並べ替え）</td><td><strong>レイヤーパネルで子要素を上下ドラッグ</strong>して順序を入替（BP別に変えたい場合はそのBPを選んでから）</td></tr>
  <tr><td><code>align-self</code>（その子だけ寄せ）</td><td>その子を選び <strong>ボックスタブ → 配置 → 自身の配置（Self）</strong>（親の配置とは別に個別指定）</td></tr>
@@ -1036,7 +1036,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul>
  <li><strong>固定 / スティッキーヘッダー</strong>の追従挙動。ヘッダーは固定配置（position:fixed）・重ね順 <code>z-index:100</code>。</li>
  <li><strong>フローティング特典ウィジェット</strong>（固定配置・下 <code>20px</code>・右 <code>20px</code>・重ね順 <code>z-index:90</code>）の右下追従と、Mobile(540) での全幅化。Header と同様にエディタ内プレビュー不可。</li>
- <li><strong>ヘッダー背景ぼかし</strong>＝背面ぼかし <code>8px</code>。 <strong>Filter ではなく Backdrop filter で実装</strong>し、<strong>Firefox 非対応のためフォールバック（不透明寄りの背景色）を併設</strong>して確認する。</li>
+ <li><strong>ヘッダー背景ぼかし</strong>＝背面ぼかし <code>8px</code>。 <strong>Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）の背景ぼかしブロック</strong>で実装して確認する。</li>
  <li><strong>ビューポート基準の単位（vw/dvh）を含む可変サイズ文字</strong>の実機での折返し。</li>
  <li><strong>Embed(sandbox)</strong>（G&NロゴSVG 等）は sandbox で読み込みタイミングの制約があるため公開URLで最終確認。</li>
  </ul>
@@ -1704,7 +1704,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </ol>
 
 <div class="callout note">
-<p><strong>【Free代替】/【Mini】</strong>：上記の Base・Section・Float Perk 骨格はすべて Studio 標準 Box で構成（<strong>Free完結</strong>）。<a class="term" href="#term-customcode">Custom Code</a> / <a class="term" href="#term-embed">Embed</a> は不要。各セクションの背景グラデ（Approach の2層・VC の <code>linear-gradient(180deg,#fff,blue-soft)</code>・CTA の3点グラデ）は Studio の <a class="term" href="#term-fill">Fill</a> グラデーション（Box外観）で再現可能なため、<strong>標準Boxのグラデ塗りを推奨</strong>（Embed不要）。Approach の背景2層は「外側ラッパBox＋内側Section」の入れ子で各々にグラデ塗りを与えて再現する。複雑な有機ブロブ等の装飾はヒーロー章で別途【Free代替/Mini】を提示する。Float Perk の <a class="term" href="#term-pseudo">疑似要素</a>等ネイティブ不可装飾もフローティングCTA章で【Free代替/Mini】を提示する。</p>
+<p><strong>実装方式</strong>：上記の Base・Section・Float Perk 骨格はすべて Studio 標準 Box で構成する。各セクションの背景グラデ（Approach の2層・VC の <code>linear-gradient(180deg,#fff,blue-soft)</code>・CTA の3点グラデ）は Studio の <a class="term" href="#term-fill">Fill</a> グラデーション（Box外観）で塗る。Approach の背景2層は「外側ラッパBox＋内側Section」の入れ子で各々にグラデ塗りを与えて再現する。複雑な有機ブロブ等の装飾、および Float Perk の <a class="term" href="#term-pseudo">疑似要素</a>等ネイティブ不可装飾は、すべて Mini の Custom Code（<a href="#t9-codeset">§9 コード集</a>の該当ブロック）を貼って再現する（詳細はヒーロー章／フローティングCTA章）。</p>
 </div>
 
 <p><strong>完了チェック：</strong></p>
@@ -2074,8 +2074,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p>#1 H1 Hero / #8 English Number L の <strong>グラデ文字</strong>（blue→navy→ink 等）は Studio の単一文字色スタイルでは表現できない。スタイル自体は基準色（H1=<code>text/ink</code>、Number L=<code>brand/blue</code>）で登録し、<strong>グラデが必要な em / 数字だけ</strong>を各セクション章で個別指定する。</p>
 </div>
 
-<div class="plan free"><span class="badge">Free代替</span> 対象スパンを別 Text 要素にし、塗りを「グラデーション」に設定（Studio の塗りはグラデ対応）。または該当語を Image 化して配置。<strong>こちらが推奨</strong>（Free 内で完結し、Image 化は文言変更に弱いので避ける）。</div>
-<div class="plan mini"><span class="badge">Mini</span> <a class="term" href="#term-customcode">Custom Code</a>（Head）に <code>background:linear-gradient(...);-webkit-background-clip:text;color:transparent;</code> を対象クラスへ注入。</div>
+<div class="plan mini"><span class="badge">Mini</span> グラデ文字は <a class="term" href="#term-customcode">Custom Code</a>（Head）で再現する。§9 コード集（<a href="#t9-codeset">#t9-codeset</a>）のグラデ文字ブロック <code>background:linear-gradient(...);-webkit-background-clip:text;color:transparent;</code> を対象クラス（H1 em / English Number L の数字）へ注入する。</div>
 
 <h4>補助 2 スタイル（標準外・FV 専用）</h4>
 <p>元データの <code>hero-eyebrow</code> / <code>lw-label</code> は Noto Sans JP 本体＋Inter strong（数字）の混在で、1 つのテキストスタイルに収まりません。<strong>スタイル登録はせず</strong>、FV / 提携 VC セクション章で個別組版します（下記を仕様メモとして残す）。</p>
@@ -2262,8 +2261,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <div class="callout warn">
 <p><strong>有機ブロブ</strong>（FV 背景の <code>40% 50% 38% 48% / 55% …</code> のような楕円 border-radius、FV 下線の <code>3px 8px 4px 9px</code>）は Studio の角丸 UI では完全再現が難しい。</p>
 </div>
-<div class="plan free"><span class="badge">Free代替</span> ブロブは <strong>SVG を <a class="term" href="#term-embed">Embed</a>（<a class="term" href="#term-sandbox">sandbox</a>）</strong> または <strong>Image 化</strong>して背景に配置。FV 下線の手書き風ハイライトは別 Box（角丸 4 隅個別＋少し回転）で近似。<strong>こちらが推奨</strong>（Free で完結し再現性が高い）。</div>
-<div class="plan mini"><span class="badge">Mini</span> <a class="term" href="#term-customcode">Custom Code</a>（Head）で当該クラスに <code>border-radius: 40% 50% 38% 48% / …;</code> を注入。</div>
+<div class="plan mini"><span class="badge">Mini</span> 有機ブロブと FV 下線の手書き風ハイライトは <a class="term" href="#term-customcode">Custom Code</a>（Head）で再現する。§9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の該当ブロックを Custom Code に貼り、当該クラスへ <code>border-radius: 40% 50% 38% 48% / …;</code>（FV 下線は <code>3px 8px 4px 9px</code>）を注入する。</div>
 
 <ul class="checklist"><li>r-pill=100px / r-circle=50% / r-lg=20px / r-md=14px / r-sm=8px を台帳化した</li><li>片側丸め（<code>20px 20px 0 0</code> 等）は個別コーナー指定で行う方針を確認した</li><li>有機ブロブと FV 下線は §9 コード集の Mini Custom Code で再現する方針を確認した</li></ul>
 
@@ -2324,8 +2322,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </table>
 
 <p><strong>2 層シャドウ / drop-shadow が Studio の影 UI で組めない場合</strong>:</p>
-<div class="plan free"><span class="badge">Free代替</span> 影 1 層で近似（<code>shadow-panel</code> は濃い方の <code>0 24px 60px rgba(15,26,51,.1)</code> のみ採用）。CTA の blue→hover yellow の切替は <a class="term" href="#term-hover">Hover State</a> の<a class="term" href="#term-conditional">条件スタイル</a>で影色を差し替え。<strong>パネル系は 1 層近似が推奨</strong>（Free 完結）。CTA ホバーの色替えは Hover 条件スタイルで実装（Free でも Hover 自体は可）。</div>
-<div class="plan mini"><span class="badge">Mini</span> <a class="term" href="#term-customcode">Custom Code</a>（Head）で当該クラスに <code>box-shadow:</code> の 2 値、<code>filter:drop-shadow(...)</code> を注入。</div>
+<div class="plan mini"><span class="badge">Mini</span> 2 層シャドウ・drop-shadow は <a class="term" href="#term-customcode">Custom Code</a>（Head）で本表どおり完全再現する。§9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の該当ブロックを Custom Code に貼り、当該クラスへ <code>box-shadow:</code> の 2 値、<code>filter:drop-shadow(...)</code> を注入する。CTA の blue→hover yellow 切替は <a class="term" href="#term-hover">Hover State</a> の<a class="term" href="#term-conditional">条件スタイル</a>で影色を差し替える。</div>
 
 <div class="callout note">
 <p>CTA ホバーで背景 blue→yellow、影 blue→yellow に切り替える挙動は §2.1 の <code>brand/blue</code>・<code>brand/yellow</code> と本表の <code>shadow-cta</code> / <code>shadow-cta-hover</code> を Hover 条件スタイルに割り当てて再現する（詳細は CTA セクション章）。</p>
@@ -2737,13 +2734,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <p>しっぽは <code>.bubble::before</code>が透明ベース（<code>border:7px solid transparent</code>、<code>width:0;height:0</code>）で、これ単体では<strong>三角は見えない</strong>。可視三角は b1〜b4 の個別 overrideが<strong>一方向の border だけを <code>--blue</code> で着色し幅 13px</strong> にして作る、<strong>横向き（左右）三角形</strong>である。基準辺は bubble の<strong>左右辺</strong>（<code>right:-6px</code> または <code>left:-6px</code>）で<strong>下端ではない</strong>。</p>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- 各 bubble ごとに、border で作る三角を近似する<strong>細い横向き三角形</strong>を作る。<strong>45度正方形 Box は不可</strong>（菱形になり、横向き 13px・約±17〜18度の三角と別物）。代わりに<strong>三角形 SVG（または PNG）を <a class="term" href="#term-embed">Image 化</a></strong>して各 bubble の左右辺に absolute 配置するのが確実。向きは b1/b3＝右向き、b2/b4＝左向き、回転は b1=17° / b2=-17° / b3=-18° / b4=18°、色 = <code>--blue</code>。<strong>推奨</strong>。
- </div>
  <div class="plan mini">
  <span class="badge">Mini</span>
- Custom Code で <code>.bubble::before</code> <a class="term" href="#term-pseudo">擬似要素</a>と b1〜b4 overrideをそのまま再現。
+ Custom Code で <code>.bubble::before</code> <a class="term" href="#term-pseudo">擬似要素</a>と b1〜b4 override（一方向 border を <code>--blue</code> で着色・幅 13px・透明側 7px・rotate b1:17° b2:-17° b3:-18° b4:18°）をそのまま再現する（§9 コード集の該当ブロックを Custom Code に貼る）。
  </div>
  <p>いずれも吹き出し本体（<code>.bubble</code>）の重ね順は親 <code>.cta-illust</code> 内でしっぽより前面（レイヤー順で本体を下 = 前面）に置く。</p>
 
@@ -2780,7 +2773,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <thead><tr><th>Studio BP</th><th>基準幅</th><th>束ねる画面幅しきい値</th></tr></thead>
  <tbody>
  <tr><td>Default（PC）</td><td>1280px</td><td>1280px 以上 / 768px 以上（PC 寄り上書き）</td></tr>
- <tr><td>Tablet</td><td>840px</td><td>1024px 以下 / 768px 以下 / 767px 以下</td></tr>
+ <tr><td>Small</td><td>1024px</td><td>1024px 以下</td></tr>
+ <tr><td>Tablet</td><td>840px</td><td>768px 以下 / 767px 以下</td></tr>
  <tr><td>Mobile</td><td>540px</td><td>640px 以下 / 480px 以下 / 380px 以下</td></tr>
  </tbody>
  </table>
@@ -2901,7 +2895,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <div class="callout warn">
 <p><strong>Studioネイティブ非対応の前提（本章で繰り返し参照）</strong><br>
-完成イメージでは、CTA・カード・セクション見出しの一部に「矢印円・マーカー下線」や「見出しの文字グラデーション」といった装飾が含まれます。Studio の <a class="term" href="#term-box">ボックス</a> にはこれらをそのまま再現する機能（<a class="term" href="#term-pseudo">疑似要素</a>・テキストへのグラデーション切り抜き）が無いため、後述の各所で【Free代替】（追加Box / Image化）と【Mini】（<a class="term" href="#term-customcode">Custom Code</a>）を併記し、推奨を1つ示す。</p>
+完成イメージでは、CTA・カード・セクション見出しの一部に「矢印円・マーカー下線」や「見出しの文字グラデーション」といった装飾が含まれます。Studio の <a class="term" href="#term-box">ボックス</a> にはこれらをそのまま再現する機能（<a class="term" href="#term-pseudo">疑似要素</a>・テキストへのグラデーション切り抜き）が無いため、装飾系（文字グラデ・マーカー下線・点滅ドット・点線コネクタ等）はすべて <strong>Mini の <a class="term" href="#term-customcode">Custom Code</a>（§9 コピペ用コード集 <a href="#t9-codeset">#t9-codeset</a>）で完全再現する</strong>。後述の各所では §9 コード集の該当ブロックを Custom Code に貼る手順へ一本化する。</p>
 </div>
 
 <div class="callout warn">
@@ -3046,9 +3040,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </ol>
 
 <div class="callout tip">
-<p><strong>矢印円の実装判断（ネイティブ可否）</strong><br>
-・矢印円は<strong>Box＋Textで完全にネイティブ実現できる</strong>（疑似要素不要）。<strong>推奨=Box方式（上記手順4）</strong>。</p>
-<div class="plan mini"><span class="badge">Mini</span> 矢印円を疑似要素で再現したい場合は <a class="term" href="#term-customcode">Custom Code</a>（Mini以上）だが、CTAは全インスタンスでコンポーネント運用するため Box方式が保守上有利。<strong>Box方式を推奨</strong>。</div>
+<p><strong>矢印円の実装</strong><br>
+・矢印円は<strong>Box＋Textで上記手順4のとおりネイティブ実装する</strong>（疑似要素は使わない）。CTAは全インスタンスでコンポーネント運用するため、Box方式で組む。</p>
 </div>
 
 <div class="callout note">
@@ -3209,14 +3202,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><strong>カード内の装飾（番号・点線コネクタ等）の代替（prob と appr を分けて記述）</strong></p>
 <ul>
 <li><strong>prob-card の番号 <code>.prob-no strong</code></strong>（48px・weight900・<code>background:linear-gradient(135deg,blue,navy)</code> の <code>-webkit-background-clip:text</code> で<strong>文字グラデclip</strong>・SP36px L909）→ Studio はテキストグラデclip不可。
-<div class="plan free recommended"><span class="badge">Free代替</span> 番号Textを <code>blue</code> 単色にする（グラデを諦める）、または 数字部分をImage化して貼る。コンポーネント運用と一括色変更のしやすさから <strong>blue単色を推奨</strong>。</div>
+<div class="plan mini"><span class="badge">Mini</span> 番号は <a class="term" href="#term-customcode">Custom Code</a> で文字グラデclipを完全再現する。§9 コード集の文字グラデclipブロック（<a href="#t9-codeset">#t9-codeset</a>）を該当番号Textの Custom Code に貼り、対象を <code>.prob-no strong</code>（48px/weight900・SP36px）に設定する。</div>
 </li>
 <li><strong>appr-card の番号 <code>.appr-step</code></strong>は<strong>グラデではない・別構造</strong>。<code>width/height:118px</code>・<code>border-radius:50%</code>・<code>background:transparent</code>・<code>border:2.5px dotted var(--ink)</code> の<strong>点線正円バッジ</strong>の中に、<code>appr-step-lbl</code>（13px・weight600・<code>text-transform:lowercase</code>・色 ink）と数字 <code>strong</code>（38px・weight800・<code>color:ink</code>・<code>-webkit-text-fill-color:currentColor</code>＝<strong>ink単色</strong>・SP30px相当）を縦並び（gap4）で入れる構造。<strong>グラデclipは使っていないので blue 代替は不要</strong>。Studio では <strong>Box（幅/高さ118px・角丸50%・塗りなし・Border Dotted 2.5px ink・中央/中央・縦並び gap4px）＋ Text2行（lbl 13px/600/ink lowercase ＋ 数字 38px/800/ink）でそのままネイティブ再現</strong>できる。</li>
 </ul>
 <ul class="checklist"><li>prob は番号を §9 コード集の文字グラデclip（Custom Code）で再現、appr は dotted円118px＋ink単色数字 で別々に組んだ</li></ul>
 <ul>
 <li><strong>svc-card の点線コネクタ</strong> <code>.svc-card.c1/c3::after</code>・<code>.c1/c2::before</code>→ Studio は疑似要素不可。
-<div class="plan free recommended"><span class="badge">Free代替</span> 細い Box（コネクタ横=高さ0/幅20px・Border Top Dotted 3px blue、コネクタ縦=幅0/高さ20px・Border Left Dotted 3px blue）を該当カードの外側に absolute 隣接配置。装飾のため<strong>省略も可</strong>。<strong>省略 or Box代替を推奨</strong>（Custom Code は使わない）。</div>
+<div class="plan mini"><span class="badge">Mini</span> 点線コネクタは <a class="term" href="#term-customcode">Custom Code</a> で疑似要素（<code>::before/::after</code>）を完全再現する。§9 コード集の点線コネクタブロック（<a href="#t9-codeset">#t9-codeset</a>）を svc-card の Custom Code に貼り、対象を <code>.svc-card.c1/c3::after</code>・<code>.c1/c2::before</code>（点線 3px blue）に設定する。</div>
 </li>
 </ul>
 </div>
@@ -3307,8 +3300,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><code>em.b</code>/<code>em.n</code>/<code>em.l</code> = 該当文字だけ選択して色を <code>blue</code>／<code>navy</code>／<code>blue-lt</code> に部分適用（Studio は1テキスト内で部分色指定可）</li>
 <li><code>em.y</code>（黄色マーカー下線）= グラデ背景は文字単位では効かないため、次で代替。</li>
 </ul>
-<div class="plan free recommended"><span class="badge">Free代替</span> 該当語だけを独立 Text にし、<strong>その語Text を「Hug幅の小さなBox」で包む</strong>（見出しの他の語とは横並び・下端揃えで同一行に並べる）。その<strong>包みBox の中に黄色Box</strong>（塗り <code>yellow</code>・高さ＝包みBoxの約40%・下寄せ・<strong>absolute（基準＝包みBox）</strong>・重ね順は語Textより背面）を入れる。包みBoxが語に追従するので、改行やサイズ変化でも黄帯がズレない。<strong>推奨＝この背面黄色Box方式</strong>（テキスト編集を保てる）。完全一致が要る場合は Mini の Custom Code で <code>em.y</code> グラデ下線を移植。</div>
-<div class="plan mini"><span class="badge">Mini</span> Custom Code で <code>background:linear-gradient(180deg,transparent 62%,#FFD166 62%,#FFD166 90%,transparent 90%)</code> を当てる手もあるが、コンポーネント運用には背面Box方式が無難。</div>
+<div class="plan mini"><span class="badge">Mini</span> 黄色マーカー下線は <a class="term" href="#term-customcode">Custom Code</a> で完全再現する。§9 コード集の黄マーカーブロック（<a href="#t9-codeset">#t9-codeset</a>）を該当語Textの Custom Code に貼り、<code>background:linear-gradient(180deg,transparent 62%,#FFD166 62%,#FFD166 90%,transparent 90%)</code>・<code>padding:0 6px</code> を <code>em.y</code> に当てる。</div>
 </li>
 </ul>
 <ul class="checklist"><li>H2 Sectionスタイル（clamp(28px,4vw+8px,52px)/lh1.22）適用＋em部の色分け（em.y黄マーカーは §9 コード集の Custom Code）を設定した</li></ul></li>
@@ -3319,7 +3311,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </ol>
 
 <div class="callout warn">
-<p><strong>見出しの文字グラデは使わない方針:</strong> 見出しの文字グラデ（FV <code>hero h1 em</code> 等で使う blue→navy→ink グラデclip）はネイティブ不可。<strong>section-title では em は単色 or 黄マーカー背面Box</strong>で足り、グラデ文字は使わない方針とする（コンポーネントの一括色管理を優先）。FV見出しのグラデ／sweepアニメは §ヒーロー章で個別に【Free代替=Image化】／【Mini=Custom Code】を判断する。</p>
+<p><strong>section-title の em の扱い:</strong> 見出しの文字グラデ（FV <code>hero h1 em</code> 等で使う blue→navy→ink グラデclip）はネイティブ不可。<strong>section-title では em は単色（blue/navy/blue-lt）と、em.y の黄マーカー（§9 コード集の Custom Code）</strong>で組む。FV見出しのグラデ／sweepアニメも <strong>Mini の <a class="term" href="#term-customcode">Custom Code</a>（§9 コード集 <a href="#t9-codeset">#t9-codeset</a>）で完全再現する</strong>（§ヒーロー章で同コードを適用）。</p>
 </div>
 
 <h3 id="g4-6">4.5 レスポンシブ（Studio 4<a class="term" href="#term-breakpoint">ブレークポイント</a>への写像）</h3>
@@ -3356,9 +3348,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <thead><tr><th>画面幅の閾値</th><th>割り当て先 Studio BP</th><th>備考</th></tr></thead>
 <tbody>
 <tr><td><code>min-width:1280px</code> / 既定</td><td><strong>Default(PC) 1280</strong></td><td>基底。全カスケードの元。流体上書き（4vw+8px等）はここで反映</td></tr>
-<tr><td><code>max-width:1024px</code></td><td><strong>Tablet 840</strong>（で上書き）</td><td>2カラム維持・gap縮小</td></tr>
+<tr><td><code>max-width:1024px</code></td><td><strong>Small 1024</strong>（で上書き）</td><td>2カラム維持・gap縮小</td></tr>
+<tr><td><code>max-width:900px</code> 前後</td><td><strong>Tablet 840</strong>（で上書き）</td><td>2カラム維持・gapさらに縮小</td></tr>
 <tr><td><code>max-width:768px</code> / <code>767px</code></td><td><strong>Mobile 540</strong> へ寄せる（カラム単列化）</td><td>768/767は実質同一閾値→Mobileで処理</td></tr>
-<tr><td><code>640px</code> / <code>480px</code> / <code>380px</code></td><td><strong>Mobile 540</strong> 内で吸収</td><td>微調整は Mobile 値に統合（Studioは追加BP無しの3段運用）</td></tr>
+<tr><td><code>640px</code> / <code>480px</code> / <code>380px</code></td><td><strong>Mobile 540</strong> 内で吸収</td><td>微調整は Mobile 値に統合（Studioは常に4段固定・追加しない）</td></tr>
 </tbody>
 </table>
 
@@ -3463,7 +3456,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <ul>
  <li><strong>背景ぼかしは Backdrop filter で実装</strong>：背面ぼかし量は <code>8px</code>。Studio では通常の Filter ではなく<strong>背面フィルター（Backdrop filter）</strong>を使う。<strong>Firefox 非対応</strong>のため、非対応環境では「半透明白背景のみ（ぼかしなし）」にフォールバックする前提で設計。塗りが92%不透明なのでフォールバックは成立する。</li>
- <li><strong>スクロール時に下境界線を表示する状態は、完成イメージでは実際には発火していない</strong>。下境界線をスクロール量に応じて切り替える挙動は使われていないため、扱いは <a href="#s1-7">5-1-7</a> でデザイン意図を確認する。確認が取れるまでは初期描画どおり<strong>透明1px</strong>で実装する。</li>
+ <li><strong>スクロール時に下境界線を表示する状態は、完成イメージでは実際には発火していない</strong>。下境界線をスクロール量に応じて切り替える挙動は使わない。下境界線は初期描画どおり<strong>透明1px固定</strong>で実装する<strong>（要最終決定）</strong>。</li>
  <li><strong>ネイティブ不可要素</strong>（<a class="term" href="#term-pseudo">疑似要素</a>多用）：
  <ul>
  <li><code>.hd-cta-deco</code> の左右の斜め線は <code>::before/::after</code>（Studio ネイティブ非対応）→ <a href="#s1-5">5-1-5</a> で Mini の Custom Code で再現する。</li>
@@ -3573,7 +3566,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  <li>右パネル <span class="path">ボックス<i>›</i>レイアウト</span>：方向 <strong>横並び</strong>、垂直 <strong>中央</strong>、gap <code>10</code>。サイズ：幅 <strong>auto</strong>、高さ <strong>auto</strong>。</li>
  <li>Logo-Link の中へ、左ナビ <span class="path">追加<i>›</i>基本<i>›</i>埋め込み（Embed）</span> をドラッグ。名前を <strong>Logo-SVG</strong> にリネーム。</li>
- <li>Logo-SVG を選択 → コードエディタに <code>&lt;svg class="logo-svg" viewBox="0 0 181.61 60" ...&gt;...&lt;/svg&gt;</code> を<strong>そのまま貼り付け</strong>（円・字形・<code>fill="#fff"</code> の鹿パスを含む）。sandbox type に自動判定される。</li>
+ <li>Logo-SVG を選択 → コードエディタに <code>&lt;svg class="logo-svg" viewBox="0 0 181.61 60" ...&gt;...&lt;/svg&gt;</code> を<strong>そのまま貼り付け</strong>（整形済みコードは <a href="#t9-codeset">§9「コピペ用コード集」①</a> をコピー。円・字形・<code>fill="#fff"</code> の鹿パスを含む）。sandbox type に自動判定される。</li>
  <li>SVG の表示高さを合わせる：貼り付けコード内 <code>&lt;svg&gt;</code> に <strong><code>height="42"</code> のみ</strong>を持たせる。
  <ul>
  <li><strong><code>width</code> 属性は付けない</strong>。SVG は <code>viewBox="0 0 181.61 60"</code> を持つため、<code>height="42"</code> を指定すれば幅は viewBox のアスペクト比（<code>181.61:60</code>）から<strong>自動算出</strong>される。</li>
@@ -3702,23 +3695,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <figcaption>Free代替：テキストの左右に細い装飾 Box を2個置き、±62度回転で逆ハの字を再現（色はデコ用の赤 <code>danger</code>。図では <code>--yellow</code> で代用表示）。</figcaption>
  </figure>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>（推奨）</strong>CTA-Deco を内包する Box にし、テキストの<strong>左右に細い装飾 Box を2個</strong>追加する。</p>
- <ol class="steps">
- <li>CTA-Group 内に Box（名：<strong>CTA-Deco-Wrap</strong>、横並び・垂直中央・gap0）を作り、その中に 左装飾 Box（<strong>Deco-Tick-L</strong>）→ Text（<strong>CTA-Deco</strong>）→ 右装飾 Box（<strong>Deco-Tick-R</strong>）を並べる。</li>
- <li>Deco-Tick-L / R：サイズ 幅 <code>11px</code>・高さ <code>1.5px</code>、角丸 <code>1px</code>、塗り <code>danger / accent-red</code>（<code>#E85252</code>）。</li>
- <li>右パネル <span class="path">変形（Transform）<i>›</i>変形（transform）</span> で <strong>Rotate</strong>：左 <code>62度</code>、右 <code>-62度</code>。transform-origin は左=右下、右=左下 で origin 指定可）。位置は <strong>絶対（absolute）</strong>でテキスト両端の下に置く。<a class="term" href="#term-transform">変形タブ</a>参照。</li>
- </ol>
- </div>
-
  <div class="plan mini">
  <span class="badge">Mini</span>
- <p><a class="term" href="#term-customcode">Custom Code</a>（Mini以上）：左右の装飾線を描く擬似要素のCSSを <code>&lt;/head&gt;</code> 直前ブロックに投入し、対象 Text にクラス <code>hd-cta-deco</code> を付与（head に <code>&lt;style&gt;</code> 可・1ブロック最大30,000文字）。</p>
- </div>
-
- <div class="callout tip">
- <p><strong>推奨：【Free代替】</strong>（制作中は Free・Custom Code不可のため。 付録A）。</p>
+ <p><a class="term" href="#term-customcode">Custom Code</a>（Mini）で再現する：左右の装飾線を描く擬似要素のCSSを <code>&lt;/head&gt;</code> 直前ブロックに投入し、対象 Text にクラス <code>hd-cta-deco</code> を付与する（head に <code>&lt;style&gt;</code> 可・1ブロック最大30,000文字）。<a href="#t9-codeset">§9 コード集</a>の該当ブロックを Custom Code に貼る。</p>
  </div>
 
  <ul class="checklist"><li>CTA-Deco に実コピー「1時間で最適な制度をご提案」を入れた</li><li>Noto Sans JP/12px/800/<code>danger</code>/字間0.04em/行高1 を設定した</li><li>左右の斜め装飾線（11×1.5px・角丸1px・±62度）を Mini の Custom Code（§9 コード集）で再現した</li></ul>
@@ -3772,23 +3751,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><strong>矢印（<code>::after</code>＝丸枠＋全角「＞」）はネイティブ非対応</strong>。仕様：22×22px・border 1.2px currentColor・角丸50%・中央に10px「＞」。下記いずれかで再現する。</li>
  </ol>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>（推奨）</strong>CTA-Button 内・ラベルの後に <strong>Box</strong>（名：<strong>CTA-Arrow</strong>）を追加。</p>
- <ol class="steps">
- <li>サイズ 幅 <code>22px</code>・高さ <code>22px</code>、角丸 <code>50%</code>（正円）、枠線 <strong>Solid 1.2px</strong>・色 <code>#fff</code>（<code>white</code>／currentColor相当）、塗りなし。</li>
- <li>ポジション：<strong>絶対（absolute）</strong>、距離 <strong>右（right）8 / 上 50%</strong> にして垂直中央寄せ。<a class="term" href="#term-position">ポジション</a>参照。</li>
- <li>中に Text「<strong>＞</strong>」（全角）：サイズ <code>10px</code>、ウェイト <code>600</code>、色 <code>#fff</code>、水平中央・垂直中央（左に1pxオフセット）。</li>
- </ol>
- </div>
-
  <div class="plan mini">
  <span class="badge">Mini</span>
- <p>矢印円を描く擬似要素のCSSを <a class="term" href="#term-customcode">Custom Code</a>（<code>&lt;/head&gt;</code> 直前 <code>&lt;style&gt;</code>）で投入し、ボタンにクラス <code>btn-gra</code> 付与。</p>
- </div>
-
- <div class="callout tip">
- <p><strong>推奨：【Free代替】</strong>（Free でCustom Code不可のため）。</p>
+ <p>矢印円を描く擬似要素のCSSを <a class="term" href="#term-customcode">Custom Code</a>（<code>&lt;/head&gt;</code> 直前 <code>&lt;style&gt;</code>）で投入し、ボタンにクラス <code>btn-gra</code> を付与する。<a href="#t9-codeset">§9 コード集</a>の該当ブロックを Custom Code に貼る。</p>
  </div>
 
  <ol class="steps" start="6">
@@ -3812,25 +3777,20 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p>「スクロール時に下境界線を <code>line</code>（<code>rgba(15,26,51,.08)</code>）に変える」という見た目の指定は、完成イメージ上では<strong>実際には発火していません</strong>。スクロール量に応じて境界線を切り替える仕組みは組み込まれておらず、ページ読み込み直後の状態（下境界線は透明1px）のまま表示されます。float-perk ウィジェットのスクロール連動表示とは別物です（<a href="#s1-0">5-1-0</a> 参照）。</p>
  </div>
 
- <p>ただし「スクロールしてもヘッダー下に境界線が出ない」設計を確定させると、後でデザイナーが境界線を意図していた場合に取りこぼす。<strong>実装者の判断で透明固定に倒さず、以下を確認すること。</strong></p>
+ <p>「スクロールしてもヘッダー下に境界線が出ない」初期描画どおりの設計で確定する。<strong>下境界線は透明1px固定で実装し、スクロール連動の境界線状態は作らない<strong>（要最終決定）</strong>。</strong></p>
 
  <ol class="steps">
- <li><strong>確認ステップ（必須）</strong>：ユーザー/デザイナーに「スクロール時にヘッダー下境界線（<code>line</code> = <code>rgba(15,26,51,.08)</code>）を出すのがデザイン意図か、それとも境界線を出す指定が無いことによる取りこぼしか」を確認する。
- <ul>
- <li>回答「境界線は不要（出さないのが意図）」→ <a href="#s1-1">5-1-1</a> step5 のまま<strong>透明1px固定</strong>で確定。スクロール時の境界線状態は作らない。</li>
- <li>回答「スクロール時に境界線を出したい」→ 下記いずれかで実装する。</li>
- </ul>
- </li>
- <li>確認が取れるまでは、初期描画と一致させるため<strong>下境界線は透明1px固定</strong>のまま据え置く（描画上の差異なし）。</li>
+ <li><a href="#s1-1">5-1-1</a> step5 のまま<strong>下境界線は透明1px固定</strong>で実装する。スクロール時の境界線状態は作らない（初期描画と一致・描画上の差異なし）。</li>
+ <li>後からデザイナーが「スクロール時に境界線を出したい」と確定した場合のみ、Mini の Custom Code で実装する（下記）。</li>
  </ol>
 
- <p><strong>境界線を出す場合の実装手段（Mini以上）：</strong></p>
+ <p><strong>境界線を出す場合の実装手段（Mini）：</strong></p>
  <div class="plan mini">
  <span class="badge">Mini</span>
- <p><a class="term" href="#term-customcode">Custom Code</a>（<code>&lt;/body&gt;</code> 直前）に、スクロール量に応じて Header Box の要素へクラスを付与するJSと、該当クラスの <code>border-bottom-color:rgba(15,26,51,.08)</code> を入れる、body側はタグ制限緩め）。</p>
+ <p><a class="term" href="#term-customcode">Custom Code</a>（<code>&lt;/body&gt;</code> 直前）に、スクロール量に応じて Header Box の要素へクラスを付与するJSと、該当クラスの <code>border-bottom-color:rgba(15,26,51,.08)</code> を入れる（body側はタグ制限緩め）。<a href="#t9-codeset">§9 コード集</a>の該当ブロックを Custom Code に貼る。</p>
  </div>
  <div class="callout note">
- <p>Studio ネイティブの <strong>Scroll Effect</strong> は要素の View/Scroll timeline 連動で、border-color の離散切替（しきい値超えで線を出す）には不向き＋<strong>新公開インフラ（beta）未対応</strong>。border-color トグルが必要なら Custom Code 推奨。</p>
+ <p>Studio ネイティブの <strong>Scroll Effect</strong> は要素の View/Scroll timeline 連動で、border-color の離散切替（しきい値超えで線を出す）には不向き＋<strong>新公開インフラ（beta）未対応</strong>。border-color トグルは Mini の Custom Code で実装する。</p>
  </div>
 
  <ul class="checklist"><li>スクロール時の境界線状態が実際には発火しないことを確認した（根拠を 5-1-0 / 本節に明記済み）</li><li>下境界線を透明1px固定で実装した（スクロール連動の境界線状態は作らない）</li></ul>
@@ -4296,8 +4256,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <p>つまり <strong>PC/Tablet/Mobile すべての幅で の <code>!important</code> clamp が勝つ</strong>。下限28px・上限60px・流体部 <code>min(8vh, 4vw+12px)</code>。この流体部は <code>min(8vh, …)</code> を含むため『画面の横幅』だけでなく『画面の高さ』が低いと縮むという特性を持つ（=低い画面で h1 が小さくなる）。</p>
 
-<div class="plan free recommended"><span class="badge">Free代替</span> Studio は <code>min()</code>・<code>vh+vw 混在</code> を clamp UI で表現できない。そこでテキストスタイル <code>H1 Hero</code> に <strong>PC=60px（=clamp上限）／ Tablet=52px ／ Mobile=36px</strong> を固定値で持たせ、<a class="term" href="#term-breakpoint">ブレークポイント</a>別に分ける（後述5-2-8）。これが<strong>推奨</strong>。<br><br><strong>52/36 の意味</strong>: この 52px / 36px は、上記 clamp が各BP幅で取りうるおおよその実効サイズに視覚的に寄せた近似値です（PC=clamp上限60、SP=clamp下限近傍36）。Studio の px は最大幅挙動で自動縮小するため低解像で破綻しにくいです。<br><br><strong>高さ駆動の縮小は Free 再現不可</strong>: <code>min(8vh,…)</code> による「画面が低いと縮む」挙動は Studio ネイティブの px/vw 指定では再現できません。完全再現は Mini で <a class="term" href="#term-customcode">Custom Code</a> 必須（要判断: 5-2-11）。</div>
-<div class="plan mini"><span class="badge">Mini</span> 完全な流体式が必要なら Custom Code で <code>.hero h1{font-size:clamp(28px,min(8vh,4vw+12px),60px)}</code> を head に追加（Mini以上）。</div>
+<div class="plan mini"><span class="badge">Mini</span> H1 のフォントサイズは Mini の Custom Code で <code>.hero h1{font-size:clamp(28px,min(8vh,4vw+12px),60px)}</code> を head に追加して完全な流体式を再現する（§9 コード集）。これにより横幅・画面高さ両方に応じた縮小を忠実に再現する。Studio のテキストスタイル <code>H1 Hero</code> には基準値として <strong>PC=60px ／ Tablet=52px ／ Mobile=36px</strong>（clamp の各BP実効サイズへの視覚近似）を設定し、Custom Code を上書きとして効かせる。</div>
 
 <h4>静的スタイル（必須・Free可）</h4>
 <ol class="steps">
@@ -5104,7 +5063,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  </ol>
  <div class="callout note">
- <p><strong>SVGの扱い</strong>: SVGは Image としてアップロードすれば表示可。インラインSVG（HTML/CSS/JS含む）が必要な場合のみ <a class="term" href="#term-embed">Embed（埋め込み)</a>（<a class="term" href="#term-sandbox">sandbox</a>自動判定）。本イラストは静的装飾のため <strong>Image アップロードで十分・推奨</strong>です。参考: 各カードには <code>appr-01.svg</code>〜<code>appr-04.svg</code> が表示されます。</p>
+ <p><strong>SVGの扱い</strong>: 本イラストは静的装飾のため SVG を <strong>Image としてアップロードして表示する</strong>。各カードには <code>appr-01.svg</code>〜<code>appr-04.svg</code> を表示する。</p>
  </div>
  <figure class="fig">
  <img class="asset" src="../appr-01.svg" alt="Card 01 のイラスト appr-01.svg" loading="lazy" width="160" height="124">
@@ -5293,7 +5252,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </figure>
 
  <div class="callout warn">
- <p><strong>このセクション最大の未確定事項（必読）</strong>：セクション背景と全バー4本は <code>linear-gradient(180deg,…)</code> の塗り（上下方向のグラデーション）です。ただし Studio で「Box fill が線形グラデーションに対応する」かは確認できていません。本章では <strong>「Box fill のグラデは可否未検証（要実機確認）」</strong> として扱い、グラデを使う各箇所に【ネイティブが使えた場合】と【代替（未確定時の正規手順）】の両方を必ず併記します。グラデを既定の推奨として断定しません。</p>
+ <p><strong>このセクションの装飾方針（必読）</strong>：セクション背景と全バー4本の <code>linear-gradient(180deg,…)</code> の塗り（上下方向のグラデーション）は、すべて Mini の Custom Code で再現します（<a href="#ch-s9">§9 コピペ用コード集</a>の該当ブロックを Custom Code に貼る）。Studio側の塗りは「なし（透明）」または最も濃い終点色の単色に設定し、グラデの見た目は Custom Code で当てます。実機確認や二択は不要です。</p>
  </div>
 
  <h3 id="s4-0">5-4-0. 使用トークン対応表</h3>
@@ -5389,19 +5348,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  </ol>
 
- <p>背景グラデの実装は以下のいずれか。</p>
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>【ネイティブが使えた場合（要実機確認）】</strong> <code>Section / Market</code> → ボックス → 外観 → 塗り（Fill）→ グラデ/Gradient が選べる場合: タイプ = 線形（Linear）、角度 <code>180deg</code>、ストップを4点（0%=<code>blue-soft</code> / 16%=<code>white</code> / 42%=<code>white</code> / 100%=<code>blue-soft</code>）。<strong>多ストップ（3点以上）の可否は に記述が無いため、実機で4点入力できるか必ず確認</strong>。3点以上を置けない場合は下記Mini代替へ。</p>
- </div>
+ <p>背景グラデは Mini の Custom Code で実装する。</p>
  <div class="plan mini">
  <span class="badge">Mini</span>
- <p><strong>【代替・未確定時の正規手順 / Mini以上】</strong> このグラデは中央が白で上下が薄青の対称構造。塗りをStudioで完全再現できない場合は <a class="term" href="#term-customcode">Custom Code</a>（Mini以上）で背景を当てるのが確実。手順: <code>Section / Market</code> を選択し ID <code>market</code> を確認 → ページ設定 → Custom Code → <code>&lt;/head&gt;</code> 直前ブロックに次を1ブロックで貼る（30,000文字/ブロック上限内）:</p>
+ <p><strong>【手順】</strong> このグラデは中央が白で上下が薄青の対称構造。<a class="term" href="#term-customcode">Custom Code</a>（Mini）で背景を当てる。手順: <code>Section / Market</code> を選択し ID <code>market</code> を確認 → ページ設定 → Custom Code → <code>&lt;/head&gt;</code> 直前ブロックに次を1ブロックで貼る（30,000文字/ブロック上限内。<a href="#ch-s9">§9 コード集</a>の該当ブロックを使う）:</p>
  <pre class="tree">&lt;style&gt;#market{background:linear-gradient(180deg,#EFF5FE 0%,#fff 16%,#fff 42%,#EFF5FE 100%)}&lt;/style&gt;</pre>
- <p>色は <code>#EFF5FE</code>・<code>#fff</code> をそのまま使用。Studio側の塗りは「なし（透明）」にしておき、Custom Code側の背景を見せる。</p>
- </div>
- <div class="callout note">
- <p><strong>【代替・Free段階の暫定 / Custom Code不可時】</strong> Free段階は Custom Code 不可。暫定として塗り = 単色 <span class="sw" style="--c:#ffffff"></span><code>white</code>（中央帯の色）にしておき、上下の薄青グラデはMini切替後に上記いずれかで付与する。<strong>この場合「Free段階では背景が単色白で、上下薄青グラデが未実装」である旨をStudio実装指示書に明記</strong>する（背景欠落を「指定なし」と誤認させない）。</p>
+ <p>色は <code>#EFF5FE</code>・<code>#fff</code> をそのまま使用。Studio側の塗りは「なし（透明）」にし、Custom Code側の背景を見せる。</p>
  </div>
  <div class="callout warn">
  <p>※このセクションには背景グラデがあるため、塗りを「なし」のまま放置するとこのセクションだけ背景が欠落します。必ず上記いずれかを適用してください。</p>
@@ -5546,16 +5498,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  </ol>
 
- <p>バー塗り（prev = 180deg・2色 <code>#2E3F66</code>→<code>#1B2A4A</code>。now は <code>#CDD5E5</code>→<code>#AEB9D0</code>）の実装分岐:</p>
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>【ネイティブが使えた場合（要実機確認）】</strong> prev = 線形グラデ <code>180deg</code> 起点 <code>navy-lt</code>（<code>#2E3F66</code>）/ 終点 <code>navy</code>（<code>#1B2A4A</code>）。now = 起点 <code>bar-gray-1</code>（<code>#CDD5E5</code>）/ 終点 <code>bar-gray-2</code>（<code>#AEB9D0</code>）。<strong>Box fill のグラデ可否は未確認のため、実機で2色線形グラデが入力できるか確認</strong>してから採用。</p>
- </div>
- <div class="callout note">
- <p><strong>【代替・未確定時の正規手順 / Free可】</strong> グラデ不可なら <strong>単色（最も濃い終点色）</strong>で代替: prev = 単色 <span class="sw" style="--c:#1B2A4A"></span><code>navy</code> / now = 単色 <span class="sw" style="--c:#AEB9D0"></span><code>bar-gray-2</code>。視認上のコントラストを保てる。発注時に「バーは単色か2色グラデか」を未確定事項として申し送り。</p>
- </div>
- <div class="callout tip">
- <p><strong>【代替・2Box重ね / Free可】</strong> よりグラデの見た目に寄せたい場合は、<code>down-bar-prev</code> を塗り = 起点色にし、その中に子Box（幅100%/高さ100%・角丸上12px・塗り = 終点色のアルファ下げ）を入れ擬似グラデ化。<strong>ただし2色境界はソフトにならないため、推奨は実機確認→可ならネイティブ、不可なら単色</strong>。</p>
+ <p>バー塗り（prev = 180deg・2色 <code>#2E3F66</code>→<code>#1B2A4A</code>。now は <code>#CDD5E5</code>→<code>#AEB9D0</code>）は Mini の Custom Code で実装する:</p>
+ <div class="plan mini">
+ <span class="badge">Mini</span>
+ <p>Studio側は <code>down-bar-prev</code> を単色 <span class="sw" style="--c:#1B2A4A"></span><code>navy</code>、<code>down-bar-now</code> を単色 <span class="sw" style="--c:#AEB9D0"></span><code>bar-gray-2</code> にしておき、<a href="#ch-s9">§9 コード集</a>の該当ブロックを Custom Code に貼って2色線形グラデ（prev = 180deg 起点 <code>navy-lt</code> <code>#2E3F66</code>/終点 <code>navy</code> <code>#1B2A4A</code>、now = 起点 <code>bar-gray-1</code> <code>#CDD5E5</code>/終点 <code>bar-gray-2</code> <code>#AEB9D0</code>）を当てる。</p>
  </div>
 
  <h4>注記</h4>
@@ -5632,13 +5578,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </ul>
  </li>
  </ol>
- <p>high バー塗り（180deg・2色 <code>#FFD166</code>→<code>#E8B84A</code>）の実装分岐:</p>
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>【ネイティブが使えた場合（要実機確認）】</strong> 線形180deg 起点 = <code>yellow</code>（<code>#FFD166</code>）/ 終点 = <code>yellow-dk</code>（<code>#E8B84A</code>）。</p>
- </div>
- <div class="callout note">
- <p><strong>【代替・未確定時 / Free可】</strong> 単色 <span class="sw" style="--c:#FFD166"></span><code>yellow</code>（<code>#FFD166</code>）または <span class="sw" style="--c:#E8B84A"></span><code>yellow-dk</code>（<code>#E8B84A</code>）の塗りで代替（黄系の強調色は保持）。発注時に申し送り。</p>
+ <p>high バー塗り（180deg・2色 <code>#FFD166</code>→<code>#E8B84A</code>）は Mini の Custom Code で実装する:</p>
+ <div class="plan mini">
+ <span class="badge">Mini</span>
+ <p>Studio側は <code>up-bar-high</code> を単色 <span class="sw" style="--c:#E8B84A"></span><code>yellow-dk</code>（<code>#E8B84A</code>）にしておき、<a href="#ch-s9">§9 コード集</a>の該当ブロックを Custom Code に貼って線形180deg 起点 = <code>yellow</code>（<code>#FFD166</code>）/ 終点 = <code>yellow-dk</code>（<code>#E8B84A</code>）を当てる。</p>
  </div>
 
  <h4>注記差分</h4>
@@ -5677,8 +5620,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </figure>
 
  <ul>
- <li><strong>Tablet帯</strong>: セクション上下padding 64px（任意採用ではなく必須上書き）。</li>
- <li><strong>Mobile帯</strong>の上書き値: セクション上下padding 64px、見出しエリア下マージン 36px、見出し <code>32px</code>（下マージン18px）、リード <code>14px</code>（行間1.9）、市場専用としてグリッド1カラム化（gap14px）・カードpadding24px20px・チャートgap16px/高さ190px・バー幅74px。</li>
+ <li><strong>Small(1024)帯</strong>: 市場専用の上書きは無し（Default継承。折返しは最大幅で吸収）。</li>
+ <li><strong>Tablet(840)帯</strong>: セクション上下padding 64px（必須上書き）。</li>
+ <li><strong>Mobile(540)帯</strong>の上書き値: セクション上下padding 64px、見出しエリア下マージン 36px、見出し <code>32px</code>（下マージン18px）、リード <code>14px</code>（行間1.9）、市場専用としてグリッド1カラム化（gap14px）・カードpadding24px20px・チャートgap16px/高さ190px・バー幅74px。</li>
  </ul>
  <div class="callout warn">
  <p>Studioではグループ階層をBP別に変えられません。Default / Small(1024) / Tablet(840) / Mobile(540) のいずれでも <code>market-title</code> は1テキストのままにし、最大幅で折返し位置を制御します。改行有無は手動で入れません<strong>（要最終決定）</strong>。</p>
@@ -5717,8 +5661,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <tr><th>表現</th><th>Studioネイティブ可否（confidence）</th><th>採用方法</th></tr>
  </thead>
  <tbody>
- <tr><td>セクション背景 <code>linear-gradient(180deg,…)</code> 4ストップ</td><td><strong>未検証</strong>（fill グラデ可否が確認できず。多ストップは特に不明）</td><td>実機で4ストップ線形グラデが入力可なら採用。不可なら <strong>Custom Code（Mini以上）で <code>#market{background:…}</code></strong>。Free暫定は単色white＋未実装を指示書明記</td></tr>
- <tr><td>バー <code>linear-gradient(180deg,…)</code> 2色</td><td><strong>未検証</strong>（Box fill グラデの可否が未確認）</td><td>実機で2色線形グラデが入力可なら採用。不可なら <strong>単色（濃い終点色 navy / bar-gray-2 / yellow）</strong>。2Box重ねは境界がソフトにならないため次善</td></tr>
+ <tr><td>セクション背景 <code>linear-gradient(180deg,…)</code> 4ストップ</td><td><strong>Mini Custom Code</strong>で再現</td><td>Studio塗りは「なし」。<a href="#ch-s9">§9 コード集</a>の <code>#market{background:linear-gradient(180deg,…)}</code> ブロックを Custom Code に貼る</td></tr>
+ <tr><td>バー <code>linear-gradient(180deg,…)</code> 2色</td><td><strong>Mini Custom Code</strong>で再現</td><td>Studio塗りは濃い終点色の単色（navy / bar-gray-2 / yellow-dk）。<a href="#ch-s9">§9 コード集</a>の各バー用グラデブロックを Custom Code に貼る</td></tr>
  <tr><td>注記の上辺 1px Dashed 区切り線</td><td><strong>公式確認</strong>（Border Dashed・§3.5）</td><td>上辺Dashed 1px・色 line。<code>::before</code> 不要</td></tr>
  <tr><td>カードhover（上方向に4px移動）</td><td><strong>Mini</strong>で実装</td><td>Mini の Hover で Move Y -4px / 0.2s を付与</td></tr>
  <tr><td>見出し部分着色</td><td><strong>公式確認</strong>（部分テキスト着色・§4）</td><td>Studio部分テキスト着色。Custom Code直書きは代替案</td></tr>
@@ -5727,7 +5671,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </tbody>
  </table>
  <div class="callout warn">
- <p>このセクションには <code>::before/::after</code>・SVGフィルタ・<code>@keyframes</code> は使いません。<strong>ただしグラデ（背景・バー）は可否が裏取りされていない最重要の未確定事項</strong>であり、<code>公式確認</code> 扱い（=断定）にはできません。発注前に実機で「Box fill が線形グラデ（特に多ストップ）に対応するか」を確認し、不可の場合は背景＝Custom Code（Mini以上）、バー＝単色代替を正規手順として採用してください。Hover も Mini前提。これらを Studio実装指示書の冒頭「要実機確認・要プラン確認」リストに必ず転記してください。</p>
+ <p>このセクションには <code>::before/::after</code>・SVGフィルタ・<code>@keyframes</code> は使いません。グラデ（背景・バー）と Hover は、すべて Mini の Custom Code／Hover で実装します（背景＝<a href="#ch-s9">§9 コード集</a>の <code>#market{background:…}</code>、バー＝§9 の各バー用グラデブロック、Hover＝Move Y -4px / 0.2s）。Studio側の塗りは「なし」または濃い終点色の単色にしておきます。これらが Mini 機能であることを Studio実装指示書の冒頭「Mini前提機能」リストに転記してください。</p>
  </div>
 </section>
 <div class="pager"><a class="prev" href="#ch-s3"><small>← 前へ</small><b>5-3. アプローチ（Approach）</b></a><a class="next" href="#ch-s5"><small>次へ →</small><b>5-5. サービス（Service）</b></a></div>
@@ -6068,7 +6012,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul class="checklist"><li>カードを4枚に複製し、<code>svc-card-2/3/4</code> にリネームした</li><li>各カードの番号・メタ・見出し・本文を上表どおり差し替えた</li><li>番号バッジの背景が4枚とも ink（#0F1A33）である</li><li>c3「G&amp;N」・c4「POファイナンス®」が正しく表示される</li></ul>
 
  <h3 id="s5-6">5-5-6. 点線コネクタ（装飾・PCのみ）</h3>
- <p>カード間を青の点線（<code>3px dotted #4A7DE8</code>）で結ぶ十字コネクタです（横向きの線と縦向きの線が中央で交差）。<strong>Studioに<a class="term" href="#term-pseudo">疑似要素</a>はない</strong>ため、ネイティブでは再現できません。装飾目的なので扱いは下記から1つ選びます。</p>
+ <p>カード間を青の点線（<code>3px dotted #4A7DE8</code>）で結ぶ十字コネクタです（横向きの線と縦向きの線が中央で交差）。<strong>この装飾は Mini の Custom Code で再現します。</strong></p>
  <figure class="fig">
  <svg viewBox="0 0 300 300" role="img" xmlns="http://www.w3.org/2000/svg">
  <title>カード2×2の交差点に重ねる十字点線コネクタの位置</title>
@@ -6622,9 +6566,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <ul class="checklist"><li>Mobile（540px）で record の上記項目を上書きした（上書き枠オレンジを確認。見出しサイズは32px上限ではなくサイズ式実効値）</li></ul>
 
- <h4>Mini（任意・&lt; 380px）</h4>
- <p>380px以下の値：数字 <code>32px</code>／ラベル <code>11.5px</code>。見出しは <code>clamp</code> の下限 <code>28px</code> が効きます（4vw+8px=23.2px を下限28pxが上回る）。標準3BP に <code>380px</code> 段はないため、極小端末を厳密対応する場合のみ<a class="term" href="#term-breakpoint">ブレークポイント</a>バーで <strong>Mini（320px）</strong>を追加し、<code>Rec Num=32px</code>／<code>Rec Label=11.5px</code>（見出し28px）を上書き。不要なら省略可（Mobile の <code>38px</code>/<code>12.5px</code> で代替）。</p>
- <ul class="checklist"><li>（任意）Mini=320px を追加する/しないを判断し、追加時は Rec Num=32px・Rec Label=11.5px・見出し28px を上書きした</li></ul>
+ <h4>Mini 段は追加しない</h4>
+ <p>BP は Default／Small（1024px）／Tablet（840px）／Mobile（540px）の4段で固定し、<strong>Mini（320px）段は追加しない</strong>。380px以下の極小端末は Mobile 段の値（数字 <code>38px</code>／ラベル <code>12.5px</code>）で代替する。見出しは <code>clamp</code> の下限 <code>28px</code> が効く（4vw+8px=23.2px を下限28pxが上回る）。</p>
+ <ul class="checklist"><li>Mini=320px 段を追加せず、380px以下は Mobile 段（数字38px・ラベル12.5px）で代替することを確認した</li></ul>
 
  <h3 id="s6-8">5-6-8. 仕上げチェック</h3>
  <ul class="checklist"><li>見出し「9年分の支援実績」のみ <code>blue</code>、他は <code>ink</code>／見出し行間 <code>1.22</code>／ハードEnterなし（Default 1行・Tablet レンジ自動折返し2行）</li><li>4統計の数字色＝<code>blue</code> 単色（<code>English Number L</code> のグラデclipではない／本箇所はグラデなし）</li><li>月桂樹が各統計の左右に金色（<span class="sw" style="--c:#B69333"></span> <code>#B69333</code>）で表示・<strong>高さ基準あふれクロップで左端/右端の枝が出ている</strong>（contain極小表示になっていない）・装飾altは空</li><li>PC=4ブロック横並び（gap16px・実効padding 上52/下76）／Tablet=4ブロック横並び（実効padding 上64/下64）／Mobile=2×2折返し（行gap20px・padding 上48/下64）</li><li>アニメーション無し（出現演出の指定なし）。出現演出は足さない</li><li>公開URLで月桂樹の左右クロップ位置・折返し・見出し折返しを確認した</li></ul>
@@ -6845,19 +6789,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><strong>部分強調「50社以上」を黄色マーカー下線にする</strong>。<strong>青字ではありません。</strong> 文字色は ink のまま、語の背景に黄色の下側帯（下線状の蛍光マーカー）を敷く：</li>
  </ol>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>（推奨）1行目を3つの Text に分割して横並びにする。</strong> 1行目「提携VC50社以上。」を、Studio では<strong>横並びBox</strong>の中に Text を3つ置いて再現する: ①<code>提携VC</code>／②<strong><code>50社以上</code>＝マークBox <code>vc-title-mark</code></strong>／③<code>。</code>。②の語Text を小さな <a class="term" href="#term-box">Box</a> で包み、その背景に <strong>180deg の線形グラデ</strong>を設定する：</p>
- <ul>
- <li>角度 <strong>180deg</strong>、ストップ＝<strong>0%〜62% <code>transparent</code> / 62%〜90% <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（yellow） / 90%〜100% <code>transparent</code></strong></li>
- <li>左右余白 <code>6</code>px、文字色は <code>#0F1A33</code>（ink）のまま、ウェイト900のまま</li>
- <li>3つの Text を入れた横並びBoxは <strong>垂直配置＝下端(Bottom)</strong>（Studio に baseline は無いので下端で代用。<a href="#g0-4">§0.4</a>）、gap 0。2行目以降（改行）は別の Text として下に積む。</li>
- </ul>
- </div>
-
  <div class="plan mini">
  <span class="badge">Mini</span>
- <p><a class="term" href="#term-customcode">Custom Code</a>（Head）に <code>.vc-title em.y{color:var(--ink);background:linear-gradient(180deg,transparent 62%,#FFD166 62%,#FFD166 90%,transparent 90%);padding:0 6px}</code> を注入し、見出し内に該当 span を置く（Mini以上・Free不可）。</p>
+ <p>黄色マーカー下線は <a class="term" href="#term-customcode">Custom Code</a> で実装する。§9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の <code>.vc-title em.y</code> ブロック <code>.vc-title em.y{color:var(--ink);background:linear-gradient(180deg,transparent 62%,#FFD166 62%,#FFD166 90%,transparent 90%);padding:0 6px}</code> を Custom Code（Head）に貼る。<code>vc-title</code> の1行目「50社以上」を <code><em class="y">50社以上</em></code> で囲む。文字色は ink のまま、ウェイト900のまま、語の背景に下側62%〜90%の黄帯を敷く。</p>
  </div>
 
  <figure class="fig">
@@ -6922,19 +6856,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <div class="plan mini">
  <span class="badge">Mini</span>
- <p><a class="term" href="#term-customcode">Custom Code</a>（Head）に下記を注入し、<code>vc-big</code> 内に <code>50&lt;sup&gt;+&lt;/sup&gt;</code> を置く：</p>
+ <p>blue→navy グラデ文字は <a class="term" href="#term-customcode">Custom Code</a> で実装する。§9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の <code>.vc-big</code> ブロックを Custom Code（Head）に貼り、<code>vc-big</code> 内に <code>50&lt;sup&gt;+&lt;/sup&gt;</code> を置く：</p>
  <pre class="tree">.vc-big{font-family:'Inter',sans-serif;font-size:180px;font-weight:900;line-height:.9;letter-spacing:-.05em;background:linear-gradient(135deg,#4A7DE8,#1B2A4A);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.25em}
 .vc-big sup{font-size:60px;vertical-align:38px;letter-spacing:0;margin-left:.04em}</pre>
- </div>
-
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>（推奨：本LPはFree方針）</strong>グラデ文字はFreeのテキストでは不可。次のいずれか：</p>
- <ul>
- <li><strong>(a) 画像化（推奨）</strong>：「50+」を blue→navy(135deg) グラデで描いたPNG/SVGを書き出し、<code>vc-big</code> を Image にして配置（高さ約180px相当）。最も忠実で、文言変更が無い数字表示なので画像固定で問題ない。<strong>装飾円も含めて1枚に描き込めば下記4の手順を省略できる。</strong></li>
- <li><strong>(b) 単色代替</strong>：Text「50」+ 上付き「+」を <span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE8</code>（blue）単色（Inter900・180px・line-height.9・letter-spacing-.05em、「+」は60px・上寄せ）で置く。グラデは諦める。</li>
- </ul>
- <p>Mini切替が確定すれば Custom Code 注入に移行可。</p>
  </div>
 
  <ol class="steps" start="4">
@@ -7030,13 +6954,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><strong>縦横比 5:2 の実装</strong>（高さ＝幅×0.4）。Studioに aspect-ratio 指定UIが無い場合の代替：</li>
  </ol>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>（推奨）</strong>高さを <code>px</code> <strong>94</strong>（235×0.4＝94）で固定。Wrap時はPC幅235pxでほぼ一定のため破綻しにくい。Tablet/Mobileは<a class="term" href="#term-conditional">条件スタイル</a>で高さを再指定（<a href="#s7-6">5-7-6</a>）。</p>
- </div>
  <div class="plan mini">
  <span class="badge">Mini</span>
- <p><a class="term" href="#term-customcode">Custom Code</a>（Head）で <code>.vc-card{aspect-ratio:5/2;height:auto}</code> を注入し縦横比を厳密維持（Mini以上・Free不可）。</p>
+ <p>縦横比は <a class="term" href="#term-customcode">Custom Code</a> で実装する。§9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の <code>.vc-card{aspect-ratio:5/2;height:auto}</code> ブロックを Custom Code（Head）に貼り、縦横比 5:2 を厳密維持する。あわせて高さを <code>px</code> <strong>94</strong>（235×0.4＝94）で入力しておき、Small(1024)/Tablet(840)/Mobile(540) は<a class="term" href="#term-conditional">条件スタイル</a>で高さを再指定する（<a href="#s7-6">5-7-6</a>）。</p>
  </div>
 
  <ol class="steps" start="3">
@@ -7108,10 +7028,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </table>
 
  <ol class="steps" start="3">
- <li>各 <code>vc-logo</code> のサイズ：幅 <code>auto</code> / 高さ <code>auto</code>、ただし<strong>最大幅 78% / 最大高さ 62%</strong>。Studioに max-% の独立UIが無い場合の代替：
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <p><strong>（推奨）</strong>幅 <code>%</code> <strong>78</strong>（カード内中央寄せ前提）。高さは <code>auto</code> ＋ <code>object-fit:contain</code>（下記4）に委ね、縦が62%を超える縦長ロゴは Mini の Custom Code か個別に高さ上限を調整。</p>
+ <li>各 <code>vc-logo</code> のサイズ：幅 <code>auto</code> / 高さ <code>auto</code>、ただし<strong>最大幅 78% / 最大高さ 62%</strong>。最大幅/最大高さは <a class="term" href="#term-customcode">Custom Code</a> で実装する。
+ <div class="plan mini">
+ <span class="badge">Mini</span>
+ <p>§9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の <code>.vc-logo{max-width:78%;max-height:62%;object-fit:contain}</code> ブロックを Custom Code（Head）に貼る。あわせて右パネルで幅 <code>%</code> <strong>78</strong>（カード内中央寄せ前提）を入力する。</p>
  </div>
  </li>
  <li>画像固有タブ（<strong>画像 / Image</strong> タブ）→ フィット＝<strong>contain</strong>。</li>
@@ -7265,7 +7185,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p><strong>改行制御</strong>（テキスト内容・DOM構造はBP別に変更不可）：</p>
  <ul>
  <li><code>vc-title</code> の3行はすべてのBPで同一テキスト・同一改行。BPごとに改行位置を変えるのはStudioでも不可なので、3行固定でよい。</li>
- <li>フレーズ内改行禁止（word-break: keep-all 相当）は、各行を1テキスト行として保ち、<code>vc-title</code> 幅820pxの範囲で勝手に折り返らないようにする。最終は Live Preview / 公開URLで実機確認。</li>
+ <li>フレーズ内改行禁止（word-break: keep-all 相当）は、各行を1テキスト行として保ち、<code>vc-title</code> 幅820pxの範囲で勝手に折り返らないようにする。keep-all は §9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の <code>.vc-title</code> ブロックを Custom Code に貼って適用する。</li>
  </ul>
  </div>
 
@@ -7278,11 +7198,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul>
  <li><strong>vc-big（巨大「50+」）と noteカード2枚は実装する</strong>：どちらも実際に表示される要素です。
  <ul>
- <li>vc-big：blue→navy(135deg)グラデ文字＋装飾円2つ。【Free代替・推奨】グラデ込みで<strong>画像化</strong>（装飾円も1枚に描き込み）。【Mini】Custom Code head に <code>.vc-big</code> CSS を注入。</li>
+ <li>vc-big：blue→navy(135deg)グラデ文字＋装飾円2つ。グラデ文字は §9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の <code>.vc-big</code> ブロックを Custom Code（Head）に貼って実装し、装飾円2つは絶対配置Boxで作る。</li>
  <li>noteカード：135deg blue-bg→yellow-bg グラデ背景・ink文字・Noto Sans JP900。<code>vc-card</code> の複製で作る。</li>
  </ul>
  </li>
- <li><strong>「50社以上」は青字ではなく黄色マーカー下線</strong>：文字色は ink のまま、180deg黄帯（62%〜90%）を語の背景に敷く＋左右padding6px。【Mini推奨】Custom Code、【Free】語を別Boxに分割し背景グラデ。</li>
+ <li><strong>「50社以上」は青字ではなく黄色マーカー下線</strong>：文字色は ink のまま、180deg黄帯（62%〜90%）を語の背景に敷く＋左右padding6px。§9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の <code>.vc-title em.y</code> ブロックを Custom Code（Head）に貼って実装する。</li>
  <li><strong>特典ピル <code>vc-perk-inner</code> はリンクでもHover対象でもない</strong>：静的なBoxで、<code>:hover</code> なし、<code>#cta</code> リンクなし。作り込まない。一方、<strong>カード <code>vc-card</code> のHover（-3px・影・0.2s）は必要なので作る</strong>（両者のHover有無の非対称に注意）。</li>
  <li><strong>バッジは「PERK」かつ blue→navy グラデ背景</strong>。「特典」「単色blue」は誤り。</li>
  <li><strong>特典本文は1文・改行なし</strong>。<code>&lt;br&gt;</code> 付き2文は捏造なので入れない。</li>
@@ -7532,7 +7452,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>内側に Image を追加 <code>Cover Img A</code>。アップロードは 左ナビ→アップロード→画像（または ストック）。alt（右パネル→画像→代替テキスト）= <code>株式会社A 様 オフィスにて</code>。カバーは下の参考画像のとおり。</li>
  <li><code>Cover Img A</code> 右パネル→ボックス→サイズ → 幅 <code>%</code>100 / 高さ <code>%</code>100。右パネル→画像→フィット（object-fit相当）= <code>Cover</code>、位置 = <code>center 35%</code>。
  <ul>
- <li>フィット/位置UIの有無は <a href="#ch-t8">§8</a>.2 の通り未検証。無い場合は画像を上寄り（35%）でトリミング書き出ししてアップロード。</li>
+ <li>フィット/位置は §9 コード集の該当ブロックを Custom Code に貼って <code>object-fit:cover;object-position:center 35%</code> を当てる。</li>
  </ul>
  </li>
  </ol>
@@ -8055,11 +7975,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h4>Q バッジ <code>faq-q-badge-1</code>（<a class="term" href="#term-pseudo">擬似要素</a> <code>::before</code> の代替実 Box）</h4>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span> Studio は擬似要素 <code>::before</code> 非対応のため、実 <a class="term" href="#term-box">Box</a> ＋ Text で作ります（推奨）。
- </div>
  <div class="plan mini">
- <span class="badge">Mini</span> Custom Code でバッジ用の CSS を注入する手もありますが、Free 完結の実 Box を推奨します。
+ <span class="badge">Mini</span> Q バッジは <a href="#t9-codeset">§9 コード集</a>のバッジ用 CSS を <a class="term" href="#term-customcode">Custom Code</a> に貼って再現する。Studio 側は実 <a class="term" href="#term-box">Box</a> ＋ Text を器として配置し、グラデ等の装飾は §9 コード集の CSS で担保する。
  </div>
 
  <ol class="steps" start="5">
@@ -8098,11 +8015,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h4>開閉矢印 <code>faq-q-arrow-1</code>（<a class="term" href="#term-pseudo">擬似要素</a> <code>::after</code> の代替）</h4>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span> Studio は擬似要素非対応のため、Icon（chevron-down）で作り、Toggle の Closed 条件スタイルで回転させます（推奨）。
- </div>
  <div class="plan mini">
- <span class="badge">Mini</span> Custom Code で矢印（border 2 辺で作るシェブロン）を再現可。Free 完結の Icon を推奨します。
+ <span class="badge">Mini</span> 開閉矢印は <a href="#t9-codeset">§9 コード集</a>の矢印（border 2 辺で作るシェブロン）と回転 CSS を <a class="term" href="#term-customcode">Custom Code</a> に貼って再現する。Studio 側は Icon（chevron-down）を器として配置し、回転は §9 コード集の CSS で担保する。
  </div>
 
  <ol class="steps" start="15">
@@ -8251,7 +8165,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul class="checklist"><li>エディタ＆公開 URL で 4 アイテムの開閉・初期 open・状態差・矢印回転を確認した</li><li>FAQ→CTA のグラデ連結（#D8E7FC 一致）を確認した</li><li>Mobile 実機でバッジ・余白・文字サイズの縮小を確認した</li></ul>
 
  <div class="callout warn">
- <p><strong>注記（confidence）</strong>: Toggle / On Appear / Hover 等のインタラクションの Free プラン可否は公式機能比較表で未確定。Free で開閉が有効化できない場合は、Mini 切替後に有効化する前提で設計するか、暫定で <a class="term" href="#term-customcode">Custom Code</a>（Mini）による <code>&lt;details&gt;</code> 実装に切替えます。本 LP は「制作中 Free → 納品後 Mini 切替」方針のため、Mini 切替後に最終確認するのが安全です。</p>
+ <p><strong>注記</strong>: FAQ の開閉・影/枠の状態差・矢印回転は <a class="term" href="#term-customcode">Custom Code</a>（Mini）による <code>&lt;details&gt;</code> 実装（<a href="#t9-codeset">§9 コード集</a>）で実装する。本 LP は「制作中 Free → 納品後 Mini 切替」方針のため、Mini 切替後に <a href="#t9-codeset">§9 コード集</a>のコードを Body へ注入し、公開 URL で最終確認する。</p>
  </div>
 </section>
 <div class="pager"><a class="prev" href="#ch-s8"><small>← 前へ</small><b>5-8. 導入事例（Cases）</b></a><a class="next" href="#ch-s10"><small>次へ →</small><b>5-10. CTA</b></a></div>
@@ -8349,7 +8263,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  └─ Text / Consent ← .consent 同意文</pre>
 
 <div class="callout note">
-<p>青/黄グロー（右上の青・左下の黄の淡い光）は装飾です。Studio ネイティブでは厳密再現できないため §5-10-2 の【Free 代替】で扱います。3 つ目のグローは完成イメージでは非表示のため作りません。</p>
+<p>青/黄グロー（右上の青・左下の黄の淡い光）は装飾です。Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）で完全再現します。3 つ目のグローは完成イメージでは非表示のため作りません。</p>
 </div>
 
 <h3 id="s10-1">5-10-1. セクション枠（Section / CTA）</h3>
@@ -8383,28 +8297,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </tbody>
 </table>
 
-<div class="plan free recommended">
-<span class="badge">Free代替</span> <strong>（推奨）</strong> 追加 Box で近似する。
-<ol class="steps">
-<li>左ナビ→追加→基本→<a class="term" href="#term-box">Box</a> を Section / CTA 直下に配置→リネーム <code>Box / CTA BG Blue</code>。</li>
-<li>ポジション: <strong>絶対（absolute）</strong>、top <code>-120px</code> / right <code>-80px</code>。</li>
-<li>サイズ <code>520×460px</code>、角丸 <code>50%</code>。</li>
-<li>外観→背景: <strong>放射グラデーション（Radial）</strong>、中心 <code>rgba(74,125,232,.16)</code>（blue を不透明度 16%）、外側 <strong>65% で透明</strong>。</li>
-<li>外観→<a class="term" href="#term-transform">変形タブ</a>ではなく<strong>Filter→Blur 24px</strong>（子なしの装飾 Box なので影響範囲問題なし）。</li>
-<li>同様に <code>Box / CTA BG Yellow</code> を作成（bottom -100 / left -100、480×400、角丸 50%、yellow 18% / 外側 65% 透明、Blur 28px）。</li>
-<li>両 Box とも <a class="term" href="#term-zindex">重ね順</a>は CTA Inner より背面（CTA Inner 側 z=1）。</li>
-</ol>
-</div>
-
 <div class="plan mini">
-<span class="badge">Mini</span> <a class="term" href="#term-customcode">Custom Code</a>（body）に <code>&lt;div&gt;</code> ＋上記 CSS を書いて再現も可だが、装飾のため不要。Free 代替で十分。
+<span class="badge">Mini</span> <a class="term" href="#term-customcode">Custom Code</a>（body）に <a href="#t9-codeset">§9 コピペ用コード集</a>の背景グローのブロック（<code>&lt;div&gt;</code> ＋放射グラデ＋Blur の CSS）を貼り、上表の値（CTA BG Blue: top -120 / right -80・520×460・角丸 50%・blue16%・外側 65% 透明・Blur 24px、CTA BG Yellow: bottom -100 / left -100・480×400・角丸 50%・yellow18%・外側 65% 透明・Blur 28px）で 2 要素を再現する。両要素とも重ね順は CTA Inner（z=1）より背面に置く。
 </div>
 
-<div class="callout tip">
-<p><strong>推奨</strong>: 【Free 代替】（追加 Box ＋ Filter Blur）。再現が手間ならこの 2 Box は<strong>省略可</strong>（淡い装飾で CV 影響なし）。</p>
-</div>
-
-<ul class="checklist"><li>CTA BG Blue / CTA BG Yellow を追加 Box ＋ Filter Blur で配置（または省略判断）済み</li></ul>
+<ul class="checklist"><li>CTA BG Blue / CTA BG Yellow を §9 コード集の背景グローブロックで Custom Code に貼り、CTA Inner より背面に配置済み</li></ul>
 
 <h3 id="s10-3">5-10-3. 内側コンテナ（Box / CTA Inner）— 2 カラム</h3>
 <ol class="steps">
@@ -8458,14 +8355,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </figure>
 
 <div class="callout warn">
-<p>Studio ではテキスト内改行（Shift+Enter）を<strong>ブレークポイント別に出し分けできない</strong>（DOM・テキスト内容は BP 別変更不可）。よって以下いずれかを選ぶ:</p>
-</div>
-
-<div class="plan free recommended">
-<span class="badge">Free代替</span> <strong>(a) 改行なし・全 BP 自然折返し（推奨・本手順の既定）</strong>: 1 つの Text に「まずは1時間の無料相談から」を入れ、改行を入れない。<strong>ワイド PC の見え方には一致するが、Tablet/Mobile での「まずは」単独行 2 行レイアウトは再現されない</strong>（折返し位置が完成イメージと変わる）。CV への影響は無いため推奨。
-</div>
-<div class="plan mini">
-<span class="badge">厳密再現</span> <strong>(b) Tablet/Mobile の改行を厳密再現</strong>: 「まずは」と「1時間の無料相談から」を<strong>別 Textに分割</strong>し、CTA Left（縦並び）内に縦積み。ワイド PC で 1 行に見せたい場合は PC 基準でこの 2 Text を横並び内側 Box に入れ、Tablet/Mobile <a class="term" href="#term-conditional">条件スタイル</a>で縦並びに切替（手数が多い）。
+<p>Studio ではテキスト内改行（Shift+Enter）を<strong>ブレークポイント別に出し分けできない</strong>（DOM・テキスト内容は BP 別変更不可）。本手順は <strong>(a) 改行なし・全 BP 自然折返し</strong>に一本化します<strong>（要最終決定）</strong>: 1 つの Text に「まずは1時間の無料相談から」を入れ、改行を入れない。ワイド PC の見え方には一致し、Tablet/Mobile では「まずは」単独行 2 行レイアウトにはならず自然折返しになる（CV への影響なし）。</p>
 </div>
 
 <ol class="steps">
@@ -8526,7 +8416,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </figure>
 
 <div class="callout note">
-<p>吹き出しの三角しっぽは、Studio ネイティブの<a class="term" href="#term-pseudo">疑似要素</a>では作れません。装飾要素のため簡略化を推奨。</p>
+<p>吹き出しの三角しっぽは、Studio ネイティブの<a class="term" href="#term-pseudo">疑似要素</a>では作れません。Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）の <code>::before</code> ブロックで実装します。</p>
 </div>
 
 <h4>A. イラスト枠</h4>
@@ -8597,10 +8487,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul>
 <li>黄グロー = top -60/right -50、<code>190×190px</code>、<code>rgba(255,209,102,.55)</code> → 62% 透明。青グロー = bottom -70/left -50、<code>210×210px</code>、<code>rgba(74,125,232,.28)</code> → 62% 透明。</li>
 </ul>
-<div class="plan free recommended">
-<span class="badge">Free代替</span> <strong>（推奨）</strong> Form / Contact Form 直下に装飾 Box 2 つ（絶対配置・放射グラデ・角丸 50%）を Form Inner より背面に置く（黄: yellow55%、青: blue28%）。Form の overflow:Hidden で角を丸く収める。手間なら省略可。
+<div class="plan mini">
+<span class="badge">Mini</span> Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）のフォーム背景グロー <code>::before/::after</code> ブロックを貼り、黄グロー（top -60 / right -50・190×190・yellow55% → 62% 透明）と青グロー（bottom -70 / left -50・210×210・blue28% → 62% 透明）を Form Inner より背面に再現する。Form の overflow:Hidden で角を丸く収める。
 </div>
-<div class="plan mini"><span class="badge">Mini</span> Custom Code で <code>::before/::after</code> 再現。非推奨。</div>
 
 <h4>B. 内側ラッパー（Box / Form Inner）</h4>
 <ol class="steps">
@@ -8761,7 +8650,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><strong>541〜767px 帯の差</strong>: 本来は 767px 以下で「イラスト非表示・見出し 28px」ですが Studio は 541〜767px が Tablet 管轄です。本手順はイラスト非表示と 1 カラムを Tablet にも適用して構造を一致させた上で、見出しサイズは Tablet=40px のまま。<strong>541〜767px では見出しが本来の 28px より大きい 40px になる点のみ差が残ります。</strong>ブレークポイントは Default / Small(1024) / Tablet(840) / Mobile(540) の 4 段固定とし、Tablet 境界調整や追加 BP は行いません。</p>
 </div>
 <div class="callout note">
-<p>吹き出しの三角しっぽ・<code>›</code> 円アイコン・背景グローは Studio ネイティブでは再現できません。【Free 代替】を正とし、厳密再現が必要なら【Mini】Custom Code に回します。狭幅（380px 前後）の微縮小値（見出し 24px・form 26px/18px・input 15.5px）は Studio Mobile 単一段では 767px 帯の値に統合。320px 実機が崩れる場合のみ Mini BP（320px）を追加します。</p>
+<p>吹き出しの三角しっぽ・<code>›</code> 円アイコン・背景グローは Studio ネイティブでは再現できないため、すべて Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）で実装します。狭幅（380px 前後）の微縮小値（見出し 24px・form 26px/18px・input 15.5px）は Mobile(540) 段の値に統合し、ブレークポイントは Default / Small(1024) / Tablet(840) / Mobile(540) の 4 段固定・320px BP は追加しません。</p>
 </div>
 
 <div class="callout tip">
@@ -9779,7 +9668,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <section class="chapter" id="ch-t6">
 <h2 id="ch-t6">6. アニメーション一覧と実装方針</h2>
 
-<p>本章は、確定した完成イメージの<strong>全アニメーション・トランジション・ホバーを棚卸し</strong>し、次の2系統に振り分ける全体方針です。各演出について <span class="plan free"><span class="badge">Free代替</span></span> と <span class="plan mini"><span class="badge">Mini</span></span> の両方を併記し、推奨を1つ示します。</p>
+<p>本章は、確定した完成イメージの<strong>全アニメーション・トランジション・ホバーを棚卸し</strong>し、次の2系統に振り分ける全体方針です。装飾系（グラデ文字・SVGフィルタ・点滅ドット・黄マーカー・フローティングCTA・背景ぼかし等）はすべて Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）で完全再現する、を唯一の手順とします。</p>
 
 <ul>
 <li><strong>Studio標準機能で再現できるもの</strong> — <a class="term" href="#term-transform">変形タブ</a>／<a class="term" href="#term-conditional">条件スタイル</a>／<a class="term" href="#term-loopbox">Loop Box</a>／<a class="term" href="#term-toggle">Toggle</a>／Carousel／Scroll Effect</li>
@@ -10208,9 +10097,9 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <p>本LPでは Scroll Effect は採用せず、出現演出は <strong>On Appear に統一する</strong>。</p>
 </div>
 
-<h3 id="t6-4">6.4 Studio標準で不可能なもの（Free代替 / Mini 併記）</h3>
+<h3 id="t6-4">6.4 Studio標準で不可能なもの（Mini の Custom Code で再現）</h3>
 
-<p>以下はいずれも <strong><a class="term" href="#term-pseudo">疑似要素</a> / SVGフィルタ / 背景クリップ文字 / 常時 @keyframes / JSトグル</strong> を含み、Studioの変形タブでは再現不可です。</p>
+<p>以下はいずれも <strong><a class="term" href="#term-pseudo">疑似要素</a> / SVGフィルタ / 背景クリップ文字 / 常時 @keyframes / JSトグル</strong> を含み、Studioの変形タブでは再現不可です。すべて Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）で再現します。</p>
 
 <h4 id="t6-4-1">6.4.1 [H] ステータスピル点滅ドット <code>blink</code></h4>
 
@@ -10218,16 +10107,14 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li><strong>挙動</strong>: ドットが <code>blink 1.6s infinite</code> で点滅（<code>@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}</code>）。</li>
 </ul>
 
-<div class="plan free"><span class="badge">Free代替</span> ① 点滅を諦め<strong>静的ドット</strong>にする（視認性影響は小さく、ピル文言で受付中は伝わる）。② どうしても点滅させるなら <strong>Embed sandbox</strong> にドット要素＋<code>&lt;style&gt;</code>を内包。</div>
-
-<div class="plan mini"><span class="badge">Mini</span> サイト全体の Custom Code（Body末尾）に下記1ブロックを注入し、Studio側の<strong>点滅させたいドットBoxの class 欄</strong>（設定タブ）に <code>gn-blink-dot</code> を付与する（<strong>親に <code>pill</code> クラスは不要</strong>＝この単一クラスだけで点滅する）。
+<div class="plan mini"><span class="badge">Mini</span> サイト全体の Custom Code（Body末尾）に下記1ブロックを注入し、Studio側の<strong>点滅させたいドットBoxの class 欄</strong>（設定タブ）に <code>gn-blink-dot</code> を付与する（<strong>親に <code>pill</code> クラスは不要</strong>＝この単一クラスだけで点滅する）。コードは <a href="#t9-codeset">§9 コード集</a> の該当ブロックを Custom Code に貼る。
 <pre class="tree">@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .gn-blink-dot{animation:blink 1.6s infinite}</pre></div>
 
 <div class="callout tip">
-<p><strong>推奨</strong>: <strong>Free段階＝静的ドット</strong>、<strong>Mini切替後＝Custom Code で点滅</strong>。軽量（<code>&lt;style&gt;</code>1行）なので Mini では Custom Code が最適です。</p>
+<p><strong>手順</strong>: 点滅ドットは Mini の Custom Code（§9 コード集）で実装する。</p>
 </div>
-<ul class="checklist"><li>Free=静的 / Mini=Custom Code の方針を指示書に明記した</li></ul>
+<ul class="checklist"><li>Mini=Custom Code の方針を指示書に明記した</li></ul>
 
 <h4 id="t6-4-2">6.4.2 [I][J] FVグラデ文字スイープ <code>sweepGrad</code> ＋ 手書き下線 <code>fvUnderline</code></h4>
 
@@ -10235,14 +10122,12 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li><strong>挙動</strong>: <code>sweepGrad</code>（background-position 100%→0%、delay .15/1.25/1.85s、cubic-bezier(.6,.05,.3,1) forwards）＋ <code>fvUnderline</code>（scaleX 0→1 skewX -2deg、<code>filter:url(#hl-rough)</code> のSVGラフネス付き）。両者は <strong>同じ delay で同期</strong>し、ヒーロー見出し「挑戦するスタートアップ」「補助金」「追い風」に適用。</li>
 </ul>
 
-<div class="plan free"><span class="badge">Free代替</span> ① <strong>Embed sandbox</strong> にヒーロー見出し一式（HTML＋<code>&lt;style&gt;</code>＋SVGフィルタ定義 <code>#hl-rough</code>）を丸ごと内包するのが<strong>唯一忠実</strong>。② 妥協案: 見出しを Studio通常テキストにし、出現は On Appear（Fade+Move）のオンロード版で代替 — ただし<strong>グラデ塗り・スイープ質感・手書き下線は失われる</strong>。</div>
-
-<div class="plan mini"><span class="badge">Mini</span> Custom Code（Head に <code>&lt;style&gt;</code>＋<code>@keyframes</code>、Body に SVGフィルタ）に分割注入し、Studio側の見出しBoxにクラスを付与。ただし<strong>背景クリップ文字（<code>-webkit-background-clip:text</code>）はDOM構造に密結合</strong>のため、見出しマークアップごと制御する Embed のほうが破綻しにくい。</div>
+<div class="plan mini"><span class="badge">Mini</span> ヒーロー見出しのグラデ文字スイープ・手書き下線は、Mini の Custom Code（Head に <code>&lt;style&gt;</code>＋<code>@keyframes</code>、Body に SVGフィルタ <code>#hl-rough</code>）で実装する。<a href="#t9-codeset">§9 コード集</a> の該当ブロックを Custom Code に貼り、Studio側の見出しBoxに所定クラスを付与する。レイヤー名 <code>hero-headline</code>。</div>
 
 <div class="callout tip">
-<p><strong>推奨</strong>: <strong>ヒーロー見出し一式を1つの Embed sandbox 化</strong>（<code>sweepGrad</code>＋<code>fvUnderline</code>＋SVGフィルタ <code>#hl-rough</code> を同梱）。Free/Mini いずれでも同じ Embed が使え、移行コストが最小。レイヤー名 <code>hero-headline-embed</code>。</p>
+<p><strong>手順</strong>: <code>sweepGrad</code>＋<code>fvUnderline</code>＋SVGフィルタ <code>#hl-rough</code> を §9 コード集の同一ブロックから Custom Code に注入する。</p>
 </div>
-<ul class="checklist"><li>ヒーロー見出しの Embed 化方針を確定した</li><li>SVGフィルタ #hl-rough を Embed に同梱した</li></ul>
+<ul class="checklist"><li>ヒーロー見出しの Custom Code 化方針を確定した</li><li>SVGフィルタ #hl-rough を Custom Code に同梱した</li></ul>
 
 <div class="callout warn">
 <p><strong>Custom Code に重い素材を寄せない</strong>: ヒーロー見出しコードは小さいため問題ない。画像等の重い素材は Custom Code に含めない。</p>
@@ -10254,14 +10139,12 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li><strong>挙動</strong>: <code>.float-perk.is-visible</code>（<strong>JSスクロールトグル</strong>で opacity 0→1 / translateY 16→0、時間0.3s）。内部の「0」数字に <code>perkShine</code>（文字クリップ光沢を 3s で無限ループ）。closeボタン <code>.float-perk-close:hover{transform:rotate(90deg)}</code>。</li>
 </ul>
 
-<div class="plan free"><span class="badge">Free代替</span> ① <strong>Embed sandbox</strong> にバナー全体（HTML＋<code>&lt;style perkShine&gt;</code>＋表示制御JS）を内包。② JSトグルを使わず、Studioの <strong>On Appear</strong>（スクロールで画面に入った時に表示）で近似 — ただし「一定スクロール量で出す／×で閉じる」挙動は再現できない。close回転は変形タブ rotate 90deg hover で個別再現可。</div>
-
-<div class="plan mini"><span class="badge">Mini</span> Custom Code（Body）にバナーHTML＋JS＋<code>perkShine</code> を集約。</div>
+<div class="plan mini"><span class="badge">Mini</span> フローティング特典バナーの表示/退避（JSスクロールトグル）・文字光沢 <code>perkShine</code>・closeボタン回転は、Mini の Custom Code（Body）にバナーHTML＋JS＋<code>perkShine</code> を集約して実装する。<a href="#t9-codeset">§9 コード集</a> の該当ブロックを Custom Code に貼る。レイヤー名 <code>float-perk</code>。</div>
 
 <div class="callout tip">
-<p><strong>推奨</strong>: <strong>フローティングバナーごと Embed sandbox 化</strong>し <code>perkShine</code> を同梱（JSトグルと光沢を一体管理）。光沢が不要なら静的な太字「0」でも訴求は維持される（nice-to-have）。レイヤー名 <code>float-perk-embed</code>。</p>
+<p><strong>手順</strong>: フローティングバナーごと §9 コード集の該当ブロックを Custom Code に注入し、<code>perkShine</code>（光沢）も同梱して実装する。</p>
 </div>
-<ul class="checklist"><li>フローティングバナーの Embed 化方針を確定した</li></ul>
+<ul class="checklist"><li>フローティングバナーの Custom Code 化方針を確定した</li></ul>
 
 <h3 id="t6-5">6.5 章まとめ（実装振り分け早見表）</h3>
 
@@ -10269,11 +10152,10 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <thead><tr><th>実装手段</th><th>該当演出</th><th>プラン要件</th></tr></thead>
 <tbody>
 <tr><td><strong>Loop Box（Studio標準）</strong></td><td>[A] VCロゴマーキー</td><td>Free可</td></tr>
-<tr><td><strong>Toggle（Studio標準）</strong></td><td>[F] FAQアコーディオン</td><td>Free可否未検証→Mini前提</td></tr>
-<tr><td><strong>変形タブ Hover/Focus（Studio標準）</strong></td><td>[B]ボタン [C]カードlift [D]テキスト色 [E]フォーム input [L]close回転</td><td>Free可否未検証→Mini前提</td></tr>
-<tr><td><strong>On Appear（Studio標準・任意）</strong></td><td>[G]出現アニメ（付加）</td><td>Free可否未検証→Mini前提</td></tr>
-<tr><td><strong>Embed sandbox（Free/Mini共通・推奨）</strong></td><td>[I][J]FV見出しスイープ＋下線 ／ [K][L]フローティングバナー＋光沢</td><td>全プラン可</td></tr>
-<tr><td><strong>Custom Code（Mini以上）</strong></td><td>[H]点滅ドット（軽量CSS注入）</td><td>Free不可・Mini解禁</td></tr>
+<tr><td><strong>Toggle（Studio標準）</strong></td><td>[F] FAQアコーディオン</td><td>Mini切替後に有効化</td></tr>
+<tr><td><strong>変形タブ Hover/Focus（Studio標準）</strong></td><td>[B]ボタン [C]カードlift [D]テキスト色 [E]フォーム input [L]close回転</td><td>Mini切替後に有効化</td></tr>
+<tr><td><strong>On Appear（Studio標準）</strong></td><td>[G]出現アニメ</td><td>Mini切替後に有効化</td></tr>
+<tr><td><strong>Custom Code（§9 コード集・Mini）</strong></td><td>[I][J]FV見出しスイープ＋下線 ／ [K][L]フローティングバナー＋光沢 ／ [H]点滅ドット</td><td>Mini</td></tr>
 <tr><td><strong>対象外（死にコード）</strong></td><td>bridge-bounce / sec-bridge 一式</td><td>—</td></tr>
 </tbody>
 </table>
@@ -10322,7 +10204,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <p><strong>Studio 仕様の要点（リファレンス <a href="#ch-t6">§6</a> を正とする再掲）</strong></p>
  </div>
  <ul>
- <li><a class="term" href="#term-breakpoint">ブレークポイント</a>はデフォルト 5 段（Default <code>1280</code> / Small <code>1140</code> / Tablet <code>840</code> / Mobile <code>540</code> / Mini <code>320</code>）。<strong>初期有効は Default / Tablet / Mobile の 3 段</strong>。本 LP は原則この 3 段で実装する（<a href="#t7-1">§7.1</a> で Small 追加の判断基準を示す）。</li>
+ <li><a class="term" href="#term-breakpoint">ブレークポイント</a>は <strong>Default / Small(1024) / Tablet(840) / Mobile(540) の 4 段に固定</strong>する。本 LP はこの 4 段で実装し、段を追加・削除しない。</li>
  <li><a class="term" href="#term-conditional">条件スタイル</a>は <strong>Default(PC) を基底に下方カスケード</strong>。Tablet で上書きすると Mobile にも継承される。上書き中のプロパティ枠は色分け（<strong>Tablet=黄緑 / Mobile=オレンジ</strong>）。個別解除は各プロパティ横の「Reset override（上書きリセット）」。</li>
  <li><strong>BP 別に変更できないもの = 画像の中身(src) / テキスト内容 / グループ化(DOM 階層)</strong>。文言・画像の出し分けは「要素を複数用意して BP 別に表示/非表示（レイヤーパネルの目アイコン）」で行う。</li>
  <li>親<a class="term" href="#term-box">ボックス</a>の高さは原則 <strong><a class="term" href="#term-hug">auto</a></strong>。px 幅は固定値ではなく<strong>最大幅</strong>として働き、画面が狭まると自動縮小する。</li>
@@ -10421,13 +10303,8 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
  <ol class="steps">
  <li>エディタ下部ツールバーのデバイス幅切替で <strong>Default(PC) / Tablet / Mobile の 3 段が有効</strong>であることを確認する。</li>
- <li>各値が <strong>Default=<code>1280px</code> / Tablet=<code>840px</code> / Mobile=<code>540px</code></strong> であることをツールバー左の数値入力で確認する（新規プロジェクト初期値のまま）。<strong>変更しない</strong>。</li>
- <li><strong>Small(1140) / Mini(320) は初期状態では追加しない。</strong> 以下のいずれかが実機確認で起きた場合のみ追加する。
- <ul>
- <li>1280〜992px の中間幅で FV の 2 カラムや market/case の 2 列が窮屈に崩れる → <strong>Small(1140) を追加</strong>し中間調整を当てる。</li>
- <li>360px 以下で FV/CTA の見出し（48px→28px でも溢れる）やフォーム input が破綻する → <strong>Mini(320) を追加</strong>し <a href="#t7-3">§7.3</a> / <a href="#t7-13">§7.13</a> の 380 値を当てる。</li>
- </ul>
- </li>
+ <li>各値が <strong>Default=<code>1280px</code> / Small=<code>1024px</code> / Tablet=<code>840px</code> / Mobile=<code>540px</code></strong> であることをツールバー左の数値入力で確認する。Small は <code>1024px</code> に設定する。<strong>4 段の値は以後変更しない</strong>。</li>
+ <li><strong>Mini(320) は追加しない。</strong> 4 段（Default / Small(1024) / Tablet(840) / Mobile(540)）のみで実装し、これ以外の段を追加しない。380 帯の極小値は <a href="#t7-3">§7.3</a> / <a href="#t7-13">§7.13</a> の指定どおり Mobile 層に内包して当てる。</li>
  <li>設定後、レイヤーパネル上部の「<strong>重なった四角アイコン</strong>」で各 BP の条件スタイルが一覧できることを確認する。</li>
  </ol>
 
@@ -10542,7 +10419,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <li><strong>固定ヘッダー（<a href="#t7-4">§7.4</a>）・フローティング特典 CTA（<a href="#t7-15">§7.15</a>）は iOS のノッチ／ホームバーに被らないよう Safe Area を考慮</strong>する。
  <ul>
  <li>固定ヘッダー: 上端は <code>top:0</code> だが、フルブリードの背景が必要なら上方向に safe-area 分を見込む。</li>
- <li>フローティング CTA: Mobile では下 12px・左 12px・右 12px に置く。<strong>iPhone のホームバーと重なるため、下マージンは Safe Area 下端ぶん（環境により +約 34px）を上乗せ</strong>する。<a class="term" href="#term-embed">Embed</a> 実装（<a href="#t7-15">§7.15</a> 推奨）なら CSS で <code>bottom: calc(12px + env(safe-area-inset-bottom))</code> を注入する。</li>
+ <li>フローティング CTA: Mobile では下 12px・左 12px・右 12px に置く。<strong>iPhone のホームバーと重なるため、下マージンは Safe Area 下端ぶんを上乗せ</strong>する。§9 コード集の Safe Area 補正ブロックを Custom Code に貼り、CSS で <code>bottom: calc(12px + env(safe-area-inset-bottom))</code> を注入する。</li>
  </ul>
  </li>
  <li>Studio ネイティブには <code>env(safe-area-inset-*)</code> を直接入力する UI が確認できない（<code>未検証</code>）。</li>
@@ -10711,7 +10588,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <ul class="checklist"><li>Mobile の表示順が eyebrow→h1→sub→form→CTA→marquee（DOM 順＝レイヤー順で実現）</li><li>装飾円が Mobile 非表示</li><li>CTA が全幅・44px 高、input が 16px</li><li>marquee がモバイル寸法に縮小</li></ul>
 
  <div class="callout warn">
- <p>ネイティブ困難箇所（h1 のグラデ手書き下線アニメ・SVG turbulence・marquee エッジマスク）は §7.5 のレスポンシブとは別問題。<strong>【Free 代替】</strong>= 下線は静止画像化／marquee は <a class="term" href="#term-loopbox">Loop Box</a>（hover-pause・gap は BP 別変更可、エッジマスクは省略可）。<strong>【Mini】</strong>= h1 を <a class="term" href="#term-customcode">Custom Code</a>（Head に <code>#hl-rough</code> SVG フィルタ＋Body に該当 HTML）。本章はレイアウト写像に限定し、装飾は各論を参照。Loop Box の方向/速度は BP ごとに変更可能なので、Mobile で速度を落とすなら Loop Box 速度（px/s）を Mobile 層で調整。</p>
+ <p>ネイティブ困難箇所（h1 のグラデ手書き下線アニメ・SVG turbulence・marquee エッジマスク）は §7.5 のレスポンシブとは別問題。<strong>装飾は Mini の Custom Code で再現する</strong>: h1 は §9 コード集の該当ブロック（Head に <code>#hl-rough</code> SVG フィルタ＋Body に該当 HTML）を Custom Code に貼る。グラデ下線・SVG turbulence・marquee エッジマスクも §9 コード集の該当ブロックを Custom Code に貼って再現する。本章はレイアウト写像に限定し、装飾は §9 コード集を参照。marquee の速度を Mobile で落とす場合は §9 コード集の marquee ブロック内の速度値（px/s）を Mobile 用に設定する。</p>
  </div>
 
  <h3 id="t7-6">7.6 §5-3 アプローチ（approach #approach）</h3>
@@ -11123,7 +11000,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <ul class="checklist"><li>380px 帯は Mobile 層で内包し、段を追加しない</li></ul>
 
  <div class="callout note">
- <p>背景グラデは上端 <span class="sw" style="--c:#D8E7FC"></span> <code>#D8E7FC</code>＝FAQ 下端と一致（<a href="#t7-12">§7.12</a> と整合）。フォームの実送信先（Studio フォーム機能/Sheets/メール通知）・サンクス遷移（別ページ指定）は各論で設定。input の focus 青下線・ボタン hover 反転は条件スタイル（<a class="term" href="#term-hover">Focus / Hover</a>）で。</p>
+ <p>背景グラデは上端 <span class="sw" style="--c:#D8E7FC"></span> <code>#D8E7FC</code>＝FAQ 下端と一致させる（<a href="#t7-12">§7.12</a> と整合）。フォームの実送信先は <strong>Studio フォーム機能＋メール通知</strong>、送信後は <strong>別ページのサンクスページへ遷移</strong>させる <strong>（要最終決定）</strong>。input の focus 青下線・ボタン hover 反転は §9 コード集の該当ブロックを Custom Code に貼って再現する。</p>
  </div>
 
  <h3 id="t7-14">7.14 §5-11 フッター（footer）</h3>
@@ -11177,16 +11054,9 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  </tbody>
  </table>
 
- <h4>7.15.1 実装方式の選択</h4>
- <div class="plan free recommended">
- <span class="badge">Embed（推奨）</span> カード全体を 1 つの <a class="term" href="#term-customcode">Custom Code</a>/<a class="term" href="#term-embed">Embed</a>（HTML+CSS+JS）として埋め込む。用意済みのコードをほぼ流用でき、<strong>レスポンシブ(767px)は埋め込んだ CSS で自動担保</strong>される（＝この §7.15 の Studio 条件スタイル作業は不要になる）。リンク先 <code>#cta</code> のアンカーを Studio 側で確保。<strong>Embed は全プラン可（Free 含む）</strong>だが、<strong>Custom Code（Head/Body）は Mini 以上</strong>。fixed＋スクロール JS を完全再現するなら Embed <a class="term" href="#term-sandbox">sandbox</a> or Custom Code を使う。
- </div>
- <div class="plan free">
- <span class="badge">Free代替</span> Embed を避ける場合は Box/Text/Image で再構成し、本 §7.15 の Mobile 条件スタイルを手動で当てる。ただし:
- <ul>
- <li>position:fixed・スクロール出現/退避（scrollY&gt;600 / #cta 接近で退避 / ×で永久非表示）は Studio ネイティブで持たない → <strong>最低限のスクロール制御は Custom Code（Mini）が必要</strong>。Free のみでは「常時表示の固定カード」までが限界。</li>
- <li>「0」のグラデ＋シャインアニメは静止グラデ画像化で妥協、装飾円は省略可、赤い傾き取消線は細 Box を rotate(-5deg)。</li>
- </ul>
+ <h4>7.15.1 実装方式</h4>
+ <div class="plan mini">
+ <span class="badge">Embed</span> カード全体を 1 つの <a class="term" href="#term-customcode">Custom Code</a>/<a class="term" href="#term-embed">Embed</a>（§9 コード集の floatPerk ブロック。HTML+CSS+JS）として埋め込む。<strong>レスポンシブ(767px)・position:fixed・スクロール出現/退避（scrollY&gt;600 / #cta 接近で退避 / ×で永久非表示）・「0」のグラデ＋シャインアニメ・装飾円・赤い傾き取消線は、すべて §9 コード集の floatPerk ブロックで再現</strong>される（＝この §7.15 の Studio 条件スタイル作業は不要になる）。リンク先 <code>#cta</code> のアンカーを Studio 側で確保する。
  </div>
 
  <h4>7.15.2 Mobile（540px）寸法（§9 コード集 floatPerk ブロック内の値）</h4>
@@ -11512,7 +11382,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <ol class="steps">
 <li><span class="path">左ナビ<i>›</i>追加<i>›</i>基本タブ<i>›</i>インタラクション<i>›</i>LoopBox</span> を Hero 下のマーキー領域（レイヤー <code>vc-marquee</code>）に配置。</li>
 <li>Loop Box 内に Image を 12 個、上図の順（ANRI_2 → ANOBAKA → IncubateFund → United → DeepCore → GarnetCapital → Hyperion → Wfund → WaypointVenturePartners → OpenNetworkLab → 01BoosterCapital → AllAbout）で配置。各 Image: <strong>ボックスタブ → サイズ</strong>はカードに収まる固定枠（例 幅 auto・高さ <code>90%</code> 相当）、<strong>画像タブ → フィット contain</strong>、<strong>設定タブ → 代替テキスト</strong>は下表の社名。</li>
-<li>右パネル → Loop Box 設定：速度（既定 <code>60px/s</code>。完成イメージの体感に合わせて調整）、<strong>Pause on hover</strong> を任意で ON。<code>overflow</code> は自動 hidden（<a href="#ch-t10">§10.1</a>）。両端フェードが必要なら親 Box にグラデーションマスク Box を重ねる（両端をぼかすマスクは Studio 標準で再現不可のため Box 重ねで近似）。</li>
+<li>右パネル → Loop Box 設定：速度を <code>60px/s</code> に設定し、<strong>Pause on hover</strong> を ON にする。<code>overflow</code> は自動 hidden（<a href="#ch-t10">§10.1</a>）。両端フェードは <a class="term" href="#term-customcode">Custom Code</a>（<a href="#ch-t9">§9 コード集 #t9-codeset</a>）の両端マスク用ブロックを貼って実装する。</li>
 </ol>
 
 <h4>Studio 手順（静的グリッド）</h4>
@@ -11579,7 +11449,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <h4>Studio 手順</h4>
 <ol class="steps">
 <li>Uploads から CTA 左 Box（レイヤー <code>cta-illust</code>）に Image 配置。<strong>ボックスタブ → サイズ → 幅 <code>188px</code> / 高さ <code>222px</code></strong>。</li>
-<li>drop-shadow：右パネル → <strong>変形/外観 → Shadow</strong>（<a href="#ch-g3">§3.6・Outset</a>）で近似（X/Y/Blur/Color を調整。色は ink 系の半透明）。</li>
+<li>drop-shadow：<a class="term" href="#term-customcode">Custom Code</a>（<a href="#ch-t9">§9 コード集 #t9-codeset</a>）の drop-shadow フィルタ用ブロックを貼って実装する。Color は ink 系の半透明にする。</li>
 <li><strong>設定タブ</strong> → 代替テキスト 空（装飾）。</li>
 <li>吹き出し 4 個（<code>b1</code>〜<code>b4</code>）は<strong>アセットではない</strong>。Text + Box（角丸・枠線）で別途作り直す（本章の対象外＝各セクション章で扱う）。</li>
 </ol>
@@ -11807,7 +11677,7 @@ sec-footer
  <p><strong>Studio の前提（リファレンス <a href="#ch-t6">§6</a> / <a href="#ch-t7">§7</a> より）</strong></p>
  <p>・<strong>Embed は全プラン可（Free 含む）</strong>。iframe / sandbox はコード内容で自動判定（ユーザー選択不可）。SVG/HTML/CSS/JS を含むコードは sandbox になる。エディタ内に右ペインプレビューがあるが、<strong>sandbox は <code>DOMContentLoaded</code> が発火しない</strong>等の制約があるため最終確認は公開 URL で行う。</p>
  <p>・<strong>Custom Code（Head/Body）は Mini 以上（Free 不可）</strong>。1ブロック最大 <code>30,000</code> 文字、<code>&lt;/head&gt;</code>・<code>&lt;/body&gt;</code> 各直前に最大 <code>10</code> ブロック（1ページ最大 <code>20</code> ブロック）。head に書けるタグは <code>&lt;link&gt;</code> / <code>&lt;meta&gt;</code> / <code>&lt;style&gt;</code> / <code>&lt;script&gt;</code> / <code>&lt;noscript&gt;</code> の5種のみ。</p>
- <p>・<strong>本LPは制作中 Free →納品後 Mini 切替</strong>方針。したがって本章の方針は「<strong>Free 期間は Embed / 追加 Box / Image / Loop Box で代替し、Mini 切替後に Custom Code へ集約</strong>」を基本線とする。Custom Code 前提の実装は Mini 切替まで有効化できない点を作業者に明示すること。</p>
+ <p>・<strong>本LPは制作中 Free →納品後 Mini 切替</strong>方針。本章の装飾はすべて <strong>Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a>）に集約して実装する</strong>。Mini 切替後に §9 の該当ブロックを Custom Code に貼って有効化する。<strong>（要最終決定）</strong></p>
  </div>
 
  <figure class="fig">
@@ -11845,7 +11715,7 @@ sec-footer
 
  <h3 id="t9-1">9.1 疑似要素 <code>::before</code> / <code>::after</code> 全件一覧（計67）</h3>
 
- <p>「計67」は <strong>レンダリング実体数</strong>（CSS ルール×カードクラスの反復＋全要素に効くグローバルリセット）。Studio には疑似要素そのものが存在しないため、装飾用途は <strong>追加 Box / Image</strong>、機能用途は <strong>アイコン要素 / Custom Code</strong> で作り直す。作り直しの対象となる装飾・機能の定義は32項目で、これに全要素へ効くグローバルリセット分が加わってレンダリング実体としては計67になる。</p>
+ <p>「計67」は <strong>レンダリング実体数</strong>（CSS ルール×カードクラスの反復＋全要素に効くグローバルリセット）。Studio には疑似要素そのものが存在しないため、機能用途は <strong>アイコン要素 / Box</strong> で作り直し、純装飾用途（グラデ・SVGフィルタ・点滅・点線・光沢・取消線など）は <strong>すべて Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a>）</strong>で再現する。作り直しの対象となる装飾・機能の定義は32項目で、これに全要素へ効くグローバルリセット分が加わってレンダリング実体としては計67になる。</p>
 
  <figure class="fig">
  <svg viewBox="0 0 720 150" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -11892,7 +11762,7 @@ sec-footer
  <td><a href="#ch-s1">5-1</a> ヘッダー</td>
  <td><code>.hd-cta-deco::before</code> / <code>::after</code></td>
  <td>赤キャプション両脇の手書き風チッカ（<code>11×1.5px</code>・回転 <code>±62°</code>・<span class="sw" style="--c:#E85252"></span> <code>#E85252</code>）</td>
- <td><strong>【Free】</strong>赤キャプション＋チッカを1枚の SVG/PNG 画像化（モバイルで非表示）。または極小回転 Box×2。</td>
+ <td>Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a>）で <code>::before</code>/<code>::after</code> を再現する。対象要素の class に <code>hd-cta-deco</code> を付与。モバイルは条件スタイルで非表示。</td>
  </tr>
  <tr>
  <td><a href="#ch-s1">5-1</a> / <a href="#ch-s2">5-2</a> / <a href="#ch-s10">5-10</a></td>
@@ -11988,13 +11858,13 @@ sec-footer
  <td><a href="#ch-s10">5-10</a> CTA</td>
  <td><code>.cta-illust .bubble::before</code>（しっぽ）×4（<code>.b1</code>〜<code>.b4::before</code>）</td>
  <td>吹き出しの三角しっぽ（border 三角＋rotate）</td>
- <td><strong>【Free】</strong>イラスト群全体を1枚 SVG/PNG 化（モバイル非表示）。三角 CSS しっぽは Studio 不可。</td>
+ <td>イラスト群全体を1枚 SVG として配置する（モバイルは条件スタイルで非表示）。三角しっぽは Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a>）でも再現可。</td>
  </tr>
  <tr>
  <td><a href="#ch-s12">5-12</a> フローティング</td>
  <td><code>.float-perk-visual::before</code> / <code>::after</code>（装飾円）</td>
  <td>黄・青ぼかし円</td>
- <td><strong>【Free】</strong>装飾 Box / 透過 PNG。省略可。</td>
+ <td>装飾 Box（円・背面）を配置する。背景ぼかしは Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a>）で再現する。</td>
  </tr>
  <tr>
  <td><a href="#ch-s12">5-12</a> フローティング</td>
@@ -12036,16 +11906,9 @@ sec-footer
  &lt;feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5"/&gt;
 &lt;/filter&gt;</pre>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- Studio に SVG フィルタ・プリミティブは存在しない（ Filter/Backdrop filter は brightness/blur 等6種のみで <code>feTurbulence</code> 不可）。<strong>①ラフネスを諦めてクリーンな下線にする</strong>（後述 <a href="#t9-3">9.3</a> の Box 下線で代替）、<strong>②ラフなマーカーストロークを透過 PNG/SVG 画像として焼き込み</strong>、見出し語の背面に Image 配置。下線アニメが不要なら ② で見た目はほぼ再現できる。
- </div>
  <div class="plan mini">
  <span class="badge">Mini</span>
- <a href="#t9-3">9.3</a> のヒーロー見出し Embed / Custom Code ブロックに、この隠し SVG <code>&lt;svg width="0" height="0" aria-hidden="true"&gt;&lt;defs&gt;…&lt;/defs&gt;&lt;/svg&gt;</code> を<strong>同梱</strong>する（フィルタ定義が同一スコープ内に無いと <code>url(#hl-rough)</code> が解決しない）。Custom Code は site/page スコープの body 末尾ブロックに入れる。
- </div>
- <div class="callout tip">
- <p><strong>推奨</strong>：Embed sandbox で見出し一式（<a href="#t9-3">9.3</a>）と同梱。装飾性が高く本質的でないため、タイトハンドオフ時は ① クリーン下線へ簡略化も許容。design lead 判断事項として明記。</p>
+ SVG フィルタ <code>#hl-rough</code> は Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a> の②ブロック）で再現する。<a href="#t9-3">9.3</a> のヒーロー見出しと同じ Custom Code body 末尾ブロックに、隠し SVG <code>&lt;svg width="0" height="0" aria-hidden="true"&gt;&lt;defs&gt;…&lt;/defs&gt;&lt;/svg&gt;</code> を同梱する（フィルタ定義が同一スコープ内に無いと <code>url(#hl-rough)</code> が解決しない）。Custom Code は site/page スコープの body 末尾ブロックに入れる。
  </div>
 
  <ul class="checklist"><li><code>#hl-rough</code> を §9 コード集の②ブロックとして見出しと同じ Custom Code body 末尾に同梱した</li><li>Mini 切替後に Custom Code を投入し、公開 URL でラフ下線の質感を確認した</li></ul>
@@ -12082,16 +11945,12 @@ sec-footer
  <figcaption>語別遅延を CSS どおり保持する（<code>.sweep</code> .15s → <code>em.b</code> 1.25s → <code>em.n</code> 1.85s）。Embed 内 CSS にこの <code>animation-delay</code> を埋め込む。</figcaption>
  </figure>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <code>background-clip:text</code> のグラデ文字塗りも <code>background-position</code> アニメも Studio <a class="term" href="#term-textstyle">テキストスタイル</a>では不可（グローバルトークンに変数機能なし、テキストへのグラデ塗り非対応）。<strong>Embed sandbox に見出し <code>&lt;h1&gt;</code> 一式（HTML＋<code>&lt;style&gt;</code>＋<code>#hl-rough</code> 隠し SVG）を丸ごと配置</strong>するのが最も忠実。Embed は Free でも使えるためこれが本命。<br><strong>妥協案</strong>：見出しを通常 Text にし、強調語のみ<a class="term" href="#term-colorstyle">カラースタイル</a> <code>blue</code>(<span class="sw" style="--c:#4A7DE8"></span><code>#4A7DE8</code>) 単色＋背面に静的な黄ハイライト Box（skew なし）。出現は Studio の <strong>On Appear → Fade In from Bottom</strong>（リファレンス <a href="#ch-t10">§10</a>.4、Free 可否は未検証＝Mini 切替後有効化前提）で代替。グラデ・スイープ・ラフ質感は失われる。
- </div>
  <div class="plan mini">
  <span class="badge">Mini</span>
- 同じ HTML+CSS を <strong>Custom Code の body 末尾ブロック</strong>（site または page スコープ）に置く。ただし Studio の見出し Text とは別レイヤーになるため、Embed 方式の方が配置・レスポンシブ制御が直感的。Custom Code は計測タグ・JSON-LD 等のグローバル注入に使い、見出しは Embed に寄せる切り分けが保守的。
+ <code>background-clip:text</code> のグラデ文字塗りも <code>background-position</code> アニメも Studio <a class="term" href="#term-textstyle">テキストスタイル</a>では不可（グローバルトークンに変数機能なし、テキストへのグラデ塗り非対応）。見出しのグラデ文字・スイープ・手書き下線・<code>#hl-rough</code> は <strong>Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a> の②ブロック）で再現する</strong>。Studio の見出し Text の class 欄に <code>gn-sweep</code> を入力し、§9 の②ブロック（<code>&lt;style&gt;</code>＋<code>#hl-rough</code> 隠し SVG）を Custom Code body 末尾ブロック（site スコープ）に貼る。語別遅延（<code>.15s</code>/<code>1.25s</code>/<code>1.85s</code>）も②の CSS で付与する。
  </div>
  <div class="callout tip">
- <p><strong>推奨</strong>：Embed sandbox（Free から実装可）。<code>sweepGrad</code> / <code>fvUnderline</code> / 語別遅延 / <code>#hl-rough</code> を1ブロックに同梱。</p>
+ <p><strong>確定手順</strong>：§9 コード集の②ブロックを Custom Code body 末尾に貼り、見出し Text の class に <code>gn-sweep</code> を入力する。<code>sweepGrad</code> / <code>fvUnderline</code> / 語別遅延 / <code>#hl-rough</code> を1ブロックに同梱。</p>
  </div>
 
  <p><strong>Custom Code 配置手順（ヒーロー見出し）</strong></p>
@@ -12101,22 +11960,18 @@ sec-footer
  <li>語別遅延（<code>.15s</code>/<code>1.25s</code>/<code>1.85s</code>）を②の CSS で付与する。見出しアニメは CSS <code>animation</code>（読込時自動再生）で組み、JS イベントに依存させない。</li>
  <li><strong>Publish して公開 URL でアニメ・下線・グラデを最終確認</strong>（<a href="#t9-8">9.8</a> のテスト手順参照）。</li>
  </ol>
- <ul class="checklist"><li>Embed が sandbox 判定になることを確認した（iframe 単独タグではないため）</li><li><code>#hl-rough</code> を同ブロックに同梱した（別配置だと url 参照が切れる）</li><li>語別遅延（<code>.15s</code> / <code>1.25s</code> / <code>1.85s</code>）を CSS どおり保持した</li><li><strong>レスポンシブ</strong>：Embed 内の見出しは Studio の条件スタイルでサイズ変更不可（リファレンス <a href="#ch-t8">§8</a>）。Embed 内 CSS の <code>clamp()</code>／メディアクエリで PC/Tablet/Mobile を自己完結させた（PC <code>clamp(28px,min(8vh,4vw+12px),60px)</code> / Mobile <code>clamp(26px,7.8vw,36px)</code>）</li></ul>
+ <ul class="checklist"><li>見出し Text の class 欄に <code>gn-sweep</code> を入力した</li><li><code>#hl-rough</code> を②ブロックと同じ Custom Code body 末尾に同梱した（別配置だと url 参照が切れる）</li><li>語別遅延（<code>.15s</code> / <code>1.25s</code> / <code>1.85s</code>）を②の CSS どおり付与した</li><li><strong>レスポンシブ</strong>：見出しサイズは Studio の条件スタイル（Default / Small(1024) / Tablet(840) / Mobile(540) の4段）で設定し、PC <code>clamp(28px,min(8vh,4vw+12px),60px)</code> / Mobile <code>clamp(26px,7.8vw,36px)</code> を各 BP に入力した</li></ul>
 
  <h3 id="t9-4">9.4 グラデ文字＋光沢スイープ「0」（フローティング特典 perkShine）</h3>
 
  <p>フローティング特典の大きな「0」は、黄色のグラデーションで文字を塗り（<code>-webkit-background-clip:text</code>）、その上を <code>perkShine</code> アニメ（3s 無限、<code>background-position 120%↔-20%</code>）の光沢が往復する。</p>
 
- <div class="plan free recommended">
- <span class="badge">Free代替</span>
- <a href="#ch-s12">5-12</a> はフローティングカード全体が <code>position:fixed</code>＋スクロール連動 JS（<code>scrollY&gt;600</code> で出現、<code>#cta</code> 接近で退避、× で永久非表示）を伴うため、<strong>カード全体を1つの Embed sandbox ブロックに HTML+CSS+JS で丸ごと移植</strong>するのが最も確実（元 HTML/CSS/JS をほぼ流用、perkShine も同梱）。Embed は Free 可。<br><strong>妥協案</strong>：「0」を<strong>静止の黄グラデ画像（Image）</strong>にし、光沢アニメは省略。装飾性が高く実用上問題は小さい。
- </div>
  <div class="plan mini">
  <span class="badge">Mini</span>
- 同コードを <strong>Custom Code body 末尾</strong>に置く。<code>position:fixed</code> 要素を Studio 構造から独立して動かせるため、fixed＋scroll 連動 JS との相性は Custom Code でも良い。Mini 切替後にこちらへ移すと head/body 集約方針と一致。
+ <a href="#ch-s12">5-12</a> のフローティングカードは全体が <code>position:fixed</code>＋スクロール連動 JS（<code>scrollY&gt;600</code> で出現、<code>#cta</code> 接近で退避、× で永久非表示）を伴う。これを <strong>Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a>）で再現する</strong>。①の <code>&lt;aside id="floatPerk"&gt;</code> マークアップ・②の <code>perkShine</code> 等の <code>&lt;style&gt;</code>・③の出現/退避スクリプトを Custom Code body 末尾ブロックに貼る。<code>position:fixed</code> 要素を Studio 構造から独立して動かせるため Custom Code との相性が良い。
  </div>
  <div class="callout tip">
- <p><strong>推奨</strong>：Embed sandbox（Free）でカードごと移植。Mini 切替後に Custom Code へ移しても良い。<code>#cta</code> への内部アンカーが解決するよう、CTA セクションに対応するアンカー（<a href="#ch-s10">5-10</a> 章）を確保しておく。</p>
+ <p><strong>確定手順</strong>：§9 コード集の①②③ブロックを Custom Code body 末尾に貼り、CTA セクション（<a href="#ch-s10">5-10</a> 章）に <code>id=cta</code> を付けて内部アンカーを解決させる。</p>
  </div>
  <div class="callout note">
  <p>注：<code>position:fixed</code> 要素は <strong>Base 直下に置く要件</strong>がある。Embed Box 自体を Base 直下に配置し、内部で fixed カードを描画する構成にする。</p>
@@ -12206,16 +12061,16 @@ sec-footer
  <tr>
  <td><code>blink</code>（ステータスピルのドットを opacity <code>1↔.3</code> で点滅、<code>1.6s</code> 無限）</td>
  <td>ヒーロー上部ステータスピルのドット</td>
- <td>Studio <a class="term" href="#term-transform">変形タブ</a>に opacity の常時ループは無い。Loop Box はスクロール/ホバー前提で点滅に不適。<strong>静的ドット</strong>（点滅省略・視認性影響小）</td>
- <td>Custom Code body に <code>.pill .dot{animation:blink 1.6s infinite}</code>＋<code>@keyframes blink</code> を注入</td>
- <td>軽量なので <strong>Mini で Custom Code（<code>&lt;style&gt;</code>1行）</strong>。Free 期間は静的ドットで可</td>
+ <td>Studio <a class="term" href="#term-transform">変形タブ</a>に opacity の常時ループは無い。点滅は Mini の Custom Code で実装する</td>
+ <td>§9 コード集の②ブロックに含む <code>@keyframes blink</code>＋<code>.pill .dot{animation:blink 1.6s infinite}</code> を Custom Code body 末尾に貼る</td>
+ <td><strong>Mini で Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a> の②ブロック）</strong></td>
  </tr>
  <tr>
  <td>赤斜線の取消線（<code>rotate(-5deg)</code>・<span class="sw" style="--c:#FF6B6B"></span><code>#FF6B6B</code>）</td>
  <td>フローティング特典の「30〜50万円」取消</td>
- <td>Studio 標準 line-through は水平。<strong>細い赤 Box（高さ<code>1.4px</code>・<span class="sw" style="--c:#FF6B6B"></span><code>#FF6B6B</code>）をテキスト上に absolute＋<code>rotate(-5deg)</code></strong>、または画像化。5-12 をカードごと Embed 化するなら同梱で再現</td>
- <td>Custom Code に該当 <code>::after</code> CSS を注入</td>
- <td><strong>5-12 を Embed 化するなら同梱</strong>。単独なら傾き赤 Box</td>
+ <td>Studio 標準 line-through は水平。赤斜線取消線は Mini の Custom Code で実装する</td>
+ <td>§9 コード集の①②③（5-12 フローティング一式）に含む <code>.strike::after</code> CSS（<code>rotate(-5deg)</code>・<span class="sw" style="--c:#FF6B6B"></span><code>#FF6B6B</code>）を Custom Code body 末尾に貼る</td>
+ <td><strong>Mini で Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a>）</strong></td>
  </tr>
  <tr>
  <td><code>bridge-bounce</code>（対応する要素が存在しない使われていないアニメ）</td>
@@ -12227,7 +12082,7 @@ sec-footer
  </tbody>
  </table>
 
- <ul class="checklist"><li><code>blink</code> は Free=静的、Mini=Custom Code の二段で記述した</li><li><code>bridge-bounce</code> / <code>.sec-bridge</code> は死にコードとして指示書から除外した</li></ul>
+ <ul class="checklist"><li><code>blink</code> は Mini の Custom Code（§9 コード集 <a href="#t9-codeset">#t9-codeset</a> の②ブロック）で実装する方針で記述した</li><li><code>bridge-bounce</code> / <code>.sec-bridge</code> は死にコードとして指示書から除外した</li></ul>
 
  <h3 id="t9-7">9.7 ボタン hover・カード lift・FAQ 開閉（Studio ネイティブ可の補足）</h3>
 
@@ -12731,11 +12586,8 @@ sec-footer
 <p>完成イメージはモバイル幅でナビ 7 本（本サービスの特徴／市場動向／サービス／実績／提携 VC／導入事例／よくあるご質問）を<strong>まるごと消す</strong>だけで、ハンバーガーもドロワーも存在しない。モバイルでページ内ナビが完全消失する設計欠落である。</p>
 
 <p>対処（Studio）: レイヤー <code>hd-hamburger</code>（Icon <a class="term" href="#term-box">ボックス</a>ボタン、Mobile のみ表示）＋ <code>hd-drawer</code>（オーバーレイ Box、7 リンク＋CTA）を<strong>新規作成</strong>する。</p>
-<div class="plan free recommended">
-<span class="badge">Free 代替</span> <strong>推奨。</strong>追加 → 基本タブ → インタラクション → <a class="term" href="#term-toggle">Toggle</a> を使い、button=ハンバーガー Icon、content=ドロワー Box（7 Link＋CTA）。トリガーは右パネル Toggle タブで <strong>Click</strong>（タッチ誤動作回避）。「Close when clicking outside」ON。Toggle の content は高さ auto↔0 開閉なので、全画面オーバーレイにしたい場合はドロワー Box を <code>fixed</code>＋<a class="term" href="#term-zindex">z-index</a> 高に。
-</div>
 <div class="plan mini">
-<span class="badge">Mini</span> JS トグルが必要なドロワー（スクロールロック等）は <a class="term" href="#term-customcode">Custom Code</a> Body に注入。
+<span class="badge">Mini</span> ドロワー開閉（スクロールロック・全画面オーバーレイ含む）は <a class="term" href="#term-customcode">Custom Code</a> で実装する。§9 コード集のハンバーガー/ドロワーブロックを Custom Code Body に貼り、button=ハンバーガー Icon、content=ドロワー Box（7 Link＋CTA）、トリガー Click（タッチ誤動作回避）、外側クリックで閉じる、ドロワー Box は <code>fixed</code>＋<a class="term" href="#term-zindex">z-index</a> 高で設定する。
 </div>
 <ul class="checklist"><li><code>hd-hamburger</code> を Mobile のみ表示（PC/Small/Tablet は非表示）に条件スタイル設定</li><li>ドロワーに 7 アンカー（#approach 等）＋ CTA を格納し、各リンクのタップで開閉が閉じる挙動を確認</li><li>公開 URL で実機タップ確認</li></ul>
 
@@ -13043,13 +12895,10 @@ sec-footer
 
 <h4>11.12a position:fixed＋スクロール連動の表示制御 [致命]</h4>
 <p>右下追従カード。JS制御（<code>scrollY&gt;600</code> で出現／#cta 接近で退避／× で永久非表示）は <strong>Studio ネイティブに無い</strong>。<code>&lt;aside id="floatPerk" aria-hidden="true"&gt;</code> を実コードで確認済み。</p>
-<div class="plan mini recommended">
-<span class="badge">Mini</span> <strong>推奨。</strong>カード全体を Custom Code/Embed（HTML+CSS+JS）で丸ごと注入が最優先・最確実（元 JS をほぼ流用、レスポンシブも内包メディアクエリで担保）。リンク先 <code>#cta</code> のアンカーを Studio 側に確保。
+<div class="plan mini">
+<span class="badge">Mini</span> カード全体を §9 コード集③（出現/退避スクリプト含む）を Custom Code/Embed（HTML+CSS+JS）で丸ごと注入して実装する（元 JS を流用、レスポンシブも内包メディアクエリで担保）。出現・#cta 接近で退避・×で消す動的挙動はこの JS で実装し、リンク先 <code>#cta</code> のアンカーを Studio 側に確保する。
 </div>
-<div class="plan free">
-<span class="badge">Free 代替</span> <strong>役割で分ける</strong>: <strong>静的な見た目</strong>（バー/カードの形・「0円」表示・配置。11.12b の全幅バー化含む）は Free の <strong>Box＋条件スタイルで作成可</strong>。ただし <strong>出現・#cta接近で退避・×で消す動的挙動は Custom Code（Mini）の JS が必須</strong>（→ <a href="#t9-codeset">§9 コード集③</a> の出現/退避スクリプト）。よって Free 段階は「常時表示の静的バー」か「一旦オフ」のどちらかにし、スクロール連動は Mini 切替後に有効化する前提で設計する。
-</div>
-<ul class="checklist"><li>Mini 切替後に float-perk を Custom Code で実装、Free 制作中は非搭載</li><li>#cta アンカーが最下部 CTA セクションに存在することを確認</li></ul>
+<ul class="checklist"><li>float-perk を §9 コード集③の Custom Code で実装する</li><li>#cta アンカーが最下部 CTA セクションに存在することを確認</li></ul>
 
 <h4>11.12b モバイルは右下カード→全幅バー化 [高]</h4>
 <p>≤767px で <code>bottom/right/left:12px・width:auto・border-radius:14px</code> の<strong>左右 12px マージン全幅バー</strong>へ。数字「0」48px（PC66）、unit 16px（PC22）。§9 コード集③の Custom Code 注入により、内包メディアクエリで全幅バー化を自動で行う。</p>
