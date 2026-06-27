@@ -2015,10 +2015,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ol class="steps">
 <li>キャンバスにテキスト要素を 1 つ置き、ダミー文言を入力。</li>
 <li>右パネル <strong>テキスト（Text）</strong> タブ → Typography で <strong>Font / Weight / Size / Line height / Letter spacing</strong> を下表の PC 値に設定。</li>
-<li>同タブ内（または右パネルのカラー設定）で <strong>文字色</strong>を §2.1 で登録した該当カラースタイルに設定。</li>
+<li><strong>文字色はここ（テキストスタイル）には保存されません</strong>。色は<strong>各テキスト要素に、§2.1 のカラースタイル（下表「文字色」列の値）を別途適用</strong>します（スタイル登録の前後どちらでもOK）。</li>
 <li>テキスト要素選択時にスタイルバー上部へ出る <strong>「スタイル」</strong> 項目をクリック → スタイル名を下表の <strong>テキストスタイル名</strong> で登録（具体UI＝テキストタブ→タイポグラフィ→「テキストスタイル」欄→登録。<a href="#g0-4">§0.4「テキストスタイルを新規作成する」</a>）。</li>
 <li>変更は同名スタイルの全インスタンスへ自動伝播することを確認。</li>
 </ol>
+<div class="callout warn"><p><strong>【重要】テキストスタイルに「文字色」は含まれません。</strong>Studio のテキストスタイルが保存するのは <strong>フォント／サイズ／太さ／行高／間隔／方向／下線・斜体</strong> だけです（パネルに色欄が無いのはこのため）。<strong>文字色は、そのスタイルを当てた各テキスト要素に、§2.1 で登録したカラースタイル（例 <code>text/ink</code>）を「塗り／文字色」として別途適用</strong>します（影・揃えも要素ごと）。下表の「文字色」列は<strong>“そのスタイルを使う要素に適用する色”</strong>を示します。</p></div>
 
 <div class="callout note">
 <p>Studio の Size 単位は px / rem / vh / vw。元データの <code>clamp()</code> は Studio の単一 px ではそのまま入らないため、本台帳では <strong>PC 基準値（px）</strong> を採用し、Tablet/Mobile は §2.3 で px の<a class="term" href="#term-conditional">条件スタイル</a>として上書きする（流体 clamp の上限値を PC、下限値付近を Mobile に写像）。</p>
@@ -2027,9 +2028,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <h4>標準 9 スタイル</h4>
 <div class="callout note"><p>📍 <strong>行高・間隔は「%」で書いています</strong>（Studio パネルの「行高」「間隔」欄の数値）。</p>
 <p>⚠️ <strong>行高はプリセットから選ぶ方式</strong>です（<code>100 / 120 / 130 / 140 / 150 / 160 / 180 / 200 / 250</code> …）。<strong>118% のような中間値は入力できず、最も近いプリセットを選びます</strong>（例: <code>118% → 120%</code>、<code>122% → 120%</code>、<code>195% → 200%</code>）。<strong>1〜2% の差は見た目に影響しません</strong>ので、表の値に一番近いものを選べばOKです。</p>
-<p>一方 <strong>間隔（letter-spacing）は数値をそのまま入力</strong>できます（例 <code>-4%</code>）。文字色は <a href="#g2-1">§2.1</a> のカラースタイル名（<code>text/ink</code> 等）を適用します。</p></div>
+<p>一方 <strong>間隔（letter-spacing）は数値をそのまま入力</strong>できます（例 <code>-4%</code>）。<br><strong>文字色はテキストスタイルには入りません</strong>。下表「文字色」列は、そのスタイルを当てた各テキストに <a href="#g2-1">§2.1</a> のカラースタイル（<code>text/ink</code> 等）を<strong>別途適用</strong>する色です。</p></div>
 <table>
-<thead><tr><th>#</th><th>テキストスタイル名</th><th>フォント</th><th>ウェイト</th><th>Size(PC)</th><th>行高(%)</th><th>間隔(%)</th><th>文字色</th><th>主な用途</th></tr></thead>
+<thead><tr><th>#</th><th>テキストスタイル名</th><th>フォント</th><th>ウェイト</th><th>Size(PC)</th><th>行高(%)</th><th>間隔(%)</th><th>文字色<br><small>(要素に別途適用)</small></th><th>主な用途</th></tr></thead>
 <tbody>
 <tr><td>1</td><td><strong>H1 Hero</strong></td><td>Noto Sans JP</td><td>900</td><td><code>60px</code></td><td><code>118%</code></td><td><code>-4%</code></td><td><code>text/ink</code>（em 部はグラデ・注）</td><td><code>.hero h1</code> FV メインキャッチ。PC 既定 nowrap</td></tr>
 <tr><td>2</td><td><strong>H2 Section</strong></td><td>Noto Sans JP</td><td>900</td><td><code>52px</code></td><td><code>122%</code></td><td><code>-3%</code></td><td><code>text/ink</code></td><td><code>.section-title</code> 各セクション見出し</td></tr>
