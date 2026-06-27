@@ -151,6 +151,8 @@ pre.tree{font-family:var(--mono);font-size:12.5px;line-height:1.65;background:#0
 /* glossary term link */
 a.term{color:inherit;border-bottom:1px dotted #9bb0d6;cursor:help}
 a.term:hover{text-decoration:none;border-bottom-color:var(--blue);background:#f0f6ff}
+.autoterm{border-bottom:1px dotted #c2cee0;cursor:help}
+.autoterm:hover{border-bottom-color:var(--blue);background:#f0f6ff}
 /* glossary term hover tooltip */
 .term-tip{position:fixed;z-index:10000;max-width:360px;background:#0F1A33;color:#fff;font-size:12.5px;line-height:1.62;padding:10px 13px;border-radius:9px;box-shadow:0 8px 28px rgba(15,26,51,.34);opacity:0;visibility:hidden;transition:opacity .12s ease;pointer-events:none}
 .term-tip.show{opacity:1;visibility:visible}
@@ -13511,17 +13513,53 @@ sec-footer
  tip.style.left=left+'px'; tip.style.top=top+'px';
  }
  function show(a){
- var id=(a.getAttribute('href')||'').replace('#',''); var d=map[id]; if(!d) return;
+ var id=a.dataset.term||(a.getAttribute('href')||'').replace('#',''); var d=map[id]; if(!d) return;
  clearTimeout(hideT);
  tip.innerHTML='<div class="tt-title">'+d.title+'</div>'+d.html;
  tip.classList.add('show'); place(a);
  }
  function hide(){ hideT=setTimeout(function(){ tip.classList.remove('show'); },80); }
- document.addEventListener('mouseover',function(e){ var a=e.target.closest&&e.target.closest('a.term'); if(a) show(a); });
- document.addEventListener('mouseout', function(e){ var a=e.target.closest&&e.target.closest('a.term'); if(a) hide(); });
- document.addEventListener('focusin', function(e){ var a=e.target.closest&&e.target.closest('a.term'); if(a) show(a); });
- document.addEventListener('focusout',function(e){ var a=e.target.closest&&e.target.closest('a.term'); if(a) hide(); });
+ var SEL='a.term,.autoterm';
+ document.addEventListener('mouseover',function(e){ var a=e.target.closest&&e.target.closest(SEL); if(a) show(a); });
+ document.addEventListener('mouseout', function(e){ var a=e.target.closest&&e.target.closest(SEL); if(a) hide(); });
+ document.addEventListener('focusin', function(e){ var a=e.target.closest&&e.target.closest(SEL); if(a) show(a); });
+ document.addEventListener('focusout',function(e){ var a=e.target.closest&&e.target.closest(SEL); if(a) hide(); });
  window.addEventListener('scroll',function(){ if(tip.classList.contains('show')) tip.classList.remove('show'); },{passive:true});
+
+ /* 本文中の専門用語を自動で吹き出し対象にする（用語集にある語のみ・各章で最初の1回だけ） */
+ var JARGON=[
+ ['ブレークポイント','term-breakpoint'],['リフロー','term-reflow'],
+ ['PC値','term-pcvalue'],['PC 値','term-pcvalue'],
+ ['擬似要素','term-pseudo'],['疑似要素','term-pseudo'],
+ ['条件スタイル','term-conditional'],['カラースタイル','term-colorstyle'],
+ ['テキストスタイル','term-textstyle'],['Custom Code','term-customcode'],
+ ['Loop Box','term-loopbox'],['重ね順','term-zindex'],['変形タブ','term-transform'],
+ ['ガター','term-gutter'],['ポジション','term-position'],['ボックス','term-box'],
+ ['sandbox','term-sandbox'],['Hug','term-hug'],['Fill','term-fill'],['Toggle','term-toggle']
+ ].filter(function(j){return map[j[1]];}).sort(function(a,b){return b[0].length-a[0].length;});
+ var SKIP={CODE:1,PRE:1,A:1,H2:1,H3:1,H4:1,SCRIPT:1,STYLE:1,BUTTON:1,TEXTAREA:1,OPTION:1,DT:1};
+ function inSkip(node){for(var p=node.parentNode;p&&p!==document.body;p=p.parentNode){if(p.nodeType===1){var t=p.tagName;if(SKIP[t]||t==='svg'||t==='SVG'||(p.classList&&(p.classList.contains('autoterm')||p.classList.contains('term-tip')||p.classList.contains('navgroup')||p.classList.contains('ch-fold-bar'))))return true;}}return false;}
+ function autowrap(){
+ document.querySelectorAll('main section.chapter').forEach(function(ch){
+ var done={};
+ var w=document.createTreeWalker(ch,NodeFilter.SHOW_TEXT,null);
+ var arr=[],nn;while(nn=w.nextNode())arr.push(nn);
+ arr.forEach(function(tn){
+ if(!tn.nodeValue||!tn.nodeValue.trim()||inSkip(tn))return;
+ var cur=tn,guard=0;
+ while(cur&&guard++<40){
+ var txt=cur.nodeValue,best=-1,bk=null,bi=null;
+ for(var i=0;i<JARGON.length;i++){var id=JARGON[i][1];if(done[id])continue;var idx=txt.indexOf(JARGON[i][0]);if(idx>=0&&(best<0||idx<best)){best=idx;bk=JARGON[i][0];bi=id;}}
+ if(best<0)break;
+ var mn=cur.splitText(best),rest=mn.splitText(bk.length);
+ var sp=document.createElement('span');sp.className='autoterm';sp.setAttribute('data-term',bi);sp.textContent=bk;
+ mn.parentNode.replaceChild(sp,mn);
+ done[bi]=1;cur=rest;
+ }
+ });
+ });
+ }
+ try{autowrap();}catch(e){}
 })();
 </script>
 <script>
