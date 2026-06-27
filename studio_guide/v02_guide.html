@@ -2088,6 +2088,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>標準 9 スタイル（H1 Hero / H2 Section / H3 Card / Body / Lead / Hero Sub / English Label / English Number L / Footnote）を PC 値で登録した</li><li>English Label に text-transform: uppercase を設定した</li><li>各スタイルの文字色が §2.1 のカラースタイル（<code>text/ink</code> <code>text/sub</code> <code>brand/blue</code> 等）に紐づいている</li><li>グラデ文字（H1 em / Number L）はスタイルは基準色、グラデは各章で個別指定する方針を確認した</li><li>補助 2 スタイル（hero-eyebrow / lw-label）はスタイル登録せず各章で組む方針を確認した</li></ul>
 
 <h3 id="g2-3">2.3 レスポンシブ（テキストスタイル内の条件スタイル）</h3>
+<div class="callout note"><p>📍 数値は <strong>サイズ(px) / 行高(%)</strong> の順（Studio パネルと同じ%）。Tablet/Mobile は <a class="term" href="#term-conditional">条件スタイル</a>でこの値に上書きします。</p></div>
 
 <p>テキストスタイルは <strong>1 スタイル定義内に PC/Tablet/Mobile を内包</strong>できます。元データの不揃いな <code>@media</code> は Studio 3 <a class="term" href="#term-breakpoint">ブレークポイント</a>（<strong>PC &gt; 840 / Tablet 540–840 / Mobile &lt; 540</strong>）へ写像します。各スタイル選択中に、下部ツールバーで対象デバイス幅へ切替 → Size / Line height を上書き（上書き中のプロパティ枠は <strong>Tablet=黄緑 / Mobile=オレンジ</strong>で色分け表示。誤上書きは横の <strong>Reset override</strong> で個別解除）。</p>
 
@@ -2119,15 +2120,15 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <table>
 <thead><tr><th>テキストスタイル</th><th>PC</th><th>Tablet（540–840）</th><th>Mobile（&lt; 540）</th></tr></thead>
 <tbody>
-<tr><td>H1 Hero</td><td><code>60px</code> / 1.18 / nowrap</td><td><code>44px</code> / 1.2 / normal</td><td><code>32px</code>（≒clamp 26–36px）/ 1.2</td></tr>
-<tr><td>H2 Section</td><td><code>52px</code> / 1.22</td><td><code>40px</code> / 1.25</td><td><code>30px</code>（≒clamp 24–32px）/ 1.25</td></tr>
-<tr><td>H3 Card</td><td><code>22px</code> / 1.5</td><td><code>19px</code> / 1.5</td><td><code>17px</code> / 1.5</td></tr>
-<tr><td>Body</td><td><code>14px</code> / 1.9</td><td><code>14px</code> / 1.9</td><td><code>13.5px</code> / 1.9</td></tr>
-<tr><td>Lead</td><td><code>15.5px</code> / 1.95</td><td><code>15px</code> / 1.9</td><td><code>14px</code> / 1.9</td></tr>
-<tr><td>Hero Sub</td><td><code>16px</code> / 1.95</td><td><code>15px</code> / 1.9</td><td><code>13.5px</code> / 1.9</td></tr>
+<tr><td>H1 Hero</td><td><code>60px</code> / 118% / nowrap</td><td><code>44px</code> / 120% / normal</td><td><code>32px</code>（≒clamp 26–36px）/ 120%</td></tr>
+<tr><td>H2 Section</td><td><code>52px</code> / 122%</td><td><code>40px</code> / 125%</td><td><code>30px</code>（≒clamp 24–32px）/ 125%</td></tr>
+<tr><td>H3 Card</td><td><code>22px</code> / 150%</td><td><code>19px</code> / 150%</td><td><code>17px</code> / 150%</td></tr>
+<tr><td>Body</td><td><code>14px</code> / 190%</td><td><code>14px</code> / 190%</td><td><code>13.5px</code> / 190%</td></tr>
+<tr><td>Lead</td><td><code>15.5px</code> / 195%</td><td><code>15px</code> / 190%</td><td><code>14px</code> / 190%</td></tr>
+<tr><td>Hero Sub</td><td><code>16px</code> / 195%</td><td><code>15px</code> / 190%</td><td><code>13.5px</code> / 190%</td></tr>
 <tr><td>English Label</td><td><code>12px</code></td><td><code>12px</code></td><td><code>11px</code></td></tr>
-<tr><td>English Number L</td><td><code>96px</code>（要素側で個別）/ 1</td><td>Tablet: <code>67px</code>（96の約70%）</td><td>Mobile: <code>48px</code>（vc-big は <code>180→90px</code>）</td></tr>
-<tr><td>Footnote</td><td><code>11.5px</code> / 1.6</td><td><code>11px</code></td><td><code>10–11px</code></td></tr>
+<tr><td>English Number L</td><td><code>96px</code>（要素側で個別）/ 100%</td><td>Tablet: <code>67px</code>（96の約70%）</td><td>Mobile: <code>48px</code>（vc-big は <code>180→90px</code>）</td></tr>
+<tr><td>Footnote</td><td><code>11.5px</code> / 160%</td><td><code>11px</code></td><td><code>10–11px</code></td></tr>
 </tbody>
 </table>
 
