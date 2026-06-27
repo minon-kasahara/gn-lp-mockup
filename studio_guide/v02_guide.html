@@ -886,8 +886,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <p>Studio はエディタがデスクトップ前提であり、<strong>スティッキー・Backdrop filter・vw/dvh・<a class="term" href="#term-embed">Embed</a>(<a class="term" href="#term-sandbox">sandbox</a>) は最終確認を公開URLで行う必要がある</strong>（仕様 §8.2 / §9.2 / §6）。各要素の実装は次の3フェーズで進める。</p>
 
   <div class="callout note">
-    <p><strong>【全章共通・最初に読む】操作の基本パターン と CSS→Studio 変換表</strong></p>
-    <p>本書の各手順は「変更後の姿」を CSS 用語で書いています。Studio は CSS を直接書かないので、下の4ステップと変換表で<strong>「どの画面のどの項目を触るか」に読み替えて</strong>ください（全セクション共通）。</p>
+    <p><strong>【困ったとき用・早見表】操作の基本パターン と CSS→Studio 対応表</strong></p>
+    <p>本書の各手順は<strong>すでに Studio の操作で書かれています</strong>（例「右パネル → ボックスタブ → サイズ：幅 100%」「方向＝縦並び」）。手順中に出てくる <code>原物 padding:76px 0</code> のような CSS は<strong>値の出どころ（根拠）</strong>を示すだけで、<strong>自分で読み替える必要はありません</strong>。この表は、ごく一部 Studio の場所が省略された項目で<strong>迷ったときだけ引く早見表</strong>です（普段は読み飛ばして構いません）。</p>
     <p><strong>操作の基本パターン（毎回これ）</strong></p>
     <ol class="steps">
       <li><strong>対象を選ぶ</strong> — 左の<strong>レイヤーパネル</strong>でレイヤー名（例 <code>hero-inner</code>）をクリック（or キャンバスで直接クリック）。</li>
@@ -3943,6 +3943,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <section class="chapter" id="ch-s2">
 <h2 id="ch-s2">5-2. FV（Hero）</h2>
+  <div class="callout note"><p><strong>📍 設定先（読み替え不要）</strong>: この節で出てくる <code>サイズ / ウェイト / 行間 / letter-spacing（字間）/ word-break（折り返し）/ 色</code> は、対象テキストを選び <strong>右パネル → テキストタブ</strong>で入力します（既存の同名テキストスタイルがあれば <strong>スタイル欄で適用</strong>すると速い）。<code>padding / margin / 角丸 / 背景 / ボーダー</code> は <strong>ボックスタブ</strong>（パディング・マージン・外観）です。</p></div>
 <a class="live" href="https://minon-kasahara.github.io/gn-lp-mockup/" target="_blank" rel="noopener">🔗 実物プレビュー（このセクション）</a>
 
 <div class="callout note">
@@ -7480,6 +7481,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <ul class="checklist"><li>Case Grid（幅1320・中央・左右padding40・3カラム・gap24）を作成した</li></ul>
 
   <h3 id="s8-4">5-8-4. カード（Case Card A を作り込み、B/Cは複製）</h3>
+  <div class="callout note"><p><strong>📍 設定先（読み替え不要）</strong>: この節で出てくる <code>サイズ / ウェイト / 行間 / letter-spacing（字間）/ word-break（折り返し）/ 色</code> は、対象テキストを選び <strong>右パネル → テキストタブ</strong>で入力します（既存の同名テキストスタイルがあれば <strong>スタイル欄で適用</strong>すると速い）。<code>padding / margin / 角丸 / 背景 / ボーダー</code> は <strong>ボックスタブ</strong>（パディング・マージン・外観）です。</p></div>
 
   <p>1枚分のカード本体（器＋カバー＋本体）を順に組みます。完成後に複製するため、各プロパティの実値を取り違えないよう注意してください。</p>
 
@@ -8099,7 +8101,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <ol class="steps" start="15">
     <li><code>faq-q-1</code> の末尾子として <span class="path">追加<i>›</i>基本<i>›</i>Icon<i>›</i>chevron-down</span> を配置。レイヤー名 <code>faq-q-arrow-1</code>。</li>
     <li>サイズ → 幅/高さ <code>14px</code>、ストローク色 カラースタイル <code>blue</code>（#4A7DE8）／ 線幅 約 <code>2.5px</code>。</li>
-    <li>右端へ寄せる: <code>faq-q-arrow-1</code> の左に margin-left <code>auto</code>（現物 <code>margin-left:auto</code>）。<strong>Studioに余白 auto は無い</strong>ので、<strong>間の <code>faq-q-text</code> の幅を <code>flex</code></strong> にして矢印を右端へ押し出す（または親を「両端揃え（Space Between）」。<a href="#g0-4">§0.4「片側マージンを auto にして端へ押しやる」</a>）。上位置 margin-top <code>6px</code>。flex-shrink させない（Tablet/Mobile でも縮小しない）。</li>
+    <li>右端へ寄せる: <code>faq-q-arrow-1</code> の左に margin-left <code>auto</code>（現物 <code>margin-left:auto</code>）。<strong>Studioに余白 auto は無い</strong>ので、<strong>間の <code>faq-q-text</code> の幅を <code>flex</code></strong> にして矢印を右端へ押し出す（または親を「両端揃え（Space Between）」。<a href="#g0-4">§0.4「片側マージンを auto にして端へ押しやる」</a>）。上位置は <strong>ボックスタブ → マージン → 上 <code>6px</code></strong>。サイズは固定（縮小しない＝幅/高さを px 指定のまま）。</li>
     <li>回転アニメ:
       <ul>
         <li>default（open）: <a class="term" href="#term-transform">変形（Transform）タブ</a> → Rotate <code>180deg</code>（上向き相当。現物の open は rotate(-135deg)＝視覚的に上向きシェブロン）。</li>
@@ -8481,6 +8483,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>CTA Lead を Lead 適用・15px/400/lh2.0・色 sub・max-width520px・下 marg32px で作成済み</li></ul>
 
 <h3 id="s10-5">5-10-5. 女性イラスト＋吹き出し（Box / CTA Illust）</h3>
+  <div class="callout note"><p><strong>📍 設定先（読み替え不要）</strong>: この節で出てくる <code>サイズ / ウェイト / 行間 / letter-spacing（字間）/ word-break（折り返し）/ 色</code> は、対象テキストを選び <strong>右パネル → テキストタブ</strong>で入力します（既存の同名テキストスタイルがあれば <strong>スタイル欄で適用</strong>すると速い）。<code>padding / margin / 角丸 / 背景 / ボーダー</code> は <strong>ボックスタブ</strong>（パディング・マージン・外観）です。</p></div>
 <p>原物 <code>.cta-illust</code>: 相対配置の枠（margin-top 44px / 高さ 300px / max-width 520px）。中央下に女性 SVG、四隅に吹き出し 4 つを絶対配置。<strong>Mobile（767px 以下）では <code>display:none</code>。</strong></p>
 
 <figure class="fig">
@@ -8564,6 +8567,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>CTA Illust 枠（relative・高さ 300px・max-width520px・上 marg44px）作成済み</li><li>CTA Woman（絶対 left50%/bottom0・Move X-50%/Y-26px・188×222・contain・ink16% 影）配置済み</li><li>Bubble 1〜4（blue 背景・白文字 12.5px/800・padding9/15・角丸 16・blue28% 影・各座標）配置済み・しっぽ方針確定済み</li></ul>
 
 <h3 id="s10-6">5-10-6. 問い合わせフォーム（Form / Contact Form）</h3>
+  <div class="callout note"><p><strong>📍 設定先（読み替え不要）</strong>: この節で出てくる <code>サイズ / ウェイト / 行間 / letter-spacing（字間）/ word-break（折り返し）/ 色</code> は、対象テキストを選び <strong>右パネル → テキストタブ</strong>で入力します（既存の同名テキストスタイルがあれば <strong>スタイル欄で適用</strong>すると速い）。<code>padding / margin / 角丸 / 背景 / ボーダー</code> は <strong>ボックスタブ</strong>（パディング・マージン・外観）です。</p></div>
 
 <div class="callout warn">
 <p><strong>プラン注記</strong>: Studio 標準<a class="term" href="#term-form">フォーム</a>の<strong>設置・レイアウト・必須設定は Free でも可能</strong>。Apps 連携・送信先メール・reCAPTCHA・Google Sheets 書き出しは Free 不可の可能性ありのため <strong>Mini 切替後に有効化</strong>。本章は設置までを完成させ、送信先設定は別途運用で行う。</p>
@@ -10315,6 +10319,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <section class="chapter" id="ch-t7">
   <h2 id="ch-t7">7. レスポンシブ仕様（セクション別）</h2>
+  <div class="callout note"><p><strong>📍 値の入れ方（読み替え不要）</strong>: 本章の各 Mobile / Tablet 値は、対象を選び <strong>下部ツールバーで Mobile（または Tablet）に切替</strong>えてから、<strong>サイズ・字間・行間＝テキストタブ ／ 余白・方向・幅＝ボックスタブ</strong>で<strong>上書き</strong>します。<code>clamp(…)</code> は本章記載の固定px をその BP に入れればOK（連続スケールは再現不可）。並び替えはレイヤーパネルで子をドラッグ。</p></div>
 
   <p>この章は「原物（モックアップ HTML/CSS）の不揃いな <code>@media</code> <a class="term" href="#term-breakpoint">ブレークポイント</a>値」を「Studio の 3 ブレークポイント（<a class="term" href="#term-conditional">条件スタイル</a>）」へ写像するための<strong>正本</strong>です。原物は <code>1024px / 768px / 767px / 640px / 480px / 380px / 1280px(min-width)</code> と 7 系統のブレークポイントが混在していますが、Studio 編集はデフォルト 3 段（Default(PC)=<code>1280px</code> / Tablet=<code>840px</code> / Mobile=<code>540px</code>）で行います。<strong>写像規則を一度頭に入れ、各セクションの「Studio 写像表」に従って条件スタイルを当てる</strong>のがこの章の使い方です。</p>
 
