@@ -1923,8 +1923,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <table>
 <thead><tr><th>#</th><th>トークン名</th><th>HEX(8 桁)</th><th>旧変数 / 用途</th></tr></thead>
 <tbody>
-<tr><td>22</td><td><code>line/subtle</code></td><td><span class="sw" style="--c:#0F1A3314"></span> <code>#0F1A3314</code></td><td><code>--line</code> = <code>rgba(15,26,51,.08)</code>（<code>.08</code>≒<code>14</code>）。header scrolled 境界・case/faq border・footer 境界</td></tr>
-<tr><td>23</td><td><code>line/strong</code></td><td><span class="sw" style="--c:#0F1A3324"></span> <code>#0F1A3324</code></td><td><code>--line-2</code> = <code>rgba(15,26,51,.14)</code>（<code>.14</code>≒<code>24</code>）。lw-card/vc-perk 境界・c-result 区切り・form input 下線</td></tr>
+<tr><td>22</td><td><code>line/subtle</code></td><td><span class="sw" style="--c:#0F1A3314"></span> <code>#0F1A3314</code></td><td><strong>8桁HEX＝色 <code>#0F1A33</code>（濃紺）＋ 不透明度 8%</strong>（ごく薄い罫線）。header scrolled 境界・case/faq border・footer 境界</td></tr>
+<tr><td>23</td><td><code>line/strong</code></td><td><span class="sw" style="--c:#0F1A3324"></span> <code>#0F1A3324</code></td><td><strong>8桁HEX＝色 <code>#0F1A33</code>（濃紺）＋ 不透明度 14%</strong>（やや濃い罫線）。lw-card/vc-perk 境界・c-result 区切り・form input 下線</td></tr>
 </tbody>
 </table>
 
@@ -2933,7 +2933,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <tr><td><span class="sw" style="--c:#6273A0"></span> <code>sub</code></td><td><code>#6273A0</code></td><td>lead/説明文/キャプション</td></tr>
 <tr><td><span class="sw" style="--c:#FFFFFF"></span> <code>white</code></td><td><code>#FFFFFF</code></td><td>カード背景・ボタン上文字</td></tr>
 <tr><td><span class="sw" style="--c:#FCFDFF"></span> <code>bg</code></td><td><code>#FCFDFF</code></td><td>ページ全体背景</td></tr>
-<tr><td><span class="sw" style="--c:#0F1A33"></span> <code>line</code></td><td><code>#0F1A3314</code><br>（=rgba(15,26,51,.08)）</td><td>薄い罫線（header scrolled境界・faq-item/case-card枠・footer境界・mkt-note区切り線）。 line usage 準拠</td></tr>
+<tr><td><span class="sw" style="--c:#0F1A33"></span> <code>line</code></td><td><code>#0F1A3314</code><br>（8桁HEX＝色 <code>#0F1A33</code> ＋ 不透明度 8%）</td><td>薄い罫線（header scrolled境界・faq-item/case-card枠・footer境界・mkt-note区切り線）。 line usage 準拠</td></tr>
 </tbody>
 </table>
 
@@ -3013,7 +3013,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>右パネル→ボックス→外観→角丸: 全コーナー一括 <strong><code>100</code></strong>（px）</li>
 </ul>
 <ul class="checklist"><li>Box土台に blue / radius100 / padding16-64-16-36 を設定した</li></ul></li>
-<li>影（通常状態）: 右パネル→ボックス→外観→<strong>Shadow</strong>→方向 <strong>Outset</strong>、X:0 / Y:10 / Blur:24 / Spread:0 / Color <span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE852</code>（=rgba(74,125,232,.32)）。
+<li>影（通常状態）: 右パネル→ボックス→外観→<strong>Shadow</strong>→方向 <strong>Outset</strong>、X:0 / Y:10 / Blur:24 / Spread:0 / Color <span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE852</code>（8桁HEX＝色 <code>#4A7DE8</code> ＋ 不透明度 32%）。
 <ul class="checklist"><li>通常時の青影 0/10/24/0 rgba(74,125,232,.32) を入れた</li></ul></li>
 <li>ラベル: <code>Comp/CTA-Primary</code> 内に 追加→基本→<strong>Text</strong> をドラッグ。レイヤー名 <code>cta-pri/label</code>。
 <ul>
@@ -3034,7 +3034,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>hover <a class="term" href="#term-conditional">条件スタイル</a></strong>: <code>Comp/CTA-Primary</code> を選択→右パネル→ボックス→<strong>条件スタイル→<a class="term" href="#term-hover">Hover State</a></strong> を追加し、以下の差分を設定。
 <ul>
 <li>塗り（Fill）: <code>yellow</code></li>
-<li>Shadow: X:0 / Y:16 / Blur:34 / Spread:0 / Color <span class="sw" style="--c:#FFD166"></span> <code>#FFD16680</code>（=rgba(255,209,102,.5)）</li>
+<li>Shadow: X:0 / Y:16 / Blur:34 / Spread:0 / Color <span class="sw" style="--c:#FFD166"></span> <code>#FFD16680</code>（8桁HEX＝色 <code>#FFD166</code> ＋ 不透明度 50%）</li>
 <li><a class="term" href="#term-transform">変形タブ</a>（Transform）: Move Y <strong>-2px</strong></li>
 <li>子 <code>cta-pri/label</code> の色を <code>ink</code>、<code>cta-pri/arrow</code> のBorder色を <code>ink</code>、<code>cta-pri/arrow-icon</code> の色を <code>ink</code>（in Hover で親ホバー時に子を変える。 in Hover）</li>
 <li>アニメーション: 変形タブ→アニメーション→時間 <strong>0.2秒</strong>、イージング <strong>ease</strong></li>
@@ -3093,7 +3093,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul>
 <li>塗り: <code>navy</code>／Border色: <code>navy</code></li>
 <li>子（label / arrow border / arrow-icon）の色を <code>white</code> に（in Hover）</li>
-<li>Shadow: X:0 / Y:12 / Blur:26 / Spread:0 / Color <span class="sw" style="--c:#1B2A4A"></span> <code>#1B2A4A38</code>（=rgba(15,26,51,.22)）</li>
+<li>Shadow: X:0 / Y:12 / Blur:26 / Spread:0 / Color <span class="sw" style="--c:#1B2A4A"></span> <code>#1B2A4A38</code>（8桁HEX＝色 <code>#1B2A4A</code> ＋ 不透明度 22%）</li>
 <li>変形: Move Y <strong>-2px</strong>、アニメーション 時間 <strong>0.2秒</strong>／ease</li>
 </ul>
 <ul class="checklist"><li>Hover（背景navy/文字白/影/Y-2/0.2s）を設定した</li></ul></li>
@@ -3188,7 +3188,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>レイアウト→方向: ここでは未確定でよい（各章で横並び/縦並びを設定）。デフォルトは縦並びにしておく</li>
 </ul>
 <ul class="checklist"><li>white/radius20/border2px ink/padding32 を設定した</li></ul></li>
-<li>影: <strong>prob/appr/mkt/svc の枠線カードは影なし</strong>が基本仕様。完成イメージに忠実なら<strong>Shadow は設定しない</strong>。視認性向上で任意付与する場合のみ Shadow Outset X:0 / Y:8 / Blur:20 / Spread:0 / Color <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A330D</code>（=rgba(15,26,51,.05) のソフト影）。
+<li>影: <strong>prob/appr/mkt/svc の枠線カードは影なし</strong>が基本仕様。完成イメージに忠実なら<strong>Shadow は設定しない</strong>。視認性向上で任意付与する場合のみ Shadow Outset X:0 / Y:8 / Blur:20 / Spread:0 / Color <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A330D</code>（8桁HEX＝色 <code>#0F1A33</code> ＋ 不透明度 5%・ソフト影）。
 <ul class="checklist"><li>基本どおり影なしにした（or ソフト影 .05 を採用したか明記）</li></ul></li>
 <li><strong>hover 条件スタイル:</strong> <code>Comp/Card</code> 選択→条件スタイル→Hover→変形 Move Y <strong>-4px</strong>、アニメーション 時間 <strong>0.2秒</strong>／ease。
 <ul class="checklist"><li>Hover（Move Y -4px・0.2s）を設定した</li></ul></li>
