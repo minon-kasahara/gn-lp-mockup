@@ -2744,7 +2744,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p><strong>レスポンシブ注記（吹き出し・しっぽ）</strong>: <code>.cta-illust</code> は Mobile 帯で非表示（display:none）。したがって<strong>吹き出し・しっぽは PC / Tablet のみ表示</strong>で、Mobile では非表示。Studio では <code>cta-illust</code> 相当 Box を <strong>Mobile BP で目アイコン非表示</strong>にする（§3.5 の出し分け方針）。しっぽ代替やその座標調整の検討は PC/Tablet に限る。</p>
  </div>
 
- <ul class="checklist"><li>Header = fixed / 上左右 0 / 高さ 78px / 重ね順 100 / Backdrop Blur 8px ＋背景 <code>header-bg</code></li><li>FloatingCTA-Perk = fixed / 下 20px / 右 20px / 幅 270px / 重ね順 90 / 角丸 16px（r-md=14px とは別）</li><li>2 層影は Mini の Custom Code（<code>.float-perk{box-shadow:...}</code>）で再現する</li><li>CTA 吹き出しは <strong>4 個（b1〜b4・absolute）</strong>、座標 b1:top8/left0・b2:top8/right0・b3:top122/left0・b4:top122/right0</li><li>しっぽは<strong>横向き三角</strong>（colored 13px / 透明 7px / rotate b1:17° b2:-17° b3:-18° b4:18°）、基準は bubble 左右辺（下端でない）。Mini の Custom Code（<code>.bubble::before</code>＋b1〜b4 override）で再現する</li><li>吹き出し・しっぽは PC/Tablet のみ（<code>.cta-illust</code> は Mobile で display:none）</li><li>装飾ブロブ＝重ね順 0、コンテンツ＝重ね順 1 の前後関係</li></ul>
+ <ul class="checklist"><li>Header = fixed / top0・left0・幅100%（右は auto） / 高さ 78px / 重ね順 100 / Backdrop Blur 8px ＋背景 <code>header-bg</code></li><li>FloatingCTA-Perk = fixed / 下 20px / 右 20px / 幅 270px / 重ね順 90 / 角丸 16px（r-md=14px とは別）</li><li>2 層影は Mini の Custom Code（<code>.float-perk{box-shadow:...}</code>）で再現する</li><li>CTA 吹き出しは <strong>4 個（b1〜b4・absolute）</strong>、座標 b1:top8/left0・b2:top8/right0・b3:top122/left0・b4:top122/right0</li><li>しっぽは<strong>横向き三角</strong>（colored 13px / 透明 7px / rotate b1:17° b2:-17° b3:-18° b4:18°）、基準は bubble 左右辺（下端でない）。Mini の Custom Code（<code>.bubble::before</code>＋b1〜b4 override）で再現する</li><li>吹き出し・しっぽは PC/Tablet のみ（<code>.cta-illust</code> は Mobile で display:none）</li><li>装飾ブロブ＝重ね順 0、コンテンツ＝重ね順 1 の前後関係</li></ul>
 
  <h3 id="g3-4">3.4 装飾オーバーレイ層の置き方（Hero ブロブ・stat パネル装飾円）</h3>
 
@@ -3423,7 +3423,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <svg viewBox="0 0 760 150" role="img" xmlns="http://www.w3.org/2000/svg">
  <title>ヘッダーの3ブロック構成（左ロゴ・中央ナビ・右CTA）</title>
  <rect x="8" y="20" width="744" height="78" rx="8" fill="var(--bg2)" stroke="var(--line)"/>
- <text x="20" y="14" font-family="inherit" font-size="11" fill="var(--sub)">Header（fixed / top:0 left:0 right:0 / height:78 / z-index:100 / padding 0 40）</text>
+ <text x="20" y="14" font-family="inherit" font-size="11" fill="var(--sub)">Header（fixed / top:0 left:0 width:100% / height:78 / z-index:100 / padding 0 40）</text>
  <!-- Logo -->
  <rect x="32" y="44" width="120" height="34" rx="6" fill="var(--bg)" stroke="var(--navy)"/>
  <text x="92" y="66" font-family="inherit" font-size="13" fill="var(--navy)" text-anchor="middle" font-weight="700">G&amp;N ロゴ</text>
@@ -3498,7 +3498,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>レイヤーパネルで Box をダブルクリックし、名前を <strong>Header</strong> にリネーム。</li>
  <li>右パネル <span class="path">ボックス（Box）<i>›</i>サイズ</span>：
  <ul>
- <li>幅（Width）：<strong>auto</strong>（後述 step6 で <code>left:0 / right:0</code> を指定するため、左右0で全幅が確定する。<code>width:100%</code> と <code>left/right:0</code> の二重指定はしない。fixed の幅は<strong>左右0で取る</strong>）。</li>
+ <li>幅（Width）：<strong>100%</strong>。<strong>fixed の全幅は「幅100% ＋ 左0」で取る</strong>（Studio は <strong>left と right を同時に設定できず</strong>、片方を入れると他方が自動で <code>auto</code> になるため、<code>left:0 / right:0</code> の両指定はできない）。</li>
  <li>高さ（Height）：<strong>px</strong> で <code>78</code>。</li>
  </ul>
  </li>
@@ -3519,7 +3519,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル <span class="path">ボックス<i>›</i>（下スクロール）<i>›</i>ポジション</span>：
  <ul>
  <li>種別：<strong>固定（fixed）</strong>。</li>
- <li>距離：<strong>上（top）0 / 左（left）0 / 右（right）0</strong>（bottom は auto）。これにより幅は auto のまま全幅になる（step3 と整合）。</li>
+ <li>距離：<strong>上（top）0 / 左（left）0</strong> のみ入力する（<strong>右（right）と下（bottom）は自動で auto</strong> になる。Studio は左右を同時指定できない）。<strong>全幅は step3 の「幅100%」で確定</strong>する（左0で左端に寄り、幅100%で右端まで伸びる）。</li>
  <li><a class="term" href="#term-zindex">重ね順（z-index）</a>：<strong><code>100</code></strong>。</li>
  </ul>
  </li>
@@ -3546,7 +3546,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <figcaption>fixed ヘッダーは <code>z-index:100</code> で常に前面。本文は背面を通過するため、Hero 側の上パディングで隠れを防ぐ。</figcaption>
  </figure>
 
- <ul class="checklist"><li>Header Box を Base 直下に配置し、幅auto＋left/right:0・高さ78px・fixed・z-index100・padding 0 40 を設定した（width:100% と inset の二重指定はしていない）</li><li>塗り <code>header-bg</code>・背面フィルター blur 8・下境界線透明1px を設定した</li></ul>
+ <ul class="checklist"><li>Header Box を Base 直下に配置し、幅100%＋left 0（右は auto）・高さ78px・fixed・z-index100・padding 0 40 を設定した</li><li>塗り <code>header-bg</code>・背面フィルター blur 8・下境界線透明1px を設定した</li></ul>
 
  <h3 id="s1-2">5-1-2. ロゴ（左・外部リンク／SVG Embed）</h3>
 
