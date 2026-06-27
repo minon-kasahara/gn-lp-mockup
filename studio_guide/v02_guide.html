@@ -363,7 +363,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><a href="#ch-g0">0. レスポンシブ・モバイル前提（最重要）</a></li>
 <li><a class="lv3" href="#g0-1">0.1 想定デバイスと優先度</a></li>
 <li><a class="lv3" href="#g0-2">0.2 Studio 3ブレークポイントの定義（正本）</a></li>
-<li><a class="lv3" href="#g0-3">0.3 原物 @media 値 → Studio 3BP 写像方針</a></li>
+<li><a class="lv3" href="#g0-3">0.3 各ブレークポイントで何を変えるかの早見</a></li>
 <li><a class="lv3" href="#g0-4">0.4 実装前 / 中 / 後の確認フロー</a></li>
 <li><a class="lv3" href="#g0-5">0.5 プラン制約（Free / Mini）の前提と両対応方針</a></li>
 <li><a class="lv3" href="#g0-6">0.6 レイヤー命名と全体ツリー（共通規約）</a></li>
@@ -426,7 +426,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><a class="lv3" href="#s2-10">5-2-10. 動作確認（公開URL）</a></li>
 <li><a class="lv3" href="#s2-11">5-2-11. このセクションの未確定・要判断事項</a></li>
 <li><a href="#ch-s3">5-3. アプローチ（Approach）</a></li>
-<li><a class="lv3" href="#s3-0">5-3-0. このセクションの構造と原物実値サマリ</a></li>
+<li><a class="lv3" href="#s3-0">5-3-0. このセクションの構造と実値サマリ</a></li>
 <li><a class="lv3" href="#s3-1">5-3-1. レイヤー命名とツリー</a></li>
 <li><a class="lv3" href="#s3-2">5-3-2. カラースタイル / テキストスタイルの事前確認</a></li>
 <li><a class="lv3" href="#s3-3">5-3-3. ラッパとセクションの土台を作る</a></li>
@@ -518,7 +518,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><a class="lv3" href="#s11-10">10. Studioネイティブ対応の可否メモ</a></li>
 <li><a class="lv3" href="#s11-done">完了チェック（セクション全体）</a></li>
 <li><a href="#ch-s12">5-12. フローティング特典CTA（v10 NEW）</a></li>
-<li><a class="lv3" href="#s12-0">5-12-0. 使用トークン対応表（現物実値 → Studioスタイル名）</a></li>
+<li><a class="lv3" href="#s12-0">5-12-0. 使用トークン対応表（実値 → Studioスタイル名）</a></li>
 <li><a class="lv3" href="#s12-1">5-12-1. レイヤー構成（命名ツリー）</a></li>
 <li><a class="lv3" href="#s12-2">5-12-2. 親コンテナ FloatPerk（固定追従カード）</a></li>
 <li><a class="lv3" href="#s12-3">5-12-3. FloatPerk__Close（×閉じるボタン）</a></li>
@@ -542,7 +542,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><a class="lv3" href="#t6-4">6.4 Studio標準で不可能なもの（Free代替 / Mini 併記）</a></li>
 <li><a class="lv3" href="#t6-5">6.5 章まとめ（実装振り分け早見表）</a></li>
 <li><a href="#ch-t7">7. レスポンシブ仕様（セクション別）</a></li>
-<li><a class="lv3" href="#t7-0">7.0 原物 @media → Studio 3BP 写像規則</a></li>
+<li><a class="lv3" href="#t7-0">7.0 各ブレークポイントへの割り当て規則</a></li>
 <li><a class="lv3" href="#t7-1">7.1 ブレークポイント初期設定</a></li>
 <li><a class="lv3" href="#t7-2">7.2 改行ルール（全セクション共通・最重要）</a></li>
 <li><a class="lv3" href="#t7-3">7.3 タップターゲット / Safe Area / iOS ズーム</a></li>
@@ -594,7 +594,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><a class="lv3" href="#t10-9">10.9 アクセシビリティ</a></li>
 <li><a class="lv3" href="#t10-10">10.10 パフォーマンス</a></li>
 <li><a href="#ch-t11">11. モバイル実装の落とし穴（v10 ベース監査）</a></li>
-<li><a class="lv3" href="#t11-0">11.0 原物 @media → Studio 3 ブレークポイント写像（最初に必ず決める）</a></li>
+<li><a class="lv3" href="#t11-0">11.0 各ブレークポイントへの割り当て（最初に必ず決める）</a></li>
 <li><a class="lv3" href="#t11-1">11.1 ヘッダー（sec-header / hd-nav / hd-cta）</a></li>
 <li><a class="lv3" href="#t11-2">11.2 FV / ヒーロー（sec-hero / hero-inner / hero-form）</a></li>
 <li><a class="lv3" href="#t11-3">11.3 アプローチ（sec-approach / appr-card）</a></li>
@@ -783,12 +783,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <figure class="fig">
     <svg viewBox="0 0 760 300" role="img" xmlns="http://www.w3.org/2000/svg">
-      <title>原物の不揃いな8種の @media 値を Studio 3段ブレークポイントへ写像する図</title>
+      <title>不揃いな切替幅を Studio 3段ブレークポイントへ割り当てる図</title>
       <defs>
         <marker id="arrowMap" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="var(--sub)"/></marker>
       </defs>
       <!-- left column: raw media values -->
-      <text x="130" y="24" text-anchor="middle" fill="var(--ink)" font-family="inherit" font-size="13" font-weight="700">原物の不揃いな @media 値</text>
+      <text x="130" y="24" text-anchor="middle" fill="var(--ink)" font-family="inherit" font-size="13" font-weight="700">不揃いな切替幅</text>
       <!-- Default-bound -->
       <rect x="20" y="40" width="220" height="26" rx="4" fill="var(--bg2)" stroke="var(--line)"/>
       <text x="130" y="57" text-anchor="middle" fill="var(--ink)" font-family="inherit" font-size="12">min-width:1280</text>
@@ -833,7 +833,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <table>
     <thead>
-      <tr><th>原物 <code>@media</code> 値</th><th>種別</th><th>原物での役割（実箇所）</th><th>写像先 Studio BP</th><th>写像方針</th></tr>
+      <tr><th>切替幅の目安</th><th>種別</th><th>その帯で変わること</th><th>写像先 Studio BP</th><th>写像方針</th></tr>
     </thead>
     <tbody>
       <tr><td><code>1280px 以上</code></td><td>min</td><td>PC で見出しを1行化</td><td><strong>Default(1280)</strong></td><td>Default の値として直接実装。FV見出しは PC で折返し禁止（nowrap）</td></tr>
@@ -1046,7 +1046,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <div class="plan mini">
     <span class="badge">Mini</span>
-    <p>Custom Code（head/body）で原物 CSS をほぼそのまま注入して忠実再現。<strong>忠実度を要する装飾のみ Mini 切替後に Custom Code で上書き</strong>する。</p>
+    <p>Custom Code（head/body）に CSS をほぼそのまま注入して忠実再現。<strong>忠実度を要する装飾のみ Mini 切替後に Custom Code で上書き</strong>する。</p>
   </div>
 
   <div class="callout tip">
@@ -1119,7 +1119,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
       <text x="556" y="100" fill="var(--ink)" font-family="inherit" font-size="12" font-weight="700">通常フロー</text>
       <text x="556" y="118" fill="var(--sub)" font-family="inherit" font-size="11">Hero(relative)〜Footer は</text>
       <text x="556" y="134" fill="var(--sub)" font-family="inherit" font-size="11">Base 直下要件なし。</text>
-      <text x="556" y="150" fill="var(--sub)" font-family="inherit" font-size="11">並び順は原物に厳密準拠。</text>
+      <text x="556" y="150" fill="var(--sub)" font-family="inherit" font-size="11">並び順は完成イメージに厳密準拠。</text>
       <line x1="552" y1="96" x2="522" y2="97" stroke="var(--line)" stroke-width="1.5"/>
     </svg>
     <figcaption><a class="term" href="#term-position">fixed</a> 要素は2つだけ（Header・Floating Perk）で <a class="term" href="#term-zindex">z-index</a> はそれぞれ 100 / 90。両者のみ Base 直下に置き、Hero 以下の通常フロー要素は並び順の都合でトップ階層に並べるだけで Base 直下要件はない。</figcaption>
@@ -1688,7 +1688,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <p><strong>関連ファイル（絶対パス）：</strong></p>
 <ul>
-<li>原物HTML：</li>
+<li>コピー元HTML：</li>
 <li>Studio仕様正本：<code>/tmp/gn_guide_v02/_studio_ref.md</code></li>
 <li>デザイントークン：<code>/tmp/gn_guide_v02/</code></li>
 <li>セクション実在判定：<code>/tmp/gn_guide_v02/</code></li>
@@ -2645,7 +2645,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <h4>操作手順（FloatingCTA-Perk の固定と重ね順）</h4>
   <ol class="steps">
     <li><code>FloatingCTA-Perk</code> Box を選択（Base 直下）→ <strong>ボックス → ポジション</strong> = <strong>固定（fixed）</strong>。距離: 下 = <code>20px</code>/ 右 = <code>20px</code>。幅 = <code>270px</code>。</li>
-    <li><strong>重ね順</strong> = <code>90</code>。角丸 = <strong><code>16px</code></strong>。影 = <code>0 18px 44px rgba(15,26,51,.22)</code> ＋ <code>0 6px 14px rgba(15,26,51,.1)</code>（原物 L1026・2 層影。下記【代替】参照）。</li>
+    <li><strong>重ね順</strong> = <code>90</code>。角丸 = <strong><code>16px</code></strong>。影 = <code>0 18px 44px rgba(15,26,51,.22)</code> ＋ <code>0 6px 14px rgba(15,26,51,.1)</code>（2 層影。下記【代替】参照）。</li>
     <li>表示制御（スクロール後にフェードインさせる。初期状態は非表示で <code>translateY(16px)</code>、出現後に <code>translateY(0)</code>）: Studio では <a class="term" href="#term-transform">変形（Transform）タブ</a> → アニメーションで On Appear（スクロール出現）を使う想定。本章では存在と重ね順のみ確定し、出現アニメは Floating CTA 章で詳述。</li>
   </ol>
   <div class="callout warn">
@@ -3194,7 +3194,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="g4-5">4.4 セクション見出し（<a class="term" href="#term-section">Section</a>見出し：<code>sec-head</code> / <code>section-title</code> / eyebrow＝<code>pill</code>）</h3>
 
-<p>原物の実値:</p>
+<p>実値:</p>
 <ul>
 <li><code>.sec-head</code>: <code>max-width:820px</code>／<code>margin:0 auto 44px</code>／<code>text-align:center</code>／<code>padding:0 var(--gutter)</code>（<a class="term" href="#term-gutter">ガター</a>=40px）。SP（767以下・L848）: <code>margin-bottom:36px</code></li>
 <li><code>.section-title</code>（L128＋流体上書き L70-71）: <strong>実効値</strong> <code>font-size:clamp(28px,4vw+8px,52px)</code>／<code>font-weight:900</code>／<strong><code>line-height:1.22</code></strong>／<code>letter-spacing:-.03em</code>（L128・上書きされず）／色 <code>ink</code>／<code>margin-bottom:24px</code>。SP: <code>font-size:clamp(24px,6.2vw,32px)</code>／<code>margin-bottom:18px</code></li>
@@ -3544,7 +3544,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
     </li>
     <li>右パネル <span class="path">ボックス<i>›</i>レイアウト</span>：方向 <strong>横並び</strong>、垂直 <strong>中央</strong>、gap <code>10</code>。サイズ：幅 <strong>auto</strong>、高さ <strong>auto</strong>。</li>
     <li>Logo-Link の中へ、左ナビ <span class="path">追加<i>›</i>基本<i>›</i>埋め込み（Embed）</span> をドラッグ。名前を <strong>Logo-SVG</strong> にリネーム。</li>
-    <li>Logo-SVG を選択 → コードエディタに現物 1310行の <code>&lt;svg class="logo-svg" viewBox="0 0 181.61 60" ...&gt;...&lt;/svg&gt;</code> を<strong>そのまま貼り付け</strong>（円・字形・<code>fill="#fff"</code> の鹿パスを含む）。sandbox type に自動判定される。</li>
+    <li>Logo-SVG を選択 → コードエディタに <code>&lt;svg class="logo-svg" viewBox="0 0 181.61 60" ...&gt;...&lt;/svg&gt;</code> を<strong>そのまま貼り付け</strong>（円・字形・<code>fill="#fff"</code> の鹿パスを含む）。sandbox type に自動判定される。</li>
     <li>SVG の表示高さを合わせる：貼り付けコード内 <code>&lt;svg&gt;</code> に <strong><code>height="42"</code> のみ</strong>を持たせる。
       <ul>
         <li><strong><code>width</code> 属性は付けない</strong>。SVG は <code>viewBox="0 0 181.61 60"</code> を持つため、<code>height="42"</code> を指定すれば幅は viewBox のアスペクト比（<code>181.61:60</code>）から<strong>自動算出</strong>される。</li>
@@ -3819,7 +3819,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <figure class="fig">
     <svg viewBox="0 0 720 150" role="img" xmlns="http://www.w3.org/2000/svg">
-      <title>現物768px閾値の Studio 3BP への写像帯図</title>
+      <title>768px 帯の Studio 3段ブレークポイントへの割り当て図</title>
       <!-- axis -->
       <line x1="20" y1="60" x2="700" y2="60" stroke="var(--line)" stroke-width="1"/>
       <!-- PC band -->
@@ -4247,17 +4247,17 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="s2-5">5-2-5. Hero H1（スイープ＋下線マーカー）</h3>
 
-<p>現物の構造:</p>
+<p>構造:</p>
 <pre class="tree">挑戦するスタートアップ（.sweep）に、
 補助金（em.b）という追い風（em.n）を。</pre>
 <p>3つの強調ターゲット（<code>.sweep</code> / <code>em.b</code> / <code>em.n</code>）それぞれに (1) <strong>横スイープのグラデ着色アニメ</strong>（<code>sweepGrad</code>、background-position 100%→0、各 delay .15s/1.25s/1.85s・行152-156）と (2) <strong>手書き風オレンジ下線が左から伸びるアニメ</strong>（<code>fvUnderline</code>、scaleX 0→1 skewX -2deg、<code>::after</code>＋SVG filter <code>#hl-rough</code>・行158-185）が乗る。<strong>これらの貼付コード（@keyframes・SVGフィルタ）は <a href="#t9-codeset">§9「コピペ用コード集」②</a> に整形済み。</strong></p>
 
-<h4>⚠️ font-size の現物適用値（重要・写像の根拠）</h4>
+<h4>⚠️ font-size の適用値（重要）</h4>
 
 <p>現物には <code>.hero h1</code> の font-size 指定が<strong>3系統</strong>あるが、<strong>実際にレンダリングに効くのは1つだけ</strong>である。</p>
 
 <table>
-<thead><tr><th>現物の場所</th><th>値</th><th>実際に効くか</th></tr></thead>
+<thead><tr><th>場所</th><th>値</th><th>実際に効くか</th></tr></thead>
 <tbody>
 <tr><td>行62-66（<code>@media</code> 外・global）</td><td><code>clamp(28px, min(8vh, 4vw + 12px), 60px)</code> <strong><code>!important</code></strong></td><td>✅ <strong>全幅で支配（最終適用値）</strong></td></tr>
 <tr><td>行150（base <code>.hero h1</code>）</td><td><code>clamp(40px, 4.4vw, 64px)</code></td><td>❌ <code>!important</code>に負け不適用</td></tr>
@@ -4291,7 +4291,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <div class="plan mini recommended"><span class="badge">Mini</span> Embed（sandbox）で <code>&lt;svg&gt;</code>＋<code>&lt;filter id="hl-rough"&gt;</code>＋該当 <code>&lt;span&gt;</code> を含む H1 マークアップごと貼り、CSS の <code>::after</code>/<code>@keyframes fvUnderline</code>/<code>#hl-rough</code> を再現。1要素で原物完全一致。<strong>推奨</strong>: 表現の要なので Mini Embed。Free段階は Free代替の単色寄せグラデバー（Multiply）で代替し、Mini切替時に Embed へ差し替える。</div>
 
 <div class="callout note">
-<p>SVGフィルタ定義（参考・現物 行1298-1302相当、Embed内にそのまま含める）:</p>
+<p>SVGフィルタ定義（Embed内にそのまま含める）:</p>
 <pre class="tree">&lt;feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise"/&gt;
 &lt;feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5"/&gt;</pre>
 </div>
@@ -4603,7 +4603,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <figure class="fig">
 <svg viewBox="0 0 720 170" role="img" xmlns="http://www.w3.org/2000/svg">
-<title>現物の不揃い @media（1024/768/767/380）を Studio 3BP（840/540）へ写像</title>
+<title>不揃いな切替幅（1024/768/767/380）を Studio 3段ブレークポイント（840/540）へ割り当て</title>
 <!-- studio band -->
 <text x="10" y="22" font-family="inherit" font-size="11" fill="var(--sub)">Studio 3BP</text>
 <rect x="100" y="10" width="200" height="30" rx="4" fill="var(--blue)" opacity="0.18" stroke="var(--blue)"/>
@@ -4613,7 +4613,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <rect x="500" y="10" width="210" height="30" rx="4" fill="var(--bg2)" stroke="var(--line)"/>
 <text x="605" y="30" font-family="inherit" font-size="10" fill="var(--ink)" text-anchor="middle">Default(PC) &gt;840</text>
 <!-- mapping arrows -->
-<text x="10" y="92" font-family="inherit" font-size="11" fill="var(--sub)">現物 @media</text>
+<text x="10" y="92" font-family="inherit" font-size="11" fill="var(--sub)">切替幅</text>
 <rect x="100" y="78" width="200" height="26" rx="4" fill="none" stroke="var(--line)"/>
 <text x="200" y="95" font-family="inherit" font-size="9" fill="var(--ink)" text-anchor="middle">max767 / ~380（モバイル全面）</text>
 <line x1="200" y1="78" x2="200" y2="42" stroke="var(--blue)" stroke-dasharray="3 3"/>
@@ -4634,7 +4634,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </figure>
 
 <table>
-<thead><tr><th>現物 @media</th><th>写像先 Studio BP</th><th>根拠</th></tr></thead>
+<thead><tr><th>切替幅</th><th>写像先 Studio BP</th><th>根拠</th></tr></thead>
 <tbody>
 <tr><td>（<code>@media</code>外・global の h1 <code>!important</code> clamp 行62-66）</td><td>全BPで支配 → 各BPの H1 固定値の<strong>実効サイズ基準</strong>にする</td><td>唯一効いている値</td></tr>
 <tr><td><code>max-width:1024px</code>（1カラム化・stat-panel中央・行818-831）</td><td><strong>Tablet(840)</strong> に適用</td><td>タブレット相当</td></tr>
@@ -5132,9 +5132,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <p>完成イメージの1カラム化は <strong>767px以下</strong>で発火し、<strong>768px以上は2カラム</strong>です。Studioの3BP境界（Default &gt;840 / Tablet 540-840 / Mobile &lt;540）に素直に写像すると、<strong>541-767px 帯は Studio では Tablet 条件が支配</strong>するため、ここを2カラムのまま放置すると目標（1カラム）とズレます。<strong>767px 1カラム閾値</strong>を再現するため、下記いずれかを<strong>既定手順として必ず適用</strong>します。</p>
   <figure class="fig">
     <svg viewBox="0 0 700 150" role="img" xmlns="http://www.w3.org/2000/svg">
-      <title>原物の767px境界とStudio3BPの帯ズレ・方針(A)(B)の適用範囲</title>
+      <title>767px境界とStudio3段ブレークポイントの帯ズレ・方針(A)(B)の適用範囲</title>
       <g font-family="inherit">
-        <text x="10" y="22" font-size="12" font-weight="700" fill="var(--ink)">原物（CSS）</text>
+        <text x="10" y="22" font-size="12" font-weight="700" fill="var(--ink)">完成イメージ</text>
         <rect x="10" y="30" width="430" height="26" fill="var(--blue)" opacity="0.18" stroke="var(--blue)" stroke-width="1"></rect>
         <text x="225" y="47" text-anchor="middle" font-size="11" fill="var(--ink)">768px以上＝2カラム</text>
         <rect x="440" y="30" width="250" height="26" fill="var(--yellow)" opacity="0.3" stroke="var(--navy)" stroke-width="1"></rect>
@@ -5695,7 +5695,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   <p>凡例: <code>公式確認</code>=公式ドキュメント裏取り済 / <code>未検証</code>=公式記述が確認できず推定または要実機確認。</p>
   <table>
     <thead>
-      <tr><th>原物表現</th><th>Studioネイティブ可否（confidence）</th><th>採用方法</th></tr>
+      <tr><th>表現</th><th>Studioネイティブ可否（confidence）</th><th>採用方法</th></tr>
     </thead>
     <tbody>
       <tr><td>セクション背景 <code>linear-gradient(180deg,…)</code> 4ストップ</td><td><strong>未検証</strong>（fill グラデ可否が確認できず。多ストップは特に不明）</td><td>実機で4ストップ線形グラデが入力可なら採用。不可なら <strong>Custom Code（Mini以上）で <code>#market{background:…}</code></strong>。Free暫定は単色white＋未実装を指示書明記</td></tr>
@@ -6555,7 +6555,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
   </ol>
   <ul class="checklist"><li>Tablet（840px）で Record のパディングを上64px/下64pxに上書きした（黄緑枠を確認）</li></ul>
 
-  <h4>Mobile（&lt; 540px、原物767px以下を集約）</h4>
+  <h4>Mobile（&lt; 540px、767px以下を集約）</h4>
   <p>下部ツールバーで <strong>Mobile（540px）</strong>に切替 → 各要素を選択 → プロパティ変更（Mobile の上書き枠はオレンジ表示）。767px以下の写像：</p>
 
   <figure class="fig">
@@ -6604,7 +6604,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <ul class="checklist"><li>Mobile（540px）で record の上記項目を上書きした（上書き枠オレンジを確認。見出しサイズは32px上限ではなくサイズ式実効値）</li></ul>
 
-  <h4>Mini（任意・&lt; 380px、原物380px以下）</h4>
+  <h4>Mini（任意・&lt; 380px）</h4>
   <p>380px以下の値：数字 <code>32px</code>／ラベル <code>11.5px</code>。見出しは <code>clamp</code> の下限 <code>28px</code> が効きます（4vw+8px=23.2px を下限28pxが上回る）。標準3BP に <code>380px</code> 段はないため、極小端末を厳密対応する場合のみ<a class="term" href="#term-breakpoint">ブレークポイント</a>バーで <strong>Mini（320px）</strong>を追加し、<code>Rec Num=32px</code>／<code>Rec Label=11.5px</code>（見出し28px）を上書き。不要なら省略可（Mobile の <code>38px</code>/<code>12.5px</code> で代替）。</p>
   <ul class="checklist"><li>（任意）Mini=320px を追加する/しないを判断し、追加時は Rec Num=32px・Rec Label=11.5px・見出し28px を上書きした</li></ul>
 
@@ -7206,9 +7206,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
       </g>
       <text x="500" y="62" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">gap10 / 幅%約47-48・高=幅×0.4</text>
       <line x1="20" y1="80" x2="580" y2="80" stroke="var(--line)"/>
-      <text x="300" y="100" font-family="inherit" font-size="10" fill="var(--ink)" text-anchor="middle">現物の実在@media は vc-grid のみ：768px→3列gap12 / 480px→2列gap10</text>
+      <text x="300" y="100" font-family="inherit" font-size="10" fill="var(--ink)" text-anchor="middle">vc-grid のみ：768px→3列gap12 / 480px→2列gap10</text>
       <text x="300" y="120" font-family="inherit" font-size="10" fill="var(--yellow)" text-anchor="middle" font-weight="700">vc-sec padding / sec-head margin / vc-title / vc-lead は上書きしない</text>
-      <text x="300" y="138" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">（現物にこれらの個別@mediaは無い。titleは流体clampが吸収）</text>
+      <text x="300" y="138" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">（個別の切替は無し。見出しは流体clampが吸収）</text>
     </svg>
     <figcaption>ブレークポイント別グリッド。現物で実在する@mediaは vc-grid の列数のみ（768→3列 / 480→2列）。それ以外の要素はBP別上書きを入れない。</figcaption>
   </figure>
@@ -8171,7 +8171,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
   <figure class="fig">
     <svg viewBox="0 0 700 130" role="img" xmlns="http://www.w3.org/2000/svg">
-      <title>ブレークポイント帯図：現物の 640px 境界が Studio の Mobile(540) に写像され、Tablet(840) は流体タイポで自然縮小する</title>
+      <title>ブレークポイント帯図：640px 境界が Studio の Mobile(540) に割り当てられ、Tablet(840) は流体タイポで自然縮小する</title>
       <rect x="20" y="40" width="200" height="44" rx="6" fill="var(--bg2)" stroke="var(--line)"/>
       <text x="120" y="60" text-anchor="middle" font-family="inherit" font-size="12" font-weight="700" fill="var(--navy)">Mobile 540</text>
       <text x="120" y="76" text-anchor="middle" font-family="inherit" font-size="10" fill="var(--sub)">≤640px 相当を写像（上書きあり）</text>
@@ -8681,7 +8681,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <figure class="fig">
 <svg viewBox="0 0 720 200" role="img" xmlns="http://www.w3.org/2000/svg">
-<title>原物@media帯とStudio 3BPの写像（541〜767px帯の差）</title>
+<title>切替幅帯とStudio 3段ブレークポイントの割り当て（541〜767px帯の差）</title>
 <!-- axis -->
 <line x1="40" y1="150" x2="700" y2="150" stroke="var(--line)"/>
 <text x="40" y="172" font-family="inherit" font-size="9" fill="var(--sub)">0</text>
@@ -10335,7 +10335,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
   <figure class="fig">
     <svg viewBox="0 0 720 300" role="img" xmlns="http://www.w3.org/2000/svg">
-      <title>原物の7系統メディアクエリをStudioの3ブレークポイント（Default/Tablet/Mobile）へ集約する写像帯図</title>
+      <title>7系統の切替幅をStudioの3ブレークポイント（Default/Tablet/Mobile）へ集約する帯図</title>
       <!-- 上段: 原物の7系統 -->
       <text x="16" y="26" font-family="inherit" font-size="14" font-weight="700" fill="var(--navy)">完成イメージのBP帯（7 系統）</text>
       <!-- min-width:1280 -->
@@ -10439,7 +10439,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
   <figure class="fig">
     <svg viewBox="0 0 720 200" role="img" xmlns="http://www.w3.org/2000/svg">
-      <title>改行再現の方針：PCは原物のbr位置にEnter改行、Mobileは改行を入れずテキスト幅で自然折返しさせる対比図</title>
+      <title>改行再現の方針：PCは必要位置にEnter改行、Mobileは改行を入れずテキスト幅で自然折返しさせる対比図</title>
       <!-- PC -->
       <rect x="16" y="24" width="320" height="150" rx="10" fill="var(--bg2)" stroke="var(--blue)" stroke-width="2"/>
       <text x="32" y="48" font-family="inherit" font-size="13" font-weight="700" fill="var(--navy)">Default(PC)：完成イメージの改行位置で改行</text>
@@ -10596,7 +10596,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
   </ol>
   <ul class="checklist"><li>Mobile で残るのは [Logo｜CTA ボタン]＋（新設）ハンバーガーのみ</li><li>nav とデコキャプションが Mobile で非表示</li><li>CTA ボタンが Mobile で 44px 高を満たす</li></ul>
 
-  <h4>7.4.3 Mobile ハンバーガー（新設・原物に無い）</h4>
+  <h4>7.4.3 Mobile ハンバーガー（新設）</h4>
   <p>本 LP はヘッダーアンカーが 7 本あるため、<strong>Mobile 専用のハンバーガー＋ドロワーを新設</strong>する。</p>
   <ul>
     <li><strong>構成（新規レイヤー）</strong>: <code>hd-burger</code>（ハンバーガー Icon ボタン、Mobile のみ表示）＋ <code>hd-drawer</code>（オーバーレイ／ドロワー、7 ナビリンク＋ CTA を内包）。</li>
