@@ -228,6 +228,19 @@ li.tk-done>.tk-txt{text-decoration:line-through;text-decoration-color:#aebbd3;co
 .tk-who[data-who="m"]{background:#ffeaf3;border-color:#ffc9e0;color:#c2316f}
 .tk-who:hover{filter:brightness(.96)}
 body.flt-active ul.checklist>li.flt-hide{opacity:.22}
+/* 担当/難易度フィルタ: 該当タスクが無い章を畳む */
+.ch-fold-bar{display:none;align-items:center;gap:12px;padding:14px 22px;cursor:pointer;user-select:none}
+.ch-fold-bar .t{font-weight:700;color:var(--ink);font-size:15px}
+.ch-fold-bar .meta{font-size:12px;color:var(--sub);margin-left:auto;white-space:nowrap}
+.ch-fold-bar::before{content:"▸";color:var(--sub);font-size:12px;transition:transform .15s}
+body.flt-active .chapter.ch-folded{padding:0;background:var(--bg2);box-shadow:none;border-style:dashed}
+body.flt-active .chapter.ch-folded>*{display:none}
+body.flt-active .chapter.ch-folded>.ch-fold-bar{display:flex}
+body.flt-active .chapter.ch-folded:hover{background:#eef2f8}
+body.flt-active .chapter.ch-folded.ch-peek{padding:26px 30px;background:#fff;box-shadow:var(--shadow);border-style:solid}
+body.flt-active .chapter.ch-folded.ch-peek>*{display:revert}
+body.flt-active .chapter.ch-folded.ch-peek>.ch-fold-bar{display:flex;margin:-8px -8px 8px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+body.flt-active .chapter.ch-folded.ch-peek>.ch-fold-bar::before{transform:rotate(90deg)}
 /* 確認(理解)リスト＝作業カウント対象外 */
 ul.review{list-style:none;padding-left:0;margin:.6em 0;border-left:3px solid var(--line-2);padding-left:13px}
 ul.review>li{position:relative;padding-left:22px;margin:.3em 0;color:var(--sub);font-size:13.5px;line-height:1.7}
@@ -13395,12 +13408,36 @@ sec-footer
 
  // ---- 担当フィルタ ----
  var filterW='all',filterD='all';
+ var foldReady=false;
+ function setupFold(){
+ if(foldReady)return;foldReady=true;
+ document.querySelectorAll('main section.chapter').forEach(function(ch){
+ var h=ch.querySelector('h2');if(!h)return;
+ var bar=document.createElement('div');bar.className='ch-fold-bar';
+ bar.innerHTML='<span class="t">'+esc(h.textContent)+'</span><span class="meta"></span>';
+ bar.addEventListener('click',function(){ch.classList.toggle('ch-peek');});
+ ch.insertBefore(bar,ch.firstChild);
+ });
+ }
  function applyFilter(){
- document.body.classList.toggle('flt-active',filterW!=='all'||filterD!=='all');
+ var active=filterW!=='all'||filterD!=='all';
+ document.body.classList.toggle('flt-active',active);
+ setupFold();
+ var vis={};
  tasks.forEach(function(x){var w=(state[x.tid]||{}).who||'';var df=x.li.dataset.diff||'normal';
  var okW=filterW==='all'||(filterW==='u'?w==='':w===filterW);
- var okD=filterD==='all'||df===filterD;
- x.li.classList.toggle('flt-hide',!(okW&&okD));});
+ var okD=filterD==='all'||df===filterD;var ok=okW&&okD;
+ x.li.classList.toggle('flt-hide',!ok);
+ var v=vis[x.ch]||(vis[x.ch]={t:0,v:0});v.t++;if(ok)v.v++;});
+ var label=({k:'皐大',m:'海音',u:'未割当'})[filterW]||'';
+ var dlabel=({easy:'易',normal:'中',hard:'難'})[filterD]||'';
+ var note=(label?label+'の担当':'')+(label&&dlabel?'・':'')+(dlabel?'難易度'+dlabel:'')+'タスクなし';
+ document.querySelectorAll('main section.chapter').forEach(function(ch){
+ var c=vis[ch.id];var fold=active&&c&&c.t>0&&c.v===0;
+ ch.classList.toggle('ch-folded',!!fold);
+ if(!fold)ch.classList.remove('ch-peek');
+ var m=ch.querySelector('.ch-fold-bar .meta');if(m)m.textContent=fold?('（'+note+' — クリックで展開）'):'';
+ });
  }
  var wf=document.getElementById('whoFilter');
  if(wf)wf.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;wf.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');filterW=b.dataset.w;applyFilter();});
