@@ -2025,7 +2025,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </div>
 
 <h4>標準 9 スタイル</h4>
-<div class="callout note"><p>📍 <strong>Studio の設定パネルに合わせて、行高・間隔は「%」で書いています</strong>（パネルの「行高」「間隔」欄にこの数値をそのまま入力）。例: H1 Hero は 行高 <code>118%</code>・間隔 <code>-4%</code>。文字色は <a href="#g2-1">§2.1</a> のカラースタイル名（<code>text/ink</code> 等）を適用します。</p></div>
+<div class="callout note"><p>📍 <strong>行高・間隔は「%」で書いています</strong>（Studio パネルの「行高」「間隔」欄の数値）。</p>
+<p>⚠️ <strong>行高はプリセットから選ぶ方式</strong>です（<code>100 / 120 / 130 / 140 / 150 / 160 / 180 / 200 / 250</code> …）。<strong>118% のような中間値は入力できず、最も近いプリセットを選びます</strong>（例: <code>118% → 120%</code>、<code>122% → 120%</code>、<code>195% → 200%</code>）。<strong>1〜2% の差は見た目に影響しません</strong>ので、表の値に一番近いものを選べばOKです。</p>
+<p>一方 <strong>間隔（letter-spacing）は数値をそのまま入力</strong>できます（例 <code>-4%</code>）。文字色は <a href="#g2-1">§2.1</a> のカラースタイル名（<code>text/ink</code> 等）を適用します。</p></div>
 <table>
 <thead><tr><th>#</th><th>テキストスタイル名</th><th>フォント</th><th>ウェイト</th><th>Size(PC)</th><th>行高(%)</th><th>間隔(%)</th><th>文字色</th><th>主な用途</th></tr></thead>
 <tbody>
@@ -2088,7 +2090,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>標準 9 スタイル（H1 Hero / H2 Section / H3 Card / Body / Lead / Hero Sub / English Label / English Number L / Footnote）を PC 値で登録した</li><li>English Label に text-transform: uppercase を設定した</li><li>各スタイルの文字色が §2.1 のカラースタイル（<code>text/ink</code> <code>text/sub</code> <code>brand/blue</code> 等）に紐づいている</li><li>グラデ文字（H1 em / Number L）はスタイルは基準色、グラデは各章で個別指定する方針を確認した</li><li>補助 2 スタイル（hero-eyebrow / lw-label）はスタイル登録せず各章で組む方針を確認した</li></ul>
 
 <h3 id="g2-3">2.3 レスポンシブ（テキストスタイル内の条件スタイル）</h3>
-<div class="callout note"><p>📍 数値は <strong>サイズ(px) / 行高(%)</strong> の順（Studio パネルと同じ%）。Tablet/Mobile は <a class="term" href="#term-conditional">条件スタイル</a>でこの値に上書きします。</p></div>
+<div class="callout note"><p>📍 数値は <strong>サイズ(px) / 行高(%)</strong> の順（Studio パネルと同じ%）。<strong>行高はプリセット選択式</strong>なので最も近い値を選びます（§2.2 の注記参照）。Tablet/Mobile は <a class="term" href="#term-conditional">条件スタイル</a>でこの値に上書きします。</p></div>
 
 <p>テキストスタイルは <strong>1 スタイル定義内に PC/Tablet/Mobile を内包</strong>できます。元データの不揃いな <code>@media</code> は Studio 3 <a class="term" href="#term-breakpoint">ブレークポイント</a>（<strong>PC &gt; 840 / Tablet 540–840 / Mobile &lt; 540</strong>）へ写像します。各スタイル選択中に、下部ツールバーで対象デバイス幅へ切替 → Size / Line height を上書き（上書き中のプロパティ枠は <strong>Tablet=黄緑 / Mobile=オレンジ</strong>で色分け表示。誤上書きは横の <strong>Reset override</strong> で個別解除）。</p>
 
