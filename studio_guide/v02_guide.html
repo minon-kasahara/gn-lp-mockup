@@ -13196,6 +13196,7 @@ sec-footer
 <dt id="term-gutter">ガター</dt><dd>一般にレイアウトの列間・要素間の余白を指す用語。Studioではボックス内の子要素間の余白は <code>gap</code>（間隔/ギャップ・px指定）、要素の内外余白は <code>padding</code>/<code>margin</code>（一括または上下左右個別）で表現する。本LPで「ガター」と言うときは、これらgap/paddingによる列間スペースの設計を指す。</dd>
 <dt id="term-reflow">リフロー（構造リフロー）</dt><dd>画面の幅が変わったときに、要素の<strong>並び方・段組みそのものが組み替わる</strong>こと。例：PC（広い画面）で横2カラムに並んでいたカードが、スマホ（狭い画面）では縦1カラムに積み替わる。本書では特に、画面幅 1024px 以下で Hero / CTA / Footer / 特典バナーが縦1カラムに変わる切替を「構造リフロー」と呼び、Studio では Small ブレークポイントに置いて再現する。単なる文字サイズ・余白の微調整とは区別する。</dd>
 <dt id="term-pcvalue">PC 値（Default 値）</dt><dd>パソコン（広い画面＝Default）で表示したときの各プロパティの数値。幅・間隔(gap)・余白(padding/margin)・色・文字サイズ・重ね順など。<strong>本書では各セクションの章にすべて明記</strong>してあるので、作業者が自分で調べる必要はなく、そのまま入力すればよい。まず PC 値で組み、画面が狭いときだけ変わる値を Small / Tablet / Mobile で上書きする。</dd>
+<dt id="term-hex">HEX（ヘックス／カラーコード）</dt><dd>色を表す<strong>6桁の英数字コード</strong>。先頭に <code>#</code> を付け、続けて<strong>赤(R)・緑(G)・青(B)の明るさを2桁ずつ</strong> <code>00〜ff</code>（0〜255に相当）の16進数で書く。例：<code>#4A7DE8</code> は R=<code>4A</code> / G=<code>7D</code> / B=<code>E8</code> で、青系の色。<strong>Studio の色入力欄にこの値を貼れば、本書と同じ色になります</strong>（自分で色を選ぶ必要はありません）。<strong>8桁</strong>の場合（例 <code>#FCFDFFEB</code>）は<strong>末尾2桁が不透明度</strong>＝<code>ff</code>で完全に不透明、数が小さいほど透けます。</dd>
 </dl></section>
 <div class="pager"><a class="prev" href="#ch-t11"><small>← 前へ</small><b>11. モバイル実装の落とし穴（v10 ベース監査）</b></a><a class="next" href="#top"><small>↑</small><b>トップへ戻る</b></a></div>
 
@@ -13541,7 +13542,8 @@ sec-footer
  ['テキストスタイル','term-textstyle'],['Custom Code','term-customcode'],
  ['Loop Box','term-loopbox'],['重ね順','term-zindex'],['変形タブ','term-transform'],
  ['ガター','term-gutter'],['ポジション','term-position'],['ボックス','term-box'],
- ['sandbox','term-sandbox'],['Hug','term-hug'],['Fill','term-fill'],['Toggle','term-toggle']
+ ['sandbox','term-sandbox'],['Hug','term-hug'],['Fill','term-fill'],['Toggle','term-toggle'],
+ ['HEX','term-hex']
  ].filter(function(j){return map[j[1]];}).sort(function(a,b){return b[0].length-a[0].length;});
  var SKIP={CODE:1,PRE:1,A:1,H2:1,H3:1,H4:1,SCRIPT:1,STYLE:1,BUTTON:1,TEXTAREA:1,OPTION:1,DT:1};
  function inSkip(node){for(var p=node.parentNode;p&&p!==document.body;p=p.parentNode){if(p.nodeType===1){var t=p.tagName;if(SKIP[t]||t==='svg'||t==='SVG'||(p.classList&&(p.classList.contains('autoterm')||p.classList.contains('term-tip')||p.classList.contains('navgroup')||p.classList.contains('ch-fold-bar'))))return true;}}return false;}
