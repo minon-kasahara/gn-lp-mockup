@@ -1453,10 +1453,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>① 順序（デフォルト指定）の付け方</strong>：一覧で<strong>フォント名を上下にドラッグ</strong>して並べ替え、<strong>Noto Sans JP を最上部</strong>に持っていく。最上部のフォントが自動的にデフォルト（新規テキストに適用）になります。</li>
 <li><strong>② ラベルの付け方</strong>（ご質問の箇所・各フォント共通）：一覧で<strong>フォント名の横にある設定アイコン（歯車）</strong>をクリック → <strong>[Font Settings]（フォント設定）パネル</strong>が開く → <strong>[Name]（名前）欄</strong>に分かりやすいラベルを入力するだけ。
   <ul>
-  <li><strong>1番目（デフォルト）Noto Sans JP</strong> → [Name] に <code>Body / 和文</code>（本文・見出しの主フォント）</li>
-  <li><strong>2番目 Inter</strong> → [Name] に <code>English / 英字</code>（英字ラベル・大数字用）</li>
+  <li><strong>1番目（デフォルト）Noto Sans JP</strong> → [Name] に <code>和文</code>（＝日本語フォントの名札。本文・見出しの主フォント）</li>
+  <li><strong>2番目 Inter</strong> → [Name] に <code>英字</code>（＝英数字フォントの名札。大数字・英字ラベル用）</li>
   </ul>
-  ※ ラベルは「どこで使うフォントか」を示す<strong>任意の名札</strong>で、見た目には影響しません（自分が一覧で見分けやすくするためのもの）。
+  ※ ラベルは「どのフォントか」を見分けるための<strong>任意の名札</strong>で、見た目には影響しません。<strong>§2.2 のテキストスタイル名（<code>H1 Hero</code> / <code>Body</code> など）とは別物</strong>なので、混同しないよう<strong>フォントのラベルは「和文 / 英字」</strong>にします（<code>Body</code> のようなスタイル名と同じ語は付けない）。
 </li>
 <li><strong>③ Lato（初期デフォルト）は使わない</strong>：Lato が最上部にある場合は ① のドラッグで Noto Sans JP を最上部へ。Lato は使用箇所が無ければ <span class="path">設定アイコン（歯車）<i>›</i>Font Settings<i>›</i>右上の三点<i>›</i>Delete</span>（どこかで使用中なら [Replace and Delete Font] で Noto Sans JP へ置換）。</li>
 </ul>
@@ -1473,12 +1473,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <rect x="26" y="50" width="58" height="16" rx="3" fill="var(--bg2)"/><text x="55" y="62" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="var(--blue)">1 / 既定</text>
 <text x="98" y="63" class="g1f" fill="var(--bg2)" font-weight="700">Noto Sans JP</text>
 <text x="240" y="63" class="g1fb">400 / 500 / 700 / 800 / 900</text>
-<text x="460" y="63" class="g1fs">ラベル：Body / 和文</text>
+<text x="460" y="63" class="g1fs">ラベル：和文</text>
 <rect x="16" y="86" width="430" height="40" rx="8" fill="var(--bg2)" stroke="var(--navy)" stroke-width="1.5"/>
 <rect x="26" y="98" width="58" height="16" rx="3" fill="var(--navy)"/><text x="55" y="110" text-anchor="middle" class="g1fb">2</text>
 <text x="98" y="111" class="g1f" font-weight="700">Inter</text>
 <text x="240" y="111" font-family="inherit" font-size="10" fill="var(--sub)" font-weight="700">500 / 700 / 800 / 900</text>
-<text x="460" y="111" class="g1fs">ラベル：English / 英字</text>
+<text x="460" y="111" class="g1fs">ラベル：英字</text>
 <rect x="16" y="134" width="430" height="40" rx="8" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="98" y="159" class="g1fs">Lato（初期デフォルト）</text>
 <line x1="92" y1="154" x2="160" y2="154" stroke="var(--sub)" stroke-width="1.5"/>
@@ -1496,7 +1496,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </div>
 
 <p><strong>完了チェック：</strong></p>
-<ul class="checklist"><li>Google Fonts から Noto Sans JP（400/500/700/800/900）を追加した</li><li>Google Fonts から Inter（500/700/800/900）を追加した</li><li>Font List 最上部＝Noto Sans JP（デフォルト・ラベル <code>Body / 和文</code>）に設定した</li><li>2番目＝Inter（ラベル <code>English / 英字</code>）に設定した</li><li>初期デフォルト Lato を除去（または未使用化）した</li><li>Sub Font 合成は使わない方針を確認した（ウェイト差維持のため）</li></ul>
+<ul class="checklist"><li>Google Fonts から Noto Sans JP（400/500/700/800/900）を追加した</li><li>Google Fonts から Inter（500/700/800/900）を追加した</li><li>Font List 最上部＝Noto Sans JP（デフォルト・ラベル <code>和文</code>）に設定した</li><li>2番目＝Inter（ラベル <code>英字</code>）に設定した</li><li>初期デフォルト Lato を除去（または未使用化）した</li><li>Sub Font 合成は使わない方針を確認した（ウェイト差維持のため）</li></ul>
 
 <hr>
 
@@ -1997,7 +1997,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>一覧最下部 <strong>[Add Font]</strong> → <strong>Google Fonts</strong> を選択。</li>
 <li><strong>Noto Sans JP</strong> を選び、ウェイト <strong>400 / 600 / 900</strong> が選択肢にあることを確認して追加（ウェイトはフォント依存。900＝Black が無いと見出しが組めないため必ず確認）。</li>
 <li>同様に <strong>[Add Font] → Google Fonts → Inter</strong>（ウェイト <strong>700 / 800 / 900</strong>）を追加。英数字・大数字・英字ラベル用。</li>
-<li>Font List で <strong>Noto Sans JP を最上部</strong>にドラッグ（新規テキストの既定フォントになる。初期既定 Lato は使わない）。ラベルを <code>Body</code>（Noto Sans JP）/ <code>English</code>（Inter）等に設定して整理。</li>
+<li>Font List で <strong>Noto Sans JP を最上部</strong>にドラッグ（新規テキストの既定フォントになる。初期既定 Lato は使わない）。ラベルを <code>和文</code>（Noto Sans JP）/ <code>英字</code>（Inter）に設定して整理（このラベルは下の<strong>テキストスタイル名</strong>とは別物。混同しないよう「和文／英字」にします）。</li>
 </ol>
 
 <div class="callout warn">
