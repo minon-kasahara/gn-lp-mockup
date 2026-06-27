@@ -9204,13 +9204,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <p>これはスクロール位置トリガーの<strong>表示/非表示切替</strong>であり、Studioネイティブの On Appear（一度きりの出現）や Scroll Effect（要素自身の画面内進捗に連動）では「600px超〜CTA手前」という<strong>ページ全体スクロール量条件</strong>と<strong>×での恒久非表示</strong>を再現できない。</p>
 
-<div class="plan free recommended">
-<span class="badge">Free代替</span> <strong>（推奨）</strong>
-<p>親 <code>FloatPerk</code> 自体に <strong>On Appear</strong>を設定し、プリセット <strong>Fade In from Bottom</strong>（=下から <code>16px</code> せり上がりながらフェードインする動き）で出現させる。</p>
+<div class="plan mini recommended">
+<span class="badge">Mini</span>
+<p>出現/退避（出現600px・CTA退避・×恒久非表示・フェード）はすべて下記の Custom Code で再現する。Studio のネイティブ On Appear / Scroll Effect では再現できないため使わない。</p>
 <ul>
-<li><strong>設定</strong>: <code>FloatPerk</code> 選択→右パネル→<strong>ボックス</strong>タブ→<a class="term" href="#term-conditional">条件スタイル</a>→<strong>On Appear</strong>→プリセット <strong>Fade In from Bottom</strong>。アニメ時間は<a class="term" href="#term-transform">変形タブ</a>→アニメーション→時間 <code>0.3s</code>、イージング ease。</li>
-<li><strong>制約</strong>: On Appear は「初回スクロールで画面に入った瞬間に1回フェードイン」までで、<strong>CTA接近時の自動退避</strong>と<strong>×での恒久非表示</strong>は再現不可。Free段階ではこの簡略挙動で許容する。</li>
-<li><strong>注</strong>: On Appear の Free 可否は で<strong>未検証</strong>。発注前に pricing 機能比較表で確認。不可ならフェードなしの常時表示（fixed配置のみ）で代替。</li>
+<li><strong>設定</strong>: <code>FloatPerk</code> レイヤーに class <code>float-perk</code> と <code>id="floatPerk"</code> を 設定（Settings）タブ→属性 で付与し、§9 コード集の <a href="#t9-codeset">FloatPerk 出現/退避ブロック</a>を Custom Code（body末尾）にそのまま貼る（下記JSと同一）。<code>#cta</code>（章5-11の問い合わせセクションBox）にも <code>id="cta"</code> を付与する。</li>
 </ul>
 </div>
 
@@ -9340,21 +9338,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <p><a class="term" href="#term-pseudo">疑似要素</a> <code>::before/::after</code> と radial-gradient は <strong>Studioネイティブ不可</strong>（注: 疑似要素は追加Box化）。</p>
 
-<div class="plan free recommended">
-<span class="badge">Free代替</span> <strong>（推奨・追加Boxで再現）</strong>
+<div class="plan mini recommended">
+<span class="badge">Mini</span>
+<p>グロー円2つは §9 コード集の <a href="#t9-codeset">FloatPerk グロー円ブロック</a>を Custom Code（head/body の <code>&lt;style&gt;</code>）に貼り、Visual の <code>::before/::after</code> 疑似要素として再現する。Visual の <code>FloatPerk__Visual</code> レイヤーに class <code>float-perk-visual</code> を 設定タブ→属性 で付与し、セレクタと一致させる。</p>
 <ul>
-<li><code>FloatPerk__GlowYellow</code>: Visual内に Box、サイズ <code>150×150px</code>、角丸 <code>50%</code>、背景 = <strong>放射グラデーション（radial）</strong> 中心 <code>rgba(255,209,102,.55)</code> → <code>62%</code> で <code>transparent</code>。ポジション <strong>絶対（absolute）</strong> top <code>-50px</code> / right <code>-40px</code>。重ね順=リボン等より背面（z 未指定＝レイヤー最背面に配置）。設定タブで <code>pointer-events:none</code> 相当＝Boxにリンクを付けない。</li>
-<li><code>FloatPerk__GlowBlue</code>: サイズ <code>130×130px</code>、角丸 <code>50%</code>、放射グラデ 中心 <code>rgba(74,125,232,.28)</code> → <code>62%</code> で <code>transparent</code>。絶対配置 bottom <code>-40px</code> / left <code>-30px</code>。</li>
-<li>Studio に放射グラデ（radial）UIが無い場合は <strong>Image化</strong>（PNG・透過放射ぼかし円を <code>download/uploads</code> 経由で配置）。</li>
+<li><code>::before</code>（黄=右上）: <code>top:-50px; right:-40px; 150×150; radial-gradient(circle,rgba(255,209,102,.55),transparent 62%); border-radius:50%; pointer-events:none</code>。</li>
+<li><code>::after</code>（青=左下）: <code>bottom:-40px; left:-30px; 130×130; radial-gradient(circle,rgba(74,125,232,.28),transparent 62%); border-radius:50%; pointer-events:none</code>。</li>
 </ul>
 </div>
-
-<div class="plan mini">
-<span class="badge">Mini</span>
-<p>head/body Custom Code の <code>&lt;style&gt;</code> にグロー円2つ（黄=右上 <code>top:-50px right:-40px 150×150</code>、青=左下 <code>bottom:-40px left:-30px 130×130</code>、いずれも放射グラデ・<code>border-radius:50%</code>）を疑似要素として記述（ビジュアル部にクラス付与済み前提）。</p>
-</div>
-
-<div class="callout tip"><p><strong>推奨</strong>: 装飾の重要度は低いため <strong>追加Box（放射グラデ or 透過PNG）</strong> で十分。Free段階から実装可。</p></div>
 
 <ul class="checklist"><li>グロー円2つを §9コード集の Custom Code（<code>::before/::after</code>）で再現した</li><li>両グロー円を最背面・<code>pointer-events:none</code>（リンクなし）にした</li></ul>
 
@@ -9469,16 +9460,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>Box→重ね順 <code>1</code>。drop-shadow <code>0 4px 12px rgba(232,154,28,.35)</code> は <strong>Studio Filter（Blur/Brightness等6種のみ）には drop-shadow が無い</strong> → 下記対応:</li>
 </ol>
 
-<div class="plan free recommended">
-<span class="badge">Free代替</span> <strong>（推奨）</strong>
-<p>Big配下の「0」にあたる Text に <strong>Shadow（Outset）</strong> を付与で近似（テキストshadowはBox影で代用＝厳密にはdrop-shadowと差異）。または装飾省略。Free段階は省略可。</p>
-</div>
-<div class="plan mini">
+<div class="plan mini recommended">
 <span class="badge">Mini</span>
-<p>Custom Code に 0円ブロックへの <code>filter:drop-shadow(0 4px 12px rgba(232,154,28,.35))</code> を記述。</p>
+<p>0円ブロック（<code>float-perk-big</code>）に <code>filter:drop-shadow(0 4px 12px rgba(232,154,28,.35))</code> を、§9 コード集の <a href="#t9-codeset">drop-shadowブロック</a>として Custom Code（<code>&lt;style&gt;</code>）に貼って実装する。</p>
 </div>
-<div class="callout tip"><p><strong>推奨</strong>: Mini で Custom Code 再現。Free段階は省略（視覚影響小）。</p></div>
-<ul class="checklist"><li>drop-shadow（Mini=Custom Code / Free=省略）</li></ul>
+<ul class="checklist"><li>0円ブロックに drop-shadow を §9コード集の Custom Code で実装した</li></ul>
 
 <h4 id="s12-8a">5-12-8a. FloatPerk__BigPre「着手金」</h4>
 <p>「着手金」ラベルの実値: フォント Noto Sans JP / サイズ <code>13px</code> / ウェイト <code>800</code> / 色 <code>ink</code> / 右マージン <code>4px</code> / letter-spacing <code>.04em</code>。色は <strong><code>ink</code>（#0F1A33）であって yellow-dk ではない</strong>。</p>
@@ -9495,16 +9481,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>goldグラデ文字色</strong>（テキストにグラデclip）を下記で再現。</li>
 </ol>
 
-<div class="plan free recommended">
-<span class="badge">Free代替</span> <strong>（推奨）</strong>
-<p>Studio のテキストカラーに<strong>グラデーション塗り</strong>が指定できればそれを使用（縦 <code>180deg</code>、ストップ <code>perk-gold-1</code><span class="sw" style="--c:#F7B73C"></span>#F7B73C 0% / <code>perk-gold-2</code><span class="sw" style="--c:#EE9F1E"></span>#EE9F1E 55% / <code>perk-gold-3</code><span class="sw" style="--c:#E2890E"></span>#E2890E 100%）。不可なら <strong>Image化</strong>（「0」の goldグラデ文字を透過PNGで配置）。最低限の妥協は単色 <code>perk-gold-2</code>(#EE9F1E) または <code>yellow-dk</code>(#E8B84A)。</p>
-</div>
-<div class="plan mini">
+<div class="plan mini recommended">
 <span class="badge">Mini</span>
-<p>Custom Code に「0」のグラデclip＋シャイン疑似要素＋<code>@keyframes perkShine</code> を記述。</p>
+<p>「0」の goldグラデ文字色（テキストへのグラデclip）は、§9 コード集の <a href="#t9-codeset">0グラデclipブロック</a>を Custom Code（<code>&lt;style&gt;</code>）に貼って再現する。「0」の Text（<code>float-perk-big .n</code>）に class <code>n</code> を付与し、縦 <code>180deg</code>・ストップ <code>perk-gold-1</code><span class="sw" style="--c:#F7B73C"></span>#F7B73C 0% / <code>perk-gold-2</code><span class="sw" style="--c:#EE9F1E"></span>#EE9F1E 55% / <code>perk-gold-3</code><span class="sw" style="--c:#E2890E"></span>#E2890E 100% を <code>background-clip:text</code> で文字に適用する。</p>
 </div>
-<div class="callout tip"><p><strong>推奨</strong>: Free=グラデ塗り（不可なら透過PNG）、Mini=Custom Codeで完全再現。</p></div>
-<ul class="checklist"><li>「0」goldグラデ（縦180deg F7B73C/EE9F1E/E2890E）</li></ul>
+<ul class="checklist"><li>「0」goldグラデ（縦180deg F7B73C/EE9F1E/E2890E）を §9コード集の Custom Code で付与した</li></ul>
 
 <p><strong>perkShine シャインスイープ</strong>（<code>@keyframes</code> ＝ <strong>Studioネイティブ不可</strong>）:</p>
 <div class="plan mini recommended">
