@@ -1448,11 +1448,17 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <div class="callout warn"><p><strong>【重要・Sub Font の落とし穴】</strong>：副フォント（Sub Font）を追加すると<strong>ファミリー内の全フォントが同一ウェイト表示になる</strong>。本LPは本文400〜見出し900まで<strong>ウェイト差が必須</strong>（H1/H2/H3=900、Body/Lead=400）。よって<strong>和欧混植のための Sub Font 合成は使わない</strong>。Noto Sans JP 単体で和欧を表示する（Inter は英字専用に別エントリで使い分ける）。なお Sub Font の追加自体に必要な「アカウント言語＝日本語」条件（§5.3）は、本方針では Sub Font を使わないため不要（1.1 step5 注記参照）。</p></div>
 </li>
 <li>再度 [Add Font] → <strong>Google Fonts</strong> → <strong>Inter</strong> を検索して追加する。ウェイト確認：<strong>500 / 700 / 800 / 900</strong>（English Label=700–800、English Number L=900）。</li>
-<li><strong>Font List の順序を整える</strong>：<strong>最上部＝デフォルトフォント</strong>＝新規テキストに自動適用）：
+<li><strong>Font List の順序とラベルを整える</strong>（<strong>最上部＝デフォルト＝新規テキストに自動適用</strong>）。<span class="path">右パネル<i>›</i>[テキスト]タブ<i>›</i>Typography<i>›</i>Font欄</span>をクリックすると、追加済みフォントの一覧（Font List）が開きます。
 <ul>
-<li><strong>1番目（デフォルト）：Noto Sans JP</strong> — ラベルを <code>Body / 和文</code> に設定（本文・見出しの主フォント）。</li>
-<li><strong>2番目：Inter</strong> — ラベルを <code>English / 英字</code> に設定（英字ラベル・大数字用）。</li>
-<li>新規プロジェクト初期デフォルトの <strong>Lato は使わない</strong>（本LPでは使用しない）。Lato が最上部にある場合は Noto Sans JP を最上部へ並べ替え、Lato は使用箇所が無ければ <span class="path">Font Settings<i>›</i>右上三点<i>›</i>Delete</span>（使用中なら [Replace and Delete Font] で Noto Sans JP へ置換）。</li>
+<li><strong>① 順序（デフォルト指定）の付け方</strong>：一覧で<strong>フォント名を上下にドラッグ</strong>して並べ替え、<strong>Noto Sans JP を最上部</strong>に持っていく。最上部のフォントが自動的にデフォルト（新規テキストに適用）になります。</li>
+<li><strong>② ラベルの付け方</strong>（ご質問の箇所・各フォント共通）：一覧で<strong>フォント名の横にある設定アイコン（歯車）</strong>をクリック → <strong>[Font Settings]（フォント設定）パネル</strong>が開く → <strong>[Name]（名前）欄</strong>に分かりやすいラベルを入力するだけ。
+  <ul>
+  <li><strong>1番目（デフォルト）Noto Sans JP</strong> → [Name] に <code>Body / 和文</code>（本文・見出しの主フォント）</li>
+  <li><strong>2番目 Inter</strong> → [Name] に <code>English / 英字</code>（英字ラベル・大数字用）</li>
+  </ul>
+  ※ ラベルは「どこで使うフォントか」を示す<strong>任意の名札</strong>で、見た目には影響しません（自分が一覧で見分けやすくするためのもの）。
+</li>
+<li><strong>③ Lato（初期デフォルト）は使わない</strong>：Lato が最上部にある場合は ① のドラッグで Noto Sans JP を最上部へ。Lato は使用箇所が無ければ <span class="path">設定アイコン（歯車）<i>›</i>Font Settings<i>›</i>右上の三点<i>›</i>Delete</span>（どこかで使用中なら [Replace and Delete Font] で Noto Sans JP へ置換）。</li>
 </ul>
 </li>
 <li>各テキストスタイル（→ <a href="#ch-g2">§2 デザイントークン</a>のテキストスタイルで textStyles に沿って定義）で、和文スタイルは Noto Sans JP、英字スタイル（English Label/English Number L）は Inter を割り当てる。フォント自体は本章で Font List に揃えておき、ウェイト/サイズはスタイル章で確定する。</li>
