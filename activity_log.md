@@ -3846,3 +3846,10 @@
 - Stage2(commit f133868+本コミット): 内部Box名をPascalCaseへ。手順<code>/<strong>(611)・ツリー43個・SVG図35ラベル・TitleCase(Rec Grid→Rec-Grid等)・地の文(li/td/ナビa/h3の289参照)。頭字語VC/CTA/FAQ/VPは大文字。
 - 安全策: Custom Code結合の12トークン(float-perk*/gn-grad-text/gn-sweep=パネル非表示のCC内部)は小文字維持。CSSクラス(.x)/id(#x)/ファイル名(appr-01.svg)/キーフレーム(lw-scroll)/色トークン(cta-bg-2)は除外。全パスでCustom Codeブロックのmd5不変を検証。
 - 検証: 作業907・難易度907・リンク切れ0・タグ収支OK・同期connected。
+
+### [DONE] azalea 2026-06-28 影（Shadow）の表記をStudio UIフィールド準拠へ
+対象: `studio_guide/v02_guide.html`
+- 背景: ユーザー指摘「rgba(74,125,232,.3)の.3が何か・画像と合うか分からない」。Studioの影パネルは色(HEX)と不透明度(%)が別フィールドなのに、手順がrgba(色+α一体)でわかりにくかった。
+- 変更: §2.6台帳の全行＋introを「種類/X/Y/ぼかし/広がり/色HEX/不透明度%」へ分解。インライン影指示の色 rgba(R,G,B,.A) を「#HEX（カラースタイル名）・不透明度 N%」へ全変換(計34箇所)。CTA-Primary(3736)・カード(6915)等。
+- 安全: 背景色rgba(252,253,255,.92)は除外、Custom Code(§9 box-shadow/drop-shadow)はmd5不変で保護、2層影/drop-shadowはCustom Code注記。
+- 検証: 作業907・難易度907・リンク切れ0・影rgba残0・タグ収支OK。

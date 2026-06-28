@@ -2267,7 +2267,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="g2-6">2.6 シャドウ台帳</h3>
 
-<p>右パネル <strong>ボックス（Box）</strong> タブ → <strong>外観</strong> → 影（Shadow）で <strong>X / Y / Blur（ぼかし）/ Spread（拡散）/ Color（RGBA/HEX）</strong> を入力。<strong>色は色値を直接入力</strong>（シャドウはカラースタイル参照ではなくリテラル指定）。アルファはカラーの不透明度で表現します。</p>
+<p>右パネル <strong>ボックス（Box）</strong> タブ → <strong>外観</strong> → 影（Shadow）パネルで、<strong>種類（外側 Outset／内側 Inset）・位置 X・位置 Y・ぼかし（Blur）・広がり（Spread）・色（Color）・不透明度（%）</strong> をそれぞれの欄に入力する。<strong>「色」欄には HEX を入れ、透明度は別欄の「不透明度（%）」で設定</strong>する（シャドウはカラースタイル参照不可・色値リテラル）。<strong>例：色 <code>#4A7DE8</code> ＋ 不透明度 <code>30%</code> ＝ <code>rgba(74,125,232,.3)</code></strong>。本台帳の各値もこの分解で記載する。</p>
 
 <div class="callout warn">
 <p><strong>制約</strong>: <strong>内側影（Inset）と外側影（Outset）は同時適用不可</strong>。複数レイヤーの影（2 層指定）は §9 コード集（<a href="#t9-codeset">#t9-codeset</a>）の <code>box-shadow:</code> 2 値ブロックを Custom Code に貼って再現する。Header 背景の「ぼかし」は影ではなく <strong>Backdrop filter（背面フィルター）</strong> で実装し、§9 コード集の固定ヘッダーブロックを Custom Code に貼って再現する。</p>
@@ -2308,16 +2308,16 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <table>
 <thead><tr><th>トークン案</th><th>値</th><th>用途</th></tr></thead>
 <tbody>
-<tr><td><code>shadow-card</code></td><td><code>0 8px 20px rgba(15,26,51,.05)</code></td><td>標準カード soft 影</td></tr>
-<tr><td><code>shadow-card-2</code>（case）</td><td><code>0 16px 40px rgba(15,26,51,.06)</code></td><td>Case-Card</td></tr>
-<tr><td><code>shadow-card-sm</code>（lw）</td><td><code>0 6px 16px rgba(15,26,51,.05)</code></td><td>Lw-Card</td></tr>
-<tr><td><code>shadow-panel</code></td><td><code>0 24px 60px rgba(15,26,51,.1)</code> ＋ <code>0 4px 14px rgba(15,26,51,.06)</code>（2 層）</td><td>stat-panel</td></tr>
-<tr><td><code>shadow-form</code></td><td><code>0 30px 60px rgba(15,26,51,.14)</code></td><td>form パネル</td></tr>
-<tr><td><code>shadow-float</code>（2 層）</td><td><code>0 18px 44px rgba(15,26,51,.22)</code> ＋ <code>0 6px 14px rgba(15,26,51,.1)</code></td><td>float-perk</td></tr>
-<tr><td><code>shadow-cta</code></td><td><code>0 10px 24px rgba(74,125,232,.32)</code>（8–12px レンジ・.28〜.32）</td><td>CTA 通常影（blue）</td></tr>
-<tr><td><code>shadow-cta-hover</code></td><td><code>0 12px 26px rgba(255,209,102,.5)</code>（統一値・6 箇所）</td><td>CTA ホバー影（yellow）</td></tr>
-<tr><td><code>focus-ring</code></td><td><code>0 0 0 3px rgba(74,125,232,.18)</code></td><td>フォーカスリング（Spread で表現）</td></tr>
-<tr><td>（ゴールド数字）</td><td><code>drop-shadow(0 4px 12px rgba(232,154,28,.35))</code></td><td>float-perk「0 円」数字</td></tr>
+<tr><td><code>shadow-card</code></td><td>外側・X <code>0</code>／Y <code>8</code>／ぼかし <code>20</code>／広がり <code>0</code>・色 <code>#0F1A33</code>（text/ink）・不透明度 <code>5%</code></td><td>標準カード soft 影</td></tr>
+<tr><td><code>shadow-card-2</code>（case）</td><td>外側・X <code>0</code>／Y <code>16</code>／ぼかし <code>40</code>／広がり <code>0</code>・色 <code>#0F1A33</code>（text/ink）・不透明度 <code>6%</code></td><td>Case-Card</td></tr>
+<tr><td><code>shadow-card-sm</code>（lw）</td><td>外側・X <code>0</code>／Y <code>6</code>／ぼかし <code>16</code>／広がり <code>0</code>・色 <code>#0F1A33</code>（text/ink）・不透明度 <code>5%</code></td><td>Lw-Card</td></tr>
+<tr><td><code>shadow-panel</code></td><td><strong>【2層＝Custom Code】</strong>1層目 外側・X0／Y24／ぼかし60／広がり0・<code>#0F1A33</code>・不透明度10% ＋ 2層目 X0／Y4／ぼかし14／広がり0・<code>#0F1A33</code>・不透明度6%</td><td>stat-panel</td></tr>
+<tr><td><code>shadow-form</code></td><td>外側・X <code>0</code>／Y <code>30</code>／ぼかし <code>60</code>／広がり <code>0</code>・色 <code>#0F1A33</code>（text/ink）・不透明度 <code>14%</code></td><td>form パネル</td></tr>
+<tr><td><code>shadow-float</code>（2 層）</td><td><strong>【2層＝Custom Code】</strong>1層目 外側・X0／Y18／ぼかし44／広がり0・<code>#0F1A33</code>・不透明度22% ＋ 2層目 X0／Y6／ぼかし14／広がり0・<code>#0F1A33</code>・不透明度10%</td><td>float-perk</td></tr>
+<tr><td><code>shadow-cta</code></td><td>外側・X <code>0</code>／Y <code>10</code>／ぼかし <code>24</code>／広がり <code>0</code>・色 <code>#4A7DE8</code>（brand/blue）・不透明度 <code>32%</code>（Yは8–12px・不透明度28〜32%のレンジ）</td><td>CTA 通常影（blue）</td></tr>
+<tr><td><code>shadow-cta-hover</code></td><td>外側・X <code>0</code>／Y <code>12</code>／ぼかし <code>26</code>／広がり <code>0</code>・色 <code>#FFD166</code>（brand/yellow）・不透明度 <code>50%</code>（統一値・6箇所）</td><td>CTA ホバー影（yellow）</td></tr>
+<tr><td><code>focus-ring</code></td><td>外側・X <code>0</code>／Y <code>0</code>／ぼかし <code>0</code>／<strong>広がり <code>3</code></strong>・色 <code>#4A7DE8</code>（brand/blue）・不透明度 <code>18%</code>（広がりでリング表現）</td><td>フォーカスリング（Spread で表現）</td></tr>
+<tr><td>（ゴールド数字）</td><td><strong>【drop-shadow＝Custom Code】</strong>X0／Y4／ぼかし12・色 <code>#E89A1C</code>（gold）・不透明度 <code>35%</code></td><td>float-perk「0 円」数字</td></tr>
 </tbody>
 </table>
 
@@ -2675,7 +2675,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h4>操作手順（FloatingCTA-Perk の固定と重ね順）</h4>
  <ol class="steps">
  <li><code>FloatingCTA-Perk</code> Box を選択（Base 直下）→ <strong>ボックス → ポジション</strong> = <strong>固定（fixed）</strong>。距離: 下 = <code>20px</code>/ 右 = <code>20px</code>。幅 = <code>270px</code>。</li>
- <li><strong>重ね順</strong> = <code>90</code>。角丸 = <strong><code>16px</code></strong>。影 = <code>0 18px 44px rgba(15,26,51,.22)</code> ＋ <code>0 6px 14px rgba(15,26,51,.1)</code>（2 層影は Mini の Custom Code で再現。下記参照）。</li>
+ <li><strong>重ね順</strong> = <code>90</code>。角丸 = <strong><code>16px</code></strong>。影 = <code>外側・X0／Y18／ぼかし44／広がり0・#0F1A33・不透明度 22%</code> ＋ <code>外側・X0／Y6／ぼかし14／広がり0・#0F1A33・不透明度 10%</code>（2 層影は Mini の Custom Code で再現。下記参照）。</li>
  <li>表示制御（スクロール後にフェードインさせる。初期状態は非表示で <code>translateY(16px)</code>、出現後に <code>translateY(0)</code>）: 出現/退避アニメは Mini の Custom Code（§9 コード集の該当ブロックを Custom Code に貼る）で再現する。本章では存在と重ね順のみ確定し、出現アニメの具体値は Floating CTA 章で詳述。</li>
  </ol>
  <div class="callout warn">
@@ -3009,7 +3009,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </ul>
 <ul class="checklist"><li>Box土台に blue / radius100 / padding16-64-16-36 を設定した</li></ul></li>
 <li>影（通常状態）: 右パネル→ボックス→外観→<strong>Shadow</strong>→方向 <strong>Outset</strong>、X:0 / Y:10 / Blur:24 / Spread:0 / Color <span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE852</code>（8桁HEX＝色 <code>#4A7DE8</code> ＋ 不透明度 32%）。
-<ul class="checklist"><li>通常時の青影 0/10/24/0 rgba(74,125,232,.32) を入れた</li></ul></li>
+<ul class="checklist"><li>通常時の青影 0/10/24/0 #4A7DE8・不透明度 32% を入れた</li></ul></li>
 <li>ラベル: <code>Comp/CTA-Primary</code> 内に 追加→基本→<strong>Text</strong> をドラッグ。レイヤー名 <code>CTA-Pri/label</code>。
 <ul>
 <li>[テキスト]タブ→フォント: Noto Sans JP、size: <strong><code>15px</code></strong>、weight: <strong>800</strong>（Noto Sans JP の 800 ウェイトを使う。§フォント章の手順で 800 を読み込んでおく）、色: <code>text/on-dark</code></li>
@@ -3191,7 +3191,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </ol>
 
 <div class="callout note">
-<p><strong>補足:</strong> 別系統の柔らかいカード（Case-Card / Lw-Card / VC-Card / form 等）は枠線なし＋ソフト影 <code>0 8px 20px rgba(15,26,51,.05)</code> 系（shadows）。本基底は「枠線2px・角丸20px」の硬めカード専用。ソフト影カードは派生として後章で扱う。</p>
+<p><strong>補足:</strong> 別系統の柔らかいカード（Case-Card / Lw-Card / VC-Card / form 等）は枠線なし＋ソフト影 <code>外側・X0／Y8／ぼかし20／広がり0・#0F1A33・不透明度 5%</code> 系（shadows）。本基底は「枠線2px・角丸20px」の硬めカード専用。ソフト影カードは派生として後章で扱う。</p>
 </div>
 
 <div class="callout warn">
@@ -3733,7 +3733,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル <span class="path">ボックス<i>›</i>外観</span>：
  <ul>
  <li>塗り（Fill）：カラースタイル <code>brand/blue</code>（<code>#4A7DE8</code>）。</li>
- <li>影（Shadow）：Outset、<strong>X0 / Y8 / Blur20 / Spread0</strong>、色 <span class="sw" style="--c:rgba(74,125,232,.3)"></span> <code>rgba(74,125,232,.3)</code>（<code>glow-blue</code> 派生）。</li>
+ <li>影（Shadow）：種類 <strong>外側（Outset）</strong>／<strong>X <code>0</code>・Y <code>8</code>・ぼかし（Blur）<code>20</code>・広がり（Spread）<code>0</code></strong>／色 <span class="sw" style="--c:#4A7DE8"></span> <strong><code>#4A7DE8</code></strong>（brand/blue）・<strong>不透明度 <code>30%</code></strong>。</li>
  <li>位置：<strong>相対（relative）</strong>。</li>
  </ul>
  </li>
@@ -4307,9 +4307,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ol class="steps">
 <li><code>Hero CTA Grid</code> 直下に Box を追加→レイヤー名 <code>Hero CTA Pri</code>。設定→リンク（Settings タブ）で<strong>アンカーリンク <code>#cta</code></strong>（<code>href="#cta"</code>・最終CTAセクションへスクロール）を指定し、Box をリンク化。</li>
 <li>内部に Text を入れ、コピー: <code>1時間で最適な制度をご提案</code>。フォント Noto Sans JP / <code>15px</code> / <code>800</code> / 色 <code>text/on-dark</code>。</li>
-<li>Box スタイル（ボックスタブ→外観）: 背景 <code>brand/blue</code> / 角丸 <code>100px</code>（= r-pill）/ padding 上 <code>16px</code>・下 <code>16px</code>・左 <code>36px</code>・右 <code>64px</code>（右が広いのは矢印円のぶん）/ 影（Shadow / Outset）X<code>0</code> Y<code>10px</code> Blur<code>24px</code> Spread<code>0</code> 色 <code>rgba(74,125,232,.32)</code>。</li>
+<li>Box スタイル（ボックスタブ→外観）: 背景 <code>brand/blue</code> / 角丸 <code>100px</code>（= r-pill）/ padding 上 <code>16px</code>・下 <code>16px</code>・左 <code>36px</code>・右 <code>64px</code>（右が広いのは矢印円のぶん）/ 影（Shadow / Outset）X<code>0</code> Y<code>10px</code> Blur<code>24px</code> Spread<code>0</code> 色 <span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE8</code>（brand/blue）・不透明度 <code>32%</code>。</li>
 <li>矢印円（<code>＞</code> 円バッジ）: §9 コード集の Custom Code で疑似要素の矢印円を移植して再現する。CTA Pri 内に <code>＞</code> を含むマークアップを置き、右 <code>12px</code>・上下中央・<code>32px</code>×<code>32px</code>・角丸 <code>50%</code>・Border <code>1.5px solid</code> 色 <code>text/on-dark</code>（currentColor 連動）・中の <code>＞</code> は 13px/600/white で中央寄せにする。</li>
-<li><a class="term" href="#term-hover">Hover State</a>（<strong>ボックス</strong>タブ→<a class="term" href="#term-conditional">条件スタイル</a>→<strong>Hover</strong>）: 背景 <code>brand/yellow</code>、文字色 <code>text/ink</code>、Move Y <code>-2px</code>（<a class="term" href="#term-transform">変形タブ</a>）、影 X<code>0</code> Y<code>16px</code> Blur<code>34px</code> 色 <code>rgba(255,209,102,.5)</code>。transition は変形タブ→アニメーション→時間 <code>0.2s</code>。矢印円の <code>currentColor</code> 連動（ホバーで枠と＞が ink になる）も Hover で Border色・Text色を <code>text/ink</code> に上書き。</li>
+<li><a class="term" href="#term-hover">Hover State</a>（<strong>ボックス</strong>タブ→<a class="term" href="#term-conditional">条件スタイル</a>→<strong>Hover</strong>）: 背景 <code>brand/yellow</code>、文字色 <code>text/ink</code>、Move Y <code>-2px</code>（<a class="term" href="#term-transform">変形タブ</a>）、影 X<code>0</code> Y<code>16px</code> Blur<code>34px</code> 色 <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（brand/yellow）・不透明度 <code>50%</code>。transition は変形タブ→アニメーション→時間 <code>0.2s</code>。矢印円の <code>currentColor</code> 連動（ホバーで枠と＞が ink になる）も Hover で Border色・Text色を <code>text/ink</code> に上書き。</li>
 </ol>
 
 <figure class="fig">
@@ -4353,7 +4353,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <h4>A. フォームカード（Hero Form Card）</h4>
 <ol class="steps">
 <li><code>Hero Inner</code> 直下（Hero Left の右隣）に <span class="path">追加<i>›</i>基本<i>›</i>フォーム</span>から Form テンプレート（Form1 でよい。差はレイアウトのみ）をドラッグ。外側ラッパーをレイヤー名 <code>Hero Form Card</code>。</li>
-<li><code>Hero Form Card</code>（ボックスタブ）: 幅 flex <code>0.85</code>（5-2-3 で設定済み）/ 背景 <code>bg/white</code> / 角丸 <code>20px</code>（= r-lg。stat-panel）/ padding 上 <code>20px</code>・下 <code>20px</code>・左 <code>22px</code>・右 <code>22px</code> / 影（Shadow / Outset・主影1層でよい）X<code>0</code> Y<code>24px</code> Blur<code>60px</code> Spread<code>0</code> 色 <code>rgba(15,26,51,.1)</code>（shadow-panel）/ ポジション <strong>相対</strong>。</li>
+<li><code>Hero Form Card</code>（ボックスタブ）: 幅 flex <code>0.85</code>（5-2-3 で設定済み）/ 背景 <code>bg/white</code> / 角丸 <code>20px</code>（= r-lg。stat-panel）/ padding 上 <code>20px</code>・下 <code>20px</code>・左 <code>22px</code>・右 <code>22px</code> / 影（Shadow / Outset・主影1層でよい）X<code>0</code> Y<code>24px</code> Blur<code>60px</code> Spread<code>0</code> 色 <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（text/ink）・不透明度 <code>10%</code>（shadow-panel）/ ポジション <strong>相対</strong>。</li>
 <li>装飾円2つ（<code>::before</code>=黄円70px / <code>::after</code>=blue-lt円90px、カード角からはみ出す）: §9 コード集の Custom Code で疑似要素の装飾円を移植して再現する。値は <br>・黄円: 上 <code>-12px</code> / 左 <code>-12px</code>、<code>70px</code>×<code>70px</code>、角丸<code>50%</code>、背景<code>brand/yellow</code>、不透明度<code>75%</code>、重ね順<code>-1</code>（カード背面）。レイヤー名 <code>Form Deco Yellow</code>。<br>・blue-lt円: 下 <code>-16px</code> / 右 <code>-14px</code>、<code>90px</code>×<code>90px</code>、角丸<code>50%</code>、背景<code>brand/blue-lt</code>、不透明度<code>70%</code>、重ね順<code>-1</code>。レイヤー名 <code>Form Deco Blue</code>。<br>注: SP（Mobile）では<code>display:none</code>。5-2-8 で両円を非表示にする。</li>
 </ol>
 <div class="callout warn">
@@ -4417,7 +4417,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <tr><td>プレースホルダ色</td><td><span class="sw" style="--c:#B0B7C5"></span><code>form/placeholder</code>(#B0B7C5) / ウェイト 500</td><td>通常</td></tr>
 <tr><td>幅</td><td><code>%100</code>（box-sizing border-box は Studio既定）</td><td>通常</td></tr>
 <tr><td><strong>Hover</strong>（条件スタイル）</td><td>Border色 <span class="sw" style="--c:#C7D0E0"></span><code>form/input-border-hover</code>(#C7D0E0)、背景 <span class="sw" style="--c:#F0F3F9"></span><code>form/input-bg-hover</code>(#F0F3F9)</td><td>Hover</td></tr>
-<tr><td><strong>Focus</strong>（条件スタイル Focus）</td><td>Border色 <code>brand/blue</code>、背景 <code>bg/white</code>、影 X<code>0</code> Y<code>0</code> Blur<code>0</code> Spread<code>3px</code> 色 <code>rgba(74,125,232,.18)</code>（focusリング＝3pxリング表現）</td><td>Focus</td></tr>
+<tr><td><strong>Focus</strong>（条件スタイル Focus）</td><td>Border色 <code>brand/blue</code>、背景 <code>bg/white</code>、影 X<code>0</code> Y<code>0</code> Blur<code>0</code> Spread<code>3px</code> 色 <span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE8</code>（brand/blue）・不透明度 <code>18%</code>（focusリング＝3pxリング表現）</td><td>Focus</td></tr>
 </tbody>
 </table>
 
@@ -4433,9 +4433,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><strong>VP CTA Btn</strong>（送信ボタン・）:</p>
 <ol class="steps">
 <li>フォームの Submit ボタンを選択→レイヤー名 <code>VP CTA Btn</code>。コピー <code>無料で相談してみる</code>。タイプ: <strong>Submit</strong>（フォームパーツ Submit）。</li>
-<li>スタイル: 幅 <code>%100</code>、方向 横並び・中央寄せ・gap <code>10px</code>、padding 上下 <code>15px</code> / 左右 <code>18px</code>。フォント Noto Sans JP / <code>15.5px</code> / <code>900</code> / 色 <code>text/on-dark</code> / letter-spacing <code>.04em</code>/ 背景 <code>brand/blue</code>、角丸 <code>100px</code>（r-pill）/ 影（Outset）X<code>0</code> Y<code>10px</code> Blur<code>24px</code> 色 <code>rgba(74,125,232,.32)</code>。</li>
+<li>スタイル: 幅 <code>%100</code>、方向 横並び・中央寄せ・gap <code>10px</code>、padding 上下 <code>15px</code> / 左右 <code>18px</code>。フォント Noto Sans JP / <code>15.5px</code> / <code>900</code> / 色 <code>text/on-dark</code> / letter-spacing <code>.04em</code>/ 背景 <code>brand/blue</code>、角丸 <code>100px</code>（r-pill）/ 影（Outset）X<code>0</code> Y<code>10px</code> Blur<code>24px</code> 色 <span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE8</code>（brand/blue）・不透明度 <code>32%</code>。</li>
 <li>矢印円: ボタン内に円 Box→レイヤー名 <code>VP CTA Arrow</code>。<code>24px</code>×<code>24px</code>、角丸 <code>50%</code>、背景 <code>rgba(255,255,255,.22)</code>、中に <code>→</code>（Text <code>13px</code>/<code>900</code>/white）中央寄せ。</li>
-<li><strong>Hover</strong>（条件スタイル Hover）: 背景 <code>brand/yellow</code>、文字色 <code>text/ink</code>、Move Y <code>-2px</code>、影 X<code>0</code> Y<code>14px</code> Blur<code>30px</code> 色 <code>rgba(255,209,102,.5)</code>、時間 <code>0.15s</code>。<strong>Pressed</strong>（buttonタグのみ可、・<code>:active</code>）: Move Y <code>0</code>。</li>
+<li><strong>Hover</strong>（条件スタイル Hover）: 背景 <code>brand/yellow</code>、文字色 <code>text/ink</code>、Move Y <code>-2px</code>、影 X<code>0</code> Y<code>14px</code> Blur<code>30px</code> 色 <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（brand/yellow）・不透明度 <code>50%</code>、時間 <code>0.15s</code>。<strong>Pressed</strong>（buttonタグのみ可、・<code>:active</code>）: Move Y <code>0</code>。</li>
 </ol>
 
 <p><strong>VP Form Note</strong>（送信後注記・）:</p>
@@ -4547,7 +4547,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <h4>D. LW Card ×12（VCロゴ）</h4>
 <ol class="steps">
 <li><code>LW Marquee</code> 内に Box→<code>LW Card</code> を<strong>12枚</strong>配置（Loop Box が複製を自動生成するので2セット目は不要）。</li>
-<li>各 LW Card（CSS ）: 幅 <code>200px</code>（固定・<code>flex:none</code>＝flexで縮まない）、高さ <code>80px</code>、背景 <code>bg/white</code>、Border <code>1px solid</code> 色 <code>line/strong</code>、角丸 <code>14px</code>（r-md）、中央寄せ、影 X<code>0</code> Y<code>6px</code> Blur<code>16px</code> 色 <code>rgba(15,26,51,.05)</code>（shadow-card）。</li>
+<li>各 LW Card（CSS ）: 幅 <code>200px</code>（固定・<code>flex:none</code>＝flexで縮まない）、高さ <code>80px</code>、背景 <code>bg/white</code>、Border <code>1px solid</code> 色 <code>line/strong</code>、角丸 <code>14px</code>（r-md）、中央寄せ、影 X<code>0</code> Y<code>6px</code> Blur<code>16px</code> 色 <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（text/ink）・不透明度 <code>5%</code>（shadow-card）。</li>
 <li>各 Card 内に Image を1枚。画像は左ナビ<strong>アップロード（Uploads）</strong>から VCロゴ12点（ANRI / ANOBAKA / Incubate Fund / UNITED / DEEPCORE / Garnet Capital / Hyperion / W fund / Waypoint Venture Partners / Open Network Lab / 01Booster Capital / All About）をアップロードして使用。Image: 最大幅 <code>86%</code> / 最大高 <code>90%</code>、object-fit <strong>contain</strong>、彩度は Filter（Saturation）で <code>saturate(.95)</code> を設定する。alt に各社名を設定。</li>
 </ol>
 
@@ -5462,7 +5462,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>列1（〜2024年度）: <code>Down-Chart</code> 内に Box → リネーム <code>Box / Down-Col-Prev</code>: 方向 = 縦並び、交差軸（水平）= 中央、主軸（垂直）= 下揃え（flex-end）、高さ = <code>%</code> <code>100%</code>、gap = <code>10px</code>。
  <ul>
  <li><code>Down-Col-Prev</code> 内に Text → <code>Text / Down-Val-Prev</code>、内容 <code>80–90%</code>（ダッシュは en dash <code>–</code>）。テキスト: サイズ <code>15px</code>、ウェイト <code>900</code>、行間 <code>1</code>、色 = <code>text/ink</code>、折返し無し（<code>white-space:nowrap</code>）。</li>
- <li>その下に Box → <code>Box / Down-Bar-Prev</code>: 幅 = <code>96px</code>、高さ = <code>150px</code>、角丸 = 上左 <code>12px</code>・上右 <code>12px</code>・下0、影 = Outset X<code>0</code> Y<code>10px</code> Blur<code>22px</code> Spread<code>0</code> 色 <code>rgba(15,26,51,.12)</code>。</li>
+ <li>その下に Box → <code>Box / Down-Bar-Prev</code>: 幅 = <code>96px</code>、高さ = <code>150px</code>、角丸 = 上左 <code>12px</code>・上右 <code>12px</code>・下0、影 = Outset X<code>0</code> Y<code>10px</code> Blur<code>22px</code> Spread<code>0</code> 色 <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（text/ink）・不透明度 <code>12%</code>。</li>
  <li>その下に Text → <code>Text / Down-Yr-Prev</code>、内容 <code>〜2024年度</code>。テキスト: サイズ <code>12.5px</code>、ウェイト <code>700</code>、行間 <code>1.3</code>、色 = <code>text/sub</code>、折返し無し、テキスト揃え = 中央。Box: パディング 上下 <code>6px</code>/左右 <code>14px</code>、ボーダー Solid 透明 <code>2px</code>（下記 yr-boxed と高さを揃えるためのプレースホルダ枠）。</li>
  </ul>
  </li>
@@ -6912,7 +6912,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul>
  <li>背景（Fill）：<span class="sw" style="--c:#FFFFFF"></span> <code>#FFFFFF</code>（white）</li>
  <li>角丸（Border Radius）：<strong><code>14</code></strong>（px・全コーナー一括）</li>
- <li>影（Shadow）：Outset、<strong>X <code>0</code> / Y <code>8</code> / Blur <code>20</code> / Spread <code>0</code> / Color <code>rgba(15,26,51,.05)</code></strong>（<code>#0F1A33</code> の5%）</li>
+ <li>影（Shadow）：種類 <strong>外側（Outset）</strong>／<strong>X <code>0</code>・Y <code>8</code>・ぼかし（Blur）<code>20</code>・広がり（Spread）<code>0</code></strong>／色 <span class="sw" style="--c:#0F1A33"></span> <strong><code>#0F1A33</code></strong>（text/ink）・<strong>不透明度 <code>5%</code></strong></li>
  </ul>
  </li>
  <li><strong>Hover（<a class="term" href="#term-conditional">条件スタイル</a>）</strong>：レイヤーパネルでカードに <a class="term" href="#term-hover">Hover State</a> を追加（右パネル → ボックスタブ → 条件スタイル → Hover）→
@@ -7371,7 +7371,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル→ボックス→外観→背景 → <code>bg/white</code>。</li>
  <li>右パネル→ボックス→外観→角丸 → 一括 <code>24px</code>（リテラル24px・変数ではない）。</li>
  <li>右パネル→ボックス→外観→枠線 → スタイル Solid / 太さ <code>1px</code> / 色 <code>line/line</code>（<a href="#ch-g3">§3</a>.5）。</li>
- <li>右パネル→ボックス→外観→影 → Outset / X <code>0</code> Y <code>16</code> Blur <code>40</code> Spread <code>0</code> / 色 <code>rgba(15,26,51,.06)</code>（<a href="#ch-g3">§3</a>.6）。</li>
+ <li>右パネル→ボックス→外観→影 → Outset / X <code>0</code> Y <code>16</code> Blur <code>40</code> Spread <code>0</code> / 色 <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（text/ink）・不透明度 <code>6%</code>（<a href="#ch-g3">§3</a>.6）。</li>
  <li>右パネル→ボックス→外観 → overflow: <code>Hidden</code>（カバー画像の角丸クリップに必要）。</li>
  </ol>
  <div class="callout warn">
@@ -7415,7 +7415,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル→ボックス→<a class="term" href="#term-position">ポジション</a> → 絶対（absolute）。基準=最近接親 <code>Cover A</code>。距離: bottom <code>14px</code> / left <code>18px</code>。<a class="term" href="#term-zindex">z-index</a> <code>3</code>（<a href="#ch-t9">§9</a>.3、右パネル→ボックス→ポジション→重ね順）。</li>
  <li>右パネル→ボックス→外観→背景 → <code>bg/white</code>。角丸 一括 <code>6px</code>。</li>
  <li>右パネル→ボックス→外観→枠線 → Solid / <code>1.5px</code> / 色 <code>text/ink</code>。</li>
- <li>右パネル→ボックス→外観→影 → Outset / X<code>0</code> Y<code>4</code> Blur<code>12</code> Spread<code>0</code> / 色 <code>rgba(15,26,51,.10)</code>。</li>
+ <li>右パネル→ボックス→外観→影 → Outset / X<code>0</code> Y<code>4</code> Blur<code>12</code> Spread<code>0</code> / 色 <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（text/ink）・不透明度 <code>10%</code>。</li>
  <li>右パネル→ボックス→スペース → padding 上下 <code>7px</code> / 左右 <code>16px</code>。</li>
  <li>テキストスタイル: font-family <code>Noto Sans JP</code> / font-size <code>12px</code> / weight <code>700</code> / letter-spacing <code>.04em</code> / 色 <code>text/ink</code>。</li>
  </ol>
@@ -7897,8 +7897,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <tr><th>状態</th><th>影</th><th>border-color</th></tr>
  </thead>
  <tbody>
- <tr><td>default（open）</td><td><code>0 16px 36px rgba(15,26,51,.08)</code></td><td>カラースタイル <code>brand/blue-lt</code>（<span class="sw" style="--c:#A3C2F5"></span><code>#A3C2F5</code>）</td></tr>
- <tr><td>Closed（閉）</td><td><code>0 8px 24px rgba(15,26,51,.04)</code></td><td>カラースタイル <code>line/subtle</code>（<code>rgba(15,26,51,.08)</code>）</td></tr>
+ <tr><td>default（open）</td><td><code>外側・X0／Y16／ぼかし36／広がり0・#0F1A33・不透明度 8%</code></td><td>カラースタイル <code>brand/blue-lt</code>（<span class="sw" style="--c:#A3C2F5"></span><code>#A3C2F5</code>）</td></tr>
+ <tr><td>Closed（閉）</td><td><code>外側・X0／Y8／ぼかし24／広がり0・#0F1A33・不透明度 4%</code></td><td>カラースタイル <code>line/subtle</code>（<code>rgba(15,26,51,.08)</code>）</td></tr>
  </tbody>
  </table>
  <p>切替の遷移は手順 5 の Duration 0.25s が効きます。</p>
@@ -9012,8 +9012,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <tr><td>グロー円（黄）</td><td><code>rgba(255,209,102,.55)</code></td><td><code>glow-yellow</code>派生（yellow RGB 255,209,102）</td></tr>
 <tr><td>グロー円（青）</td><td><code>rgba(74,125,232,.28)</code></td><td><code>glow-blue</code>派生（blue RGB 74,125,232）</td></tr>
 <tr><td>カード影</td><td><code>0 18px 44px rgba(15,26,51,.22),0 6px 14px rgba(15,26,51,.1)</code></td><td><code>shadow-ink</code>派生2層（float-perk用）</td></tr>
-<tr><td>CTA通常影</td><td><code>0 6px 14px rgba(74,125,232,.32)</code></td><td><code>glow-blue</code>派生（.32）</td></tr>
-<tr><td>リボン影</td><td><code>0 4px 10px rgba(74,125,232,.3)</code></td><td><code>glow-blue</code>派生（.3）</td></tr>
+<tr><td>CTA通常影</td><td><code>外側・X0／Y6／ぼかし14／広がり0・#4A7DE8・不透明度 32%</code></td><td><code>glow-blue</code>派生（.32）</td></tr>
+<tr><td>リボン影</td><td><code>外側・X0／Y4／ぼかし10／広がり0・#4A7DE8・不透明度 30%</code></td><td><code>glow-blue</code>派生（.3）</td></tr>
 <tr><td>閉じる×背景 / hover</td><td><code>rgba(15,26,51,.1)</code> / <code>rgba(15,26,51,.2)</code></td><td><code>shadow-ink</code>派生（.1/.2）</td></tr>
 </tbody>
 </table>
@@ -9078,11 +9078,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>幅 270px / 高さ auto</li></ul></li>
 <li>同→<strong>ボックス</strong>タブ→<strong>レイアウト</strong>: 方向 <strong>縦並び（Vertical）</strong>、gap <code>0</code>、padding <code>0</code>。
 <ul class="checklist"><li>方向 縦並び / gap 0 / padding 0</li></ul></li>
-<li>同→<strong>ボックス</strong>タブ→<strong>外観</strong>: 背景 = カラースタイル <code>bg/white</code>（<span class="sw" style="--c:#FFFFFF"></span><code>#FFFFFF</code>）。角丸（Border Radius）全コーナー一括 <code>16px</code>。Border = Solid・太さ四辺一括 <code>1px</code>・色 <code>rgba(15,26,51,.06)</code>（= <code>shadow-ink</code>派生）。
-<ul class="checklist"><li>背景 bg/white / 角丸 16px / Border 1px rgba(15,26,51,.06)</li></ul></li>
+<li>同→<strong>ボックス</strong>タブ→<strong>外観</strong>: 背景 = カラースタイル <code>bg/white</code>（<span class="sw" style="--c:#FFFFFF"></span><code>#FFFFFF</code>）。角丸（Border Radius）全コーナー一括 <code>16px</code>。Border = Solid・太さ四辺一括 <code>1px</code>・色 <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（text/ink）・不透明度 <code>6%</code>（= <code>shadow-ink</code>派生）。
+<ul class="checklist"><li>背景 bg/white / 角丸 16px / Border 1px #0F1A33・不透明度 6%</li></ul></li>
 <li>同→<strong>ボックス</strong>タブ→<strong>外観</strong>→Shadow: Outset で下記の2層を両方追加する（1層目＝主層、2層目＝接地影）。
 <ul><li>1層目: X <code>0</code> / Y <code>18px</code> / Blur <code>44px</code> / Spread <code>0</code> / Color <code>rgba(15,26,51,.22)</code></li><li>2層目: X <code>0</code> / Y <code>6px</code> / Blur <code>14px</code> / Spread <code>0</code> / Color <code>rgba(15,26,51,.1)</code></li></ul>
-<ul class="checklist"><li>影 2層: 0/18/44 rgba(15,26,51,.22) ＋ 0/6/14 rgba(15,26,51,.1)</li></ul></li>
+<ul class="checklist"><li>影 2層: 0/18/44 rgba(15,26,51,.22) ＋ 0/6/14 #0F1A33・不透明度 10%</li></ul></li>
 <li>同→<strong>ボックス</strong>タブ→<strong>外観</strong>: overflow <strong>Hidden</strong>（リボン影/グロー円のはみ出しをカード角丸でクリップ）。
 <div class="callout note"><p>overflow:Hidden は sticky を無効化するが、本要素は <strong>fixed</strong> のため影響なし の sticky 制約対象外）。</p></div>
 <ul class="checklist"><li>overflow Hidden</li></ul></li>
@@ -9198,7 +9198,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>右パネル→<strong>ボックス</strong>タブ→<strong>サイズ</strong>: 幅 <code>24px</code> / 高さ <code>24px</code>。
 <ul class="checklist"><li>24×24px</li></ul></li>
 <li>同→<strong>外観</strong>: 背景 <code>rgba(15,26,51,.1)</code>（<code>shadow-ink</code>派生）、角丸 <code>50%</code>（正円）、Border なし。
-<ul class="checklist"><li>背景 rgba(15,26,51,.1) / 角丸50%</li></ul></li>
+<ul class="checklist"><li>背景 #0F1A33・不透明度 10% / 角丸50%</li></ul></li>
 <li>同→<strong>レイアウト</strong>: 方向 横並び・配置 水平=中央 / 垂直=中央（× を中央寄せ）。</li>
 <li>内側に <strong>Text</strong> を1つ入れ、文言 <code>×</code>。テキスト色 <code>text/ink</code>、サイズ <code>14px</code>、ウェイト <code>400</code>、行高 <code>1</code>。
 <ul class="checklist"><li>テキスト「×」14px/400/ink/中央</li></ul></li>
@@ -9281,14 +9281,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="s12-5">5-12-5. FloatingCTA-Perk__Ribbon（上部ピル型バッジ）</h3>
 
-<p>上部ピル型バッジの実値: 背景 <code>brand/blue</code> / 文字 <code>#fff</code> / フォント Noto Sans JP / サイズ <code>10px</code> / ウェイト <code>800</code> / letter-spacing <code>.06em</code> / padding <code>4px 12px</code> / 角丸 <code>100px</code> / 折返し禁止 / 下マージン <code>10px</code> / 影 <code>0 4px 10px rgba(74,125,232,.3)</code> / 重ね順 <code>2</code>。文言「提携VC紹介先 限定特典」。</p>
+<p>上部ピル型バッジの実値: 背景 <code>brand/blue</code> / 文字 <code>#fff</code> / フォント Noto Sans JP / サイズ <code>10px</code> / ウェイト <code>800</code> / letter-spacing <code>.06em</code> / padding <code>4px 12px</code> / 角丸 <code>100px</code> / 折返し禁止 / 下マージン <code>10px</code> / 影 <code>外側・X0／Y4／ぼかし10／広がり0・#4A7DE8・不透明度 30%</code> / 重ね順 <code>2</code>。文言「提携VC紹介先 限定特典」。</p>
 
 <ol class="steps">
 <li>Visual 内・グロー円の後に <strong>追加→基本→Box</strong>、名 <code>FloatingCTA-Perk__Ribbon</code>。中に <strong>Text</strong> <code>FloatingCTA-Perk__RibbonTxt</code>。</li>
 <li>Box→<strong>ボックス</strong>タブ→<strong>サイズ</strong>: 幅 <a class="term" href="#term-hug">auto（内容ハグ）</a>。配置: 親Visualが中央寄せのため自動で中央。
 <ul class="checklist"><li>幅 auto（中央）</li></ul></li>
 <li>Box→<strong>外観</strong>: 背景 <code>brand/blue</code>、角丸 <code>100px</code>、Border Solid <code>1px</code> 透明（= 省略可）。Shadow Outset X<code>0</code>/Y<code>4px</code>/Blur<code>10px</code>/Spread<code>0</code>/Color <code>rgba(74,125,232,.3)</code>（<code>glow-blue</code>派生）。
-<ul class="checklist"><li>背景 brand/blue / 角丸100px / 影 0/4/10 rgba(74,125,232,.3)</li></ul></li>
+<ul class="checklist"><li>背景 brand/blue / 角丸100px / 影 0/4/10 #4A7DE8・不透明度 30%</li></ul></li>
 <li>Box→<strong>レイアウト</strong>: padding 上下 <code>4px</code> / 左右 <code>12px</code>。
 <ul class="checklist"><li>padding 4px 12px</li></ul></li>
 <li>Box→下マージン: 親が縦並び・gap0 のため、Box→<strong>ボックス</strong>タブ→margin 下 <code>10px</code>。
@@ -9353,7 +9353,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="s12-8">5-12-8. FloatingCTA-Perk__Big（大きな 0円ブロック）</h3>
 
-<p>大きな0円ブロックの実値: 横並び・ベースライン揃え・中央寄せ・gap <code>2px</code> / フォント Inter / ウェイト <code>900</code> / 行高 <code>1</code> / letter-spacing <code>-.04em</code> / コンテナ文字色 <code>brand/yellow-dk</code> / drop-shadow <code>0 4px 12px rgba(232,154,28,.35)</code> / 重ね順 <code>1</code>。コンテナの <code>brand/yellow-dk</code> は「0」がグラデ塗りを適用する前のフォールバック色であり、両脇の「着手金」「円」は各々 <code>text/ink</code> で上書きされる（黄色ではない）。子は3つ: 「着手金」/ 「0」（goldグラデ＋shine）/ 「円」。</p>
+<p>大きな0円ブロックの実値: 横並び・ベースライン揃え・中央寄せ・gap <code>2px</code> / フォント Inter / ウェイト <code>900</code> / 行高 <code>1</code> / letter-spacing <code>-.04em</code> / コンテナ文字色 <code>brand/yellow-dk</code> / drop-shadow <code>外側・X0／Y4／ぼかし12／広がり0・#E89A1C・不透明度 35%</code> / 重ね順 <code>1</code>。コンテナの <code>brand/yellow-dk</code> は「0」がグラデ塗りを適用する前のフォールバック色であり、両脇の「着手金」「円」は各々 <code>text/ink</code> で上書きされる（黄色ではない）。子は3つ: 「着手金」/ 「0」（goldグラデ＋shine）/ 「円」。</p>
 
 <figure class="fig">
 <svg viewBox="0 0 520 180" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -9385,7 +9385,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>SubTop の後に <strong>追加→基本→Box</strong>、名 <code>FloatingCTA-Perk__Big</code>。</li>
 <li>Box→<strong>レイアウト</strong>: 方向 <strong>横並び（Horizontal）</strong>、垂直配置=<strong>ベースライン（baseline）</strong>（数字と単位の下端揃え。<strong>Studio に baseline 選択肢は無いので下端(Bottom)で代用</strong>＝下端が揃い見た目ほぼ一致。<a href="#g0-4">§0.4</a>）、水平配置=<strong>中央</strong>、gap <code>2px</code>。
 <ul class="checklist"><li>横並び / baseline / 中央 / gap2px</li></ul></li>
-<li>Box→重ね順 <code>1</code>。drop-shadow <code>0 4px 12px rgba(232,154,28,.35)</code> は <strong>Studio Filter（Blur/Brightness等6種のみ）には drop-shadow が無い</strong> → 下記対応:</li>
+<li>Box→重ね順 <code>1</code>。drop-shadow <code>外側・X0／Y4／ぼかし12／広がり0・#E89A1C・不透明度 35%</code> は <strong>Studio Filter（Blur/Brightness等6種のみ）には drop-shadow が無い</strong> → 下記対応:</li>
 </ol>
 
 <div class="plan mini recommended">
@@ -9454,7 +9454,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <h3 id="s12-10">5-12-10. FloatingCTA-Perk__Body ＋ FloatingCTA-Perk__Cta（下部白背景＋CTAボタン）</h3>
 
 <p>下部白背景部の実値: padding <code>14px 16px 16px</code> / 背景 <code>#fff</code>。<br>
-CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <code>brand/blue</code> / 文字 <code>#fff</code> / サイズ <code>13px</code> / ウェイト <code>800</code> / padding <code>11px 16px</code> / 角丸 <code>100px</code> / 影 <code>0 6px 14px rgba(74,125,232,.32)</code> / 移行 <code>.2s</code>。末尾に矢印「＞」（左マージン <code>8px</code> / サイズ <code>11px</code> / ウェイト <code>700</code>）。hover で <code>background:var(--yellow); color:var(--ink); transform:translateY(-1px); box-shadow:0 10px 20px rgba(255,209,102,.5)</code>。リンク先は <code>#cta</code>、文言「無料相談はこちら」。</p>
+CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <code>brand/blue</code> / 文字 <code>#fff</code> / サイズ <code>13px</code> / ウェイト <code>800</code> / padding <code>11px 16px</code> / 角丸 <code>100px</code> / 影 <code>外側・X0／Y6／ぼかし14／広がり0・#4A7DE8・不透明度 32%</code> / 移行 <code>.2s</code>。末尾に矢印「＞」（左マージン <code>8px</code> / サイズ <code>11px</code> / ウェイト <code>700</code>）。hover で <code>background:var(--yellow); color:var(--ink); transform:translateY(-1px); box-shadow:0 10px 20px rgba(255,209,102,.5)</code>。リンク先は <code>#cta</code>、文言「無料相談はこちら」。</p>
 
 <ol class="steps">
 <li><code>FloatingCTA-Perk</code> 直下・Visual の後に <strong>追加→基本→Box</strong>、名 <code>FloatingCTA-Perk__Body</code>。</li>
@@ -9467,7 +9467,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li>Cta→<strong>レイアウト</strong>: 方向 横並び、水平配置=<strong>中央</strong>・垂直配置=<strong>中央</strong>、gap <code>8px</code>（矢印との間隔）。padding 上下 <code>11px</code> / 左右 <code>16px</code>。
 <ul class="checklist"><li>横並び/中央/中央/gap8px/padding 11px 16px</li></ul></li>
 <li>Cta→<strong>外観</strong>: 背景 <code>brand/blue</code>、角丸 <code>100px</code>、Shadow Outset X<code>0</code>/Y<code>6px</code>/Blur<code>14px</code>/Spread<code>0</code>/Color <code>rgba(74,125,232,.32)</code>（<code>glow-blue</code>派生）。
-<ul class="checklist"><li>背景 brand/blue / 角丸100px / 影 0/6/14 rgba(74,125,232,.32)</li></ul></li>
+<ul class="checklist"><li>背景 brand/blue / 角丸100px / 影 0/6/14 #4A7DE8・不透明度 32%</li></ul></li>
 <li>Cta内に <strong>Text</strong> 2つ（または1Text＋矢印Text）:
 <ul>
 <li>文言 Text「無料相談はこちら」: Noto Sans JP / <code>13px</code> / <code>800</code> / 色 <code>text/on-dark</code>。</li>
@@ -9476,11 +9476,11 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <ul class="checklist"><li>「無料相談はこちら」13px/800/白 ＋「＞」11px/700/白</li></ul></li>
 <li>Hover: Cta選択→右パネル→<strong>ボックス</strong>タブ→<strong>条件スタイル</strong>→<a class="term" href="#term-hover">Hover State</a>:
 <ul>
-<li>背景 <code>brand/yellow</code>(<span class="sw" style="--c:#FFD166"></span>#FFD166)、内側 Text 全て色 <code>text/ink</code>（<strong>in Hover</strong> で子Textの色を変える）、<strong>変形</strong>で Move Y <code>-1px</code>、Shadow を <code>0 10px 20px rgba(255,209,102,.5)</code>（<code>glow-yellow</code>派生）。</li>
+<li>背景 <code>brand/yellow</code>(<span class="sw" style="--c:#FFD166"></span>#FFD166)、内側 Text 全て色 <code>text/ink</code>（<strong>in Hover</strong> で子Textの色を変える）、<strong>変形</strong>で Move Y <code>-1px</code>、Shadow を <code>外側・X0／Y10／ぼかし20／広がり0・#FFD166・不透明度 50%</code>（<code>glow-yellow</code>派生）。</li>
 <li>アニメーション時間 <code>0.2s</code>（background/transform/box-shadow）。</li>
 </ul>
 <div class="callout note"><p>Pressed は a/Box不可（button限定）。hoverのみで再現する。</p></div>
-<ul class="checklist"><li>Hover: 背景 brand/yellow / 文字 text/ink / Move Y -1px / 影 0/10/20 rgba(255,209,102,.5) / 0.2s</li></ul></li>
+<ul class="checklist"><li>Hover: 背景 brand/yellow / 文字 text/ink / Move Y -1px / 影 0/10/20 #FFD166・不透明度 50% / 0.2s</li></ul></li>
 </ol>
 
 <hr>
@@ -9947,7 +9947,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li>左ナビ → 追加 → 基本タブ → <strong>インタラクション</strong> → <strong>Toggle</strong> を <code>FAQ-List</code> 内にドラッグ。レイヤー名 <code>FAQ-Item-01</code>。<br><span class="path">左ナビ<i>›</i>追加<i>›</i>基本<i>›</i>インタラクション<i>›</i>Toggle</span></li>
 <li>Toggle 選択 → 右パネル <strong>Toggle タブ</strong> → トリガー ＝ <strong>Click</strong>（Hover はタッチ端末で誤動作するため不可）。</li>
 <li><strong>Show by default</strong> ＝ OFF（初期は閉）。<strong>Close when clicking outside</strong> ＝ OFF にする（複数同時開を許容）。</li>
-<li>button 部（<code>FAQ-Trigger</code>）に質問文 Text と chevron アイコン（<code>FAQ-Icon</code>）を配置。FAQ-Item の外観: 背景 <span class="sw" style="--c:#ffffff"></span> <code>#fff</code>、border <code>--line</code>、角丸 <strong>16px</strong>、影 <code>0 8px 24px rgba(15,26,51,.04)</code>。</li>
+<li>button 部（<code>FAQ-Trigger</code>）に質問文 Text と chevron アイコン（<code>FAQ-Icon</code>）を配置。FAQ-Item の外観: 背景 <span class="sw" style="--c:#ffffff"></span> <code>#fff</code>、border <code>--line</code>、角丸 <strong>16px</strong>、影 <code>外側・X0／Y8／ぼかし24／広がり0・#0F1A33・不透明度 4%</code>。</li>
 <li>既定アニメ: <code>Closed</code> 条件スタイルが自動適用され、<strong>アイコンboxが回転</strong>・content高さ <code>auto↔0</code> で開閉。chevron は 45deg→-135deg（差分180deg）なので、<code>FAQ-Icon</code> の <code>Closed</code> 条件スタイル → 変形タブ → Rotate を既定アニメの回転量に合わせる（差分180度）。</li>
 <li>開閉速度 ＝ <code>FAQ-Content</code> 選択 → <strong>変形タブ</strong> → アニメーション → <strong>時間 0.3s</strong>。閉じる速度だけ変えるなら <code>Close</code> 条件スタイルを編集。</li>
 <li><code>FAQ-Item</code> の hover: 見出しの文字色変化（[D]）は trigger 内 Text の Hover 文字色＋時間0.2s。border-color/影は Toggle box の Hover 状態に設定（時間0.25s）。</li>
@@ -9970,7 +9970,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <p><strong>手順（[B] ボタン）</strong>:</p>
 <ol class="steps">
 <li><code>CTA-Btn-Primary</code> 選択 → 右パネル → <strong>変形タブ</strong> → 状態 <strong>Hover</strong> を追加。</li>
-<li>Hover に設定: 背景 → <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（<a class="term" href="#term-colorstyle">カラースタイル</a> <code>brand/yellow</code>）、文字色 → <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（<code>text/ink</code>）、Move Y ＝ <code>-2px</code>、box-shadow ＝ <code>0 12px 26px rgba(255,209,102,.5)</code>（glow-yellow .5）。</li>
+<li>Hover に設定: 背景 → <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（<a class="term" href="#term-colorstyle">カラースタイル</a> <code>brand/yellow</code>）、文字色 → <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（<code>text/ink</code>）、Move Y ＝ <code>-2px</code>、box-shadow ＝ <code>外側・X0／Y12／ぼかし26／広がり0・#FFD166・不透明度 50%</code>（glow-yellow .5）。</li>
 <li>アニメーション → <strong>時間 0.2s</strong>、対象 transform/box-shadow/background。</li>
 </ol>
 <ul class="checklist"><li>Hover 状態を追加した</li><li>Hover の値を指定どおり入力した</li><li>時間0.2sを設定した</li></ul>
@@ -11994,7 +11994,7 @@ Footer
  <p>疑似要素「＞」チップを伴うボタンの <strong>hover での色反転＋矢印 border 追従</strong> は、Studio の <a class="term" href="#term-hover">Hover</a> 状態（変形タブ＋条件スタイル）でネイティブ再現する（Custom Code 不要）。Mini 切替後に有効化する。<strong>（要最終決定）</strong></p>
 
  <div class="callout note">
- <p><strong>ボタン hover</strong>（btn-gra / CTA-Pri / form button 等）：右パネル → レイヤーで <strong>Hover 条件スタイル（ダイヤ型アイコン）</strong>を追加 → 背景を <code>brand/yellow</code>(<span class="sw" style="--c:#FFD166"></span><code>#FFD166</code>)、文字を <code>text/ink</code>(<span class="sw" style="--c:#0F1A33"></span><code>#0F1A33</code>)、変形タブで Move Y <code>−2px</code>、外観で影 <code>0 12px 26px rgba(255,209,102,.5)</code>、変形タブ → アニメーション → 時間 <code>200ms</code>。<strong>＞チップ Box の border 色も同 Hover で <code>text/ink</code> に切替</strong>（currentColor 追従を手動で再現）。</p>
+ <p><strong>ボタン hover</strong>（btn-gra / CTA-Pri / form button 等）：右パネル → レイヤーで <strong>Hover 条件スタイル（ダイヤ型アイコン）</strong>を追加 → 背景を <code>brand/yellow</code>(<span class="sw" style="--c:#FFD166"></span><code>#FFD166</code>)、文字を <code>text/ink</code>(<span class="sw" style="--c:#0F1A33"></span><code>#0F1A33</code>)、変形タブで Move Y <code>−2px</code>、外観で影 <code>外側・X0／Y12／ぼかし26／広がり0・#FFD166・不透明度 50%</code>、変形タブ → アニメーション → 時間 <code>200ms</code>。<strong>＞チップ Box の border 色も同 Hover で <code>text/ink</code> に切替</strong>（currentColor 追従を手動で再現）。</p>
  <p><strong>カード lift</strong>（prob/appr/mkt/svc/case/vc-card）：Hover で Move Y <code>−4px</code>（VC-Card は <code>−3px</code>）＋影強調、時間 <code>200ms</code>。Studio の Hover「Add Shadow / Scale Up」系プリセットでほぼ一致。</p>
  <p><strong>FAQ 開閉</strong>：ネイティブ <code>&lt;details&gt;</code> 相当が無いため <strong>Toggle（インタラクション）</strong>で実装。トリガー=<strong>Click</strong>（タッチ誤動作回避）。初期 open（1番目）は <strong>Show by default</strong>。open 時の影強調・border 色 <code>brand/blue-lt</code>(<span class="sw" style="--c:#A3C2F5"></span><code>#A3C2F5</code>)・矢印180°回転は Toggle の Closed 条件スタイル＋変形タブ回転で再現する。</p>
  </div>
@@ -12250,7 +12250,7 @@ Footer
 <!-- ============ 10.1 ============ -->
 <h3 id="t10-1">10.1 表示確認 — PC（Default 1280px）</h3>
 <p>エディタ下部ツールバーで <strong>Default</strong> を選択した状態、および公開 URL をデスクトップ幅で確認する。</p>
-<ul class="checklist"><li>ブラウザ幅 1920px で全セクション（<code>Header</code> / <code>Sec-Hero</code> / <code>Sec-Problem</code> / <code>Sec-Approach</code> / <code>Sec-Service</code> / <code>Sec-Record</code> / <code>Sec-VC</code> / <code>Sec-Cases</code> / <code>Sec-CTA</code> / <code>Footer</code>）に横スクロール・はみ出しなし</li><li>ブラウザ幅 1440px で崩れなし</li><li>ブラウザ幅 1280px（Default 基準幅ちょうど）で崩れなし</li><li>コンテナ最大幅 <code>--max-w 1320px</code> を超えても中身が中央寄せで破綻しない</li><li><code>Sec-Hero</code> がファーストビュー内に主要要素（h1 キャッチ ＋ Primary CTA ＋ ロゴマーキー上端）が収まる</li><li><code>VC-Marquee</code> / <code>Lw-Marquee</code>（<a class="term" href="#term-loopbox">Loop Box</a>）が左方向にスムーズに流れる（速度 <code>60px/s</code> どおりに流れる）</li><li>Loop Box 上に hover でマーキーが停止する（Pause on hover 有効）</li><li>FV h1 のグラデ文字・黄色マーカー下線（Embed sandbox / On Appear）がページ表示時に再生される</li><li>全カード（<code>Prob-Card</code> / <code>Appr-Card</code> / <code>Svc-Card</code> / <code>Case-Card</code>）の <a class="term" href="#term-hover">hover</a> で持ち上がり（translateY）・影が効く</li><li>Primary CTA（<code>CTA-Btn-Primary</code>）hover で背景が yellow <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code> に変わり、黄色グロー影 <code>0 12px 26px rgba(255,209,102,.5)</code> が出る</li><li><a class="term" href="#term-toggle">Toggle</a> 系（FAQ がある場合 <code>FAQ-Item</code>）の開閉アニメが効く</li></ul>
+<ul class="checklist"><li>ブラウザ幅 1920px で全セクション（<code>Header</code> / <code>Sec-Hero</code> / <code>Sec-Problem</code> / <code>Sec-Approach</code> / <code>Sec-Service</code> / <code>Sec-Record</code> / <code>Sec-VC</code> / <code>Sec-Cases</code> / <code>Sec-CTA</code> / <code>Footer</code>）に横スクロール・はみ出しなし</li><li>ブラウザ幅 1440px で崩れなし</li><li>ブラウザ幅 1280px（Default 基準幅ちょうど）で崩れなし</li><li>コンテナ最大幅 <code>--max-w 1320px</code> を超えても中身が中央寄せで破綻しない</li><li><code>Sec-Hero</code> がファーストビュー内に主要要素（h1 キャッチ ＋ Primary CTA ＋ ロゴマーキー上端）が収まる</li><li><code>VC-Marquee</code> / <code>Lw-Marquee</code>（<a class="term" href="#term-loopbox">Loop Box</a>）が左方向にスムーズに流れる（速度 <code>60px/s</code> どおりに流れる）</li><li>Loop Box 上に hover でマーキーが停止する（Pause on hover 有効）</li><li>FV h1 のグラデ文字・黄色マーカー下線（Embed sandbox / On Appear）がページ表示時に再生される</li><li>全カード（<code>Prob-Card</code> / <code>Appr-Card</code> / <code>Svc-Card</code> / <code>Case-Card</code>）の <a class="term" href="#term-hover">hover</a> で持ち上がり（translateY）・影が効く</li><li>Primary CTA（<code>CTA-Btn-Primary</code>）hover で背景が yellow <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code> に変わり、黄色グロー影 <code>外側・X0／Y12／ぼかし26／広がり0・#FFD166・不透明度 50%</code> が出る</li><li><a class="term" href="#term-toggle">Toggle</a> 系（FAQ がある場合 <code>FAQ-Item</code>）の開閉アニメが効く</li></ul>
 
 <!-- ============ 10.2 ============ -->
 <h3 id="t10-2">10.2 表示確認 — Small（1024px）・Tablet（840px）</h3>
