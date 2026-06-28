@@ -3840,3 +3840,9 @@
 - 背景: ユーザー指摘「レイヤー名にばらつき」。監査で3層構造判明(①レイヤー名 ②CSSクラス ③CSS id)。①が不統一(Sec-VC↔sec-vc混在・Float名乱れ・Header/Footer接頭辞)。小文字sec-xは#sec-/.sec-のCSSと衝突しない(layer-name専用)と確認済み。
 - ユーザー決定: セクション=パネル準拠(Sec-X、Header/Footer接頭辞なし、Wrap-Approach、FloatingCTA-Perk)。内部Box名も後段で統一。
 - Stage1変更: sec-hero→Sec-Hero 等の小文字セクション名をPascalへ、sec-header→Header、sec-footer→Footer、FloatPerk→FloatingCTA-Perk(layer名のみ。#floatPerk/.float-perkは不変)。CSSクラス(.sec/.vc-sec/.rec-grid等)・id(#vc/#case等)は不変。
+
+### [DONE] azalea 2026-06-28 レイヤー名の整合性統一（完了）
+- Stage1(commit 3079cfb): セクション名をパネル準拠へ。sec-x→Sec-X(9)、sec-header→Header、sec-footer→Footer、FloatPerk→FloatingCTA-Perk(82)。CSSクラス/idは不変。
+- Stage2(commit f133868+本コミット): 内部Box名をPascalCaseへ。手順<code>/<strong>(611)・ツリー43個・SVG図35ラベル・TitleCase(Rec Grid→Rec-Grid等)・地の文(li/td/ナビa/h3の289参照)。頭字語VC/CTA/FAQ/VPは大文字。
+- 安全策: Custom Code結合の12トークン(float-perk*/gn-grad-text/gn-sweep=パネル非表示のCC内部)は小文字維持。CSSクラス(.x)/id(#x)/ファイル名(appr-01.svg)/キーフレーム(lw-scroll)/色トークン(cta-bg-2)は除外。全パスでCustom Codeブロックのmd5不変を検証。
+- 検証: 作業907・難易度907・リンク切れ0・タグ収支OK・同期connected。
