@@ -947,7 +947,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <dt>フィルター（ぼかし）／背面フィルター（背景ぼかし＝backdrop-filter）</dt>
  <dd><strong>背面フィルター（背景ぼかし＝backdrop-filter）は Mini の Custom Code で実装する</strong>。<a href="#t9-codeset">§9 コピペ用コード集</a>の背景ぼかしブロック（<code>backdrop-filter:blur(8px)</code> ＋ 非対応ブラウザ用の不透明寄り背景色フォールバックを含む）を Custom Code に貼り、対象 Box に適用する。ぼかし量は 8px に固定する。</dd>
  <dt>Hover（ホバー）／条件スタイル</dt>
- <dd>要素を選択 → <strong>右パネル右上の「条件スタイル（Conditional Style）」</strong>をクリック → ドロップダウンで <strong>Hover</strong>（他に Focus / Pressed / On Appear / Toggle Closed / Scroll 等）を選ぶ → そのまま色・サイズ・変形などを通常どおり設定（条件中に変えた項目は<strong>別色で表示</strong>）。<strong>BP 別×状態別</strong>は「下部バーで対象BPを選択」→「右上で状態を選択」の組合せ。<br><strong>親のホバーで子の色を変える＝子に「in ホバー」条件を付ける（重要）</strong>：条件スタイルには <strong>「ホバー」</strong>（その要素自身にカーソルが乗った時）と <strong>「in ホバー（In Hover）」</strong>（自分を含む<strong>親（先祖）要素</strong>がホバーされた時＝CSSの <code>.親:hover .子</code> 相当）の2つがある。<strong>親ボタンのホバーで子の文字色・矢印色を変えるには、子要素を選び「in ホバー」で色を設定する</strong>（「ホバー」ではない）。ボタン自身の背景・影・移動は普通の「ホバー」で設定する。<strong>入力欄の Focus</strong> も同じドロップダウンの Focus を選べば設定できる。</dd>
+ <dd>要素を選択 → <strong>右パネル右上の「条件スタイル（Conditional Style）」</strong>をクリック → ドロップダウンで <strong>Hover</strong>（他に Focus / Pressed / On Appear / Toggle Closed / Scroll 等）を選ぶ → そのまま色・サイズ・変形などを通常どおり設定（条件中に変えた項目は<strong>別色で表示</strong>）。<strong>BP 別×状態別</strong>は「下部バーで対象BPを選択」→「右上で状態を選択」の組合せ。<br><strong>親のホバーで子の色を変える＝子に「in ホバー」条件を付ける（重要）</strong>：条件スタイルには <strong>「ホバー」</strong>（その要素自身にカーソルが乗った時）と <strong>「in ホバー（In Hover）」</strong>（<strong>直近の親</strong>がホバーされた時＝CSSの <code>.直近の親:hover .子</code> 相当）の2つがある。子を選び「in ホバー」で色を設定する（「ホバー」ではない）。<strong>注意：「in ホバー」は直近の親に紐づく＝自動で一番上の親には紐づかない（実機確認済み）</strong>。入れ子が深い子に上位の親のホバーを効かせたい時は、<strong>その子だけ Mini Custom Code</strong>（<code>.上位class:hover .子class{…}</code>・深さ不問）にするか、子を上位の直下へ移す。ボタン自身の背景・影・移動は普通の「ホバー」で設定。<strong>入力欄の Focus</strong> も同じドロップダウンの Focus を選べば設定できる。</dd>
  <dt>コンポーネント化（1つ作って使い回す）</dt>
  <dd>要素を選択 → <strong>右クリック「コンポーネントに変換」 または ⌘+J</strong>（Win: Ctrl+J）→ 名前を付ける。再配置は<strong>左ナビの「コンポーネント」パネル</strong>から<strong>ドラッグ</strong>。コンポーネントを編集すると<strong>全インスタンスに自動反映</strong>。通常Boxに戻すのは ⌘+Shift+J。</dd>
  <dt>画像のフィット（cover/contain）と位置</dt>
@@ -3031,7 +3031,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>塗り（Fill）: <code>brand/yellow</code></li>
 <li>影（Shadow）：種類 <strong>外側（Outset）</strong>／X <code>0</code>・Y <code>16</code>・ぼかし（Blur）<code>34</code>・広がり（Spread）<code>0</code>／色 <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（brand/yellow）・不透明度 <code>50%</code></li>
 <li><a class="term" href="#term-transform">変形タブ</a>（Transform）: Move Y <strong>-2px</strong></li>
-<li><strong>子テキスト・矢印を hover で ink にする＝子に「in ホバー」を付ける（重要）</strong>：条件スタイルの <strong>「ホバー」は要素自身</strong>、<strong>「in ホバー（In Hover）」は親がホバーされた時</strong>に効く。子 <code>CTA-Pri/label</code> を選択 → 右パネル右上 <strong>条件スタイル → 「in ホバー」</strong> → 文字色 <code>text/ink</code>。続けて <code>CTA-Pri/arrow</code> を「in ホバー」→ Border色 <code>text/ink</code>、<code>CTA-Pri/arrow-icon</code> を「in ホバー」→ 色 <code>text/ink</code>。→ <strong>親ボタンにホバーした時だけ</strong>子が ink になる（通常は白のまま）。<strong>子に普通の「ホバー」は付けない</strong>（それだと子自身に乗った時だけ変わる）。Custom Code は不要。</li>
+<li><strong>子テキスト・矢印を hover で ink にする＝子に「in ホバー」を付ける（重要）</strong>：条件スタイルの <strong>「ホバー」は要素自身</strong>、<strong>「in ホバー（In Hover）」は直近の親がホバーされた時</strong>に効く。<br>① <code>CTA-Pri/label</code>（ボタン直下）を選択 → 右パネル右上 <strong>条件スタイル → 「in ホバー」</strong> → 文字色 <code>text/ink</code>。<br>② <code>CTA-Pri/arrow</code>（ボタン直下）も「in ホバー」→ Border色 <code>text/ink</code>。<br>③ <strong><code>CTA-Pri/arrow-icon</code>（＞）は arrow の入れ子</strong>なので「in ホバー」は直近の親＝arrow に紐づき、<strong>ボタン全体のホバーでは効かない</strong>（arrow上だけで反応）。＞ をボタンのホバーで連動させるには、<strong>＞ だけ Mini Custom Code</strong>：<code>.cta-pri:hover .cta-pri-arrow-icon{color:#0F1A33!important}</code>（class 付与・深さ不問）。または ＞ を arrow の外＝ボタン直下へ移して「in ホバー」を使う。<br><strong>子に普通の「ホバー」は付けない</strong>。</li>
 <li>アニメーション: 変形タブ→アニメーション→時間 <strong>0.2秒</strong>、イージング <strong>ease</strong></li>
 </ul>
 <ul class="checklist"><li>Hover条件スタイルで 背景brand/yellow/影黄/Y-2/文字text/ink を設定した</li><li>hover transition 0.2s ease を設定した</li></ul></li>
@@ -3086,7 +3086,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>hover 条件スタイル</strong>（右パネル→ボックス→条件スタイル→Hover）:
 <ul>
 <li>塗り: <code>brand/navy</code>／Border色: <code>brand/navy</code></li>
-<li>子（label / arrow / arrow-icon）を hover で白にするのは、各子を選び <strong>条件スタイル → 「in ホバー」</strong>（親ホバー連動）→ 色 <code>text/on-dark</code>（枠は Border色）。「ホバー」（要素自身）ではなく <strong>「in ホバー」</strong>を使う。背景・枠・移動はボタンの普通の「ホバー」で設定。</li>
+<li>子（label / arrow）を hover で白にするのは、各子（ボタン直下）を選び <strong>条件スタイル → 「in ホバー」</strong>（直近の親＝ボタンのホバーに連動）→ 色 <code>text/on-dark</code>（枠は Border色）。「ホバー」（要素自身）ではなく <strong>「in ホバー」</strong>。<strong>arrow に入れ子の ＞ アイコンは「in ホバー」が arrow に紐づくため</strong>、ボタン連動には ＞ だけ Custom Code（<code>.cta-sec:hover .子class{color:…!important}</code>）か ＞ をボタン直下へ。背景・枠・移動はボタンの普通の「ホバー」で。</li>
 <li>Shadow: X:0 / Y:12 / Blur:26 / Spread:0 / Color <span class="sw" style="--c:#1B2A4A"></span> <code>#1B2A4A38</code>（8桁HEX＝色 <code>#1B2A4A</code> ＋ 不透明度 22%）</li>
 <li>変形: Move Y <strong>-2px</strong>、アニメーション 時間 <strong>0.2秒</strong>／ease</li>
 </ul>
