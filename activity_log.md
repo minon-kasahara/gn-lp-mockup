@@ -3834,3 +3834,9 @@
 - 独立監査WF(2エージェント)で white二重用途行2件・裸HEX/裸トークンの取りこぼし7件を検出→修正。さらに作業ステップの裸トークン25件(色/塗り/背景/枠線+裸token)をカテゴリ付きへ変換。
 - レイヤー名(cta-pri/arrow等)・テキストスタイル名(sechead/*)・シャドウ・単位・パス・Custom Code内の素HEXは対象外。
 - 検証(プレビュー): 作業907・難易度907・リンク切れ0・短縮codeトークン残0・#F5C518残0・タグ収支OK・同期connected。commit予定。
+
+### [INTENT] azalea 2026-06-28 レイヤー名の整合性統一（Stage1: セクション名）
+対象: `studio_guide/v02_guide.html`
+- 背景: ユーザー指摘「レイヤー名にばらつき」。監査で3層構造判明(①レイヤー名 ②CSSクラス ③CSS id)。①が不統一(Sec-VC↔sec-vc混在・Float名乱れ・Header/Footer接頭辞)。小文字sec-xは#sec-/.sec-のCSSと衝突しない(layer-name専用)と確認済み。
+- ユーザー決定: セクション=パネル準拠(Sec-X、Header/Footer接頭辞なし、Wrap-Approach、FloatingCTA-Perk)。内部Box名も後段で統一。
+- Stage1変更: sec-hero→Sec-Hero 等の小文字セクション名をPascalへ、sec-header→Header、sec-footer→Footer、FloatPerk→FloatingCTA-Perk(layer名のみ。#floatPerk/.float-perkは不変)。CSSクラス(.sec/.vc-sec/.rec-grid等)・id(#vc/#case等)は不変。
