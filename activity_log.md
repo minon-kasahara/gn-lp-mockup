@@ -3907,3 +3907,8 @@
 - 修正(名): <code>Hero</code>→Sec-Hero・<code>Record</code>→Sec-Record(計15)＋見出し/チェックリスト。CTA素1件は地の文「右にCTA」なので対象外。全セクション名がSec-Xに統一(素=0)。
 - 修正(作成手順): Hero/Record/VC/Footer の「セクション（Sections）タブから空のセクション、または基本›Box」というごちゃつき→「基本→Box」に統一。各に「セクション本体は基本のBoxでよい(sectionタグは設定タブ→タグで任意)」を明記(前回のSection/Box議論=全部Boxで可・header/footer/navだけタグ、を反映)。
 - 検証: 作業907・難易度907・リンク切れ0・タグ収支OK。
+
+### [DONE] azalea 2026-06-28 Approachラッパー(Approach Wrap/Wrap-Approach)を廃止＋Sec-Approach直付けに
+- ユーザー指摘「Approach Wrapは必要なの？」→検証: ラッパーは幅100%・padding0でSec-Approachを包むだけ。グラデを直接Sec-Approachに付けても塗り範囲は同一＝ラッパー不要(.prob-app-wrapは元HTMLの名残)。手順書の「直接だと範囲ずれる」は根拠なし。
+- 修正(§2/§3.2/§5-3 計27): ラッパー記述を全廃しグラデをSec-Approachに直接。名前を Approach Section→Sec-Approach に統一(§2は既にSec-Approach、§5-3はApproach Section/Wrapだった不整合も解消)。レイヤー順・背景表・SVG図・チェックリスト文言を整合。
+- 安全: ul.checklist数はテキスト編集のみで907不変(削除は表の1<tr>のみ・非カウント)。静的検証で907一致・タグ収支OK。

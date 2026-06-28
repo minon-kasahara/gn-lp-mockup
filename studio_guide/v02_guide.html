@@ -2361,7 +2361,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h3 id="g3-0">3.0 全体構成（セクション順とレイヤー命名ツリー）</h3>
 
- <p>セクションの並びは下記の通り。これを Studio の最上位レイヤー順に <strong>1:1</strong> で写す。固定要素（Header / FloatingCTA）は <a class="term" href="#term-position">ポジション</a>を fixed にするため <strong>Base 直下の Box</strong>、本文ブロックは Section（Approach のみラッパー Box の中に Section）とする。</p>
+ <p>セクションの並びは下記の通り。これを Studio の最上位レイヤー順に <strong>1:1</strong> で写す。固定要素（Header / FloatingCTA）は <a class="term" href="#term-position">ポジション</a>を fixed にするため <strong>Base 直下の Box</strong>、本文ブロックは Section（Approach も同様）とする。</p>
 
  <figure class="fig">
  <svg viewBox="0 0 760 560" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -2381,7 +2381,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <text x="44" y="108">Sec-Hero</text><text x="720" y="108" text-anchor="end" font-size="11" fill="var(--sub)">relative · #（なし）</text>
 
  <rect x="28" y="124" width="704" height="56" rx="6" fill="var(--yellow)" opacity="0.12" stroke="var(--yellow)"/>
- <text x="44" y="142" fill="var(--ink)">Wrap-Approach</text><text x="720" y="142" text-anchor="end" font-size="11" fill="var(--navy)">relative · 背景グラデ · Box</text>
+ <text x="44" y="142" fill="var(--ink)">Sec-Approach</text><text x="720" y="142" text-anchor="end" font-size="11" fill="var(--navy)">relative · 背景グラデ · section</text>
  <rect x="60" y="148" width="672" height="26" rx="5" fill="var(--bg2)" stroke="var(--line)"/>
  <text x="76" y="165" fill="var(--ink)">└ Sec-Approach</text><text x="720" y="165" text-anchor="end" font-size="11" fill="var(--sub)">relative · #approach</text>
 
@@ -2415,7 +2415,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <text x="44" y="482" font-family="inherit" font-size="13" font-weight="700" fill="var(--ink)">FloatingCTA-Perk</text>
  <text x="720" y="482" text-anchor="end" font-family="inherit" font-size="11" fill="var(--navy)">fixed · z-index 90 · Box（Base直下）</text>
 
- <text x="28" y="520" font-family="inherit" font-size="11" fill="var(--sub)">青枠 = fixed（Base直下の Box）／黄枠 = 背景グラデを持つラッパー Box／灰枠 = 通常フローの Section</text>
+ <text x="28" y="520" font-family="inherit" font-size="11" fill="var(--sub)">青枠 = fixed（Base直下の Box）／黄枠 = 背景グラデを持つ Section／灰枠 = 通常フローの Section</text>
  <text x="28" y="538" font-family="inherit" font-size="11" fill="var(--sub)">上から下へ並べる。レイヤー名（英名）は公開サイトに出力されない管理用ラベル。</text>
  </svg>
  <figcaption>LP-Home 最上位レイヤーツリー（セクションの並びを 1:1 で写像）</figcaption>
@@ -2440,28 +2440,28 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p>Cases のアンカーは <strong><code>#case</code>（単数）</strong>。複数形 <code>#cases</code> ではナビのジャンプが効かなくなる。必ず単数形の綴りにすること。</p>
  </div>
 
- <h4>Approach のラッパー</h4>
- <p>Approach セクションは外側をラッパー Box で包み、青系グラデ背景 <code>linear-gradient(180deg,#fff 0%,var(--blue-bg) 100%)</code>は<strong>ラッパー側</strong>に持たせる（Approach セクション自体は背景なし）。Studio では <code>Wrap-Approach</code> Box を Approach の親として置き、この背景を持たせる（§3.2 で設定）。</p>
+ <h4>Approach の背景グラデ</h4>
+ <p>Approach セクションは青系グラデ背景 <code>linear-gradient(180deg,#fff 0%,var(--blue-bg) 100%)</code>を持つ。<strong>ラッパー Box は不要</strong>——グラデは <code>Sec-Approach</code> に<strong>直接</strong>付ける（他セクションと同じ。塗り範囲は変わらない）。設定は §3.2 / §5-3。</p>
  <div class="callout tip">
- <p>Approach Section に直接背景を付けると、塗り範囲が完成イメージ（ラッパー単位）と一致しなくなる。必ず親ラッパー側に背景を持たせること。</p>
+ <p>以前は「ラッパーに背景を持たせる」としていたが、<strong>Sec-Approach は幅100%・上下padding 76px なのでグラデを直接付けても塗り範囲は同じ</strong>（ラッパーは padding 0 で包むだけだった）。ラッパーは廃止し、Sec-Approach に直接付ける。</p>
  </div>
 
  <h4>操作手順（最上位の骨格を組む）</h4>
  <ol class="steps">
  <li>左ナビ → <strong>ページ（Pages）</strong>で対象ページを開く（既定の Home を使用、レイヤー名 <code>LP-Home</code>）。</li>
  <li><span class="path">左ナビ<i>›</i>追加<i>›</i>基本<i>›</i>Section</span> をキャンバス Base 直下へドラッグし、上から順に配置（Header / FloatingCTA は下記注記により Box にする）。</li>
- <li><strong>Approach はラッパー入れ子</strong>にする: まず <code>Wrap-Approach</code> を <a class="term" href="#term-box">Box</a> で Base 直下に置き（背景グラデを持たせるため）、その内側に <code>Sec-Approach</code> Section をドラッグする。</li>
- <li>各 Section / Box を選択 → <strong>レイヤーパネルでダブルクリックしてリネーム</strong>（<code>Sec-Hero</code> … <code>Sec-CTA</code>、<code>Footer</code>、<code>Wrap-Approach</code>、<code>Sec-Approach</code>）。</li>
+ <li>Approach も他と同様、<code>Sec-Approach</code> を Base 直下に1つ置く（ラッパー入れ子は不要）。背景グラデ・タグ section は §3.2 / §5-3 で設定する。</li>
+ <li>各 Section / Box を選択 → <strong>レイヤーパネルでダブルクリックしてリネーム</strong>（<code>Sec-Hero</code> … <code>Sec-CTA</code>、<code>Footer</code>、<code>Sec-Approach</code>）。</li>
  <li>ツリーの並び順とレイヤー名が一致していることをレイヤーパネルで確認。</li>
  </ol>
 
  <div class="callout note">
- <p><strong>Header / FloatingCTA を Section にしない理由</strong>: 両者は <code>position:fixed</code>（§3.3）。Studio の固定要素は <strong>Base 直下の Box</strong> として置くのが要件。Section（横幅 flex の通常フロー要素）として置くと固定が安定しない。よって Header と FloatingCTA-Perk は <strong>Box</strong> で作り Base 直下に置く。本文ブロック（Hero〜Footer）は Section とする（Approach はラッパー Box の中に Section）。</p>
+ <p><strong>Header / FloatingCTA を Section にしない理由</strong>: 両者は <code>position:fixed</code>（§3.3）。Studio の固定要素は <strong>Base 直下の Box</strong> として置くのが要件。Section（横幅 flex の通常フロー要素）として置くと固定が安定しない。よって Header と FloatingCTA-Perk は <strong>Box</strong> で作り Base 直下に置く。本文ブロック（Hero〜Footer）は Section とする（Approach も同様・ラッパー不要）。</p>
  </div>
 
  <p>レイヤー名（ツリーの英名）は公開サイトに出力されない管理用ラベル。<strong>左ナビ → レイヤー</strong>でこの名前に揃えてリネームする。</p>
 
- <ul class="checklist"><li>レイヤーパネルに <code>Header / Sec-Hero / Wrap-Approach(&gt;Sec-Approach) / Sec-Market / Sec-Service / Sec-Record / Sec-VC / Sec-Cases / Sec-FAQ / Sec-CTA / Footer / FloatingCTA-Perk</code> がこの順で並んでいる</li><li><code>Sec-Approach</code> が <code>Wrap-Approach</code> Box の子になっている</li><li>各セクションのアンカー id が上記綴り（<code>#case</code> は単数）で設定されている</li><li>Header と FloatingCTA-Perk が Base 直下（他 Section の子になっていない）</li></ul>
+ <ul class="checklist"><li>レイヤーパネルに <code>Header / Sec-Hero / Sec-Approach / Sec-Market / Sec-Service / Sec-Record / Sec-VC / Sec-Cases / Sec-FAQ / Sec-CTA / Footer / FloatingCTA-Perk</code> がこの順で並んでいる</li><li><code>Sec-Approach</code> が Base 直下にある（ラッパー無し・他セクションと同様）</li><li>各セクションのアンカー id が上記綴り（<code>#case</code> は単数）で設定されている</li><li>Header と FloatingCTA-Perk が Base 直下（他 Section の子になっていない）</li></ul>
 
  <h3 id="g3-1">3.1 コンテナ共通設定（全 Section の内側の幅と左右パディング）</h3>
 
@@ -2537,8 +2537,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <thead><tr><th>Section</th><th>外殻 PC 縦パディング</th><th>背景</th></tr></thead>
  <tbody>
  <tr><td>Sec-Hero</td><td><code>padding-top:78px</code> ＋ <code>min-height:100vh</code></td><td>透明（装飾ブロブは別レイヤー §3.4）</td></tr>
- <tr><td>Wrap-Approach</td><td>（パディングは Sec-Approach 側。ラッパーは背景のみ）</td><td><code>linear-gradient(180deg,#fff 0%,--blue-bg 100%)</code></td></tr>
- <tr><td>Sec-Approach</td><td><code>76px 0</code></td><td>透明（背景は親 Wrap-Approach が持つ）</td></tr>
+  <tr><td>Sec-Approach</td><td><code>76px 0</code></td><td><code>linear-gradient(180deg,#fff 0%,--blue-bg 100%)</code>（Sec-Approach に直接）</td></tr>
  <tr><td>Sec-Market</td><td><code>76px 0</code></td><td>各章で指定</td></tr>
  <tr><td><strong>Sec-Service</strong></td><td><strong>上 <code>76px</code> / 下 <code>48px</code></strong>（下だけ 48px・上は 76px）</td><td><code>linear-gradient(180deg,--blue-soft 0%,#fff 100%)</code></td></tr>
  <tr><td><strong>Sec-Record</strong></td><td><strong>上 <code>52px</code> / 下 <code>76px</code></strong>（上だけ 52px・下は 76px）</td><td><span class="sw" style="--c:#ffffff"></span> <code>#fff</code></td></tr>
@@ -2591,7 +2590,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ol class="steps">
  <li><code>Sec-Approach</code> を選択 → 右パネル → <strong>ボックス</strong>タブ → <strong>サイズ</strong>: 幅 = <code>flex</code> / 高さ = <strong><code>auto</code></strong>（親高さは px でなく auto にする。折返し差を吸収）。</li>
  <li>同タブ → <strong>パディング</strong>: 個別設定アイコンで上下分離 → 上 = <code>76px</code> / 下 = <code>76px</code> / 左右 = <code>0</code>（左右余白はコンテナ §3.1 が持つ）。</li>
- <li><strong>背景</strong>は各セクション章で設定（Sec-Approach 自体は透明のまま。背景は親 <code>Wrap-Approach</code> に付ける → 手順 8）。</li>
+ <li><strong>背景</strong>は各セクション章で設定（Sec-Approach の背景グラデは <code>Sec-Approach</code> に<strong>直接</strong>付ける・ラッパー不要 → §5-3）。</li>
  <li><code>Sec-Approach</code> を選択 → <strong>⌘C</strong> → <code>Sec-Market</code> / <code>Sec-Service</code> / <code>Sec-Record</code> / <code>Sec-Cases</code> / <code>Sec-FAQ</code> を選択して <strong>⌘V でプロパティ流用</strong>、または同値を手入力。</li>
  <li><strong>コピー後の例外を個別修正</strong>:
  <ul>
@@ -2601,7 +2600,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  <li><code>Sec-VC</code> と <code>Sec-CTA</code> は上下パディングを <strong><code>84px</code></strong> に変更。<code>Sec-CTA</code> は <strong>ボックス → 外観 → Overflow を Hidden</strong>（背景装飾のはみ出しを切る）。</li>
  <li><code>Sec-Hero</code> は高さ = <code>100vh</code>（最小高さ）、上パディング = <code>78px</code>（固定 Header の高さ分）。</li>
- <li><code>Wrap-Approach</code> Box を選択 → <strong>ボックス → 外観 → 背景</strong>: タイプ = グラデーション（線形）、角度 = <code>180deg</code>、ストップ = <span class="sw" style="--c:#FFFFFF"></span> <code>#FFFFFF</code>（0%）→ <code>--blue-bg</code>（100%）。<code>Wrap-Approach</code> 自体の上下パディングは <code>0</code>（縦余白は子の Sec-Approach が持つ）。</li>
+ <li><code>Sec-Approach</code> を選択 → <strong>ボックス → 外観 → 背景</strong>: タイプ = グラデーション（線形）、角度 = <code>180deg</code>、ストップ = <span class="sw" style="--c:#FFFFFF"></span> <code>#FFFFFF</code>（0%）→ <code>--blue-bg</code>（100%）。<strong>ラッパーは作らず Sec-Approach に直接</strong>（上下padding 76px はそのまま）。</li>
  <li><code>Footer</code> は上 <code>72px</code> / 下 <code>32px</code> / 左右 <code>40px</code>、上辺に <strong>ボックス → Border</strong>: 太さ上のみ <code>1px</code> / Solid / 色 = <code>--line</code>（= <code>rgba(15,26,51,.08)</code>）。</li>
  </ol>
 
@@ -2609,7 +2608,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p><strong>Sec-CTA の <code>overflow:hidden</code> 注意</strong>: この Section の祖先で <code>overflow:hidden</code> を使うと、内部に sticky 追従要素を置いた場合に sticky が無効化される。CTA 内に追従要素は無いため問題ないが、後続章で sticky を足す場合はこの Hidden を見直すこと。</p>
  </div>
 
- <ul class="checklist"><li>Approach / Market / Cases / FAQ = 上下 76px・左右 0・高さ auto</li><li><strong>Sec-Service = 上 76px / 下 48px</strong></li><li><strong>Sec-Record = 上 52px / 下 76px</strong></li><li>Sec-VC / Sec-CTA = 上下 84px、Sec-CTA は Overflow Hidden</li><li>Sec-Hero = 高さ 100vh・上パディング 78px</li><li>Wrap-Approach = 背景 #fff→--blue-bg の 180deg グラデ・縦パディング 0</li><li>Footer = 上 72px / 下 32px / 左右 40px、上辺 Border 1px Solid <code>--line</code></li></ul>
+ <ul class="checklist"><li>Approach / Market / Cases / FAQ = 上下 76px・左右 0・高さ auto</li><li><strong>Sec-Service = 上 76px / 下 48px</strong></li><li><strong>Sec-Record = 上 52px / 下 76px</strong></li><li>Sec-VC / Sec-CTA = 上下 84px、Sec-CTA は Overflow Hidden</li><li>Sec-Hero = 高さ 100vh・上パディング 78px</li><li>Sec-Approach = 背景 #fff→--blue-bg の 180deg グラデ（直接・ラッパー無し）</li><li>Footer = 上 72px / 下 32px / 左右 40px、上辺 Border 1px Solid <code>--line</code></li></ul>
 
  <h3 id="g3-3">3.3 z-index 設計（ビューポート固定層と装飾層）</h3>
 
@@ -4792,8 +4791,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h3 id="s3-1">5-3-1. レイヤー命名とツリー</h3>
  <p>下記の入れ子で<a class="term" href="#term-section">Section</a>を構築します。完成イメージのレイアウト（番号＝左上・イラスト＝右にまたがり・見出し＝左中段・本文＝下段全幅）を Flex で再現するため、「Card Top Row（横並び: バッジ＋右列）」と「Card Desc（最下段）」の2段構成に分解しています。</p>
- <pre class="tree">Approach Wrap (Box, relative) ← .prob-app-wrap（Approach専用ラッパ）
-└─ Approach Section (Box, relative) ← section.sec.approach#approach
+ <pre class="tree">Sec-Approach (Box→section, relative・背景グラデ #fff→blue-bg) ← section.sec.approach#approach
  ├─ Approach Head (Box) ← .sec-head
  │ ├─ Approach Title (Text, H2 Section) ← h2.section-title
  │ └─ Approach Lead (Text, Lead) ← p.lead
@@ -4834,12 +4832,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p>流体タイポ（可変フォントサイズ）について: Studioのテキストスタイルは1スタイル内にPC/Tablet/Mobileの値を内包できます。完成イメージのフォントは連続的に伸縮しますが、Studioは3<a class="term" href="#term-breakpoint">ブレークポイント</a>の離散値で写像します（連続スケールは再現不可・付録C）。</p>
  </div>
 
- <h3 id="s3-3">5-3-3. ラッパとセクションの土台を作る</h3>
+ <h3 id="s3-3">5-3-3. セクションの土台を作る</h3>
  <ol class="steps">
- <li>左ナビ→<strong>追加（Add）</strong>→<strong>基本（Basic）</strong>→<strong>Box</strong> をキャンバスへドラッグ。<code>Approach Wrap</code> と命名。<span class="path">左ナビ<i>›</i>追加<i>›</i>基本<i>›</i>Box</span>
+ <li>左ナビ→<strong>追加（Add）</strong>→<strong>基本（Basic）</strong>→<strong>Box</strong> をキャンバスへドラッグ。<code>Sec-Approach</code> と命名。<span class="path">左ナビ<i>›</i>追加<i>›</i>基本<i>›</i>Box</span>
  <ul class="checklist"><li>Box配置・命名完了</li></ul>
  </li>
- <li><code>Approach Wrap</code> 選択→右パネル<strong>ボックス（Box）</strong>タブ→サイズ: 幅 <strong><code>%</code> 100%</strong>、高さ <strong>auto</strong>（親高さはautoにする）。
+ <li><code>Sec-Approach</code> 選択→右パネル<strong>ボックス（Box）</strong>タブ→サイズ: 幅 <strong><code>%</code> 100%</strong>、高さ <strong>auto</strong>（親高さはautoにする）。
  <ul class="checklist"><li>幅100% / 高さauto</li></ul>
  </li>
  <li>同<strong>ボックス</strong>タブ→<strong>ポジション</strong>: <strong>相対（relative）</strong>。
@@ -4850,12 +4848,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>0%: <code>bg/white</code>（<span class="sw" style="--c:#FFFFFF"></span><code>#FFFFFF</code>）</li>
  <li>100%: <code>bg/blue-bg</code>（<span class="sw" style="--c:#D8E7FC"></span><code>#D8E7FC</code>）</li>
  </ul>
- <ul class="checklist"><li>ラッパ背景グラデ設定</li></ul>
+ <ul class="checklist"><li>Sec-Approach に背景グラデ設定（ラッパー不要）</li></ul>
  </li>
- <li><code>Approach Wrap</code> の中に <strong>Box</strong> をドラッグ→<code>Approach Section</code> と命名。右パネル<strong>設定（Settings）</strong>タブ→<strong>タグ設定</strong>で HTMLタグを <strong>section</strong> に、IDを <strong>approach</strong> に設定（アンカーリンク <code>#approach</code> 用）。
+ <li><code>Sec-Approach</code> を選択 → 右パネル<strong>設定（Settings）</strong>タブ→<strong>タグ設定</strong>で HTMLタグを <strong>section</strong> に、IDを <strong>approach</strong> に設定（アンカーリンク <code>#approach</code> 用）。<strong>※ラッパーBoxは作らない</strong>（グラデは前ステップで Sec-Approach に直接付け済み）。
  <ul class="checklist"><li>section化・id=approach</li></ul>
  </li>
- <li><code>Approach Section</code> →右パネル<strong>ボックス</strong>タブ→方向: <strong>縦並び（Vertical）</strong>、サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ <strong>auto</strong>、<strong>ポジション: 相対（relative）</strong>。
+ <li><code>Sec-Approach</code> →右パネル<strong>ボックス</strong>タブ→方向: <strong>縦並び（Vertical）</strong>、サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ <strong>auto</strong>、<strong>ポジション: 相対（relative）</strong>。
  <ul class="checklist"><li>縦並び・幅100%・relative</li></ul>
  </li>
  <li>同<strong>ボックス</strong>タブ→<strong>padding</strong>: 上下個別設定で <strong>上76px / 下76px</strong>（左右は0、左右余白は子の <code>Approach Flow</code> 側 <a class="term" href="#term-gutter">ガター</a>で取る）。Tablet/Mobile は 5-3-7 で 64px に上書き。
@@ -4876,7 +4874,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h3 id="s3-4">5-3-4. 見出しブロック（sec-head）</h3>
  <ol class="steps">
- <li><code>Approach Section</code> 内に <strong>Box</strong> をドラッグ→<code>Approach Head</code> と命名。右パネル<strong>ボックス</strong>タブ→方向: <strong>縦並び（Vertical）</strong>、サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ auto、<strong>最大幅: 820px</strong>、配置: <strong>水平=中央 / 垂直=上</strong>、左右margin <strong>auto</strong>（中央寄せ）。
+ <li><code>Sec-Approach</code> 内に <strong>Box</strong> をドラッグ→<code>Approach Head</code> と命名。右パネル<strong>ボックス</strong>タブ→方向: <strong>縦並び（Vertical）</strong>、サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ auto、<strong>最大幅: 820px</strong>、配置: <strong>水平=中央 / 垂直=上</strong>、左右margin <strong>auto</strong>（中央寄せ）。
  <ul class="checklist"><li>最大幅820px・中央寄せ</li></ul>
  </li>
  <li>同<strong>ボックス</strong>タブ→<strong>padding</strong>: 左右 <strong>40px</strong>（<code>--gutter</code>）、上0 / 下0。下方向の間隔は次のグリッドとの<strong>margin下44px</strong>で取る → <code>Approach Head</code> の <strong>margin: 下44px</strong>。
@@ -4935,7 +4933,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <figcaption>Row Box×2方式。各 Row 内でカードを flex 1:1 等分し、忠実な2列を作る。Mobileでは Row の方向を縦に切り替えて1列化する（5-3-7）。</figcaption>
  </figure>
  <ol class="steps">
- <li><code>Approach Section</code> 内（<code>Approach Head</code> の下）に <strong>Box</strong> をドラッグ→<code>Approach Flow</code> と命名。
+ <li><code>Sec-Approach</code> 内（<code>Approach Head</code> の下）に <strong>Box</strong> をドラッグ→<code>Approach Flow</code> と命名。
  <ul class="checklist"><li>Box配置・命名</li></ul>
  </li>
  <li>右パネル<strong>ボックス</strong>タブ→サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ auto、<strong>最大幅 1180px</strong>、左右margin <strong>auto</strong>（中央）。
@@ -5150,7 +5148,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h4>Tablet（条件スタイル: 下部ツールバーをTablet幅に切替。上書き枠は黄緑）</h4>
  <ol class="steps">
- <li><code>Approach Section</code>→<strong>ボックス</strong>→padding 上下 <strong>64px</strong>（Tablet の上下padding）。
+ <li><code>Sec-Approach</code>→<strong>ボックス</strong>→padding 上下 <strong>64px</strong>（Tablet の上下padding）。
  <ul class="checklist"><li>Tablet: section上下padding 64px</li></ul>
  </li>
  <li><code>Approach Head</code> → margin下 <strong>36px</strong>（SP用の下marginをTablet帯にも前倒し適用）。
@@ -5190,7 +5188,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><strong>イラスト</strong> <code>Card Illust</code>: 最大幅 <strong>160px</strong> / 高さ <strong>120px</strong> / margin <strong>上下6px</strong> / 配置 <strong>中央（justify-self:center）</strong>。
  <ul class="checklist"><li>Mobile: illust 160×120・中央</li></ul>
  </li>
- <li><strong>セクション縦padding</strong> <code>Approach Section</code>: 上下 <strong>64px</strong>（SP用の上下padding）。
+ <li><strong>セクション縦padding</strong> <code>Sec-Approach</code>: 上下 <strong>64px</strong>（SP用の上下padding）。
  <ul class="checklist"><li>Mobile: section上下padding 64px</li></ul>
  </li>
  <li><strong>見出しブロック</strong> <code>Approach Head</code>: margin下 <strong>36px</strong>、<code>Approach Title</code>（H2）=<strong>30px</strong>（固定値）、<code>Approach Lead</code>=<strong>14px / lh1.9</strong>。
