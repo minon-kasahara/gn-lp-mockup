@@ -3894,3 +3894,10 @@
 - ユーザー指摘「CTA-Deco-Wrap がいきなり出てくる・作成手順が無い」。原因: 作成手順はMini Custom Code方式(CTA-Decoテキスト＋hd-cta-deco擬似要素で斜め装飾線)だが、レスポンシブ非表示手順/§5-1-9ツリー/SVG図だけ古いFree代替(CTA-Deco-Wrap＞Deco-Tick-L/CTA-Deco/Deco-Tick-R のBox構成)の名前が残存。Mini一本化時の消し忘れ。
 - 修正: レスポンシブ非表示2件＋チェックリスト2件を CTA-Deco へ。§5-1-9ツリーをCTA-Deco(Text+Custom Code線)＋CTA-Arrow(円形Text)へ。SVG図ラベル3件を擬似要素表記へ。CTA-Deco-Wrap/Deco-Tick 完全に除去。
 - 検証: 作業907・難易度907・リンク切れ0・タグ収支OK。
+
+### [DONE] azalea 2026-06-28 モバイル/タブレットNavハンバーガーの詳細手順を新設（Studio Toggleネイティブ）
+- ユーザー依頼「モバイルのみNavをハンバーガーで表示」。スコープ確認→Nav非表示の Tablet(840)+Mobile(540) 両方で表示に決定。
+- 調査(WF/公式): Studioの Toggle(トグル)ボックスで実装が最適=button(≡)+content(Navメニュー)、Click/外側クリックで閉じる/Show by default OFF/BP別表示が標準装備。Custom Code不要(Freeでも作成可・公開は独自ドメインならMini)。公式: help.studio.design 2329054(hamburger)/8056180(toggle)。
+- 反映: §5-1-8末尾に詳細手順(ol.steps 10ステップ＋プラン/実機確認callout)を新設(Nav-Toggle/Nav-Toggle-Btn/Nav-Menu、7項目アンカー)。簡易callout・§5-1-9注記・checklist項目を整合(要最終決定/Mini前提を解消)。§11.1aのCustom Codeドロワー記述→ネイティブToggleへ訂正(矛盾解消)。§7.4.3を§5-1-8へのポインタ化。
+- 注意: 907タスクのindexを崩さないようul.checklistは増やさずol.steps＋既存checklist項目のテキスト更新で対応。
+- 検証: 作業907・難易度907・リンク切れ0・タグ収支OK。

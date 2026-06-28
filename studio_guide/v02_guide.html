@@ -3862,7 +3862,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><strong>Header</strong>：高さ <code>56px</code>、パディング 左右 <code>14 / 14</code>（767px由来）。極小（380px由来）の <strong>padding 左右 10 / 10</strong>も Mobile に統合して上書き（下記「極小統合」参照）。</li>
  <li><strong>Nav</strong>：<strong>非表示</strong>（目アイコン）。
  <div class="callout tip">
- <p><strong>ハンバーガーは実装する（新規要素）</strong>：Tablet/Mobile 帯はナビを非表示にし、ハンバーガーメニューを追加する。<a class="term" href="#term-toggle">Toggle</a>（<span class="path">基本<i>›</i>インタラクション<i>›</i>Toggle</span>）で button（≡アイコン）＋ content（ナビ項目の縦並び）を作り、Tablet/Mobile のみ表示する。Toggle は <strong>Click トリガー</strong>（タッチ誤動作回避）、<strong>Close when clicking outside = ON</strong> にする。Toggle は <strong>Mini で有効化する前提</strong>で設計する<strong>（要最終決定）</strong>。</p>
+ <p><strong>ハンバーガーは実装する（新規要素）</strong>：Tablet/Mobile 帯は Nav を非表示にし、代わりに ≡ ハンバーガー（<strong>Nav-Toggle</strong>）を出す。<strong>詳しい作り方は本セクション末尾「ハンバーガーメニュー（Nav-Toggle）の作成」</strong>を参照。Studio の <a class="term" href="#term-toggle">Toggle</a> ネイティブ機能で実装（Custom Code 不要）。</p>
  </div>
  </li>
  <li><strong>Logo-Img</strong>：幅 <code>97px</code>・高さ <code>32px</code>。</li>
@@ -3881,10 +3881,36 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p><strong>写像注</strong>：BP は4段固定のため 380px 専用BPは作らず、Mobile(540) の値として上書きする。380px と 540px で値が異なる項目（Headerパディング 14↔10、CTA padding/サイズ 8/30/8/16・12px ↔ 7/26/7/12・11px）は、Mobile では<strong>より小さい側（380px相当値）に寄せる</strong>。すなわち Mobile に <strong>380px相当値（padding10・CTA 7/26/7/12・11px）</strong>を入れて極小優先で確定する（Mini(320)BP は追加しない）。360–380px の実機差は <strong>公開URL で確認</strong>（§8.2 最終確認は Live Preview/公開URL必須）。</p>
  </div>
 
- <ul class="checklist"><li>Mobile: Header 56px・Nav非表示・Logo32px・CTA-Group gap6・CTA-Deco非表示 を上書きした</li><li>Mobile: CTA-Button・CTA-Arrow を上書きし、極小（≤380相当）の Header padding10・CTA-Button(7/26/7/12・11px) を Mobile に統合した（Mini(320)BP は追加しない）</li><li>ハンバーガー（新規・Mini前提）を実装した</li></ul>
+ <ul class="checklist"><li>Mobile: Header 56px・Nav非表示・Logo32px・CTA-Group gap6・CTA-Deco非表示 を上書きした</li><li>Mobile: CTA-Button・CTA-Arrow を上書きし、極小（≤380相当）の Header padding10・CTA-Button(7/26/7/12・11px) を Mobile に統合した（Mini(320)BP は追加しない）</li><li>Nav-Toggle（≡ハンバーガー＋縦Navメニュー7項目・Clickトグル・外側クリックで閉じる）を実装し、Tablet/Mobile で Nav横並び=非表示・Nav-Toggle=表示に切替えた（末尾の作成手順どおり）</li></ul>
 
  <h5>写像方針の確定チェック（指摘反映の核）</h5>
  <ul class="checklist"><li>768閾値を Studio 540/840 二段へどう割り付けるか上表で確定した（767px由来＝Tablet＋Mobile 両方に同値上書き）</li><li>Tablet を「PC継承で操作不要」にしていない（541–767px帯で縮小ヘッダーが出ることを保証した）</li><li>768–840px帯で縮小ヘッダーが出る差異を許容し、Tablet基準幅は840pxのまま動かさないことを確定した</li></ul>
+
+ <h4>ハンバーガーメニュー（Nav-Toggle）の作成 — Tablet/Mobile</h4>
+ <p><strong>完成イメージ</strong>：767px以下（Tablet(840)・Mobile(540)）では横並び Nav を隠し、ヘッダー右に <strong>≡（ハンバーガー）アイコン</strong>を出す。タップで Nav 項目（縦並び）が開閉し、メニュー外をタップで閉じる。<strong>Studio の <a class="term" href="#term-toggle">Toggle</a>（トグル）ネイティブ機能で実装する（Custom Code 不要）。</strong></p>
+ <div class="callout tip"><p><strong>プラン</strong>：Toggle・条件スタイル・BP別表示はデザイン機能で <strong>Free でも作成できる</strong>（Custom Code 不要）。独自ドメインで本番公開する場合のみ Mini 以上が必要（公開時のプランは別途確認）。以前の「Mini前提・要最終決定」は解消。</p></div>
+ <ol class="steps">
+ <li><strong>Toggle を追加</strong>：<span class="path">左ナビ<i>›</i>追加<i>›</i>基本<i>›</i>インタラクション<i>›</i>Toggle</span> を <strong>Header 直下</strong>（Nav と並ぶ位置）にドラッグ。「ボタン（trigger）」＋「コンテンツ（開閉される中身）」が一体で入る。レイヤー名を <strong>Nav-Toggle</strong> に。</li>
+ <li><strong>ボタン（≡アイコン）</strong>：Toggle のボタン側に ≡ を作る。レイヤー名 <strong>Nav-Toggle-Btn</strong>。<strong>3本線</strong>＝Box を縦並びで3つ（各 幅<code>18px</code>・高さ<code>2px</code>・角丸<code>1px</code>・色 <code>text/ink</code>・間隔<code>4px</code>）、または Studio のメニューアイコン。<strong>タップ領域 44×44px</strong> を padding で確保。</li>
+ <li><strong>コンテンツ（メニューパネル）</strong>：Toggle のコンテンツ側に Box（<strong>Nav-Menu</strong>）。方向＝<strong>縦並び</strong>、間隔<code>4px</code>、padding 上下<code>8px</code>/左右<code>12px</code>、背景 <code>bg/white</code>、角丸<code>12px</code>、上border <code>1px</code> <code>line/subtle</code>、影（外側・X0/Y8/ぼかし24/広がり0・<code>#0F1A33</code>・不透明度8%）。<strong>ポジション 絶対</strong>でヘッダー下端基準・右寄せ（または全幅）、重ね順 <a class="term" href="#term-zindex">z-index</a> を Header と同等以上に。</li>
+ <li><strong>メニュー項目（7つ）</strong>：Nav-Menu 内に Text を7つ、<a href="#s1-3">5-1-3</a> と同じ実コピー＋アンカーリンク（設定タブ → リンク → ページ内アンカー）。各 Text：色 <code>text/ink</code>・サイズ<code>15px</code>・ウェイト<code>700</code>・上下 padding<code>11px</code>（タップ44px）。
+ <ul>
+ <li>本サービスの特徴 → <code>#approach</code></li><li>市場動向 → <code>#market</code></li><li>サービス → <code>#service</code></li><li>実績 → <code>#record</code></li><li>提携VC → <code>#vc</code></li><li>導入事例 → <code>#case</code></li><li>よくあるご質問 → <code>#faq</code></li>
+ </ul>
+ （<a href="#s1-3">5-1-3</a> の Nav-Item を7つコピーして Nav-Menu に移し縦並びにしてもよい）</li>
+ <li><strong>トリガー＝Click</strong>：Nav-Toggle を選択 → Toggle 設定で開閉トリガーを <strong>Click</strong> に（Hover はタッチ誤動作するので不可）。</li>
+ <li><strong>初期は閉じる</strong>：<strong>「Show by default（初期表示）」を OFF</strong>（読込時はメニュー閉じた状態）。</li>
+ <li><strong>外側クリックで閉じる</strong>：<strong>「Close when clicking outside」を ON</strong>（Click トリガー時のみ有効）。メニュー以外をタップで閉じる。</li>
+ <li><strong>開く方向</strong>：ヘッダー直下に素直に下ろすには Toggle/親の整列を <strong>上寄せ（Top）</strong>に（Center だとメニューが上下に開いて動く）。</li>
+ <li><strong>開閉アニメ</strong>：Toggle の「Closed」条件スタイルで自動（高さ auto→0・アイコン回転）。速度は Toggle 編集モード（ダブルクリックで中に入る）→ 対象を選び <strong>変形タブの Time</strong>（例 <code>0.2s</code>）で調整。</li>
+ <li><strong>ブレークポイント別表示（最重要）</strong>：レイヤーパネルの <strong>目アイコン</strong>で出し分ける（下部ツールバーで対象BPに切替 → 目アイコン）。
+ <ul>
+ <li><strong>Nav</strong>（横並び）：Default/Small＝表示、<strong>Tablet(840)・Mobile(540)＝非表示</strong></li>
+ <li><strong>Nav-Toggle</strong>（≡）：Default/Small＝<strong>非表示</strong>、<strong>Tablet(840)・Mobile(540)＝表示</strong></li>
+ </ul>
+ → 広い画面は通常 Nav、狭い画面はハンバーガー。</li>
+ </ol>
+ <div class="callout warn"><p><strong>実機確認</strong>：Toggle の UI ラベル（基本→インタラクション→Toggle、Show by default、Close when clicking outside、目アイコン）は Studio の版で表記・位置が変わることがある。<strong>Live Preview / 公開URL で「開閉・外側クリックで閉じる・BP別表示」を必ず確認</strong>。メニューが上下に動く時は Toggle/親の整列を Top にする。</p></div>
 
  <h3 id="s1-9">5-1-9. レイヤー階層ツリー（このセクションの完成形）</h3>
 
@@ -3907,7 +3933,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  └─ CTA-Arrow [＞・円形ボーダー付きText / 正円・枠1.5px #fff / in ホバーで文字+枠ink]</pre>
 
  <div class="callout note">
- <p>ハンバーガー（Tablet/Mobile・Mini で有効化）は、Nav の置換として <strong>Nav-Toggle</strong>（<a class="term" href="#term-toggle">Toggle</a>：button=≡ / content=ナビ縦並び）を Header 直下に追加して実装する<strong>（要最終決定）</strong>。</p>
+ <p>ハンバーガー（Tablet/Mobile）は、Nav の置換として <strong>Nav-Toggle</strong>（<a class="term" href="#term-toggle">Toggle</a>：button=≡ / content=Navメニュー縦並び）を Header 直下に追加して実装する。Studio の Toggle ネイティブ機能で完結（Custom Code 不要）。<strong>詳細手順は §5-1-8 末尾「ハンバーガーメニュー（Nav-Toggle）の作成」</strong>。</p>
  </div>
 
  <div class="callout tip">
@@ -10372,7 +10398,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <ul class="checklist"><li>Mobile で残るのは [Logo｜CTA ボタン]＋（新設）ハンバーガーのみ</li><li>nav とデコキャプションが Mobile で非表示</li><li>CTA ボタンが Mobile で 44px 高を満たす</li></ul>
 
  <h4>7.4.3 Mobile ハンバーガー（新設）</h4>
- <p>本 LP はヘッダーアンカーが 7 本あるため、<strong>Mobile 専用のハンバーガー＋ドロワーを新設</strong>する。</p>
+ <p>本 LP はヘッダーアンカーが 7 本あるため、<strong>ハンバーガー＋ドロワーを新設</strong>する（Tablet/Mobile）。<strong>具体的な作成手順は <a href="#s1-8">§5-1-8</a> 末尾「ハンバーガーメニュー（Nav-Toggle）の作成」を正</strong>とし、本節はモバイル観点の補足（タップ44px・ドロワー内リンク）。</p>
  <ul>
  <li><strong>構成（新規レイヤー）</strong>: <code>hd-burger</code>（ハンバーガー Icon ボタン、Mobile のみ表示）＋ <code>hd-drawer</code>（オーバーレイ／ドロワー、7 ナビリンク＋ CTA を内包）。</li>
  <li><strong>表示制御</strong>: <code>hd-burger</code> は Default/Tablet で<strong>目アイコン OFF（非表示）</strong>、Mobile のみ表示。</li>
@@ -12485,7 +12511,7 @@ Footer
 
 <p>対処（Studio）: レイヤー <code>hd-hamburger</code>（Icon <a class="term" href="#term-box">ボックス</a>ボタン、Mobile のみ表示）＋ <code>hd-drawer</code>（オーバーレイ Box、7 リンク＋CTA）を<strong>新規作成</strong>する。</p>
 <div class="plan mini">
-<span class="badge">Mini</span> ドロワー開閉（スクロールロック・全画面オーバーレイ含む）は <a class="term" href="#term-customcode">Custom Code</a> で実装する。§9 コード集のハンバーガー/ドロワーブロックを Custom Code Body に貼り、button=ハンバーガー Icon、content=ドロワー Box（7 Link＋CTA）、トリガー Click（タッチ誤動作回避）、外側クリックで閉じる、ドロワー Box は <code>fixed</code>＋<a class="term" href="#term-zindex">z-index</a> 高で設定する。
+<span class="badge">Free/Mini</span> ハンバーガー＋ドロワーは <strong>Studio の <a class="term" href="#term-toggle">Toggle</a> ネイティブ機能で実装</strong>（Custom Code 不要・Free でも作成可）。button=ハンバーガー Icon、content=ドロワー Box（7 Link＋CTA）、トリガー Click、Close when clicking outside=ON。全画面オーバーレイにするなら content Box を <code>fixed</code>＋<a class="term" href="#term-zindex">z-index</a> 高に。<strong>詳細手順は <a href="#s1-8">§5-1-8</a> 末尾「ハンバーガーメニュー（Nav-Toggle）の作成」を正とする</strong>。
 </div>
 <ul class="checklist"><li><code>hd-hamburger</code> を Mobile のみ表示（PC/Small/Tablet は非表示）に条件スタイル設定</li><li>ドロワーに 7 アンカー（#approach 等）＋ CTA を格納し、各リンクのタップで開閉が閉じる挙動を確認</li><li>公開 URL で実機タップ確認</li></ul>
 
