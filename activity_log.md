@@ -3792,3 +3792,33 @@
 ### 2026-04-24 03:20 [SYSTEM-INIT] initial-setup
 - 対象: `02_work/activity_log.md`
 - 内容: 活動ログファイルを新規作成。2セッション並行作業対応ルールを導入。
+
+---
+### [DONE] azalea 2026-06-27 ヘッダー全幅指定をStudio実機仕様に修正
+対象: `studio_guide/v02_guide.html`（commit 5c85df2 / push済み）
+- ユーザー指摘: Studioの位置UIは left と right を**同時に設定できない**（片方を入れると他方が自動 auto）。よって従来手順「left:0 / right:0 で全幅」は実機で再現不可。
+- 修正5箇所: §5-1-1 step3（幅 auto→**100%**）／step6 距離（上0・左0・右0 → **上0・左0のみ**、右下は自動auto）／§5-1-1チェックリスト／§3統合チェックリスト／SVG図ラベル（`left:0 right:0`→`left:0 width:100%`）。
+- 全幅の取り方を「幅100% ＋ 左0」に統一。float等のbottom+right指定（§5-12）は軸が別なので変更不要。
+- 検証(プレビュー): 作業907維持・リンク切れ0・タグ収支OK・Firebase同期connected。
+
+---
+### [INTENT] azalea 2026-06-28 ロゴをEmbed→アップロード方式へ統一
+対象: `studio_guide/v02_guide.html` ＋ 新規 `mockup/assets/gn_logo.svg`
+- 背景: ユーザー指摘「ロゴなど画像はStudioにアップロードして組み込めないか」。調査(3並列WF)で確定—Studio Uploadsは SVG対応/最大1GB、アップロード済SVGの色はStudio内変更不可(色はファイルに焼込)。手順書は§8.4/§5-11(フッター)が既にUpload方式だが、§5-1-2(ヘッダー実手順)・§3464概要・§3903ツリー・§9コード集①・§8.0/§8.4見出し・L1041 がEmbed(sandbox)貼付のまま矛盾。
+- これからの変更: (1)ink焼込の gn_logo.svg を生成しassetsへ。(2)ヘッダー実手順をImage配置(Embed/sandbox/コード貼付/公開URL最終確認を削除)に。(3)概要・ツリー・コード集ラベル・§8.4見出し/手順・§8.0注記・L1041のEmbed例・フッター事前準備の表現をUpload方式へ統一。(4)§3901の旧"幅auto+left/right:0"も幅100%へ整合。checklist(907)・id・タグは不変を厳守。
+
+### [DONE] azalea 2026-06-28 ロゴをアップロード方式へ統一（commit 31d0e5d / push済み）
+- 新規 `mockup/assets/gn_logo.svg`（ink #0F1A33焼込・白抜きパス保持・viewBox 0 0 181.61 60・2,219B）を生成。手順書§9コード集のSVGから機械生成（currentColor→#0F1A33）。
+- 手順書28箇所をEmbed(sandbox)貼付→アップロード(Image配置)へ統一: §5-1-2実手順/checklist・§3464概要・§3901-3903ツリー・§9コード集①(見出し/cb-note/fill)・§8.4見出し/手順/checklist・§8.0注記/手順5・L1041 Embed例・§5-11-0事前準備/checklist・§5-11-4フッター手順・§5-11-10ネイティブ可否メモ・ナビTOC×2・BP対応表Logo-SVG×2・用語集term-embed/term-sandbox。
+- 検証: 作業907・難易度907・内部リンク切れ0・Logo-SVG残存0・gn_logo.svg参照22・同期connected・実描画を目視確認OK。
+- 判断不可置換(§2-8マーキー斜線・月桂樹s6-6)は別途。月桂樹は§8.1で左右2分割Upload案が既載だが2ファイル分割の手間あり、本対応はロゴに限定。
+
+### [DONE] azalea 2026-06-28 リポジトリ内容を GDrive 02_work/ へ追加マージ
+- 背景: GDrive `02_work/` がリポジトリ(gn-lp-mockup)の古いコピーで5/18停止。ユーザー要望で最新化。
+- 事前確認: SRC→02_work で94件更新/新規。02_work側にだけある物は `mockup/assets/generated/test_*.png` 4件のみ。内容競合(上書きで失う編集)は0件。
+- 実施: `rsync -rt`（追加マージ・--delete無し・.git/.DS_Store除外）で SRC→02_work。皐大の test PNG 4件は温存。GDriveルート/01_input/03_minon-work/ルートCLAUDE.mdは対象外。
+
+### [DONE] azalea 2026-06-28 定期同期を git post-commit フック方式で構築
+- 当初 launchd(30分毎) を組んだが、macOS TCC によりバックグラウンドプロセスから GDrive(CloudStorage) への書込が `Operation not permitted` で不可（フルディスクアクセス未付与のため）。launchd は撤去。
+- 採用: `.git/hooks/post-commit`（ローカルのみ・非追跡）→ `~/bin/gn_lp_sync.sh` をバックグラウンド実行。コミットの度に SRC→02_work を追加マージ（--delete無し・.git/.DS_Store除外）。コミットは Claude/ユーザの権限下で走るため GDrive 書込可。
+- 結果: リポジトリ(正本)へコミットする度に 02_work が自動最新化。皐大の generated/test_*.png は温存。
