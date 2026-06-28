@@ -3567,7 +3567,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル <span class="path">ボックス<i>›</i>レイアウト</span>：方向 <strong>横並び</strong>、垂直 <strong>中央</strong>、gap <code>10</code>。サイズ：幅 <strong>auto</strong>、高さ <strong>auto</strong>。</li>
  <li>Logo-Link の中へ、左ナビ <span class="path">追加<i>›</i>基本<i>›</i>画像（Image）</span> をドラッグ。名前を <strong>Logo-Img</strong> にリネーム。</li>
  <li>Logo-Img を選択 → <strong>画像をダブルクリック</strong>（または右パネル <span class="path">画像（Image）<i>›</i>サムネイル</span>）でアップロード一覧を開き、事前アップロードした <strong><code>gn_logo.svg</code></strong> を選ぶ。</li>
- <li>右パネル <span class="path">ボックス<i>›</i>サイズ</span>：高さ <strong><code>42px</code></strong>、幅 <strong>auto</strong>（viewBox <code>181.61:60</code> 比で自動。約 <code>127px</code> になる）。<strong>Imgモード</strong>のため一辺（高さ <code>42px</code>）を入れれば他辺は比率維持で自動。</li>
+ <li>右パネル <span class="path">画像（Image）</span>：表示モードを <strong>画像（Img）モード</strong>にする。<strong>ボックス（背景）モードのままだと幅が出ず表示されない</strong>。フィットは <strong>収める（contain）</strong>。</li>
+ <li>右パネル <span class="path">ボックス<i>›</i>サイズ</span>：<strong>幅 <code>127px</code> / 高さ <code>42px</code></strong>（<code>181.61:60</code> 比）。<strong>幅は <code>auto</code> にしない</strong>——SVGの自然幅が出ず幅0で消えることがあるため、実数 <code>127px</code> で固定する。</li>
  <li>右パネル <span class="path">画像（Image）<i>›</i>代替テキスト（Alt）</span>：<code>G&amp;N</code> を入力。</li>
  </ol>
 
@@ -3575,7 +3576,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p>ロゴ色は <code>ink</code>（<code>#0F1A33</code>）。<strong>色は <code>gn_logo.svg</code> に焼き込み済み</strong>（白抜きパスは <code>fill="#fff"</code> で保持）。Studio はアップロードした画像の色を後から変更できないため、色の指定や調整は不要——置くだけで正しい色になる。</p>
  </div>
 
- <ul class="checklist"><li>Logo-Link を外部URL <code>https://gandn.co.jp/</code>・新規タブで設定した</li><li>Logo-Img に <code>gn_logo.svg</code> を割り当て、高さ <code>42px</code>・幅 auto・alt <code>G&amp;N</code> を設定した（色は ink 焼き込み済み）</li></ul>
+ <ul class="checklist"><li>Logo-Link を外部URL <code>https://gandn.co.jp/</code>・新規タブで設定した</li><li>Logo-Img に <code>gn_logo.svg</code> を割り当て、<strong>画像（Img）モード</strong>・幅 <code>127px</code>・高さ <code>42px</code>・フィット contain・alt <code>G&amp;N</code> を設定した（色は ink 焼き込み済み）</li></ul>
 
  <h3 id="s1-3">5-1-3. グローバルナビ（中央・7項目）</h3>
 
@@ -3849,7 +3850,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>ツールバーを <strong>Tablet</strong> に切替。</li>
  <li><strong>Header</strong>：高さ <code>56px</code>、パディング 左右 <code>14 / 14</code>。</li>
  <li><strong>Nav</strong>：<strong>非表示</strong>（レイヤーパネルの目アイコンで Tablet 時のみ非表示）。</li>
- <li><strong>Logo-Img</strong>：高さ <code>32px</code>。</li>
+ <li><strong>Logo-Img</strong>：幅 <code>97px</code>・高さ <code>32px</code>。</li>
  <li><strong>CTA-Group</strong>：gap <code>6</code>。</li>
  <li><strong>CTA-Deco-Wrap</strong>（Free代替の装飾線 Box 一式含む）：<strong>非表示</strong>。</li>
  <li><strong>CTA-Button</strong>：パディング <strong>上8 / 右30 / 下8 / 左16</strong>、サイズ <code>12px</code>、ウェイト <code>800</code>、影 <strong>X0/Y4/Blur12/Spread0・<code>rgba(74,125,232,.28)</code></strong>。</li>
@@ -3867,7 +3868,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p><strong>ハンバーガーは実装する（新規要素）</strong>：Tablet/Mobile 帯はナビを非表示にし、ハンバーガーメニューを追加する。<a class="term" href="#term-toggle">Toggle</a>（<span class="path">基本<i>›</i>インタラクション<i>›</i>Toggle</span>）で button（≡アイコン）＋ content（ナビ項目の縦並び）を作り、Tablet/Mobile のみ表示する。Toggle は <strong>Click トリガー</strong>（タッチ誤動作回避）、<strong>Close when clicking outside = ON</strong> にする。Toggle は <strong>Mini で有効化する前提</strong>で設計する<strong>（要最終決定）</strong>。</p>
  </div>
  </li>
- <li><strong>Logo-Img</strong>：高さ <code>32px</code>。</li>
+ <li><strong>Logo-Img</strong>：幅 <code>97px</code>・高さ <code>32px</code>。</li>
  <li><strong>CTA-Group</strong>：gap <code>6</code>。</li>
  <li><strong>CTA-Deco-Wrap</strong>：<strong>非表示</strong>（目アイコン）。</li>
  <li><strong>CTA-Button</strong>：パディング <strong>上8 / 右30 / 下8 / 左16</strong>、サイズ <code>12px</code>、ウェイト <code>800</code>、影 <code>.28</code>（767px由来）。極小（380px由来）の値は下記で統合上書き。</li>
@@ -3893,7 +3894,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <pre class="tree">Base
 └─ Header [Box / fixed / 幅100%+left:0(右auto) / h:78px / z:100 / padding 0 40]
  ├─ Logo-Link [Box / 外部リンク https://gandn.co.jp/ 新規タブ / 横並び gap10]
- │ └─ Logo-Img [Image / gn_logo.svg / 高さ42px・幅auto / fill #0F1A33焼込・白パス保持]
+ │ └─ Logo-Img [Image(Imgモード) / gn_logo.svg / 幅127px・高さ42px・contain / fill #0F1A33焼込・白パス保持]
  ├─ Nav [Box / 横並び gap24] ← Tablet/Mobile非表示
  │ ├─ Nav-Item(本サービスの特徴) [Text / Nav Link / link #approach]
  │ ├─ Nav-Item(市場動向) [Text / link #market]
@@ -8762,13 +8763,13 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル → ボックスタブ → レイアウト → 方向 = <strong>横並び（Horizontal）</strong>、配置: 垂直 = 中央（align center）、間隔（gap）= <code>10</code>px。</li>
  <li>右パネル → ボックスタブ → 余白（margin）: 下（margin-bottom）= <code>22</code>px。</li>
  <li><code>ft-logo</code> 内に 左ナビ → 追加 → 基本タブ → Image を配置し、<code>ft-logo-img</code> にリネーム。事前アップロードした <code>gn_logo.svg</code> を指定。</li>
- <li>右パネル → ボックスタブ → サイズ: 高さ = <code>32</code>px、幅 = <code>auto</code>（viewBox 181.61:60 比で自動。約 <code>97px</code> になる）。</li>
+ <li>右パネル → 画像タブ → 表示モードを <strong>画像（Img）モード</strong>・フィット <strong>contain</strong>。ボックスタブ → サイズ: <strong>幅 = <code>97</code>px / 高さ = <code>32</code>px</strong>（181.61:60 比。幅は <code>auto</code> にせず実数で固定）。</li>
  <li>画像の代替テキスト: 右パネル → 画像タブ（または設定タブ）→ alt に <code>G&amp;N</code> を設定（aria-label 相当）。</li>
  </ol>
  <div class="callout note">
  <p><strong>ロゴの色について</strong>: ロゴ色はテキスト色（ink）に追従する想定ですが、Studio の Image では塗りを後から変えられないため、<strong>ink（<code>#0F1A33</code>）で固定書き出ししたファイル</strong>を使うのが前提（§0）。背景が淡ブルーなので ink の濃紺ロゴで十分なコントラストが出る。色違いが必要になったら別バリエーションを書き出して差し替える。</p>
  </div>
- <ul class="checklist"><li>ft-logo を横並び・gap10・mb22 で作成した</li><li>ロゴ画像を height32・幅auto で配置し alt=G&amp;N を設定した</li></ul>
+ <ul class="checklist"><li>ft-logo を横並び・gap10・mb22 で作成した</li><li>ロゴ画像を 画像(Img)モード・幅97・高さ32・contain で配置し alt=G&amp;N を設定した</li></ul>
 
  <h3 id="s11-5">5. 会社情報テキスト（ft-company）＋URLリンク（ft-url-link）</h3>
  <ol class="steps">
@@ -11323,8 +11324,8 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <h4>Studio 手順</h4>
 <ol class="steps">
 <li>G&N ロゴの SVG を <strong>用意済みの <code>gn_logo.svg</code></strong>（<code>mockup/assets/gn_logo.svg</code>・ink色焼き込み済み）を Uploads にアップロード。<strong>ヘッダーとフッターで同一アセットを再利用</strong>（重複排除）。</li>
-<li>ヘッダー（レイヤー <code>header-logo</code>）に配置：<strong>ボックスタブ → サイズ → 高さ <code>42px</code> / 幅 auto</strong>。</li>
-<li>フッター（レイヤー <code>footer-logo</code>）に配置：<strong>高さ <code>32px</code> / 幅 auto</strong>。</li>
+<li>ヘッダー（レイヤー <code>header-logo</code>）に配置：<strong>画像（Img）モード・フィット contain</strong>、<strong>ボックスタブ → サイズ → 幅 <code>127px</code> / 高さ <code>42px</code></strong>（幅は auto にしない）。</li>
+<li>フッター（レイヤー <code>footer-logo</code>）に配置：<strong>画像（Img）モード・幅 <code>97px</code> / 高さ <code>32px</code>・contain</strong>。</li>
 <li><strong>色の再現</strong>：文字色を継承する指定は Studio に引き継がれない。書き出した SVG 内で<strong>メインパスの fill を <code>#0F1A33</code>（ink）に明示</strong>し、<strong>白サブパスの <code>fill="#fff"</code> は保持</strong>する（再色付け時も白抜きが消えないこと）。</li>
 <li>右パネル → <strong>設定タブ</strong> → 代替テキスト <code>G&amp;N</code>。</li>
 </ol>
@@ -11335,8 +11336,8 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
 <h4>Mobile 条件スタイル</h4>
 <ul>
-<li>ヘッダー：Mobile 幅で 高さ <code>32px</code>。</li>
-<li>フッター：Mobile 幅で 高さ <code>28px</code>。</li>
+<li>ヘッダー：Mobile 幅で 幅 <code>97px</code> / 高さ <code>32px</code>。</li>
+<li>フッター：Mobile 幅で 幅 <code>85px</code> / 高さ <code>28px</code>。</li>
 </ul>
 
 <ul class="checklist"><li>用意済みの <code>gn_logo.svg</code> をアップロードした</li><li>ヘッダー/フッターで同一アセットを再利用した</li><li>メインパス fill を <code>#0F1A33</code> に明示、白サブパス <code>#fff</code> を保持した</li><li>Mobile でヘッダー <code>32px</code>・フッター <code>28px</code> に上書きした</li><li>alt（aria-label）を <code>G&amp;N</code> に設定した</li></ul>
