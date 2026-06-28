@@ -3925,3 +3925,11 @@
 - 用語集に term-center「要素を中央寄せする（margin auto は使えない）」を新設。CSS仕様参照表(.sec-head/.lead 等)はStudioステップではないため温存。
 - ナレッジ: studio_design_spec.md §4＋メモリに「マージンはpxのみ・auto不可／中央寄せは親の配置で水平=中央」を追記。
 - 検証: checklist907不変・タグ収支OK・danglingリンク無し。
+
+### [DONE] azalea 2026-06-29 FAQ open状態差にネイティブ詳細手順(ol.steps)を追加＋古いCustom Code注記を整理
+- ユーザー指摘: §5-9 FAQ「open 時に影/border が変わる状態差」のチェック項目に対し操作手順が無い（値の表のみ）。
+- 根拠: §3894で「FAQ開閉・条件スタイルはFreeでネイティブ可・Custom Code不要・Mini前提は解消」と確定。§9.7も同旨。
+- 追加: h4「open 時の状態差」に ol.steps(start=7) を新設。Default(素)=開の強調値(影0/16/36/.08・枠brand/blue-lt)、Toggle Closed条件=閉の通常値(影0/8/24/.04・枠line/subtle)を設定する手順。カード素が閉値の場合は開値へ上書きする旨も明記。複製で2〜4へ継承。
+- 整理: 矛盾していたMini Custom Code注記(7928)を「ネイティブが基本(Free可)・Custom Codeは矢印回転等の任意補強のみ」に修正(§9.7リンク)。
+- 検証: checklist907不変・タグ収支OK・#t9-7リンク先存在。
+- 要実機確認(ユーザー依頼予定): 条件スタイルのドロップダウンに「Toggle Closed」が出るか／Default=開・Closed=閉で意図どおり切替わるか。

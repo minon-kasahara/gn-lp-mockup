@@ -7924,8 +7924,26 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </table>
  <p>切替の遷移は手順 5 の Duration 0.25s が効きます。</p>
 
+ <ol class="steps" start="7">
+ <li><strong>Default（＝開）の見た目を設定</strong>：<code>FAQ-Item-1</code> を選択し、右上の条件スタイルが <strong>Default（何も選んでいない素の状態）</strong>であることを確認 → <strong>ボックスタブ → 外観</strong>で次を設定する（＝開いた時の強調値。素＝Default が「開」を持つ）：
+ <ul>
+ <li>影：種類 <strong>外側</strong>／X <code>0</code>・Y <code>16</code>・ぼかし <code>36</code>・広がり <code>0</code>／色 <code>#0F1A33</code>・不透明度 <strong>8%</strong></li>
+ <li>枠線の色：カラースタイル <strong>brand/blue-lt</strong>（<span class="sw" style="--c:#A3C2F5"></span><code>#A3C2F5</code>）</li>
+ </ul>
+ ※ カード枠作成（5-9-5）で影 .04／枠 <code>line/subtle</code>（＝閉の値）を素に入れていた場合は、ここで上記の<strong>開の値に上書き</strong>する。</li>
+ <li><strong>Closed 条件スタイルへ切替</strong>：選択したまま <strong>右パネル右上の「条件スタイル」</strong>をクリック → ドロップダウンで <strong>Toggle Closed</strong>（トグルが閉じている時）を選ぶ。以降に変えた項目はこの条件中のみ適用され、変更箇所だけ<strong>別色表示</strong>になる。</li>
+ <li><strong>Closed（＝閉）の見た目を設定</strong>：条件中のまま <strong>外観</strong>で次に上書きする（＝閉じている時の通常値）：
+ <ul>
+ <li>影：種類 <strong>外側</strong>／X <code>0</code>・Y <code>8</code>・ぼかし <code>24</code>・広がり <code>0</code>／色 <code>#0F1A33</code>・不透明度 <strong>4%</strong></li>
+ <li>枠線の色：カラースタイル <strong>line/subtle</strong></li>
+ </ul>
+ 影・枠線以外（塗り・角丸・サイズ・はみ出し等）は触らない（Default のまま継承される）。</li>
+ <li><strong>Default に戻す</strong>：右上の条件スタイルを <strong>Default</strong> に戻して通常編集へ。これで「閉＝弱い影／灰枠、開＝強い影／青枠」が切り替わり、手順 5 の Duration 0.25s で box-shadow・border-color がなめらかに遷移する。</li>
+ <li><code>FAQ-Item-2〜4</code> は <code>FAQ-Item-1</code> を<strong>複製</strong>して作るため、Default／Closed の状態差はそのまま引き継がれる（各アイテムで再設定は不要。初期 open は item-1 のみ ON）。</li>
+ </ol>
+
  <div class="plan mini">
- <span class="badge">Mini</span> 影・枠色の状態差・矢印回転・開閉アニメは <a class="term" href="#term-customcode">Custom Code</a> で完全再現する。<a href="#t9-codeset">§9 コード集</a>の <code>&lt;details&gt;/&lt;summary&gt;</code> マークアップ＋ FAQ 用 CSS（開いた状態の影・border・矢印回転）の該当ブロックを Custom Code に貼り、ページ Body へ注入する（<a class="term" href="#term-sandbox">sandbox</a> <a class="term" href="#term-embed">Embed</a> ではなくページ Body）。Studio Toggle の枠（button＋content）は構造の器として使い、装飾差は §9 コード集の CSS で担保する。
+ <span class="badge">任意 / Mini</span> <strong>上の Toggle＋Closed 条件スタイルによる影・枠色の状態差は Free でも実装でき、Custom Code は不要</strong>（FAQ 開閉が Studio ネイティブで可能なことは <a href="#t9-7">§9.7</a> で確定済み）。矢印回転や開閉アニメをさらに作り込みたい場合に<strong>限り</strong>、任意で <a href="#t9-codeset">§9 コード集</a>の <code>&lt;details&gt;</code> 用 CSS を <a class="term" href="#term-customcode">Custom Code</a>（Mini）でページ Body に注入してもよい（<a class="term" href="#term-sandbox">sandbox</a> <a class="term" href="#term-embed">Embed</a> ではなくページ Body）。その場合も Studio Toggle の枠は構造の器として使う。
  </div>
 
  <ul class="checklist"><li><code>FAQ-Item-1</code> を Toggle で作成・カード枠（白 / border line / 角丸 16 / 影）を設定した</li><li>トリガー Click・Show by default ON（item-1 のみ）にした</li><li>open 時に影＝0 16px 36px /.08・border＝blue/lt へ変わる状態差を設定した</li></ul>
