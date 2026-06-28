@@ -3865,3 +3865,9 @@
 - 正: 色の継承。親(CTA-Button)の文字色を 通常=白/Hover=ink にし、子labelは色を継承・矢印枠/記号はcurrentColor。親のHover1つで子も連動（.btn:hover{color}を子が継承）。矢印が元々currentColor設計だったのが本来の正解の証左。
 - 修正: 用語集949(一般説明)・§5-1-6(ボタン文字色ステップ追加/label継承/矢印currentColor/Hover本体/チェックリスト)・§5-1-7(CTA-Secondary)を継承方式へ。
 - 検証: 作業907・難易度907・リンク切れ0・タグ収支OK。
+
+### [DONE] azalea 2026-06-28 親ホバー→子色連動を Custom Code 方式に確定（ネイティブ不可と判明）
+- 経緯: 「select-child-in-hover」(誤・実機で子の通常色が変わる)→「親Boxの文字色を継承」(誤・Boxにテキスト色欄が無い)と2回外した。c343ba6をrevertし正解へ。
+- 確定事実(実機): ①Studioの Box には文字色の欄が無い ②親Hoverを開いたまま子を変更しても連動しない(子の通常色が変わるだけ)。→ 親hover→子色はネイティブ不可。
+- 正: Mini Custom Code。子の通常色は白(text/on-dark)のまま、親/子に class を付け .cta-pri:hover .cta-pri-label{color:#0F1A33!important} 等を §9 に貼る。ボタンの背景/影/移動は通常のHover条件スタイル(Boxプロパティ)でOK。
+- 修正: 用語集950・§5-1-6 Hoverステップ・§5-1-7 を Custom Code 方式へ。検証: 作業907・難易度907・リンク切れ0。

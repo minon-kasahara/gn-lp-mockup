@@ -947,7 +947,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <dt>フィルター（ぼかし）／背面フィルター（背景ぼかし＝backdrop-filter）</dt>
  <dd><strong>背面フィルター（背景ぼかし＝backdrop-filter）は Mini の Custom Code で実装する</strong>。<a href="#t9-codeset">§9 コピペ用コード集</a>の背景ぼかしブロック（<code>backdrop-filter:blur(8px)</code> ＋ 非対応ブラウザ用の不透明寄り背景色フォールバックを含む）を Custom Code に貼り、対象 Box に適用する。ぼかし量は 8px に固定する。</dd>
  <dt>Hover（ホバー）／条件スタイル</dt>
- <dd>要素を選択 → <strong>右パネル右上の「条件スタイル（Conditional Style）」</strong>をクリック → ドロップダウンで <strong>Hover</strong>（他に Focus / Pressed / On Appear / Toggle Closed / Scroll 等）を選ぶ → そのまま色・サイズ・変形などを通常どおり設定（条件中に変えた項目は<strong>別色で表示</strong>）。<strong>BP 別×状態別</strong>は「下部バーで対象BPを選択」→「右上で状態を選択」の組合せ。<br><strong>親のホバーで子の色を変えるには（重要）</strong>＝Studio では「親の Hover を開いたまま子を選んで変更」しても<strong>連動しない（子の通常状態が変わるだけ）</strong>。正しくは<strong>色の継承</strong>を使う：親（ボタン等）の文字色を設定し（通常＝白／Hover時＝ink）、子テキストは自前の色を持たせず親に継承させ、枠線・記号は <code>currentColor</code>（文字色追従）にする。これで親の Hover 1つで子も一緒に変わる（CSS の <code>.btn:hover{color:…}</code> を子が継承する形）。<strong>入力欄の Focus</strong> も同じドロップダウンの Focus を選べば設定できる。</dd>
+ <dd>要素を選択 → <strong>右パネル右上の「条件スタイル（Conditional Style）」</strong>をクリック → ドロップダウンで <strong>Hover</strong>（他に Focus / Pressed / On Appear / Toggle Closed / Scroll 等）を選ぶ → そのまま色・サイズ・変形などを通常どおり設定（条件中に変えた項目は<strong>別色で表示</strong>）。<strong>BP 別×状態別</strong>は「下部バーで対象BPを選択」→「右上で状態を選択」の組合せ。<br><strong>親のホバーで子（テキスト）の色を変えるには（重要）</strong>＝Studio は <strong>Box に文字色の欄が無く</strong>、また「親の Hover を開いたまま子を選んで変更」しても<strong>連動しない（子の通常色が変わるだけ）</strong>。よって<strong>子テキストの hover 連動は Mini の Custom Code で行う</strong>：親と子に class を付け、<code>.親class:hover .子class{color:…}</code>（枠は <code>border-color</code>）を §9 コード集の Custom Code に書く。ボタン自身の背景・影・移動は通常の Hover 条件スタイル（Box のプロパティなので可）で設定する。<strong>入力欄の Focus</strong> も同じドロップダウンの Focus を選べば設定できる。</dd>
  <dt>コンポーネント化（1つ作って使い回す）</dt>
  <dd>要素を選択 → <strong>右クリック「コンポーネントに変換」 または ⌘+J</strong>（Win: Ctrl+J）→ 名前を付ける。再配置は<strong>左ナビの「コンポーネント」パネル</strong>から<strong>ドラッグ</strong>。コンポーネントを編集すると<strong>全インスタンスに自動反映</strong>。通常Boxに戻すのは ⌘+Shift+J。</dd>
  <dt>画像のフィット（cover/contain）と位置</dt>
@@ -3010,10 +3010,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>Box土台に blue / radius100 / padding16-64-16-36 を設定した</li></ul></li>
 <li>影（通常状態）: 右パネル→ボックス→外観→<strong>Shadow</strong>→方向 <strong>Outset</strong>、X:0 / Y:10 / Blur:24 / Spread:0 / Color <span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE852</code>（8桁HEX＝色 <code>#4A7DE8</code> ＋ 不透明度 32%）。
 <ul class="checklist"><li>通常時の青影 0/10/24/0 #4A7DE8・不透明度 32% を入れた</li></ul></li>
-<li><strong>ボタンの文字色（子が継承する元）</strong>：<code>Comp/CTA-Primary</code>（親Box）を選択 → 右パネル <strong>テキストタブ → 色</strong> を <strong>白 <code>text/on-dark</code></strong> にする。この色を子の label・矢印が継承する（子に個別の色は付けない）。<strong>ホバーでこの親の文字色を ink に変える</strong>と子も一緒に変わる（後述）。</li>
 <li>ラベル: <code>Comp/CTA-Primary</code> 内に 追加→基本→<strong>Text</strong> をドラッグ。レイヤー名 <code>CTA-Pri/label</code>。
 <ul>
-<li>[テキスト]タブ→フォント: Noto Sans JP、size: <strong><code>15px</code></strong>、weight: <strong>800</strong>（Noto Sans JP の 800 ウェイトを使う。§フォント章の手順で 800 を読み込んでおく）、<strong>色: 設定しない＝親に継承</strong>（親 CTA-Button の文字色 白 を受け継ぐ。ホバー連動のため自前の色は付けない）</li>
+<li>[テキスト]タブ→フォント: Noto Sans JP、size: <strong><code>15px</code></strong>、weight: <strong>800</strong>（Noto Sans JP の 800 ウェイトを使う。§フォント章の手順で 800 を読み込んでおく）、色: <code>text/on-dark</code></li>
 <li>コピーは本文章の確定値を流し込む（曖昧プレースホルダ禁止）</li>
 </ul>
 <ul class="checklist"><li>ラベルText（15px/800/white）を配置した</li></ul></li>
@@ -3021,9 +3020,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul>
 <li>サイズ→幅: <strong><code>32px</code></strong>、高さ: <strong><code>32px</code></strong></li>
 <li>外観→角丸: <strong>50%</strong>（正円。</li>
-<li>外観→Border: スタイル <strong>Solid</strong>、太さ <strong><code>1.5px</code></strong>、色 <strong><code>currentColor</code></strong>（文字色に追従。親ホバーで親文字色が ink になれば枠も自動で ink）</li>
+<li>外観→Border: スタイル <strong>Solid</strong>、太さ <strong><code>1.5px</code></strong>、色 <code>text/on-dark</code>（hover時は ink に切替=後述）</li>
 <li>レイアウト→配置: 中央／中央</li>
-<li>中に 追加→基本→<strong>Text</strong>（レイヤー名 <code>CTA-Pri/arrow-icon</code>）で <code>＞</code>、size <code>13px</code>、<strong>色: 設定しない＝親に継承</strong>（または <code>currentColor</code>）</li>
+<li>中に 追加→基本→<strong>Text</strong>（レイヤー名 <code>CTA-Pri/arrow-icon</code>）で <code>＞</code>、size <code>13px</code>、色 <code>text/on-dark</code></li>
 <li>親Boxの padding 右(64)で右寄せ余白を確保しているので、<code>CTA-Pri/arrow</code> は通常フローのまま末尾に置けば右端配置になる（absolute不要）</li>
 </ul>
 <ul class="checklist"><li>矢印円Box（32px/丸/border1.5px white/中に＞）を配置した</li></ul></li>
@@ -3032,10 +3031,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>塗り（Fill）: <code>brand/yellow</code></li>
 <li>影（Shadow）：種類 <strong>外側（Outset）</strong>／X <code>0</code>・Y <code>16</code>・ぼかし（Blur）<code>34</code>・広がり（Spread）<code>0</code>／色 <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（brand/yellow）・不透明度 <code>50%</code></li>
 <li><a class="term" href="#term-transform">変形タブ</a>（Transform）: Move Y <strong>-2px</strong></li>
-<li><strong>子テキスト・矢印を連動させる＝『継承』で行う（重要）</strong>：<strong>Studio では Hover を開いたまま子を選んで変更しても連動しない</strong>（子の通常色が変わるだけ＝常時その色になる）。代わりに、この Hover State で <strong>CTA-Button（親）自身の文字色を <code>text/ink</code></strong> に変える（通常時は白）。<code>CTA-Pri/label</code> は色を継承・<code>CTA-Pri/arrow</code> の枠と <code>CTA-Pri/arrow-icon</code> は <code>currentColor</code> にしてあるので、<strong>親の文字色を変えるだけで label・矢印が一緒に ink になる</strong>（＝CSS の <code>.btn:hover{color:ink}</code> を子が継承）。<strong>子に個別の Hover は付けない</strong>。</li>
+<li><strong>子テキスト・矢印を hover で ink にする＝Mini Custom Code で行う（重要）</strong>：<strong>Box には文字色の欄が無く</strong>、Hover を開いたまま子を選んで変えても連動しない（子の通常色が変わるだけ＝常時その色になる）。そこで親ボタンに class <code>cta-pri</code>、子 <code>CTA-Pri/label</code>・<code>CTA-Pri/arrow</code>・<code>CTA-Pri/arrow-icon</code> に <strong>設定タブ → class</strong> で <code>cta-pri-label</code> / <code>cta-pri-arrow</code> / <code>cta-pri-arrow-icon</code> を付け、§9 コード集の Custom Code に次を貼る：<br><code>.cta-pri:hover .cta-pri-label,.cta-pri:hover .cta-pri-arrow-icon{color:#0F1A33!important}</code><br><code>.cta-pri:hover .cta-pri-arrow{border-color:#0F1A33!important}</code><br>これで<strong>親ボタンのホバー時だけ</strong>文字・矢印枠が ink になる（通常は白のまま）。子の通常色は白 <code>text/on-dark</code> のままにし、<strong>子に個別の Hover は付けない</strong>。</li>
 <li>アニメーション: 変形タブ→アニメーション→時間 <strong>0.2秒</strong>、イージング <strong>ease</strong></li>
 </ul>
-<ul class="checklist"><li>Hover条件スタイルで 背景brand/yellow/影黄/Y-2/親の文字色text/ink（子label・矢印は継承で連動）を設定した</li><li>hover transition 0.2s ease を設定した</li></ul></li>
+<ul class="checklist"><li>Hover条件スタイルで 背景brand/yellow/影黄/Y-2/文字text/ink を設定した</li><li>hover transition 0.2s ease を設定した</li></ul></li>
 <li><strong>コンポーネント化:</strong> <code>Comp/CTA-Primary</code> 選択→<strong><code>Cmd+J</code></strong> のコンポーネント化と同操作）。以後はコンポーネント（左ナビ「コンポーネント」）からD&Dで全CTA設置箇所に複製。
 <ul class="checklist"><li>Cmd+J でコンポーネント登録した</li></ul></li>
 </ol>
@@ -3087,7 +3086,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>hover 条件スタイル</strong>（右パネル→ボックス→条件スタイル→Hover）:
 <ul>
 <li>塗り: <code>brand/navy</code>／Border色: <code>brand/navy</code></li>
-<li>文字色の連動は<strong>継承で行う</strong>：この Hover で <strong>ボタン（親）の文字色を <code>text/on-dark</code></strong>（白）に変える。label は色を継承・arrow の border/icon は <code>currentColor</code> にしておけば一緒に白へ。<strong>子を個別に Hover 編集しない</strong>（Studioでは連動しないため）</li>
+<li>子（label / arrow / arrow-icon）の色を hover で白にするのは <strong>Mini Custom Code</strong> で：子に class を付け <code>.cta-sec:hover .子class{color:#FFFFFF!important}</code>（枠は <code>border-color</code>）を §9 コード集に書く（Box に文字色欄が無く・子を個別Hoverしても連動しないため）。背景・枠・移動は通常の Hover 条件スタイルで設定する。</li>
 <li>Shadow: X:0 / Y:12 / Blur:26 / Spread:0 / Color <span class="sw" style="--c:#1B2A4A"></span> <code>#1B2A4A38</code>（8桁HEX＝色 <code>#1B2A4A</code> ＋ 不透明度 22%）</li>
 <li>変形: Move Y <strong>-2px</strong>、アニメーション 時間 <strong>0.2秒</strong>／ease</li>
 </ul>
