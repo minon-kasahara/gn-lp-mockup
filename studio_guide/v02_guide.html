@@ -966,6 +966,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <dd><strong>Studio に縦横比の固定指定（aspect-ratio）は無い・余白は px のみ（%指定は不可）</strong>。用途別に:<br>・<strong>素材本来の比率</strong>でよい → 画像を <strong>Imgモード</strong>（画像右上トグル）にし <strong>幅＝%・高さ＝auto</strong>（幅が変わっても歪まない）。<br>・<strong>任意比率（16:10等）を厳密に</strong> → ①目的比率のダミー画像（例 1600×1000の透明/同色）を Imgモードで親に入れ幅100%・高さ auto ＝親の高さが比率で確定 → ②中身を別Boxで重ね <strong>Absolute・上下左右0・幅高さ100%</strong>。または <strong>Embedボックスに縦横比固定（aspect-ratio:16/10）を直接CSS記述</strong>。</dd>
  <dt>回転・移動（transform）／Hover でふわっと浮かせる</dt>
  <dd>要素を選択 → 右パネル <strong>「変形(Transform)」タブ</strong>（環境により「モーション」表記）に <strong>移動(Move) X・Y / 回転(Rotate) / 拡大縮小(Scale) / 傾き(Skew) / 原点(Origin)</strong> がまとまっている。回転は度数を直接入力（<code>-5</code>＝反時計、<code>62</code>＝時計）、移動は Y に <code>-2</code> 等。<br><strong>Hover時だけ Y −2px</strong> にするには <strong>右上「条件スタイル」→ Hover を選択 → 変形タブの移動 Y に <code>-2</code></strong>。</dd>
+ <dt id="term-center">要素を中央寄せする（margin auto は使えない）</dt>
+ <dd><strong>Studio のマージンは px のみで auto は選べない</strong>ため、<code>margin:0 auto</code> での中央寄せはできない。中央寄せは<strong>親（Flexコンテナ）の配置で交差軸＝水平を「中央」</strong>にして行う（右パネル ボックスタブ → レイアウト → <strong>配置 → 水平＝中央</strong>）。中身の幅は <code>px</code>（最大幅）か <code>auto</code>/Hug にしておく（幅100%で親いっぱいだと中央寄せの意味が無い）。実例は §5-6 Record。</dd>
  <dt>片側マージンを auto にして端へ押しやる（margin-left:auto 相当）</dt>
  <dd><strong>Studio の余白(余白/間隔)は px のみで auto は選べない</strong>。横並びの中で1要素だけ反対端へ寄せるには:<br>・要素が2つなら親の <strong>整列＝両端揃え(Space Between)</strong>。<br>・3つ以上で「間の要素」を伸ばして押し出すなら、<strong>間の要素の幅＝<code>flex</code></strong>（1）にする（余白を食って隣を端へ追いやる）。<br>・どうしても隙間だけ要る時は空の<strong>スペーサーBox（幅＝flex）</strong>を挟む。</dd>
  <dt>ページ最上位（ページルート＝body相当）を選択する</dt>
@@ -1529,7 +1531,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </tbody>
 </table>
 <div class="callout warn"><p><strong>注意</strong>：この章どおりに全セクションを 1320px 器で作ると Approach〜CTA 本体（実値1180px）が設計より約140px広くなり、可視的なレイアウト崩れになる。コンテナ幅は必ず上表の章別実値で指定する。</p></div>
-<p>Studio設定（各セクション章で実施）：各内側ラッパに相当する「Container Box」を Section 直下に置き、<span class="path">右パネル<i>›</i>[ボックス]タブ<i>›</i>サイズ<i>›</i>幅：上表のpx値</span>（pxは「最大幅」挙動なので画面が狭まると自動縮小）、<strong>配置：中央寄せ（margin auto 相当）</strong>、<strong>padding 左右 <code>40px</code></strong>（<a class="term" href="#term-gutter">ガター</a>、Hero 内側ラッパのみ上下も <code>12px / 8px</code> を付与。Mobile では §1.2写像で縮小）。</p>
+<p>Studio設定（各セクション章で実施）：各内側ラッパに相当する「Container Box」を Section 直下に置き、<span class="path">右パネル<i>›</i>[ボックス]タブ<i>›</i>サイズ<i>›</i>幅：上表のpx値</span>（pxは「最大幅」挙動なので画面が狭まると自動縮小）、<strong>配置：親(Section)の 水平=中央 で中央寄せ</strong>（Studioのマージンは px のみで auto は入らない）、<strong>padding 左右 <code>40px</code></strong>（<a class="term" href="#term-gutter">ガター</a>、Hero 内側ラッパのみ上下も <code>12px / 8px</code> を付与。Mobile では §1.2写像で縮小）。</p>
 </li>
 <li><strong>固定ヘッダーは Base 直下に置く</strong>（重要依存条件：固定（fixed）は Base 直下に置く必要があり、ネストが深いと固定されない）。「Header Box」は、<strong>必ず Base の直下</strong>（ネストさせない）に配置する。<a class="term" href="#term-zindex">z-index</a> は <code>100</code> にする（→ ヘッダー章で設定）。</li>
 <li><strong>フローティング特典CTA（Float Perk）も fixed なので Base 直下に置く</strong>。これは右下追従の固定要素で、CSS は <code>position:fixed;bottom:20px;right:20px;width:270px;z-index:90</code>（line1017–1035・コメント「FLOATING PERK CTA 右下追従・v10 no.5」line1015）。 も <code>key:"floating" / "5-12 フローティング特典CTA (v10 NEW)" / exists:true</code> と12番目として明記している。Header と<strong>同じ fixed 制約</strong>が掛かるため、「Float Perk CTA」Box も<strong>必ず Base 直下（非ネスト）</strong>に置く。
@@ -4177,7 +4179,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <ol class="steps">
 <li><code>Sec-Hero</code> 直下（ブロブの後ろ）に Box を追加→レイヤー名 <code>Hero Inner</code>。</li>
-<li>右パネル<strong>ボックス</strong>タブ→サイズ: 幅 <code>px</code>=<code>1320</code>（= <code>--max-w</code>。px は最大幅挙動なので画面が狭まれば自動縮小）。中央寄せ: margin 左右 <strong>auto</strong>。</li>
+<li>右パネル<strong>ボックス</strong>タブ→サイズ: 幅 <code>px</code>=<code>1320</code>（= <code>--max-w</code>。px は最大幅挙動なので画面が狭まれば自動縮小）。<strong>中央寄せは親（Hero）の配置 → 水平=中央 で行う</strong>（Studioのマージンは px のみで auto は入らない）。</li>
 <li><strong>高さ: 単位 <a class="term" href="#term-fill">flex</a></strong>（= 親 flex column 内で flex-grow 1 相当。これで Hero の中段＝マーキーを除いた残り全高を Hero Inner が占有する。「flex=主軸方向の伸長/比率）。</li>
 <li>padding: 上 <code>12px</code> / 下 <code>8px</code> / 左右 <code>40px</code>（= <code>--gutter</code>、<a class="term" href="#term-gutter">ガター</a>）。</li>
 <li>方向: <strong>横並び（Horizontal）</strong>。主軸は横なので<strong>垂直配置（交差軸）: 中央（center）</strong>。横方向の子の配置は左寄せ（既定）。<br>補足: 横並び1行にする限り、垂直配置中央で上下中央の見えになる。</li>
@@ -4549,7 +4551,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h4>B. LW Label Row + LW Label</h4>
 <ol class="steps">
-<li><code>Hero Marquee Band</code> 直下に Box→<code>LW Label Row</code>。幅 最大 <code>1320px</code>・左右auto、padding 左右 <code>40px</code>、方向 横並び・水平中央・垂直中央、下マージン <code>20px</code>。</li>
+<li><code>Hero Marquee Band</code> 直下に Box→<code>LW Label Row</code>。幅 最大 <code>1320px</code>、padding 左右 <code>40px</code>、方向 横並び・水平中央・垂直中央、下マージン <code>20px</code>。<strong>このBox自体の中央寄せは親 Hero Marquee Band の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
 <li>その中に Text/Box→<code>LW Label</code>。コピー <code>提携VC50社以上</code>、数字 <code>50</code> のみ Inter・<code>brand/blue</code>・<code>40px</code>・<code>900</code> に部分上書き。本文は <code>Lw-Label / 数字強調</code> テキストスタイル（Noto Sans JP / <code>22px</code> / <code>900</code> / 行間1 / letter-spacing <code>.08em</code> / 色 <code>text/ink</code>）。</li>
 <li>CW風 <code>＼ ／</code> 装飾線（<code>::before</code>/<code>::after</code> の傾いた2px線）: §9 コード集の Custom Code で <code>.lw-label::before/::after</code> をそのまま移植して再現する。LW Label に padding 左右 <code>66px</code> で線のスペースを確保し、Custom Code 側で各 <code>32px</code>×<code>2px</code>・角丸 <code>2px</code>・背景 <code>text/ink</code> の線を左右に置き、左 <code>62deg</code> / 右 <code>-62deg</code>（transform-origin 右下/左下）に傾ける。</li>
 </ol>
@@ -4876,7 +4878,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h3 id="s3-4">5-3-4. 見出しブロック（sec-head）</h3>
  <ol class="steps">
- <li><code>Sec-Approach</code> 内に <strong>Box</strong> をドラッグ→<code>Approach Head</code> と命名。右パネル<strong>ボックス</strong>タブ→方向: <strong>縦並び（Vertical）</strong>、サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ auto、<strong>最大幅: 820px</strong>、配置: <strong>水平=中央 / 垂直=上</strong>、左右margin <strong>auto</strong>（中央寄せ）。
+ <li><code>Sec-Approach</code> 内に <strong>Box</strong> をドラッグ→<code>Approach Head</code> と命名。右パネル<strong>ボックス</strong>タブ→方向: <strong>縦並び（Vertical）</strong>、サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ auto、<strong>最大幅: 820px</strong>、配置: <strong>水平=中央 / 垂直=上</strong>（このBoxの中身の揃え）。<strong>このBox自体の中央寄せは親 Sec-Approach の配置 → 水平=中央 で</strong>（マージン auto 不可）。
  <ul class="checklist"><li>最大幅820px・中央寄せ</li></ul>
  </li>
  <li>同<strong>ボックス</strong>タブ→<strong>padding</strong>: 左右 <strong>40px</strong>（<code>--gutter</code>）、上0 / 下0。下方向の間隔は次のグリッドとの<strong>margin下44px</strong>で取る → <code>Approach Head</code> の <strong>margin: 下44px</strong>。
@@ -4893,7 +4895,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </ul>
  <ul class="checklist"><li>H2 Section適用・コピー入力・「受給後5年」を <code>brand/blue</code></li></ul>
  </li>
- <li><code>Approach Head</code> 内に <strong>テキスト</strong> をドラッグ→<code>Approach Lead</code> と命名。<strong>テキスト</strong>タブ→スタイル <strong>Lead</strong> を適用、<strong>最大幅 620px</strong>、左右margin auto（中央）。本文:
+ <li><code>Approach Head</code> 内に <strong>テキスト</strong> をドラッグ→<code>Approach Lead</code> と命名。<strong>テキスト</strong>タブ→スタイル <strong>Lead</strong> を適用、<strong>最大幅 620px</strong>。<strong>中央寄せは親 Approach Head の配置=水平中央で済む</strong>（マージン auto 不可）。本文:
  <pre class="tree">経営者がやることは、ヒアリングに答えるだけ。G&amp;Nが情報収集・制度選定・申請・採択後フォロー・5年間の後年報告まで、一気通貫でサポートします。</pre>
  （社名は素のテキスト「G&amp;N」を入力）
  <ul class="checklist"><li>Lead適用・max-width620px・コピー入力</li></ul>
@@ -4938,7 +4940,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><code>Sec-Approach</code> 内（<code>Approach Head</code> の下）に <strong>Box</strong> をドラッグ→<code>Approach Flow</code> と命名。
  <ul class="checklist"><li>Box配置・命名</li></ul>
  </li>
- <li>右パネル<strong>ボックス</strong>タブ→サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ auto、<strong>最大幅 1180px</strong>、左右margin <strong>auto</strong>（中央）。
+ <li>右パネル<strong>ボックス</strong>タブ→サイズ: 幅 <strong><code>%</code> 100%</strong> / 高さ auto、<strong>最大幅 1180px</strong>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。
  <ul class="checklist"><li>最大幅1180px・中央寄せ</li></ul>
  </li>
  <li>同<strong>ボックス</strong>タブ→<strong>padding</strong>: 左右 <strong>40px</strong>（<code>--gutter</code>）、上下0。
@@ -5365,7 +5367,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>サイズ: 幅 = <code>%</code> <code>100%</code> かつ 最大幅 = <code>820px</code>／ 高さ = <code>auto</code>。</li>
  <li>レイアウト: 方向 = 縦並び、交差軸（水平）= 中央、gap = <code>0</code>。</li>
  <li>パディング: 左右 <code>40px</code>（<code>--gutter</code>）、上下 <code>0</code>。</li>
- <li>マージン: 下 <code>44px</code>、左右 = <code>auto</code>（中央寄せ）。</li>
+ <li>マージン: 下 <code>44px</code>。<strong>このBox自体の中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  </ul>
  </li>
  <li><code>market-head</code> 内に <span class="path">追加<i>›</i>基本<i>›</i>Text</span> → リネーム <code>Text / market-title</code>。内容を1テキストで入力（レスポンシブ改行は5-4-7で扱う。PC既定では改行を入れない）:<br>
@@ -5381,7 +5383,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul>
  <li>テキストスタイル <code>Lead</code> を適用。実効値: サイズ = <code>15.5px</code>、ウェイト <code>400</code>、行間 <code>1.95</code>、色 = <code>text/sub</code>。</li>
  <li>サイズ: 幅 = <code>%</code> <code>100%</code>、最大幅 = <code>760px</code>／ 高さ = <code>auto</code>。</li>
- <li>マージン: 左右 = <code>auto</code>（中央寄せ）。配置: テキスト揃え = 中央。</li>
+ <li><strong>中央寄せは親 market-head の交差軸（水平）=中央で済む</strong>（マージン auto 不可）。配置: テキスト揃え = 中央。</li>
  </ul>
  </li>
  </ol>
@@ -5397,7 +5399,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>レイアウト: 方向 = 横並び（Horizontal）、垂直 = ストレッチ（stretch・2カラム同高化）、水平 = 中央。</li>
  <li>gap（間隔）= <code>22px</code>。</li>
  <li>サイズ: 幅 = <code>%</code> <code>100%</code> かつ 最大幅 = <code>1180px</code>／ 高さ = <code>auto</code>。</li>
- <li>パディング: 左右 <code>40px</code>（<code>--gutter</code>）、上下 <code>0</code>。マージン: 左右 = <code>auto</code>（中央寄せ）。</li>
+ <li>パディング: 左右 <code>40px</code>（<code>--gutter</code>）、上下 <code>0</code>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  </ul>
  </li>
  <li>子カードの等分は、子Box2つを 幅 = <a class="term" href="#term-fill"><code>flex</code> <code>1</code></a>にして横並び等分で再現（5-4-5/5-4-6でカード側に設定）。</li>
@@ -5843,7 +5845,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </tbody>
  </table>
  </li>
- <li>右パネル → ボックスタブ → <strong>サイズ</strong>: 幅 <strong>730px</strong>、左右 margin <strong>auto</strong>（中央寄せ）。</li>
+ <li>右パネル → ボックスタブ → <strong>サイズ</strong>: 幅 <strong>730px</strong>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  </ol>
  <div class="callout warn">
  <p><strong>幅730pxに注意</strong>: ここは最大幅730pxです。他セクションの lead は620pxなので、<strong>ここは730pxと異なる点に注意</strong>してください。</p>
@@ -5854,7 +5856,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p>カード4枚を2×2に並べる2カラムグリッドです。<strong>Flex折返し（Wrap）＋子カード幅 <code>calc(50% - 10px)</code></strong> で2列を作ります（親 <code>Svc-Grid</code> を固定幅1180pxにしているため幅配分が確定します）。</p>
  <ol class="steps">
  <li><code>Sec-Service</code> の子（<code>Svc-Sec-Head</code> の下）に 左ナビ → 追加 → 基本タブ → <strong>Box</strong> を配置。レイヤー名 <strong><code>Svc-Grid</code></strong>。</li>
- <li>右パネル → ボックスタブ → <strong>サイズ</strong>: 幅 <strong>1180px</strong>（最大幅。<code>Sec-Service</code> 全体の <code>--max-w</code> ではなくグリッドは1180pxのサブ幅）、高さ <strong>auto</strong>、左右 margin <strong>auto</strong>（中央寄せ）。</li>
+ <li>右パネル → ボックスタブ → <strong>サイズ</strong>: 幅 <strong>1180px</strong>（最大幅。<code>Sec-Service</code> 全体の <code>--max-w</code> ではなくグリッドは1180pxのサブ幅）、高さ <strong>auto</strong>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>同ボックスタブ → <strong>余白（Padding）</strong>: <strong>左右=40px / 上下=0</strong>。</li>
  <li><strong>2カラムレイアウト</strong>: Flex 折返しで2列にする。
  <ul>
@@ -6293,7 +6295,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><code>Sec Head</code> → <strong>ボックス</strong>タブ → サイズ：幅 <code>auto</code>／高さ <code>auto</code>。<strong>配置</strong>：親（Record＝縦並び）の<strong>交差軸（水平）を「中央」</strong>に。これで <code>margin:0 auto</code> の中央化を代替。</li>
  <li><strong>最大幅（max-width）</strong>：<code>820px</code>。</li>
  <li><strong>パディング</strong>：左右 <code>40px</code>（<code>--gutter</code>）／上下 <code>0</code>。</li>
- <li><strong>下マージン</strong>：<code>44px</code>（<code>margin:0 auto 44px</code> の縦分）。</li>
+ <li><strong>下マージン</strong>：<code>44px</code>（ブロック下方向の余白）。</li>
  <li>内部方向＝縦並び・交差軸中央。</li>
  <li><strong>見出しを置く</strong>：<code>Sec Head</code> 内に <strong>基本 → Text</strong> → レイヤー名 <code>Record Title</code>。<strong>改行を入れず1つの連続文</strong>として入力：「選ばれてきた理由は9年分の支援実績にあります」（ハードEnter禁止）。</li>
  <li><code>Record Title</code> → <strong>テキスト</strong>タブ → スタイル <code>H2 Section</code> を適用。個別確認：フォント=Noto Sans JP／<strong>サイズ＝<code>52px</code>（PC実効値で固定入力。Mobile/Tablet 実効は 5-6-7 の値を上書き）</strong>／ウェイト <code>900</code>／<strong>行間 <code>1.22</code></strong>／字間 <code>-0.03em</code>／色 <code>text/ink</code>／<strong>語中改行抑止（word-break:keep-all 相当）=ON</strong>／<strong>整列=中央</strong>。</li>
@@ -6302,7 +6304,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  <li><strong>下マージン</strong>：<code>Record Title</code> → ボックスタブ → マージン下 <code>24px</code>。</li>
  <li><strong>リードを置く</strong>：<code>Sec Head</code> 内に <strong>基本 → Text</strong> → レイヤー名 <code>Record Lead</code> → 上記リード実コピーを入力。</li>
- <li><code>Record Lead</code> → スタイル <code>Lead</code> 適用（<code>15.5px</code>／行間 <code>1.95</code>／<code>text/sub</code>／<code>weight 400</code>／整列=中央）。ボックスタブ → <strong>最大幅 <code>620px</code></strong>・交差軸中央（<code>margin:0 auto</code> 相当）。</li>
+ <li><code>Record Lead</code> → スタイル <code>Lead</code> 適用（<code>15.5px</code>／行間 <code>1.95</code>／<code>text/sub</code>／<code>weight 400</code>／整列=中央）。ボックスタブ → <strong>最大幅 <code>620px</code></strong>・交差軸中央（中央寄せ）。</li>
  </ol>
 
  <ul class="checklist"><li>見出しは1つの連続文（ハードEnterなし）・サイズ式 <code>clamp(28px,4vw+8px,52px)</code>・行間 <code>1.22</code>・強調部 blue・下24px、リード max620px 中央、Sec Head max820px・左右40px・下44px を設定した</li></ul>
@@ -6367,7 +6369,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p>手順（まず Rec Grid → Rec Stat 1 を完成 → 複製。Default＝PC キャンバス）：</p>
  <ol class="steps">
  <li><code>Sec-Record</code> 内（Sec Head の下）に <strong>基本 → Box</strong> → レイヤー名 <code>Rec Grid</code>。</li>
- <li><code>Rec Grid</code> → サイズ：最大幅 <code>1180px</code>／高さ <code>auto</code>、交差軸中央（<code>margin:0 auto</code> 相当）。パディング 左右 <code>40px</code>。</li>
+ <li><code>Rec Grid</code> → サイズ：最大幅 <code>1180px</code>／高さ <code>auto</code>、交差軸中央（中央寄せ）。パディング 左右 <code>40px</code>。</li>
  <li><code>Rec Grid</code> → <strong>方向＝横並び（Horizontal）</strong>。配置：水平=<strong>中央</strong>・垂直=<strong>中央</strong>。<strong>gap <code>16px</code></strong>。</li>
  <li><strong>Rec Stat 1 を作る</strong>：<code>Rec Grid</code> 内に <strong>基本 → Box</strong> → <code>Rec Stat 1</code>。方向=<strong>横並び</strong>、配置=垂直<strong>中央</strong>、<strong>gap <code>4px</code></strong>、<strong>高さ <code>88px</code></strong>、幅 <code>auto</code>。</li>
  <li><strong>月桂樹L（左）</strong>：<code>Rec Stat 1</code> 内に <strong>基本 → Box</strong> → <code>Laurel L 1</code>。サイズ <strong>幅 <code>34px</code>／高さ <code>100%</code></strong>。<strong>塗り（Fill）→ 画像</strong>で <code>laurel.svg</code> を指定（5-6-6 でアップロード方法）。<strong>フィット＝高さ100%基準であふれさせてクロップ（cover/Crop・<code>background-size:auto 100%</code>）／位置＝左中央</strong>。
@@ -6412,7 +6414,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <ol class="steps">
  <li><code>Sec-Record</code> 内（Rec Grid の下）に <strong>基本 → Text</strong> → <code>Rec Foot</code> → 上記実コピーを入力。</li>
- <li><code>Rec Foot</code> → ボックスタブ → 最大幅 <code>1180px</code>・交差軸中央（<code>margin:auto</code> 相当）・<strong>上マージン <code>32px</code></strong>・パディング左右 <code>40px</code>。</li>
+ <li><code>Rec Foot</code> → ボックスタブ → 最大幅 <code>1180px</code>・交差軸中央（中央寄せ）・<strong>上マージン <code>32px</code></strong>・パディング左右 <code>40px</code>。</li>
  <li><code>Rec Foot</code> → スタイル <code>Footnote</code> 適用後、個別確認：サイズ <code>11.5px</code>／<code>weight 400</code>／色 <code>text/sub-lt</code>（<span class="sw" style="--c:#9EAAC8"></span> <code>#9EAAC8</code>）／<strong>整列=右寄せ（right）</strong>。</li>
  </ol>
 
@@ -6689,7 +6691,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul class="checklist"><li><code>Sec-VC</code> を配置し ID＝<code>vc</code> を設定した</li><li>幅100% / 高さauto / padding 上下140・左右0 を設定した</li><li>背景に 180deg <code>#FFFFFF</code>→<code>#EFF5FE</code> の縦グラデを設定した</li></ul>
 
  <div class="callout note">
- <p>内側の各ブロックは個別に最大幅 <code>1320</code>px ＋ 左右 <code>40</code>px の<a class="term" href="#term-gutter">ガター</a>で中央寄せします（見出しブロックのみ最大幅 <code>820</code>px）。Studioでは「中央寄せラッパーBox（最大幅＋左右余白＋margin左右auto）」を各ブロックに持たせて再現する（以下 5-7-2〜5-7-5）。</p>
+ <p>内側の各ブロックは個別に最大幅 <code>1320</code>px ＋ 左右 <code>40</code>px の<a class="term" href="#term-gutter">ガター</a>で中央寄せします（見出しブロックのみ最大幅 <code>820</code>px）。Studioでは「中央寄せラッパーBox（最大幅＋左右余白＋親の配置=水平中央）」を各ブロックに持たせて再現する（以下 5-7-2〜5-7-5）。</p>
  </div>
 
  <h3 id="s7-2">5-7-2. 見出しブロック <code>VC-Sec-Head</code>（ピル「VC PARTNERS」＋ 見出し）</h3>
@@ -6702,7 +6704,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ol class="steps">
  <li><code>Sec-VC</code> を選択 → <span class="path">追加<i>›</i>基本<i>›</i>Box</span> を内側に配置 → レイヤー名 <strong><code>VC-Sec-Head</code></strong>。</li>
  <li>右パネル → ボックスタブ → サイズ → 幅 <code>px</code> <strong>820</strong>（px は最大幅として機能し画面が狭まると自動縮小する）、高さ <code>auto</code>。</li>
- <li>このBox自身の <strong>margin</strong> → 左右 <strong><code>auto</code></strong>（中央寄せ）。</li>
+ <li><strong>このBoxの中央寄せは親の配置 → 水平=中央 で</strong>（Studioのマージンは px のみで auto は入らない）。</li>
  <li>余白（Padding）：左右 <strong><code>40</code></strong>（px・<a class="term" href="#term-gutter">ガター</a>）、上下 <code>0</code>。</li>
  <li>下マージン（margin-bottom）：<strong><code>72</code></strong>（px）。</li>
  <li>方向（Direction）：<strong>縦並び（Vertical）</strong>。配置（Alignment）：水平＝<strong>中央</strong>（pill と見出しを中央寄せ）。</li>
@@ -6807,7 +6809,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h4>A. ラッパー <code>VC-Head-Box</code></h4>
  <ol class="steps">
  <li><code>Sec-VC</code> 直下（<code>VC-Sec-Head</code> の下）に <span class="path">追加<i>›</i>基本<i>›</i>Box</span> → レイヤー名 <strong><code>VC-Head-Box</code></strong>。</li>
- <li>サイズ → 幅 <code>px</code> <strong>1320</strong>（<code>--max-w</code>）、高さ <code>auto</code>。margin 左右 <strong><code>auto</code></strong>（中央寄せ）。</li>
+ <li>サイズ → 幅 <code>px</code> <strong>1320</strong>（<code>--max-w</code>）、高さ <code>auto</code>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>余白：左右 <strong><code>40</code></strong>（px・ガター）、上下 <code>0</code>。下マージン <strong><code>60</code></strong>（px）。</li>
  <li>方向（Direction）：<strong>縦並び（Vertical）</strong>。配置：水平＝<strong>中央</strong>（VC-Big もリード本文も中央に並ぶ）。</li>
  </ol>
@@ -6851,7 +6853,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>色：<span class="sw" style="--c:#6273A0"></span> <code>#6273A0</code>（sub）</li>
  </ul>
  </li>
- <li>サイズ → 幅 <code>px</code> <strong>640</strong>、margin 左右 <strong><code>auto</code></strong>（中央寄せ）。配置＝中央。</li>
+ <li>サイズ → 幅 <code>px</code> <strong>640</strong>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>文言（<strong>全文。「独立系VP」（VC ではない）</strong>）：
  <pre class="tree">シード〜シリーズAを担う国内VC・独立系VP・CVCと連携。スタートアップエコシステムの内側から、補助金・助成金を含む財務戦略を提案します。VC経由でご紹介のあったスタートアップには、着手金無料の優先枠でご対応します。</pre>
  </li>
@@ -6906,7 +6908,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h4>A-1. グリッドラッパー <code>VC-Grid</code>（Wrap方式）</h4>
  <ol class="steps">
  <li><code>Sec-VC</code> 直下（<code>VC-Head-Box</code> の下）に <span class="path">追加<i>›</i>基本<i>›</i>Box</span> → レイヤー名 <strong><code>VC-Grid</code></strong>。</li>
- <li>サイズ → 幅 <code>px</code> <strong>1320</strong>（<code>--max-w</code>）、高さ <code>auto</code>。margin 左右 <strong><code>auto</code></strong>。</li>
+ <li>サイズ → 幅 <code>px</code> <strong>1320</strong>（<code>--max-w</code>）、高さ <code>auto</code>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>余白：左右 <strong><code>40</code></strong>（px・ガター）、上下 <code>0</code>。</li>
  <li>右パネル → ボックスタブ → 方向（Direction）：<strong>折返し（Wrap）</strong>。</li>
  <li>間隔（Gap）：<strong><code>16</code></strong>（px。行・列とも）。</li>
@@ -7027,7 +7029,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h4>A. ラッパー <code>VC-Perk-Banner</code></h4>
  <ol class="steps">
  <li><code>Sec-VC</code> 直下（<code>VC-Grid</code> の下）に <span class="path">追加<i>›</i>基本<i>›</i>Box</span> → レイヤー名 <strong><code>VC-Perk-Banner</code></strong>。</li>
- <li>サイズ → 幅 <code>px</code> <strong>1320</strong>、高さ <code>auto</code>。margin → 上 <strong><code>40</code></strong>（px）、左右 <strong><code>auto</code></strong>（中央寄せ）。</li>
+ <li>サイズ → 幅 <code>px</code> <strong>1320</strong>、高さ <code>auto</code>。margin → 上 <strong><code>40</code></strong>（px）。<strong>中央寄せ（左右）は親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>余白：左右 <strong><code>40</code></strong>（px・ガター）。</li>
  <li>配置（Alignment）：水平＝<strong>中央</strong>（中の inline-flex ピルを中央配置）。</li>
  </ol>
@@ -7343,7 +7345,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ol class="steps">
  <li><code>Cases Section</code> 内に Box を追加、<code>Cases Head</code> にリネーム（= <code>.sec-head</code>）。</li>
  <li>右パネル→ボックス→サイズ → 幅: <code>px</code> <code>820</code>（最大幅挙動）、高さ: <code>auto</code>。</li>
- <li>右パネル→ボックス→レイアウト → 方向: 縦並び、配置: 水平=中央（text-align:center相当）。margin: 左右 <code>auto</code>（中央寄せ）、下 <code>44px</code>。</li>
+ <li>右パネル→ボックス→レイアウト → 方向: 縦並び、配置: 水平=中央（このBoxの中身の揃え）。margin → 下 <code>44px</code>。<strong>このBox自体の中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>右パネル→ボックス→スペース → padding 左右: <code>40px</code>。</li>
  <li>見出しテキスト <code>Cases Title</code> を追加し <code>H2 Section</code> スタイルを適用。サイズは <code>clamp(28px,4vw+8px,52px)</code> / line-height 1.22（全BP一定）。コピー:
  <ul>
@@ -7353,7 +7355,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  <li>リード <code>Cases Lead</code> を追加し <code>Lead</code> スタイルを適用。コピー: <code>業種・ステージ・活用制度・採択額とともに、G&amp;Nが支援した実際の事例をご紹介します。</code>
  <ul>
- <li>右パネル→ボックス→サイズ → 幅: <code>px</code> <code>620</code>、margin 左右 <code>auto</code>。</li>
+ <li>右パネル→ボックス→サイズ → 幅: <code>px</code> <code>620</code>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  </ul>
  </li>
  </ol>
@@ -7364,7 +7366,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <ol class="steps">
  <li><code>Cases Section</code> 内・<code>Cases Head</code> の下に Box を追加、<code>Case Grid</code> にリネーム（= <code>.case-grid</code>）。</li>
- <li>右パネル→ボックス→サイズ → 幅: <code>px</code> <code>1320</code>、高さ: <code>auto</code>、margin 左右: <code>auto</code>。</li>
+ <li>右パネル→ボックス→サイズ → 幅: <code>px</code> <code>1320</code>、高さ: <code>auto</code>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>右パネル→ボックス→スペース → padding 左右: <code>40px</code>（<code>--gutter</code>）、上下: <code>0</code>。</li>
  <li>右パネル→ボックス→レイアウト → 方向: 横並び（Horizontal）＋折返し（Wrap）。gap: <code>24px</code>。
  <ul>
@@ -7817,7 +7819,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>サイズ <code>clamp(13.5px, 0.8vw + 8px, 15.5px)</code>（流体）／ 行間 1.95 ／ ウェイト 400 ／ 色 カラースタイル <code>text/sub</code>（<span class="sw" style="--c:#6273A0"></span><code>#6273A0</code>）／ 行揃え 中央。</li>
  </ul>
  </li>
- <li>サイズ → 幅 <code>620px</code>（最大幅）、margin 中央寄せ（水平 auto）。</li>
+ <li>サイズ → 幅 <code>620px</code>（最大幅）。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>文言（改行は明示改行＝Shift+Enter で入れる）:
  <pre class="tree">お問い合わせ前によくいただくご質問をまとめました。
 記載のない内容は、初回ご相談時にお気軽にお尋ねください。</pre>
@@ -7830,7 +7832,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <ol class="steps">
  <li><code>Sec-FAQ</code> 内、<code>FAQ-Head</code> の下に Box を追加。レイヤー名 <code>FAQ-List</code>。</li>
- <li>サイズ → 幅 <code>880px</code>（最大幅）、高さ <code>auto</code>、margin 中央寄せ（水平 auto）。</li>
+ <li>サイズ → 幅 <code>880px</code>（最大幅）、高さ <code>auto</code>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  <li>余白（Padding）→ 左右 <code>40px</code>（<a class="term" href="#term-gutter">ガター</a>）、上下 <code>0</code>。</li>
  <li>方向: 縦並び（Vertical）／ 間隔（Gap）<code>14px</code>。</li>
  <li>背景・border・影なし（コンテナのみ）。</li>
@@ -8273,7 +8275,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ol class="steps">
 <li>左ナビ→追加→基本→<strong>Box</strong> を Section / CTA 直下（グロー 2 Box の後）に配置→リネーム <code>Box / CTA Inner</code>。</li>
 <li>ボックスタブ→ポジション: <strong>相対（relative）</strong>。<a class="term" href="#term-zindex">重ね順 z-index: 1</a>（グローより前面）。</li>
-<li>サイズ: 幅 <code>% = 100%</code>、<strong>最大幅 <code>1180px</code></strong>、高さ auto。水平中央寄せ（margin 左右 auto 相当）。</li>
+<li>サイズ: 幅 <code>% = 100%</code>、<strong>最大幅 <code>1180px</code></strong>、高さ auto。<strong>水平中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
 <li>パディング: 左右 <code>40px</code>、上下 0。</li>
 <li>レイアウト→方向: <strong>横並び（Horizontal）</strong>、子配置→垂直 <strong>中央（center）</strong>。</li>
 <li><strong>gap: <code>60px</code></strong>。</li>
@@ -8760,7 +8762,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ol class="steps">
  <li><code>Footer</code> を選択 → 右パネル → 追加 で内部に Box を追加し、<code>Ft-Inner</code> にリネーム。</li>
  <li>右パネル → ボックスタブ → サイズ: 幅 = <code>100%</code>、最大幅（max-width）= <code>1320</code>px（<code>--max-w</code>）。高さ = <code>auto</code>。</li>
- <li>右パネル → ボックスタブ → <a class="term" href="#term-position">ポジション</a>/配置: 水平方向の中央寄せ（margin auto 相当）。親が縦並びなので交差軸（水平）配置を<strong>中央</strong>に。</li>
+ <li>右パネル → ボックスタブ → <a class="term" href="#term-position">ポジション</a>/配置: 水平方向の中央寄せ。親が縦並びなので交差軸（水平）配置を<strong>中央</strong>に。</li>
  <li>右パネル → ボックスタブ → レイアウト → 方向 = <strong>横並び（方向＝横）</strong>。<strong>左子＝<code>Ft-Info</code>（幅 <code>1.3 flex</code>）</strong>、<strong>右子＝空 Box（幅 <code>2 flex</code>・プレースホルダ余白）</strong>、間隔(Gap) = <code>60</code>px。flex 比は <code>1.3:2</code>。</li>
  <li>右パネル → ボックスタブ → 余白（padding）: 下（padding-bottom）のみ <code>40</code>px。</li>
  <li>右パネル → ボックスタブ → 外観 → 枠線: スタイル <code>Solid</code>、<strong>下辺のみ</strong> <code>1</code>px、色 = <code>line/subtle</code>（<code>rgba(15,26,51,.08)</code>）。区切り線。</li>
@@ -10422,7 +10424,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <tbody>
  <tr><td>1024px 以下</td><td><code>Hero-Inner</code></td><td>2列 → 1カラム積み / 上下 padding 24px</td><td><strong>Small</strong></td></tr>
  <tr><td>1024px 以下</td><td><code>h1</code></td><td>折返し許可 / <code>52px</code></td><td><strong>Small</strong></td></tr>
- <tr><td>1024px 以下</td><td><code>Hero-Form</code></td><td>幅 100% / max-width 700px / 左右 margin auto（中央寄せ）</td><td><strong>Small</strong></td></tr>
+ <tr><td>1024px 以下</td><td><code>Hero-Form</code></td><td>幅 100% / max-width 700px / 中央寄せ（親で水平中央）</td><td><strong>Small</strong></td></tr>
  <tr><td>767px 以下</td><td><code>Sec-Hero</code></td><td>高さ auto / 上 padding 56px</td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td><code>Hero-Inner</code></td><td>縦並び / gap 24px / padding 24px 16px 8px</td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td>並び順</td><td>eyebrow→h1→Hero-Sub→<strong>form</strong>→cta→marquee</td><td><strong>Mobile</strong></td></tr>
@@ -10489,7 +10491,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <li>ツールバーを <strong>Tablet</strong> に切替。</li>
  <li><code>Hero-Inner</code> を選択 → 右パネル <strong>ボックスタブ → 方向(Direction)</strong> を <strong>縦並び（Vertical）</strong> に変更（2 カラム→1 カラム積み）。<strong>間隔(gap)</strong> <code>32px</code>、<strong>余白</strong> 上下 <code>24px</code>。</li>
  <li><code>h1</code>（<code>Hero-H1</code>）を選択 → <strong>テキストタブ</strong>: 改行ルールを <strong>normal（折返し許可）</strong>、サイズ <code>52px</code>（<a class="term" href="#term-textstyle">テキストスタイル</a>「H1 Hero」を Small で上書き）。</li>
- <li><code>Hero-Form</code> を選択 → サイズ 幅 <code>100%</code> / max-width <code>700px</code>、左右 margin <code>auto</code>（中央寄せ）。</li>
+ <li><code>Hero-Form</code> を選択 → サイズ 幅 <code>100%</code> / max-width <code>700px</code>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
  </ol>
  <ul class="checklist"><li>Tablet で 1 カラム積み（form がコピー下に回る）</li><li>h1 が Tablet で折返し許可</li><li>form カードが中央・max 700px</li></ul>
 
@@ -10532,7 +10534,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <tr><td>767px 以下</td><td><code>Appr-Step</code></td><td>96×96; border 2px</td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td><code>Appr-Step</code> 内 strong</td><td>30px、ラベル 11px</td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td><code>Appr-Card</code> 説明文</td><td>13px / 行間 1.85</td><td><strong>Mobile</strong></td></tr>
- <tr><td>767px 以下</td><td><code>Appr-Illust</code></td><td>max-width 160; 高さ 120; margin 6px auto; 中央寄せ</td><td><strong>Mobile</strong></td></tr>
+ <tr><td>767px 以下</td><td><code>Appr-Illust</code></td><td>max-width 160; 高さ 120; margin 上下6px・中央寄せ（親で水平中央）</td><td><strong>Mobile</strong></td></tr>
  </tbody>
  </table>
 

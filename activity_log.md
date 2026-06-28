@@ -3918,3 +3918,10 @@
 - 修正: FAQ-Item(7892「外観→overflow:hidden」)・Cases(7392/7415)・§5-3イラスト(4978)・Hero/checklist素overflow を「ポジション→はみ出し→非表示」へ。用語集に term-overflow「はみ出し（Overflow）」を新設。
 - ナレッジ: ~/dev/00_Knowledge/studio_design_spec.md §4＋メモリに追記(場所は外観でなくポジション、角丸クリップは非表示、clipチェックは不要)。
 - 検証: checklist907不変・タグ収支OK。
+
+### [DONE] azalea 2026-06-29 中央寄せ「margin auto」を全廃→親の配置(水平=中央)方式に統一＋ナレッジ追加
+- ユーザー実機確認: Studioのマージン欄はpxのみで auto は入力不可（=「margin 左右 auto」は不可能）。
+- 修正: guide内の中央寄せ指示を全て「親の配置→水平=中央」方式に統一（Hero Inner/Approach/Service/VC/Market/FAQ/Hero-Form 等、別表記含め計25+箇所）。§5-6 Record は既に正方式のため注記のCSS等価表現のみ整理。
+- 用語集に term-center「要素を中央寄せする（margin auto は使えない）」を新設。CSS仕様参照表(.sec-head/.lead 等)はStudioステップではないため温存。
+- ナレッジ: studio_design_spec.md §4＋メモリに「マージンはpxのみ・auto不可／中央寄せは親の配置で水平=中央」を追記。
+- 検証: checklist907不変・タグ収支OK・danglingリンク無し。
