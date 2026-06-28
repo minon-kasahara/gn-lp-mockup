@@ -3822,3 +3822,15 @@
 - 当初 launchd(30分毎) を組んだが、macOS TCC によりバックグラウンドプロセスから GDrive(CloudStorage) への書込が `Operation not permitted` で不可（フルディスクアクセス未付与のため）。launchd は撤去。
 - 採用: `.git/hooks/post-commit`（ローカルのみ・非追跡）→ `~/bin/gn_lp_sync.sh` をバックグラウンド実行。コミットの度に SRC→02_work を追加マージ（--delete無し・.git/.DS_Store除外）。コミットは Claude/ユーザの権限下で走るため GDrive 書込可。
 - 結果: リポジトリ(正本)へコミットする度に 02_work が自動最新化。皐大の generated/test_*.png は温存。
+
+### [INTENT] azalea 2026-06-28 配色表記をカテゴリ付き正式トークン名へ全面統一
+対象: `studio_guide/v02_guide.html`
+- 背景: ユーザー指摘「Studioのカラースタイルはカテゴリ→スタイルの2段選択。配色手順は必ず『どのカテゴリのどのスタイル』か明記して」。現状は本文に短縮名(blue/ink/sub/yellow/white/line…)が約390件、§2.1正本はカテゴリ付き(brand/blue, text/ink…)で不一致。§0.7の旧一覧表も旧命名(blue系/navy系)＋黄HEX誤り(#F5C518)。
+- これからの変更: (1)§0.7一覧表をカテゴリ命名(brand/text/bg/line/state/form…)へ書換＋黄を#FFD166に修正。(2)`<code>短縮名</code>`を一括で正式名へ: blue→brand/blue, navy系→brand/navy*, yellow系→brand/yellow*, ink/ink-lt/sub/sub-lt→text/*, blue-soft/blue-bg/yellow-soft/yellow-bg/blue-cta/bg→bg/*, line→line/subtle・line-2→line/strong, danger→state/danger, strike-red→state/strike, form/chart/fx/util系。(3)`white`は文脈で text/on-dark(文字)か bg/white(塗り)を判定し別処理。checklist(907)/id/タグ不変厳守・ブラウザ検証。
+
+### [DONE] azalea 2026-06-28 配色表記をカテゴリ付き正式トークン名へ全面統一（完了）
+- §0.7一覧表を旧命名→カテゴリ命名(brand/text/bg/line/state/form…)へ書換・黄HEX誤り#F5C518→#FFD166修正。
+- `<code>短縮名</code>` 368件を正式名へ一括変換。`white`42件を用途別(文字=text/on-dark/塗り=bg/white)に分離。旧表記16件(header-bg→bg/header, surface/white→bg/white, blue/bg→bg/blue-bg, blue/lt→brand/blue-lt, 列挙形展開)修正。
+- 独立監査WF(2エージェント)で white二重用途行2件・裸HEX/裸トークンの取りこぼし7件を検出→修正。さらに作業ステップの裸トークン25件(色/塗り/背景/枠線+裸token)をカテゴリ付きへ変換。
+- レイヤー名(cta-pri/arrow等)・テキストスタイル名(sechead/*)・シャドウ・単位・パス・Custom Code内の素HEXは対象外。
+- 検証(プレビュー): 作業907・難易度907・リンク切れ0・短縮codeトークン残0・#F5C518残0・タグ収支OK・同期connected。commit予定。
