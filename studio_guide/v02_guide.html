@@ -2988,14 +2988,13 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <text x="580" y="145" text-anchor="middle" font-family="inherit" font-size="11" fill="var(--sub)">文字ink・矢印枠ink</text>
 <text x="580" y="161" text-anchor="middle" font-family="inherit" font-size="11" fill="var(--sub)">黄影 0/16/34 rgba(.5)・0.2s ease</text>
 </svg>
-<figcaption>通常は青背景・白文字、hover で黄背景・ink文字へ。矢印円の枠・アイコン色も white→ink へ切り替える。Y方向 -2px の浮き上がりと影の強調を 0.2s ease で。</figcaption>
+<figcaption>通常は青背景・白文字、hover で黄背景・ink文字へ。矢印（円形ボーダー付きText）の文字・枠も white→ink へ（「in ホバー」で連動）。Y方向 -2px の浮き上がりと影の強調を 0.2s ease で。</figcaption>
 </figure>
 
 <h4>レイヤー命名とツリー</h4>
 <pre class="tree">Comp/CTA-Primary ← コンポーネント本体（横並びBox）
 ├─ CTA-Pri/label (Text「無料で相談する」等・実コピーは§本文章で確定)
-└─ CTA-Pri/arrow (矢印円Box ＝ ::after の代替)
- └─ CTA-Pri/arrow-icon (Text「＞」 or Icon)</pre>
+└─ CTA-Pri/arrow (＞・円形ボーダー付きText ＝ 1要素・入れ子なし)</pre>
 
 <h4>手順</h4>
 <ol class="steps">
@@ -3016,25 +3015,24 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>コピーは本文章の確定値を流し込む（曖昧プレースホルダ禁止）</li>
 </ul>
 <ul class="checklist"><li>ラベルText（15px/800/white）を配置した</li></ul></li>
-<li>矢印円（<code>::after</code> 代替）: <code>Comp/CTA-Primary</code> 内に 追加→基本→<strong>Box</strong>。レイヤー名 <code>CTA-Pri/arrow</code>。
+<li>矢印（<code>::after</code> 代替）＝<strong>円形ボーダー付きの Text 1要素</strong>（丸Boxと＞Textに分けない＝入れ子を作らない）: <code>Comp/CTA-Primary</code> 直下に 追加→基本→<strong>Text</strong>。レイヤー名 <code>CTA-Pri/arrow</code>、内容 <code>＞</code>。
 <ul>
-<li>サイズ→幅: <strong><code>32px</code></strong>、高さ: <strong><code>32px</code></strong></li>
-<li>外観→角丸: <strong>50%</strong>（正円。</li>
-<li>外観→Border: スタイル <strong>Solid</strong>、太さ <strong><code>1.5px</code></strong>、色 <code>text/on-dark</code>（hover時は ink に切替=後述）</li>
-<li>レイアウト→配置: 中央／中央</li>
-<li>中に 追加→基本→<strong>Text</strong>（レイヤー名 <code>CTA-Pri/arrow-icon</code>）で <code>＞</code>、size <code>13px</code>、色 <code>text/on-dark</code></li>
-<li>親Boxの padding 右(64)で右寄せ余白を確保しているので、<code>CTA-Pri/arrow</code> は通常フローのまま末尾に置けば右端配置になる（absolute不要）</li>
+<li>テキストタブ: フォント Noto Sans JP、サイズ <strong><code>13px</code></strong>、色 <code>text/on-dark</code>（白）、<strong>行高（line-height）<code>250%</code></strong>（＝高さ約32pxになり ＞ が縦中央に来る）、整列 <strong>中央</strong>（横中央）</li>
+<li>ボックスタブ→サイズ→幅: <strong><code>32px</code></strong>（高さは行高で約32px。正円になるよう行高/幅を微調整可）</li>
+<li>ボックスタブ→外観→角丸（Border Radius）: <strong>50%</strong>（正円）</li>
+<li>ボックスタブ→外観→Border: スタイル <strong>Solid</strong>、太さ <strong><code>1.5px</code></strong>、色 <code>text/on-dark</code>（白。hover時は下記「in ホバー」で文字＋枠とも ink に）</li>
+<li>親Boxの padding 右(64)で右寄せ余白を確保しているので、末尾に置けば右端配置になる（absolute不要）。<strong>＞ Text に円のボーダーを直接付けて1要素にする</strong>ことで、入れ子（Box＞Text）を避け、hover連動が「in ホバー」だけで済む（＞だけ Custom Code が要らない・後述）</li>
 </ul>
-<ul class="checklist"><li>矢印円Box（32px/丸/border1.5px white/中に＞）を配置した</li></ul></li>
+<ul class="checklist"><li>＞ を円形ボーダー付きText（13px/行高250%中央/幅32/角丸50%/border1.5px white）の1要素で配置した</li></ul></li>
 <li><strong>hover <a class="term" href="#term-conditional">条件スタイル</a></strong>: <code>Comp/CTA-Primary</code> を選択→右パネル→ボックス→<strong>条件スタイル→<a class="term" href="#term-hover">Hover State</a></strong> を追加し、以下の差分を設定。
 <ul>
 <li>塗り（Fill）: <code>brand/yellow</code></li>
 <li>影（Shadow）：種類 <strong>外側（Outset）</strong>／X <code>0</code>・Y <code>16</code>・ぼかし（Blur）<code>34</code>・広がり（Spread）<code>0</code>／色 <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（brand/yellow）・不透明度 <code>50%</code></li>
 <li><a class="term" href="#term-transform">変形タブ</a>（Transform）: Move Y <strong>-2px</strong></li>
-<li><strong>子テキスト・矢印を hover で ink にする＝子に「in ホバー」を付ける（重要）</strong>：条件スタイルの <strong>「ホバー」は要素自身</strong>、<strong>「in ホバー（In Hover）」は直近の親がホバーされた時</strong>に効く。<br>① <code>CTA-Pri/label</code>（ボタン直下）を選択 → 右パネル右上 <strong>条件スタイル → 「in ホバー」</strong> → 文字色 <code>text/ink</code>。<br>② <code>CTA-Pri/arrow</code>（ボタン直下）も「in ホバー」→ Border色 <code>text/ink</code>。<br>③ <strong><code>CTA-Pri/arrow-icon</code>（＞）は arrow の入れ子</strong>なので「in ホバー」は直近の親＝arrow に紐づき、<strong>ボタン全体のホバーでは効かない</strong>（arrow上だけで反応）。＞ をボタンのホバーで連動させるには、<strong>＞ だけ Mini Custom Code</strong>：<code>.cta-pri:hover .cta-pri-arrow-icon{color:#0F1A33!important}</code>（class 付与・深さ不問）。または ＞ を arrow の外＝ボタン直下へ移して「in ホバー」を使う。<br><strong>子に普通の「ホバー」は付けない</strong>。</li>
+<li><strong>文字・矢印を hover で ink にする＝各子に「in ホバー」を付ける（重要）</strong>：条件スタイルの <strong>「ホバー」は要素自身</strong>、<strong>「in ホバー（In Hover）」は直近の親がホバーされた時</strong>に効く。<code>CTA-Pri/label</code> と <code>CTA-Pri/arrow</code>（＝＞の円形Text）はどちらも <strong>CTA-Button 直下</strong>なので、各々を選択 → 右パネル右上 <strong>条件スタイル → 「in ホバー」</strong> →:<br>① <code>CTA-Pri/label</code>：文字色 <code>text/ink</code><br>② <code>CTA-Pri/arrow</code>（＞）：<strong>文字色 <code>text/ink</code> ＋ Border色 <code>text/ink</code></strong>（1要素なので色も枠も一緒に変わる）<br>→ 親ボタンにホバーした時だけ ink に。<strong>子に普通の「ホバー」は付けない</strong>（要素自身のホバーになる）。<strong>＞を円形Text 1要素にしたので入れ子問題は無く、Custom Code は不要</strong>。</li>
 <li>アニメーション: 変形タブ→アニメーション→時間 <strong>0.2秒</strong>、イージング <strong>ease</strong></li>
 </ul>
-<ul class="checklist"><li>Hover条件スタイルで 背景brand/yellow/影黄/Y-2/文字text/ink を設定した</li><li>hover transition 0.2s ease を設定した</li></ul></li>
+<ul class="checklist"><li>Hover条件スタイルで 背景brand/yellow/影黄/Y-2 を設定し、label と ＞(円形Text) に「in ホバー」で文字/枠 ink を設定した</li><li>hover transition 0.2s ease を設定した</li></ul></li>
 <li><strong>コンポーネント化:</strong> <code>Comp/CTA-Primary</code> 選択→<strong><code>Cmd+J</code></strong> のコンポーネント化と同操作）。以後はコンポーネント（左ナビ「コンポーネント」）からD&Dで全CTA設置箇所に複製。
 <ul class="checklist"><li>Cmd+J でコンポーネント登録した</li></ul></li>
 </ol>
@@ -3086,7 +3084,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>hover 条件スタイル</strong>（右パネル→ボックス→条件スタイル→Hover）:
 <ul>
 <li>塗り: <code>brand/navy</code>／Border色: <code>brand/navy</code></li>
-<li>子（label / arrow）を hover で白にするのは、各子（ボタン直下）を選び <strong>条件スタイル → 「in ホバー」</strong>（直近の親＝ボタンのホバーに連動）→ 色 <code>text/on-dark</code>（枠は Border色）。「ホバー」（要素自身）ではなく <strong>「in ホバー」</strong>。<strong>arrow に入れ子の ＞ アイコンは「in ホバー」が arrow に紐づくため</strong>、ボタン連動には ＞ だけ Custom Code（<code>.cta-sec:hover .子class{color:…!important}</code>）か ＞ をボタン直下へ。背景・枠・移動はボタンの普通の「ホバー」で。</li>
+<li>子（label / 矢印）を hover で白にするのは、各子（ボタン直下）を選び <strong>条件スタイル → 「in ホバー」</strong>（直近の親＝ボタンのホバーに連動）→ 色 <code>text/on-dark</code>（矢印は文字色＋Border色）。矢印は <strong>＞の円形ボーダー付きText 1要素</strong>にしておけば入れ子にならず「in ホバー」だけで枠も文字も連動（§5-1-6方式）。「ホバー」（要素自身）ではなく <strong>「in ホバー」</strong>を使う。背景・移動はボタンの普通の「ホバー」で。</li>
 <li>Shadow: X:0 / Y:12 / Blur:26 / Spread:0 / Color <span class="sw" style="--c:#1B2A4A"></span> <code>#1B2A4A38</code>（8桁HEX＝色 <code>#1B2A4A</code> ＋ 不透明度 22%）</li>
 <li>変形: Move Y <strong>-2px</strong>、アニメーション 時間 <strong>0.2秒</strong>／ease</li>
 </ul>
@@ -3715,10 +3713,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <text x="334" y="65" font-family="inherit" font-size="12" fill="var(--bg)" text-anchor="middle">›</text>
  <!-- annotations -->
  <text x="200" y="26" font-family="inherit" font-size="10" fill="var(--sub)" text-anchor="middle">CTA-Button（横並び中央・角丸100px・padding 9/44/9/28）</text>
- <text x="334" y="100" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">CTA-Arrow（22px正円・absolute right8・中央）</text>
+ <text x="334" y="100" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">CTA-Arrow（正円・円形ボーダー付きText・横並び末尾）</text>
  <text x="120" y="108" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">右padding44 が広いのは矢印円のスペース</text>
  </svg>
- <figcaption>CTAボタンの構造。ラベルの右に絶対配置の矢印円（22px正円・枠1.2px）を重ね、右padding44で矢印分のスペースを確保する。</figcaption>
+ <figcaption>CTAボタンの構造。ラベルの右に矢印（＝円形ボーダー付きTextの正円）を横並びで置き、右padding44で矢印分のスペースを確保する。矢印は1要素なので hover は「in ホバー」で色も枠も連動する。</figcaption>
  </figure>
 
  <ol class="steps">
@@ -3742,19 +3740,18 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>フォント <strong>Noto Sans JP</strong>、サイズ <code>13px</code>、ウェイト <code>800</code>、色 <span class="sw" style="--c:#ffffff"></span> <code>#fff</code>（<code>text/on-dark</code>）。</li>
  </ul>
  </li>
- <li><strong>矢印（<code>::after</code>＝丸枠＋全角「＞」）はネイティブ非対応</strong>。仕様：22×22px・border 1.2px currentColor・角丸50%・中央に10px「＞」。Mini の Custom Code で再現する（下記 Mini ブロックに従う）。</li>
+ <li><strong>矢印（丸枠＋「＞」）＝円形ボーダー付きの Text 1要素でネイティブ実装</strong>（丸Boxと＞を分けない＝入れ子にしない）。CTA-Button 直下に <strong>Text</strong>（名 <strong>CTA-Arrow</strong>）、内容 <code>＞</code>。テキスト：サイズ <code>13px</code>・色 <code>text/on-dark</code>（白）・<strong>行高（line-height）で高さ≒直径にして縦中央</strong>（例 <code>250%</code>≒32px円。小さい円は font/行高プリセットや上下padding で目的サイズの正円に微調整）・整列 中央。ボックス：幅＝高さの正円・<strong>角丸 50%</strong>・<strong>Border Solid 1.5px 色 <code>text/on-dark</code></strong>（白）。末尾に置けば右paddingのスペースに右端配置（absolute不要）。<strong>1要素なので hover は「in ホバー」だけで色も枠も連動</strong>（Custom Code 不要・下記）。</li>
  </ol>
 
- <div class="plan mini">
- <span class="badge">Mini</span>
- <p>矢印円を描く擬似要素のCSSを <a class="term" href="#term-customcode">Custom Code</a>（<code>&lt;/head&gt;</code> 直前 <code>&lt;style&gt;</code>）で投入し、ボタンにクラス <code>btn-gra</code> を付与する。<a href="#t9-codeset">§9 コード集</a>の該当ブロックを Custom Code に貼る。</p>
+ <div class="callout tip">
+ <p>矢印は上記の<strong>円形ボーダー付きText</strong>でネイティブ実装するため、<strong>擬似要素の Custom Code は不要</strong>（<code>btn-gra</code> クラスの注入も不要）。</p>
  </div>
 
  <ol class="steps" start="6">
- <li>hover <a class="term" href="#term-conditional">条件スタイル</a>（CTA-Button に付与。右パネル <span class="path">変形<i>›</i>Hover</span>）：
+ <li>hover <a class="term" href="#term-conditional">条件スタイル</a>（CTA-Button 自身に付与。右パネル右上 <span class="path">条件スタイル<i>›</i>Hover</span>。背景・影・移動はボタン自身の Hover で設定）：
  <ul>
  <li>塗り：<code>brand/yellow</code>（<code>#FFD166</code>）に変更。</li>
- <li>ラベル文字色：<code>text/ink</code>（<code>#0F1A33</code>）に変更。矢印 Box の枠線・「＞」も <code>text/ink</code> に。</li>
+ <li><strong>ラベル・矢印の色は各子に「in ホバー」を付ける</strong>（ボタンの Hover の中で子を変えても連動しない＝子の通常色が変わるだけ）：<code>CTA-Label</code> を選択 → 条件スタイル → <strong>「in ホバー」</strong> → 文字色 <code>text/ink</code>。<code>CTA-Arrow</code>（＞の円形Text・ボタン直下）も「in ホバー」→ <strong>文字色＋Border色を <code>text/ink</code></strong>（1要素なので色も枠も一緒に）。<strong>子に普通の「ホバー」は付けない</strong>。</li>
  <li>変形：<strong>Move Y = -2px</strong>。</li>
  <li>影：<strong>X0 / Y12 / Blur26 / Spread0</strong>、色 <span class="sw" style="--c:rgba(255,209,102,.5)"></span> <code>rgba(255,209,102,.5)</code>（<code>glow-yellow</code> 派生）。</li>
  <li>アニメーション：時間 <strong>0.2秒</strong>。</li>
