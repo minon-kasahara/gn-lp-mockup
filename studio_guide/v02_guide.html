@@ -3029,9 +3029,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><strong>hover <a class="term" href="#term-conditional">条件スタイル</a></strong>: <code>Comp/CTA-Primary</code> を選択→右パネル→ボックス→<strong>条件スタイル→<a class="term" href="#term-hover">Hover State</a></strong> を追加し、以下の差分を設定。
 <ul>
 <li>塗り（Fill）: <code>brand/yellow</code></li>
-<li>Shadow: X:0 / Y:16 / Blur:34 / Spread:0 / Color <span class="sw" style="--c:#FFD166"></span> <code>#FFD16680</code>（8桁HEX＝色 <code>#FFD166</code> ＋ 不透明度 50%）</li>
+<li>影（Shadow）：種類 <strong>外側（Outset）</strong>／X <code>0</code>・Y <code>16</code>・ぼかし（Blur）<code>34</code>・広がり（Spread）<code>0</code>／色 <span class="sw" style="--c:#FFD166"></span> <code>#FFD166</code>（brand/yellow）・不透明度 <code>50%</code></li>
 <li><a class="term" href="#term-transform">変形タブ</a>（Transform）: Move Y <strong>-2px</strong></li>
-<li>子 <code>CTA-Pri/label</code> の色を <code>text/ink</code>、<code>CTA-Pri/arrow</code> のBorder色を <code>text/ink</code>、<code>CTA-Pri/arrow-icon</code> の色を <code>text/ink</code>（in Hover で親ホバー時に子を変える。 in Hover）</li>
+<li><strong>子テキスト・矢印の色も連動させる（操作の肝）</strong>：いま追加した <a class="term" href="#term-hover">Hover State</a> を<strong>表示したまま（Hover編集モードを終了しない）</strong>、レイヤーパネルで子 <code>CTA-Pri/label</code> をクリック → 文字色を <code>text/ink</code> に変更。続けて <code>CTA-Pri/arrow</code> のBorder色、<code>CTA-Pri/arrow-icon</code> の色も <code>text/ink</code> に。<br>これで<strong>「親（ボタンBox）にホバー → 子の色が変わる」</strong>（CSSの <code>.btn:hover .label</code> 相当）になる。<strong>子テキストに直接 Hover を付けないこと</strong>——それだと「テキスト自体にカーソルが乗った時だけ」変わる別物になる。</li>
 <li>アニメーション: 変形タブ→アニメーション→時間 <strong>0.2秒</strong>、イージング <strong>ease</strong></li>
 </ul>
 <ul class="checklist"><li>Hover条件スタイルで 背景brand/yellow/影黄/Y-2/文字text/ink を設定した</li><li>hover transition 0.2s ease を設定した</li></ul></li>
