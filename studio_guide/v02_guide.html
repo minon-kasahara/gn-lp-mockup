@@ -4098,11 +4098,11 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h3 id="s2-2">5-2-2. Section と背景ブロブ</h3>
 
-<h4>A. Hero Section を置く</h4>
+<h4>A. Sec-Hero（Hero セクション本体）を置く</h4>
 
 <ol class="steps">
-<li>左ナビ <span class="path">追加(Add)<i>›</i>セクション(Sections)</span>タブ、または<span class="path">基本(Basic)<i>›</i>Box</span>を Base 直下にドラッグして空セクションを作る。レイヤー名を <code>Hero</code> にリネーム（レイヤーパネルで右クリック→リネーム）。</li>
-<li><code>Hero</code> を選択→右パネル<strong>ボックス（Box）</strong>タブ→サイズ: 幅 <code>%</code>=<code>100</code> / 高さ <code>min-height</code> 相当→高さ単位 <code>vh</code>=<code>100</code>。SP では auto に上書き（5-2-8）。</li>
+<li>左ナビ <span class="path">追加（Add）<i>›</i>基本（Basic）<i>›</i>Box</span> を Base 直下にドラッグ。レイヤー名を <code>Sec-Hero</code> にリネーム（レイヤーパネルで右クリック→リネーム）。<strong>セクション本体は基本の Box でよい</strong>（表示・動作は同じ）。SEO/読み上げ用に <span class="path">設定タブ<i>›</i>タグ</span> で <code>section</code> を選んでもよい（任意）。</li>
+<li><code>Sec-Hero</code> を選択→右パネル<strong>ボックス（Box）</strong>タブ→サイズ: 幅 <code>%</code>=<code>100</code> / 高さ <code>min-height</code> 相当→高さ単位 <code>vh</code>=<code>100</code>。SP では auto に上書き（5-2-8）。</li>
 <li>同<strong>ボックス</strong>タブ→方向: <strong>縦並び（Vertical）</strong>、垂直配置: <strong>均等（space-between）</strong>（上=テキスト群、下=マーキー帯の上下分割）。</li>
 <li>padding: 上 <code>78px</code> / 下 <code>0</code> / 左右 <code>0</code>（固定ヘッダー78pxぶんの逃げ）。</li>
 <li>同<strong>ボックス</strong>タブ→外観: 背景は<strong>塗りなし（透明）</strong>（Hero自体に背景色はなく、ブロブとページ <code>bg/page</code> が透ける）。</li>
@@ -4113,7 +4113,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><strong>overflow:Hidden による意図的クリップ</strong>: 背景ブロブ block-1（上12% / 右-6%）/ block-2 は画面端方向へ僅かにはみ出すが、Hero に overflow:Hidden を掛けると<strong>画面端側が意図的に切られる</strong>＝これは正しい挙動。一方フォームカードの装飾円（5-2-7、下-16px / 右-14px 等）も祖先 Hero（overflow:Hidden）配下にあるため、カード自身を Visible にしても <strong>Section 端付近に来た円は切れうる</strong>。<strong>Hero=Hidden に固定する</strong>。装飾円は §9 コード集の Custom Code 側で位置を調整して4辺がカード内に収まるようにし、ブロブの画面端はみ出しは切れて良いものとして扱う。</p>
 </div>
 
-<ul class="checklist"><li>Hero Section を Base 直下に配置し、幅100% / 高さ100vh / 縦並び・均等 / padding-top 78px / overflow Hidden を設定した</li><li>overflow:Hidden によりブロブの画面端側が切れる挙動を許容し、装飾円は §9 コード集の Custom Code 側で位置調整して4辺をカード内に収める前提を確認した</li></ul>
+<ul class="checklist"><li>Sec-Hero を Base 直下に配置し、幅100% / 高さ100vh / 縦並び・均等 / padding-top 78px / overflow Hidden を設定した</li><li>overflow:Hidden によりブロブの画面端側が切れる挙動を許容し、装飾円は §9 コード集の Custom Code 側で位置調整して4辺をカード内に収める前提を確認した</li></ul>
 
 <h4>B. 装飾ブロブ2枚（block-1 / block-2）</h4>
 
@@ -4123,7 +4123,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <p><strong>Hero BG Blob 1</strong>（block-1）:</p>
 <ol class="steps">
-<li><code>Hero</code> 直下に Box を追加→レイヤー名 <code>Hero BG Blob 1</code>。</li>
+<li><code>Sec-Hero</code> 直下に Box を追加→レイヤー名 <code>Hero BG Blob 1</code>。</li>
 <li>右パネル<strong>ボックス</strong>タブ→ポジション: <strong>絶対（absolute）</strong>。距離: 上 <code>12%</code> / 右 <code>-6%</code>。</li>
 <li>サイズ: 幅 <code>%</code>=<code>46</code> / 高さ <code>%</code>=<code>72</code>。</li>
 <li>角丸: §9 コード集の楕円 border-radius を Custom Code で適用する（Embed内）。</li>
@@ -4134,7 +4134,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <p><strong>Hero BG Blob 2</strong>（block-2）:</p>
 <ol class="steps">
-<li><code>Hero</code> 直下に Box を追加→レイヤー名 <code>Hero BG Blob 2</code>。</li>
+<li><code>Sec-Hero</code> 直下に Box を追加→レイヤー名 <code>Hero BG Blob 2</code>。</li>
 <li>ポジション: <strong>絶対（absolute）</strong>。距離: 下 <code>8%</code> / 左 <code>-4%</code>。</li>
 <li>サイズ: 幅 <code>%</code>=<code>32</code> / 高さ <code>%</code>=<code>44</code>。</li>
 <li>角丸: §9 コード集の楕円 border-radius を Custom Code で適用する（Embed内）。</li>
@@ -4175,7 +4175,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p>Hero Inner は「2カラム（左1.5 : 右0.85）・横並び・上下中央寄せ・幅100%」に加え、<strong>親 flex 内での縦伸長（中段占有）</strong>が要となる。Hero（flex column・space-between）の中で Hero Inner が中段を伸長して占有し、<strong>その占有した縦スペースの中でコンテンツを上下中央寄せ</strong>する。これにより「100vh の中で2カラムが上下中央／下端にマーキー」というバランスが成立する。この縦伸長を再現しないと、Hero Inner が内容高さ(auto)のまま上端に張り付き、テキスト群が画面上部に寄ってしまう。</p>
 
 <ol class="steps">
-<li><code>Hero</code> 直下（ブロブの後ろ）に Box を追加→レイヤー名 <code>Hero Inner</code>。</li>
+<li><code>Sec-Hero</code> 直下（ブロブの後ろ）に Box を追加→レイヤー名 <code>Hero Inner</code>。</li>
 <li>右パネル<strong>ボックス</strong>タブ→サイズ: 幅 <code>px</code>=<code>1320</code>（= <code>--max-w</code>。px は最大幅挙動なので画面が狭まれば自動縮小）。中央寄せ: margin 左右 <strong>auto</strong>。</li>
 <li><strong>高さ: 単位 <a class="term" href="#term-fill">flex</a></strong>（= 親 flex column 内で flex-grow 1 相当。これで Hero の中段＝マーキーを除いた残り全高を Hero Inner が占有する。「flex=主軸方向の伸長/比率）。</li>
 <li>padding: 上 <code>12px</code> / 下 <code>8px</code> / 左右 <code>40px</code>（= <code>--gutter</code>、<a class="term" href="#term-gutter">ガター</a>）。</li>
@@ -4376,7 +4376,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>装飾円2つ（<code>::before</code>=黄円70px / <code>::after</code>=blue-lt円90px、カード角からはみ出す）: §9 コード集の Custom Code で疑似要素の装飾円を移植して再現する。値は <br>・黄円: 上 <code>-12px</code> / 左 <code>-12px</code>、<code>70px</code>×<code>70px</code>、角丸<code>50%</code>、背景<code>brand/yellow</code>、不透明度<code>75%</code>、重ね順<code>-1</code>（カード背面）。レイヤー名 <code>Form Deco Yellow</code>。<br>・blue-lt円: 下 <code>-16px</code> / 右 <code>-14px</code>、<code>90px</code>×<code>90px</code>、角丸<code>50%</code>、背景<code>brand/blue-lt</code>、不透明度<code>70%</code>、重ね順<code>-1</code>。レイヤー名 <code>Form Deco Blue</code>。<br>注: SP（Mobile）では<code>display:none</code>。5-2-8 で両円を非表示にする。</li>
 </ol>
 <div class="callout warn">
-<p><strong>はみ出し表示と祖先 overflow の関係（5-2-2 と整合）</strong>: 装飾円はカード外へあふれる前提なので <code>Hero Form Card</code> の overflow は <strong>Visible</strong> にする。円は祖先 <code>Hero</code>（overflow:Hidden）配下にあるため、Small/Tablet でカードが全幅化（5-2-8）した際に円の外側が切れないよう、§9 コード集の Custom Code 側で装飾円の位置（黄円: 上-12px/左-12px、blue-lt円: 下-16px/右-14px）を調整して4辺をカード内に収める。Mobile では両円を <code>display:none</code> にする（5-2-8）。</p>
+<p><strong>はみ出し表示と祖先 overflow の関係（5-2-2 と整合）</strong>: 装飾円はカード外へあふれる前提なので <code>Hero Form Card</code> の overflow は <strong>Visible</strong> にする。円は祖先 <code>Sec-Hero</code>（overflow:Hidden）配下にあるため、Small/Tablet でカードが全幅化（5-2-8）した際に円の外側が切れないよう、§9 コード集の Custom Code 側で装飾円の位置（黄円: 上-12px/左-12px、blue-lt円: 下-16px/右-14px）を調整して4辺をカード内に収める。Mobile では両円を <code>display:none</code> にする（5-2-8）。</p>
 </div>
 <ul class="checklist"><li>フォームカードを white/角丸20px/padding(20/20/22/22)/shadow-panel/相対/overflow Visible で作った</li><li>装飾円2枚を絶対配置（黄70px/.75・blue-lt90px/.70・z-index-1）で再現した</li></ul>
  <p class="rv-label">理解の確認（作業カウント対象外）</p>
@@ -4541,7 +4541,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h4>A. Hero Marquee Band（外枠）</h4>
 <ol class="steps">
-<li><code>Hero</code> 直下（Hero Inner の後ろ・Section の下端）に Box→レイヤー名 <code>Hero Marquee Band</code>。</li>
+<li><code>Sec-Hero</code> 直下（Hero Inner の後ろ・Section の下端）に Box→レイヤー名 <code>Hero Marquee Band</code>。</li>
 <li>幅 <code>%100</code>、方向 縦並び、padding 上 <code>0</code> / 下 <code>18px</code> / 左右 <code>0</code>、margin-top <code>0</code>。Section が space-between かつ Hero Inner が高さ flex で中段を占有するため、この帯は自動的に最下部へ寄る。ポジション 相対、z-index <code>1</code>。</li>
 <li>flex-shrink 相当: 親 flex 内で縮まないよう、サイズの高さは <strong>auto</strong>（親高さauto推奨）。</li>
 </ol>
@@ -4658,7 +4658,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <h4>Mobile(540) 上書き</h4>
 <p>下部ツールバーで Mobile 幅に切替:</p>
 <ol class="steps">
-<li><code>Hero</code> Section: 高さ <strong>auto</strong>、padding-top <code>56px</code>。</li>
+<li><code>Sec-Hero</code> Section: 高さ <strong>auto</strong>、padding-top <code>56px</code>。</li>
 <li><code>Hero Inner</code>: 縦並び（既にTabletで縦）、gap <code>24px</code>、padding 上 <code>24px</code> / 下 <code>8px</code> / 左右 <code>16px</code>。高さ auto。</li>
 <li><strong>順序組み替え</strong>: SP の理想の縦順は <code>eyebrow → h1 → sub → フォーム → CTA</code>（フォームが CTA の前）。Studio は DOM階層をBP別に変えられないため、Mobile では Mini の Custom Code で <code>order</code> を指定して理想順 <code>eyebrow→h1→sub→フォーム→CTA</code> を維持する。§9 コード集の <code>order</code> 指定ブロックを Custom Code に貼り、Mobile 幅でフォームを CTA の前に出す。<strong>（要最終決定）</strong></li>
 </ol>
@@ -6248,8 +6248,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <p>手順（Default＝PC キャンバスで作成）：</p>
  <ol class="steps">
- <li>左ナビ → <strong>追加（Add）</strong> → <strong>セクション（Sections）</strong>から空の <a class="term" href="#term-section">Section</a>、または<strong>基本（Basic）</strong> → <strong>Box</strong> を Base 直下にドラッグ。レイヤー名を <code>Record</code> にリネーム。</li>
- <li><code>Record</code> 選択 → 右パネル<strong>ボックス（Box）</strong>タブ → <strong>サイズ</strong>：幅 <a class="term" href="#term-fill"><code>100%</code></a>／高さ <a class="term" href="#term-hug"><code>auto</code></a>。<br><span class="callout tip" style="display:block"><p>Studio に「Hug／Fill」という Figma 用語はありません。横幅いっぱい＝<code>100%</code>、内容に応じた高さ＝<code>auto</code>、横並び兄弟間の比率配分＝<code>flex</code>。トップレベル縦コンテナの幅は <code>flex</code> ではなく <strong><code>100%</code></strong> が正。</p></span></li>
+ <li>左ナビ → <strong>追加（Add）</strong> → <strong>基本（Basic）</strong> → <strong>Box</strong> を Base 直下にドラッグ。レイヤー名を <code>Sec-Record</code> にリネーム。<strong>セクション本体は基本の Box でよい</strong>（<code>section</code> タグは設定タブ→タグで任意設定）。</li>
+ <li><code>Sec-Record</code> 選択 → 右パネル<strong>ボックス（Box）</strong>タブ → <strong>サイズ</strong>：幅 <a class="term" href="#term-fill"><code>100%</code></a>／高さ <a class="term" href="#term-hug"><code>auto</code></a>。<br><span class="callout tip" style="display:block"><p>Studio に「Hug／Fill」という Figma 用語はありません。横幅いっぱい＝<code>100%</code>、内容に応じた高さ＝<code>auto</code>、横並び兄弟間の比率配分＝<code>flex</code>。トップレベル縦コンテナの幅は <code>flex</code> ではなく <strong><code>100%</code></strong> が正。</p></span></li>
  <li><strong>パディング</strong>：個別設定アイコンで上下左右を分離 → <strong>上 <code>52px</code>／下 <code>76px</code>／左 <code>0</code>／右 <code>0</code></strong>（Default 実効値）。</li>
  <li><strong>外観 → 塗り（Fill）</strong>：カラースタイル <code>bg/white</code>（<span class="sw" style="--c:#FFFFFF"></span> <code>#FFFFFF</code>）。</li>
  <li>下スクロール → <a class="term" href="#term-position">ポジション</a>：<strong>相対（relative）</strong>（既定のまま）。アンカー用途のため、右パネル<strong>設定（Settings）</strong>タブ → ID／タグ欄に <code>record</code> を設定（ページ内リンク・スクロール遷移用）。</li>
@@ -6289,7 +6289,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <p>手順（Default＝PC キャンバス）：</p>
  <ol class="steps">
- <li><code>Record</code> 内に <strong>基本 → Box</strong> をドラッグ → レイヤー名 <code>Sec Head</code>。</li>
+ <li><code>Sec-Record</code> 内に <strong>基本 → Box</strong> をドラッグ → レイヤー名 <code>Sec Head</code>。</li>
  <li><code>Sec Head</code> → <strong>ボックス</strong>タブ → サイズ：幅 <code>auto</code>／高さ <code>auto</code>。<strong>配置</strong>：親（Record＝縦並び）の<strong>交差軸（水平）を「中央」</strong>に。これで <code>margin:0 auto</code> の中央化を代替。</li>
  <li><strong>最大幅（max-width）</strong>：<code>820px</code>。</li>
  <li><strong>パディング</strong>：左右 <code>40px</code>（<code>--gutter</code>）／上下 <code>0</code>。</li>
@@ -6366,7 +6366,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <p>手順（まず Rec Grid → Rec Stat 1 を完成 → 複製。Default＝PC キャンバス）：</p>
  <ol class="steps">
- <li><code>Record</code> 内（Sec Head の下）に <strong>基本 → Box</strong> → レイヤー名 <code>Rec Grid</code>。</li>
+ <li><code>Sec-Record</code> 内（Sec Head の下）に <strong>基本 → Box</strong> → レイヤー名 <code>Rec Grid</code>。</li>
  <li><code>Rec Grid</code> → サイズ：最大幅 <code>1180px</code>／高さ <code>auto</code>、交差軸中央（<code>margin:0 auto</code> 相当）。パディング 左右 <code>40px</code>。</li>
  <li><code>Rec Grid</code> → <strong>方向＝横並び（Horizontal）</strong>。配置：水平=<strong>中央</strong>・垂直=<strong>中央</strong>。<strong>gap <code>16px</code></strong>。</li>
  <li><strong>Rec Stat 1 を作る</strong>：<code>Rec Grid</code> 内に <strong>基本 → Box</strong> → <code>Rec Stat 1</code>。方向=<strong>横並び</strong>、配置=垂直<strong>中央</strong>、<strong>gap <code>4px</code></strong>、<strong>高さ <code>88px</code></strong>、幅 <code>auto</code>。</li>
@@ -6411,7 +6411,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p>実コピー：「* 2026年4月時点 ／ 補助金支援実績。助成金：顧問先約80社・申請件数約300件／融資：総調達額約20億円・取扱金融機関8行以上。」</p>
 
  <ol class="steps">
- <li><code>Record</code> 内（Rec Grid の下）に <strong>基本 → Text</strong> → <code>Rec Foot</code> → 上記実コピーを入力。</li>
+ <li><code>Sec-Record</code> 内（Rec Grid の下）に <strong>基本 → Text</strong> → <code>Rec Foot</code> → 上記実コピーを入力。</li>
  <li><code>Rec Foot</code> → ボックスタブ → 最大幅 <code>1180px</code>・交差軸中央（<code>margin:auto</code> 相当）・<strong>上マージン <code>32px</code></strong>・パディング左右 <code>40px</code>。</li>
  <li><code>Rec Foot</code> → スタイル <code>Footnote</code> 適用後、個別確認：サイズ <code>11.5px</code>／<code>weight 400</code>／色 <code>text/sub-lt</code>（<span class="sw" style="--c:#9EAAC8"></span> <code>#9EAAC8</code>）／<strong>整列=右寄せ（right）</strong>。</li>
  </ol>
@@ -6478,7 +6478,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h4>Small（1024px）</h4>
  <p>下部ツールバーで <strong>Small（1024px）</strong>に切替 → 各要素を選択 → プロパティ変更（Small の<a class="term" href="#term-conditional">条件スタイル</a>上書き枠は黄緑表示）。確定値：パディングを上下とも <code>64px</code> に上書き。その他は Default 継承。</p>
  <ol class="steps">
- <li><code>Record</code>：パディング上 <code>64px</code>・下 <code>64px</code> に上書き（黄緑枠を確認）。Tablet（840px）も同値を継承する。</li>
+ <li><code>Sec-Record</code>：パディング上 <code>64px</code>・下 <code>64px</code> に上書き（黄緑枠を確認）。Tablet（840px）も同値を継承する。</li>
  <li>他要素は Default 継承（明示変更不要）。767–691帯は1行4ブロックのままとし、Mobile 節のグリッド設定は Tablet へ複写しない。</li>
  </ol>
  <ul class="checklist"><li>Small（1024px）で Record のパディングを上64px/下64pxに上書きした（黄緑枠を確認）</li></ul>
@@ -6512,7 +6512,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <table>
  <thead><tr><th>要素</th><th>Mobile 上書き値</th><th>備考</th></tr></thead>
  <tbody>
- <tr><td><code>Record</code></td><td>パディング 上 <code>48px</code>／下 <code>64px</code></td><td>—</td></tr>
+ <tr><td><code>Sec-Record</code></td><td>パディング 上 <code>48px</code>／下 <code>64px</code></td><td>—</td></tr>
  <tr><td><code>Sec Head</code></td><td>下マージン <code>36px</code></td><td>—</td></tr>
  <tr><td><code>Record Title</code></td><td>サイズ <code>30px</code>（PC=52px固定運用に合わせた Mobile 固定値）・行間 <code>1.22</code> 維持・下マージン <code>18px</code></td><td>下マージン18px</td></tr>
  <tr><td><code>Record Lead</code></td><td>サイズ <code>14px</code>・行間 <code>1.9</code></td><td>—</td></tr>
@@ -6662,7 +6662,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h3 id="s7-1">5-7-1. セクション本体 <code>Sec-VC</code> を作る</h3>
 
  <ol class="steps">
- <li><span class="path">左ナビ<i>›</i>追加（Add）<i>›</i>セクション（Sections）</span> タブから空のセクション（または <span class="path">基本（Basic）<i>›</i>Box</span>）をキャンバス末尾（前セクションの直下）にドラッグして配置する。</li>
+ <li><span class="path">左ナビ<i>›</i>追加（Add）<i>›</i>基本（Basic）<i>›</i>Box</span> をキャンバス末尾（前セクションの直下）にドラッグして配置する。<strong>セクション本体は基本の Box でよい</strong>（<code>section</code> タグは設定タブ→タグで任意）。</li>
  <li>レイヤーパネルでこのセクションを選択 → 名前をダブルクリックして <strong><code>Sec-VC</code></strong> にリネームする。</li>
  <li>右パネル → <strong>設定（Settings）</strong>タブ → リンク/タグ設定の <strong>ID（アンカー）</strong> 欄に <strong><code>vc</code></strong> を入力する（ヘッダーナビ「提携VC」 <code>&lt;a href="#vc"&gt;</code> のスクロール先）。</li>
  <li>右パネル → <strong>ボックス（Box）</strong>タブ → <strong>サイズ（Size）</strong>：
@@ -8712,7 +8712,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h3 id="s11-1">1. Footer セクション本体（Footer）</h3>
  <ol class="steps">
- <li>左ナビ → 追加 → セクションタブ から空のセクション、または基本タブの <a class="term" href="#term-box">Box</a> をキャンバス最下部（直前セクションの下）にドラッグ。<span class="path">左ナビ<i>›</i>追加<i>›</i>セクション<i>›</i>空のSection</span></li>
+ <li>左ナビ → 追加 → <strong>基本タブ → <a class="term" href="#term-box">Box</a></strong> をキャンバス最下部（直前セクションの下）にドラッグ。<span class="path">左ナビ<i>›</i>追加<i>›</i>基本<i>›</i>Box</span>（次でレイヤー名 <code>Footer</code>・タグ <code>footer</code> を設定）</li>
  <li>レイヤーパネルでこの要素を <code>Footer</code> にリネーム。HTML 上は <code>&lt;footer&gt;</code> セマンティックなので、右パネル → 設定タブ → タグ設定で <strong>footer</strong> を選択（選択肢にある場合）。</li>
  <li>右パネル → ボックスタブ → サイズ: 幅 = <code>100%</code>（フル幅）、高さ = <code>auto</code>。</li>
  <li>右パネル → ボックスタブ → 余白（padding）: 個別設定アイコンで切替し、上 <code>72</code> / 右 <code>40</code> / 下 <code>32</code> / 左 <code>40</code>（px）。左右の <code>40</code> は <a class="term" href="#term-gutter">ガター</a>（<code>--gutter</code>）。</li>

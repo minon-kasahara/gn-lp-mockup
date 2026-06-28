@@ -3901,3 +3901,9 @@
 - 反映: §5-1-8末尾に詳細手順(ol.steps 10ステップ＋プラン/実機確認callout)を新設(Nav-Toggle/Nav-Toggle-Btn/Nav-Menu、7項目アンカー)。簡易callout・§5-1-9注記・checklist項目を整合(要最終決定/Mini前提を解消)。§11.1aのCustom Codeドロワー記述→ネイティブToggleへ訂正(矛盾解消)。§7.4.3を§5-1-8へのポインタ化。
 - 注意: 907タスクのindexを崩さないようul.checklistは増やさずol.steps＋既存checklist項目のテキスト更新で対応。
 - 検証: 作業907・難易度907・リンク切れ0・タグ収支OK。
+
+### [DONE] azalea 2026-06-28 セクション作成手順の統一＋取りこぼし名(Hero/Record)をSec-X化
+- ユーザー指摘「§5-2-2はHero・§5-9はSec-FAQでごちゃごちゃ／名前統一できたんだっけ」。確認: Stage1は sec-x→Sec-X 変換したが素の Hero(8)/Record(7) は別単語で取りこぼし＝未統一だった。
+- 修正(名): <code>Hero</code>→Sec-Hero・<code>Record</code>→Sec-Record(計15)＋見出し/チェックリスト。CTA素1件は地の文「右にCTA」なので対象外。全セクション名がSec-Xに統一(素=0)。
+- 修正(作成手順): Hero/Record/VC/Footer の「セクション（Sections）タブから空のセクション、または基本›Box」というごちゃつき→「基本→Box」に統一。各に「セクション本体は基本のBoxでよい(sectionタグは設定タブ→タグで任意)」を明記(前回のSection/Box議論=全部Boxで可・header/footer/navだけタグ、を反映)。
+- 検証: 作業907・難易度907・リンク切れ0・タグ収支OK。
