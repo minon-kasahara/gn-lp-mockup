@@ -3670,19 +3670,19 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <svg viewBox="0 0 480 110" role="img" xmlns="http://www.w3.org/2000/svg">
  &lt;title&gt;CTAデコ文字の逆ハの字装飾線（Mini Custom Code で再現する構造）&lt;/title&gt;
  <rect x="10" y="30" width="460" height="50" rx="6" fill="var(--bg2)" stroke="var(--line)"/>
- <text x="240" y="22" font-family="inherit" font-size="10" fill="var(--sub)" text-anchor="middle">CTA-Deco-Wrap（横並び・垂直中央）</text>
+ <text x="240" y="22" font-family="inherit" font-size="10" fill="var(--sub)" text-anchor="middle">CTA-Deco（Text・class hd-cta-deco）</text>
  <!-- left tick rotated +62 -->
  <g transform="translate(95,62) rotate(62)">
  <rect x="-11" y="-0.75" width="11" height="1.5" rx="1" fill="var(--yellow)"/>
  </g>
- <text x="95" y="96" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">Deco-Tick-L (62°)</text>
+ <text x="95" y="96" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">::before 装飾線L (62°)</text>
  <!-- text -->
  <text x="240" y="60" font-family="inherit" font-size="13" fill="var(--yellow)" text-anchor="middle" font-weight="800">1時間で最適な制度をご提案</text>
  <!-- right tick rotated -62 -->
  <g transform="translate(385,62) rotate(-62)">
  <rect x="0" y="-0.75" width="11" height="1.5" rx="1" fill="var(--yellow)"/>
  </g>
- <text x="385" y="96" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">Deco-Tick-R (-62°)</text>
+ <text x="385" y="96" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">::after 装飾線R (-62°)</text>
  </svg>
  <figcaption>Mini の Custom Code 再現の構造：テキストの左右に細い装飾線を擬似要素で2本描き、±62度回転で逆ハの字を再現（色はデコ用の赤 <code>state/danger</code>。図では <code>--yellow</code> で代用表示）。</figcaption>
  </figure>
@@ -3849,12 +3849,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><strong>Nav</strong>：<strong>非表示</strong>（レイヤーパネルの目アイコンで Tablet 時のみ非表示）。</li>
  <li><strong>Logo-Img</strong>：幅 <code>97px</code>・高さ <code>32px</code>。</li>
  <li><strong>CTA-Group</strong>：gap <code>6</code>。</li>
- <li><strong>CTA-Deco-Wrap</strong>（Free代替の装飾線 Box 一式含む）：<strong>非表示</strong>。</li>
+ <li><strong>CTA-Deco</strong>（赤キャプション＋Custom Codeの斜め装飾線）：<strong>非表示</strong>。装飾線は CTA-Deco の擬似要素なので CTA-Deco を非表示にすれば一緒に消える。</li>
  <li><strong>CTA-Button</strong>：パディング <strong>上8 / 右30 / 下8 / 左16</strong>、サイズ <code>12px</code>、ウェイト <code>800</code>、影 <strong>X0/Y4/Blur12/Spread0・<code>rgba(74,125,232,.28)</code></strong>。</li>
  <li><strong>CTA-Arrow</strong>（Free代替Box）：幅・高さ <code>18px</code>、距離 右 <code>5px</code>、矢印「＞」サイズ <code>9px</code>。</li>
  </ol>
 
- <ul class="checklist"><li>Tablet: Header 56px/padding14・Nav非表示・Logo32px・CTA-Group gap6・CTA-Deco-Wrap非表示 を上書きした（PC継承にしていない）</li><li>Tablet: CTA-Button(padding8/30/8/16・12px・影.28) と CTA-Arrow(18px・右5・「＞」9px) を上書きした</li></ul>
+ <ul class="checklist"><li>Tablet: Header 56px/padding14・Nav非表示・Logo32px・CTA-Group gap6・CTA-Deco非表示 を上書きした（PC継承にしていない）</li><li>Tablet: CTA-Button(padding8/30/8/16・12px・影.28) と CTA-Arrow(18px・右5・「＞」9px) を上書きした</li></ul>
 
  <h4>Mobile（基準540px）— Tablet と同値（767px由来）＋極小（380px由来）を統合</h4>
  <ol class="steps">
@@ -3867,7 +3867,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  <li><strong>Logo-Img</strong>：幅 <code>97px</code>・高さ <code>32px</code>。</li>
  <li><strong>CTA-Group</strong>：gap <code>6</code>。</li>
- <li><strong>CTA-Deco-Wrap</strong>：<strong>非表示</strong>（目アイコン）。</li>
+ <li><strong>CTA-Deco</strong>：<strong>非表示</strong>（目アイコン）。</li>
  <li><strong>CTA-Button</strong>：パディング <strong>上8 / 右30 / 下8 / 左16</strong>、サイズ <code>12px</code>、ウェイト <code>800</code>、影 <code>.28</code>（767px由来）。極小（380px由来）の値は下記で統合上書き。</li>
  <li><strong>CTA-Arrow</strong>（Free代替Box）：幅・高さ <code>18px</code>、距離 右 <code>5px</code>、矢印「＞」サイズ <code>9px</code>。</li>
  </ol>
@@ -3881,7 +3881,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p><strong>写像注</strong>：BP は4段固定のため 380px 専用BPは作らず、Mobile(540) の値として上書きする。380px と 540px で値が異なる項目（Headerパディング 14↔10、CTA padding/サイズ 8/30/8/16・12px ↔ 7/26/7/12・11px）は、Mobile では<strong>より小さい側（380px相当値）に寄せる</strong>。すなわち Mobile に <strong>380px相当値（padding10・CTA 7/26/7/12・11px）</strong>を入れて極小優先で確定する（Mini(320)BP は追加しない）。360–380px の実機差は <strong>公開URL で確認</strong>（§8.2 最終確認は Live Preview/公開URL必須）。</p>
  </div>
 
- <ul class="checklist"><li>Mobile: Header 56px・Nav非表示・Logo32px・CTA-Group gap6・CTA-Deco-Wrap非表示 を上書きした</li><li>Mobile: CTA-Button・CTA-Arrow を上書きし、極小（≤380相当）の Header padding10・CTA-Button(7/26/7/12・11px) を Mobile に統合した（Mini(320)BP は追加しない）</li><li>ハンバーガー（新規・Mini前提）を実装した</li></ul>
+ <ul class="checklist"><li>Mobile: Header 56px・Nav非表示・Logo32px・CTA-Group gap6・CTA-Deco非表示 を上書きした</li><li>Mobile: CTA-Button・CTA-Arrow を上書きし、極小（≤380相当）の Header padding10・CTA-Button(7/26/7/12・11px) を Mobile に統合した（Mini(320)BP は追加しない）</li><li>ハンバーガー（新規・Mini前提）を実装した</li></ul>
 
  <h5>写像方針の確定チェック（指摘反映の核）</h5>
  <ul class="checklist"><li>768閾値を Studio 540/840 二段へどう割り付けるか上表で確定した（767px由来＝Tablet＋Mobile 両方に同値上書き）</li><li>Tablet を「PC継承で操作不要」にしていない（541–767px帯で縮小ヘッダーが出ることを保証した）</li><li>768–840px帯で縮小ヘッダーが出る差異を許容し、Tablet基準幅は840pxのまま動かさないことを確定した</li></ul>
@@ -3901,14 +3901,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  │ ├─ Nav-Item(導入事例) [Text / link #case]
  │ └─ Nav-Item(よくあるご質問) [Text / link #faq]
  └─ CTA-Group [Box / 縦並び 中央 gap5]
- ├─ CTA-Deco-Wrap [Box / 横並び 中央] ← Tablet/Mobile非表示
- │ ├─ Deco-Tick-L [Box / 11×1.5px 角丸1 / danger / rotate 62deg]
- │ ├─ CTA-Deco [Text「1時間で最適な制度をご提案」/ 12px 800 danger]
- │ └─ Deco-Tick-R [Box / 11×1.5px 角丸1 / danger / rotate -62deg]
+ ├─ CTA-Deco [Text「1時間で最適な制度をご提案」/ 12px 800 danger / 左右の斜め装飾線＝Mini Custom Code(class hd-cta-deco)] ← Tablet/Mobile非表示
  └─ CTA-Button [Box / blue / 角丸100px / padding9 44 9 28 / 影glow-blue.3 / link #cta]
  ├─ CTA-Label [Text「無料相談はこちら」/ 13px 800 #fff]
- └─ CTA-Arrow [Box / 22px正円 枠1.2px #fff / absolute right8 中央]
- └─ Text「＞」 [10px 600 #fff]</pre>
+ └─ CTA-Arrow [＞・円形ボーダー付きText / 正円・枠1.5px #fff / in ホバーで文字+枠ink]</pre>
 
  <div class="callout note">
  <p>ハンバーガー（Tablet/Mobile・Mini で有効化）は、Nav の置換として <strong>Nav-Toggle</strong>（<a class="term" href="#term-toggle">Toggle</a>：button=≡ / content=ナビ縦並び）を Header 直下に追加して実装する<strong>（要最終決定）</strong>。</p>

@@ -3889,3 +3889,8 @@
 - 修正(1): §5-1-6 Comp/CTA-Primary のツリー・矢印手順・Hover・図キャプション・§5-1-7 を円形Text方式へ。
 - 修正(2): ヘッダー実体 CTA-Button(§5-1・3743付近)も「矢印=Custom Code再現」「Hoverで子色変更」の旧記述→円形Textネイティブ＋in ホバーへ。Mini Custom Codeプラン削除。
 - 検証: 作業907・難易度907・リンク切れ0・タグ収支OK。
+
+### [DONE] azalea 2026-06-28 幻の「CTA-Deco-Wrap」(古いFree代替の残骸)を実態に修正
+- ユーザー指摘「CTA-Deco-Wrap がいきなり出てくる・作成手順が無い」。原因: 作成手順はMini Custom Code方式(CTA-Decoテキスト＋hd-cta-deco擬似要素で斜め装飾線)だが、レスポンシブ非表示手順/§5-1-9ツリー/SVG図だけ古いFree代替(CTA-Deco-Wrap＞Deco-Tick-L/CTA-Deco/Deco-Tick-R のBox構成)の名前が残存。Mini一本化時の消し忘れ。
+- 修正: レスポンシブ非表示2件＋チェックリスト2件を CTA-Deco へ。§5-1-9ツリーをCTA-Deco(Text+Custom Code線)＋CTA-Arrow(円形Text)へ。SVG図ラベル3件を擬似要素表記へ。CTA-Deco-Wrap/Deco-Tick 完全に除去。
+- 検証: 作業907・難易度907・リンク切れ0・タグ収支OK。
