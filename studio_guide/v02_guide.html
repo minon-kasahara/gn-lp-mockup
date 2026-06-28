@@ -952,6 +952,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <dd>要素を選択 → <strong>右クリック「コンポーネントに変換」 または ⌘+J</strong>（Win: Ctrl+J）→ 名前を付ける。再配置は<strong>左ナビの「コンポーネント」パネル</strong>から<strong>ドラッグ</strong>。コンポーネントを編集すると<strong>全インスタンスに自動反映</strong>。通常Boxに戻すのは ⌘+Shift+J。</dd>
  <dt>画像のフィット（cover/contain）と位置</dt>
  <dd>画像ボックス選択 → 右パネル <strong>Image（イメージ）タブ → 背景サイズ</strong>で <strong>Cover</strong>（領域を覆う）/ <strong>Contain</strong>（収める）/ px / % を選択 → <strong>背景位置</strong>で 中央/上/下/左/右 を選択。自由な位置にしたい時は<strong>子を Absolute＋親を overflow Hidden</strong> にしてドラッグ。</dd>
+ <dt id="term-overflow">はみ出し（Overflow）／overflow:hidden</dt>
+ <dd>子要素が枠からはみ出した分の扱い。右パネル <strong>ボックスタブ → ポジション → 「はみ出し」</strong>で <strong>表示</strong>（visible・既定）／<strong>非表示</strong>（＝overflow:hidden・はみ出しを切る）／<strong>垂直スクロール</strong> から選ぶ。<strong>角丸の隅から中身がはみ出さないようにクリップ</strong>したい時（角丸カード・円形・カバー画像など）は <strong>「非表示」</strong>にする。下の「<strong>clip の代わりに hidden を使用</strong>」チェックは CSS を <code>clip</code>→<code>hidden</code> に切替える指定で、角丸クリップ目的なら<strong>付けなくてよい</strong>（非表示のままで角丸に収まる）。</dd>
  <dt>ブレークポイントの追加（スモール等を有効化）</dt>
  <dd>何も選択していない状態で、<strong>画面下部のデバイス幅バー → 「Edit mode（編集モード）」</strong>をクリック → 追加したい <strong>Small / Mini をクリックして有効化</strong> → そのBPの<strong>幅の数値を入力</strong>（またはガイド線をドラッグ）。設定はプロジェクト全体共通。<br>※ 一部の旧UIでは「上部 Responsive メニュー → Customize Breakpoints → ＋」の場合あり。</dd>
  <dt>主軸方向に伸ばす（CSS <code>flex:1</code> 相当・余白を埋める）</dt>
@@ -4112,7 +4114,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <p><strong>overflow:Hidden による意図的クリップ</strong>: 背景ブロブ block-1（上12% / 右-6%）/ block-2 は画面端方向へ僅かにはみ出すが、Hero に overflow:Hidden を掛けると<strong>画面端側が意図的に切られる</strong>＝これは正しい挙動。一方フォームカードの装飾円（5-2-7、下-16px / 右-14px 等）も祖先 Hero（overflow:Hidden）配下にあるため、カード自身を Visible にしても <strong>Section 端付近に来た円は切れうる</strong>。<strong>Hero=Hidden に固定する</strong>。装飾円は §9 コード集の Custom Code 側で位置を調整して4辺がカード内に収まるようにし、ブロブの画面端はみ出しは切れて良いものとして扱う。</p>
 </div>
 
-<ul class="checklist"><li>Sec-Hero を Base 直下に配置し、幅100% / 高さ100vh / 縦並び・均等 / padding-top 78px / overflow Hidden を設定した</li><li>overflow:Hidden によりブロブの画面端側が切れる挙動を許容し、装飾円は §9 コード集の Custom Code 側で位置調整して4辺をカード内に収める前提を確認した</li></ul>
+<ul class="checklist"><li>Sec-Hero を Base 直下に配置し、幅100% / 高さ100vh / 縦並び・均等 / padding-top 78px / はみ出し=非表示（overflow:hidden）を設定した</li><li>overflow:Hidden によりブロブの画面端側が切れる挙動を許容し、装飾円は §9 コード集の Custom Code 側で位置調整して4辺をカード内に収める前提を確認した</li></ul>
 
 <h4>B. 装飾ブロブ2枚（block-1 / block-2）</h4>
 
@@ -4975,7 +4977,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>同→<strong>padding</strong>: 一括 <strong>32px</strong>。
  <ul class="checklist"><li>padding 32px</li></ul>
  </li>
- <li>同→<strong>overflow: Hidden</strong>（イラストはみ出し抑止）。
+ <li>同→<strong>ポジション → はみ出し → 非表示</strong>（イラストはみ出し抑止）。
  <ul class="checklist"><li>overflow hidden</li></ul>
  </li>
  <li>同→子要素 <code>gap</code>: <strong>14px</strong>（縦間隔）。
@@ -7389,7 +7391,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル→ボックス→外観→角丸 → 一括 <code>24px</code>（リテラル24px・変数ではない）。</li>
  <li>右パネル→ボックス→外観→枠線 → スタイル Solid / 太さ <code>1px</code> / 色 <code>line/line</code>（<a href="#ch-g3">§3</a>.5）。</li>
  <li>右パネル→ボックス→外観→影 → Outset / X <code>0</code> Y <code>16</code> Blur <code>40</code> Spread <code>0</code> / 色 <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（text/ink）・不透明度 <code>6%</code>（<a href="#ch-g3">§3</a>.6）。</li>
- <li>右パネル→ボックス→外観 → overflow: <code>Hidden</code>（カバー画像の角丸クリップに必要）。</li>
+ <li>右パネル→ボックス→<strong>ポジション → はみ出し → 非表示</strong>（カバー画像の角丸クリップに必要。CSS では overflow:hidden）。</li>
  </ol>
  <div class="callout warn">
  <p>（<a href="#ch-t9">§9</a>.2）このカードや祖先で <code>overflow:hidden</code> を使うため、将来この内部に sticky 要素を置かないこと。本セクションは sticky 未使用なので問題なし。</p>
@@ -7412,7 +7414,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </div>
  <ol class="steps" start="3">
  <li>右パネル→ボックス→外観→背景 → <code>bg/blue-soft</code>（画像読込前の下地）。</li>
- <li>右パネル→ボックス→外観 → overflow: <code>Hidden</code>、<a class="term" href="#term-position">ポジション</a>: 相対（relative。タグの絶対配置基準）。</li>
+ <li>右パネル→ボックス→<strong>ポジション → はみ出し → 非表示</strong>、<a class="term" href="#term-position">ポジション</a> → 位置: 相対（relative。タグの絶対配置基準）。</li>
  <li>内側に Image を追加 <code>Cover Img A</code>。アップロードは 左ナビ→アップロード→画像（または ストック）。alt（右パネル→画像→代替テキスト）= <code>株式会社A 様 オフィスにて</code>。カバーは下の参考画像のとおり。</li>
  <li><code>Cover Img A</code> 右パネル→ボックス→サイズ → 幅 <code>%</code>100 / 高さ <code>%</code>100。フィット／位置は次の Mini で当てる。
  <ul>
@@ -7889,7 +7891,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>影（Shadow / Outset）: X <code>0</code> / Y <code>8px</code> / Blur <code>24px</code> / Spread <code>0</code> / Color <code>rgba(15,26,51,.04)</code></li>
  </ul>
  </li>
- <li>外観 → <code>overflow: hidden</code>（角丸クリップ）。</li>
+ <li>右パネル → <strong>ボックス → ポジション → はみ出し → 非表示</strong>（角丸クリップ。CSS では overflow:hidden。値は 表示／<strong>非表示</strong>／垂直スクロール の3択。下の「clip の代わりに hidden を使用」チェックは付けなくてよい）。</li>
  <li>右パネル → <a class="term" href="#term-transform">変形（Transform）タブ</a> → アニメーション → 時間（Duration）<code>0.25s</code>（box-shadow / border-color の遷移用）。</li>
  </ol>
 
@@ -9102,7 +9104,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>影 2層: 0/18/44 rgba(15,26,51,.22) ＋ 0/6/14 #0F1A33・不透明度 10%</li></ul></li>
 <li>同→<strong>ボックス</strong>タブ→<strong>外観</strong>: overflow <strong>Hidden</strong>（リボン影/グロー円のはみ出しをカード角丸でクリップ）。
 <div class="callout note"><p>overflow:Hidden は sticky を無効化するが、本要素は <strong>fixed</strong> のため影響なし の sticky 制約対象外）。</p></div>
-<ul class="checklist"><li>overflow Hidden</li></ul></li>
+<ul class="checklist"><li>はみ出し=非表示（overflow:hidden）</li></ul></li>
 <li>同→<strong>ボックス</strong>タブ→下スクロール→<strong>ポジション</strong>: 種別 <strong>固定（fixed）</strong>、距離 bottom <code>20px</code> / right <code>20px</code>（top/left 未指定）。<a class="term" href="#term-zindex">重ね順（z-index）</a> <code>90</code>。
 <ul class="checklist"><li>ポジション 固定 / bottom 20px / right 20px / z-index 90</li></ul></li>
 <li>フォント既定: テキスト系は各子要素で個別指定する（親での一括指定はせず、要素別に Noto Sans JP / Inter を指定する）。ここでは設定不要。</li>
@@ -9263,7 +9265,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <text x="368" y="22" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">GlowYellow</text>
 <text x="78" y="252" font-family="inherit" font-size="9" fill="var(--sub)" text-anchor="middle">GlowBlue</text>
 </svg>
-<figcaption>グラデは左上(青)→右下(黄)へ155度。グロー円2つは absolute で角からはみ出させ、Visual の overflow:Hidden で円形にクリップ。</figcaption>
+<figcaption>グラデは左上(青)→右下(黄)へ155度。グロー円2つは absolute で角からはみ出させ、Visual の はみ出し=非表示（overflow:hidden）で円形にクリップ。</figcaption>
 </figure>
 
 <ol class="steps">
@@ -9276,7 +9278,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <div class="callout note"><p>Studio のグラデUIで3ストップ・角度指定を設定する（2〜3色の線形は標準範囲）。単色フォールバックは使わず、上記3ストップの線形グラデで実装する。</p></div>
 <ul class="checklist"><li>背景 linear 155deg blue-soft→white→yellow-soft</li></ul></li>
 <li>同→<strong>外観</strong>: overflow <strong>Hidden</strong>（グロー円のはみ出しをクリップ）。
-<ul class="checklist"><li>overflow Hidden</li></ul></li>
+<ul class="checklist"><li>はみ出し=非表示（overflow:hidden）</li></ul></li>
 </ol>
 
 <h4>グロー円（::before / ::after 代替）</h4>

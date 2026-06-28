@@ -3912,3 +3912,9 @@
 - ユーザー指摘「Approach Wrapは必要なの？」→検証: ラッパーは幅100%・padding0でSec-Approachを包むだけ。グラデを直接Sec-Approachに付けても塗り範囲は同一＝ラッパー不要(.prob-app-wrapは元HTMLの名残)。手順書の「直接だと範囲ずれる」は根拠なし。
 - 修正(§2/§3.2/§5-3 計27): ラッパー記述を全廃しグラデをSec-Approachに直接。名前を Approach Section→Sec-Approach に統一(§2は既にSec-Approach、§5-3はApproach Section/Wrapだった不整合も解消)。レイヤー順・背景表・SVG図・チェックリスト文言を整合。
 - 安全: ul.checklist数はテキスト編集のみで907不変(削除は表の1<tr>のみ・非カウント)。静的検証で907一致・タグ収支OK。
+
+### [DONE] azalea 2026-06-28 overflow表記を実機UI「ポジション→はみ出し→非表示」に修正＋ナレッジ追加
+- ユーザー指摘(画像): 設定欄は「はみ出し」(ポジション内)、値は 表示/非表示/垂直スクロール、overflow:hidden=「非表示」、下に「clip の代わりに hidden を使用」チェック。
+- 修正: FAQ-Item(7892「外観→overflow:hidden」)・Cases(7392/7415)・§5-3イラスト(4978)・Hero/checklist素overflow を「ポジション→はみ出し→非表示」へ。用語集に term-overflow「はみ出し（Overflow）」を新設。
+- ナレッジ: ~/dev/00_Knowledge/studio_design_spec.md §4＋メモリに追記(場所は外観でなくポジション、角丸クリップは非表示、clipチェックは不要)。
+- 検証: checklist907不変・タグ収支OK。
