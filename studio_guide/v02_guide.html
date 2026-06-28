@@ -419,7 +419,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><a href="#ch-s1">5-1. ヘッダー</a></li>
 <li><a class="lv3" href="#s1-0">5-1-0. 前提・このセクションの確定事項</a></li>
 <li><a class="lv3" href="#s1-1">5-1-1. ヘッダー外枠（Header Box）</a></li>
-<li><a class="lv3" href="#s1-2">5-1-2. ロゴ（左・外部リンク／SVG Embed）</a></li>
+<li><a class="lv3" href="#s1-2">5-1-2. ロゴ（左・外部リンク／アップロード画像）</a></li>
 <li><a class="lv3" href="#s1-3">5-1-3. グローバルナビ（中央・7項目）</a></li>
 <li><a class="lv3" href="#s1-4">5-1-4. CTAブロック外枠（右）</a></li>
 <li><a class="lv3" href="#s1-5">5-1-5. CTAデコ文字（赤・上段）</a></li>
@@ -580,7 +580,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><a class="lv3" href="#t8-1">8.1 月桂冠（Record セクション装飾）— laurel.svg</a></li>
 <li><a class="lv3" href="#t8-2">8.2 Approach セクションイラスト — appr-01〜04.svg</a></li>
 <li><a class="lv3" href="#t8-3">8.3 VC ロゴ（マーキー＋静的グリッド）— 12 ファイル</a></li>
-<li><a class="lv3" href="#t8-4">8.4 G&amp;N ロゴ（ヘッダー＆フッター・インライン SVG）</a></li>
+<li><a class="lv3" href="#t8-4">8.4 G&amp;N ロゴ（ヘッダー＆フッター・アップロード画像）</a></li>
 <li><a class="lv3" href="#t8-5">8.5 CTA 女性イラスト — cta_illust_woman.svg</a></li>
 <li><a class="lv3" href="#t8-6">8.6 アップロード禁止アセット（未使用・スタイル代替が必要なもの）</a></li>
 <li><a class="lv3" href="#t8-7">8.7 レイヤー命名・配置ツリー（アセット関連のみ）</a></li>
@@ -1038,7 +1038,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><strong>フローティング特典ウィジェット</strong>（固定配置・下 <code>20px</code>・右 <code>20px</code>・重ね順 <code>z-index:90</code>）の右下追従と、Mobile(540) での全幅化。Header と同様にエディタ内プレビュー不可。</li>
  <li><strong>ヘッダー背景ぼかし</strong>＝背面ぼかし <code>8px</code>。 <strong>Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）の背景ぼかしブロック</strong>で実装して確認する。</li>
  <li><strong>ビューポート基準の単位（vw/dvh）を含む可変サイズ文字</strong>の実機での折返し。</li>
- <li><strong>Embed(sandbox)</strong>（G&NロゴSVG 等）は sandbox で読み込みタイミングの制約があるため公開URLで最終確認。</li>
+ <li><strong>Embed(sandbox)</strong>（FV見出しの手書き下線フィルタ・グラデ文字 等）は sandbox で読み込みタイミングの制約があるため公開URLで最終確認。</li>
  </ul>
  </li>
  <li><strong>841〜1024px 帯の構造確認（重点）</strong>: Small を 1024 に置いたことでこの帯は Small 値で描画される。Hero / CTA / Footer / Perk が<strong>縦1カラムに正しくリフローしているか</strong>を実機で必ず確認する（Small 未設定だと 841〜1024px が2カラムのまま破綻する帯。<a href="#g0-3">§0.3</a> 補足参照）。</li>
@@ -3461,7 +3461,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul>
  <li><code>.hd-cta-deco</code> の左右の斜め線は <code>::before/::after</code>（Studio ネイティブ非対応）→ <a href="#s1-5">5-1-5</a> で Mini の Custom Code で再現する。</li>
  <li>CTAボタン <code>.btn-gra::after</code> の丸枠＋「＞」矢印も擬似要素 → <a href="#s1-6">5-1-6</a> で Mini の Custom Code で再現する。</li>
- <li>ロゴは SVG。<a class="term" href="#term-embed">Embed（埋め込み）</a>（<a class="term" href="#term-sandbox">sandbox</a> 自動判定・全プラン可）で配置（<a href="#s1-2">5-1-2</a>）。</li>
+ <li>ロゴは <code>gn_logo.svg</code>（ink色焼き込み済み）を<strong>アップロードして Image 配置</strong>（<a href="#s1-2">5-1-2</a>／<a href="#t8-4">§8.4</a>）。Embed・コード貼り付けは使わない。</li>
  </ul>
  </li>
  </ul>
@@ -3548,12 +3548,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <ul class="checklist"><li>Header Box を Base 直下に配置し、幅100%＋left 0（右は auto）・高さ78px・fixed・z-index100・padding 0 40 を設定した</li><li>塗り <code>header-bg</code>・背面フィルター blur 8・下境界線透明1px を設定した</li></ul>
 
- <h3 id="s1-2">5-1-2. ロゴ（左・外部リンク／SVG Embed）</h3>
+ <h3 id="s1-2">5-1-2. ロゴ（左・外部リンク／アップロード画像）</h3>
 
- <p>レイヤー命名：<strong>Header / Logo-Link</strong>（中に <strong>Logo-SVG</strong>）。</p>
+ <p>レイヤー命名：<strong>Header / Logo-Link</strong>（中に <strong>Logo-Img</strong>）。</p>
 
  <div class="callout note">
- <p>ロゴは G&amp;N の SVG（円＋「G&amp;N」字形＋装飾）。Studio ネイティブの図形では再現困難なため <a class="term" href="#term-embed">Embed（埋め込み）</a>（<a class="term" href="#term-sandbox">sandbox</a> 自動判定・全プラン可）で配置する。<strong>このロゴ SVG は mockup の assets 外にあるため、コードを直接コードエディタに貼り付ける（→ 整形済みコードは <a href="#t9-codeset">§9「コピペ用コード集」①</a> をコピー）。</strong></p>
+ <p>ロゴは G&amp;N の SVG（円＋「G&amp;N」字形＋装飾）。<strong>用意済みの画像ファイル <code>gn_logo.svg</code></strong>（<a href="#t8-4">§8.4</a>／<code>mockup/assets/gn_logo.svg</code>・ロゴ色 <code>ink #0F1A33</code> 焼き込み済み・白抜きパス保持）を、左ナビ → アップロード（Uploads）から事前アップロードし、<strong>Image（画像）として配置</strong>する。SVG コードの貼り付けや Embed は使わない（誰がやっても同じ結果になる）。</p>
  </div>
 
  <ol class="steps">
@@ -3565,24 +3565,17 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </ul>
  </li>
  <li>右パネル <span class="path">ボックス<i>›</i>レイアウト</span>：方向 <strong>横並び</strong>、垂直 <strong>中央</strong>、gap <code>10</code>。サイズ：幅 <strong>auto</strong>、高さ <strong>auto</strong>。</li>
- <li>Logo-Link の中へ、左ナビ <span class="path">追加<i>›</i>基本<i>›</i>埋め込み（Embed）</span> をドラッグ。名前を <strong>Logo-SVG</strong> にリネーム。</li>
- <li>Logo-SVG を選択 → コードエディタに <code>&lt;svg class="logo-svg" viewBox="0 0 181.61 60" ...&gt;...&lt;/svg&gt;</code> を<strong>そのまま貼り付け</strong>（整形済みコードは <a href="#t9-codeset">§9「コピペ用コード集」①</a> をコピー。円・字形・<code>fill="#fff"</code> の鹿パスを含む）。sandbox type に自動判定される。</li>
- <li>SVG の表示高さを合わせる：貼り付けコード内 <code>&lt;svg&gt;</code> に <strong><code>height="42"</code> のみ</strong>を持たせる。
- <ul>
- <li><strong><code>width</code> 属性は付けない</strong>。SVG は <code>viewBox="0 0 181.61 60"</code> を持つため、<code>height="42"</code> を指定すれば幅は viewBox のアスペクト比（<code>181.61:60</code>）から<strong>自動算出</strong>される。</li>
- <li><code>width="auto"</code> は SVG 属性としては無効（SVG の <code>width</code> 属性に <code>auto</code> は使えず、CSS の <code>width:auto</code> とは別物）なので<strong>指定しない</strong>。</li>
- <li>Embed Box 側（右パネル <span class="path">ボックス<i>›</i>サイズ</span>）は 高さ <code>42px</code>・幅 <strong>auto</strong> に合わせる（Box の <code>width:auto</code> は CSS なので可）。</li>
- </ul>
- </li>
- <li>ロゴ色は <code>ink</code>（<code>#0F1A33</code>）。Embed 内 SVG は親の currentColor を継承しないため、<strong>SVG コード側で <code>fill="#0F1A33"</code>（=<code>ink</code>）を明示</strong>する（鹿パスの <code>fill="#fff"</code> は残す）。</li>
- <li><strong>最終確認は公開URLで行う</strong>（sandbox type は <code>DOMContentLoaded</code> 不発火等の制約があるため）。</li>
+ <li>Logo-Link の中へ、左ナビ <span class="path">追加<i>›</i>基本<i>›</i>画像（Image）</span> をドラッグ。名前を <strong>Logo-Img</strong> にリネーム。</li>
+ <li>Logo-Img を選択 → <strong>画像をダブルクリック</strong>（または右パネル <span class="path">画像（Image）<i>›</i>サムネイル</span>）でアップロード一覧を開き、事前アップロードした <strong><code>gn_logo.svg</code></strong> を選ぶ。</li>
+ <li>右パネル <span class="path">ボックス<i>›</i>サイズ</span>：高さ <strong><code>42px</code></strong>、幅 <strong>auto</strong>（viewBox <code>181.61:60</code> 比で自動。約 <code>127px</code> になる）。<strong>Imgモード</strong>のため一辺（高さ <code>42px</code>）を入れれば他辺は比率維持で自動。</li>
+ <li>右パネル <span class="path">画像（Image）<i>›</i>代替テキスト（Alt）</span>：<code>G&amp;N</code> を入力。</li>
  </ol>
 
- <div class="callout warn">
- <p><strong>幅属性の落とし穴</strong>：SVG の <code>width</code> 属性に <code>auto</code> は使えない（CSS の <code>width:auto</code> とは別物）。<code>height="42"</code> のみ指定し、幅は viewBox 比（<code>181.61:60</code>）に自動算出させる。<code>width</code> 属性を付けると比率が崩れる。</p>
+ <div class="callout note">
+ <p>ロゴ色は <code>ink</code>（<code>#0F1A33</code>）。<strong>色は <code>gn_logo.svg</code> に焼き込み済み</strong>（白抜きパスは <code>fill="#fff"</code> で保持）。Studio はアップロードした画像の色を後から変更できないため、色の指定や調整は不要——置くだけで正しい色になる。</p>
  </div>
 
- <ul class="checklist"><li>Logo-Link を外部URL <code>https://gandn.co.jp/</code>・新規タブで設定した</li><li>Logo-SVG（Embed/sandbox）にロゴSVGを貼り、<code>height="42"</code> のみ指定（width属性は付けず viewBox 比で自動算出）・色 <code>ink</code> を反映した</li></ul>
+ <ul class="checklist"><li>Logo-Link を外部URL <code>https://gandn.co.jp/</code>・新規タブで設定した</li><li>Logo-Img に <code>gn_logo.svg</code> を割り当て、高さ <code>42px</code>・幅 auto・alt <code>G&amp;N</code> を設定した（色は ink 焼き込み済み）</li></ul>
 
  <h3 id="s1-3">5-1-3. グローバルナビ（中央・7項目）</h3>
 
@@ -3856,7 +3849,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>ツールバーを <strong>Tablet</strong> に切替。</li>
  <li><strong>Header</strong>：高さ <code>56px</code>、パディング 左右 <code>14 / 14</code>。</li>
  <li><strong>Nav</strong>：<strong>非表示</strong>（レイヤーパネルの目アイコンで Tablet 時のみ非表示）。</li>
- <li><strong>Logo-SVG</strong>：高さ <code>32px</code>。</li>
+ <li><strong>Logo-Img</strong>：高さ <code>32px</code>。</li>
  <li><strong>CTA-Group</strong>：gap <code>6</code>。</li>
  <li><strong>CTA-Deco-Wrap</strong>（Free代替の装飾線 Box 一式含む）：<strong>非表示</strong>。</li>
  <li><strong>CTA-Button</strong>：パディング <strong>上8 / 右30 / 下8 / 左16</strong>、サイズ <code>12px</code>、ウェイト <code>800</code>、影 <strong>X0/Y4/Blur12/Spread0・<code>rgba(74,125,232,.28)</code></strong>。</li>
@@ -3874,7 +3867,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p><strong>ハンバーガーは実装する（新規要素）</strong>：Tablet/Mobile 帯はナビを非表示にし、ハンバーガーメニューを追加する。<a class="term" href="#term-toggle">Toggle</a>（<span class="path">基本<i>›</i>インタラクション<i>›</i>Toggle</span>）で button（≡アイコン）＋ content（ナビ項目の縦並び）を作り、Tablet/Mobile のみ表示する。Toggle は <strong>Click トリガー</strong>（タッチ誤動作回避）、<strong>Close when clicking outside = ON</strong> にする。Toggle は <strong>Mini で有効化する前提</strong>で設計する<strong>（要最終決定）</strong>。</p>
  </div>
  </li>
- <li><strong>Logo-SVG</strong>：高さ <code>32px</code>。</li>
+ <li><strong>Logo-Img</strong>：高さ <code>32px</code>。</li>
  <li><strong>CTA-Group</strong>：gap <code>6</code>。</li>
  <li><strong>CTA-Deco-Wrap</strong>：<strong>非表示</strong>（目アイコン）。</li>
  <li><strong>CTA-Button</strong>：パディング <strong>上8 / 右30 / 下8 / 左16</strong>、サイズ <code>12px</code>、ウェイト <code>800</code>、影 <code>.28</code>（767px由来）。極小（380px由来）の値は下記で統合上書き。</li>
@@ -3898,9 +3891,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <h3 id="s1-9">5-1-9. レイヤー階層ツリー（このセクションの完成形）</h3>
 
  <pre class="tree">Base
-└─ Header [Box / fixed / 幅auto+left:0/right:0 / h:78px / z:100 / padding 0 40]
+└─ Header [Box / fixed / 幅100%+left:0(右auto) / h:78px / z:100 / padding 0 40]
  ├─ Logo-Link [Box / 外部リンク https://gandn.co.jp/ 新規タブ / 横並び gap10]
- │ └─ Logo-SVG [Embed(sandbox) / height="42"のみ(width未指定) / G&amp;N SVG・fill #0F1A33]
+ │ └─ Logo-Img [Image / gn_logo.svg / 高さ42px・幅auto / fill #0F1A33焼込・白パス保持]
  ├─ Nav [Box / 横並び gap24] ← Tablet/Mobile非表示
  │ ├─ Nav-Item(本サービスの特徴) [Text / Nav Link / link #approach]
  │ ├─ Nav-Item(市場動向) [Text / link #market]
@@ -8692,10 +8685,10 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h4>ロゴ素材</h4>
  <div class="callout tip">
- <p>公式 G&amp;N ロゴはインライン SVG（viewBox <code>0 0 181.61 60</code>、<code>fill=currentColor</code> で ink 制御、円内マークのみ <code>fill=#fff</code> 白抜き）。<strong>Studio はキャンバスにインライン SVG を直接置けない</strong>ため、ロゴ色を <strong>ink（<code>#0F1A33</code>）で固定した SVG または PNG として書き出し</strong>、左ナビ → アップロード から事前アップロードしておきます。alt / aria-label は <code>G&amp;N</code>。</p>
+ <p>公式 G&amp;N ロゴは <strong>用意済みの <code>gn_logo.svg</code></strong>（<code>mockup/assets/gn_logo.svg</code>・viewBox <code>0 0 181.61 60</code>・ロゴ色 <code>ink #0F1A33</code> 焼き込み済み・円内マークのみ <code>fill=#fff</code> 白抜き）。左ナビ → アップロード（Uploads）から事前アップロードしておきます。色は焼き込み済みのため Studio 側での色調整は不要。alt / aria-label は <code>G&amp;N</code>。</p>
  </div>
 
- <ul class="checklist"><li>カラースタイル 5 件（blue-soft / ink / sub / blue / line）を登録した</li><li>G&amp;N ロゴを ink 色固定で書き出し、アップロードした</li></ul>
+ <ul class="checklist"><li>カラースタイル 5 件（blue-soft / ink / sub / blue / line）を登録した</li><li>用意済みの <code>gn_logo.svg</code>（ink色焼き込み）をアップロードした</li></ul>
 
  <h3 id="s11-1">1. Footer セクション本体（sec-footer）</h3>
  <ol class="steps">
@@ -8768,7 +8761,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><code>ft-info</code> 内に Box を追加し、<code>ft-logo</code> にリネーム。</li>
  <li>右パネル → ボックスタブ → レイアウト → 方向 = <strong>横並び（Horizontal）</strong>、配置: 垂直 = 中央（align center）、間隔（gap）= <code>10</code>px。</li>
  <li>右パネル → ボックスタブ → 余白（margin）: 下（margin-bottom）= <code>22</code>px。</li>
- <li><code>ft-logo</code> 内に 左ナビ → 追加 → 基本タブ → Image を配置し、<code>ft-logo-img</code> にリネーム。事前アップロードした G&amp;N ロゴ画像を指定。</li>
+ <li><code>ft-logo</code> 内に 左ナビ → 追加 → 基本タブ → Image を配置し、<code>ft-logo-img</code> にリネーム。事前アップロードした <code>gn_logo.svg</code> を指定。</li>
  <li>右パネル → ボックスタブ → サイズ: 高さ = <code>32</code>px、幅 = <code>auto</code>（viewBox 181.61:60 比で自動。約 <code>97px</code> になる）。</li>
  <li>画像の代替テキスト: 右パネル → 画像タブ（または設定タブ）→ alt に <code>G&amp;N</code> を設定（aria-label 相当）。</li>
  </ol>
@@ -8900,9 +8893,9 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </div>
 
  <h3 id="s11-10">10. Studioネイティブ対応の可否メモ</h3>
- <p>公式ロゴ（inline SVG）の扱い: Studio はキャンバスにインライン SVG を直接配置不可。<strong>ink 色固定で SVG/PNG 書き出し → Image 配置（§4）にする。</strong></p>
+ <p>公式ロゴは<strong>用意済みの <code>gn_logo.svg</code></strong>（ink色焼き込み済み）。<strong>アップロードして Image 配置（§4）にする。</strong>Custom Code や Embed での SVG 注入は使わない。</p>
  <div class="plan free">
- <span class="badge">Free代替</span> ink 色固定で SVG/PNG 書き出し → Image 配置（§4）。これを唯一の手順とする（Custom Code や Embed での SVG 注入は使わない）。
+ <span class="badge">Free代替</span> 用意済みの <code>gn_logo.svg</code> をアップロード → Image 配置（§4）。これを唯一の手順とする（Custom Code や Embed での SVG 注入は使わない）。
  </div>
  <div class="callout tip">
  <p>このセクションに<a class="term" href="#term-pseudo">疑似要素</a>（::before/::after）・@keyframes・複雑グラデ・SVGフィルタは<strong>無し</strong>。全プロパティ（背景色・border・flex・gap・padding・margin・タイポ・リンク）が Studio ボックスタブ／テキストタブのネイティブ設定で再現可能。<strong>Custom Code は不要</strong>。</p>
@@ -11097,7 +11090,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 </table>
 
 <div class="callout note">
-<p>加えて、ファイルではないが <strong>G&amp;N ロゴ（インライン SVG）を独立 SVG として書き出してアップロード</strong>します（<a href="#t8-4">§8.4</a>）。VC ロゴはディスクに 16 ファイルあるが、<strong>使用中は 12 ファイル</strong>（<code>_orig</code> 4本は除外）。</p>
+<p>加えて、<strong>G&amp;N ロゴ <code>gn_logo.svg</code>（<code>mockup/assets/</code> に用意済み・ink色焼き込み）も同じ Uploads へアップロード</strong>します（<a href="#t8-4">§8.4</a>）。VC ロゴはディスクに 16 ファイルあるが、<strong>使用中は 12 ファイル</strong>（<code>_orig</code> 4本は除外）。</p>
 </div>
 
 <ul class="checklist"><li>上記 24 ファイルのみを手元にコピーして準備した</li><li><code>_orig</code> 付き 4 ファイル・<code>prob-*.svg</code> 5 ファイルは準備フォルダに入れていない</li></ul>
@@ -11130,7 +11123,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li>準備した 24 ファイルをパネルへドラッグ＆ドロップ（または「+」からファイル選択）。</li>
 <li>アップロード完了後、各アセットがサムネイル表示されることを確認。</li>
 <li><strong><code>01BoosterCapital.jpg</code> は先頭が数字</strong>。アップローダがファイル名を化けさせる／拒否する場合は <code>BoosterCapital01.jpg</code> 等にリネームしてから上げ直す（Studio 内部参照名のみ変わり、表示には影響しない）。</li>
-<li>SVG（<code>laurel.svg</code> / <code>cta_illust_woman.svg</code> / <code>appr-01〜04.svg</code> / 書き出した G&amp;N ロゴ）も同じ Uploads パネルへ。SVG はベクターのまま保持される。</li>
+<li>SVG（<code>laurel.svg</code> / <code>cta_illust_woman.svg</code> / <code>appr-01〜04.svg</code> / <code>gn_logo.svg</code>）も同じ Uploads パネルへ。SVG はベクターのまま保持される（高 DPI でも鮮明）。</li>
 </ol>
 
 <ul class="checklist"><li>24 ファイルすべてのアップロードが完了した</li><li><code>01BoosterCapital.jpg</code> が正しく取り込まれた（化けていれば改名済み）</li><li>SVG 6 種が Uploads パネルに表示されている</li></ul>
@@ -11323,13 +11316,13 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
 <ul class="checklist"><li>マーキーは Loop Box で実装し、ロゴは 1 セット（12枚）のみ配置した（複製は自動生成）</li><li>静的グリッドにも同 12 ロゴを配置した</li><li>各ロゴの alt を上表どおり設定した</li><li><code>IncubateFund.jpg</code> の鮮明さを Studio 上で確認した</li><li>Loop Box の <a class="term" href="#term-breakpoint">prefers-reduced-motion</a> 自動尊重・複製要素 <code>aria-hidden</code> 自動付与を前提に追加対応不要と確認した（<a href="#ch-t10">§10.1</a>）</li></ul>
 
-<h3 id="t8-4">8.4 G&amp;N ロゴ（ヘッダー＆フッター・インライン SVG）</h3>
+<h3 id="t8-4">8.4 G&amp;N ロゴ（ヘッダー＆フッター・アップロード画像）</h3>
 
 <p><strong>完成イメージ</strong>: G&amp;N ロゴは viewBox 0 0 181.61 60 の SVG マークで、ヘッダー（高さ42px / Mobile 32px）とフッター（高さ32px / Mobile 28px）に同じマークを置きます。色は文字色（<code>--ink</code> = <span class="sw" style="--c:#0F1A33"></span><code>#0F1A33</code>）。内部に<strong>白の星/葉パス <code>fill="#fff"</code></strong>（白抜きディテール）を含みます。</p>
 
 <h4>Studio 手順</h4>
 <ol class="steps">
-<li>G&N ロゴの SVG を <strong>1 ファイル <code>gn_logo.svg</code> として書き出し</strong>、Uploads にアップロード。<strong>ヘッダーとフッターで同一アセットを再利用</strong>（重複排除）。</li>
+<li>G&N ロゴの SVG を <strong>用意済みの <code>gn_logo.svg</code></strong>（<code>mockup/assets/gn_logo.svg</code>・ink色焼き込み済み）を Uploads にアップロード。<strong>ヘッダーとフッターで同一アセットを再利用</strong>（重複排除）。</li>
 <li>ヘッダー（レイヤー <code>header-logo</code>）に配置：<strong>ボックスタブ → サイズ → 高さ <code>42px</code> / 幅 auto</strong>。</li>
 <li>フッター（レイヤー <code>footer-logo</code>）に配置：<strong>高さ <code>32px</code> / 幅 auto</strong>。</li>
 <li><strong>色の再現</strong>：文字色を継承する指定は Studio に引き継がれない。書き出した SVG 内で<strong>メインパスの fill を <code>#0F1A33</code>（ink）に明示</strong>し、<strong>白サブパスの <code>fill="#fff"</code> は保持</strong>する（再色付け時も白抜きが消えないこと）。</li>
@@ -11346,7 +11339,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li>フッター：Mobile 幅で 高さ <code>28px</code>。</li>
 </ul>
 
-<ul class="checklist"><li>インライン SVG を <code>gn_logo.svg</code> として書き出した</li><li>ヘッダー/フッターで同一アセットを再利用した</li><li>メインパス fill を <code>#0F1A33</code> に明示、白サブパス <code>#fff</code> を保持した</li><li>Mobile でヘッダー <code>32px</code>・フッター <code>28px</code> に上書きした</li><li>alt（aria-label）を <code>G&amp;N</code> に設定した</li></ul>
+<ul class="checklist"><li>用意済みの <code>gn_logo.svg</code> をアップロードした</li><li>ヘッダー/フッターで同一アセットを再利用した</li><li>メインパス fill を <code>#0F1A33</code> に明示、白サブパス <code>#fff</code> を保持した</li><li>Mobile でヘッダー <code>32px</code>・フッター <code>28px</code> に上書きした</li><li>alt（aria-label）を <code>G&amp;N</code> に設定した</li></ul>
 
 <h3 id="t8-5">8.5 CTA 女性イラスト — <code>cta_illust_woman.svg</code></h3>
 
@@ -11517,9 +11510,9 @@ sec-footer
  &lt;/div&gt;
 &lt;/aside&gt;</code></pre>
  </div>
- <h4>① G&amp;N ロゴ SVG（§5-1 ヘッダー／§5-11 フッター用・Embed に貼る）</h4>
- <p class="cb-note">Embed(Blank)を置き、下記を貼る。色は親要素で <code>color</code> を指定（SVGは currentColor 追従）。フッターは白指定。</p>
- <pre class="code"><code>&lt;svg class="logo-svg" viewBox="0 0 181.61 60" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="G&amp;amp;N"&gt;&lt;circle cx="30" cy="30" r="30"/&gt;&lt;path d="M108.78,17.47l-5.38,5.32c-3.41-3.6-7.38-5.41-11.91-5.41c-3.95,0-7.27,1.31-9.93,3.93s-4,5.81-4,9.56c0,3.88,1.38,7.16,4.15,9.86c2.77,2.69,6.19,4.04,10.25,4.04c2.64,0,4.87-0.56,6.68-1.67c1.81-1.11,3.27-2.85,4.39-5.22H91.39v-7.18h20.21l0.06,1.69c0,3.51-0.91,6.84-2.73,9.99c-1.82,3.15-4.18,5.55-7.07,7.21c-2.9,1.66-6.29,2.48-10.19,2.48c-4.17,0-7.89-0.9-11.15-2.72c-3.27-1.81-5.85-4.39-7.75-7.74c-1.9-3.35-2.85-6.96-2.85-10.84c0-5.32,1.76-9.94,5.27-13.87c4.17-4.68,9.59-7.02,16.27-7.02c3.49,0,6.76,0.65,9.8,1.94C103.81,12.94,106.33,14.82,108.78,17.47z"/&gt;&lt;path d="M138.14,36.13l3.68,4.22l-1.67,1.52l-1.65,1.5l5.21,5.52h-7.49l-2.14-2.21c-3.41,2.02-6.59,3.02-9.51,3.02c-2.49,0-4.5-0.73-6.04-2.18c-1.54-1.46-2.31-3.33-2.31-5.61c0-1.72,0.44-3.35,1.31-4.88c0.87-1.53,2.36-3.11,4.47-4.75c-2.09-2.81-3.13-5.3-3.13-7.46c0-1.6,0.69-3.19,2.07-4.75c1.38-1.56,3.33-2.34,5.85-2.34c2.55,0,4.5,0.77,5.86,2.32c1.36,1.55,2.04,3.11,2.04,4.68c0,1.24-0.31,2.42-0.94,3.55c-0.62,1.13-2.06,2.81-4.31,5.03c2.63,3.11,4.34,5.04,5.1,5.81C135.02,38.78,136.22,37.78,138.14,36.13z M130.08,42.39c-1.14-1.12-2.74-2.97-4.8-5.55c-2.18,1.81-3.27,3.39-3.27,4.75c0,0.63,0.3,1.21,0.89,1.74c0.59,0.53,1.35,0.79,2.26,0.79C126.47,44.12,128.11,43.54,130.08,42.39z M126.4,28.98c1.63-1.4,2.45-2.63,2.45-3.71c0-0.56-0.18-1.02-0.55-1.37c-0.37-0.35-0.85-0.53-1.46-0.53c-0.56,0-1.03,0.2-1.42,0.6c-0.39,0.4-0.58,0.86-0.58,1.39C124.83,26.42,125.35,27.63,126.4,28.98z"/&gt;&lt;path d="M149.44,10.92h7.33l17.19,26.43V10.92h7.65v40.17h-7.35l-17.17-26.35v26.35h-7.65V10.92z"/&gt;&lt;path fill="#fff" d="M29.98,25.56l-7.13,6.63h13.33l-6.47,5.93l-8.4-3.62l-3.61-6.97l5.44-7.91L45.4,8.22l-2.44-0.03L29.71,7.8l-7.45,10.83L3.43,28.21l16.94,7.3l9.41,18.17L49.6,21.93L29.98,25.56z M30.38,9.11L40.4,9.4L24.67,17.4L30.38,9.11z M16.59,26.87l-8.63,0.48l12.77-6.5L16.59,26.87z M7.71,28.65l8.85-0.49l2.87,5.54L7.71,28.65z M37.8,30.74l-5.92-4.22l14.09-2.61L37.8,30.74z M30.33,26.99l5.49,3.92h-9.7L30.33,26.99z M38.25,32.04l7.35-6.14L30.48,50.13V39.16L38.25,32.04z M29.19,39.3v10.43l-6.95-13.43L29.19,39.3z"/&gt;&lt;/svg&gt;</code></pre>
+ <h4>① G&amp;N ロゴ SVG（<code>gn_logo.svg</code> の中身・参考用）</h4>
+ <p class="cb-note">このコードは <strong>すでに <code>mockup/assets/gn_logo.svg</code> として用意済み</strong>（ink <code>#0F1A33</code> 焼き込み・白抜きパス保持）。実装では<strong>このファイルをアップロードして Image 配置するだけ</strong>（<a href="#s1-2">§5-1-2</a>／<a href="#t8-4">§8.4</a>）。下記は中身の参考。Embed への貼り付けは不要。</p>
+ <pre class="code"><code>&lt;svg viewBox="0 0 181.61 60" xmlns="http://www.w3.org/2000/svg" fill="#0F1A33" aria-label="G&amp;amp;N"&gt;&lt;circle cx="30" cy="30" r="30"/&gt;&lt;path d="M108.78,17.47l-5.38,5.32c-3.41-3.6-7.38-5.41-11.91-5.41c-3.95,0-7.27,1.31-9.93,3.93s-4,5.81-4,9.56c0,3.88,1.38,7.16,4.15,9.86c2.77,2.69,6.19,4.04,10.25,4.04c2.64,0,4.87-0.56,6.68-1.67c1.81-1.11,3.27-2.85,4.39-5.22H91.39v-7.18h20.21l0.06,1.69c0,3.51-0.91,6.84-2.73,9.99c-1.82,3.15-4.18,5.55-7.07,7.21c-2.9,1.66-6.29,2.48-10.19,2.48c-4.17,0-7.89-0.9-11.15-2.72c-3.27-1.81-5.85-4.39-7.75-7.74c-1.9-3.35-2.85-6.96-2.85-10.84c0-5.32,1.76-9.94,5.27-13.87c4.17-4.68,9.59-7.02,16.27-7.02c3.49,0,6.76,0.65,9.8,1.94C103.81,12.94,106.33,14.82,108.78,17.47z"/&gt;&lt;path d="M138.14,36.13l3.68,4.22l-1.67,1.52l-1.65,1.5l5.21,5.52h-7.49l-2.14-2.21c-3.41,2.02-6.59,3.02-9.51,3.02c-2.49,0-4.5-0.73-6.04-2.18c-1.54-1.46-2.31-3.33-2.31-5.61c0-1.72,0.44-3.35,1.31-4.88c0.87-1.53,2.36-3.11,4.47-4.75c-2.09-2.81-3.13-5.3-3.13-7.46c0-1.6,0.69-3.19,2.07-4.75c1.38-1.56,3.33-2.34,5.85-2.34c2.55,0,4.5,0.77,5.86,2.32c1.36,1.55,2.04,3.11,2.04,4.68c0,1.24-0.31,2.42-0.94,3.55c-0.62,1.13-2.06,2.81-4.31,5.03c2.63,3.11,4.34,5.04,5.1,5.81C135.02,38.78,136.22,37.78,138.14,36.13z M130.08,42.39c-1.14-1.12-2.74-2.97-4.8-5.55c-2.18,1.81-3.27,3.39-3.27,4.75c0,0.63,0.3,1.21,0.89,1.74c0.59,0.53,1.35,0.79,2.26,0.79C126.47,44.12,128.11,43.54,130.08,42.39z M126.4,28.98c1.63-1.4,2.45-2.63,2.45-3.71c0-0.56-0.18-1.02-0.55-1.37c-0.37-0.35-0.85-0.53-1.46-0.53c-0.56,0-1.03,0.2-1.42,0.6c-0.39,0.4-0.58,0.86-0.58,1.39C124.83,26.42,125.35,27.63,126.4,28.98z"/&gt;&lt;path d="M149.44,10.92h7.33l17.19,26.43V10.92h7.65v40.17h-7.35l-17.17-26.35v26.35h-7.65V10.92z"/&gt;&lt;path fill="#fff" d="M29.98,25.56l-7.13,6.63h13.33l-6.47,5.93l-8.4-3.62l-3.61-6.97l5.44-7.91L45.4,8.22l-2.44-0.03L29.71,7.8l-7.45,10.83L3.43,28.21l16.94,7.3l9.41,18.17L49.6,21.93L29.98,25.56z M30.38,9.11L40.4,9.4L24.67,17.4L30.38,9.11z M16.59,26.87l-8.63,0.48l12.77-6.5L16.59,26.87z M7.71,28.65l8.85-0.49l2.87,5.54L7.71,28.65z M37.8,30.74l-5.92-4.22l14.09-2.61L37.8,30.74z M30.33,26.99l5.49,3.92h-9.7L30.33,26.99z M38.25,32.04l7.35-6.14L30.48,50.13V39.16L38.25,32.04z M29.19,39.3v10.43l-6.95-13.43L29.19,39.3z"/&gt;&lt;/svg&gt;</code></pre>
  <h4>② アニメ・グラデ文字・SVGフィルタ 一括（§5-2 FV／§5-7 VC／§5-12 ほか・Mini: Custom Code の &lt;body&gt;内末尾に貼る）</h4>
  <p class="cb-note">スイープ(sweepGrad)／手書き下線(fvUnderline＋#hl-rough)／ロゴマーキー(lw-scroll)／光沢(perkShine)／点滅(blink)／グラデ文字 をまとめて有効化。グラデ文字にしたい Text の <strong>class 欄</strong>（設定タブ）に <code>gn-grad-text</code>（静的）や <code>gn-sweep</code>（FVスイープ）を入力する。</p>
  <pre class="code"><code>&lt;!-- これを Mini の Custom Code → &lt;body&gt;内末尾 に貼る（var はHEX解決済みで単独動作） --&gt;
@@ -12400,7 +12393,7 @@ sec-footer
 
 <!-- ============ 10.10 ============ -->
 <h3 id="t10-10">10.10 パフォーマンス</h3>
-<ul class="checklist"><li>VC ロゴ画像が圧縮済み（各 <code>100KB</code> 以下）</li><li>OGP 画像（<code>1200×630</code>）が圧縮済み・5MB 未満</li><li>大きな装飾を不要に Embed / 画像化していない（マーキー＝Loop Box、出現＝On Appear 等ネイティブ優先で重量化を回避）</li><li>Embed sandbox（G&amp;N ロゴ SVG 等）が過剰に多くなく、公開 URL で遅延なく描画</li><li>Lighthouse Performance <code>80+</code> を目標に計測（モバイル基準。<strong>計測手順は <a href="#g0-4">§0.4</a></strong>）</li><li>初回表示で大きなレイアウトシフト（CLS）が起きない（フォント差し替え・画像遅延読込起因のガタつきを確認。新基盤 SSR なら本文 / メタは初期 HTML に含まれる）</li><li>月間 Visitor 上限（Free / Mini＝2,000）に対し、広告流入見込みが超過しないか確認（超過見込みなら Personal 以上に切替える）</li></ul>
+<ul class="checklist"><li>VC ロゴ画像が圧縮済み（各 <code>100KB</code> 以下）</li><li>OGP 画像（<code>1200×630</code>）が圧縮済み・5MB 未満</li><li>大きな装飾を不要に Embed / 画像化していない（マーキー＝Loop Box、出現＝On Appear 等ネイティブ優先で重量化を回避）</li><li>Embed sandbox（FV見出しの手書き下線・グラデ文字 等）が過剰に多くなく、公開 URL で遅延なく描画</li><li>Lighthouse Performance <code>80+</code> を目標に計測（モバイル基準。<strong>計測手順は <a href="#g0-4">§0.4</a></strong>）</li><li>初回表示で大きなレイアウトシフト（CLS）が起きない（フォント差し替え・画像遅延読込起因のガタつきを確認。新基盤 SSR なら本文 / メタは初期 HTML に含まれる）</li><li>月間 Visitor 上限（Free / Mini＝2,000）に対し、広告流入見込みが超過しないか確認（超過見込みなら Personal 以上に切替える）</li></ul>
 
 <div class="callout tip">
 <p>このチェックリストは Studio リファレンス（2026-06 検証版）と <code>legal_check_20260506.md</code> に準拠。<strong>フォーム送信先・資料 DL / プライバシーの遷移先 URL・GA / GTM・公開基盤切替・Mini / Personal プラン確定</strong>は「公開直前に再確認」項目。実機確認（スティッキー追従・マーキー・Embed・OGP カード）はエディタ内では完結しないため必ず公開 URL で行う。</p>
@@ -12897,8 +12890,8 @@ sec-footer
 <dt id="term-hug">Hug（auto/内容ぴったり)</dt><dd>FigmaのHugに相当する呼称で、Studioには「Hug」という単位名は存在しない。読み替えは <code>auto</code>（内容に合わせてサイズが決まる）。ボタンや見出しなど、中身ぴったりに収めたいときに指定する。なお親が<code>auto</code>のとき子の<code>%</code>は基準幅が確定せず機能しない点に注意。</dd>
 <dt id="term-colorstyle">カラースタイル</dt><dd>色を名前付きで登録し、適用中の全箇所で一括管理する仕組み。変更はプロジェクト全体の該当箇所に自動伝播する（ページ単位設定は不要）。命名は半角スラッシュ「/」で最大3階層・最大50文字（例 <code>text/primary/hover</code>）、不透明度込みで保存可。本LPのブランドカラー運用の中核。なおCMS/Listのcolor propertyには未適用。</dd>
 <dt id="term-textstyle">テキストスタイル</dt><dd>フォント・サイズ・行高・色などを名前付きで登録するスタイル。変更は全インスタンスに自動伝播する。1つのスタイル定義内にPC/Tablet/Mobileのタイポを内包でき、レスポンシブ指示を簡潔化できる。スタイルパネルのメニューは「テキスト」で、ホバーすると使用箇所がハイライト表示される。</dd>
-<dt id="term-embed">Embed（埋め込み)</dt><dd>HTML/CSS/JS等のコードを要素として埋め込む機能。全プラン利用可（Freeでも可）。埋め込み方式（iframe / sandbox）は自動判定でユーザーは選べない。エディタ内でコードのプレビューが可能だが、sandboxは<code>DOMContentLoaded</code>非発火などの制約があり最終確認は公開URL推奨。本LPではG&NロゴSVGの埋め込みに使う（sandbox判定でよい）。</dd>
-<dt id="term-sandbox">sandbox</dt><dd>Embedの埋め込み方式の一つ（自動判定）。<code>&lt;iframe&gt;</code>タグのみで構成されるコード（およびformrun・HubSpot Formの埋め込み）は「iframe type」、それ以外の全コードは「sandbox type」になる。本来iframe認識されるコードでもCMSプロパティを使うとsandboxへ切り替わる。SVG/HTML/CSS/JSを含むG&Nロゴはsandboxでよい。</dd>
+<dt id="term-embed">Embed（埋め込み)</dt><dd>HTML/CSS/JS等のコードを要素として埋め込む機能。全プラン利用可（Freeでも可）。埋め込み方式（iframe / sandbox）は自動判定でユーザーは選べない。エディタ内でコードのプレビューが可能だが、sandboxは<code>DOMContentLoaded</code>非発火などの制約があり最終確認は公開URL推奨。本LPでは FV 見出しの手書き風下線フィルタ等の特殊装飾コードで使う（sandbox 判定でよい）。<strong>ロゴはアップロード画像なので Embed は使わない。</strong></dd>
+<dt id="term-sandbox">sandbox</dt><dd>Embedの埋め込み方式の一つ（自動判定）。<code>&lt;iframe&gt;</code>タグのみで構成されるコード（およびformrun・HubSpot Formの埋め込み）は「iframe type」、それ以外の全コードは「sandbox type」になる。本来iframe認識されるコードでもCMSプロパティを使うとsandboxへ切り替わる。SVG/HTML/CSS/JS を含む装飾コードは sandbox でよい。</dd>
 <dt id="term-customcode">Custom Code</dt><dd>各ページの<code>&lt;/head&gt;</code>・<code>&lt;/body&gt;</code>直前にコードを差し込む機能。<strong>Mini以上の有料プランが必須でFreeは不可</strong>（Freeでは既存コードの削除のみ可）。1ブロック最大30,000文字、各位置に最大10ブロック・1ページ合計20ブロック。headに書けるタグは link/meta/style/script/noscript の5種のみ。本LPはMini切替後にGA4/GTM計測タグやJSON-LD構造化データを集約する。</dd>
 <dt id="term-loopbox">Loop Box</dt><dd>子要素を複製して無限ループさせるマーキー用要素。追加パネルの基本タブ→インタラクション→LoopBoxで配置し、子要素が最低1つ必要。速度はpx/s（デフォルト60px/s、0で停止）、方向は子のflexDirection依存、Pause on hoverでホバー停止。overflowは自動でhidden固定。<code>prefers-reduced-motion</code>尊重と複製要素への<code>aria-hidden</code>付与が自動。<strong>Freeでも利用可</strong>。本LPの横スクロール演出に使える。</dd>
 <dt id="term-toggle">Toggle</dt><dd>クリック/ホバーで開閉する要素で、button（トリガー）+ content（開閉領域）の2部構成。FAQの開閉に使う。トリガーはClick/Hover選択可（誤動作回避にClick推奨）、Show by default（初期開）やClose when clicking outside（外側クリックで閉じる）を設定できる。既定アニメはアイコン180度回転＋content高さauto↔0。Free可否は未検証。</dd>
