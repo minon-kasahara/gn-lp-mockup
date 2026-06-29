@@ -9774,8 +9774,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>レイヤーパネルで本 Box（と配下の吹き出し・画像）を選択し、§5-10-7 の <strong>Tablet・Mobile 両方で非表示（目アイコン OFF）</strong>にする（理由は §5-10-7 写像注記）。
  <ul class="checklist"><li>Tablet/Mobile両方で非表示</li></ul>
  </li>
-<li>アクセシビリティ: 装飾画像群のため設定タブで装飾扱い。画像の alt は空にする。
- <ul class="checklist"><li>装飾扱い・alt空</li></ul>
+<li><strong>アクセシビリティ（装飾画像の alt を空にする）</strong>：CTA Illust 内の<strong>純装飾の画像</strong>（女性イラスト等、意味を持たず見た目だけの画像）を選択 → 右パネル <strong>設定（Settings）タブ</strong> → <strong>代替テキスト（Alt）</strong>欄を<strong>空のまま</strong>にする（既にテキストが入っていれば削除して空にする）。
+ <ul>
+ <li><strong>「装飾扱い」という独立した操作・チェックは無い</strong>。<strong>alt を空にすること自体が装飾扱い</strong>＝スクリーンリーダーが読み飛ばす（<code>alt=""</code> 相当）。</li>
+ <li>装飾画像が複数枚あれば、<strong>各画像で同様に alt を空</strong>にする。</li>
+ <li>※ <strong>代替テキスト欄</strong>が設定タブに見当たらない環境では <strong>画像（Image）タブ</strong>側にある（どちらでも欄名は「代替テキスト／Alt」）。</li>
+ <li>※ 吹き出しの文言は <strong>Text 要素</strong>なので alt とは無関係（テキストとしてそのまま読まれてOK。画像化しないこと）。</li>
+ </ul>
+ <ul class="checklist"><li>装飾画像の代替テキスト（alt）を空にした</li></ul>
  </li>
 </ol>
 
