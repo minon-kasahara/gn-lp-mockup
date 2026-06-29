@@ -3808,7 +3808,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル <span class="path">ボックス<i>›</i>サイズ</span>：<strong>幅 <code>127px</code> / 高さ <code>42px</code></strong>（<code>181.61:60</code> 比）。<strong>幅は <code>auto</code> にしない</strong>——SVGの自然幅が出ず幅0で消えることがあるため、実数 <code>127px</code> で固定する。
  <ul class="checklist"><li>幅127px / 高さ42px固定</li></ul>
  </li>
- <li>右パネル <span class="path">画像（Image）<i>›</i>代替テキスト（Alt）</span>：<code>G&amp;N</code> を入力。
+ <li>右パネル <span class="path">設定（Settings）<i>›</i>タグ・属性<i>›</i>aria-label</span>：<code>G&amp;N</code> を入力（div の代替名は aria-label）。
  <ul class="checklist"><li>Alt=G&amp;N</li></ul>
  </li>
  </ol>
@@ -3817,7 +3817,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <p>ロゴ色は <code>text/ink</code>（<code>#0F1A33</code>）。<strong>色は <code>gn_logo.svg</code> に焼き込み済み</strong>（白抜きパスは <code>fill="#fff"</code> で保持）。Studio はアップロードした画像の色を後から変更できないため、色の指定や調整は不要——置くだけで正しい色になる。</p>
  </div>
 
- <ul class="checklist"><li>Logo-Link を外部URL <code>https://gandn.co.jp/</code>・新規タブで設定した</li><li>Logo-Img に <code>gn_logo.svg</code> を割り当て、<strong>画像（Img）モード</strong>・幅 <code>127px</code>・高さ <code>42px</code>・フィット contain・alt <code>G&amp;N</code> を設定した（色は ink 焼き込み済み）</li></ul>
+ <ul class="checklist"><li>Logo-Link を外部URL <code>https://gandn.co.jp/</code>・新規タブで設定した</li><li>Logo-Img に <code>gn_logo.svg</code> を割り当て、<strong>画像（Img）モード</strong>・幅 <code>127px</code>・高さ <code>42px</code>・フィット contain・aria-label <code>G&amp;N</code> を設定した（色は ink 焼き込み済み）</li></ul>
 
  <h3 id="s1-3">5-1-3. グローバルナビ（中央・7項目）</h3>
 
@@ -5068,7 +5068,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>各 LW Card（CSS ）: 幅 <code>200px</code>（固定・<code>flex:none</code>＝flexで縮まない）、高さ <code>80px</code>、背景 <code>bg/white</code>、Border <code>1px solid</code> 色 <code>line/strong</code>、角丸 <code>14px</code>（r-md）、中央寄せ、影 X<code>0</code> Y<code>6px</code> Blur<code>16px</code> 色 <span class="sw" style="--c:#0F1A33"></span> <code>#0F1A33</code>（text/ink）・不透明度 <code>5%</code>（shadow-card）。
  <ul class="checklist"><li>Card 幅200px・白・Border/角丸14・影</li></ul>
  </li>
-<li>各 Card 内に Image を1枚。画像は左ナビ<strong>アップロード（Uploads）</strong>から VCロゴ12点（ANRI / ANOBAKA / Incubate Fund / UNITED / DEEPCORE / Garnet Capital / Hyperion / W fund / Waypoint Venture Partners / Open Network Lab / 01Booster Capital / All About）をアップロードして使用。Image: 最大幅 <code>86%</code> / 最大高 <code>90%</code>、object-fit <strong>contain</strong>、彩度は Filter（Saturation）で <code>saturate(.95)</code> を設定する。alt に各社名を設定。
+<li>各 Card 内に Image を1枚。画像は左ナビ<strong>アップロード（Uploads）</strong>から VCロゴ12点（ANRI / ANOBAKA / Incubate Fund / UNITED / DEEPCORE / Garnet Capital / Hyperion / W fund / Waypoint Venture Partners / Open Network Lab / 01Booster Capital / All About）をアップロードして使用。Image: 最大幅 <code>86%</code> / 最大高 <code>90%</code>、object-fit <strong>contain</strong>、彩度は Filter（Saturation）で <code>saturate(.95)</code> を設定する。aria-label に各社名を設定（設定タブ→タグ・属性）。
  <ul class="checklist"><li>各CardにVCロゴ画像を配置</li></ul>
  </li>
 </ol>
@@ -5609,8 +5609,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 ご提案</pre>
  <ul class="checklist"><li>H3 Card・コピー・改行</li></ul>
  </li>
- <li><code>Card Right Col</code> 内に <strong>画像（Image）</strong> をドラッグ→<code>Card Illust 01</code>。左ナビ→<strong>アップロード（Uploads）</strong>で <code>appr-01.svg</code> をアップロードして指定（alt空）。<strong>画像（Image）</strong>タブ→object-fit相当 <strong>contain</strong>、object-position <strong>center top</strong>。<strong>ボックス</strong>タブ→幅 <strong><code>%</code> 100%（最大幅180px）</strong> / 高さ <strong>140px</strong> / 配置 自身を<strong>右寄せ（justify-self:end相当）＝親の交差軸配置で右</strong>。
- <ul class="checklist"><li>SVGアップロード・contain・180×140</li><li>alt は装飾画像のため空にする</li></ul>
+ <li><code>Card Right Col</code> 内に <strong>画像（Image）</strong> をドラッグ→<code>Card Illust 01</code>。左ナビ→<strong>アップロード（Uploads）</strong>で <code>appr-01.svg</code> をアップロードして指定（aria-hidden=true・装飾）。<strong>画像（Image）</strong>タブ→object-fit相当 <strong>contain</strong>、object-position <strong>center top</strong>。<strong>ボックス</strong>タブ→幅 <strong><code>%</code> 100%（最大幅180px）</strong> / 高さ <strong>140px</strong> / 配置 自身を<strong>右寄せ（justify-self:end相当）＝親の交差軸配置で右</strong>。
+ <ul class="checklist"><li>SVGアップロード・contain・180×140</li><li>装飾画像のため aria-hidden=true（aria-labelは空）</li></ul>
  </li>
  </ol>
  <div class="callout note">
@@ -7260,8 +7260,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  
  <ul class="checklist"><li>月桂樹Custom Codeで背景指定</li></ul>
  </li>
- <li>アクセシビリティ：装飾画像のため<strong>代替テキスト（alt）は空</strong>に設定（<code>aria-hidden</code> 相当）。
- <ul class="checklist"><li>装飾画像alt空に設定</li></ul>
+ <li>アクセシビリティ：装飾画像（div）のため <strong>設定タブ → タグ・属性 → aria-hidden に <code>true</code></strong> を設定（aria-labelは空）。
+ <ul class="checklist"><li>装飾画像 aria-hidden=true に設定</li></ul>
  </li>
  </ol>
 
@@ -7931,7 +7931,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <table>
  <thead>
- <tr><th>カード</th><th>レイヤー（alt）</th><th>ファイル</th><th>プレビュー</th></tr>
+ <tr><th>カード</th><th>レイヤー（aria-label）</th><th>ファイル</th><th>プレビュー</th></tr>
  </thead>
  <tbody>
  <tr><td>VC-Card01</td><td>ANRI</td><td><code>ANRI_2.jpg</code></td><td><img class="asset" src="../ANRI_2.jpg" alt="ANRI" loading="lazy" width="80"></td></tr>
@@ -7961,8 +7961,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>画像固有タブ（<strong>画像 / Image</strong> タブ）→ フィット＝<strong>contain</strong>。
  <ul class="checklist"><li>画像フィット contain</li></ul>
  </li>
- <li>設定（Settings）タブ → <strong>alt</strong> に上表のVC名を入力（アクセシビリティ）。
- <ul class="checklist"><li>alt にVC名入力</li></ul>
+ <li>設定（Settings）タブ → タグ・属性 → <strong>aria-label</strong> に上表のVC名を入力（アクセシビリティ）。
+ <ul class="checklist"><li>aria-label にVC名入力</li></ul>
  </li>
  <li>彩度（<code>saturate(.95)</code>）：画像タブのフィルタで Saturation を <strong>95%</strong> に設定する。
  <ul class="checklist"><li>彩度 saturate(.95)</li></ul>
@@ -8479,8 +8479,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル→ボックス→<strong>ポジション → はみ出し → 非表示</strong>、<a class="term" href="#term-position">ポジション</a> → 位置: 相対（relative。タグの絶対配置基準）。
  <ul class="checklist"><li>はみ出し非表示・relative</li></ul>
  </li>
- <li>内側に Image を追加 <code>Cover Img A</code>。アップロードは 左ナビ→アップロード→画像（または ストック）。alt（右パネル→画像→代替テキスト）= <code>株式会社A 様 オフィスにて</code>。カバーは下の参考画像のとおり。
- <ul class="checklist"><li>Cover Img A 追加・alt設定</li></ul>
+ <li>内側に Image を追加 <code>Cover Img A</code>。アップロードは 左ナビ→アップロード→画像（または ストック）。aria-label（設定タブ→タグ・属性）= <code>株式会社A 様 オフィスにて</code>。カバーは下の参考画像のとおり。
+ <ul class="checklist"><li>Cover Img A 追加・aria-label設定</li></ul>
  </li>
  <li><code>Cover Img A</code> 右パネル→ボックス→サイズ → 幅 <code>%</code>100 / 高さ <code>%</code>100。フィット／位置は次の Mini で当てる。
  <ul>
@@ -8494,7 +8494,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <img class="asset" src="../case_a_cover.png" alt="Card A カバー写真（実物プレビュー）" loading="lazy">
  <figcaption>実アセット <code>cases/case_a_cover.png</code>。16:10・<code>object-position:center 35%</code> で上寄りトリミング。B/C は <code>case_b_cover.jpg</code> / <code>case_c_cover.jpg</code>。</figcaption>
  </figure>
- <ul class="checklist"><li>Cover（16:10・blue-soft下地・overflow hidden・相対）に Image（cover・center 35%・alt）を配置した</li></ul>
+ <ul class="checklist"><li>Cover（16:10・blue-soft下地・overflow hidden・相対）に Image（cover・center 35%・aria-label）を配置した</li></ul>
 
  <h4>業種タグ（Cover Tag A）</h4>
  <ol class="steps">
@@ -8550,8 +8550,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル→ボックス→スペース → margin 上 <code>4px</code> / 下 <code>8px</code>。
  <ul class="checklist"><li>margin上4px / 下8px</li></ul>
  </li>
- <li>内側に Image <code>Logo Img A</code>。alt=<code>Alpha Technologies ロゴ</code>。アップロードは横長ロゴ（透過PNG、実アセット <code>cases/logo_a.png</code>）。
- <ul class="checklist"><li>Logo Img A 追加・alt設定</li></ul>
+ <li>内側に Image <code>Logo Img A</code>。aria-label=<code>Alpha Technologies ロゴ</code>（設定タブ→タグ・属性）。アップロードは横長ロゴ（透過PNG、実アセット <code>cases/logo_a.png</code>）。
+ <ul class="checklist"><li>Logo Img A 追加・aria-label設定</li></ul>
  </li>
  <li><code>Logo Img A</code> 右パネル→ボックス→サイズ → 幅 <code>auto</code> / 高さ <code>auto</code>、最大高さ <code>60px</code> / 最大幅 <code>%</code>78。右パネル→画像→フィット = <code>Contain</code>。
  <ul class="checklist"><li>幅高auto・max-h60/max-w78%・Contain</li></ul>
@@ -8674,16 +8674,16 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul class="checklist"><li>Card A複製→B/C作成・A→B→C順</li></ul>
  </li>
  </ol>
- <p>差し替えるコンテンツの一覧です（画像src・alt・テキストのみ。スタイルは触らない）。</p>
+ <p>差し替えるコンテンツの一覧です（画像src・aria-label・テキストのみ。スタイルは触らない）。</p>
  <table>
  <thead>
  <tr><th>項目</th><th>Card B</th><th>Card C</th></tr>
  </thead>
  <tbody>
  <tr><td>Cover Img（実アセット）</td><td><code>cases/case_b_cover.jpg</code></td><td><code>cases/case_c_cover.jpg</code></td></tr>
- <tr><td>Cover Img alt</td><td>株式会社B 様 物流オペレーション現場にて</td><td>株式会社C 様 FINTECH オフィスにて</td></tr>
+ <tr><td>Cover Img aria-label</td><td>株式会社B 様 物流オペレーション現場にて</td><td>株式会社C 様 FINTECH オフィスにて</td></tr>
  <tr><td>Cover Tag</td><td><code>D2C</code></td><td><code>FinTech</code></td></tr>
- <tr><td>Logo Img（実アセット）</td><td><code>cases/logo_b.png</code>（alt: B-Studio ロゴ）</td><td><code>cases/logo_c.png</code>（alt: Cflow ロゴ）</td></tr>
+ <tr><td>Logo Img（実アセット）</td><td><code>cases/logo_b.png</code>（aria-label: B-Studio ロゴ）</td><td><code>cases/logo_c.png</code>（aria-label: Cflow ロゴ）</td></tr>
  <tr><td>Company</td><td>株式会社 B</td><td>株式会社 C</td></tr>
  <tr><td>Industry</td><td>Seedラウンド · 約12名</td><td>Series A · 約45名</td></tr>
  <tr><td>Headline</td><td>物流オペレーションを補助金で内製化。採用前倒しに成功。</td><td>新規プロダクト立ち上げの初期投資を、公的制度で圧縮。</td></tr>
@@ -9807,8 +9807,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>外観→Shadow: <strong>Outset</strong>、X 0 / Y <code>12px</code> / Blur <code>22px</code> / Spread 0 / Color <code>rgba(15,26,51,.16)</code>（ink 不透明度 16%）。
  <ul class="checklist"><li>影 Y12/Blur22・ink16%</li></ul>
  </li>
-<li>alt <strong>空</strong>（装飾）。
- <ul class="checklist"><li>alt空</li></ul>
+<li>装飾扱い: <strong>aria-hidden=true</strong>（設定タブ → タグ・属性。aria-labelは空）。
+ <ul class="checklist"><li>aria-hidden=true（装飾）</li></ul>
  </li>
 </ol>
 
@@ -10315,8 +10315,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル → 画像タブ → 表示モードを <strong>画像（Img）モード</strong>・フィット <strong>contain</strong>。ボックスタブ → サイズ: <strong>幅 = <code>97</code>px / 高さ = <code>32</code>px</strong>（181.61:60 比。幅は <code>auto</code> にせず実数で固定）。
  <ul class="checklist"><li>Imgモード contain / 幅97 高さ32</li></ul>
  </li>
- <li>画像の代替テキスト: 右パネル → 画像タブ（または設定タブ）→ alt に <code>G&amp;N</code> を設定（aria-label 相当）。
- <ul class="checklist"><li>alt に G&amp;N 設定</li></ul>
+ <li>画像の代替名: 右パネル → 設定タブ → タグ・属性 → <strong>aria-label</strong> に <code>G&amp;N</code> を設定（div のため alt 欄は無い）。
+ <ul class="checklist"><li>aria-label に G&amp;N 設定</li></ul>
  </li>
  </ol>
  <div class="callout note">
@@ -12825,7 +12825,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <section class="chapter" id="ch-t8">
 <h2 id="ch-t8">8. アセット一覧</h2>
 
-<p>本章は LP モックアップ（正本: <code>/</code>）が参照する<strong>全アセットの Studio へのアップロード手順・配置箇所・未確定アセット</strong>を定義します。ファイルパス・寸法・alt 文言はすべて確定値（2026-06-17 時点）です。本章は全体方針章のため、個別の実物セクションリンクは置いていません。各アセットがどのセクションに載るかは <a href="#t8-7">§8.7 レイヤーツリー</a> と各セクション章（5-1〜5-12）を参照してください。</p>
+<p>本章は LP モックアップ（正本: <code>/</code>）が参照する<strong>全アセットの Studio へのアップロード手順・配置箇所・未確定アセット</strong>を定義します。ファイルパス・寸法・aria-label 文言はすべて確定値（2026-06-17 時点）です。本章は全体方針章のため、個別の実物セクションリンクは置いていません。各アセットがどのセクションに載るかは <a href="#t8-7">§8.7 レイヤーツリー</a> と各セクション章（5-1〜5-12）を参照してください。</p>
 
 <div class="callout note">
 <p><strong>関連章</strong>: <span class="path">左ナビ<i>›</i>アップロード（Uploads）</span> の基本操作は <a href="#ch-g2">§2.1（左ナビ 5番 / 画像・動画・PDF）</a>、<a class="term" href="#term-embed">Embed</a> の <a class="term" href="#term-sandbox">sandbox</a> 判定は <a href="#ch-t6">§6</a>、<a class="term" href="#term-customcode">Custom Code</a> は <a href="#ch-t7">§7</a> を参照。</p>
@@ -12873,7 +12873,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <text x="20" y="55" fill="var(--sub)" font-size="11" text-anchor="start">_orig 4本（最適化前オリジナル）／ prob-*.svg 5本（旧スキーム・HTML未参照）は準備フォルダに入れない（§8.6）</text>
 </g>
 </svg>
-<figcaption>本章のゴール：正しい 24 ファイル＋書き出しロゴだけを、寸法・alt を守って各セクションへ配置する。</figcaption>
+<figcaption>本章のゴール：正しい 24 ファイル＋書き出しロゴだけを、寸法・aria-label を守って各セクションへ配置する。</figcaption>
 </figure>
 
 <div class="callout note">
@@ -12976,7 +12976,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
 <h3 id="t8-1">8.1 月桂冠（Record セクション装飾）— <code>laurel.svg</code></h3>
 
-<p><strong>完成イメージ</strong>: 1 枚の SVG に左右両半分が横並びで内包されており、左半分と右半分を左右に出し分けて使います。Record の 4 統計（1,200社 / 800件 / 200億円 / 279件）を左右で挟む形で月桂冠を 8 個（左右ペア×4）配置します。寸法 PC=幅34px×高さ100%（統計1枠の高さ88px基準）、Mobile=幅22px×高さ68px。金色 <span class="sw" style="--c:#B69333"></span><code>#B69333</code> は SVG 内に焼き込み済み、装飾扱いで alt 不要。</p>
+<p><strong>完成イメージ</strong>: 1 枚の SVG に左右両半分が横並びで内包されており、左半分と右半分を左右に出し分けて使います。Record の 4 統計（1,200社 / 800件 / 200億円 / 279件）を左右で挟む形で月桂冠を 8 個（左右ペア×4）配置します。寸法 PC=幅34px×高さ100%（統計1枠の高さ88px基準）、Mobile=幅22px×高さ68px。金色 <span class="sw" style="--c:#B69333"></span><code>#B69333</code> は SVG 内に焼き込み済み、装飾扱い（aria-hidden=true）。</p>
 
 <p>下が月桂冠 SVG（左右両半分を内包した 1 枚）です。これを左右にクロップして 2 ファイルにします。背景 position 方式は採用しない。</p>
 <figure class="fig">
@@ -13027,8 +13027,8 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li>Record の各統計 <a class="term" href="#term-box">Box</a>（後述レイヤー <code>Rec-Stat-1</code>〜<code>-4</code>）の左に <code>laurel_l</code>、右に <code>laurel_r</code> を Image として配置。右パネル → <strong>画像タブ</strong> → フィット: <a class="term" href="#term-fill">contain</a>（object-fit 相当）。右パネル → <strong>ボックスタブ</strong> → サイズ → 幅 <code>34px</code> / 高さ <code>auto</code>。
  <ul class="checklist"><li>統計Box左右にlaurelを配置・幅34px</li></ul>
  </li>
-<li>各 Image の<strong>設定タブ</strong>で代替テキストを空（装飾）に。
- <ul class="checklist"><li>alt空（装飾）</li></ul>
+<li>各 Image（div）の<strong>設定タブ → タグ・属性</strong>で aria-hidden=true（装飾）に。
+ <ul class="checklist"><li>aria-hidden=true（装飾）</li></ul>
  </li>
 </ol>
 </div>
@@ -13045,7 +13045,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 
 <h3 id="t8-2">8.2 Approach セクションイラスト — <code>appr-01.svg</code>〜<code>appr-04.svg</code></h3>
 
-<p><strong>完成イメージ</strong>: Approach 4 カードの各 illust 領域に 1 枚ずつ配置します（いずれも装飾扱いで alt 空）。割り当ては下表。</p>
+<p><strong>完成イメージ</strong>: Approach 4 カードの各 illust 領域に 1 枚ずつ配置します（いずれも装飾扱いで aria-hidden=true）。割り当ては下表。</p>
 
 <table>
 <thead><tr><th>ファイル</th><th>POINT</th><th>見出し</th></tr></thead>
@@ -13080,8 +13080,8 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li>右パネル → <strong>画像タブ</strong> → フィット contain / 位置 上中央（<code>object-position:center top</code> 相当）。
  <ul class="checklist"><li>フィットcontain / 位置上中央</li></ul>
  </li>
-<li>右パネル → <strong>設定タブ</strong> → 代替テキスト 空（装飾）。
- <ul class="checklist"><li>alt空（装飾）</li></ul>
+<li>右パネル → <strong>設定タブ → タグ・属性</strong> → aria-hidden=true（装飾）。
+ <ul class="checklist"><li>aria-hidden=true（装飾）</li></ul>
  </li>
 <li>重なり: 右パネル → <strong>ボックスタブ → <a class="term" href="#term-position">ポジション</a> → <a class="term" href="#term-zindex">重ね順</a></strong> を <code>1</code>（<a href="#ch-t9">§9.3</a>）。
  <ul class="checklist"><li>重ね順1</li></ul>
@@ -13151,7 +13151,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li><span class="path">左ナビ<i>›</i>追加<i>›</i>基本タブ<i>›</i>インタラクション<i>›</i>LoopBox</span> を Hero 下のマーキー領域（レイヤー <code>VC-Marquee</code>）に配置。
  <ul class="checklist"><li>マーキー領域にLoopBox配置</li></ul>
  </li>
-<li>Loop Box 内に Image を 12 個、上図の順（ANRI_2 → ANOBAKA → IncubateFund → United → DeepCore → GarnetCapital → Hyperion → Wfund → WaypointVenturePartners → OpenNetworkLab → 01BoosterCapital → AllAbout）で配置。各 Image: <strong>ボックスタブ → サイズ</strong>はカードに収まる固定枠（例 幅 auto・高さ <code>90%</code> 相当）、<strong>画像タブ → フィット contain</strong>、<strong>設定タブ → 代替テキスト</strong>は下表の社名。
+<li>Loop Box 内に Image を 12 個、上図の順（ANRI_2 → ANOBAKA → IncubateFund → United → DeepCore → GarnetCapital → Hyperion → Wfund → WaypointVenturePartners → OpenNetworkLab → 01BoosterCapital → AllAbout）で配置。各 Image: <strong>ボックスタブ → サイズ</strong>はカードに収まる固定枠（例 幅 auto・高さ <code>90%</code> 相当）、<strong>画像タブ → フィット contain</strong>、<strong>設定タブ → タグ・属性 → aria-label</strong> は下表の社名。
  <ul class="checklist"><li>VCロゴ12個を指定順で配置</li></ul>
  </li>
 <li>右パネル → Loop Box 設定：速度を <code>60px/s</code> に設定し、<strong>Pause on hover</strong> を ON にする。<code>overflow</code> は自動 hidden（<a href="#ch-t10">§10.1</a>）。両端フェード（背景ぼかし）は <a class="term" href="#term-customcode">Custom Code</a>（<a href="#ch-t9">§9 コード集 #t9-codeset</a>）の両端マスク用ブロックを Custom Code に貼って実装する。
@@ -13173,7 +13173,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 </ol>
 
 <table>
-<thead><tr><th>ファイル</th><th>alt</th></tr></thead>
+<thead><tr><th>ファイル</th><th>aria-label</th></tr></thead>
 <tbody>
 <tr><td><code>ANRI_2.jpg</code></td><td>ANRI</td></tr>
 <tr><td><code>ANOBAKA.jpg</code></td><td>ANOBAKA</td></tr>
@@ -13190,7 +13190,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 </tbody>
 </table>
 
-<ul class="checklist"><li>マーキーは Loop Box で実装し、ロゴは 1 セット（12枚）のみ配置した（複製は自動生成）</li><li>静的グリッドにも同 12 ロゴを配置した</li><li>各ロゴの alt を上表どおり設定した</li><li><code>IncubateFund.jpg</code> の鮮明さを Studio 上で確認した</li><li>Loop Box の <a class="term" href="#term-breakpoint">prefers-reduced-motion</a> 自動尊重・複製要素 <code>aria-hidden</code> 自動付与を前提に追加対応不要と確認した（<a href="#ch-t10">§10.1</a>）</li></ul>
+<ul class="checklist"><li>マーキーは Loop Box で実装し、ロゴは 1 セット（12枚）のみ配置した（複製は自動生成）</li><li>静的グリッドにも同 12 ロゴを配置した</li><li>各ロゴの aria-label を上表どおり設定した</li><li><code>IncubateFund.jpg</code> の鮮明さを Studio 上で確認した</li><li>Loop Box の <a class="term" href="#term-breakpoint">prefers-reduced-motion</a> 自動尊重・複製要素 <code>aria-hidden</code> 自動付与を前提に追加対応不要と確認した（<a href="#ch-t10">§10.1</a>）</li></ul>
 
 <h3 id="t8-4">8.4 G&amp;N ロゴ（ヘッダー＆フッター・アップロード画像）</h3>
 
@@ -13210,8 +13210,8 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li><strong>色の再現</strong>：文字色を継承する指定は Studio に引き継がれない。書き出した SVG 内で<strong>メインパスの fill を <code>#0F1A33</code>（ink）に明示</strong>し、<strong>白サブパスの <code>fill="#fff"</code> は保持</strong>する（再色付け時も白抜きが消えないこと）。
  <ul class="checklist"><li>SVGのfillをink指定・白パス保持</li></ul>
  </li>
-<li>右パネル → <strong>設定タブ</strong> → 代替テキスト <code>G&amp;N</code>。
- <ul class="checklist"><li>alt=G&amp;N</li></ul>
+<li>右パネル → <strong>設定タブ</strong> → タグ・属性 → aria-label <code>G&amp;N</code>。
+ <ul class="checklist"><li>aria-label=G&amp;N</li></ul>
  </li>
 </ol>
 
@@ -13244,8 +13244,8 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
 <li>drop-shadow：<a class="term" href="#term-customcode">Custom Code</a>（<a href="#ch-t9">§9 コード集 #t9-codeset</a>）の drop-shadow フィルタ用ブロックを Custom Code に貼って実装する。Color は <code>rgba(15,26,51,0.25)</code>（ink 系の半透明）にする。
  <ul class="checklist"><li>drop-shadowをCustom Codeで実装</li></ul>
  </li>
-<li><strong>設定タブ</strong> → 代替テキスト 空（装飾）。
- <ul class="checklist"><li>alt空（装飾）</li></ul>
+<li><strong>設定タブ → タグ・属性</strong> → aria-hidden=true（装飾）。
+ <ul class="checklist"><li>aria-hidden=true（装飾）</li></ul>
  </li>
 <li>吹き出し 4 個（<code>b1</code>〜<code>b4</code>）は<strong>アセットではない</strong>。Text + Box（角丸・枠線）で別途作り直す（本章の対象外＝各セクション章で扱う）。
  <ul class="checklist"><li>吹き出しは対象外（別章で作成）</li></ul>
@@ -13336,8 +13336,8 @@ Footer
 <li>ロゴ Box に Image 配置 → <strong>画像タブ → フィット contain</strong>、<strong>ボックスタブ → サイズ 高さ最大 <code>60px</code>・幅最大 <code>78%</code></strong>。
  <ul class="checklist"><li>ロゴ画像contain・最大高60px / 幅78%</li></ul>
  </li>
-<li><strong>alt（設定タブ）を下表どおり</strong>設定。
- <ul class="checklist"><li>altを表どおり設定</li></ul>
+<li><strong>aria-label（設定タブ→タグ・属性）を下表どおり</strong>設定。
+ <ul class="checklist"><li>aria-labelを表どおり設定</li></ul>
  </li>
 <li><strong><code>case_c_cover.jpg</code> は実寸 1200×919（≈4:3）を 16:10 枠に cover でクロップ</strong>するため、<code>center 35%</code> の切り取りが許容範囲か Studio 上で目視確認。
  <ul class="checklist"><li>cover切り取りを目視確認</li></ul>
@@ -13345,7 +13345,7 @@ Footer
 </ol>
 
 <table>
-<thead><tr><th>ファイル</th><th>alt</th></tr></thead>
+<thead><tr><th>ファイル</th><th>aria-label</th></tr></thead>
 <tbody>
 <tr><td>case_a_cover（JPG/WebP化後）</td><td>株式会社A 様 オフィスにて</td></tr>
 <tr><td><code>logo_a.png</code></td><td>Alpha Technologies ロゴ</td></tr>
@@ -13360,7 +13360,7 @@ Footer
 <p>遅延読み込み（<code>loading="lazy"</code>）は新公開基盤（SSR/MPA・<a href="#ch-t11">§12.1</a>）の配信最適化で自動付与される前提で進める。各カバー・ロゴ Image はビューポート外配置のため lazy 対象とする。<strong>（要最終決定）</strong></p>
 </div>
 
-<ul class="checklist"><li>3 カバー・3 ロゴを配置し fit/position を設定した</li><li>alt を上表どおり設定した</li><li><code>case_c_cover.jpg</code> のクロップを目視確認した</li></ul>
+<ul class="checklist"><li>3 カバー・3 ロゴを配置し fit/position を設定した</li><li>aria-label を上表どおり設定した</li><li><code>case_c_cover.jpg</code> のクロップを目視確認した</li></ul>
 
 <h3 id="t8-9">8.9 未確定アセット・要確認事項（発注前にデザインオーナー/クライアントへ）</h3>
 
@@ -13379,7 +13379,7 @@ Footer
 <ul class="checklist"><li>Cases のプレースホルダ差し替えをクライアントへ依頼した</li><li>上記 6 項目をデザインオーナー/クライアントに確認・記録した</li></ul>
 
 <div class="callout note">
-<p><strong>検証ソース</strong>: 全アセットの寸法・alt 文言・配置値は <code>/mockup/assets/</code> の実測に基づく。Studio 操作・プラン制約は「Studio最新仕様リファレンス（2026-06検証版）」§2 / §3 / §6 / §7 / §9 / §10 / §12 を正とする。<code>未検証</code> 表記の項目（画像フィット UI、lazy-loading 標準 UI、各機能の Free 可否）は実機エディタで確認のこと。</p>
+<p><strong>検証ソース</strong>: 全アセットの寸法・aria-label 文言・配置値は <code>/mockup/assets/</code> の実測に基づく。Studio 操作・プラン制約は「Studio最新仕様リファレンス（2026-06検証版）」§2 / §3 / §6 / §7 / §9 / §10 / §12 を正とする。<code>未検証</code> 表記の項目（画像フィット UI、lazy-loading 標準 UI、各機能の Free 可否）は実機エディタで確認のこと。</p>
 </div>
 
 </section>
@@ -14326,8 +14326,8 @@ Footer
 
 <!-- ============ 10.9 ============ -->
 <h3 id="t10-9">10.9 アクセシビリティ</h3>
-<p>公開 URL でキーボード操作・コントラスト・代替テキストを確認する。</p>
-<ul class="checklist"><li>全画像（VC ロゴ 12 点・G&amp;N ロゴ SVG・装飾以外の画像）に意味のある alt を設定。装飾画像は alt 空</li><li>フォームの各ラベルと Input が関連付いている（ラベル位置は「上」にする・「非表示」にしない）</li><li>キーボード（Tab / Shift+Tab / Enter）だけでナビ・CTA・フォーム入力・送信が操作できる</li><li>フォーカスインジケータが視認できる（focus リング、設計値 <code>0 0 0 3px rgba(74,125,232,.18)</code> 相当）</li><li>カラーコントラストが WCAG AA を満たす（特にサブ文字 <span class="sw" style="--c:#6273A0"></span> <code>sub #6273A0</code> / <span class="sw" style="--c:#9EAAC8"></span> <code>sub-lt #9EAAC8</code> の背景に対する比。薄背景上の小サイズ文字を重点確認）</li><li>Loop Box マーキー・On Appear アニメが <code>prefers-reduced-motion</code> で停止 / 抑制される</li><li>Toggle（FAQ 等）がキーボードで開閉でき、トリガーが Click（タッチ誤動作回避）になっている</li><li>見出し階層（h1 → h2 → h3）が論理順で飛びがない</li><li>動く要素（マーキー）に依存しないと読めない情報がない</li></ul>
+<p>公開 URL でキーボード操作・コントラスト・代替名（aria-label）を確認する。</p>
+<ul class="checklist"><li>意味ある画像（div）は aria-label に文言を設定（VCロゴ12点・G&amp;Nロゴ等）。装飾画像は aria-hidden=true</li><li>フォームの各ラベルと Input が関連付いている（ラベル位置は「上」にする・「非表示」にしない）</li><li>キーボード（Tab / Shift+Tab / Enter）だけでナビ・CTA・フォーム入力・送信が操作できる</li><li>フォーカスインジケータが視認できる（focus リング、設計値 <code>0 0 0 3px rgba(74,125,232,.18)</code> 相当）</li><li>カラーコントラストが WCAG AA を満たす（特にサブ文字 <span class="sw" style="--c:#6273A0"></span> <code>sub #6273A0</code> / <span class="sw" style="--c:#9EAAC8"></span> <code>sub-lt #9EAAC8</code> の背景に対する比。薄背景上の小サイズ文字を重点確認）</li><li>Loop Box マーキー・On Appear アニメが <code>prefers-reduced-motion</code> で停止 / 抑制される</li><li>Toggle（FAQ 等）がキーボードで開閉でき、トリガーが Click（タッチ誤動作回避）になっている</li><li>見出し階層（h1 → h2 → h3）が論理順で飛びがない</li><li>動く要素（マーキー）に依存しないと読めない情報がない</li></ul>
 
 <!-- ============ 10.10 ============ -->
 <h3 id="t10-10">10.10 パフォーマンス</h3>
