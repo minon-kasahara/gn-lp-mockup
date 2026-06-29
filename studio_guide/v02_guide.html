@@ -9774,14 +9774,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>レイヤーパネルで本 Box（と配下の吹き出し・画像）を選択し、§5-10-7 の <strong>Tablet・Mobile 両方で非表示（目アイコン OFF）</strong>にする（理由は §5-10-7 写像注記）。
  <ul class="checklist"><li>Tablet/Mobile両方で非表示</li></ul>
  </li>
-<li><strong>アクセシビリティ（装飾画像の alt を空にする）</strong>：CTA Illust 内の<strong>純装飾の画像</strong>（女性イラスト等、意味を持たず見た目だけの画像）を選択 → 右パネル <strong>設定（Settings）タブ</strong> → <strong>代替テキスト（Alt）</strong>欄を<strong>空のまま</strong>にする（既にテキストが入っていれば削除して空にする）。
+<li><strong>アクセシビリティ（装飾画像を読み上げから外す）</strong>：CTA Illust 内の装飾画像 <code>CTA Woman</code>（背景画像Box＝<code>&lt;div&gt;</code>・意味を持たない純装飾）を選択 → 右パネル <strong>設定（Settings）タブ → タグ・属性</strong> → <strong>aria-hidden 欄に <code>true</code></strong> と入力する。これで装飾扱い＝スクリーンリーダーが読み飛ばす。<strong>aria-label は空のまま</strong>にする。
  <ul>
- <li><strong>「装飾扱い」という独立した操作・チェックは無い</strong>。<strong>alt を空にすること自体が装飾扱い</strong>＝スクリーンリーダーが読み飛ばす（<code>alt=""</code> 相当）。</li>
- <li>装飾画像が複数枚あれば、<strong>各画像で同様に alt を空</strong>にする。</li>
- <li>※ <strong>代替テキスト欄</strong>が設定タブに見当たらない環境では <strong>画像（Image）タブ</strong>側にある（どちらでも欄名は「代替テキスト／Alt」）。</li>
- <li>※ 吹き出しの文言は <strong>Text 要素</strong>なので alt とは無関係（テキストとしてそのまま読まれてOK。画像化しないこと）。</li>
+ <li><strong>背景画像Box（<code>&lt;div&gt;</code>）には「代替テキスト／alt」欄は無い</strong>（<code>alt</code> は <code>&lt;img&gt;</code> 専用）。<code>&lt;div&gt;</code> の装飾扱いは <strong>aria-hidden = true</strong> で行うのが正しい（設定タブ上部の「タグ」が <code>div</code> なのを確認できる）。</li>
+ <li>画像を <strong>Img モード（<code>&lt;img&gt;</code>）</strong>で配置している場合のみ、設定タブに <strong>代替テキスト（Alt）</strong>欄が出る。その時は装飾なら <strong>alt を空</strong>（＝<code>alt=""</code>）にする。要素のタグは設定タブ上部の「タグ」欄で確認できる（<code>div</code> か <code>img</code> か）。</li>
+ <li>装飾画像が複数あれば、各画像で同様に（<code>div</code> は <strong>aria-hidden=true</strong> ／ <code>img</code> は <strong>alt 空</strong>）。</li>
+ <li>※ 吹き出しの文言は <strong>Text 要素</strong>なので対象外（そのまま読まれてOK）。</li>
  </ul>
- <ul class="checklist"><li>装飾画像の代替テキスト（alt）を空にした</li></ul>
+ <ul class="checklist"><li>装飾画像を装飾扱いにした（div=aria-hidden true／img=alt空）</li></ul>
  </li>
 </ol>
 
