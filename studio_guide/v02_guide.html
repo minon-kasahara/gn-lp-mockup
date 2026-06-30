@@ -9899,8 +9899,23 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>黄グロー = top -60/right -50、<code>190×190px</code>、<code>rgba(255,209,102,.55)</code> → 62% 透明。青グロー = bottom -70/left -50、<code>210×210px</code>、<code>rgba(74,125,232,.28)</code> → 62% 透明。</li>
 </ul>
 <div class="plan mini">
-<span class="badge">Mini</span> Mini の Custom Code（<a href="#t9-codeset">§9 コピペ用コード集</a>）のフォーム背景グロー <code>::before/::after</code> ブロックを貼り、黄グロー（top -60 / right -50・190×190・yellow55% → 62% 透明）と青グロー（bottom -70 / left -50・210×210・blue28% → 62% 透明）を Form Inner より背面に再現する。Form の overflow:Hidden で角を丸く収める。
+<span class="badge">Mini</span> グローは <code>::before/::after</code>（Studioの<a class="term" href="#term-pseudo">疑似要素</a>不可）なので <a class="term" href="#term-customcode">Custom Code</a> で足す。手順：<br>
+(a) <strong>Form（白パネル）を選択 → 設定タブ → ID 欄に <code>cta-form</code></strong> を入力（Custom Codeで狙う用。<strong>class欄は無いので ID</strong>）。<br>
+(b) Form を <strong>ボックスタブ → ポジション → 相対（relative）</strong> ＋ <strong>はみ出し → 非表示</strong>（角丸で光をクリップ）。<br>
+(c) <strong>Form Inner を ポジション 相対 ＋ 重ね順（z-index）= 1</strong>（入力欄を光より前面に。これが無いと光が入力欄に被る）。<br>
+(d) 下の【グローコード】を <strong>ページ設定 → Custom Code → <code>&lt;/head&gt;</code> 直前ブロック</strong>に貼る（CSSなので head 推奨／body でも可）。<br>
+(e) <strong>公開（Publish）後に反映</strong>。
 </div>
+<p><strong>【グローコード】</strong>（Form の ID=<code>cta-form</code> 前提。黄=<code>#FFD166</code>系55%／青=<code>#4A7DE8</code>28%・v09モック準拠）：</p>
+<pre class="code">&lt;style&gt;
+/* CTAフォームの背景グロー。FormのID欄に cta-form を設定し、Formは 相対＋はみ出し非表示に */
+#cta-form::before{content:'';position:absolute;top:-60px;right:-50px;width:190px;height:190px;background:radial-gradient(circle,rgba(255,209,102,.55),transparent 62%);border-radius:50%;pointer-events:none}
+#cta-form::after{content:'';position:absolute;bottom:-70px;left:-50px;width:210px;height:210px;background:radial-gradient(circle,rgba(74,125,232,.28),transparent 62%);border-radius:50%;pointer-events:none}
+@media(max-width:540px){
+  #cta-form::before{width:90px;height:90px;top:-30px;right:-30px}
+  #cta-form::after{width:110px;height:110px;bottom:-40px;left:-25px}
+}
+&lt;/style&gt;</pre>
 
 <h4>B. 内側ラッパー（Box / Form Inner）</h4>
 <ol class="steps">
