@@ -10042,8 +10042,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>テキストスタイル <strong>「Footnote」を適用</strong>しつつ、サイズ <code>11px</code>、文字色 <span class="sw" style="--c:#6273A0"></span> <code>text/sub</code>、行間 <code>1.7</code>、ウェイト <code>400</code>、<strong>中央寄せ</strong>。<strong>上マージンは付けない</strong>（間隔は Form Inner の gap 24px）。
  <ul class="checklist"><li>Footnote適用・11px・中央寄せ</li></ul>
  </li>
-<li>リンク部分「個人情報の取り扱い」を選択→設定タブ→リンク先 <code>privacy.html</code>、<strong>新しいタブで開く（target=_blank）ON</strong>。文字色 <span class="sw" style="--c:#4A7DE8"></span> <code>brand/blue</code>・<strong>下線</strong>・ウェイト <code>600</code>。リンク Hover で文字色 <span class="sw" style="--c:#1B2A4A"></span> <code>navy #1B2A4A</code> に（条件スタイル Hover）。
- <ul class="checklist"><li>リンク部privacy.html・下線・Hover navy</li></ul>
+<li><strong>リンク化（部分選択不可への対応）</strong>: <strong>Studioは文字の一部だけを選択してリンクを付けられない</strong>（リンクは設定タブ＝要素単位）。そこで <code>Consent</code> を <strong>横並び・折返し(Wrap) の Box</strong> にし、中を <strong>3要素</strong>に分ける：① Text <code>送信をもって</code>／② <strong>Link</strong> <code>個人情報の取り扱い</code>／③ Text <code>に同意いただいたものとします。</code>。②の Link ＝設定タブ→リンク先 <code>privacy.html</code>・<strong>新しいタブで開く ON</strong>・色 <span class="sw" style="--c:#4A7DE8"></span> <code>brand/blue</code>・<strong>下線</strong>・ウェイト <code>600</code>・Hover で <span class="sw" style="--c:#1B2A4A"></span> <code>navy #1B2A4A</code>（条件スタイル）。3要素とも Footnote・11px・<code>text/sub</code>・中央寄せ（②のみ青600下線）。
+ <ul class="checklist"><li>Consentを Text＋Link＋Text に3分割・②をprivacy.html青600下線Hover navy</li></ul>
  </li>
 </ol>
 <ul class="checklist"><li>Consent（Footnote・11px/400/色 text/sub/lh1.7/中央寄せ・上マージンなし(gap24)、リンク=blue 下線 600/privacy.html 別タブ/Hover navy）作成済み</li></ul>
@@ -10436,7 +10436,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><code>Ft-Bottom</code> 内に Text を追加し、<code>Ft-Copy</code> にリネーム。
  <ul class="checklist"><li>Ft-Copy Text を追加</li></ul>
  </li>
- <li>下記を入力（区切りは全角 <code>　｜　</code>）:
+ <li>下記を入力（区切りは全角 <code>　｜　</code>）。<strong>リンク化のため、後述の手順で「前半Text＋Link『プライバシーポリシー』」に分ける</strong>:
  <pre class="tree">© 2026 G&amp;N Inc. All rights reserved.　｜　プライバシーポリシー</pre>
  
  <ul class="checklist"><li>コピーライト文入力</li></ul>
@@ -10444,8 +10444,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>右パネル → テキストタブ → タイポグラフィ: サイズ = <code>11.5</code>px、ウェイト = <code>400</code>、色 = <code>text/sub</code>（<span class="sw" style="--c:#6273A0"></span> <code>#6273A0</code>）。
  <ul class="checklist"><li>11.5px/400 text/sub</li></ul>
  </li>
- <li>プライバシーリンク化（<code>Ft-Privacy-Link</code>）: テキスト内の <code>プライバシーポリシー</code> をドラッグ選択 → 右パネル → 設定タブ → リンクで遷移先 <code>privacy.html</code>（同一プロジェクト内のプライバシーページ）を指定。選択範囲のスタイルを 色 = <code>brand/blue</code>（<span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE8</code>）、ウェイト = <code>600</code>、下線 = <strong>なし</strong> に。
- <ul class="checklist"><li>プライバシーリンク化・privacy.html</li></ul>
+ <li><strong>プライバシーリンク化（<code>Ft-Privacy-Link</code>・部分選択不可への対応）</strong>: <strong>Studioは文字の一部だけにリンクを付けられない</strong>（設定タブ＝要素単位）。<code>Ft-Copy</code> を <strong>横並び・折返し(Wrap) の Box</strong> にし、<strong>2要素</strong>に分ける：① Text <code>© 2026 G&amp;N Inc. All rights reserved.　｜　</code>／② <strong>Link</strong> <code>プライバシーポリシー</code>（末尾なので前半Textの後ろに1つ）。②の Link ＝設定タブ→リンク先 <code>privacy.html</code>・色 <code>brand/blue</code>（<span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE8</code>）・ウェイト <code>600</code>・下線なし。両方 11.5px/400/<code>text/sub</code>（②のみ青600）。
+ <ul class="checklist"><li>Ft-Copyを Text＋Link「プライバシーポリシー」に2分割・privacy.html青600</li></ul>
  </li>
  </ol>
  <div class="callout warn">
