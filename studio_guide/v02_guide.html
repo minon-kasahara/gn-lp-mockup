@@ -10377,7 +10377,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
  <h3 id="s11-5">5. 会社情報テキスト（Ft-Company）＋URLリンク（Ft-Url-Link）</h3>
  <ol class="steps">
- <li><code>Ft-Info</code> 内（<code>Ft-Logo</code> の下）に 左ナビ → 追加 → 基本タブ → Text を配置し、<code>Ft-Company</code> にリネーム。
+ <li><code>Ft-Info</code> 内（<code>Ft-Logo</code> の下）に 左ナビ → 追加 → 基本タブ → Text を配置し、<code>Ft-Company</code> にリネーム（URLをリンク化する場合のみ手順5(B)で横並びBoxに分ける）。
  <ul class="checklist"><li>Ft-Company Text を追加</li></ul>
  </li>
  <li>下記コピーを<strong>確定版のまま正確に</strong>流し込む（区切りは全角スペース＋全角縦棒 <code>　｜　</code>）。
@@ -10395,8 +10395,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>長文のため幅に応じて自然折返しする。ブロック幅は親セル幅に従う（特別な改行処理は不要）。
  <ul class="checklist"><li>親セル幅で自然折返し</li></ul>
  </li>
- <li>URL 部分のリンク化（<code>Ft-Url-Link</code>）: テキスト内の <code>https://gandn.co.jp</code> をドラッグ選択 → 右パネル → 設定タブ → リンクで URL <code>https://gandn.co.jp</code> を設定。選択範囲のスタイルを 色 = <code>brand/blue</code>（<span class="sw" style="--c:#4A7DE8"></span> <code>#4A7DE8</code>）、ウェイト = <code>600</code>（SemiBold）、下線（text-decoration）= <strong>なし</strong> に。
- <ul class="checklist"><li>URL部分リンク化・brand/blue 下線なし</li></ul>
+ <li>URL のリンク化（<code>Ft-Url-Link</code>）: <strong>Studioは文字の一部だけを選択できない</strong>ため、長文テキストの中の URL だけをドラッグ選択してリンク/着色することはできない。次のどちらかにする：
+ <ul>
+ <li><strong>(A) そのまま（簡単・推奨）</strong>：URL <code>https://gandn.co.jp</code> は<strong>プレーンテキストのまま</strong>（リンク化しない）。フッターの細字なので実害は小さい。手順1〜2のとおり 1つの Text のままでよい。</li>
+ <li><strong>(B) リンクにする</strong>：<code>Ft-Company</code> を <strong>横並び・折返し（Wrap）の Box</strong> にし、中に <strong>前半 Text ＋ URL（独立した Link 要素）＋ 後半 Text</strong> の3つを inline で並べる（区切り「<code>　｜　</code>」は前後の Text に含める）。<strong>前半</strong>＝「株式会社G&amp;N　｜　…　｜　設立: 2018年1月22日　｜　」まで／<strong>URL</strong>＝Link 要素にテキスト <code>https://gandn.co.jp</code>・設定タブ→リンク先 <code>https://gandn.co.jp</code>・色 <code>brand/blue</code>・ウェイト <code>600</code>・下線なし／<strong>後半</strong>＝「　｜　認定経営革新等支援機関（…）／労働者派遣事業者（…）」。3つとも 12px/400/行間1.9/<code>text/sub</code>（URLだけ青600）。</li>
+ </ul>
+ <ul class="checklist"><li>URLはプレーン(A) または 独立Linkに分割(B)・青600下線なし</li></ul>
  </li>
  </ol>
  <div class="callout note">
