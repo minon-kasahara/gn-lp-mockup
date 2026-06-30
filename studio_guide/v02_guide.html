@@ -9595,7 +9595,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <ul class="checklist"><li>Section / CTA を配置・リネーム・ID <code>cta</code> 設定済み</li><li>パディング上下 84px・左右 0、背景 180 度 3 点グラデ（blue-bg→cta-bg-2 20%→cta-bg-2）、overflow:hidden、position:relative 設定済み</li></ul>
 
 <h3 id="s10-2">5-10-2. 背景グロー（装飾・Miniで実装する）</h3>
-<p>右上の青グロー / 左下の黄グローは、円形のグラデーションをぼかした淡い光です。<strong>Mini の Custom Code で実装します。</strong></p>
+<p>右上の青グロー / 左下の黄グローは、円形のグラデーションをぼかした淡い光です。<strong>位置・サイズ・角丸は「ネイティブBox」で作り、放射グラデ＋ぼかしだけ Mini の Custom Code</strong>で当てます（Studioは背景の放射グラデがネイティブ不可のため）。</p>
 
 <table>
 <thead><tr><th>装飾Box</th><th>位置</th><th>サイズ</th><th>放射グラデ中心</th><th>角丸/Blur</th></tr></thead>
@@ -9606,10 +9606,20 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 </table>
 
 <div class="plan mini">
-<span class="badge">Mini</span> <a class="term" href="#term-customcode">Custom Code</a>（body）に <a href="#t9-codeset">§9 コピペ用コード集</a>の背景グローのブロック（<code>&lt;div&gt;</code> ＋放射グラデ＋Blur の CSS）を貼り、上表の値（CTA BG Blue: top -120 / right -80・520×460・角丸 50%・blue16%・外側 65% 透明・Blur 24px、CTA BG Yellow: bottom -100 / left -100・480×400・角丸 50%・yellow18%・外側 65% 透明・Blur 28px）で 2 要素を再現する。両要素とも重ね順は CTA Inner（z=1）より背面に置く。
+<span class="badge">Mini</span> 2要素は <strong>Sec-CTA 内にネイティブBoxで作り、放射グラデ＋ぼかしだけ Custom Code</strong>で当てる（位置・サイズ・角丸はネイティブ）。手順：<br>
+(a) <strong>Sec-CTA 内に Box を2つ</strong>配置→リネーム <code>CTA BG Blue</code> / <code>CTA BG Yellow</code> → <strong>設定タブ → ID 欄</strong>に <code>cta-bg-blue</code> / <code>cta-bg-yellow</code>（<a class="term" href="#term-customcode">Custom Code</a>で狙う用。class欄は無いのでID）。<br>
+(b) 各Box：<strong>ボックスタブ → ポジション 絶対</strong>＋上表の位置（Blue: top<code>-120</code>/right<code>-80</code>、Yellow: bottom<code>-100</code>/left<code>-100</code>）、<strong>サイズ</strong>（520×460 / 480×400）、<strong>角丸 50%</strong>、<strong>重ね順（z-index）= 0</strong>（CTA Inner=1 より背面）。<br>
+(c) <strong>放射グラデ＋ぼかしを Custom Code で当てる</strong>：下の【背景グローコード】を <strong>ページ設定 → Custom Code → <code>&lt;/head&gt;</code> 直前ブロック</strong>に貼る（Studioは背景の放射グラデが不可・ぼかしも併せてここで）。<br>
+(d) Sec-CTA は <strong>相対 ＋ はみ出し非表示</strong>（5-10-1で設定済み）。<strong>公開（Publish）後に反映</strong>。
 </div>
+<p><strong>【背景グローコード】</strong>（Box の ID=<code>cta-bg-blue</code> / <code>cta-bg-yellow</code> 前提。v09モック準拠）：</p>
+<pre class="code">&lt;style&gt;
+/* CTAセクション背景の装飾グロー。2つのBoxに ID cta-bg-blue / cta-bg-yellow を設定 */
+#cta-bg-blue{background:radial-gradient(circle,rgba(74,125,232,.16),transparent 65%);filter:blur(24px);pointer-events:none}
+#cta-bg-yellow{background:radial-gradient(circle,rgba(255,209,102,.18),transparent 65%);filter:blur(28px);pointer-events:none}
+&lt;/style&gt;</pre>
 
-<ul class="checklist"><li>CTA BG Blue / CTA BG Yellow を §9 コード集の背景グローブロックで Custom Code に貼り、CTA Inner より背面に配置済み</li></ul>
+<ul class="checklist"><li>CTA BG Blue / CTA BG Yellow を Sec-CTA 内にネイティブBox（絶対・サイズ・角丸50%・z0・ID付与）で作り、放射グラデ＋ぼかしを Custom Code(#cta-bg-blue/yellow) で当て、CTA Inner より背面に配置済み</li></ul>
 
 <h3 id="s10-3">5-10-3. 内側コンテナ（Box / CTA Inner）— 2 カラム</h3>
 <ol class="steps">
