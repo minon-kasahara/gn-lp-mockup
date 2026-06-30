@@ -9798,8 +9798,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>CTA Illust 直下に <strong>Image</strong> を配置→アップロード済み SVG を指定→リネーム <code>Image / CTA Woman</code>。
  <ul class="checklist"><li>CTA Woman 画像配置</li></ul>
  </li>
-<li>ポジション <strong>絶対（absolute）</strong>、left <code>50%</code>、bottom <code>0</code>。<a class="term" href="#term-transform">変形タブ</a>→Move X <strong>-50%相当（左へ自幅半分）</strong>／Move Y <code>-26px</code>。
- <ul class="checklist"><li>絶対配置・MoveX-50%/Y-26px中央寄せ</li></ul>
+<li>ポジション <strong>絶対（absolute）</strong>にする。<strong>距離</strong>欄で <strong>下（bottom）= <code>0</code> / 左（left）= <code>166px</code></strong>（上・右は空）。<a class="term" href="#term-transform">変形タブ</a> → Move <strong>Y <code>-26px</code></strong>（Move X は不要）。<br>⚠️ <strong>Studio の距離（位置オフセット）は px のみで <code>%</code> が入らない</strong>ため、<code>left:50%</code> ＋ Move X -50% の定番中央寄せは使えない。代わりに <strong>左 ＝（親 <code>CTA Illust</code> の幅 − 女性の幅 <code>188</code>）÷ 2</strong> の固定pxで中央に置く（CTA Illust が <code>520px</code> 幅なら <code>166px</code>）。CTA Illust は<strong>幅を <code>520px</code> に固定</strong>しておくと中央が安定する。
+ <ul class="checklist"><li>絶対配置・下0/左166px固定で中央・Move Y-26px（%不可→固定px）</li></ul>
  </li>
 <li>サイズ: 幅 <code>188px</code> / 高さ <code>222px</code>。画像フィット <strong>contain</strong>。
  <ul class="checklist"><li>幅188px / 高さ222px・contain</li></ul>
@@ -9841,7 +9841,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul class="checklist"><li>Tablet/Mobile で CTA Illust を非表示</li></ul></li>
 </ol>
 
-<ul class="checklist"><li>CTA Illust 枠（relative・高さ 300px・max-width520px・上 marg44px）作成済み</li><li>CTA Woman（絶対 left50%/bottom0・Move X-50%/Y-26px・188×222・contain・ink16% 影）配置済み</li><li>Bubble 1〜4（blue 背景・白文字 12.5px/800・padding9/15・角丸 16・blue28% 影・各座標）配置済み・しっぽは §9 コード集の <code>::before</code> ブロックで再現済み</li></ul>
+<ul class="checklist"><li>CTA Illust 枠（relative・高さ 300px・max-width520px・上 marg44px）作成済み</li><li>CTA Woman（絶対・下0/左166px固定で中央・Move Y-26px・188×222・contain・ink16% 影）配置済み</li><li>Bubble 1〜4（blue 背景・白文字 12.5px/800・padding9/15・角丸 16・blue28% 影・各座標）配置済み・しっぽは §9 コード集の <code>::before</code> ブロックで再現済み</li></ul>
 
 <h3 id="s10-6">5-10-6. 問い合わせフォーム（Form / Contact Form）</h3>
  <div class="callout note"><p><strong>📍 設定先（読み替え不要）</strong>: この節で出てくる <code>サイズ / ウェイト / 行間 / letter-spacing（字間）/ word-break（折り返し）/ 色</code> は、対象テキストを選び <strong>右パネル → テキストタブ</strong>で入力します（既存の同名テキストスタイルがあれば <strong>スタイル欄で適用</strong>すると速い）。<code>padding / margin / 角丸 / 背景 / ボーダー</code> は <strong>ボックスタブ</strong>（パディング・マージン・外観）です。</p></div>
