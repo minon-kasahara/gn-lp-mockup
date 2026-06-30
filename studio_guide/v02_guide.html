@@ -9919,7 +9919,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 
 <h4>B. 内側ラッパー（Box / Form Inner）</h4>
 <ol class="steps">
-<li>Form / Contact Form 直下に <strong>Box</strong> を配置→リネーム <code>Box / Form Inner</code>。ポジション <strong>相対（relative）</strong>、<a class="term" href="#term-zindex">重ね順 z-index: 1</a>（グローより前面）。以降のフォーム子要素はこの中に入れる。
+<li>Form / Contact Form 直下に <strong>Box</strong> を配置→リネーム <code>Box / Form Inner</code>。ポジション <strong>相対（relative）</strong>、<a class="term" href="#term-zindex">重ね順 z-index: 1</a>（グローより前面）、<strong>方向＝縦並び（Vertical）・間隔（Gap）<code>24px</code></strong>（タイトル／各フィールド／注記／ボタン／同意文の縦間隔をこの gap で一括＝各要素に下・上マージンは付けない）。以降のフォーム子要素はこの中に入れる。
  <ul class="checklist"><li>Form Inner・relative・z-index1</li></ul>
  </li>
 </ol>
@@ -9929,17 +9929,18 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>Form Inner 直下に <strong>Text</strong> を配置→リネーム <code>Text / Form Title</code>。テキスト <code>お問い合わせフォーム</code>。
  <ul class="checklist"><li>Form Title Text配置・入力</li></ul>
  </li>
-<li>テキストスタイル <strong>「H3 Card」を適用</strong>し上書き: フォント Noto Sans JP、ウェイト <code>900</code>、サイズ <code>20px</code>、行間 <code>1.4</code>、文字色 <span class="sw" style="--c:#0F1A33"></span> <code>text/ink</code>。下マージン <code>8px</code>。
- <ul class="checklist"><li>H3 Card適用・20px/900・下マージン8px</li></ul>
+<li>テキストスタイル <strong>「H3 Card」を適用</strong>し上書き: フォント Noto Sans JP、ウェイト <code>900</code>、サイズ <code>20px</code>、行間 <code>1.4</code>、文字色 <span class="sw" style="--c:#0F1A33"></span> <code>text/ink</code>。<strong>下マージンは付けない</strong>（間隔は Form Inner の gap 24px）。
+ <ul class="checklist"><li>H3 Card適用・20px/900・下マージンなし(gap24)</li></ul>
  </li>
 </ol>
 <div class="callout note"><p>フォームにサブ説明文は無いため作りません。</p></div>
 
-<ul class="checklist"><li>Form 本体（white・padding44/40・角丸 28・ink14% 影・overflow:Hidden）＋ Form Inner（relative・z=1）＋ Form Title（H3 Card・20px/900/lh1.4・色 text/ink・下 marg8px）作成済み</li></ul>
+<ul class="checklist"><li>Form 本体（white・padding44/40・角丸 28・ink14% 影・overflow:Hidden）＋ Form Inner（relative・z=1・縦並び gap24px）＋ Form Title（H3 Card・20px/900/lh1.4・色 text/ink）作成済み</li></ul>
 
 <h4>D. 入力フィールド 3 つ（ラベル＋Input）</h4>
-<p>共通のラベル実値: フォント Noto Sans JP、サイズ <code>11.5px</code>、字間 <code>0.02em</code>、ウェイト <code>800</code>、文字色 <span class="sw" style="--c:#0F1A33"></span> <code>text/ink</code>、下マージン <code>8px</code>。必須印「※」（<code>.form label em</code>）: 文字色 <span class="sw" style="--c:#E85252"></span> <code>danger #E85252</code>、サイズ <code>10px</code>、ウェイト <code>900</code>、左マージン <code>2px</code>。</p>
-<p>共通の入力欄実値: 幅 <code>% 100%</code>、パディング <code>上下12px / 左右0</code>、ボーダー <strong>下のみ 1.5px Solid <code>rgba(15,26,51,.14)</code></strong>（line-2。他辺は 0）、背景 <strong>transparent</strong>、サイズ <code>14.5px</code>・文字色 text/ink、下マージン <code>24px</code>。<strong>Focus <a class="term" href="#term-conditional">条件スタイル</a></strong>: 下ボーダー色を <span class="sw" style="--c:#4A7DE8"></span> <code>brand/blue</code> に。最後の Input（Email）の下マージンは <code>0</code>。</p>
+<p>共通のラベル実値: フォント Noto Sans JP、サイズ <code>11.5px</code>、字間 <code>0.02em</code>、ウェイト <code>800</code>、文字色 <span class="sw" style="--c:#0F1A33"></span> <code>text/ink</code>（<strong>下マージンは付けない</strong>＝ラベル↔入力欄の8pxは各フィールドの gap で取る）。必須印「※」（<code>.form label em</code>）: 文字色 <span class="sw" style="--c:#E85252"></span> <code>danger #E85252</code>、サイズ <code>10px</code>、ウェイト <code>900</code>、左マージン <code>2px</code>。</p>
+<p>共通の入力欄実値: 幅 <code>% 100%</code>、パディング <code>上下12px / 左右0</code>、ボーダー <strong>下のみ 1.5px Solid <code>rgba(15,26,51,.14)</code></strong>（line-2。他辺は 0）、背景 <strong>transparent</strong>、サイズ <code>14.5px</code>・文字色 text/ink（<strong>下マージンは付けない</strong>＝フィールド間の24pxは Form Inner の gap で取る・「最後だけ0」調整も不要）。<strong>Focus <a class="term" href="#term-conditional">条件スタイル</a></strong>: 下ボーダー色を <span class="sw" style="--c:#4A7DE8"></span> <code>brand/blue</code> に。</p>
+<div class="callout tip"><p><strong>間隔は gap 方式</strong>：<strong>Form Inner を 縦並び・gap 24px</strong>（要素間の縦間隔）／<strong>各フィールド（<code>&lt;label&gt;</code>＝Label＋Input の単位）を 縦並び・gap 8px</strong>（ラベル↔入力欄）。これで各要素の下マージンは不要・「最後だけ0」も不要。</p></div>
 
 <figure class="fig">
 <svg viewBox="0 0 420 110" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -9976,7 +9977,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
 </ol>
 
-<ul class="checklist"><li>Company/Name/Email の 3 フィールド（ラベル 11.5px/800/色 text/ink・必須※は state/danger 10px/900・入力欄下線 1.5px line/strong→Focus で brand/blue・14.5px・placeholder form/placeholder（#B0B7C5））設定済み</li><li>Email フィールドの下マージン 0、各フィールド下マージン 24px 設定済み</li></ul>
+<ul class="checklist"><li>Company/Name/Email の 3 フィールド（ラベル 11.5px/800/色 text/ink・必須※は state/danger 10px/900・入力欄下線 1.5px line/strong→Focus で brand/blue・14.5px・placeholder form/placeholder（#B0B7C5））設定済み</li><li>Form Inner を 縦並び gap 24px・各フィールド（label）を gap 8px に設定済み（下マージン方式は使わない）</li></ul>
 
 <h4>E. 必須注記（Text / Req Note）</h4>
 <p>テキスト: 「※は必須項目です」（先頭の「※」のみ強調）。</p>
@@ -9987,14 +9988,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>テキストタブ実値: サイズ <code>11px</code>、文字色 <span class="sw" style="--c:#E85252"></span> <code>state/danger</code>、ウェイト <code>700</code>、行間 <code>1.4</code>、字間 <code>0.02em</code>。
  <ul class="checklist"><li>11px・danger色・700</li></ul>
  </li>
-<li>上下マージン <code>18px</code>。
- <ul class="checklist"><li>上下マージン18px</li></ul>
+<li><strong>上下マージンは付けない</strong>（間隔は Form Inner の gap 24px）。
+ <ul class="checklist"><li>上下マージンなし(gap24)</li></ul>
  </li>
 <li>文頭「※」（<code>.vp-req-note em</code>）はウェイト <code>900</code>・右マージン <code>1px</code>（色は親と同じ danger）。
  <ul class="checklist"><li>文頭「※」を900・右マージン1px</li></ul>
  </li>
 </ol>
-<ul class="checklist"><li>Req Note（11px/700/色 state/danger/lh1.4/字間 0.02em・上下 marg18px・※は 900）作成済み</li></ul>
+<ul class="checklist"><li>Req Note（11px/700/色 state/danger/lh1.4/字間 0.02em・上下マージンなし(gap24)・※は 900）作成済み</li></ul>
 
 <h4>F. 送信ボタン（Submit / Form Submit）</h4>
 <ol class="steps">
@@ -10028,14 +10029,14 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li>Submit の直後に <strong>Text</strong>（リッチテキスト）を配置→リネーム <code>Text / Consent</code>。テキスト <code>送信をもって個人情報の取り扱いに同意いただいたものとします。</code>
  <ul class="checklist"><li>Consent リッチテキスト配置・入力</li></ul>
  </li>
-<li>テキストスタイル <strong>「Footnote」を適用</strong>しつつ、サイズ <code>11px</code>、文字色 <span class="sw" style="--c:#6273A0"></span> <code>text/sub</code>、行間 <code>1.7</code>、ウェイト <code>400</code>、<strong>中央寄せ</strong>。上マージン <code>16px</code>。
+<li>テキストスタイル <strong>「Footnote」を適用</strong>しつつ、サイズ <code>11px</code>、文字色 <span class="sw" style="--c:#6273A0"></span> <code>text/sub</code>、行間 <code>1.7</code>、ウェイト <code>400</code>、<strong>中央寄せ</strong>。<strong>上マージンは付けない</strong>（間隔は Form Inner の gap 24px）。
  <ul class="checklist"><li>Footnote適用・11px・中央寄せ</li></ul>
  </li>
 <li>リンク部分「個人情報の取り扱い」を選択→設定タブ→リンク先 <code>privacy.html</code>、<strong>新しいタブで開く（target=_blank）ON</strong>。文字色 <span class="sw" style="--c:#4A7DE8"></span> <code>brand/blue</code>・<strong>下線</strong>・ウェイト <code>600</code>。リンク Hover で文字色 <span class="sw" style="--c:#1B2A4A"></span> <code>navy #1B2A4A</code> に（条件スタイル Hover）。
  <ul class="checklist"><li>リンク部privacy.html・下線・Hover navy</li></ul>
  </li>
 </ol>
-<ul class="checklist"><li>Consent（Footnote・11px/400/色 text/sub/lh1.7/中央寄せ・上 marg16px、リンク=blue 下線 600/privacy.html 別タブ/Hover navy）作成済み</li></ul>
+<ul class="checklist"><li>Consent（Footnote・11px/400/色 text/sub/lh1.7/中央寄せ・上マージンなし(gap24)、リンク=blue 下線 600/privacy.html 別タブ/Hover navy）作成済み</li></ul>
 
 <h3 id="s10-7">5-10-7. レスポンシブ（Tablet 540–840 / Mobile &lt;540）</h3>
 <p>下部ツールバーで対象デバイス幅に切替→対象 Box 選択→プロパティ変更（上書き枠は <strong>Tablet=黄緑 / Mobile=オレンジ</strong>で色分け。個別解除は「Reset override」矢印）。PC 完成後に Tablet→Mobile の順で調整。</p>
