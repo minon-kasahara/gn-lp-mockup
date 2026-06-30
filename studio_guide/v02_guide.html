@@ -9837,26 +9837,26 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ul class="checklist"><li>Bubble 2〜4 を複製し文言・座標を変更</li></ul></li>
 <li><strong>しっぽ（三角）</strong>：<span class="badge">Mini</span> 三角しっぽは Studio の<a class="term" href="#term-pseudo">疑似要素</a>では作れないので <a class="term" href="#term-customcode">Custom Code</a> で足す。次の(a)〜(c)を順に行う：
  <ul>
- <li><strong>(a) 各 Bubble Box に class を付ける</strong>：レイヤーで吹き出しを選択 → <strong>設定タブ → class 欄</strong>に入力。<code>Bubble 1</code>→<code>b1</code> ／ <code>Bubble 2</code>→<code>b2</code> ／ <code>Bubble 3</code>→<code>b3</code> ／ <code>Bubble 4</code>→<code>b4</code>。</li>
+ <li><strong>(a) 各 Bubble Box に ID を付ける</strong>：レイヤーで吹き出しを選択 → <strong>設定タブ → ID 欄</strong>（タグ=div の右隣の空欄）に入力。<code>Bubble 1</code>→<code>b1</code> ／ <code>Bubble 2</code>→<code>b2</code> ／ <code>Bubble 3</code>→<code>b3</code> ／ <code>Bubble 4</code>→<code>b4</code>。<br>⚠️ <strong>Studioの設定タブに「class」欄は無い</strong>（タグ / ID / aria-label / aria-hidden のみ）。CustomCodeで要素を狙うときは <strong>ID</strong> を使い、CSSは <code>#b1</code> のようにIDセレクタで書く。</li>
  <li><strong>(b) しっぽCSSを貼る</strong>：<strong>ページ設定 → Custom Code → <code>&lt;/head&gt;</code> 直前ブロック</strong>を開き、すぐ下の【しっぽコード】<code>&lt;style&gt;</code>〜<code>&lt;/style&gt;</code>を1ブロックで貼り付ける（CSSなので head 欄でOK）。場所の詳細は用語集 <a class="term" href="#term-customcode">Custom Code</a> 参照。</li>
  <li><strong>(c) 公開して確認</strong>：Custom Code は<strong>公開（Publish）後に反映</strong>（エディタ内では出ないことあり）。本体（吹き出し）の重ね順はしっぽより前面に。</li>
  </ul>
- <ul class="checklist"><li>各Bubbleにclass b1〜b4を付与し、しっぽCSSをCustom Code(head)に貼付</li></ul></li>
+ <ul class="checklist"><li>各BubbleにID b1〜b4を付与し、しっぽCSSをCustom Code(head)に貼付</li></ul></li>
 <li><strong>Mobile 非表示</strong>：レイヤーで <code>CTA Illust</code>（配下の Woman・Bubble 1〜4・しっぽ含む）の<strong>目アイコンを Tablet・Mobile で OFF</strong>（吹き出しは PC のみ表示）。
  <ul class="checklist"><li>Tablet/Mobile で CTA Illust を非表示</li></ul></li>
 </ol>
 
-<p><strong>【しっぽコード】</strong>（手順(b)で <strong>Custom Code → <code>&lt;/head&gt;</code> 直前ブロック</strong>に貼る。<code>#4A7DE8</code>＝blue、角度・サイズは v09 モック準拠。各Bubbleに class b1〜b4 が付いていること）：</p>
+<p><strong>【しっぽコード】</strong>（手順(b)で <strong>Custom Code → <code>&lt;/head&gt;</code> 直前ブロック</strong>に貼る。<code>#4A7DE8</code>＝blue、角度・サイズは v09 モック準拠。各BubbleにID b1〜b4 が付いていること）：</p>
 <pre class="code">&lt;style&gt;
-/* CTA吹き出しの三角しっぽ。各Bubble Boxに class b1〜b4 を付与 */
-.b1::before,.b2::before,.b3::before,.b4::before{content:'';position:absolute;width:0;height:0;border:7px solid transparent}
-.b1::before{bottom:6px;right:-6px;border-left-color:#4A7DE8;border-left-width:13px;border-right:0;transform-origin:0 50%;transform:rotate(17deg)}
-.b2::before{bottom:6px;left:-6px;border-right-color:#4A7DE8;border-right-width:13px;border-left:0;transform-origin:100% 50%;transform:rotate(-17deg)}
-.b3::before{top:6px;right:-6px;border-left-color:#4A7DE8;border-left-width:13px;border-right:0;transform-origin:0 50%;transform:rotate(-18deg)}
-.b4::before{top:6px;left:-6px;border-right-color:#4A7DE8;border-right-width:13px;border-left:0;transform-origin:100% 50%;transform:rotate(18deg)}
+/* CTA吹き出しの三角しっぽ。各Bubble Boxに ID b1〜b4 を付与（設定タブ→ID欄） */
+#b1::before,#b2::before,#b3::before,#b4::before{content:'';position:absolute;width:0;height:0;border:7px solid transparent}
+#b1::before{bottom:6px;right:-6px;border-left-color:#4A7DE8;border-left-width:13px;border-right:0;transform-origin:0 50%;transform:rotate(17deg)}
+#b2::before{bottom:6px;left:-6px;border-right-color:#4A7DE8;border-right-width:13px;border-left:0;transform-origin:100% 50%;transform:rotate(-17deg)}
+#b3::before{top:6px;right:-6px;border-left-color:#4A7DE8;border-left-width:13px;border-right:0;transform-origin:0 50%;transform:rotate(-18deg)}
+#b4::before{top:6px;left:-6px;border-right-color:#4A7DE8;border-right-width:13px;border-left:0;transform-origin:100% 50%;transform:rotate(18deg)}
 &lt;/style&gt;</pre>
 
-<ul class="checklist"><li>CTA Illust 枠（relative・高さ 300px・max-width520px・上 marg44px）作成済み</li><li>CTA Woman（絶対・下0/左166px固定で中央・Move Y-26px・188×222・contain・ink16% 影）配置済み</li><li>Bubble 1〜4（blue 背景・白文字 12.5px/800・padding9/15・角丸 16・blue28% 影・各座標）配置済み・しっぽは class b1〜b4＋【しっぽコード】を Custom Code(head) に貼って再現済み</li></ul>
+<ul class="checklist"><li>CTA Illust 枠（relative・高さ 300px・max-width520px・上 marg44px）作成済み</li><li>CTA Woman（絶対・下0/左166px固定で中央・Move Y-26px・188×222・contain・ink16% 影）配置済み</li><li>Bubble 1〜4（blue 背景・白文字 12.5px/800・padding9/15・角丸 16・blue28% 影・各座標）配置済み・しっぽは ID b1〜b4＋【しっぽコード】を Custom Code(head) に貼って再現済み</li></ul>
 
 <h3 id="s10-6">5-10-6. 問い合わせフォーム（Form / Contact Form）</h3>
  <div class="callout note"><p><strong>📍 設定先（読み替え不要）</strong>: この節で出てくる <code>サイズ / ウェイト / 行間 / letter-spacing（字間）/ word-break（折り返し）/ 色</code> は、対象テキストを選び <strong>右パネル → テキストタブ</strong>で入力します（既存の同名テキストスタイルがあれば <strong>スタイル欄で適用</strong>すると速い）。<code>padding / margin / 角丸 / 背景 / ボーダー</code> は <strong>ボックスタブ</strong>（パディング・マージン・外観）です。</p></div>
