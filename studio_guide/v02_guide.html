@@ -8459,8 +8459,8 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><code>Case Card A</code> 内に Box を追加、<code>Cover A</code> にリネーム（= <code>.c-cover</code>）。
  <ul class="checklist"><li>Cover A Box 追加</li></ul>
  </li>
- <li>右パネル→ボックス→サイズ → 幅: <code>%</code> <code>100</code>。高さは 16:10 比率を要する。
- <ul class="checklist"><li>幅100% / 高さ16:10比率</li></ul>
+ <li>右パネル→ボックス→サイズ → 幅: <code>%</code> <code>100</code>・<strong>高さ auto</strong>。<strong>「16:10（縦横比）」を入れる欄は Studio に無い</strong>（aspect-ratio ネイティブ不可・padding% も不可）。→ <strong>16:10 は「16:10 で書き出した写真」を Imgモードで Cover A 内に入れて作る</strong>（下の【Free代替】。画像の比率で Cover A の高さが 16:10 に決まる＝比率の"設定"は不要）。厳密に器で固定したい時だけ Custom Code <code>aspect-ratio:16/10</code>（下の【Mini】）。
+ <ul class="checklist"><li>幅100%・高さauto（16:10は16:10画像をImgモードで＝下の方法）</li></ul>
  </li>
  </ol>
  <div class="plan free">
