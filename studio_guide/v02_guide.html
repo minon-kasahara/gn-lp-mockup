@@ -8482,12 +8482,12 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li>内側に Image を追加 <code>Cover Img A</code>。アップロードは 左ナビ→アップロード→画像（または ストック）。aria-label（設定タブ→タグ・属性）= <code>株式会社A 様 オフィスにて</code>。カバーは下の参考画像のとおり。
  <ul class="checklist"><li>Cover Img A 追加・aria-label設定</li></ul>
  </li>
- <li><code>Cover Img A</code> 右パネル→ボックス→サイズ → 幅 <code>%</code>100 / 高さ <code>%</code>100。フィット／位置は次の Mini で当てる。
+ <li><code>Cover Img A</code>（<strong>Imgモード</strong>）右パネル→ボックス→サイズ → <strong>幅 <code>%</code> 100 / 高さ auto</strong>。16:10で書き出した写真なので、これで<strong>画像の比率どおり16:10で表示され、Cover A の高さも16:10に決まる</strong>（object-fit / aspect-ratio の指定は不要）。<br>⚠️ ここで<strong>高さを <code>100%</code> にすると画像が消える</strong>：Cover A が高さ auto のため「親の高さ＝子の高さ／子＝親の100%」で循環し 0 に潰れるため。<strong>高さは auto</strong> にすること。
  <ul>
- <li>§9 コード集の該当ブロックを Custom Code に貼り、<code>object-fit:cover;object-position:center 35%</code> を当てる。</li>
+ <li>※ 写真が正確に16:10でない／器で強制トリミングしたい場合のみ：先に <code>Cover A</code> に Custom Code で <code>aspect-ratio:16/10</code>（＝高さを確定）を当ててから、画像を <strong>高さ 100% ＋ <code>object-fit:cover;object-position:center 35%</code></strong>（§9 コード集）にする。</li>
  </ul>
  
- <ul class="checklist"><li>幅高100%・object-fit:cover を Custom Code</li></ul>
+ <ul class="checklist"><li>幅100%・高さauto（16:10画像で比率確定・高さ100%にすると潰れる）</li></ul>
  </li>
  </ol>
  <figure class="fig">
