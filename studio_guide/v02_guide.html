@@ -5189,7 +5189,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><code>Hero Sub</code>: <code>13.5px</code>、行間1.85、margin-bottom <code>6px</code>、幅 auto。
  <ul class="checklist"><li>Mobile: Sub 13.5px・幅auto</li></ul>
  </li>
-<li><code>Hero CTA Grid</code>: 方向 <strong>縦並び</strong>、水平 ストレッチ（stretch）、幅 <code>%100</code>、gap <code>10px</code>、margin-top <code>4px</code>。
+<li><code>Hero CTA Grid</code>: 方向 <strong>縦並び</strong>、水平 両端揃え（stretch）、幅 <code>%100</code>、gap <code>10px</code>、margin-top <code>4px</code>。
  <ul class="checklist"><li>Mobile: CTA Grid縦並び/幅100%</li></ul>
  </li>
 <li><code>Hero CTA Pri</code>: padding 上下 <code>18px</code> / 左 <code>22px</code> / 右 <code>50px</code>、幅 <code>%100</code>・中央寄せ。矢印円: 右 <code>14px</code>・<code>28px</code>×<code>28px</code>・＞ <code>12px</code>。
@@ -5833,7 +5833,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  │ └─ Text / market-lead ← リード文
  └─ Box / market-grid ← 2カラムグリッド（gap 22px）
  ├─ Box / Mkt-Card-Down ← 左カード（市場動向＝採択率低下）
- │ ├─ Box / Down-Head ← タグ＋タイトル（交差軸=ストレッチ）
+ │ ├─ Box / Down-Head ← タグ＋タイトル（交差軸=両端揃え）
  │ │ ├─ Box / Down-Tag ← タグ「市場動向」（幅auto=内容幅）
  │ │ │ └─ Text / Down-Tag-Txt
  │ │ └─ Text / Down-Title ← 「平均採択率は半減以下に」
@@ -5960,7 +5960,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ol class="steps">
  <li><code>Box / market-inner</code> 内、<code>market-head</code> の下に <span class="path">追加<i>›</i>基本<i>›</i>Box</span> → リネーム <code>Box / market-grid</code>。右パネル → ボックス:
  <ul>
- <li>レイアウト: 方向 = 横並び（Horizontal）、垂直 = ストレッチ（stretch・2カラム同高化）、水平 = 中央。</li>
+ <li>レイアウト: 方向 = 横並び（Horizontal）、垂直 = <strong>両端揃え</strong>（＝Studioでのstretch表記・2カラム同高化。子は高さauto）、水平 = 中央。</li>
  <li>gap（間隔）= <code>22px</code>。</li>
  <li>サイズ: 幅 = <code>%</code> <code>100%</code> かつ 最大幅 = <code>1180px</code>／ 高さ = <code>auto</code>。</li>
  <li>パディング: 左右 <code>40px</code>（<code>--gutter</code>）、上下 <code>0</code>。<strong>中央寄せは親の配置 → 水平=中央 で</strong>（マージン auto 不可）。</li>
@@ -6001,7 +6001,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><code>market-grid</code> 内に <span class="path">追加<i>›</i>基本<i>›</i>Box</span> → リネーム <code>Box / Mkt-Card-Down</code>。右パネル → ボックス:
  <ul>
  <li>サイズ: 幅 = <code>flex</code> <code>1</code>（2カラム等分）／ 高さ = <code>auto</code>。</li>
- <li>レイアウト: 方向 = 縦並び、交差軸（水平）= ストレッチ（子は既定でストレッチ）。</li>
+ <li>レイアウト: 方向 = 縦並び、交差軸（水平）= 両端揃え（子は既定で両端揃え）。</li>
  <li>外観: 塗り = カラースタイル <code>bg/white</code>。</li>
  <li>ボーダー: スタイル = Solid、太さ = 四辺一括 <code>2px</code>、色 = <code>text/ink</code>。</li>
  <li>角丸: 全コーナー一括 <code>20px</code>。パディング: 一括 <code>32px</code>。オーバーフロー = Hidden。</li>
@@ -6020,7 +6020,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <ol class="steps" start="2">
  <li><code>Mkt-Card-Down</code> 内に Box → リネーム <code>Box / Down-Head</code>: 方向 = 縦並び、gap = <code>12px</code>、下マージン = <code>22px</code>。
  <ul>
- <li><strong>交差軸（水平）= ストレッチ</strong>（タイトルは親幅いっぱいに伸びる）。タグだけが内容幅に縮むのはタグ側で幅=autoにするためです。</li>
+ <li><strong>交差軸（水平）= 両端揃え</strong>（タイトルは親幅いっぱいに伸びる）。タグだけが内容幅に縮むのはタグ側で幅=autoにするためです。</li>
  </ul>
  
  <ul class="checklist"><li>Down-Head 縦並び・gap12px</li></ul>
@@ -6047,7 +6047,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  </ol>
  <div class="callout warn">
- <p>旧ドラフトの「親を水平=左」にする指定は誤り（h3 の stretch が失われ折返し挙動が変わる）。<strong>親はストレッチのまま、内容幅化はタグBox側で行う</strong>。</p>
+ <p>旧ドラフトの「親を水平=左」にする指定は誤り（h3 の stretch が失われ折返し挙動が変わる）。<strong>親は両端揃えのまま、内容幅化はタグBox側で行う</strong>。</p>
  </div>
 
  <h4>棒グラフ（Down-Chart）</h4>
@@ -6102,7 +6102,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  </ol>
 
- <ul class="checklist"><li>左カードを白背景・2pxinkボーダー・角丸20px・padding32px・overflow hiddenにした</li><li><code>Down-Head</code> を交差軸=ストレッチにし、<code>Down-Tag</code> のみ幅=autoで内容幅化した</li><li>タグ <code>市場動向</code>（blue/white・pill）を作った</li><li>タイトル強調語 <code>半減以下</code> を <code>brand/navy</code> 着色した</li><li>バー prev=幅96px高150px / now=幅96px高70px とし、塗りは Mini Custom Code（<a href="#ch-s9">§9 コード集</a>）でグラデを当て、Studio側は単色（prev=navy / now=bar-gray-2）にした</li><li>矢印 <code>↘</code>（26px/bar-gray-2）と年ラベル枠（透明2pxボーダー）を置いた</li><li>注記に上Dashed1px lineボーダー＋上padding18pxを付けた</li></ul>
+ <ul class="checklist"><li>左カードを白背景・2pxinkボーダー・角丸20px・padding32px・overflow hiddenにした</li><li><code>Down-Head</code> を交差軸=両端揃えにし、<code>Down-Tag</code> のみ幅=autoで内容幅化した</li><li>タグ <code>市場動向</code>（blue/white・pill）を作った</li><li>タイトル強調語 <code>半減以下</code> を <code>brand/navy</code> 着色した</li><li>バー prev=幅96px高150px / now=幅96px高70px とし、塗りは Mini Custom Code（<a href="#ch-s9">§9 コード集</a>）でグラデを当て、Studio側は単色（prev=navy / now=bar-gray-2）にした</li><li>矢印 <code>↘</code>（26px/bar-gray-2）と年ラベル枠（透明2pxボーダー）を置いた</li><li>注記に上Dashed1px lineボーダー＋上padding18pxを付けた</li></ul>
 
  <h3 id="s4-6">5-4-6. 右カード「G&amp;Nの対策（採択率向上）」Mkt-Card-Up</h3>
  <div class="callout tip">
@@ -6134,7 +6134,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  <li><code>Mkt-Card-Up</code> の枠は <code>Mkt-Card-Down</code> と同（白背景・2pxinkボーダー・角丸20px・padding32px・overflow hidden・Hover Move Y -4px はMini前提）。背景は <code>#fff</code> のままで差分なし。
  <ul class="checklist"><li>Mkt-Card-Up 枠（Down同・Hover Y-4px）</li></ul>
  </li>
- <li><code>Up-Tag-Txt</code> の内容を <code>G&amp;N</code> に変更（Studioのテキスト欄には素の <code>G&amp;N</code> を入力）。タグ枠 <code>Up-Tag</code> は <code>Down-Tag</code> と同＝blue/white pill、幅=auto。<code>Up-Head</code> も <code>Down-Head</code> と同じく交差軸=ストレッチ。
+ <li><code>Up-Tag-Txt</code> の内容を <code>G&amp;N</code> に変更（Studioのテキスト欄には素の <code>G&amp;N</code> を入力）。タグ枠 <code>Up-Tag</code> は <code>Down-Tag</code> と同＝blue/white pill、幅=auto。<code>Up-Head</code> も <code>Down-Head</code> と同じく交差軸=両端揃え。
  <ul class="checklist"><li>Up-Tag-Txt「G&amp;N」・Up-Head同設定</li></ul>
  </li>
  <li><code>Up-Title</code> の内容を <code>加点対策で採択率は大きく向上</code>（<code>大きく向上</code> が <code>&lt;em&gt;</code>）。強調語 <code>大きく向上</code> の色は <strong><code>brand/blue</code></strong>（右カードの強調語は左カードの navy ではなく blue）。それ以外（サイズ21px/900/lh1.5/ink）は <code>Down-Title</code> と同。
@@ -6200,7 +6200,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
  </li>
  </ol>
 
- <ul class="checklist"><li>右カードを左カード複製→リネームし枠を流用した（up-headも交差軸=ストレッチ）</li><li>タグ <code>G&amp;N</code>・タイトル強調 <code>大きく向上</code> を <code>brand/blue</code> にした</li><li>キャプション <code>↗ 対策実施と採択率のイメージ</code>（cap-ico=blue / txt=navy-lt）を追加した</li><li>バー low=高66px / high=高152px とし、塗りは Mini Custom Code（<a href="#ch-s9">§9 コード集</a>）でグラデを当て、Studio側は単色（low=bar-gray-2 / high=yellow-dk）にした</li><li>矢印 <code>↗</code>=blue、val <code>大幅UP</code>=blue、年ラベルを黄枠ボックス（yr-boxed・yellow枠/角丸9px）にした</li></ul>
+ <ul class="checklist"><li>右カードを左カード複製→リネームし枠を流用した（up-headも交差軸=両端揃え）</li><li>タグ <code>G&amp;N</code>・タイトル強調 <code>大きく向上</code> を <code>brand/blue</code> にした</li><li>キャプション <code>↗ 対策実施と採択率のイメージ</code>（cap-ico=blue / txt=navy-lt）を追加した</li><li>バー low=高66px / high=高152px とし、塗りは Mini Custom Code（<a href="#ch-s9">§9 コード集</a>）でグラデを当て、Studio側は単色（low=bar-gray-2 / high=yellow-dk）にした</li><li>矢印 <code>↗</code>=blue、val <code>大幅UP</code>=blue、年ラベルを黄枠ボックス（yr-boxed・yellow枠/角丸9px）にした</li></ul>
 
  <h3 id="s4-7">5-4-7. レスポンシブ（Default / Small 1024 / Tablet 840 / Mobile 540）</h3>
  <div class="callout note">
@@ -10936,7 +10936,7 @@ nav.side a .navprog.done{background:#15422f;color:#86e3b4}
 <li><code>FloatingCTA-Perk</code> 直下（Closeの後）に <strong>追加→基本→Box</strong>、名 <code>FloatingCTA-Perk__Visual</code>。
  <ul class="checklist"><li>Visual Box追加</li></ul>
  </li>
-<li>右パネル→<strong>ボックス</strong>タブ→<strong>サイズ</strong>: 幅 <a class="term" href="#term-hug">auto</a>（親幅いっぱい・縦並び親では交差軸ストレッチ）または幅 <a class="term" href="#term-fill"><code>%100</code></a>、高さ <code>auto</code>。
+<li>右パネル→<strong>ボックス</strong>タブ→<strong>サイズ</strong>: 幅 <a class="term" href="#term-hug">auto</a>（親幅いっぱい・縦並び親では交差軸両端揃え）または幅 <a class="term" href="#term-fill"><code>%100</code></a>、高さ <code>auto</code>。
 <ul class="checklist"><li>幅 親いっぱい / 高さ auto</li></ul></li>
 <li>同→<strong>レイアウト</strong>: 方向 <strong>縦並び（Vertical）</strong>、配置 交差軸（水平）=<strong>中央</strong>、gap は子のマージンで再現するため <code>0</code>、padding <strong>個別</strong>で 上 <code>20px</code> / 右 <code>18px</code> / 下 <code>20px</code> / 左 <code>18px</code>。
 <ul class="checklist"><li>縦並び / 中央 / padding 20/18/20/18</li></ul></li>
@@ -12181,7 +12181,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <tr><td>767px 以下</td><td><code>h1</code></td><td><code>36px</code>; 行間 1.25; 字間 -.02em</td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td><code>Hero-Sub</code></td><td>13.5px; 行間 1.85</td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td><code>Hero-Eyebrow</code></td><td>17px; 下 margin 28px; 内 strong 28px</td><td><strong>Mobile</strong></td></tr>
- <tr><td>767px 以下</td><td><code>CTA-Grid</code></td><td>縦並び; ストレッチ; 幅 100%; gap 10px</td><td><strong>Mobile</strong></td></tr>
+ <tr><td>767px 以下</td><td><code>CTA-Grid</code></td><td>縦並び; 両端揃え; 幅 100%; gap 10px</td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td><code>CTA-Pri</code></td><td>padding 18px 50px 18px 22px; 15px; 全幅、丸＞ right14 / 28×28 / 12px</td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td><code>Hero-Form</code></td><td>padding 24px 18px; 角丸 18px、装飾円 <strong>非表示</strong></td><td><strong>Mobile</strong></td></tr>
  <tr><td>767px 以下</td><td><code>VP-Badge</code></td><td>15px; padding 13px 14px; margin -24px -18px 16px; 上端角丸 18px</td><td><strong>Mobile</strong></td></tr>
@@ -12269,7 +12269,7 @@ CTAボタンの実値: 横並び中央寄せ・幅 <code>100%</code> / 背景 <c
  <li><code>Hero-Sub</code> → 13.5px / 行間 1.85。<code>Hero-Eyebrow</code> → 17px、下 margin 28px、内 strong 28px。
  <ul class="checklist"><li>Hero-Sub 13.5px・Hero-Eyebrow 17px</li></ul>
  </li>
- <li><code>CTA-Grid</code> → 方向 縦並び、配置 ストレッチ、幅 100%、gap 10px。<code>CTA-Pri</code> → 余白 <code>18px 50px 18px 22px</code>、サイズ 15px、丸＞アイコン 28×28/right14/12px。<strong>全幅 CTA は実効 44px 高を満たす</strong>（<a href="#t7-3">§7.3.1</a>）。
+ <li><code>CTA-Grid</code> → 方向 縦並び、配置 両端揃え、幅 100%、gap 10px。<code>CTA-Pri</code> → 余白 <code>18px 50px 18px 22px</code>、サイズ 15px、丸＞アイコン 28×28/right14/12px。<strong>全幅 CTA は実効 44px 高を満たす</strong>（<a href="#t7-3">§7.3.1</a>）。
  <ul class="checklist"><li>CTA-Grid縦並び・CTA-Pri余白・44px高</li></ul>
  </li>
  <li><code>Hero-Form</code> → 余白 <code>24px 18px</code>、角丸 18px。<strong>装飾円の Box は Mobile で目アイコン OFF（非表示）</strong>。
